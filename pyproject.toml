@@ -1,0 +1,38 @@
+[tool.poetry]
+name = "c_cpp_template_workspace"
+version = "0.1.0"
+description = "C/C++ Template Workspace"
+license = "MIT"
+authors = [
+    "Template Author <author@example.com>",
+]
+maintainers = [
+    "Template Author <author@example.com>",
+]
+readme = "README.md"
+homepage = "https://github.com/example/c_cpp_template_workspace"
+repository = "https://github.com/example/c_cpp_template_workspace"
+
+
+[build-system]
+requires = ["poetry-core>=1.8.2"]
+build-backend = "poetry.core.masonry.api"
+
+
+# Using public PyPI for package management
+# Using default PyPI for all dependencies
+
+
+[tool.poetry.dependencies]
+python = "^3.10.0"
+
+
+[tool.poetry.dev-dependencies]
+# Essential dependencies for C/C++ build
+cmake = "^3.28.0"
+conan = "^2.0.0"
+gcovr = "^7.0"
+# Python code quality tools
+black = "^23.0.0"
+ruff = "^0.1.0"
+

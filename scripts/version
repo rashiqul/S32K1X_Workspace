@@ -1,0 +1,178 @@
+#!/usr/bin/env bash
+
+# Initial Repo Setup:
+# git tag v0.1.0 <FIRST_COMMIT_SHA>
+# git push --tags
+
+help(){
+    cat <<- EOF
+Usage: ${0} OPTION
+Options:
+    docker              Returns a Docker tag compliant semver string
+    is_release_branch   Returns 0 if branch input is a release branch, 1 otherwise
+    major               Returns semver string with Major version incremented
+    minor               Returns semver string with Minor version incremented
+    numeric_version     Returns numeric version only
+    patch               Returns semver string with Patch version increments
+    pep                 Returns a PEP440 compliant semver string
+    version (default)   Returns semver compliant string based on git branch & git branch state
+
+Environment variable overrides:
+    BRANCH_NAME         Name of branch, defaults to the output of "git rev-parse --abbrev-ref HEAD"
+EOF
+}
+
+# Returns success (0) if the passed in branch is a release, main or master branch, failure (1) if not
+is_release_branch()
+{
+    local branch="$1"
+    if [[ "${branch}" =~ ^release-[0-9]+\.[0-9]+$ ]]; then
+        return 0
+    elif [[ "${branch}" == "main" || "${branch}" == "remotes/origin/main" ]]; then
+        return 0
+    elif [[ "${branch}" == "master" || "${branch}" == "remotes/origin/master" ]]; then
+        return 0
+    fi
+    return 1
+}
+
+# Return https://semver.org/ compliant version string
+#
+# Short description of the semver format:
+#
+#     <valid semver> ::= <version core>
+#                      | <version core> "-" <pre-release>
+#                      | <version core> "+" <build>
+#                      | <version core> "-" <pre-release> "+" <build>
+#     <pre-release> ::= <dot-separated pre-release identifiers>
+#     <build> ::= <dot-separated build identifiers>
+#
+# Some properties of the version ordering:
+# - Pre-release ordering example: 1.0.0-rc.1 < 1.0.0 < 1.0.1-rc.1
+# - Build metadata has no effect on ordering in the standard, but Conan uses the same logic as for pre-release
+version()
+{
+    # Uses 'git describe' to get the closest tag and commit information.
+    # If the commit matches a tag exactly, use that tag with commit info.
+    # Otherwise, use the closest tag with additional commit information.
+    # Handles scenarios where the commit is directly from a tag.
+    # Extracts semantic version, commit count, commit hash, and dirty state from the git description.
+    local git_version
+    git_version=$(git describe --long --abbrev=7 --always --tags --dirty --match 'v[0-9]*')
+
+    if [[ ! $git_version =~ ^v(.+)-([0-9]+)-([0-9a-hA-H]+)(-(dirty))?$ ]]; then
+        echo "error: unexpected git description: ${git_version}"
+        exit 1
+    fi
+    local semver=${BASH_REMATCH[1]}
+    local commits=${BASH_REMATCH[2]}
+    local commit=${BASH_REMATCH[3]}
+    local dirty=${BASH_REMATCH[5]}
+
+    local build_metadata=()
+    build_metadata+=("$commits" "$commit")
+    if [[ $dirty ]]; then
+        build_metadata+=("$dirty")
+    fi
+    if [[ ${#build_metadata[@]} -gt 0 ]] && ! is_release_branch "${BRANCH_NAME}"; then
+        # feature/my-feature-name => feature.my.feature.name
+        local branch_info
+        branch_info=$(echo "${BRANCH_NAME}" | sed -r 's/[^A-Za-z0-9]+/./g' | awk '{print tolower($0)}')
+        build_metadata+=("$branch_info")
+    fi
+
+    if [[ ${#build_metadata[@]} -gt 0 ]]; then
+        semver+="+"
+        semver+=$(IFS="."; echo "${build_metadata[*]}")
+    fi
+
+    echo "${semver}"
+}
+
+# Return a Docker compliant semver
+docker()
+{
+    version | sed -e 's/+/-/g'
+}
+
+# Return semver version numbers only
+numeric_version()
+{
+    version | grep -E -o "([0-9]+\.)?([0-9]+\.)([0-9]+)" | head -n1
+}
+
+# Return a PEP440 compliant semver
+#
+# The canonical public version identifiers MUST comply with the following scheme:
+#
+#     [N!]N(.N)*[{a|b|rc}N][.postN][.devN]
+#
+# Local version identifiers MUST comply with the following scheme:
+#
+#     <public version identifier>[+<local version label>]
+#
+pep()
+{
+    local semver
+    semver=$(version)
+    [[ $semver =~ ^([^-+]+)(-[^+]+)?(\+.+)?$ ]]
+
+    local core_version=${BASH_REMATCH[1]}
+    local pre_release=${BASH_REMATCH[2]}
+    local pep_build_metadata=${BASH_REMATCH[3]}
+
+    if [[ -n $pre_release ]]; then
+        pre_release=$(echo "${pre_release}" | sed -r 's/[-.]//g')
+    fi
+
+    echo "${core_version}${pre_release}${pep_build_metadata}"
+}
+
+# For a semver style version number (ie, vMAJOR.MINOR.PATCH), increment MAJOR
+major()
+{
+    local current_version
+    current_version=$(numeric_version)
+    local major
+    major=$(echo "${current_version}" | cut -d. -f1)
+    echo "$(( major + 1 )).0.0"
+}
+
+# For a semver style version number (ie, vMAJOR.MINOR.PATCH), increment MINOR
+minor()
+{
+    local current_version
+    current_version=$(numeric_version)
+    local major
+    major=$(echo "${current_version}" | cut -d. -f1)
+    local minor
+    minor=$(echo "${current_version}" | cut -d. -f2)
+    echo "${major}.$(( minor + 1 )).0"
+}
+
+# For a semver style version number (ie, vMAJOR.MINOR.PATCH), increment PATCH
+patch()
+{
+    local current_version
+    current_version=$(numeric_version)
+    local major
+    major=$(echo "${current_version}" | cut -d. -f1)
+    local minor
+    minor=$(echo "${current_version}" | cut -d. -f2)
+    local patch
+    patch=$(echo "${current_version}" | cut -d. -f3)
+    echo "${major}.${minor}.$(( patch + 1 ))"
+}
+
+# BRANCH_NAME can be set as an environment variable, otherwise just get it from Git
+if [[ -z ${BRANCH_NAME} ]]; then
+    BRANCH_NAME=$(git rev-parse --abbrev-ref HEAD)
+fi
+
+ACTION="version"
+if [[ $# -ne 0 ]]; then
+    ACTION=$1
+    shift
+fi
+
+"${ACTION}" "$@"

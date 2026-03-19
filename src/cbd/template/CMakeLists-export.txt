@@ -1,0 +1,10 @@
+# CMake uses this file, if importing the sources from the package src directory.
+
+file(GLOB template_SOURCES *.[ch])
+
+add_library(template EXCLUDE_FROM_ALL ${template_SOURCES})
+target_include_directories(template PUBLIC .)
+target_link_libraries(template PUBLIC c_cpp_template_workspace::c_cpp_template_workspace)
+
+add_library(template_stub INTERFACE)
+target_include_directories(template_stub INTERFACE stub)

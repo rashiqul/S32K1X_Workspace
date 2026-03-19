@@ -1,0 +1,606 @@
+name: Linux GCC Pipeline
+
+on:
+  push:
+    branches:
+      - main
+      - develop
+  pull_request:
+    branches:
+      - main
+      - develop
+    types: [opened, synchronize, reopened]
+
+env:
+  BUILD_TYPE: Release
+  CMAKE_VERSION: 3.23.0
+  GCC_VERSION: 11
+
+jobs:
+  compliance-checks:
+    name: Repository Compliance & Git History
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # Full history for linear history check
+      
+      - name: Check required files exist
+        run: |
+          echo "🔍 Checking repository compliance..."
+          
+          required_files=(
+            "README.md"
+            "LICENSE"
+            "CMakeLists.txt"
+            ".clang-format"
+          )
+          
+          missing_files=()
+          for file in "${required_files[@]}"; do
+            if [ ! -f "$file" ]; then
+              missing_files+=("$file")
+            fi
+          done
+          
+          if [ ${#missing_files[@]} -ne 0 ]; then
+            echo "❌ Missing required files:"
+            printf '  - %s\n' "${missing_files[@]}"
+            exit 1
+          fi
+          
+          echo "✅ All required files present"
+      
+      - name: Check for linear git history
+        run: |
+          echo "🔍 Checking for linear git history..."
+          
+          # Get the base and head branches
+          base_branch="${{ github.base_ref }}"
+          head_branch="${{ github.head_ref }}"
+          
+          # Fetch both branches
+          git fetch origin "$base_branch"
+          git fetch origin "$head_branch"
+          
+          # Check if PR branch has merge commits (excluding merges from base)
+          # Use the actual PR branch, not HEAD which might be a GitHub merge commit
+          merge_commits=$(git log --merges --oneline "origin/$base_branch..origin/$head_branch" | wc -l)
+          
+          if [ "$merge_commits" -gt 0 ]; then
+            echo "❌ Non-linear history detected. Found $merge_commits merge commit(s)."
+            echo "Please rebase your branch on top of $base_branch"
+            git log --merges --oneline "origin/$base_branch..origin/$head_branch"
+            exit 1
+          fi
+          
+          echo "✅ Linear git history verified"
+      
+      - name: Check commit messages
+        run: |
+          echo "🔍 Checking commit message format..."
+          
+          base_branch="${{ github.base_ref }}"
+          
+          # Check each commit message in the PR
+          git log origin/$base_branch..HEAD --format=%s | while read -r msg; do
+            if [ ${#msg} -lt 10 ]; then
+              echo "❌ Commit message too short (< 10 chars): '$msg'"
+              exit 1
+            fi
+            if [ ${#msg} -gt 100 ]; then
+              echo "⚠️  Warning: Commit message too long (> 100 chars): '$msg'"
+            fi
+          done
+          
+          echo "✅ Commit messages validated"
+
+  environment-check:
+    name: Environment Setup & Validation
+    runs-on: ubuntu-latest
+    needs: compliance-checks
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      
+      - name: Setup GCC
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y gcc-${{ env.GCC_VERSION }} g++-${{ env.GCC_VERSION }}
+          sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-${{ env.GCC_VERSION }} 100
+          sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-${{ env.GCC_VERSION }} 100
+      
+      - name: Install build dependencies
+        run: |
+          sudo apt-get install -y \
+            cmake \
+            ninja-build \
+            python3 \
+            python3-pip \
+            clang-format \
+            shellcheck
+      
+      - name: Install Conan
+        run: |
+          pip3 install "conan>=2.0"
+          conan --version
+      
+      - name: Verify environment
+        run: |
+          echo "🔍 Verifying build environment..."
+          echo ""
+          echo "GCC Version:"
+          gcc --version | head -n1
+          echo ""
+          echo "G++ Version:"
+          g++ --version | head -n1
+          echo ""
+          echo "CMake Version:"
+          cmake --version | head -n1
+          echo ""
+          echo "Python Version:"
+          python3 --version
+          echo ""
+          echo "Conan Version:"
+          conan --version
+          echo ""
+          echo "Clang-Format Version:"
+          clang-format --version
+          echo ""
+          echo "Shellcheck Version:"
+          shellcheck --version | head -n1
+          echo ""
+          echo "✅ Environment validated"
+
+  lint-check:
+    name: Code Format Verification (clang-format & shellcheck)
+    runs-on: ubuntu-latest
+    needs: environment-check
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      
+      - name: Install linting tools
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y clang-format shellcheck
+      
+      - name: Run shellcheck on scripts
+        run: |
+          echo "🐚 Running shellcheck on shell scripts..."
+          
+          # Find all shell scripts
+          scripts=$(find scripts -type f -name "*.sh" 2>/dev/null || true)
+          
+          if [ -z "$scripts" ]; then
+            echo "⚠️  No shell scripts found to check"
+          else
+            echo "Checking scripts:"
+            echo "$scripts"
+            echo ""
+            
+            shellcheck_errors=0
+            for script in $scripts; do
+              if ! shellcheck "$script"; then
+                echo "❌ Shellcheck failed for: $script"
+                shellcheck_errors=$((shellcheck_errors + 1))
+              fi
+            done
+            
+            if [ $shellcheck_errors -gt 0 ]; then
+              echo ""
+              echo "❌ Shellcheck found $shellcheck_errors file(s) with issues"
+              exit 1
+            fi
+            
+            echo "✅ All shell scripts passed shellcheck"
+          fi
+          echo ""
+      
+      - name: Run clang-format check
+        run: |
+          echo "🔍 Running clang-format check..."
+          
+          # Find all C/C++ source files
+          files=$(find src test include -type f \( -name "*.c" -o -name "*.cpp" -o -name "*.h" -o -name "*.hpp" \) 2>/dev/null || true)
+          
+          if [ -z "$files" ]; then
+            echo "⚠️  No C/C++ files found to check"
+            exit 0
+          fi
+          
+          echo "Checking files:"
+          echo "$files"
+          echo ""
+          
+          # Check formatting
+          format_errors=0
+          for file in $files; do
+            if ! clang-format --dry-run --Werror "$file" 2>/dev/null; then
+              echo "❌ Format error in: $file"
+              echo "   Run: clang-format -i $file"
+              format_errors=$((format_errors + 1))
+            fi
+          done
+          
+          if [ $format_errors -gt 0 ]; then
+            echo ""
+            echo "❌ Found $format_errors file(s) with formatting issues"
+            echo "Please run 'clang-format -i' on the affected files"
+            exit 1
+          fi
+          
+          echo "✅ All files are properly formatted"
+
+  build:
+    name: Build & Compile (GCC)
+    runs-on: ubuntu-latest
+    needs: lint-check
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          fetch-tags: true
+      
+      - name: Setup GCC
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y gcc-${{ env.GCC_VERSION }} g++-${{ env.GCC_VERSION }}
+          sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-${{ env.GCC_VERSION }} 100
+          sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-${{ env.GCC_VERSION }} 100
+      
+      - name: Install dependencies
+        run: |
+          sudo apt-get install -y cmake ninja-build python3 python3-pip
+          pip3 install "conan>=2.0"
+      
+      - name: Install Conan dependencies
+        run: |
+          mkdir -p build
+          cd build
+          conan install .. --output-folder=. --build=missing -s build_type=${{ env.BUILD_TYPE }} -pr:h ../.conan/profiles/c_cpp_workspace_linux -pr:b ../.conan/profiles/c_cpp_workspace_linux
+      
+      - name: Configure CMake with warning flags
+        run: |
+          cd build
+          cmake .. \
+            -G Ninja \
+            -DCMAKE_TOOLCHAIN_FILE=build_x86_64/Release/generators/conan_toolchain.cmake \
+            -DCMAKE_BUILD_TYPE=${{ env.BUILD_TYPE }} \
+            -DCMAKE_C_FLAGS="-Wall -Wextra -Werror -pedantic" \
+            -DCMAKE_CXX_FLAGS="-Wall -Wextra -Werror -pedantic"
+      
+      - name: Build project
+        run: |
+          cd build
+          echo "🔨 Building project..."
+          
+          # Build and capture output
+          if ! ninja 2>&1 | tee build_output.log; then
+            echo "❌ Build failed with errors"
+            exit 1
+          fi
+          
+          # Check for warnings in build output
+          if grep -i "warning:" build_output.log; then
+            echo "❌ Build completed but contains warnings"
+            echo "All warnings must be fixed"
+            exit 1
+          fi
+          
+          echo "✅ Build completed successfully with no warnings"
+      
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: build-artifacts
+          path: |
+            build/
+            !build/conan/
+            !build/_deps/
+          retention-days: 7
+
+  conan-package:
+    name: Conan Package Creation & Test
+    runs-on: ubuntu-latest
+    needs: build
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          fetch-tags: true
+      
+      - name: Setup GCC
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y gcc-${{ env.GCC_VERSION }} g++-${{ env.GCC_VERSION }}
+          sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-${{ env.GCC_VERSION }} 100
+          sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-${{ env.GCC_VERSION }} 100
+      
+      - name: Install dependencies
+        run: |
+          sudo apt-get install -y cmake ninja-build python3 python3-pip
+          pip3 install "conan>=2.0"
+      
+      - name: Create Conan package
+        run: |
+          echo "📦 Creating Conan package..."
+          
+          # Create the package
+          if ! conan create . --build=missing -s build_type=${{ env.BUILD_TYPE }} -pr:h .conan/profiles/c_cpp_workspace_linux -pr:b .conan/profiles/c_cpp_workspace_linux; then
+            echo "❌ Conan package creation failed"
+            exit 1
+          fi
+          
+          echo "✅ Conan package created successfully"
+      
+      - name: Test Conan package
+        run: |
+          echo "🧪 Testing Conan package with test_package..."
+          
+          # The test_package should have been run during conan create
+          # Let's verify the package is in the cache
+          conan search c_cpp_template_workspace
+          
+          echo "✅ Conan package validated"
+      
+      - name: Export package info
+        run: |
+          echo "📋 Package Information:"
+          conan search c_cpp_template_workspace -v
+          
+          # Get package details
+          echo ""
+          echo "Package details:"
+          conan info . || true
+
+  unit-tests:
+    name: Unit Tests Execution
+    runs-on: ubuntu-latest
+    needs: build
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      
+      - name: Setup GCC
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y gcc-${{ env.GCC_VERSION }} g++-${{ env.GCC_VERSION }}
+          sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-${{ env.GCC_VERSION }} 100
+          sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-${{ env.GCC_VERSION }} 100
+      
+      - name: Install dependencies
+        run: |
+          sudo apt-get install -y cmake ninja-build python3 python3-pip
+          pip3 install "conan>=2.0"
+      
+      - name: Install Conan dependencies
+        run: |
+          mkdir -p build
+          cd build
+          conan install .. --output-folder=. --build=missing -s build_type=${{ env.BUILD_TYPE }} -pr:h ../.conan/profiles/c_cpp_workspace_linux -pr:b ../.conan/profiles/c_cpp_workspace_linux
+      
+      - name: Configure and build with tests
+        run: |
+          cd build
+          cmake .. -G Ninja -DCMAKE_TOOLCHAIN_FILE=build_x86_64/Release/generators/conan_toolchain.cmake -DCMAKE_BUILD_TYPE=${{ env.BUILD_TYPE }}
+          ninja
+      
+      - name: Run unit tests
+        run: |
+          cd build
+          echo "🧪 Running unit tests..."
+          
+          # Run CTest with verbose output
+          if ! ctest --output-on-failure --verbose; then
+            echo "❌ Unit tests failed"
+            exit 1
+          fi
+          
+          echo "✅ All unit tests passed"
+      
+      - name: Generate test report
+        if: always()
+        run: |
+          cd build
+          ctest --output-junit test-results.xml || true
+      
+      - name: Upload test results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-results
+          path: build/test-results.xml
+          retention-days: 30
+
+  sonarqube:
+    name: SonarQube Code Quality Analysis
+    runs-on: ubuntu-latest
+    needs: build
+    # Run on pushes and PRs from the same repo (not forks) - forks don't have access to SONAR_TOKEN
+    if: github.event_name == 'push' || github.event.pull_request.head.repo.full_name == github.repository
+    env:
+      # SHA256 checksum of build-wrapper-linux-x86.zip - update when SonarCloud releases new version
+      # To get current SHA256: curl -sL https://sonarcloud.io/static/cpp/build-wrapper-linux-x86.zip | sha256sum
+      SONAR_WRAPPER_SHA256: "779134ecc95e54a141b7f459a59145685837aafd0098dd8d3c0a54f45e866291"
+      # SHA256 checksum of sonar-scanner-cli-6.2.1.4610-linux-x64.zip
+      # To get current SHA256: curl -sL https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-6.2.1.4610-linux-x64.zip | sha256sum
+      SONAR_SCANNER_SHA256: "0b8a3049f0bd5de7abc1582c78c233960d3d4ed7cc983a1d1635e8552f8bb439"
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      
+      - name: Setup Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+      
+      - name: Setup GCC
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y gcc-${{ env.GCC_VERSION }} g++-${{ env.GCC_VERSION }}
+          sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-${{ env.GCC_VERSION }} 100
+          sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-${{ env.GCC_VERSION }} 100
+      
+      - name: Install dependencies
+        run: |
+          sudo apt-get install -y cmake ninja-build python3 python3-pip
+          pip3 install "conan>=2.0" gcovr
+      
+      - name: Install Conan dependencies
+        run: |
+          mkdir -p build
+          cd build
+          conan install .. --output-folder=. --build=missing -s build_type=${{ env.BUILD_TYPE }} -pr:h ../.conan/profiles/c_cpp_workspace_linux -pr:b ../.conan/profiles/c_cpp_workspace_linux
+      
+      - name: Download SonarQube build wrapper
+        run: |
+          set -euo pipefail
+          mkdir -p .sonar
+          curl -sSfL -o .sonar/build-wrapper-linux-x86.zip \
+            https://sonarcloud.io/static/cpp/build-wrapper-linux-x86.zip
+          if [ -z "${SONAR_WRAPPER_SHA256:-}" ]; then
+            echo "ERROR: SONAR_WRAPPER_SHA256 is not set. Refusing to run unverified build-wrapper binary." >&2
+            exit 1
+          fi
+          echo "${SONAR_WRAPPER_SHA256}  .sonar/build-wrapper-linux-x86.zip" | sha256sum -c
+          unzip -o .sonar/build-wrapper-linux-x86.zip -d .sonar/
+      
+      - name: Configure CMake with coverage flags
+        run: |
+          cd build
+          cmake .. -G Ninja \
+            -DCMAKE_TOOLCHAIN_FILE=build_x86_64/Release/generators/conan_toolchain.cmake \
+            -DCMAKE_BUILD_TYPE=${{ env.BUILD_TYPE }} \
+            -DCOVERAGE=ON
+      
+      - name: Build with SonarQube wrapper
+        run: |
+          cd build
+          ../.sonar/build-wrapper-linux-x86/build-wrapper-linux-x86-64 \
+            --out-dir ../bw-output \
+            ninja
+      
+      - name: Run tests with coverage
+        run: |
+          echo "🧪 Running tests with coverage for SonarQube analysis..."
+          
+          # Run tests
+          cd build
+          ctest --output-on-failure
+          
+          # Clean up CMake's internal coverage files to avoid gcovr errors
+          find CMakeFiles -name "*.gcno" -delete 2>/dev/null || true
+          find CMakeFiles -name "*.gcda" -delete 2>/dev/null || true
+          
+          # Create coverage directory
+          mkdir -p coverage
+          
+          # Run gcovr to generate SonarQube XML format using gcov matching GCC version
+          gcovr --sonarqube coverage/sonarqube.xml \
+            --root .. \
+            --filter '^src/' \
+            --filter '^include/' \
+            --exclude '.*test.*' \
+            --exclude '.*/googletest/.*' \
+            --gcov-executable gcov-${{ env.GCC_VERSION }}
+          
+          echo "✅ Coverage report generated: coverage/sonarqube.xml"
+          
+          cd ..
+      
+      - name: Download and install SonarScanner
+        run: |
+          set -euo pipefail
+          mkdir -p .sonar
+          curl -sSfL -o .sonar/sonar-scanner.zip \
+            https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-6.2.1.4610-linux-x64.zip
+          
+          # Verify SHA256 checksum
+          if [ -z "${SONAR_SCANNER_SHA256:-}" ]; then
+            echo "ERROR: SONAR_SCANNER_SHA256 is not set. Refusing to run unverified SonarScanner binary." >&2
+            exit 1
+          fi
+          echo "${SONAR_SCANNER_SHA256}  .sonar/sonar-scanner.zip" | sha256sum -c
+          
+          unzip -o .sonar/sonar-scanner.zip -d .sonar/
+          echo "$(pwd)/.sonar/sonar-scanner-6.2.1.4610-linux-x64/bin" >> $GITHUB_PATH
+      
+      - name: Run SonarQube Scanner
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        run: |
+          # Base parameters for all scans
+          SONAR_ARGS=(
+            -Dsonar.projectKey=${{ github.repository_owner }}_c_cpp_template_workspace
+            -Dsonar.organization=rashiqul-sonar-workspace
+            -Dsonar.sources=src,include
+            -Dsonar.tests=test
+            -Dsonar.cfamily.build-wrapper-output=bw-output
+            -Dsonar.coverageReportPaths=build/coverage/sonarqube.xml
+            -Dsonar.host.url=https://sonarcloud.io
+          )
+          
+          # Add PR-specific parameters if this is a pull request event
+          if [ "${{ github.event_name }}" = "pull_request" ]; then
+            SONAR_ARGS+=(
+              -Dsonar.pullrequest.key=${{ github.event.pull_request.number }}
+              -Dsonar.pullrequest.branch=${{ github.head_ref }}
+              -Dsonar.pullrequest.base=${{ github.base_ref }}
+            )
+            echo "🔍 Running SonarQube analysis for PR #${{ github.event.pull_request.number }}"
+          else
+            SONAR_ARGS+=(
+              -Dsonar.branch.name=${{ github.ref_name }}
+            )
+            echo "🔍 Running SonarQube analysis for branch ${{ github.ref_name }}"
+          fi
+          
+          sonar-scanner "${SONAR_ARGS[@]}"
+
+  pipeline-summary:
+    name: Pipeline Status Summary
+    runs-on: ubuntu-latest
+    needs: [compliance-checks, environment-check, lint-check, build, conan-package, unit-tests]
+    if: always()
+    
+    steps:
+      - name: Check pipeline status
+        run: |
+          echo "📊 Pipeline Execution Summary"
+          echo "=============================="
+          echo ""
+          echo "Compliance Checks: ${{ needs.compliance-checks.result }}"
+          echo "Environment Check: ${{ needs.environment-check.result }}"
+          echo "Lint Check: ${{ needs.lint-check.result }}"
+          echo "Build: ${{ needs.build.result }}"
+          echo "Conan Package: ${{ needs.conan-package.result }}"
+          echo "Unit Tests: ${{ needs.unit-tests.result }}"
+          echo ""
+          
+          if [ "${{ needs.compliance-checks.result }}" != "success" ] || \
+             [ "${{ needs.environment-check.result }}" != "success" ] || \
+             [ "${{ needs.lint-check.result }}" != "success" ] || \
+             [ "${{ needs.build.result }}" != "success" ] || \
+             [ "${{ needs.conan-package.result }}" != "success" ] || \
+             [ "${{ needs.unit-tests.result }}" != "success" ]; then
+            echo "❌ Pipeline failed. Please check the failed jobs above."
+            exit 1
+          fi
+          
+          echo ""
+          echo "✅ All critical pipeline checks passed!"

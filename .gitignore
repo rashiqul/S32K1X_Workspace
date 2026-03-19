@@ -1,0 +1,84 @@
+# Prerequisites
+*.d
+
+# Compiled Object files
+*.slo
+*.lo
+*.o
+*.obj
+
+# Precompiled Headers
+*.gch
+*.pch
+
+# Compiled Dynamic libraries
+*.so
+*.dylib
+*.dll
+
+# Fortran module files
+*.mod
+*.smod
+
+# Compiled Static libraries
+*.lai
+*.la
+*.a
+*.lib
+
+# Executables
+*.exe
+*.out
+*.app
+
+# Debug directory (skip build generated C/CPP files)
+build*
+*-build-*
+work/**
+models/sw_components_arxmls/**
+
+#miscellaneous
+CMakeUserPresets.json
+
+#IDE Files
+.vscode
+
+# Ignore Google Repo Stuff
+.repo/
+scripts/Common
+
+#site folder to be removed
+site/
+
+# Sonarqube
+.scannerwork/
+!scripts/conan-recipes/sonar-build-wrapper/
+make/*
+
+# Eclipse
+.cproject
+.project
+.pydevproject
+.settings/*
+
+# MATLAB
+*.autosave
+
+# Conan
+.conan2_local/
+
+# Justfile libs
+*.just
+
+# Justfiles
+justfiles/
+*.just
+
+# Python virtual environments
+.venv/
+
+# Megalinter Reports and lint cfg files which are not needed in repo
+megalinter-reports/
+ruff.toml
+.prettierrc
+.markdownlint.json
