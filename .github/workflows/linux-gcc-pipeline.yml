@@ -16,6 +16,12 @@ env:
   CMAKE_VERSION: 3.23.0
   GCC_VERSION: 11
 
+permissions:
+  contents: read
+  pull-requests: write
+  checks: write
+  statuses: write
+
 jobs:
   compliance-checks:
     name: Repository Compliance & Git History
@@ -431,7 +437,7 @@ jobs:
     env:
       # SHA256 checksum of build-wrapper-linux-x86.zip - update when SonarCloud releases new version
       # To get current SHA256: curl -sL https://sonarcloud.io/static/cpp/build-wrapper-linux-x86.zip | sha256sum
-      SONAR_WRAPPER_SHA256: "779134ecc95e54a141b7f459a59145685837aafd0098dd8d3c0a54f45e866291"
+      SONAR_WRAPPER_SHA256: "b27636b7a23d8bc16418bbe5c10adcec96d27faab7d2beed87ec434deea8eeb9"
       # SHA256 checksum of sonar-scanner-cli-6.2.1.4610-linux-x64.zip
       # To get current SHA256: curl -sL https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-6.2.1.4610-linux-x64.zip | sha256sum
       SONAR_SCANNER_SHA256: "0b8a3049f0bd5de7abc1582c78c233960d3d4ed7cc983a1d1635e8552f8bb439"
@@ -546,7 +552,7 @@ jobs:
         run: |
           # Base parameters for all scans
           SONAR_ARGS=(
-            -Dsonar.projectKey=${{ github.repository_owner }}_c_cpp_template_workspace
+            -Dsonar.projectKey=${{ github.repository_owner }}_S32K1X_Workspace
             -Dsonar.organization=rashiqul-sonar-workspace
             -Dsonar.sources=src,include
             -Dsonar.tests=test

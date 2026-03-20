@@ -1,95 +1,95 @@
-# C/C++ Template Workspace
+# S32K1X Workspace
 
-A minimal C/C++ project template with CMake build system, local libraries, and unit testing framework.
+Embedded firmware development workspace for NXP S32K1xx microcontrollers, with a host-side x86_64 build and test pipeline for fast local iteration and CI validation.
+
+## Target Platform
+
+- **Microcontroller Family**: NXP S32K1xx
+- **Project Scope**: Embedded application and platform software bring-up
+- **Current CI Execution Target**: x86_64 Linux (build, unit test, coverage, SonarQube)
 
 ## Prerequisites
 
-- GCC/G++ 11+
-- CMake 3.23+
-- Ninja build system
-- Python 3.11+ with pip
-- Conan 2.x (profile included in repo)
-- clang-format (for code formatting)
-- shellcheck (for shell script linting)
-- Git
+### Build Environment
+- **OS**: Linux (Ubuntu 20.04+ recommended)
+- **GCC/G++**: 11+
+- **CMake**: 3.23+
+- **Ninja**: Build system
+- **Python**: 3.11+ with Poetry
+- **Conan**: 2.x
+- **Git**: Version control
 
-### First-Time Setup
-
-**After cloning the repository**, set up git hooks for automated environment validation:
-
-```bash
-./scripts/setup-git-hooks.sh
-```
-
-This installs a post-checkout hook that automatically validates your development environment after every branch checkout.
-
-**Manual environment check:**
-
-```bash
-./scripts/setup-dev-environment.sh
-```
-
-This script will:
-- Check for all required tools (gcc, cmake, ninja, python3, clang-format, shellcheck, conan)
-- Offer to install missing apt packages (requires sudo)
-- Offer to install Conan via pip if not present
-- Verify all tools are properly configured
-
-The project includes a custom Conan profile (`.conan/profiles/c_cpp_workspace`) that is automatically used for builds, ensuring consistency across different environments (WSL, Linux, Mac).
+### Development Tools (Recommended)
+- **clang-format**: C/C++ formatting
+- **shellcheck**: Shell script linting
+- **S32 Design Studio**: BSP generation, flash, and debug workflows
 
 ## Project Structure
 
 ```
-├── src/cbd/template/     # Source code
-├── test/cbd/unit_tests/  # Unit tests
-├── include/              # Public headers
-├── libs/                 # Local libraries (gtest, spdlog, fmt, autosar-platform-types)
-└── build_x86_64/         # Build output directory
-    ├── Debug/            # Debug build artifacts and coverage
-    └── Release/          # Release build artifacts and coverage
+S32K1X_Workspace/
+├── src/cbd/template/            # Core source code
+├── test/cbd/unit_tests/         # Unit tests (Google Test)
+├── include/                     # Public headers
+├── libs/                        # Local third-party dependencies
+├── .conan/profiles/             # Conan host/build profiles
+├── .github/workflows/           # CI pipelines
+├── scripts/                     # Utility and setup scripts
+└── build_x86_64/{Debug,Release} # Generated build artifacts
 ```
 
 ## Quick Start
 
+### Setup
+
+1. Install and validate developer dependencies:
+
 ```bash
-# Clean previous builds
-make clean
+make setup
+```
 
-# Configure the project
+2. Install project dependencies and configure build files:
+
+```bash
 make configure
+```
 
-# Build the project (Debug by default)
+### Build and Test
+
+```bash
+# Build Debug profile
 make build
 
-# Or build specific profiles
-make build-debug
+# Build Release profile
 make build-release
 
 # Run tests
 make test
 
-# Generate coverage report (runs Debug, Release, and Debug with sanitizer)
+# Generate coverage (Debug + Release + Debug with sanitizer)
 make coverage
 ```
 
 ## Build Targets
 
 ### Configuration
-- `make clean` - Remove build artifacts
-- `make clean-all` - Remove all artifacts (pristine state)
-- `make configure` - Run CMake configuration
 - `make pre-configure` - Install Poetry dependencies
+- `make conan-install` - Install Conan dependencies and generate build files
+- `make configure` - Complete full project configuration
+- `make clean` - Remove build artifacts
+- `make clean-all` - Remove all generated artifacts and local caches
 
 ### Build
-- `make build` - Build the project (Debug profile by default)
-- `make build-debug` - Build Debug profile
+- `make build` - Build Debug profile
+- `make build-debug` - Build Debug profile explicitly
 - `make build-release` - Build Release profile
+- `make list-targets` - List available CMake targets
 
-### Testing & Quality
-- `make test` - Run unit tests
-- `make coverage` - Generate code coverage reports (Debug, Release, and Debug with sanitizer)
-- `make lint` - Run linting checks
-- `make clang-format` - Format all C/C++ code
+### Test and Quality
+- `make test` - Run all tests
+- `make coverage` - Run full coverage workflow
+- `make lint` - Run Python/tooling lint checks
+- `make clang-format` - Format all C/C++ sources
 
 ### Package
 - `make package` - Create Conan package
@@ -99,162 +99,83 @@ make coverage
 
 ## Testing
 
-The project uses Google Test framework. Test results are generated in:
-- Console output during `make test`
-- JUnit XML: `build_x86_64/{Debug,Release}/gtest_junit_ut_cicd.xml`
+The project uses Google Test and CTest integration.
 
-Note: `make test` uses the BUILD_TYPE variable. By default, it runs tests from the current build configuration.
+- Console output: `make test`
+- JUnit XML output: `build_x86_64/{Debug,Release}/gtest_junit_ut_cicd.xml`
+
+`make test` uses the current `BUILD_TYPE` value.
 
 ## Code Coverage
 
-The `make coverage` target generates comprehensive coverage reports for:
-- **Debug profile** (without sanitizer)
-- **Release profile** (optimized build)
-- **Debug profile with sanitizer** (memory safety checks)
+Coverage reports are generated with gcovr.
 
-Coverage reports are generated using gcovr:
-- **Debug HTML report**: `build_x86_64/Debug/coverage/coverage_report.html`
-- **Release HTML report**: `build_x86_64/Release/coverage/coverage_report.html`
-- **XML reports**: `build_x86_64/{Debug,Release}/coverage/cobertura.xml`
-- **SonarQube reports**: `build_x86_64/{Debug,Release}/coverage/sonarqube.xml`
+- Debug HTML: `build_x86_64/Debug/coverage/coverage_report.html`
+- Release HTML: `build_x86_64/Release/coverage/coverage_report.html`
+- Cobertura XML: `build_x86_64/{Debug,Release}/coverage/cobertura.xml`
+- SonarQube XML: `build_x86_64/{Debug,Release}/coverage/sonarqube.xml`
 
 ## Local Libraries
 
-The workspace includes the following libraries in `libs/`:
-- **gtest** - Google Test framework for unit testing
-- **spdlog** - Fast C++ logging library
-- **fmt** - C++ formatting library
-- **autosar-platform-types** - AUTOSAR standard type definitions
-
-## Architecture Support
-
-- x86_64 Linux (primary target)
+The workspace includes the following local libraries in `libs/`:
+- **gtest**
+- **spdlog**
+- **fmt**
+- **autosar-platform-types**
 
 ## CI/CD Pipeline
 
-### GitHub Actions - Linux GCC Pipeline
+The GitHub Actions pipeline in `.github/workflows/linux-gcc-pipeline.yml` runs:
 
-The project includes a comprehensive CI/CD pipeline that runs on Pull Requests. The pipeline includes:
+1. Repository compliance checks
+2. Environment validation
+3. Format and shell lint checks
+4. Build with warnings-as-errors
+5. Conan package creation and validation
+6. Unit tests with test result artifacts
+7. SonarQube analysis (optional, enabled when `SONAR_TOKEN` is configured)
 
-#### Pipeline Stages
-
-1. **Repository Compliance Check**
-   - Validates repository structure and required files
-   - Ensures critical configuration files exist
-
-2. **Git Linear History Check**
-   - Verifies that the PR branch has a linear history (no merge commits)
-   - Ensures clean, rebased branches for easier code review
-
-3. **Environment Check**
-   - Validates all required build tools (CMake, GCC, Make, Python, Conan)
-   - Displays versions for debugging
-
-4. **Lint Check (clang-format)**
-   - Enforces code formatting standards across all C/C++ files
-   - Uses `.clang-format` configuration (LLVM style)
-   - Pipeline fails if any files need formatting
-
-5. **Build Stage**
-   - Compiles and links the entire workspace
-   - Treats warnings as errors (`-Werror`)
-   - Fails on any compiler warnings or linker errors
-
-6. **Conan Package Generation**
-   - Creates a Conan package from the built project
-   - Runs `conan create` to build and package the library
-   - Executes test_package to validate the package
-   - Verifies the package can be consumed by downstream projects
-
-7. **Unit Tests**
-   - Runs all unit tests using Google Test framework
-   - Generates JUnit XML reports for test results
-   - Pipeline fails if any test fails
-
-8. **SonarQube Code Quality (Optional)**
-   - Performs static code analysis
-   - Requires `SONAR_TOKEN` secret to be configured
-   - Can be disabled by removing the job from workflow
-
-#### How to Use
-
-The pipeline automatically triggers when:
-- A Pull Request is opened
-- New commits are pushed to an existing PR
-- A PR is synchronized (rebased/updated)
-
-#### Local Testing Before PR
-
-```bash
-# Check code formatting
-make clang-format
-
-# Or manually with clang-format
-find src/ include/ test/ -name '*.c' -o -name '*.cpp' -o -name '*.h' | xargs clang-format --dry-run --Werror
-
-# Fix formatting issues
-make clang-format  # Applies formatting automatically
-
-# Build with warnings as errors (Debug by default)
-make clean && make build
-
-# Build Release profile
-make clean && make build-release
-
-# Run unit tests
-make test
-
-# Generate coverage reports
-make coverage
-
-# Test Conan package creation (uses custom profile from .conan/profiles/c_cpp_workspace)
-conan create . --build=missing -pr:h .conan/profiles/c_cpp_workspace -pr:b .conan/profiles/c_cpp_workspace
-```
-
-#### SonarQube Setup (Optional)
+## SonarQube Setup (Optional)
 
 To enable SonarQube analysis:
 
-1. Sign up at [SonarCloud](https://sonarcloud.io/) (free for open-source)
-2. Create a new project and get your token
-3. Add the token as a GitHub secret:
-   - Go to your repo → Settings → Secrets and variables → Actions
-   - Add new secret: `SONAR_TOKEN` with your SonarQube token
-4. Update `sonar-project.properties` with your organization and project key
+1. Sign up at [SonarCloud](https://sonarcloud.io/) and create or select organization `rashiqul-sonar-workspace`
+2. Create/import the project for this repository
+   - Project key format used by CI: `<github_owner>_S32K1X_Workspace`
+3. Add the repository secret in GitHub:
+   - Settings -> Secrets and variables -> Actions -> `SONAR_TOKEN`
+4. Ensure the GitHub repository is bound in SonarCloud to enable PR decoration
 
-#### Troubleshooting
+Note: SonarScanner properties are passed directly from the GitHub workflow; there is no `sonar-project.properties` file in this repository.
 
-**Formatting failures:**
-```bash
-# Apply formatting using Makefile
-make clang-format
+## Development Workflow
 
-# Or manually preview what needs formatting
-clang-format --dry-run --Werror src/**/*.c
+### Linux (Build, Test, Static Analysis)
+1. Make code changes in `src/`, `include/`, and `test/`
+2. Run `make build` and `make test`
+3. Run `make coverage` and review generated reports
 
-# Manually apply formatting
-clang-format -i src/**/*.c include/**/*.h test/**/*.cpp
-```
+### S32 Design Studio (BSP and Target Bring-up)
+1. Generate BSP/startup/linker assets for your selected S32K1xx MCU in S32 Design Studio
+2. Integrate generated files into this workspace in dedicated BSP folders
+3. Keep host-side tests in this repository to preserve CI feedback loops
 
-**Linear history check failures:**
-```bash
-# Rebase your branch on main
-git fetch origin
-git rebase origin/main
-git push --force-with-lease
-```
+## Known Gaps and Roadmap
 
-**Build warnings/errors:**
-- Check the build logs in GitHub Actions
-- Reproduce locally with: `make clean && make build`
-- Fix all compiler warnings before pushing
-
-## Code Owner
-
-**Mohammad Rashiqul Alam**
-
-For questions, suggestions, or contributions to this repository, please reach out to the code owner.
+- [ ] Add S32K1xx BSP structure (startup, linker scripts, device headers)
+- [ ] Add target-specific cross-compilation profile(s)
+- [ ] Add embedded target build workflow alongside host build
+- [ ] Expand module-level unit test coverage
+- [ ] Rename remaining template-era Conan profile/package naming where needed
 
 ## License
 
-See [LICENSE](LICENSE) file for details.
+See [LICENSE](LICENSE) for details.
+
+## Author
+
+**Mohammad Rashiqul Alam**
+
+## Contributing
+
+This is a project workspace under active development. For issues or suggestions, contact the repository owner.
