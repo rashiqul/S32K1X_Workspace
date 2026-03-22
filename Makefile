@@ -260,7 +260,7 @@ build_all_tgt: pre-configure
 		-GNinja \
 		$(CMAKE_SDK_FLAG) \
 		-DCMAKE_EXPORT_COMPILE_COMMANDS=ON && \
-	poetry run cmake --build $(ARM_BUILD_DIR) -- -j$$(nproc)
+	ninja -C $(ARM_BUILD_DIR) -j$$(nproc)
 	@echo "========================================================"
 	@echo "  ARM build complete — artifacts in $(ARM_BUILD_DIR)/bin/"
 	@echo "  ELF : $(ARM_BUILD_DIR)/bin/s32k144_firmware.elf"
