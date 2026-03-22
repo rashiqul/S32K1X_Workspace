@@ -1,0 +1,22 @@
+[settings]
+os=baremetal
+arch=armv7hf
+compiler=gcc
+compiler.version=10
+compiler.libcxx=libstdc++11
+compiler.cppstd=17
+build_type=Release
+
+[buildenv]
+CC=arm-none-eabi-gcc
+CXX=arm-none-eabi-g++
+AR=arm-none-eabi-ar
+AS=arm-none-eabi-as
+LD=arm-none-eabi-ld
+OBJCOPY=arm-none-eabi-objcopy
+SIZE=arm-none-eabi-size
+PATH+=(env)NXP_GCC_PATH
+
+[conf]
+tools.cmake.cmaketoolchain:generator=Ninja
+tools.build:compiler_executables={"c": "arm-none-eabi-gcc", "cpp": "arm-none-eabi-g++"}

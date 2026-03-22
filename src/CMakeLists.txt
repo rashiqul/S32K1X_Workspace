@@ -1,17 +1,47 @@
 
-add_library(common_lib INTERFACE)
-target_include_directories(common_lib INTERFACE
-    ${PROJECT_SOURCE_DIR}/include
-    ${PROJECT_SOURCE_DIR}/libs/autosar-platform-types/include
-)
+if(CMAKE_CROSSCOMPILING)
+    # -------------------------------------------------------------------------
+    # ARM target: S32K144 firmware executable
+    # The NXP Platform SDK already provides Platform_Types.h / Std_Types.h via
+    # s32k1_bsp, so we must NOT also pull in libs/autosar-platform-types here.
+    # -------------------------------------------------------------------------
+    add_executable(s32k144_firmware
+        ${CMAKE_CURRENT_SOURCE_DIR}/main.c
+    )
 
-link_libraries(common_lib)
+    target_link_libraries(s32k144_firmware PRIVATE s32k1_bsp s32k1_linker_config)
 
-file(GLOB subdirs RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} ${CMAKE_CURRENT_SOURCE_DIR}/*)
-foreach(dir ${subdirs})
-    if(EXISTS ${CMAKE_CURRENT_SOURCE_DIR}/${dir}/CMakeLists.txt)
-        add_subdirectory(${dir})
-    endif()
-endforeach()
+    # Post-build: generate HEX and BIN artifacts
+    add_custom_command(TARGET s32k144_firmware POST_BUILD
+        COMMAND ${CMAKE_COMMAND} -E make_directory ${CMAKE_BINARY_DIR}/bin
+        COMMAND ${CMAKE_OBJCOPY} -O ihex
+                $<TARGET_FILE:s32k144_firmware>
+                ${CMAKE_BINARY_DIR}/bin/s32k144_firmware.hex
+        COMMAND ${CMAKE_OBJCOPY} -O binary
+                $<TARGET_FILE:s32k144_firmware>
+                ${CMAKE_BINARY_DIR}/bin/s32k144_firmware.bin
+        COMMAND ${CMAKE_SIZE} $<TARGET_FILE:s32k144_firmware>
+        COMMENT "Generating HEX/BIN for s32k144_firmware"
+    )
+else()
+    # -------------------------------------------------------------------------
+    # Host x86 build
+    # -------------------------------------------------------------------------
+    add_library(common_lib INTERFACE)
+    target_include_directories(common_lib INTERFACE
+        ${PROJECT_SOURCE_DIR}/include
+        ${PROJECT_SOURCE_DIR}/libs/autosar-platform-types/include
+    )
+    link_libraries(common_lib)
 
-install(FILES CMakeLists-export.txt RENAME CMakeLists.txt DESTINATION src)
+    # Scan and add all subdirectories with CMakeLists.txt
+    file(GLOB subdirs RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} ${CMAKE_CURRENT_SOURCE_DIR}/*)
+    foreach(dir ${subdirs})
+        if(IS_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/${dir} AND
+           EXISTS ${CMAKE_CURRENT_SOURCE_DIR}/${dir}/CMakeLists.txt)
+            add_subdirectory(${dir})
+        endif()
+    endforeach()
+
+    install(FILES CMakeLists-export.txt RENAME CMakeLists.txt DESTINATION src)
+endif()
