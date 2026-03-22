@@ -253,11 +253,11 @@ build_all_tgt: pre-configure
 		-DCMAKE_EXPORT_COMPILE_COMMANDS=ON && \
 	poetry run cmake --build $(ARM_BUILD_DIR) -- -j$$(nproc)
 	@echo "========================================================"
-	@echo "  ARM build complete"
-	@echo "  ELF : $(ARM_BUILD_DIR)/s32k144_firmware.elf"
+	@echo "  ARM build complete — artifacts in $(ARM_BUILD_DIR)/bin/"
+	@echo "  ELF : $(ARM_BUILD_DIR)/bin/s32k144_firmware.elf"
 	@echo "  HEX : $(ARM_BUILD_DIR)/bin/s32k144_firmware.hex"
 	@echo "  BIN : $(ARM_BUILD_DIR)/bin/s32k144_firmware.bin"
-	@echo "  MAP : $(ARM_BUILD_DIR)/s32k144_firmware.map"
+	@echo "  MAP : $(ARM_BUILD_DIR)/bin/s32k144_firmware.map"
 	@echo "========================================================"
 
 .PHONY: clean_tgt

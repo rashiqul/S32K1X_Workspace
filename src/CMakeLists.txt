@@ -9,19 +9,28 @@ if(CMAKE_CROSSCOMPILING)
         ${CMAKE_CURRENT_SOURCE_DIR}/main.c
     )
 
+    # Give the ELF a proper .elf extension
+    set_target_properties(s32k144_firmware PROPERTIES SUFFIX ".elf")
+
     target_link_libraries(s32k144_firmware PRIVATE s32k1_bsp s32k1_linker_config)
 
-    # Post-build: generate HEX and BIN artifacts
+    # Post-build: consolidate all artifacts into bin/
     add_custom_command(TARGET s32k144_firmware POST_BUILD
         COMMAND ${CMAKE_COMMAND} -E make_directory ${CMAKE_BINARY_DIR}/bin
+        COMMAND ${CMAKE_COMMAND} -E copy
+                $<TARGET_FILE:s32k144_firmware>
+                ${CMAKE_BINARY_DIR}/bin/s32k144_firmware.elf
         COMMAND ${CMAKE_OBJCOPY} -O ihex
                 $<TARGET_FILE:s32k144_firmware>
                 ${CMAKE_BINARY_DIR}/bin/s32k144_firmware.hex
         COMMAND ${CMAKE_OBJCOPY} -O binary
                 $<TARGET_FILE:s32k144_firmware>
                 ${CMAKE_BINARY_DIR}/bin/s32k144_firmware.bin
+        COMMAND ${CMAKE_COMMAND} -E copy
+                ${CMAKE_BINARY_DIR}/s32k144_firmware.map
+                ${CMAKE_BINARY_DIR}/bin/s32k144_firmware.map
         COMMAND ${CMAKE_SIZE} $<TARGET_FILE:s32k144_firmware>
-        COMMENT "Generating HEX/BIN for s32k144_firmware"
+        COMMENT "Consolidating firmware artifacts into bin/"
     )
 else()
     # -------------------------------------------------------------------------
