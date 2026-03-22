@@ -11,9 +11,9 @@
  *
  *******************************************************************************/
 
+#include "Dio.h"
 #include "Mcu.h"
 #include "Port.h"
-#include "Dio.h"
 
 /* Generated configuration symbols (from bsp/config/generated/include/) */
 extern const Mcu_ConfigType Mcu_Config_VS_0;
@@ -25,8 +25,7 @@ extern const Mcu_ConfigType Mcu_Config_VS_0;
 /** Busy-wait delay (approximate, depends on clock speed and optimisation). */
 static void Delay(volatile uint32 cycles)
 {
-    while (cycles-- > 0U)
-    {
+    while (cycles-- > 0U) {
         __asm__ __volatile__("nop");
     }
 }
@@ -46,8 +45,7 @@ int main(void)
     Mcu_Init(&Mcu_Config_VS_0);
     Mcu_InitClock(McuClockSettingConfig_0);
 #if (MCU_NO_PLL == STD_OFF)
-    while (MCU_PLL_LOCKED != Mcu_GetPllStatus())
-    {
+    while (MCU_PLL_LOCKED != Mcu_GetPllStatus()) {
         /* Spin until PLL acquires lock */
     }
     Mcu_DistributePllClock();
@@ -63,11 +61,10 @@ int main(void)
     /*--------------------------------------------------------------------------
      * Main loop: blink LED on PTD0
      *------------------------------------------------------------------------*/
-    for (;;)
-    {
+    for (;;) {
         Dio_WriteChannel(DioConf_DioChannel_DioChannel_0, STD_HIGH); /* LED ON  */
         Delay(500000U);
-        Dio_WriteChannel(DioConf_DioChannel_DioChannel_0, STD_LOW);  /* LED OFF */
+        Dio_WriteChannel(DioConf_DioChannel_DioChannel_0, STD_LOW); /* LED OFF */
         Delay(500000U);
     }
 
