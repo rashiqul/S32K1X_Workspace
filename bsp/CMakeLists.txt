@@ -16,14 +16,19 @@
 enable_language(ASM)
 
 # ---------------------------------------------------------------------------
-# Platform SDK (S32DS installation) - provides device headers and CMSIS types
+# Platform SDK - provides device headers and CMSIS types
+# Priority: CMake var > environment var > bundled copy > S32DS install
 # ---------------------------------------------------------------------------
-set(S32DS_SDK_DEFAULT "/mnt/c/NXP/S32DS.3.6.6/S32DS/software/PlatformSDK_S32K1_S32M24")
-
-if(DEFINED ENV{S32DS_SDK_ROOT})
-    set(S32DS_SDK_ROOT "$ENV{S32DS_SDK_ROOT}")
-elseif(NOT DEFINED S32DS_SDK_ROOT)
-    set(S32DS_SDK_ROOT "${S32DS_SDK_DEFAULT}")
+if(NOT DEFINED S32DS_SDK_ROOT)
+    if(DEFINED ENV{S32DS_SDK_ROOT})
+        set(S32DS_SDK_ROOT "$ENV{S32DS_SDK_ROOT}")
+    elseif(EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/platform_sdk/RTD/BaseNXP_TS_T40D2M30I0R0/header/S32K144.h")
+        # Use headers bundled in the repo (CI-friendly, no S32DS install required)
+        set(S32DS_SDK_ROOT "${CMAKE_CURRENT_SOURCE_DIR}/platform_sdk")
+    else()
+        # Fall back to default S32DS installation path (local dev with S32DS installed)
+        set(S32DS_SDK_ROOT "/mnt/c/NXP/S32DS.3.6.6/S32DS/software/PlatformSDK_S32K1_S32M24")
+    endif()
 endif()
 
 message(STATUS "[BSP] S32DS_SDK_ROOT = ${S32DS_SDK_ROOT}")
