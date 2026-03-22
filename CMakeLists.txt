@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.23)
-project(CCppTemplateWorkspace)
+project(CCppTemplateWorkspace C CXX)
 enable_testing()
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
@@ -21,8 +21,8 @@ target_compile_definitions(fmt INTERFACE FMT_HEADER_ONLY)
 add_library(autosar INTERFACE)
 target_include_directories(autosar INTERFACE ${CMAKE_SOURCE_DIR}/libs/autosar-platform-types/include)
 
-# Find GTest from Conan (only when building tests)
-if(CMAKE_BUILD_TYPE MATCHES "Debug|Release")
+# Find GTest from Conan (only for host builds, not for ARM bare-metal target)
+if(CMAKE_BUILD_TYPE MATCHES "Debug|Release" AND NOT CMAKE_CROSSCOMPILING)
     find_package(GTest CONFIG REQUIRED)
 endif()
 
@@ -44,13 +44,17 @@ configure_file(
     @ONLY
 )
 
-if(COVERAGE)
+if(COVERAGE AND NOT CMAKE_CROSSCOMPILING)
     include(CodeCoverage)
     append_coverage_compiler_flags()
     set(CMAKE_CXX_FLAGS  "${CMAKE_CXX_FLAGS} -O0")
     set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -O0")
 endif()
 message(STATUS "COVERAGE=${COVERAGE}")
+
+if(CMAKE_CROSSCOMPILING)
+    add_subdirectory(bsp)
+endif()
 
 add_subdirectory(src)
 

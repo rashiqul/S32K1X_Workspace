@@ -15,11 +15,18 @@ PYTHON_FILES ?= .
 MOD_TO_ANALYZE ?= ""
 C_FILES ?=
 CONAN_CONFIG_VERSION ?= main
-CONAN_CONFIG_URL ?= 
+CONAN_CONFIG_URL ?=
 CONAN_FLAGS_PARAM := $(CONAN_FLAGS)
 
 # Default for local x86_64 development
 TARGET_CPU ?= x86_64
+
+# ============================================================================
+# ARM Target (S32K144) configuration
+# ============================================================================
+S32DS_SDK_ROOT ?= /mnt/c/NXP/S32DS.3.6.6/S32DS/software/PlatformSDK_S32K1_S32M24
+NXP_GCC_PATH   ?= /home/rashiqul/NXP/gcc-10.2-arm32-eabi/bin
+ARM_BUILD_DIR  := build_s32k1/build_armv7/Release
 
 # Auto-detect OS and set appropriate Conan profile
 UNAME_S := $(shell uname -s)
@@ -71,11 +78,18 @@ help:
 	@echo "  clean             - Remove build artifacts"
 	@echo "  clean-all         - Remove all artifacts (pristine state)"
 	@echo ""
-	@echo "Build:"
+	@echo "Build (x86 host):"
 	@echo "  build             - Build the project (Debug)"
 	@echo "  build-debug       - Build Debug profile"
 	@echo "  build-release     - Build Release profile"
 	@echo "  list-targets      - List all available build targets"
+	@echo ""
+	@echo "Build (ARM target - S32K144):"
+	@echo "  build_all_tgt     - Build S32K144 firmware (ARM GCC, Release)"
+	@echo "  clean_tgt         - Remove ARM target build artifacts"
+	@echo "    Variables:"
+	@echo "      S32DS_SDK_ROOT  Platform SDK path (default: $(S32DS_SDK_ROOT))"
+	@echo "      NXP_GCC_PATH    ARM GCC bin path  (default: $(NXP_GCC_PATH))"
 	@echo ""
 	@echo "Test:"
 	@echo "  test              - Run all tests"
@@ -219,14 +233,46 @@ format:
 	poetry run black $(PYTHON_FILES)
 	poetry run ruff --fix $(PYTHON_FILES)
 
+# ============================================================================
+# ARM Target Build
+# ============================================================================
+.PHONY: build_all_tgt
+build_all_tgt: pre-configure
+	@echo "========================================================"
+	@echo "  Building S32K144 ARM firmware"
+	@echo "  Toolchain : $(NXP_GCC_PATH)/arm-none-eabi-gcc"
+	@echo "  SDK Root  : $(S32DS_SDK_ROOT)"
+	@echo "  Build Dir : $(ARM_BUILD_DIR)"
+	@echo "========================================================"
+	export PATH=$(NXP_GCC_PATH):$$PATH && \
+	poetry run cmake -S . -B $(ARM_BUILD_DIR) \
+		-DCMAKE_TOOLCHAIN_FILE=$(CURDIR)/cmake/toolchains/arm-none-eabi.cmake \
+		-DCMAKE_BUILD_TYPE=Release \
+		-GNinja \
+		-DS32DS_SDK_ROOT=$(S32DS_SDK_ROOT) \
+		-DCMAKE_EXPORT_COMPILE_COMMANDS=ON && \
+	poetry run cmake --build $(ARM_BUILD_DIR) -- -j$$(nproc)
+	@echo "========================================================"
+	@echo "  ARM build complete"
+	@echo "  ELF : $(ARM_BUILD_DIR)/s32k144_firmware.elf"
+	@echo "  HEX : $(ARM_BUILD_DIR)/bin/s32k144_firmware.hex"
+	@echo "  BIN : $(ARM_BUILD_DIR)/bin/s32k144_firmware.bin"
+	@echo "  MAP : $(ARM_BUILD_DIR)/s32k144_firmware.map"
+	@echo "========================================================"
+
+.PHONY: clean_tgt
+clean_tgt:
+	rm -rf build_s32k1
+	@echo "ARM target build artifacts removed"
+
 .PHONY: clean clean-all
 clean:
 	rm -rf build
-	find . -type d -name "build*" | xargs rm -rf
+	find . -type d -name "build_x86*" | xargs rm -rf
 	rm -rf .benchmark .coverage .venv .*_cache site
 	find . -type d -name __pycache__ | xargs rm -rf
 
-clean-all: clean
+clean-all: clean clean_tgt
 	@echo "Removing all dependencies and virtual environments..."
 	rm -rf .conan2_local poetry.lock
 	@echo "Project reset to pristine state"
