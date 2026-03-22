@@ -28,6 +28,15 @@ S32DS_SDK_ROOT ?= /mnt/c/NXP/S32DS.3.6.6/S32DS/software/PlatformSDK_S32K1_S32M24
 NXP_GCC_PATH   ?= /home/rashiqul/NXP/gcc-10.2-arm32-eabi/bin
 ARM_BUILD_DIR  := build_s32k1/build_armv7/Release
 
+# Only pass S32DS_SDK_ROOT to cmake when the user explicitly sets it (command line
+# or environment). When using the default, let bsp/CMakeLists.txt prefer the
+# bundled headers in bsp/platform_sdk/ — required for CI (no S32DS installed).
+ifneq ($(filter command line environment,$(origin S32DS_SDK_ROOT)),)
+CMAKE_SDK_FLAG := -DS32DS_SDK_ROOT=$(S32DS_SDK_ROOT)
+else
+CMAKE_SDK_FLAG :=
+endif
+
 # Auto-detect OS and set appropriate Conan profile
 UNAME_S := $(shell uname -s)
 ifeq ($(UNAME_S),Linux)
@@ -249,7 +258,7 @@ build_all_tgt: pre-configure
 		-DCMAKE_TOOLCHAIN_FILE=$(CURDIR)/cmake/toolchains/arm-none-eabi.cmake \
 		-DCMAKE_BUILD_TYPE=Release \
 		-GNinja \
-		-DS32DS_SDK_ROOT=$(S32DS_SDK_ROOT) \
+		$(CMAKE_SDK_FLAG) \
 		-DCMAKE_EXPORT_COMPILE_COMMANDS=ON && \
 	poetry run cmake --build $(ARM_BUILD_DIR) -- -j$$(nproc)
 	@echo "========================================================"

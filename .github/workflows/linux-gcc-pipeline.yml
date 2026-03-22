@@ -363,18 +363,13 @@ jobs:
 
       - name: Build ARM firmware
         run: |
+          set -o pipefail
           echo "🔨 Building ARM firmware for S32K144 (Cortex-M4)..."
           echo ""
           echo "SDK headers are bundled in bsp/platform_sdk/ — no S32DS install required."
           echo ""
-
-          if make build_all_tgt 2>&1 | tee arm_build.log; then
-            echo "✅ ARM build completed"
-          else
-            echo "❌ ARM build failed"
-            cat arm_build.log || true
-            exit 1
-          fi
+          make build_all_tgt 2>&1 | tee arm_build.log
+          echo "✅ ARM build completed"
 
       - name: Verify build artifacts
         if: success()
@@ -383,13 +378,16 @@ jobs:
 
           bin_dir="build_s32k1/build_armv7/Release/bin"
 
-          if [ -d "$bin_dir" ]; then
-            echo "✅ ARM bin directory created"
-            ls -lh "$bin_dir/"
-          else
+          if [ ! -d "$bin_dir" ]; then
             echo "❌ ARM bin directory not found: $bin_dir"
+            echo ""
+            echo "Build tree:"
+            find build_s32k1 -maxdepth 5 2>/dev/null | sort || echo "(build_s32k1 does not exist)"
             exit 1
           fi
+
+          echo "✅ ARM bin directory created"
+          ls -lh "$bin_dir/"
 
           for ext in elf hex bin; do
             artifact="$bin_dir/s32k144_firmware.$ext"
