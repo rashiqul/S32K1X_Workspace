@@ -276,8 +276,7 @@ clean_tgt:
 
 .PHONY: clean clean-all
 clean:
-	rm -rf build
-	find . -type d -name "build_x86*" | xargs rm -rf
+	find . -maxdepth 1 -type d -name "build*" | xargs rm -rf
 	rm -rf .benchmark .coverage .venv .*_cache site
 	find . -type d -name __pycache__ | xargs rm -rf
 
