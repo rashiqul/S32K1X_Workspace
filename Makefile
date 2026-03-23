@@ -313,6 +313,69 @@ gdb-server:
 		-singlesession \
 		-verbose
 
+# ============================================================================
+# Flash — standalone erase + program + verify, no GDB client required.
+# pegdbserver_console connects to the probe, programs the ELF, then exits.
+# Run `make build_all_tgt` first to ensure the ELF is up to date.
+# ============================================================================
+FIRMWARE_ELF ?= $(ARM_BUILD_DIR)/bin/s32k144_firmware.elf
+
+.PHONY: flash_tgt
+flash_tgt:
+	@echo "========================================================"
+	@echo "  Flashing S32K144 firmware"
+	@echo "  ELF : $(FIRMWARE_ELF)"
+	@echo "========================================================"
+	$(PEMICRO_SERVER) \
+		-startserver \
+		-device=$(PEMICRO_DEVICE) \
+		-serverport=7225 \
+		-flashobjectfile=$(FIRMWARE_ELF) \
+		-programmingtype=0 \
+		-quitafterprogramming \
+		-singlesession \
+		-verbose
+	@echo "Flash complete."
+
+# ============================================================================
+# Attach — full debug session setup:
+#   1. Attach OpenSDA probe to WSL2
+#   2. Flash the latest firmware
+#   3. Start GDB server in background on :7224
+#   4. Prompt user to press F5 in VS Code
+#
+# VS Code launch.json connects to the running server on localhost:7224,
+# loads symbols from the ELF, and enters the debug perspective.
+# ============================================================================
+.PHONY: attach_tgt
+attach_tgt:
+	@echo "========================================================"
+	@echo "  Step 1/3 — Attaching OpenSDA probe to WSL2"
+	@echo "========================================================"
+	python3 scripts/usbipd_connect.py
+	@echo ""
+	@echo "========================================================"
+	@echo "  Step 2/3 — Flashing firmware"
+	@echo "========================================================"
+	$(MAKE) flash_tgt
+	@echo ""
+	@echo "========================================================"
+	@echo "  Step 3/3 — Starting GDB server on :$(GDB_PORT)"
+	@echo "========================================================"
+	$(PEMICRO_SERVER) \
+		-startserver \
+		-device=$(PEMICRO_DEVICE) \
+		-serverport=$(GDB_PORT) \
+		-singlesession \
+		-verbose &
+	@sleep 2
+	@echo ""
+	@echo "========================================================"
+	@echo "  GDB server running on localhost:$(GDB_PORT)"
+	@echo "  Press F5 in VS Code to start the debug session."
+	@echo "  (launch.json must be configured — see .vscode/)"
+	@echo "========================================================"
+
 .PHONY: clean_tgt
 clean_tgt:
 	rm -rf build_s32k1
