@@ -292,9 +292,9 @@ usbipd-connect:
 
 # ============================================================================
 # GDB server — PEMicro pegdbserver_console (native Linux ELF from S32DS)
-# The S32K144EVB-Q100 OpenSDA probe uses PEMicro's proprietary USB protocol,
-# not CMSIS-DAP, so OpenOCD cannot talk to it. pegdbserver_console is the
-# correct server — it is a statically-linked Linux binary that runs in WSL2.
+# The S32K144EVB-Q100 OpenSDA uses PEMicro's proprietary USB protocol.
+# pegdbserver_console is a statically-linked Linux binary that runs in WSL2
+# and exposes a standard GDB remote protocol on port 7224.
 #
 # Leave this terminal open, then connect arm-none-eabi-gdb in another:
 #   target remote localhost:7224

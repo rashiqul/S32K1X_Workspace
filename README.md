@@ -72,8 +72,6 @@ S32K1X_Workspace/
 │   ├── c_cpp_workspace_macos    #   x86_64 macOS host profile
 │   └── s32k1x_arm_cortex_m4    #   ARM Cortex-M4 bare-metal profile
 ├── .github/workflows/           # CI pipelines
-├── openocd/
-│   └── s32k144.cfg              # OpenOCD config (reference; PEMicro server is active path)
 ├── scripts/                     # Utility and setup scripts
 │   └── usbipd_connect.py        #   Auto-attach OpenSDA probe to WSL2
 ├── build_x86_64/{Debug,Release} # x86 build artifacts (generated)
