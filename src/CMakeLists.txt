@@ -1,3 +1,12 @@
+#******************************************************************************
+#
+#     File Name: src/CMakeLists.txt
+#     Description: Builds the S32K144 firmware executable (ARM cross-compile)
+#                  or the x86 common_lib and CBD submodules (host build).
+#
+#     Author: Mohammad Rashiqul Alam
+#
+#******************************************************************************
 
 if(CMAKE_CROSSCOMPILING)
     # -------------------------------------------------------------------------

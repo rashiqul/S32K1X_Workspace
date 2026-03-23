@@ -8,6 +8,7 @@
  *  Hardware  : S32K144EVB-Q100
  *  Compiler  : arm-none-eabi-gcc (GCC 10.2)
  *  AUTOSAR   : 4.7.0  |  RTD 3.0.0
+ *  Author    : Mohammad Rashiqul Alam
  *
  *******************************************************************************/
 

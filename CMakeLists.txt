@@ -1,3 +1,14 @@
+#******************************************************************************
+#
+#     File Name: CMakeLists.txt
+#     Description: Root CMake configuration for C/C++ Template Workspace.
+#                  Supports x86_64 host builds (GCC) and ARM cross-compilation
+#                  for NXP S32K144 (Cortex-M4).
+#
+#     Author: Mohammad Rashiqul Alam
+#
+#******************************************************************************
+
 cmake_minimum_required(VERSION 3.23)
 project(CCppTemplateWorkspace C CXX)
 enable_testing()

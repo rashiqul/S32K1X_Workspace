@@ -1,3 +1,7 @@
+# File Name : .conan/profiles/s32k1x_arm_cortex_m4
+# Description: Conan 2.x build profile for NXP S32K144 (ARM Cortex-M4 bare-metal)
+# Author     : Mohammad Rashiqul Alam
+
 [settings]
 os=baremetal
 arch=armv7hf

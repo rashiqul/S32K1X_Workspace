@@ -5,6 +5,7 @@
 #     Description: Makefile for building, testing, and analyzing the project
 #                  (Migrated from justfile for local development)
 #
+#     Author: Mohammad Rashiqul Alam
 #     Copyright (c) 2025. All rights reserved.
 #
 #******************************************************************************

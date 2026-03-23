@@ -29,7 +29,12 @@ Supports both a host-side x86_64 build/test pipeline for fast local iteration an
 - **NXP S32DS 3.6.6** installed (provides Platform SDK headers at `/mnt/c/NXP/S32DS.3.6.6/`)
   - Required headers: `PlatformSDK_S32K1_S32M24/RTD/BaseNXP_TS_T40D2M30I0R0/`
   - Required headers: `PlatformSDK_S32K1_S32M24/RTD/Platform_TS_T40D2M30I0R0/`
-- **usbipd-win** (Windows) for attaching USB debug probe to WSL2 (flash/debug — future)
+  - SDK headers are also bundled under `bsp/platform_sdk/` for CI (no S32DS install needed)
+
+### Flash and Debug Dependencies
+- **usbipd-win** (Windows) — attach USB debug probe to WSL2 (`make usbipd-connect`)
+- **arm-none-eabi-gdb** — ARM GNU Toolchain 15.2+ (GDB client, install to `/usr/local/bin/`)
+- **PEMicro pegdbserver_console** — bundled in S32DS at `eclipse/plugins/com.pemicro.debug.gdbjtag.pne_.../lin/`; native Linux ELF used as GDB server (`make gdb-server`)
 
 ### Development Tools (Recommended)
 - **clang-format**: C/C++ formatting
@@ -67,7 +72,10 @@ S32K1X_Workspace/
 │   ├── c_cpp_workspace_macos    #   x86_64 macOS host profile
 │   └── s32k1x_arm_cortex_m4    #   ARM Cortex-M4 bare-metal profile
 ├── .github/workflows/           # CI pipelines
+├── openocd/
+│   └── s32k144.cfg              # OpenOCD config (reference; PEMicro server is active path)
 ├── scripts/                     # Utility and setup scripts
+│   └── usbipd_connect.py        #   Auto-attach OpenSDA probe to WSL2
 ├── build_x86_64/{Debug,Release} # x86 build artifacts (generated)
 └── build_s32k1/build_armv7/    # ARM target build artifacts (generated)
 ```
@@ -126,6 +134,27 @@ make build_all_tgt \
 ### Build — ARM Target (S32K144)
 - `make build_all_tgt` - Cross-compile S32K144 firmware (ARM GCC, Release)
 - `make clean_tgt` - Remove ARM target build artifacts
+
+### Flash and Debug — S32K144EVB
+- `make usbipd-connect` - Auto-detect OpenSDA probe and attach to WSL2 (run from WSL)
+- `make gdb-server` - Start PEMicro GDB server on `localhost:7224` (leave terminal open)
+
+Then in a second terminal:
+```bash
+# Flash + run
+arm-none-eabi-gdb \
+  -ex "target remote localhost:7224" \
+  -ex "monitor reset halt" \
+  -ex "load" \
+  -ex "monitor reset halt" \
+  -ex "continue" \
+  build_s32k1/build_armv7/Release/bin/s32k144_firmware.elf
+
+# Attach only (board already running)
+arm-none-eabi-gdb \
+  -ex "target remote localhost:7224" \
+  build_s32k1/build_armv7/Release/bin/s32k144_firmware.elf
+```
 
 ### Test and Quality
 - `make test` - Run all tests
@@ -231,17 +260,25 @@ Note: SonarScanner properties are passed directly from the GitHub workflow; ther
 2. Copy generated files to `bsp/config/generated/` and `bsp/config/board/`
 3. Update `src/main.c` with application logic
 4. Build with `make build_all_tgt`
-5. (Future) Flash with OpenOCD via `make flash` — see Roadmap
+5. Plug in S32K144EVB, run `make usbipd-connect` (WSL2)
+6. Run `make gdb-server` in one terminal — start PEMicro GDB server
+7. Run `arm-none-eabi-gdb` in another terminal to flash and debug
 
 ## Roadmap
 
 - [x] Add S32K144 BSP structure (startup, linker scripts, AUTOSAR RTD drivers)
 - [x] Add ARM Cortex-M4 cross-compilation toolchain
 - [x] Add `make build_all_tgt` firmware build workflow
+- [x] Bundle NXP Platform SDK headers for CI (no S32DS install required)
+- [x] ARM cross-compilation CI job in GitHub Actions pipeline
 - [x] Firmware: MCU init + Port/DIO init + LED blink (PTD0)
-- [ ] Flash firmware via OpenOCD from WSL2 (`make flash`)
-- [ ] Attach GDB debugger from WSL2 (`make debug`)
-- [ ] VS Code tasks and launch.json for one-click build/flash/debug
+- [x] `make usbipd-connect` — auto-attach OpenSDA probe to WSL2
+- [x] `make gdb-server` — PEMicro GDB server (native Linux, port 7224)
+- [x] Flash firmware via arm-none-eabi-gdb + PEMicro GDB server (verified working)
+- [x] GDB attach and debug session working (halt, reset halt, breakpoints)
+- [ ] `make flash` target — single command to flash ELF without manual GDB invocation
+- [ ] `make attach` target — single command debug attach
+- [ ] VS Code tasks.json + launch.json for one-click build/flash/debug
 - [ ] Expand MCAL module coverage (UART, SPI, CAN-FD...)
 - [ ] Rename template-era Conan profile/package naming
 

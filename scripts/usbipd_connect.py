@@ -7,6 +7,8 @@ bind it (if not already shared), and attach it to WSL2.
 
 Run from WSL:  python3 scripts/usbipd_connect.py
 Or via make:   make usbipd-connect
+
+Author: Mohammad Rashiqul Alam
 """
 
 import re
