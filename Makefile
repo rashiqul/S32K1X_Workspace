@@ -281,6 +281,37 @@ build_all_tgt: pre-configure
 	@echo "  MAP : $(ARM_BUILD_DIR)/bin/s32k144_firmware.map"
 	@echo "========================================================"
 
+# ============================================================================
+# USB/IP — attach OpenSDA probe to WSL2
+# Calls usbipd.exe via WSL interop; board must be plugged into Windows USB.
+# ============================================================================
+.PHONY: usbipd-connect
+usbipd-connect:
+	python3 scripts/usbipd_connect.py
+
+# ============================================================================
+# GDB server — PEMicro pegdbserver_console (native Linux ELF from S32DS)
+# The S32K144EVB-Q100 OpenSDA probe uses PEMicro's proprietary USB protocol,
+# not CMSIS-DAP, so OpenOCD cannot talk to it. pegdbserver_console is the
+# correct server — it is a statically-linked Linux binary that runs in WSL2.
+#
+# Leave this terminal open, then connect arm-none-eabi-gdb in another:
+#   target remote localhost:7224
+#   GDB server : localhost:7224
+# ============================================================================
+PEMICRO_SERVER ?= /mnt/c/NXP/S32DS.3.6.6/eclipse/plugins/com.pemicro.debug.gdbjtag.pne_6.0.8.202509081843/lin/pegdbserver_console
+PEMICRO_DEVICE ?= NXP_S32K1xx_S32K144F512M15
+GDB_PORT       ?= 7224
+
+.PHONY: gdb-server
+gdb-server:
+	$(PEMICRO_SERVER) \
+		-startserver \
+		-device=$(PEMICRO_DEVICE) \
+		-serverport=$(GDB_PORT) \
+		-singlesession \
+		-verbose
+
 .PHONY: clean_tgt
 clean_tgt:
 	rm -rf build_s32k1
