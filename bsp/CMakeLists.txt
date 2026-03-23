@@ -8,6 +8,7 @@
 #     Target MCU : NXP S32K144 (ARM Cortex-M4 @ up to 112 MHz)
 #     AUTOSAR    : 4.7.0
 #     RTD Version: 3.0.0
+#     Author     : Mohammad Rashiqul Alam
 #
 #******************************************************************************
 

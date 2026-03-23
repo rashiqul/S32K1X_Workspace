@@ -5,6 +5,7 @@
 #                  Targets NXP S32K144 (ARM Cortex-M4 @ up to 112 MHz)
 #
 #     Toolchain: arm-none-eabi-gcc (NXP GCC 10.2 or system arm-none-eabi-gcc)
+#     Author   : Mohammad Rashiqul Alam
 #
 #******************************************************************************
 
