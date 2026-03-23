@@ -111,7 +111,7 @@ help:
 	@echo "  clang-format      - Format all C/C++ code with clang-format"
 	@echo ""
 	@echo "Package:"
-	@echo "  package           - Create Conan package"
+	@echo "  package           - Build ARM firmware + create x86 Conan package (matches CI)"
 	@echo ""
 
 list-targets:
@@ -167,9 +167,21 @@ test: configure
 	. ${BUILD_DIR}/generators/conanbuild.sh && poetry run cmake --build ${BUILD_DIR} -t test
 
 .PHONY: package
-package:
-	poetry install --no-root
-	poetry run conan create . --build=missing -s build_type=$(BUILD_TYPE) $(CONAN_FLAGS)
+package: build_all_tgt
+	@echo "========================================================"
+	@echo "  Creating x86_64 Conan package"
+	@echo "  Profile : $(CONAN_BUILD_PROFILE)"
+	@echo "  Build   : $(BUILD_TYPE)"
+	@echo "========================================================"
+	poetry run conan create . --build=missing \
+		-s build_type=$(BUILD_TYPE) \
+		-pr:h $(CONAN_BUILD_PROFILE) \
+		-pr:b $(CONAN_BUILD_PROFILE)
+	@echo "========================================================"
+	@echo "  Package complete"
+	@echo "  x86 : Conan cache"
+	@echo "  ARM : $(ARM_BUILD_DIR)/bin/"
+	@echo "========================================================"
 
 .PHONY: coverage
 coverage: clean pre-configure
