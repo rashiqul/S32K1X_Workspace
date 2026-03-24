@@ -372,7 +372,7 @@ jobs:
           echo ""
           echo "SDK headers are bundled in bsp/platform_sdk/ — no S32DS install required."
           echo ""
-          make build_all_tgt 2>&1 | tee arm_build.log
+          make build_all_tgt ARM_BUILD_TYPE=Release 2>&1 | tee arm_build.log
           echo "✅ ARM build completed"
 
       - name: Verify build artifacts
@@ -380,7 +380,7 @@ jobs:
         run: |
           echo "📦 Checking ARM build artifacts..."
 
-          bin_dir="build_s32k1/build_armv7/Release/bin"
+          bin_dir="build_s32k1/build_armv7/Release/bin"  # ARM_BUILD_TYPE=Release set at build step
 
           if [ ! -d "$bin_dir" ]; then
             echo "❌ ARM bin directory not found: $bin_dir"
@@ -448,7 +448,7 @@ jobs:
         with:
           name: arm-build-artifacts
           path: |
-            build_s32k1/build_armv7/Release/bin/
+            build_s32k1/build_armv7/Release/bin/  # ARM_BUILD_TYPE=Release set at build step
             arm_build.log
           retention-days: 7
 

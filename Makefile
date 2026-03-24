@@ -25,9 +25,10 @@ TARGET_CPU ?= x86_64
 # ============================================================================
 # ARM Target (S32K144) configuration
 # ============================================================================
-S32DS_SDK_ROOT ?= /mnt/c/NXP/S32DS.3.6.6/S32DS/software/PlatformSDK_S32K1_S32M24
-NXP_GCC_PATH   ?= /home/rashiqul/NXP/gcc-10.2-arm32-eabi/bin
-ARM_BUILD_DIR  := build_s32k1/build_armv7/RelWithDebInfo
+S32DS_SDK_ROOT    ?= /mnt/c/NXP/S32DS.3.6.6/S32DS/software/PlatformSDK_S32K1_S32M24
+NXP_GCC_PATH      ?= /home/rashiqul/NXP/gcc-10.2-arm32-eabi/bin
+ARM_BUILD_TYPE    ?= RelWithDebInfo
+ARM_BUILD_DIR     := build_s32k1/build_armv7/$(ARM_BUILD_TYPE)
 
 # Only pass S32DS_SDK_ROOT to cmake when the user explicitly sets it (command line
 # or environment). When using the default, let bsp/CMakeLists.txt prefer the
@@ -269,7 +270,7 @@ build_all_tgt: pre-configure
 	export PATH=$(NXP_GCC_PATH):$$PATH && \
 	poetry run cmake -S . -B $(ARM_BUILD_DIR) \
 		-DCMAKE_TOOLCHAIN_FILE=$(CURDIR)/cmake/toolchains/arm-none-eabi.cmake \
-		-DCMAKE_BUILD_TYPE=RelWithDebInfo \
+		-DCMAKE_BUILD_TYPE=$(ARM_BUILD_TYPE) \
 		-GNinja \
 		$(CMAKE_SDK_FLAG) \
 		-DCMAKE_EXPORT_COMPILE_COMMANDS=ON && \
