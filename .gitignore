@@ -41,7 +41,8 @@ models/sw_components_arxmls/**
 CMakeUserPresets.json
 
 #IDE Files
-.vscode
+.vscode/c_cpp_properties.json
+.vscode/*.log
 
 # Ignore Google Repo Stuff
 .repo/
