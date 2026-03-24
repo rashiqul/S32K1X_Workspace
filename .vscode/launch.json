@@ -1,0 +1,64 @@
+{
+    // Author: Mohammad Rashiqul Alam
+    // VS Code Cortex-Debug launch configurations for S32K144EVB-Q100.
+    // Requires: marus25.cortex-debug extension, PEMicro GDB server (make gdb-server)
+    //
+    // Debug flow:
+    //   Terminal 1 : make usbipd-connect   (attach probe to WSL2, once per session)
+    //   Terminal 1 : make flash_tgt        (erase + program + verify)
+    //   Press F5   → "Flash & Debug"       (starts GDB server, connects, halts at main)
+    //
+    //   Or for a quick re-attach without reflashing:
+    //   Terminal 1 : make gdb-server       (start server manually)
+    //   Press F5   → "Attach (server running)"
+    "version": "0.2.0",
+    "configurations": [
+        {
+            // Full flow: starts the GDB server via preLaunchTask, then connects.
+            // Run `make usbipd-connect` and `make flash_tgt` in a terminal first.
+            //
+            // overrideLaunchCommands replaces Cortex-Debug's default sequence which
+            // includes `monitor halt` — PEMicro only accepts `monitor reset halt`.
+            "name": "Flash & Debug S32K144",
+            "type": "cortex-debug",
+            "request": "launch",
+            "servertype": "external",
+            "gdbTarget": "localhost:7224",
+            "executable": "${workspaceFolder}/build_s32k1/build_armv7/RelWithDebInfo/bin/s32k144_firmware.elf",
+            "gdbPath": "arm-none-eabi-gdb",
+            "preLaunchTask": "gdb-server",
+            "showDevDebugOutput": "none",
+            "overrideLaunchCommands": [
+                "monitor reset halt",
+                "load",
+                "monitor reset halt"
+            ],
+            "overrideRestartCommands": [
+                "monitor reset halt",
+                "load",
+                "monitor reset halt"
+            ],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            // Attach only — connect to an already-running `make gdb-server`.
+            // Halts the target at its current PC without reflashing.
+            "name": "Attach S32K144 (server running)",
+            "type": "cortex-debug",
+            "request": "attach",
+            "servertype": "external",
+            "gdbTarget": "localhost:7224",
+            "preLaunchTask": "gdb-server",
+            "executable": "${workspaceFolder}/build_s32k1/build_armv7/RelWithDebInfo/bin/s32k144_firmware.elf",
+            "gdbPath": "arm-none-eabi-gdb",
+            "showDevDebugOutput": "none",
+            "overrideAttachCommands": [
+                "monitor reset halt"
+            ],
+            "overrideRestartCommands": [
+                "monitor reset halt"
+            ],
+            "cwd": "${workspaceFolder}"
+        }
+    ]
+}

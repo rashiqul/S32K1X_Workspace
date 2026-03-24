@@ -1,0 +1,85 @@
+{
+    // Author: Mohammad Rashiqul Alam
+    // VS Code tasks for S32K144 firmware build, flash, and debug workflow.
+    // Requires: make, arm-none-eabi-gdb, PEMicro pegdbserver_console (via S32DS)
+    "version": "2.0.0",
+    "tasks": [
+        // ----------------------------------------------------------------
+        // Build
+        // ----------------------------------------------------------------
+        {
+            "label": "build-arm",
+            "detail": "Cross-compile S32K144 firmware (ARM GCC, Release)",
+            "type": "shell",
+            "command": "make build_all_tgt",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "presentation": {
+                "reveal": "always",
+                "panel": "shared",
+                "clear": true
+            },
+            "problemMatcher": ["$gcc"]
+        },
+        // ----------------------------------------------------------------
+        // USB probe attach
+        // ----------------------------------------------------------------
+        {
+            "label": "usbipd-connect",
+            "detail": "Auto-detect and attach OpenSDA probe to WSL2",
+            "type": "shell",
+            "command": "make usbipd-connect",
+            "presentation": {
+                "reveal": "always",
+                "panel": "shared"
+            },
+            "problemMatcher": []
+        },
+        // ----------------------------------------------------------------
+        // Flash
+        // ----------------------------------------------------------------
+        {
+            "label": "flash",
+            "detail": "Erase, program, and verify firmware on S32K144",
+            "type": "shell",
+            "command": "make flash_tgt",
+            "presentation": {
+                "reveal": "always",
+                "panel": "shared"
+            },
+            "problemMatcher": []
+        },
+        // ----------------------------------------------------------------
+        // GDB server — background task, signals ready on "All Servers Running"
+        // Used as preLaunchTask by launch.json so VS Code waits for the
+        // server to be up before connecting the debugger.
+        // ----------------------------------------------------------------
+        {
+            "label": "gdb-server",
+            "detail": "Start PEMicro GDB server on localhost:7224",
+            "type": "shell",
+            "command": "make gdb-server",
+            "isBackground": true,
+            "presentation": {
+                "reveal": "always",
+                "panel": "dedicated",
+                "clear": true
+            },
+            "problemMatcher": {
+                "owner": "gdb-server",
+                "pattern": {
+                    "regexp": "^(NOMATCH):\\s+(.*)$",
+                    "file": 1,
+                    "message": 2
+                },
+                "background": {
+                    "activeOnStart": true,
+                    "beginsPattern": "^P&E GDB Server",
+                    "endsPattern": "All Servers Running"
+                }
+            }
+        }
+    ]
+}
