@@ -57,16 +57,16 @@ int main(void)
      * Port initialisation
      * - Configures PTD0 as GPIO output (connected to LED on S32K144EVB)
      *------------------------------------------------------------------------*/
-    //Port_Init(NULL_PTR);
+    Port_Init(NULL_PTR);
 
     /*--------------------------------------------------------------------------
      * Main loop: blink LED on PTD0
      *------------------------------------------------------------------------*/
     for (;;) {
-        //Dio_WriteChannel(DioConf_DioChannel_DioChannel_0, STD_HIGH); /* LED ON  */
+        Dio_WriteChannel(DioConf_DioChannel_DioChannel_0, STD_HIGH); /* LED ON  */
         Delay(500000U);
-        //Dio_WriteChannel(DioConf_DioChannel_DioChannel_0, STD_LOW); /* LED OFF */
-        //Delay(500000U);
+        Dio_WriteChannel(DioConf_DioChannel_DioChannel_0, STD_LOW); /* LED OFF */
+        Delay(500000U);
     }
 
     return 0; /* Never reached */
