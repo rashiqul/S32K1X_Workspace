@@ -63,10 +63,6 @@ if(COVERAGE AND NOT CMAKE_CROSSCOMPILING)
 endif()
 message(STATUS "COVERAGE=${COVERAGE}")
 
-if(CMAKE_CROSSCOMPILING)
-    add_subdirectory(bsp)
-endif()
-
 add_subdirectory(src)
 
 if(NOT CMAKE_CROSSCOMPILING)
