@@ -215,8 +215,12 @@ jobs:
         run: |
           echo "🔍 Running clang-format check..."
           
-          # Find all C/C++ source files
-          files=$(find src test include -type f \( -name "*.c" -o -name "*.cpp" -o -name "*.h" -o -name "*.hpp" \) 2>/dev/null || true)
+          # Find all C/C++ source files.
+          # Exclude src/bsp/ — NXP RTD drivers and platform SDK are vendor
+          # code and must not be reformatted.
+          files=$(find src test include -type f \( -name "*.c" -o -name "*.cpp" -o -name "*.h" -o -name "*.hpp" \) \
+            ! -path "src/bsp/*" \
+            2>/dev/null || true)
           
           if [ -z "$files" ]; then
             echo "⚠️  No C/C++ files found to check"
