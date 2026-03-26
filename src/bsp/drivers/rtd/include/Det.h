@@ -1,7 +1,7 @@
 /*==================================================================================================
 *   Project              : RTD AUTOSAR 4.7
 *   Platform             : CORTEXM
-*   Peripheral           : 
+*   Peripheral           :
 *   Dependencies         : none
 *
 *   Autosar Version      : 4.7.0
@@ -26,27 +26,29 @@
 #define DET_H
 
 /**
-*   @file Det.h
-*
-*   @addtogroup DET_MODULE
-*   @{
-*/
+ *   @file Det.h
+ *
+ *   @addtogroup DET_MODULE
+ *   @{
+ */
 
 #ifdef __cplusplus
-extern "C"{
+extern "C" {
 #endif
 
 /*
-* @page misra_violations MISRA-C:2012 violations
-*
-* @section Det_h_REF_1
-* Violates MISRA 2012 Required Directive 4.10, Precautions shall be taken in order to prevent the contents of a header file being included more than once.
-* This violation is not fixed since the inclusion of <MA>_MemMap.h is as per AUTOSAR requirement [SWS_MemMap_00003].
-*
-* @section Det_h_REF_2
-* Violates MISRA 2012 Advisory Rule 20.1, #Include directives should only be preceded by preprocessor directives or comments.
-* <MA>_MemMap.h is included after each section define in order to set the current memory section as defined by AUTOSAR.
-*/
+ * @page misra_violations MISRA-C:2012 violations
+ *
+ * @section Det_h_REF_1
+ * Violates MISRA 2012 Required Directive 4.10, Precautions shall be taken in order to prevent the
+ * contents of a header file being included more than once. This violation is not fixed since the
+ * inclusion of <MA>_MemMap.h is as per AUTOSAR requirement [SWS_MemMap_00003].
+ *
+ * @section Det_h_REF_2
+ * Violates MISRA 2012 Advisory Rule 20.1, #Include directives should only be preceded by
+ * preprocessor directives or comments. <MA>_MemMap.h is included after each section define in order
+ * to set the current memory section as defined by AUTOSAR.
+ */
 
 /*==================================================================================================
 *                                         INCLUDE FILES
@@ -60,28 +62,28 @@ extern "C"{
 *                               SOURCE FILE VERSION INFORMATION
 ==================================================================================================*/
 /**
-* @file           Det.h
-* @requirements   DET001_PI
-*/
+ * @file           Det.h
+ * @requirements   DET001_PI
+ */
 
-#define DET_VENDOR_ID                       43
-#define DET_MODULE_ID                       15
-#define DET_AR_RELEASE_MAJOR_VERSION        4
-#define DET_AR_RELEASE_MINOR_VERSION        7
-#define DET_AR_RELEASE_REVISION_VERSION     0
-#define DET_SW_MAJOR_VERSION                3
-#define DET_SW_MINOR_VERSION                0
-#define DET_SW_PATCH_VERSION                0
+#define DET_VENDOR_ID 43
+#define DET_MODULE_ID 15
+#define DET_AR_RELEASE_MAJOR_VERSION 4
+#define DET_AR_RELEASE_MINOR_VERSION 7
+#define DET_AR_RELEASE_REVISION_VERSION 0
+#define DET_SW_MAJOR_VERSION 3
+#define DET_SW_MINOR_VERSION 0
+#define DET_SW_PATCH_VERSION 0
 
 /*==================================================================================================
 *                                     FILE VERSION CHECKS
 ==================================================================================================*/
 #ifndef DISABLE_MCAL_INTERMODULE_ASR_CHECK
-    /* Check if Det.h and Std_Types.h header file are of the same Autosar version */
-    #if ((DET_AR_RELEASE_MAJOR_VERSION != STD_AR_RELEASE_MAJOR_VERSION) || \
-         (DET_AR_RELEASE_MINOR_VERSION != STD_AR_RELEASE_MINOR_VERSION))
-        #error "AutoSar Version Numbers of Det.h and Std_Types.h are different"
-    #endif
+/* Check if Det.h and Std_Types.h header file are of the same Autosar version */
+#if ((DET_AR_RELEASE_MAJOR_VERSION != STD_AR_RELEASE_MAJOR_VERSION) ||                             \
+     (DET_AR_RELEASE_MINOR_VERSION != STD_AR_RELEASE_MINOR_VERSION))
+#error "AutoSar Version Numbers of Det.h and Std_Types.h are different"
+#endif
 #endif
 /*==================================================================================================
 *                                           CONSTANTS
@@ -91,8 +93,8 @@ extern "C"{
 *                                       DEFINES AND MACROS
 ==================================================================================================*/
 /* Max numbers of ECU cores supported */
-#define DET_NO_ECU_CORES                        (uint8)(1U)
-#define DET_MAX_NUMBER_OF_EVENTS                (uint32)(10U)
+#define DET_NO_ECU_CORES (uint8)(1U)
+#define DET_MAX_NUMBER_OF_EVENTS (uint32)(10U)
 /*==================================================================================================
 *                                             ENUMS
 ==================================================================================================*/
@@ -101,15 +103,14 @@ extern "C"{
 *                                 STRUCTURES AND OTHER TYPEDEFS
 ==================================================================================================*/
 /**
-* @brief          Configuration structure for Node within Det Linked List.
-* @details        TBD
-*/
-typedef enum
-{
-    DET_NORMAL_ERROR    = 0U,
-    DET_RUNTIME_ERROR   = 1U,
+ * @brief          Configuration structure for Node within Det Linked List.
+ * @details        TBD
+ */
+typedef enum {
+    DET_NORMAL_ERROR = 0U,
+    DET_RUNTIME_ERROR = 1U,
     DET_TRANSIENT_ERROR = 2U
-}Det_ErrorType;
+} Det_ErrorType;
 
 /*==================================================================================================
 *                                 GLOBAL VARIABLE DECLARATIONS
@@ -117,33 +118,45 @@ typedef enum
 #define DET_START_SEC_VAR_CLEARED_8_NO_CACHEABLE
 #include "Det_MemMap.h"
 /* Variables to store last DET error */
-extern uint8 Det_InstanceId[DET_NO_ECU_CORES][DET_MAX_NUMBER_OF_EVENTS];                /**< @brief DET instance ID*/
-extern uint8 Det_ApiId[DET_NO_ECU_CORES][DET_MAX_NUMBER_OF_EVENTS];                     /**< @brief DET API ID*/
-extern uint8 Det_ErrorId[DET_NO_ECU_CORES][DET_MAX_NUMBER_OF_EVENTS];                   /**< @brief DET Error ID*/
+extern uint8 Det_InstanceId[DET_NO_ECU_CORES]
+                           [DET_MAX_NUMBER_OF_EVENTS];                /**< @brief DET instance ID*/
+extern uint8 Det_ApiId[DET_NO_ECU_CORES][DET_MAX_NUMBER_OF_EVENTS];   /**< @brief DET API ID*/
+extern uint8 Det_ErrorId[DET_NO_ECU_CORES][DET_MAX_NUMBER_OF_EVENTS]; /**< @brief DET Error ID*/
 /* Variables to store last DET runtime error */
-extern uint8 Det_RuntimeInstanceId[DET_NO_ECU_CORES][DET_MAX_NUMBER_OF_EVENTS];         /**< @brief DET Runtime instance ID*/
-extern uint8 Det_RuntimeApiId[DET_NO_ECU_CORES][DET_MAX_NUMBER_OF_EVENTS];              /**< @brief DET Runtime API ID*/
-extern uint8 Det_RuntimeErrorId[DET_NO_ECU_CORES][DET_MAX_NUMBER_OF_EVENTS];            /**< @brief DET Runtime Error ID*/
+extern uint8 Det_RuntimeInstanceId[DET_NO_ECU_CORES]
+                                  [DET_MAX_NUMBER_OF_EVENTS]; /**< @brief DET Runtime instance ID*/
+extern uint8 Det_RuntimeApiId[DET_NO_ECU_CORES]
+                             [DET_MAX_NUMBER_OF_EVENTS]; /**< @brief DET Runtime API ID*/
+extern uint8 Det_RuntimeErrorId[DET_NO_ECU_CORES]
+                               [DET_MAX_NUMBER_OF_EVENTS]; /**< @brief DET Runtime Error ID*/
 /* Variables to store last DET transient error */
-extern uint8 Det_TransientInstanceId[DET_NO_ECU_CORES][DET_MAX_NUMBER_OF_EVENTS];       /**< @brief DET Transient instance ID*/
-extern uint8 Det_TransientApiId[DET_NO_ECU_CORES][DET_MAX_NUMBER_OF_EVENTS];            /**< @brief DET Transient API ID*/
-extern uint8 Det_TransientFaultId[DET_NO_ECU_CORES][DET_MAX_NUMBER_OF_EVENTS];          /**< @brief DET Transient Error ID*/
+extern uint8
+    Det_TransientInstanceId[DET_NO_ECU_CORES]
+                           [DET_MAX_NUMBER_OF_EVENTS]; /**< @brief DET Transient instance ID*/
+extern uint8 Det_TransientApiId[DET_NO_ECU_CORES]
+                               [DET_MAX_NUMBER_OF_EVENTS]; /**< @brief DET Transient API ID*/
+extern uint8 Det_TransientFaultId[DET_NO_ECU_CORES]
+                                 [DET_MAX_NUMBER_OF_EVENTS]; /**< @brief DET Transient Error ID*/
 #define DET_STOP_SEC_VAR_CLEARED_8_NO_CACHEABLE
 #include "Det_MemMap.h"
 
 #define DET_START_SEC_VAR_CLEARED_16_NO_CACHEABLE
 #include "Det_MemMap.h"
-extern uint16 Det_TransientModuleId[DET_NO_ECU_CORES][DET_MAX_NUMBER_OF_EVENTS];       /**< @brief DET Transient module ID*/
-extern uint16 Det_ModuleId[DET_NO_ECU_CORES][DET_MAX_NUMBER_OF_EVENTS];                /**< @brief DET module ID*/
-extern uint16 Det_RuntimeModuleId[DET_NO_ECU_CORES][DET_MAX_NUMBER_OF_EVENTS];         /**< @brief DET Runtime module ID*/
+extern uint16 Det_TransientModuleId[DET_NO_ECU_CORES]
+                                   [DET_MAX_NUMBER_OF_EVENTS]; /**< @brief DET Transient module ID*/
+extern uint16 Det_ModuleId[DET_NO_ECU_CORES][DET_MAX_NUMBER_OF_EVENTS]; /**< @brief DET module ID*/
+extern uint16 Det_RuntimeModuleId[DET_NO_ECU_CORES]
+                                 [DET_MAX_NUMBER_OF_EVENTS]; /**< @brief DET Runtime module ID*/
 #define DET_STOP_SEC_VAR_CLEARED_16_NO_CACHEABLE
 #include "Det_MemMap.h"
 
 #define DET_START_SEC_VAR_CLEARED_32_NO_CACHEABLE
 #include "Det_MemMap.h"
-extern uint32 Det_numEventErrors[DET_NO_ECU_CORES];               /**< @brief number of DET error ID*/
-extern uint32 Det_numRuntimeEventErrors[DET_NO_ECU_CORES];        /**< @brief number of runtime DET error ID*/
-extern uint32 Det_numTransientEventErrors[DET_NO_ECU_CORES];      /**< @brief number of transient DET error ID*/
+extern uint32 Det_numEventErrors[DET_NO_ECU_CORES]; /**< @brief number of DET error ID*/
+extern uint32
+    Det_numRuntimeEventErrors[DET_NO_ECU_CORES]; /**< @brief number of runtime DET error ID*/
+extern uint32
+    Det_numTransientEventErrors[DET_NO_ECU_CORES]; /**< @brief number of transient DET error ID*/
 #define DET_STOP_SEC_VAR_CLEARED_32_NO_CACHEABLE
 #include "Det_MemMap.h"
 
@@ -164,19 +177,12 @@ extern boolean Det_OverflowTransientErrorFlag[DET_NO_ECU_CORES];
 #include "Det_MemMap.h"
 
 void Det_Init(void);
-Std_ReturnType Det_ReportError(uint16 ModuleId,
-                               uint8 InstanceId,
-                               uint8 ApiId,
-                               uint8 ErrorId);
+Std_ReturnType Det_ReportError(uint16 ModuleId, uint8 InstanceId, uint8 ApiId, uint8 ErrorId);
 #if defined(ASR_REL_4_0_REV_0003)
 #else
-Std_ReturnType Det_ReportRuntimeError(uint16 ModuleId,
-                                      uint8 InstanceId,
-                                      uint8 ApiId,
+Std_ReturnType Det_ReportRuntimeError(uint16 ModuleId, uint8 InstanceId, uint8 ApiId,
                                       uint8 ErrorId);
-Std_ReturnType Det_ReportTransientFault(uint16 ModuleId,
-                                        uint8 InstanceId,
-                                        uint8 ApiId,
+Std_ReturnType Det_ReportTransientFault(uint16 ModuleId, uint8 InstanceId, uint8 ApiId,
                                         uint8 FaultId);
 #endif /*if defined(ASR_REL_4_0_REV_0003)*/
 void Det_Start(void);

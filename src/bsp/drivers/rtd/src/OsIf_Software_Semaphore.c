@@ -12,27 +12,25 @@
 *
 * Copyright 2020-2025 NXP
 *
-* NXP Confidential and Proprietary. This software is owned or controlled by NXP and may only be 
-*   used strictly in accordance with the applicable license terms.  By expressly 
-*   accepting such terms or by downloading, installing, activating and/or otherwise 
-*   using the software, you are agreeing that you have read, and that you agree to 
-*   comply with and are bound by, such license terms.  If you do not agree to be 
+* NXP Confidential and Proprietary. This software is owned or controlled by NXP and may only be
+*   used strictly in accordance with the applicable license terms.  By expressly
+*   accepting such terms or by downloading, installing, activating and/or otherwise
+*   using the software, you are agreeing that you have read, and that you agree to
+*   comply with and are bound by, such license terms.  If you do not agree to be
 *   bound by the applicable license terms, then you may not retain, install,
 *   activate or otherwise use the software.
 ==================================================================================================*/
 
 /**
-*   @file OsIf_Software_Semaphore.c
-*
-*   @addtogroup  osif_drv
-*   @{
-*/
-
+ *   @file OsIf_Software_Semaphore.c
+ *
+ *   @addtogroup  osif_drv
+ *   @{
+ */
 
 #ifdef __cplusplus
-extern "C"{
+extern "C" {
 #endif
-
 
 /*==================================================================================================
 *                                          INCLUDE FILES
@@ -46,31 +44,35 @@ extern "C"{
 *                                 SOURCE FILE VERSION INFORMATION
 ==================================================================================================*/
 
-#define OSIF_SOFTWARE_SEMAPHORE_VENDOR_ID_C                       43
-#define OSIF_SOFTWARE_SEMAPHORE_AR_RELEASE_MAJOR_VERSION_C        4
-#define OSIF_SOFTWARE_SEMAPHORE_AR_RELEASE_MINOR_VERSION_C        7
-#define OSIF_SOFTWARE_SEMAPHORE_AR_RELEASE_REVISION_VERSION_C     0
-#define OSIF_SOFTWARE_SEMAPHORE_SW_MAJOR_VERSION_C                3
-#define OSIF_SOFTWARE_SEMAPHORE_SW_MINOR_VERSION_C                0
-#define OSIF_SOFTWARE_SEMAPHORE_SW_PATCH_VERSION_C                0
+#define OSIF_SOFTWARE_SEMAPHORE_VENDOR_ID_C 43
+#define OSIF_SOFTWARE_SEMAPHORE_AR_RELEASE_MAJOR_VERSION_C 4
+#define OSIF_SOFTWARE_SEMAPHORE_AR_RELEASE_MINOR_VERSION_C 7
+#define OSIF_SOFTWARE_SEMAPHORE_AR_RELEASE_REVISION_VERSION_C 0
+#define OSIF_SOFTWARE_SEMAPHORE_SW_MAJOR_VERSION_C 3
+#define OSIF_SOFTWARE_SEMAPHORE_SW_MINOR_VERSION_C 0
+#define OSIF_SOFTWARE_SEMAPHORE_SW_PATCH_VERSION_C 0
 
 /*==================================================================================================
 *                                       FILE VERSION CHECKS
 ==================================================================================================*/
 /* Checks against OsIf_Software_Semaphore.h */
 #if (OSIF_SOFTWARE_SEMAPHORE_VENDOR_ID_C != OSIF_SOFTWARE_SEMAPHORE_VENDOR_ID_H)
-    #error "OsIf_Software_Semaphore.c and OsIf_Software_Semaphore.h have different vendor ids"
+#error "OsIf_Software_Semaphore.c and OsIf_Software_Semaphore.h have different vendor ids"
 #endif
-#if ((OSIF_SOFTWARE_SEMAPHORE_AR_RELEASE_MAJOR_VERSION_C    != OSIF_SOFTWARE_SEMAPHORE_AR_RELEASE_MAJOR_VERSION_H) || \
-     (OSIF_SOFTWARE_SEMAPHORE_AR_RELEASE_MINOR_VERSION_C    != OSIF_SOFTWARE_SEMAPHORE_AR_RELEASE_MINOR_VERSION_H) || \
-     (OSIF_SOFTWARE_SEMAPHORE_AR_RELEASE_REVISION_VERSION_C != OSIF_SOFTWARE_SEMAPHORE_AR_RELEASE_REVISION_VERSION_H))
-    #error "AUTOSAR Version Numbers of OsIf_Software_Semaphore.c and OsIf_Software_Semaphore.h are different"
+#if ((OSIF_SOFTWARE_SEMAPHORE_AR_RELEASE_MAJOR_VERSION_C !=                                        \
+      OSIF_SOFTWARE_SEMAPHORE_AR_RELEASE_MAJOR_VERSION_H) ||                                       \
+     (OSIF_SOFTWARE_SEMAPHORE_AR_RELEASE_MINOR_VERSION_C !=                                        \
+      OSIF_SOFTWARE_SEMAPHORE_AR_RELEASE_MINOR_VERSION_H) ||                                       \
+     (OSIF_SOFTWARE_SEMAPHORE_AR_RELEASE_REVISION_VERSION_C !=                                     \
+      OSIF_SOFTWARE_SEMAPHORE_AR_RELEASE_REVISION_VERSION_H))
+#error                                                                                             \
+    "AUTOSAR Version Numbers of OsIf_Software_Semaphore.c and OsIf_Software_Semaphore.h are different"
 #endif
 #if ((OSIF_SOFTWARE_SEMAPHORE_SW_MAJOR_VERSION_C != OSIF_SOFTWARE_SEMAPHORE_SW_MAJOR_VERSION_H) || \
      (OSIF_SOFTWARE_SEMAPHORE_SW_MINOR_VERSION_C != OSIF_SOFTWARE_SEMAPHORE_SW_MINOR_VERSION_H) || \
-     (OSIF_SOFTWARE_SEMAPHORE_SW_PATCH_VERSION_C != OSIF_SOFTWARE_SEMAPHORE_SW_PATCH_VERSION_H) \
-    )
-    #error "Software Version Numbers of OsIf_Software_Semaphore.c and OsIf_Software_Semaphore.h are different"
+     (OSIF_SOFTWARE_SEMAPHORE_SW_PATCH_VERSION_C != OSIF_SOFTWARE_SEMAPHORE_SW_PATCH_VERSION_H))
+#error                                                                                             \
+    "Software Version Numbers of OsIf_Software_Semaphore.c and OsIf_Software_Semaphore.h are different"
 #endif
 
 /*==================================================================================================
@@ -122,26 +124,24 @@ extern "C"{
  *
  * Function Name : OsIf_Software_Semaphore_Lock.
  * Description   : Lock semaphore.
- * 
+ *
  *END**************************************************************************/
-boolean OsIf_Software_Semaphore_Lock(const uint32 *Semaphore,
-                                     uint32 Lockval
-                                    )
+boolean OsIf_Software_Semaphore_Lock(const uint32* Semaphore, uint32 Lockval)
 {
     uint32 u32Result = 0U;
     /* Store lock value to shemaphore if it is unlock */
-/*LDRA_NOANALYSIS*/
+    /*LDRA_NOANALYSIS*/
     ASM_KEYWORD("dsb");
     ASM_KEYWORD("isb");
-    ASM_KEYWORD (" LDREX %0, [%1] \n\t"
-                 " CMP %0, #0 \n\t"
-                 " IT EQ\n\t"
-                 " STREXEQ %0, %2, [%1]"
-                 : "=&r" (u32Result) 
-                 : "r" (Semaphore), "r" (Lockval));
+    ASM_KEYWORD(" LDREX %0, [%1] \n\t"
+                " CMP %0, #0 \n\t"
+                " IT EQ\n\t"
+                " STREXEQ %0, %2, [%1]"
+                : "=&r"(u32Result)
+                : "r"(Semaphore), "r"(Lockval));
     ASM_KEYWORD("dsb");
     ASM_KEYWORD("isb");
-/*LDRA_ANALYSIS*/
+    /*LDRA_ANALYSIS*/
     return (u32Result == 0U);
 }
 
@@ -149,27 +149,25 @@ boolean OsIf_Software_Semaphore_Lock(const uint32 *Semaphore,
  *
  * Function Name : OsIf_Software_Semaphore_Unlock.
  * Description   : Unlock semaphore.
- * 
+ *
  *END**************************************************************************/
-boolean OsIf_Software_Semaphore_Unlock(const uint32 *Semaphore,
-                                       uint32 Lockval
-                                      )
+boolean OsIf_Software_Semaphore_Unlock(const uint32* Semaphore, uint32 Lockval)
 {
     uint32 u32Result = 0U;
     uint32 u32UnlockValue = OSIF_SOFTWARE_SEMAPHORE_UNLOCKED_VALUE;
     /* Store unlock value to shemaphore if the lock value is matched */
-/*LDRA_NOANALYSIS*/
+    /*LDRA_NOANALYSIS*/
     ASM_KEYWORD("dsb");
     ASM_KEYWORD("isb");
-    ASM_KEYWORD (" LDREX %0, [%2] \n\t"
-                 " CMP %0, %3 \n\t"
-                 " IT EQ\n\t"
-                 " STREXEQ %0, %1, [%2]"
-                 : "=&r" (u32Result)
-                 : "r" (u32UnlockValue), "r" (Semaphore), "r" (Lockval));
+    ASM_KEYWORD(" LDREX %0, [%2] \n\t"
+                " CMP %0, %3 \n\t"
+                " IT EQ\n\t"
+                " STREXEQ %0, %1, [%2]"
+                : "=&r"(u32Result)
+                : "r"(u32UnlockValue), "r"(Semaphore), "r"(Lockval));
     ASM_KEYWORD("dsb");
     ASM_KEYWORD("isb");
-/*LDRA_ANALYSIS*/
+    /*LDRA_ANALYSIS*/
     return (u32Result == 0U);
 }
 

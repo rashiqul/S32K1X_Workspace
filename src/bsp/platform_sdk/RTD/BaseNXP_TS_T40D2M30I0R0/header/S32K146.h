@@ -25,16 +25,16 @@
 **     mail:                 support@nxp.com
 **
 **     Revisions:
-**     - rev. 1.0 Taru Shree 18-Feb-21  Initial release based on 
+**     - rev. 1.0 Taru Shree 18-Feb-21  Initial release based on
 **                                      S32K1xx RM Rev 13.
 **
 **     - rev. 1.1 Taru Shree 31-Jan-22  1)Initial release based on
 **                                      S32K1xx RM Rev 14.
 **                                      2)FLEXCAN-
-**                                      FLEXCAN_RAMn_COUNT’s value 
+**                                      FLEXCAN_RAMn_COUNT’s value
 **                                      is changed from 256 to 128.
 **                                      3)PDB-
-**                                      PDB_CH_COUNT’s value is 
+**                                      PDB_CH_COUNT’s value is
 **                                      changed from 2 to 3.
 **                                      4)SCG-
 **                                      FIRCCSR register: FIRCERR
@@ -56,7 +56,7 @@
  */
 
 /* Prevention from multiple including the same memory map */
-#if !defined(S32K146_H_)  /* Check if memory map has not been already included */
+#if !defined(S32K146_H_) /* Check if memory map has not been already included */
 #define S32K146_H_
 
 /* ----------------------------------------------------------------------------
@@ -102,4 +102,4 @@
 #include "S32K146_TRGMUX.h"
 #include "S32K146_WDOG.h"
 
-#endif  /* #if !defined(S32K146_H_) */
+#endif /* #if !defined(S32K146_H_) */

@@ -12,32 +12,33 @@
 *
 * Copyright 2020-2025 NXP
 *
-* NXP Confidential and Proprietary. This software is owned or controlled by NXP and may only be 
-*   used strictly in accordance with the applicable license terms.  By expressly 
-*   accepting such terms or by downloading, installing, activating and/or otherwise 
-*   using the software, you are agreeing that you have read, and that you agree to 
-*   comply with and are bound by, such license terms.  If you do not agree to be 
+* NXP Confidential and Proprietary. This software is owned or controlled by NXP and may only be
+*   used strictly in accordance with the applicable license terms.  By expressly
+*   accepting such terms or by downloading, installing, activating and/or otherwise
+*   using the software, you are agreeing that you have read, and that you agree to
+*   comply with and are bound by, such license terms.  If you do not agree to be
 *   bound by the applicable license terms, then you may not retain, install,
 *   activate or otherwise use the software.
 ==================================================================================================*/
 /**
-*   @file    StandardTypes.h
-*   @version 3.0.0
-*
-*   @brief   AUTOSAR BaseNXP - Standard types definition.
-*   @details AUTOSAR standard types header file. It contains all types that are used across several
-*                modules of the basic software and that are platform and compiler independent
-*            This file is obsolete in Autosar 4.4.0 but is kept to maintain compatibility with old includes.
-*
-*   @addtogroup BASENXP_COMPONENT
-*   @{
-*/
+ *   @file    StandardTypes.h
+ *   @version 3.0.0
+ *
+ *   @brief   AUTOSAR BaseNXP - Standard types definition.
+ *   @details AUTOSAR standard types header file. It contains all types that are used across several
+ *                modules of the basic software and that are platform and compiler independent
+ *            This file is obsolete in Autosar 4.4.0 but is kept to maintain compatibility with old
+ * includes.
+ *
+ *   @addtogroup BASENXP_COMPONENT
+ *   @{
+ */
 
 #ifndef STANDARD_TYPES_H
 #define STANDARD_TYPES_H
 
 #ifdef __cplusplus
-extern "C"{
+extern "C" {
 #endif
 
 /*==================================================================================================
@@ -48,21 +49,17 @@ extern "C"{
 ==================================================================================================*/
 #include "Std_Types.h"
 
-
 /*==================================================================================================
                                SOURCE FILE VERSION INFORMATION
 ==================================================================================================*/
-
 
 /*==================================================================================================
                                       FILE VERSION CHECKS
 ==================================================================================================*/
 
-
 /*==================================================================================================
                                            CONSTANTS
 ==================================================================================================*/
-
 
 /*==================================================================================================
 *                                       DEFINES AND MACROS
@@ -79,7 +76,6 @@ extern "C"{
 /*==================================================================================================
 *                                 STRUCTURES AND OTHER TYPEDEFS
 ==================================================================================================*/
-
 
 /*==================================================================================================
 *                                     FUNCTION PROTOTYPES

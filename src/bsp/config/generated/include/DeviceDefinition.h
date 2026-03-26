@@ -12,11 +12,11 @@
 *
 *   Copyright 2020-2025 NXP
 *
-*   NXP Confidential and Proprietary. This software is owned or controlled by NXP and may only be 
-*   used strictly in accordance with the applicable license terms.  By expressly 
-*   accepting such terms or by downloading, installing, activating and/or otherwise 
-*   using the software, you are agreeing that you have read, and that you agree to 
-*   comply with and are bound by, such license terms.  If you do not agree to be 
+*   NXP Confidential and Proprietary. This software is owned or controlled by NXP and may only be
+*   used strictly in accordance with the applicable license terms.  By expressly
+*   accepting such terms or by downloading, installing, activating and/or otherwise
+*   using the software, you are agreeing that you have read, and that you agree to
+*   comply with and are bound by, such license terms.  If you do not agree to be
 *   bound by the applicable license terms, then you may not retain, install,
 *   activate or otherwise use the software.
 ==================================================================================================*/
@@ -25,16 +25,15 @@
 #define DEVICEDEFINITION_H
 
 /**
-*   @file   DeviceDefinition.h
-*
-*   @addtogroup BASENXP_COMPONENT
-*   @{
-*/
+ *   @file   DeviceDefinition.h
+ *
+ *   @addtogroup BASENXP_COMPONENT
+ *   @{
+ */
 
 #ifdef __cplusplus
-extern "C"{
+extern "C" {
 #endif
-
 
 /*==================================================================================================
 *                                         INCLUDE FILES
@@ -47,19 +46,19 @@ extern "C"{
 *                               SOURCE FILE VERSION INFORMATION
 ==================================================================================================*/
 
-/** 
+/**
 @{
 * @brief Parameters that shall be published within the modules header file.
 *       The integration of incompatible files shall be avoided.
 */
-#define DEVICEDEFINITION_VENDOR_ID                       43
-#define DEVICEDEFINITION_MODULE_ID                       0
-#define DEVICEDEFINITION_AR_RELEASE_MAJOR_VERSION_H      4
-#define DEVICEDEFINITION_AR_RELEASE_MINOR_VERSION_H      7
-#define DEVICEDEFINITION_AR_RELEASE_REVISION_VERSION_H   0
-#define DEVICEDEFINITION_SW_MAJOR_VERSION_H              3
-#define DEVICEDEFINITION_SW_MINOR_VERSION_H              0
-#define DEVICEDEFINITION_SW_PATCH_VERSION_H              0
+#define DEVICEDEFINITION_VENDOR_ID 43
+#define DEVICEDEFINITION_MODULE_ID 0
+#define DEVICEDEFINITION_AR_RELEASE_MAJOR_VERSION_H 4
+#define DEVICEDEFINITION_AR_RELEASE_MINOR_VERSION_H 7
+#define DEVICEDEFINITION_AR_RELEASE_REVISION_VERSION_H 0
+#define DEVICEDEFINITION_SW_MAJOR_VERSION_H 3
+#define DEVICEDEFINITION_SW_MINOR_VERSION_H 0
+#define DEVICEDEFINITION_SW_PATCH_VERSION_H 0
 /**@}*/
 /*==================================================================================================
 *                                      FILE VERSION CHECKS
@@ -72,9 +71,9 @@ extern "C"{
 /*==================================================================================================
 *                                       DEFINES AND MACROS
 ==================================================================================================*/
-/** 
-* @brief This macro define specific derivative and sub derivative.
-*/
+/**
+ * @brief This macro define specific derivative and sub derivative.
+ */
 
 #ifndef S32K144
 #define S32K144
@@ -83,9 +82,9 @@ extern "C"{
 #ifndef DERIVATIVE_S32K144
 #define DERIVATIVE_S32K144
 #endif
-/** 
-* @brief This macro define specific platform.
-*/
+/**
+ * @brief This macro define specific platform.
+ */
 #ifndef S32K1XX
 #define S32K1XX
 #endif
@@ -110,8 +109,6 @@ extern "C"{
 }
 #endif
 
-
 /** @} */
 
 #endif /* DEVICEDEFINITION_H */
-

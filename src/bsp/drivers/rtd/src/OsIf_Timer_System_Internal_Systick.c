@@ -12,24 +12,24 @@
 *
 * Copyright 2020-2025 NXP
 *
-* NXP Confidential and Proprietary. This software is owned or controlled by NXP and may only be 
-*   used strictly in accordance with the applicable license terms.  By expressly 
-*   accepting such terms or by downloading, installing, activating and/or otherwise 
-*   using the software, you are agreeing that you have read, and that you agree to 
-*   comply with and are bound by, such license terms.  If you do not agree to be 
+* NXP Confidential and Proprietary. This software is owned or controlled by NXP and may only be
+*   used strictly in accordance with the applicable license terms.  By expressly
+*   accepting such terms or by downloading, installing, activating and/or otherwise
+*   using the software, you are agreeing that you have read, and that you agree to
+*   comply with and are bound by, such license terms.  If you do not agree to be
 *   bound by the applicable license terms, then you may not retain, install,
 *   activate or otherwise use the software.
 ==================================================================================================*/
 
 /**
-*   @file
-*
-*   @addtogroup osif_drv
-*   @{
-*/
+ *   @file
+ *
+ *   @addtogroup osif_drv
+ *   @{
+ */
 
 #ifdef __cplusplus
-extern "C"{
+extern "C" {
 #endif
 
 /*==================================================================================================
@@ -38,9 +38,9 @@ extern "C"{
 * 2) needed interfaces from external units
 * 3) internal and external interfaces from this unit
 ==================================================================================================*/
-#include "OsIf_DeviceRegisters.h"
-#include "OsIf_Cfg.h"
 #include "OsIf_Timer_System_Internal_Systick.h"
+#include "OsIf_Cfg.h"
+#include "OsIf_DeviceRegisters.h"
 #ifdef OSIF_USE_SYSTICK
 #if ((OSIF_USE_SYSTICK == STD_ON) && defined(USING_OS_FREERTOS))
 #include "FreeRTOS.h"
@@ -49,69 +49,96 @@ extern "C"{
 /*==================================================================================================
 *                                 SOURCE FILE VERSION INFORMATION
 ==================================================================================================*/
-#define OSIF_TIMER_SYSTEM_INTERNAL_SYSTICK_VENDOR_ID_C                    43
-#define OSIF_TIMER_SYSTEM_INTERNAL_SYSTICK_AR_RELEASE_MAJOR_VERSION_C     4
-#define OSIF_TIMER_SYSTEM_INTERNAL_SYSTICK_AR_RELEASE_MINOR_VERSION_C     7
-#define OSIF_TIMER_SYSTEM_INTERNAL_SYSTICK_AR_RELEASE_REVISION_VERSION_C  0
-#define OSIF_TIMER_SYSTEM_INTERNAL_SYSTICK_SW_MAJOR_VERSION_C             3
-#define OSIF_TIMER_SYSTEM_INTERNAL_SYSTICK_SW_MINOR_VERSION_C             0
-#define OSIF_TIMER_SYSTEM_INTERNAL_SYSTICK_SW_PATCH_VERSION_C             0
+#define OSIF_TIMER_SYSTEM_INTERNAL_SYSTICK_VENDOR_ID_C 43
+#define OSIF_TIMER_SYSTEM_INTERNAL_SYSTICK_AR_RELEASE_MAJOR_VERSION_C 4
+#define OSIF_TIMER_SYSTEM_INTERNAL_SYSTICK_AR_RELEASE_MINOR_VERSION_C 7
+#define OSIF_TIMER_SYSTEM_INTERNAL_SYSTICK_AR_RELEASE_REVISION_VERSION_C 0
+#define OSIF_TIMER_SYSTEM_INTERNAL_SYSTICK_SW_MAJOR_VERSION_C 3
+#define OSIF_TIMER_SYSTEM_INTERNAL_SYSTICK_SW_MINOR_VERSION_C 0
+#define OSIF_TIMER_SYSTEM_INTERNAL_SYSTICK_SW_PATCH_VERSION_C 0
 
 /*==================================================================================================
 *                                       FILE VERSION CHECKS
 ==================================================================================================*/
-/* Check if OsIf_Timer_System_Internal_Systick.c file and OsIf_DeviceRegisters.h file are of the same vendor */
+/* Check if OsIf_Timer_System_Internal_Systick.c file and OsIf_DeviceRegisters.h file are of the
+ * same vendor */
 #if (OSIF_TIMER_SYSTEM_INTERNAL_SYSTICK_VENDOR_ID_C != OSIF_DEVICE_REGISTERS_VENDOR_ID)
-    #error "OsIf_Timer_System_Internal_Systick.c and OsIf_DeviceRegisters.h have different vendor ids"
+#error "OsIf_Timer_System_Internal_Systick.c and OsIf_DeviceRegisters.h have different vendor ids"
 #endif
-/* Check if OsIf_Timer_System_Internal_Systick.c file and OsIf_DeviceRegisters.h file are of the same Autosar version */
-#if ((OSIF_TIMER_SYSTEM_INTERNAL_SYSTICK_AR_RELEASE_MAJOR_VERSION_C    != OSIF_DEVICE_REGISTERS_AR_RELEASE_MAJOR_VERSION) || \
-     (OSIF_TIMER_SYSTEM_INTERNAL_SYSTICK_AR_RELEASE_MINOR_VERSION_C    != OSIF_DEVICE_REGISTERS_AR_RELEASE_MINOR_VERSION) || \
-     (OSIF_TIMER_SYSTEM_INTERNAL_SYSTICK_AR_RELEASE_REVISION_VERSION_C != OSIF_DEVICE_REGISTERS_AR_RELEASE_REVISION_VERSION))
-    #error "AUTOSAR Version Numbers of OsIf_Timer_System_Internal_Systick.c and OsIf_DeviceRegisters.h are different"
+/* Check if OsIf_Timer_System_Internal_Systick.c file and OsIf_DeviceRegisters.h file are of the
+ * same Autosar version */
+#if ((OSIF_TIMER_SYSTEM_INTERNAL_SYSTICK_AR_RELEASE_MAJOR_VERSION_C !=                             \
+      OSIF_DEVICE_REGISTERS_AR_RELEASE_MAJOR_VERSION) ||                                           \
+     (OSIF_TIMER_SYSTEM_INTERNAL_SYSTICK_AR_RELEASE_MINOR_VERSION_C !=                             \
+      OSIF_DEVICE_REGISTERS_AR_RELEASE_MINOR_VERSION) ||                                           \
+     (OSIF_TIMER_SYSTEM_INTERNAL_SYSTICK_AR_RELEASE_REVISION_VERSION_C !=                          \
+      OSIF_DEVICE_REGISTERS_AR_RELEASE_REVISION_VERSION))
+#error                                                                                             \
+    "AUTOSAR Version Numbers of OsIf_Timer_System_Internal_Systick.c and OsIf_DeviceRegisters.h are different"
 #endif
-/* Check if OsIf_Timer_System_Internal_Systick.c file and OsIf_DeviceRegisters.h file are of the same Software version */
-#if ((OSIF_TIMER_SYSTEM_INTERNAL_SYSTICK_SW_MAJOR_VERSION_C != OSIF_DEVICE_REGISTERS_SW_MAJOR_VERSION) || \
-     (OSIF_TIMER_SYSTEM_INTERNAL_SYSTICK_SW_MINOR_VERSION_C != OSIF_DEVICE_REGISTERS_SW_MINOR_VERSION) || \
-     (OSIF_TIMER_SYSTEM_INTERNAL_SYSTICK_SW_PATCH_VERSION_C != OSIF_DEVICE_REGISTERS_SW_PATCH_VERSION) \
-    )
-    #error "Software Version Numbers of OsIf_Timer_System_Internal_Systick.c and OsIf_DeviceRegisters.h are different"
+/* Check if OsIf_Timer_System_Internal_Systick.c file and OsIf_DeviceRegisters.h file are of the
+ * same Software version */
+#if ((OSIF_TIMER_SYSTEM_INTERNAL_SYSTICK_SW_MAJOR_VERSION_C !=                                     \
+      OSIF_DEVICE_REGISTERS_SW_MAJOR_VERSION) ||                                                   \
+     (OSIF_TIMER_SYSTEM_INTERNAL_SYSTICK_SW_MINOR_VERSION_C !=                                     \
+      OSIF_DEVICE_REGISTERS_SW_MINOR_VERSION) ||                                                   \
+     (OSIF_TIMER_SYSTEM_INTERNAL_SYSTICK_SW_PATCH_VERSION_C !=                                     \
+      OSIF_DEVICE_REGISTERS_SW_PATCH_VERSION))
+#error                                                                                             \
+    "Software Version Numbers of OsIf_Timer_System_Internal_Systick.c and OsIf_DeviceRegisters.h are different"
 #endif
 
 /* Check if OsIf_Timer_System_Internal_Systick.c file and OsIf_Cfg.h file are of the same vendor */
 #if (OSIF_TIMER_SYSTEM_INTERNAL_SYSTICK_VENDOR_ID_C != OSIF_CFG_VENDOR_ID)
-    #error "OsIf_Timer_System_Internal_Systick.c and OsIf_Cfg.h have different vendor ids"
+#error "OsIf_Timer_System_Internal_Systick.c and OsIf_Cfg.h have different vendor ids"
 #endif
-/* Check if OsIf_Timer_System_Internal_Systick.c file and OsIf_Cfg.h file are of the same Autosar version */
-#if ((OSIF_TIMER_SYSTEM_INTERNAL_SYSTICK_AR_RELEASE_MAJOR_VERSION_C    != OSIF_CFG_AR_RELEASE_MAJOR_VERSION) || \
-     (OSIF_TIMER_SYSTEM_INTERNAL_SYSTICK_AR_RELEASE_MINOR_VERSION_C    != OSIF_CFG_AR_RELEASE_MINOR_VERSION) || \
-     (OSIF_TIMER_SYSTEM_INTERNAL_SYSTICK_AR_RELEASE_REVISION_VERSION_C != OSIF_CFG_AR_RELEASE_REVISION_VERSION))
-    #error "AUTOSAR Version Numbers of OsIf_Timer_System_Internal_Systick.c and OsIf_Cfg.h are different"
+/* Check if OsIf_Timer_System_Internal_Systick.c file and OsIf_Cfg.h file are of the same Autosar
+ * version */
+#if ((OSIF_TIMER_SYSTEM_INTERNAL_SYSTICK_AR_RELEASE_MAJOR_VERSION_C !=                             \
+      OSIF_CFG_AR_RELEASE_MAJOR_VERSION) ||                                                        \
+     (OSIF_TIMER_SYSTEM_INTERNAL_SYSTICK_AR_RELEASE_MINOR_VERSION_C !=                             \
+      OSIF_CFG_AR_RELEASE_MINOR_VERSION) ||                                                        \
+     (OSIF_TIMER_SYSTEM_INTERNAL_SYSTICK_AR_RELEASE_REVISION_VERSION_C !=                          \
+      OSIF_CFG_AR_RELEASE_REVISION_VERSION))
+#error                                                                                             \
+    "AUTOSAR Version Numbers of OsIf_Timer_System_Internal_Systick.c and OsIf_Cfg.h are different"
 #endif
-/* Check if OsIf_Timer_System_Internal_Systick.c file and OsIf_Cfg.h file are of the same Software version */
-#if ((OSIF_TIMER_SYSTEM_INTERNAL_SYSTICK_SW_MAJOR_VERSION_C != OSIF_CFG_SW_MAJOR_VERSION) || \
-     (OSIF_TIMER_SYSTEM_INTERNAL_SYSTICK_SW_MINOR_VERSION_C != OSIF_CFG_SW_MINOR_VERSION) || \
-     (OSIF_TIMER_SYSTEM_INTERNAL_SYSTICK_SW_PATCH_VERSION_C != OSIF_CFG_SW_PATCH_VERSION) \
-    )
-    #error "Software Version Numbers of OsIf_Timer_System_Internal_Systick.c and OsIf_Cfg.h are different"
+/* Check if OsIf_Timer_System_Internal_Systick.c file and OsIf_Cfg.h file are of the same Software
+ * version */
+#if ((OSIF_TIMER_SYSTEM_INTERNAL_SYSTICK_SW_MAJOR_VERSION_C != OSIF_CFG_SW_MAJOR_VERSION) ||       \
+     (OSIF_TIMER_SYSTEM_INTERNAL_SYSTICK_SW_MINOR_VERSION_C != OSIF_CFG_SW_MINOR_VERSION) ||       \
+     (OSIF_TIMER_SYSTEM_INTERNAL_SYSTICK_SW_PATCH_VERSION_C != OSIF_CFG_SW_PATCH_VERSION))
+#error                                                                                             \
+    "Software Version Numbers of OsIf_Timer_System_Internal_Systick.c and OsIf_Cfg.h are different"
 #endif
 
-/* Check if OsIf_Timer_System_Internal_Systick.c file and OsIf_Timer_System_Internal_Systick.h file are of the same vendor */
+/* Check if OsIf_Timer_System_Internal_Systick.c file and OsIf_Timer_System_Internal_Systick.h file
+ * are of the same vendor */
 #if (OSIF_TIMER_SYSTEM_INTERNAL_SYSTICK_VENDOR_ID_C != OSIF_TIMER_SYSTEM_INTERNAL_SYSTICK_VENDOR_ID)
-    #error "OsIf_Timer_System_Internal_Systick.c and OsIf_Timer_System_Internal_Systick.h have different vendor ids"
+#error                                                                                             \
+    "OsIf_Timer_System_Internal_Systick.c and OsIf_Timer_System_Internal_Systick.h have different vendor ids"
 #endif
-/* Check if OsIf_Timer_System_Internal_Systick.c file and OsIf_Timer_System_Internal_Systick.h file are of the same Autosar version */
-#if ((OSIF_TIMER_SYSTEM_INTERNAL_SYSTICK_AR_RELEASE_MAJOR_VERSION_C    != OSIF_TIMER_SYSTEM_INTERNAL_SYSTICK_AR_RELEASE_MAJOR_VERSION) || \
-     (OSIF_TIMER_SYSTEM_INTERNAL_SYSTICK_AR_RELEASE_MINOR_VERSION_C    != OSIF_TIMER_SYSTEM_INTERNAL_SYSTICK_AR_RELEASE_MINOR_VERSION) || \
-     (OSIF_TIMER_SYSTEM_INTERNAL_SYSTICK_AR_RELEASE_REVISION_VERSION_C != OSIF_TIMER_SYSTEM_INTERNAL_SYSTICK_AR_RELEASE_REVISION_VERSION))
-    #error "AUTOSAR Version Numbers of OsIf_Timer_System_Internal_Systick.c and OsIf_Timer_System_Internal_Systick.h are different"
+/* Check if OsIf_Timer_System_Internal_Systick.c file and OsIf_Timer_System_Internal_Systick.h file
+ * are of the same Autosar version */
+#if ((OSIF_TIMER_SYSTEM_INTERNAL_SYSTICK_AR_RELEASE_MAJOR_VERSION_C !=                             \
+      OSIF_TIMER_SYSTEM_INTERNAL_SYSTICK_AR_RELEASE_MAJOR_VERSION) ||                              \
+     (OSIF_TIMER_SYSTEM_INTERNAL_SYSTICK_AR_RELEASE_MINOR_VERSION_C !=                             \
+      OSIF_TIMER_SYSTEM_INTERNAL_SYSTICK_AR_RELEASE_MINOR_VERSION) ||                              \
+     (OSIF_TIMER_SYSTEM_INTERNAL_SYSTICK_AR_RELEASE_REVISION_VERSION_C !=                          \
+      OSIF_TIMER_SYSTEM_INTERNAL_SYSTICK_AR_RELEASE_REVISION_VERSION))
+#error                                                                                             \
+    "AUTOSAR Version Numbers of OsIf_Timer_System_Internal_Systick.c and OsIf_Timer_System_Internal_Systick.h are different"
 #endif
-/* Check if OsIf_Timer_System_Internal_Systick.c file and OsIf_Timer_System_Internal_Systick.h file are of the same Software version */
-#if ((OSIF_TIMER_SYSTEM_INTERNAL_SYSTICK_SW_MAJOR_VERSION_C != OSIF_TIMER_SYSTEM_INTERNAL_SYSTICK_SW_MAJOR_VERSION) || \
-     (OSIF_TIMER_SYSTEM_INTERNAL_SYSTICK_SW_MINOR_VERSION_C != OSIF_TIMER_SYSTEM_INTERNAL_SYSTICK_SW_MINOR_VERSION) || \
-     (OSIF_TIMER_SYSTEM_INTERNAL_SYSTICK_SW_PATCH_VERSION_C != OSIF_TIMER_SYSTEM_INTERNAL_SYSTICK_SW_PATCH_VERSION) \
-    )
-    #error "Software Version Numbers of OsIf_Timer_System_Internal_Systick.c and OsIf_Timer_System_Internal_Systick.h are different"
+/* Check if OsIf_Timer_System_Internal_Systick.c file and OsIf_Timer_System_Internal_Systick.h file
+ * are of the same Software version */
+#if ((OSIF_TIMER_SYSTEM_INTERNAL_SYSTICK_SW_MAJOR_VERSION_C !=                                     \
+      OSIF_TIMER_SYSTEM_INTERNAL_SYSTICK_SW_MAJOR_VERSION) ||                                      \
+     (OSIF_TIMER_SYSTEM_INTERNAL_SYSTICK_SW_MINOR_VERSION_C !=                                     \
+      OSIF_TIMER_SYSTEM_INTERNAL_SYSTICK_SW_MINOR_VERSION) ||                                      \
+     (OSIF_TIMER_SYSTEM_INTERNAL_SYSTICK_SW_PATCH_VERSION_C !=                                     \
+      OSIF_TIMER_SYSTEM_INTERNAL_SYSTICK_SW_PATCH_VERSION))
+#error                                                                                             \
+    "Software Version Numbers of OsIf_Timer_System_Internal_Systick.c and OsIf_Timer_System_Internal_Systick.h are different"
 #endif
 /*==================================================================================================
 *                           LOCAL TYPEDEFS (STRUCTURES, UNIONS, ENUMS)
@@ -167,7 +194,7 @@ extern "C"{
  *
  * Function Name : OsIf_Timer_System_Internal_Init.
  * Description   : Initialize systick timer.
- * 
+ *
  *END**************************************************************************/
 void OsIf_Timer_System_Internal_Init(uint32 SystemCounterFreq)
 {
@@ -178,14 +205,15 @@ void OsIf_Timer_System_Internal_Init(uint32 SystemCounterFreq)
     S32_SysTick->CSRr = S32_SysTick_CSR_ENABLE(0u);
     S32_SysTick->RVR = S32_SysTick_RVR_RELOAD(SYSTICK_MAX);
     S32_SysTick->CVR = S32_SysTick_CVR_CURRENT(0U);
-    S32_SysTick->CSRr = S32_SysTick_CSR_ENABLE(1u) | S32_SysTick_CSR_TICKINT(0u) | S32_SysTick_CSR_CLKSOURCE(1u);
+    S32_SysTick->CSRr =
+        S32_SysTick_CSR_ENABLE(1u) | S32_SysTick_CSR_TICKINT(0u) | S32_SysTick_CSR_CLKSOURCE(1u);
 }
 
 /*FUNCTION**********************************************************************
  *
  * Function Name : OsIf_Timer_System_Internal_GetCounter.
  * Description   : Get systick counter value.
- * 
+ *
  *END**************************************************************************/
 uint32 OsIf_Timer_System_Internal_GetCounter(void)
 {
@@ -196,29 +224,24 @@ uint32 OsIf_Timer_System_Internal_GetCounter(void)
  *
  * Function Name : OsIf_Timer_System_Internal_GetElapsed.
  * Description   : Get systick elapsed value.
- * 
+ *
  *END**************************************************************************/
-uint32 OsIf_Timer_System_Internal_GetElapsed(uint32 * const CurrentRef)
+uint32 OsIf_Timer_System_Internal_GetElapsed(uint32* const CurrentRef)
 {
     uint32 u32CurrentVal = SYSTICK_GET_COUNTER();
     uint32 u32Dif = 0U;
     /* RVR value shall be always greater than the current counter */
-    if (S32_SysTick->RVR >= u32CurrentVal)
-    {        
-        if (SYSTICK_OVERFLOWED((u32CurrentVal), (*CurrentRef)))
-        {
+    if (S32_SysTick->RVR >= u32CurrentVal) {
+        if (SYSTICK_OVERFLOWED((u32CurrentVal), (*CurrentRef))) {
             /* Overflow occurred */
-            u32Dif = SYSTICK_DELTA_OUTER(u32CurrentVal, *CurrentRef, S32_SysTick->RVR);            
-        }
-        else
-        {
+            u32Dif = SYSTICK_DELTA_OUTER(u32CurrentVal, *CurrentRef, S32_SysTick->RVR);
+        } else {
             /* Overflow did not occur */
             u32Dif = SYSTICK_DELTA_INNER(*CurrentRef, u32CurrentVal);
         }
     }
     /* This case never happen but need to avoid misra when u32Dif variable is not used */
-    else
-    {
+    else {
         (void)u32Dif;
     }
     *CurrentRef = u32CurrentVal;

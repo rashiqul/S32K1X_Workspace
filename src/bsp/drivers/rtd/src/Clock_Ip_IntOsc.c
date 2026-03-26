@@ -1,7 +1,7 @@
 /*==================================================================================================
 *   Project              : RTD AUTOSAR 4.7
 *   Platform             : CORTEXM
-*   Peripheral           : 
+*   Peripheral           :
 *   Dependencies         : none
 *
 *   Autosar Version      : 4.7.0
@@ -12,29 +12,28 @@
 *
 *   Copyright 2020-2025 NXP
 *
-*   NXP Confidential and Proprietary. This software is owned or controlled by NXP and may only be 
-*   used strictly in accordance with the applicable license terms.  By expressly 
-*   accepting such terms or by downloading, installing, activating and/or otherwise 
-*   using the software, you are agreeing that you have read, and that you agree to 
-*   comply with and are bound by, such license terms.  If you do not agree to be 
+*   NXP Confidential and Proprietary. This software is owned or controlled by NXP and may only be
+*   used strictly in accordance with the applicable license terms.  By expressly
+*   accepting such terms or by downloading, installing, activating and/or otherwise
+*   using the software, you are agreeing that you have read, and that you agree to
+*   comply with and are bound by, such license terms.  If you do not agree to be
 *   bound by the applicable license terms, then you may not retain, install,
 *   activate or otherwise use the software.
 ==================================================================================================*/
 /**
-*   @file       Clock_Ip_IntOsc.c
-*   @version    3.0.0
-*
-*   @brief   CLOCK driver implementations.
-*   @details CLOCK driver implementations.
-*
-*   @addtogroup CLOCK_DRIVER Clock Ip Driver
-*   @{
-*/
+ *   @file       Clock_Ip_IntOsc.c
+ *   @version    3.0.0
+ *
+ *   @brief   CLOCK driver implementations.
+ *   @details CLOCK driver implementations.
+ *
+ *   @addtogroup CLOCK_DRIVER Clock Ip Driver
+ *   @{
+ */
 
 #ifdef __cplusplus
-extern "C"{
+extern "C" {
 #endif
-
 
 /*==================================================================================================
 *                                          INCLUDE FILES
@@ -43,42 +42,40 @@ extern "C"{
 * 3) internal and external interfaces from this unit
 ==================================================================================================*/
 
-
 #include "Clock_Ip_Private.h"
 
 /*==================================================================================================
                                SOURCE FILE VERSION INFORMATION
 ==================================================================================================*/
-#define CLOCK_IP_INTOSC_VENDOR_ID_C                      43
-#define CLOCK_IP_INTOSC_AR_RELEASE_MAJOR_VERSION_C       4
-#define CLOCK_IP_INTOSC_AR_RELEASE_MINOR_VERSION_C       7
-#define CLOCK_IP_INTOSC_AR_RELEASE_REVISION_VERSION_C    0
-#define CLOCK_IP_INTOSC_SW_MAJOR_VERSION_C               3
-#define CLOCK_IP_INTOSC_SW_MINOR_VERSION_C               0
-#define CLOCK_IP_INTOSC_SW_PATCH_VERSION_C               0
+#define CLOCK_IP_INTOSC_VENDOR_ID_C 43
+#define CLOCK_IP_INTOSC_AR_RELEASE_MAJOR_VERSION_C 4
+#define CLOCK_IP_INTOSC_AR_RELEASE_MINOR_VERSION_C 7
+#define CLOCK_IP_INTOSC_AR_RELEASE_REVISION_VERSION_C 0
+#define CLOCK_IP_INTOSC_SW_MAJOR_VERSION_C 3
+#define CLOCK_IP_INTOSC_SW_MINOR_VERSION_C 0
+#define CLOCK_IP_INTOSC_SW_PATCH_VERSION_C 0
 
 /*==================================================================================================
 *                                     FILE VERSION CHECKS
 ==================================================================================================*/
 /* Check if Clock_Ip_IntOsc.c file and Clock_Ip_Private.h file are of the same vendor */
 #if (CLOCK_IP_INTOSC_VENDOR_ID_C != CLOCK_IP_PRIVATE_VENDOR_ID)
-    #error "Clock_Ip_IntOsc.c and Clock_Ip_Private.h have different vendor ids"
+#error "Clock_Ip_IntOsc.c and Clock_Ip_Private.h have different vendor ids"
 #endif
 
 /* Check if Clock_Ip_IntOsc.c file and Clock_Ip_Private.h file are of the same Autosar version */
-#if ((CLOCK_IP_INTOSC_AR_RELEASE_MAJOR_VERSION_C != CLOCK_IP_PRIVATE_AR_RELEASE_MAJOR_VERSION) || \
-     (CLOCK_IP_INTOSC_AR_RELEASE_MINOR_VERSION_C != CLOCK_IP_PRIVATE_AR_RELEASE_MINOR_VERSION) || \
-     (CLOCK_IP_INTOSC_AR_RELEASE_REVISION_VERSION_C != CLOCK_IP_PRIVATE_AR_RELEASE_REVISION_VERSION) \
-    )
-    #error "AutoSar Version Numbers of Clock_Ip_IntOsc.c and Clock_Ip_Private.h are different"
+#if ((CLOCK_IP_INTOSC_AR_RELEASE_MAJOR_VERSION_C != CLOCK_IP_PRIVATE_AR_RELEASE_MAJOR_VERSION) ||  \
+     (CLOCK_IP_INTOSC_AR_RELEASE_MINOR_VERSION_C != CLOCK_IP_PRIVATE_AR_RELEASE_MINOR_VERSION) ||  \
+     (CLOCK_IP_INTOSC_AR_RELEASE_REVISION_VERSION_C !=                                             \
+      CLOCK_IP_PRIVATE_AR_RELEASE_REVISION_VERSION))
+#error "AutoSar Version Numbers of Clock_Ip_IntOsc.c and Clock_Ip_Private.h are different"
 #endif
 
 /* Check if Clock_Ip_IntOsc.c file and Clock_Ip_Private.h file are of the same Software version */
-#if ((CLOCK_IP_INTOSC_SW_MAJOR_VERSION_C != CLOCK_IP_PRIVATE_SW_MAJOR_VERSION) || \
-     (CLOCK_IP_INTOSC_SW_MINOR_VERSION_C != CLOCK_IP_PRIVATE_SW_MINOR_VERSION) || \
-     (CLOCK_IP_INTOSC_SW_PATCH_VERSION_C != CLOCK_IP_PRIVATE_SW_PATCH_VERSION) \
-    )
-    #error "Software Version Numbers of Clock_Ip_IntOsc.c and Clock_Ip_Private.h are different"
+#if ((CLOCK_IP_INTOSC_SW_MAJOR_VERSION_C != CLOCK_IP_PRIVATE_SW_MAJOR_VERSION) ||                  \
+     (CLOCK_IP_INTOSC_SW_MINOR_VERSION_C != CLOCK_IP_PRIVATE_SW_MINOR_VERSION) ||                  \
+     (CLOCK_IP_INTOSC_SW_PATCH_VERSION_C != CLOCK_IP_PRIVATE_SW_PATCH_VERSION))
+#error "Software Version Numbers of Clock_Ip_IntOsc.c and Clock_Ip_Private.h are different"
 #endif
 
 /*==================================================================================================
@@ -118,13 +115,11 @@ void Clock_Ip_EnableSirc_TrustedCall(Clock_Ip_IrcoscConfigType const* Config);
 void Clock_Ip_DisableSirc_TrustedCall(Clock_Ip_NameType Name);
 #endif
 
-
 #ifdef CLOCK_IP_SIRC_VLP_ENABLE
 void Clock_Ip_SetSircVlp_TrustedCall(Clock_Ip_IrcoscConfigType const* Config);
 void Clock_Ip_EnableSircVlp_TrustedCall(Clock_Ip_IrcoscConfigType const* Config);
 void Clock_Ip_DisableSircVlp_TrustedCall(Clock_Ip_NameType Name);
 #endif
-
 
 #ifdef CLOCK_IP_SIRC_STOP_ENABLE
 void Clock_Ip_SetSircStop_TrustedCall(Clock_Ip_IrcoscConfigType const* Config);
@@ -132,13 +127,11 @@ void Clock_Ip_EnableSircStop_TrustedCall(Clock_Ip_IrcoscConfigType const* Config
 void Clock_Ip_DisableSircStop_TrustedCall(Clock_Ip_NameType Name);
 #endif
 
-
 #ifdef CLOCK_IP_FIRC_ENABLE
 void Clock_Ip_SetFirc_TrustedCall(Clock_Ip_IrcoscConfigType const* Config);
 void Clock_Ip_EnableFirc_TrustedCall(Clock_Ip_IrcoscConfigType const* Config);
 void Clock_Ip_DisableFirc_TrustedCall(Clock_Ip_NameType Name);
 #endif
-
 
 /*==================================================================================================
 *                                    LOCAL FUNCTION PROTOTYPES
@@ -152,13 +145,11 @@ static void Clock_Ip_EnableSirc(Clock_Ip_IrcoscConfigType const* Config);
 static void Clock_Ip_DisableSirc(Clock_Ip_NameType Name);
 #endif
 
-
 #ifdef CLOCK_IP_SIRC_VLP_ENABLE
 static void Clock_Ip_SetSircVlp(Clock_Ip_IrcoscConfigType const* Config);
 static void Clock_Ip_EnableSircVlp(Clock_Ip_IrcoscConfigType const* Config);
 static void Clock_Ip_DisableSircVlp(Clock_Ip_NameType Name);
 #endif
-
 
 #ifdef CLOCK_IP_SIRC_STOP_ENABLE
 static void Clock_Ip_SetSircStop(Clock_Ip_IrcoscConfigType const* Config);
@@ -166,14 +157,12 @@ static void Clock_Ip_EnableSircStop(Clock_Ip_IrcoscConfigType const* Config);
 static void Clock_Ip_DisableSircStop(Clock_Ip_NameType Name);
 #endif
 
-
 #ifdef CLOCK_IP_FIRC_ENABLE
 static void Clock_Ip_SetFirc(Clock_Ip_IrcoscConfigType const* Config);
 static void Clock_Ip_EnableFirc(Clock_Ip_IrcoscConfigType const* Config);
 static void Clock_Ip_DisableFirc(Clock_Ip_NameType Name);
 static void Clock_Ip_WaitUntilFircUnlocked(Clock_Ip_IrcoscConfigType const* Config);
 #endif
-
 
 /* Clock stop section code */
 #define MCU_STOP_SEC_CODE
@@ -202,122 +191,113 @@ static void Clock_Ip_InternalOscillatorEmpty_Disable(Clock_Ip_NameType Name)
 #ifdef CLOCK_IP_SIRC_ENABLE
 static void Clock_Ip_SetSirc(Clock_Ip_IrcoscConfigType const* Config)
 {
-    if (NULL_PTR != Config)
-    {
-    #ifdef CLOCK_IP_ENABLE_USER_MODE_SUPPORT
-      #if (STD_ON == CLOCK_IP_ENABLE_USER_MODE_SUPPORT)
-        OsIf_Trusted_Call1param(Clock_Ip_SetSirc_TrustedCall,(Config));
-      #else
+    if (NULL_PTR != Config) {
+#ifdef CLOCK_IP_ENABLE_USER_MODE_SUPPORT
+#if (STD_ON == CLOCK_IP_ENABLE_USER_MODE_SUPPORT)
+        OsIf_Trusted_Call1param(Clock_Ip_SetSirc_TrustedCall, (Config));
+#else
         Clock_Ip_SetSirc_TrustedCall(Config);
-      #endif
-    #endif /* CLOCK_IP_ENABLE_USER_MODE_SUPPORT */
+#endif
+#endif /* CLOCK_IP_ENABLE_USER_MODE_SUPPORT */
     }
 }
 static void Clock_Ip_EnableSirc(Clock_Ip_IrcoscConfigType const* Config)
 {
-    if (NULL_PTR != Config)
-    {
-    #ifdef CLOCK_IP_ENABLE_USER_MODE_SUPPORT
-      #if (STD_ON == CLOCK_IP_ENABLE_USER_MODE_SUPPORT)
-        OsIf_Trusted_Call1param(Clock_Ip_EnableSirc_TrustedCall,(Config));
-      #else
+    if (NULL_PTR != Config) {
+#ifdef CLOCK_IP_ENABLE_USER_MODE_SUPPORT
+#if (STD_ON == CLOCK_IP_ENABLE_USER_MODE_SUPPORT)
+        OsIf_Trusted_Call1param(Clock_Ip_EnableSirc_TrustedCall, (Config));
+#else
         Clock_Ip_EnableSirc_TrustedCall(Config);
-      #endif
-    #endif /* CLOCK_IP_ENABLE_USER_MODE_SUPPORT */
+#endif
+#endif /* CLOCK_IP_ENABLE_USER_MODE_SUPPORT */
     }
 }
 static void Clock_Ip_DisableSirc(Clock_Ip_NameType Name)
 {
 #ifdef CLOCK_IP_ENABLE_USER_MODE_SUPPORT
-  #if (STD_ON == CLOCK_IP_ENABLE_USER_MODE_SUPPORT)
-    OsIf_Trusted_Call1param(Clock_Ip_DisableSirc_TrustedCall,(Name));
-  #else
+#if (STD_ON == CLOCK_IP_ENABLE_USER_MODE_SUPPORT)
+    OsIf_Trusted_Call1param(Clock_Ip_DisableSirc_TrustedCall, (Name));
+#else
     Clock_Ip_DisableSirc_TrustedCall(Name);
-  #endif
+#endif
 #endif /* CLOCK_IP_ENABLE_USER_MODE_SUPPORT */
 }
 #endif
 
-
 #ifdef CLOCK_IP_SIRC_VLP_ENABLE
 static void Clock_Ip_SetSircVlp(Clock_Ip_IrcoscConfigType const* Config)
 {
-    if (NULL_PTR != Config)
-    {
-    #ifdef CLOCK_IP_ENABLE_USER_MODE_SUPPORT
-      #if (STD_ON == CLOCK_IP_ENABLE_USER_MODE_SUPPORT)
-        OsIf_Trusted_Call1param(Clock_Ip_SetSircVlp_TrustedCall,(Config));
-      #else
+    if (NULL_PTR != Config) {
+#ifdef CLOCK_IP_ENABLE_USER_MODE_SUPPORT
+#if (STD_ON == CLOCK_IP_ENABLE_USER_MODE_SUPPORT)
+        OsIf_Trusted_Call1param(Clock_Ip_SetSircVlp_TrustedCall, (Config));
+#else
         Clock_Ip_SetSircVlp_TrustedCall(Config);
-      #endif
-    #endif /* CLOCK_IP_ENABLE_USER_MODE_SUPPORT */
+#endif
+#endif /* CLOCK_IP_ENABLE_USER_MODE_SUPPORT */
     }
 }
 static void Clock_Ip_EnableSircVlp(Clock_Ip_IrcoscConfigType const* Config)
 {
-    if (NULL_PTR != Config)
-    {
-    #ifdef CLOCK_IP_ENABLE_USER_MODE_SUPPORT
-      #if (STD_ON == CLOCK_IP_ENABLE_USER_MODE_SUPPORT)
-        OsIf_Trusted_Call1param(Clock_Ip_EnableSircVlp_TrustedCall,(Config));
-      #else
+    if (NULL_PTR != Config) {
+#ifdef CLOCK_IP_ENABLE_USER_MODE_SUPPORT
+#if (STD_ON == CLOCK_IP_ENABLE_USER_MODE_SUPPORT)
+        OsIf_Trusted_Call1param(Clock_Ip_EnableSircVlp_TrustedCall, (Config));
+#else
         Clock_Ip_EnableSircVlp_TrustedCall(Config);
-      #endif
-    #endif /* CLOCK_IP_ENABLE_USER_MODE_SUPPORT */
+#endif
+#endif /* CLOCK_IP_ENABLE_USER_MODE_SUPPORT */
     }
 }
 static void Clock_Ip_DisableSircVlp(Clock_Ip_NameType Name)
 {
 #ifdef CLOCK_IP_ENABLE_USER_MODE_SUPPORT
-  #if (STD_ON == CLOCK_IP_ENABLE_USER_MODE_SUPPORT)
-    OsIf_Trusted_Call1param(Clock_Ip_DisableSircVlp_TrustedCall,(Name));
-  #else
+#if (STD_ON == CLOCK_IP_ENABLE_USER_MODE_SUPPORT)
+    OsIf_Trusted_Call1param(Clock_Ip_DisableSircVlp_TrustedCall, (Name));
+#else
     Clock_Ip_DisableSircVlp_TrustedCall(Name);
-  #endif
+#endif
 #endif /* CLOCK_IP_ENABLE_USER_MODE_SUPPORT */
 }
 #endif
 
-
 #ifdef CLOCK_IP_SIRC_STOP_ENABLE
 static void Clock_Ip_SetSircStop(Clock_Ip_IrcoscConfigType const* Config)
 {
-    if (NULL_PTR != Config)
-    {
-    #ifdef CLOCK_IP_ENABLE_USER_MODE_SUPPORT
-      #if (STD_ON == CLOCK_IP_ENABLE_USER_MODE_SUPPORT)
-        OsIf_Trusted_Call1param(Clock_Ip_SetSircStop_TrustedCall,(Config));
-      #else
+    if (NULL_PTR != Config) {
+#ifdef CLOCK_IP_ENABLE_USER_MODE_SUPPORT
+#if (STD_ON == CLOCK_IP_ENABLE_USER_MODE_SUPPORT)
+        OsIf_Trusted_Call1param(Clock_Ip_SetSircStop_TrustedCall, (Config));
+#else
         Clock_Ip_SetSircStop_TrustedCall(Config);
-      #endif
-    #endif /* CLOCK_IP_ENABLE_USER_MODE_SUPPORT */
+#endif
+#endif /* CLOCK_IP_ENABLE_USER_MODE_SUPPORT */
     }
 }
 static void Clock_Ip_EnableSircStop(Clock_Ip_IrcoscConfigType const* Config)
 {
-    if (NULL_PTR != Config)
-    {
-    #ifdef CLOCK_IP_ENABLE_USER_MODE_SUPPORT
-      #if (STD_ON == CLOCK_IP_ENABLE_USER_MODE_SUPPORT)
-        OsIf_Trusted_Call1param(Clock_Ip_EnableSircStop_TrustedCall,(Config));
-      #else
+    if (NULL_PTR != Config) {
+#ifdef CLOCK_IP_ENABLE_USER_MODE_SUPPORT
+#if (STD_ON == CLOCK_IP_ENABLE_USER_MODE_SUPPORT)
+        OsIf_Trusted_Call1param(Clock_Ip_EnableSircStop_TrustedCall, (Config));
+#else
         Clock_Ip_EnableSircStop_TrustedCall(Config);
-      #endif
-    #endif /* CLOCK_IP_ENABLE_USER_MODE_SUPPORT */
+#endif
+#endif /* CLOCK_IP_ENABLE_USER_MODE_SUPPORT */
     }
 }
 static void Clock_Ip_DisableSircStop(Clock_Ip_NameType Name)
 {
 #ifdef CLOCK_IP_ENABLE_USER_MODE_SUPPORT
-  #if (STD_ON == CLOCK_IP_ENABLE_USER_MODE_SUPPORT)
-    OsIf_Trusted_Call1param(Clock_Ip_DisableSircStop_TrustedCall,(Name));
-  #else
+#if (STD_ON == CLOCK_IP_ENABLE_USER_MODE_SUPPORT)
+    OsIf_Trusted_Call1param(Clock_Ip_DisableSircStop_TrustedCall, (Name));
+#else
     Clock_Ip_DisableSircStop_TrustedCall(Name);
-  #endif
+#endif
 #endif /* CLOCK_IP_ENABLE_USER_MODE_SUPPORT */
 }
 #endif
-
 
 #ifdef CLOCK_IP_FIRC_ENABLE
 #define CLOCK_IP_SIRC_CLK_SOURCE 2U
@@ -337,53 +317,49 @@ static void SetInputSouceSytemClock(uint32 SourceClock)
     IP_SCG->RCCR = RegValue;
 
     Clock_Ip_StartTimeout(&StartTime, &ElapsedTime, &TimeoutTicks, CLOCK_IP_TIMEOUT_VALUE_US);
-    do
-    {
-        ScsStatus = (((IP_SCG->CSR & SCG_CSR_SCS_MASK) >> SCG_CSR_SCS_SHIFT) != (SourceClock))?0U:1U;
+    do {
+        ScsStatus =
+            (((IP_SCG->CSR & SCG_CSR_SCS_MASK) >> SCG_CSR_SCS_SHIFT) != (SourceClock)) ? 0U : 1U;
         TimeoutOccurred = Clock_Ip_TimeoutExpired(&StartTime, &ElapsedTime, TimeoutTicks);
-    }
-    while ((0U == ScsStatus) && (FALSE == TimeoutOccurred));
+    } while ((0U == ScsStatus) && (FALSE == TimeoutOccurred));
 
-    if (FALSE != TimeoutOccurred)
-    {
+    if (FALSE != TimeoutOccurred) {
         /* Report timeout error */
         Clock_Ip_ReportClockErrors(CLOCK_IP_REPORT_TIMEOUT_ERROR, FIRC_CLK);
     }
 }
 static void Clock_Ip_SetFirc(Clock_Ip_IrcoscConfigType const* Config)
 {
-    if (NULL_PTR != Config)
-    {
-    #ifdef CLOCK_IP_ENABLE_USER_MODE_SUPPORT
-      #if (STD_ON == CLOCK_IP_ENABLE_USER_MODE_SUPPORT)
-        OsIf_Trusted_Call1param(Clock_Ip_SetFirc_TrustedCall,(Config));
-      #else
+    if (NULL_PTR != Config) {
+#ifdef CLOCK_IP_ENABLE_USER_MODE_SUPPORT
+#if (STD_ON == CLOCK_IP_ENABLE_USER_MODE_SUPPORT)
+        OsIf_Trusted_Call1param(Clock_Ip_SetFirc_TrustedCall, (Config));
+#else
         Clock_Ip_SetFirc_TrustedCall(Config);
-      #endif
-    #endif /* CLOCK_IP_ENABLE_USER_MODE_SUPPORT */
+#endif
+#endif /* CLOCK_IP_ENABLE_USER_MODE_SUPPORT */
     }
 }
 static void Clock_Ip_EnableFirc(Clock_Ip_IrcoscConfigType const* Config)
 {
-    if (NULL_PTR != Config)
-    {
-    #ifdef CLOCK_IP_ENABLE_USER_MODE_SUPPORT
-      #if (STD_ON == CLOCK_IP_ENABLE_USER_MODE_SUPPORT)
-        OsIf_Trusted_Call1param(Clock_Ip_EnableFirc_TrustedCall,(Config));
-      #else
+    if (NULL_PTR != Config) {
+#ifdef CLOCK_IP_ENABLE_USER_MODE_SUPPORT
+#if (STD_ON == CLOCK_IP_ENABLE_USER_MODE_SUPPORT)
+        OsIf_Trusted_Call1param(Clock_Ip_EnableFirc_TrustedCall, (Config));
+#else
         Clock_Ip_EnableFirc_TrustedCall(Config);
-      #endif
-    #endif /* CLOCK_IP_ENABLE_USER_MODE_SUPPORT */
+#endif
+#endif /* CLOCK_IP_ENABLE_USER_MODE_SUPPORT */
     }
 }
 static void Clock_Ip_DisableFirc(Clock_Ip_NameType Name)
 {
 #ifdef CLOCK_IP_ENABLE_USER_MODE_SUPPORT
-  #if (STD_ON == CLOCK_IP_ENABLE_USER_MODE_SUPPORT)
-    OsIf_Trusted_Call1param(Clock_Ip_DisableFirc_TrustedCall,(Name));
-  #else
+#if (STD_ON == CLOCK_IP_ENABLE_USER_MODE_SUPPORT)
+    OsIf_Trusted_Call1param(Clock_Ip_DisableFirc_TrustedCall, (Name));
+#else
     Clock_Ip_DisableFirc_TrustedCall(Name);
-  #endif
+#endif
 #endif /* CLOCK_IP_ENABLE_USER_MODE_SUPPORT */
 }
 static void Clock_Ip_WaitUntilFircUnlocked(Clock_Ip_IrcoscConfigType const* Config)
@@ -393,28 +369,23 @@ static void Clock_Ip_WaitUntilFircUnlocked(Clock_Ip_IrcoscConfigType const* Conf
     uint32 ElapsedTime;
     uint32 TimeoutTicks;
     uint32 IrcoscStatus;
-    
-    if (1U == ((IP_SCG->FIRCCSR & SCG_FIRCCSR_FIRCVLD_MASK) >> SCG_FIRCCSR_FIRCVLD_SHIFT))
-    {
+
+    if (1U == ((IP_SCG->FIRCCSR & SCG_FIRCCSR_FIRCVLD_MASK) >> SCG_FIRCCSR_FIRCVLD_SHIFT)) {
         Clock_Ip_StartTimeout(&StartTime, &ElapsedTime, &TimeoutTicks, CLOCK_IP_TIMEOUT_VALUE_US);
         /* Wait until firc is disabled */
-        do
-        {
-            IrcoscStatus = ((IP_SCG->FIRCCSR & SCG_FIRCCSR_FIRCVLD_MASK) >> SCG_FIRCCSR_FIRCVLD_SHIFT);
+        do {
+            IrcoscStatus =
+                ((IP_SCG->FIRCCSR & SCG_FIRCCSR_FIRCVLD_MASK) >> SCG_FIRCCSR_FIRCVLD_SHIFT);
             TimeoutOccurred = Clock_Ip_TimeoutExpired(&StartTime, &ElapsedTime, TimeoutTicks);
-        }
-        while ((1U == IrcoscStatus) && (FALSE == TimeoutOccurred));
+        } while ((1U == IrcoscStatus) && (FALSE == TimeoutOccurred));
 
-        if (FALSE != TimeoutOccurred)
-        {
+        if (FALSE != TimeoutOccurred) {
             /* Report timeout error */
             Clock_Ip_ReportClockErrors(CLOCK_IP_REPORT_TIMEOUT_ERROR, Config->Name);
         }
     }
 }
 #endif
-
-
 
 /*==================================================================================================
 *                                        GLOBAL FUNCTIONS
@@ -429,17 +400,14 @@ void Clock_Ip_SetSirc_TrustedCall(Clock_Ip_IrcoscConfigType const* Config)
     uint32 IrcoscStatus;
     Clock_Ip_IrcoscConfigType SircConfig;
 
-    if (NULL_PTR == Config)
-    {
-        SircConfig.Name   = FIRC_CLK;
-        SircConfig.Range  = 1U;   /* 8MHz */
-        SircConfig.Enable = 1U;   /* enabled */
-        SircConfig.LowPowerModeEnable =1U;
-    }
-    else
-    {
-        SircConfig.Name   = Config->Name;
-        SircConfig.Range  = Config->Range;
+    if (NULL_PTR == Config) {
+        SircConfig.Name = FIRC_CLK;
+        SircConfig.Range = 1U;  /* 8MHz */
+        SircConfig.Enable = 1U; /* enabled */
+        SircConfig.LowPowerModeEnable = 1U;
+    } else {
+        SircConfig.Name = Config->Name;
+        SircConfig.Range = Config->Range;
         SircConfig.Enable = Config->Enable;
         SircConfig.LowPowerModeEnable = Config->LowPowerModeEnable;
     }
@@ -454,27 +422,23 @@ void Clock_Ip_SetSirc_TrustedCall(Clock_Ip_IrcoscConfigType const* Config)
     IP_SCG->SIRCCSR &= (~((uint32)SCG_SIRCCSR_SIRCLPEN_MASK));
 
     /* Check whether it is still locked */
-    if (1U == ((IP_SCG->SIRCCSR & SCG_SIRCCSR_SIRCVLD_MASK) >> SCG_SIRCCSR_SIRCVLD_SHIFT))
-    {
+    if (1U == ((IP_SCG->SIRCCSR & SCG_SIRCCSR_SIRCVLD_MASK) >> SCG_SIRCCSR_SIRCVLD_SHIFT)) {
         Clock_Ip_StartTimeout(&StartTime, &ElapsedTime, &TimeoutTicks, CLOCK_IP_TIMEOUT_VALUE_US);
         /* Wait until sirc is disabled */
-        do
-        {
-            IrcoscStatus = ((IP_SCG->SIRCCSR & SCG_SIRCCSR_SIRCVLD_MASK) >> SCG_SIRCCSR_SIRCVLD_SHIFT);
+        do {
+            IrcoscStatus =
+                ((IP_SCG->SIRCCSR & SCG_SIRCCSR_SIRCVLD_MASK) >> SCG_SIRCCSR_SIRCVLD_SHIFT);
             TimeoutOccurred = Clock_Ip_TimeoutExpired(&StartTime, &ElapsedTime, TimeoutTicks);
-        }
-        while ((1U == IrcoscStatus) && (FALSE == TimeoutOccurred));
+        } while ((1U == IrcoscStatus) && (FALSE == TimeoutOccurred));
 
-        if (FALSE != TimeoutOccurred)
-        {
+        if (FALSE != TimeoutOccurred) {
             /* Report timeout error */
             Clock_Ip_ReportClockErrors(CLOCK_IP_REPORT_TIMEOUT_ERROR, SircConfig.Name);
         }
     }
 
     /* Configure SIRC. */
-    if (1U == SircConfig.Enable)
-    {
+    if (1U == SircConfig.Enable) {
         /* Step frequency range. */
         IP_SCG->SIRCCFG = SCG_SIRCCFG_RANGE(SircConfig.Range);
 
@@ -486,15 +450,13 @@ void Clock_Ip_SetSirc_TrustedCall(Clock_Ip_IrcoscConfigType const* Config)
 
         Clock_Ip_StartTimeout(&StartTime, &ElapsedTime, &TimeoutTicks, CLOCK_IP_TIMEOUT_VALUE_US);
         /* Wait until ircosc is locked */
-        do
-        {
-            IrcoscStatus = (((IP_SCG->SIRCCSR & SCG_SIRCCSR_SIRCVLD_MASK) >> SCG_SIRCCSR_SIRCVLD_SHIFT));
+        do {
+            IrcoscStatus =
+                (((IP_SCG->SIRCCSR & SCG_SIRCCSR_SIRCVLD_MASK) >> SCG_SIRCCSR_SIRCVLD_SHIFT));
             TimeoutOccurred = Clock_Ip_TimeoutExpired(&StartTime, &ElapsedTime, TimeoutTicks);
-        }
-        while ((0U == IrcoscStatus) && (FALSE == TimeoutOccurred));
+        } while ((0U == IrcoscStatus) && (FALSE == TimeoutOccurred));
 
-        if (FALSE != TimeoutOccurred)
-        {
+        if (FALSE != TimeoutOccurred) {
             /* Report timeout error */
             Clock_Ip_ReportClockErrors(CLOCK_IP_REPORT_TIMEOUT_ERROR, SircConfig.Name);
         }
@@ -516,15 +478,13 @@ void Clock_Ip_EnableSirc_TrustedCall(Clock_Ip_IrcoscConfigType const* Config)
 
     Clock_Ip_StartTimeout(&StartTime, &ElapsedTime, &TimeoutTicks, CLOCK_IP_TIMEOUT_VALUE_US);
     /* Wait until ircosc is locked */
-    do
-    {
-        IrcoscStatus = (((IP_SCG->SIRCCSR & SCG_SIRCCSR_SIRCVLD_MASK) >> SCG_SIRCCSR_SIRCVLD_SHIFT));
+    do {
+        IrcoscStatus =
+            (((IP_SCG->SIRCCSR & SCG_SIRCCSR_SIRCVLD_MASK) >> SCG_SIRCCSR_SIRCVLD_SHIFT));
         TimeoutOccurred = Clock_Ip_TimeoutExpired(&StartTime, &ElapsedTime, TimeoutTicks);
-    }
-    while ((0U == IrcoscStatus) && (FALSE == TimeoutOccurred));
+    } while ((0U == IrcoscStatus) && (FALSE == TimeoutOccurred));
 
-    if (FALSE != TimeoutOccurred)
-    {
+    if (FALSE != TimeoutOccurred) {
         /* Report timeout error */
         Clock_Ip_ReportClockErrors(CLOCK_IP_REPORT_TIMEOUT_ERROR, Config->Name);
     }
@@ -545,26 +505,22 @@ void Clock_Ip_DisableSirc_TrustedCall(Clock_Ip_NameType Name)
     IP_SCG->SIRCCSR &= (~((uint32)SCG_SIRCCSR_SIRCLPEN_MASK));
 
     /* Check whether it is still locked */
-    if (1U == ((IP_SCG->SIRCCSR & SCG_SIRCCSR_SIRCVLD_MASK) >> SCG_SIRCCSR_SIRCVLD_SHIFT))
-    {
+    if (1U == ((IP_SCG->SIRCCSR & SCG_SIRCCSR_SIRCVLD_MASK) >> SCG_SIRCCSR_SIRCVLD_SHIFT)) {
         Clock_Ip_StartTimeout(&StartTime, &ElapsedTime, &TimeoutTicks, CLOCK_IP_TIMEOUT_VALUE_US);
         /* Wait until sirc is disabled */
-        do
-        {
-            IrcoscStatus = ((IP_SCG->SIRCCSR & SCG_SIRCCSR_SIRCVLD_MASK) >> SCG_SIRCCSR_SIRCVLD_SHIFT);
+        do {
+            IrcoscStatus =
+                ((IP_SCG->SIRCCSR & SCG_SIRCCSR_SIRCVLD_MASK) >> SCG_SIRCCSR_SIRCVLD_SHIFT);
             TimeoutOccurred = Clock_Ip_TimeoutExpired(&StartTime, &ElapsedTime, TimeoutTicks);
-        }
-        while ((1U == IrcoscStatus) && (FALSE == TimeoutOccurred));
+        } while ((1U == IrcoscStatus) && (FALSE == TimeoutOccurred));
 
-        if (FALSE != TimeoutOccurred)
-        {
+        if (FALSE != TimeoutOccurred) {
             /* Report timeout error */
             Clock_Ip_ReportClockErrors(CLOCK_IP_REPORT_TIMEOUT_ERROR, Name);
         }
     }
 }
 #endif
-
 
 #ifdef CLOCK_IP_SIRC_VLP_ENABLE
 void Clock_Ip_SetSircVlp_TrustedCall(Clock_Ip_IrcoscConfigType const* Config)
@@ -579,8 +535,7 @@ void Clock_Ip_SetSircVlp_TrustedCall(Clock_Ip_IrcoscConfigType const* Config)
 }
 void Clock_Ip_EnableSircVlp_TrustedCall(Clock_Ip_IrcoscConfigType const* Config)
 {
-    if (1U == Config->Enable)
-    {
+    if (1U == Config->Enable) {
         /* Enable clock in VLP mode */
         IP_SCG->SIRCCSR |= SCG_SIRCCSR_SIRCLPEN(1U);
     }
@@ -593,7 +548,6 @@ void Clock_Ip_DisableSircVlp_TrustedCall(Clock_Ip_NameType Name)
     IP_SCG->SIRCCSR &= (~((uint32)SCG_SIRCCSR_SIRCLPEN_MASK));
 }
 #endif
-
 
 #ifdef CLOCK_IP_SIRC_STOP_ENABLE
 void Clock_Ip_SetSircStop_TrustedCall(Clock_Ip_IrcoscConfigType const* Config)
@@ -610,8 +564,7 @@ void Clock_Ip_SetSircStop_TrustedCall(Clock_Ip_IrcoscConfigType const* Config)
 }
 void Clock_Ip_EnableSircStop_TrustedCall(Clock_Ip_IrcoscConfigType const* Config)
 {
-    if (1U == Config->Enable)
-    {
+    if (1U == Config->Enable) {
         /* Enable clock in VLP mode */
         IP_SCG->SIRCCSR |= SCG_SIRCCSR_SIRCSTEN(1U);
     }
@@ -624,7 +577,6 @@ void Clock_Ip_DisableSircStop_TrustedCall(Clock_Ip_NameType Name)
     IP_SCG->SIRCCSR &= (~((uint32)SCG_SIRCCSR_SIRCSTEN_MASK));
 }
 #endif
-
 
 #ifdef CLOCK_IP_FIRC_ENABLE
 void Clock_Ip_SetFirc_TrustedCall(Clock_Ip_IrcoscConfigType const* Config)
@@ -643,15 +595,14 @@ void Clock_Ip_SetFirc_TrustedCall(Clock_Ip_IrcoscConfigType const* Config)
     IP_SCG->FIRCCSR &= (uint32)(~(SCG_FIRCCSR_LK_MASK));
 
     /* Check that FIRC is used by system clock) */
-    if ((IP_SCG->FIRCCSR & SCG_FIRCCSR_FIRCSEL_MASK) != 0U)
-    {
+    if ((IP_SCG->FIRCCSR & SCG_FIRCCSR_FIRCSEL_MASK) != 0U) {
         /* Check whether FIRC is already configured as required */
-        if ( (Config->Range != ((IP_SCG->FIRCCFG & SCG_FIRCCFG_RANGE_MASK) >> SCG_FIRCCFG_RANGE_SHIFT)) ||
-            (Config->Regulator != ((IP_SCG->FIRCCSR & SCG_FIRCCSR_FIRCREGOFF_MASK) >> SCG_FIRCCSR_FIRCREGOFF_SHIFT)) )
-        {
+        if ((Config->Range !=
+             ((IP_SCG->FIRCCFG & SCG_FIRCCFG_RANGE_MASK) >> SCG_FIRCCFG_RANGE_SHIFT)) ||
+            (Config->Regulator !=
+             ((IP_SCG->FIRCCSR & SCG_FIRCCSR_FIRCREGOFF_MASK) >> SCG_FIRCCSR_FIRCREGOFF_SHIFT))) {
             /* Enable SIRC if it is disabled. */
-            if (0U == (IP_SCG->SIRCCSR & SCG_SIRCCSR_SIRCEN_MASK))
-            {
+            if (0U == (IP_SCG->SIRCCSR & SCG_SIRCCSR_SIRCEN_MASK)) {
                 SircWasDisabled = TRUE;
                 Clock_Ip_SetSirc(NULL_PTR);
             }
@@ -666,25 +617,25 @@ void Clock_Ip_SetFirc_TrustedCall(Clock_Ip_IrcoscConfigType const* Config)
             Clock_Ip_WaitUntilFircUnlocked(Config);
 
             /* Configure FIRC. */
-            if (1U == Config->Enable)
-            {
+            if (1U == Config->Enable) {
                 /* Step frequency range. */
                 IP_SCG->FIRCCFG = SCG_FIRCCFG_RANGE(Config->Range);
 
                 /* Enable clock. */
-                IP_SCG->FIRCCSR |= (SCG_FIRCCSR_FIRCEN(1U) | SCG_FIRCCSR_FIRCREGOFF(Config->Regulator));
+                IP_SCG->FIRCCSR |=
+                    (SCG_FIRCCSR_FIRCEN(1U) | SCG_FIRCCSR_FIRCREGOFF(Config->Regulator));
 
-                Clock_Ip_StartTimeout(&StartTime, &ElapsedTime, &TimeoutTicks, CLOCK_IP_TIMEOUT_VALUE_US);
+                Clock_Ip_StartTimeout(&StartTime, &ElapsedTime, &TimeoutTicks,
+                                      CLOCK_IP_TIMEOUT_VALUE_US);
                 /* Wait until ircosc is locked */
-                do
-                {
-                    IrcoscStatus = (((IP_SCG->FIRCCSR & SCG_FIRCCSR_FIRCVLD_MASK) >> SCG_FIRCCSR_FIRCVLD_SHIFT));
-                    TimeoutOccurred = Clock_Ip_TimeoutExpired(&StartTime, &ElapsedTime, TimeoutTicks);
-                }
-                while ((0U == IrcoscStatus) && (FALSE == TimeoutOccurred));
+                do {
+                    IrcoscStatus = (((IP_SCG->FIRCCSR & SCG_FIRCCSR_FIRCVLD_MASK) >>
+                                     SCG_FIRCCSR_FIRCVLD_SHIFT));
+                    TimeoutOccurred =
+                        Clock_Ip_TimeoutExpired(&StartTime, &ElapsedTime, TimeoutTicks);
+                } while ((0U == IrcoscStatus) && (FALSE == TimeoutOccurred));
 
-                if (FALSE != TimeoutOccurred)
-                {
+                if (FALSE != TimeoutOccurred) {
                     /* Report timeout error */
                     Clock_Ip_ReportClockErrors(CLOCK_IP_REPORT_TIMEOUT_ERROR, Config->Name);
                 }
@@ -692,15 +643,12 @@ void Clock_Ip_SetFirc_TrustedCall(Clock_Ip_IrcoscConfigType const* Config)
                 /* Switch back to FIRC */
                 SetInputSouceSytemClock(CLOCK_IP_FIRC_CLK_SOURCE);
 
-                if (SircWasDisabled)
-                {
+                if (SircWasDisabled) {
                     Clock_Ip_DisableSirc(SIRC_CLK);
                 }
             }
         }
-    }
-    else
-    {
+    } else {
         /* Configure FIRC. */
 
         /* Disable clock */
@@ -709,25 +657,23 @@ void Clock_Ip_SetFirc_TrustedCall(Clock_Ip_IrcoscConfigType const* Config)
         /* Check whether it is still locked */
         Clock_Ip_WaitUntilFircUnlocked(Config);
 
-        if (1U == Config->Enable)
-        {
+        if (1U == Config->Enable) {
             /* Step frequency range. */
             IP_SCG->FIRCCFG = SCG_FIRCCFG_RANGE(Config->Range);
 
             /* Enable clock. */
             IP_SCG->FIRCCSR |= (SCG_FIRCCSR_FIRCEN(1U) | SCG_FIRCCSR_FIRCREGOFF(Config->Regulator));
 
-            Clock_Ip_StartTimeout(&StartTime, &ElapsedTime, &TimeoutTicks, CLOCK_IP_TIMEOUT_VALUE_US);
+            Clock_Ip_StartTimeout(&StartTime, &ElapsedTime, &TimeoutTicks,
+                                  CLOCK_IP_TIMEOUT_VALUE_US);
             /* Wait until ircosc is locked */
-            do
-            {
-                IrcoscStatus = (((IP_SCG->FIRCCSR & SCG_FIRCCSR_FIRCVLD_MASK) >> SCG_FIRCCSR_FIRCVLD_SHIFT));
+            do {
+                IrcoscStatus =
+                    (((IP_SCG->FIRCCSR & SCG_FIRCCSR_FIRCVLD_MASK) >> SCG_FIRCCSR_FIRCVLD_SHIFT));
                 TimeoutOccurred = Clock_Ip_TimeoutExpired(&StartTime, &ElapsedTime, TimeoutTicks);
-            }
-            while ((0U == IrcoscStatus) && (FALSE == TimeoutOccurred));
+            } while ((0U == IrcoscStatus) && (FALSE == TimeoutOccurred));
 
-            if (FALSE != TimeoutOccurred)
-            {
+            if (FALSE != TimeoutOccurred) {
                 /* Report timeout error */
                 Clock_Ip_ReportClockErrors(CLOCK_IP_REPORT_TIMEOUT_ERROR, Config->Name);
             }
@@ -743,22 +689,19 @@ void Clock_Ip_EnableFirc_TrustedCall(Clock_Ip_IrcoscConfigType const* Config)
     uint32 TimeoutTicks;
     uint32 IrcoscStatus;
 
-    if (1U == Config->Enable)
-    {
+    if (1U == Config->Enable) {
         /* Enable clock. */
         IP_SCG->FIRCCSR |= SCG_FIRCCSR_FIRCEN(1U);
 
         Clock_Ip_StartTimeout(&StartTime, &ElapsedTime, &TimeoutTicks, CLOCK_IP_TIMEOUT_VALUE_US);
         /* Wait until ircosc is locked */
-        do
-        {
-            IrcoscStatus = (((IP_SCG->FIRCCSR & SCG_FIRCCSR_FIRCVLD_MASK) >> SCG_FIRCCSR_FIRCVLD_SHIFT));
+        do {
+            IrcoscStatus =
+                (((IP_SCG->FIRCCSR & SCG_FIRCCSR_FIRCVLD_MASK) >> SCG_FIRCCSR_FIRCVLD_SHIFT));
             TimeoutOccurred = Clock_Ip_TimeoutExpired(&StartTime, &ElapsedTime, TimeoutTicks);
-        }
-        while ((0U == IrcoscStatus) && (FALSE == TimeoutOccurred));
+        } while ((0U == IrcoscStatus) && (FALSE == TimeoutOccurred));
 
-        if (FALSE != TimeoutOccurred)
-        {
+        if (FALSE != TimeoutOccurred) {
             /* Report timeout error */
             Clock_Ip_ReportClockErrors(CLOCK_IP_REPORT_TIMEOUT_ERROR, Config->Name);
         }
@@ -771,36 +714,31 @@ void Clock_Ip_DisableFirc_TrustedCall(Clock_Ip_NameType Name)
     uint32 ElapsedTime;
     uint32 TimeoutTicks;
     uint32 IrcoscStatus;
-    (void) Name;
+    (void)Name;
 
     /* Clear LK bit field */
     IP_SCG->FIRCCSR &= (uint32)(~(SCG_FIRCCSR_LK_MASK));
-    
+
     /* Disable clock. */
     IP_SCG->FIRCCSR &= ~SCG_FIRCCSR_FIRCEN_MASK;
 
     /* Check whether it is still locked */
-    if (1U == ((IP_SCG->FIRCCSR & SCG_FIRCCSR_FIRCVLD_MASK) >> SCG_FIRCCSR_FIRCVLD_SHIFT))
-    {
+    if (1U == ((IP_SCG->FIRCCSR & SCG_FIRCCSR_FIRCVLD_MASK) >> SCG_FIRCCSR_FIRCVLD_SHIFT)) {
         Clock_Ip_StartTimeout(&StartTime, &ElapsedTime, &TimeoutTicks, CLOCK_IP_TIMEOUT_VALUE_US);
         /* Wait until firc is disabled */
-        do
-        {
-            IrcoscStatus = ((IP_SCG->FIRCCSR & SCG_FIRCCSR_FIRCVLD_MASK) >> SCG_FIRCCSR_FIRCVLD_SHIFT);
+        do {
+            IrcoscStatus =
+                ((IP_SCG->FIRCCSR & SCG_FIRCCSR_FIRCVLD_MASK) >> SCG_FIRCCSR_FIRCVLD_SHIFT);
             TimeoutOccurred = Clock_Ip_TimeoutExpired(&StartTime, &ElapsedTime, TimeoutTicks);
-        }
-        while ((1U == IrcoscStatus) && (FALSE == TimeoutOccurred));
+        } while ((1U == IrcoscStatus) && (FALSE == TimeoutOccurred));
 
-        if (FALSE != TimeoutOccurred)
-        {
+        if (FALSE != TimeoutOccurred) {
             /* Report timeout error */
             Clock_Ip_ReportClockErrors(CLOCK_IP_REPORT_TIMEOUT_ERROR, Name);
         }
     }
 }
 #endif
-
-
 
 /* Clock stop section code */
 #define MCU_STOP_SEC_CODE
@@ -815,48 +753,43 @@ void Clock_Ip_DisableFirc_TrustedCall(Clock_Ip_NameType Name)
 
 #include "Mcu_MemMap.h"
 
-const Clock_Ip_IntOscCallbackType Clock_Ip_axIntOscCallbacks[CLOCK_IP_IRCOSC_CALLBACKS_COUNT] =
-{
+const Clock_Ip_IntOscCallbackType Clock_Ip_axIntOscCallbacks[CLOCK_IP_IRCOSC_CALLBACKS_COUNT] = {
     {
-        &Clock_Ip_InternalOscillatorEmpty,          /* Set */
-        &Clock_Ip_InternalOscillatorEmpty,          /* Enable */
-        &Clock_Ip_InternalOscillatorEmpty_Disable,  /* Disable */
+        &Clock_Ip_InternalOscillatorEmpty,         /* Set */
+        &Clock_Ip_InternalOscillatorEmpty,         /* Enable */
+        &Clock_Ip_InternalOscillatorEmpty_Disable, /* Disable */
     },
 #ifdef CLOCK_IP_SIRC_ENABLE
     {
-        &Clock_Ip_SetSirc,                         /* Set */
-        &Clock_Ip_EnableSirc,                      /* Enable */
-        &Clock_Ip_DisableSirc,                     /* Disable */
+        &Clock_Ip_SetSirc,     /* Set */
+        &Clock_Ip_EnableSirc,  /* Enable */
+        &Clock_Ip_DisableSirc, /* Disable */
     },
 #endif
-
 
 #ifdef CLOCK_IP_SIRC_VLP_ENABLE
     {
-        &Clock_Ip_SetSircVlp,                      /* Set */
-        &Clock_Ip_EnableSircVlp,                   /* Enable */
-        &Clock_Ip_DisableSircVlp,                  /* Disable */
+        &Clock_Ip_SetSircVlp,     /* Set */
+        &Clock_Ip_EnableSircVlp,  /* Enable */
+        &Clock_Ip_DisableSircVlp, /* Disable */
     },
 #endif
-
 
 #ifdef CLOCK_IP_SIRC_STOP_ENABLE
     {
-        &Clock_Ip_SetSircStop,                      /* Set */
-        &Clock_Ip_EnableSircStop,                   /* Enable */
-        &Clock_Ip_DisableSircStop,                  /* Disable */
+        &Clock_Ip_SetSircStop,     /* Set */
+        &Clock_Ip_EnableSircStop,  /* Enable */
+        &Clock_Ip_DisableSircStop, /* Disable */
     },
 #endif
-
 
 #ifdef CLOCK_IP_FIRC_ENABLE
     {
-        &Clock_Ip_SetFirc,                          /* Set */
-        &Clock_Ip_EnableFirc,                       /* Enable */
-        &Clock_Ip_DisableFirc,                      /* Disable */
+        &Clock_Ip_SetFirc,     /* Set */
+        &Clock_Ip_EnableFirc,  /* Enable */
+        &Clock_Ip_DisableFirc, /* Disable */
     },
 #endif
-
 
 };
 

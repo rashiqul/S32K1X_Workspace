@@ -1,7 +1,7 @@
 /*==================================================================================================
 *   Project              : RTD AUTOSAR 4.7
 *   Platform             : CORTEXM
-*   Peripheral           : 
+*   Peripheral           :
 *   Dependencies         : none
 *
 *   Autosar Version      : 4.7.0
@@ -21,23 +21,21 @@
 *   activate or otherwise use the software.
 ==================================================================================================*/
 /**
-*   @file       Clock_Ip_VS_0_PBcfg.h
-*   @version    3.0.0
-*
-*   @brief   AUTOSAR Mcu - Post-Build(PB) configuration file code template.
-*   @details Code template for Post-Build(PB) configuration file generation.
-*
-*   @addtogroup CLOCK_DRIVER_CONFIGURATION Clock Driver
-*   @{
-*/
+ *   @file       Clock_Ip_VS_0_PBcfg.h
+ *   @version    3.0.0
+ *
+ *   @brief   AUTOSAR Mcu - Post-Build(PB) configuration file code template.
+ *   @details Code template for Post-Build(PB) configuration file generation.
+ *
+ *   @addtogroup CLOCK_DRIVER_CONFIGURATION Clock Driver
+ *   @{
+ */
 #ifndef CLOCK_IP_VS_0_PBCFG_H
 #define CLOCK_IP_VS_0_PBCFG_H
 
-
 #ifdef __cplusplus
-extern "C"{
+extern "C" {
 #endif
-
 
 /*==================================================================================================
                                          INCLUDE FILES
@@ -50,13 +48,13 @@ extern "C"{
 /*==================================================================================================
 *                              SOURCE FILE VERSION INFORMATION
 ==================================================================================================*/
-#define CLOCK_IP_VS_0_PBCFG_VENDOR_ID                      43
-#define CLOCK_IP_VS_0_PBCFG_AR_RELEASE_MAJOR_VERSION       4
-#define CLOCK_IP_VS_0_PBCFG_AR_RELEASE_MINOR_VERSION       7
-#define CLOCK_IP_VS_0_PBCFG_AR_RELEASE_REVISION_VERSION    0
-#define CLOCK_IP_VS_0_PBCFG_SW_MAJOR_VERSION               3
-#define CLOCK_IP_VS_0_PBCFG_SW_MINOR_VERSION               0
-#define CLOCK_IP_VS_0_PBCFG_SW_PATCH_VERSION               0
+#define CLOCK_IP_VS_0_PBCFG_VENDOR_ID 43
+#define CLOCK_IP_VS_0_PBCFG_AR_RELEASE_MAJOR_VERSION 4
+#define CLOCK_IP_VS_0_PBCFG_AR_RELEASE_MINOR_VERSION 7
+#define CLOCK_IP_VS_0_PBCFG_AR_RELEASE_REVISION_VERSION 0
+#define CLOCK_IP_VS_0_PBCFG_SW_MAJOR_VERSION 3
+#define CLOCK_IP_VS_0_PBCFG_SW_MINOR_VERSION 0
+#define CLOCK_IP_VS_0_PBCFG_SW_PATCH_VERSION 0
 
 /*==================================================================================================
 *                                     FILE VERSION CHECKS
@@ -64,26 +62,25 @@ extern "C"{
 #ifndef DISABLE_MCAL_INTERMODULE_ASR_CHECK
 /* Check if header file and Clock_Ip_Types.h file are of the same vendor */
 #if (CLOCK_IP_VS_0_PBCFG_VENDOR_ID != CLOCK_IP_TYPES_VENDOR_ID)
-    #error "Clock_Ip_VS_0_PBcfg.h and Clock_Ip_Types.h have different vendor ids"
+#error "Clock_Ip_VS_0_PBcfg.h and Clock_Ip_Types.h have different vendor ids"
 #endif
 
 /* Check if header file and Clock_Ip_Types.h file are of the same Autosar version */
-#if ((CLOCK_IP_VS_0_PBCFG_AR_RELEASE_MAJOR_VERSION != CLOCK_IP_TYPES_AR_RELEASE_MAJOR_VERSION) || \
-     (CLOCK_IP_VS_0_PBCFG_AR_RELEASE_MINOR_VERSION != CLOCK_IP_TYPES_AR_RELEASE_MINOR_VERSION) || \
-     (CLOCK_IP_VS_0_PBCFG_AR_RELEASE_REVISION_VERSION != CLOCK_IP_TYPES_AR_RELEASE_REVISION_VERSION) \
-    )
-    #error "AutoSar Version Numbers of Clock_Ip_VS_0_PBcfg.h and Clock_Ip_Types.h are different"
+#if ((CLOCK_IP_VS_0_PBCFG_AR_RELEASE_MAJOR_VERSION != CLOCK_IP_TYPES_AR_RELEASE_MAJOR_VERSION) ||  \
+     (CLOCK_IP_VS_0_PBCFG_AR_RELEASE_MINOR_VERSION != CLOCK_IP_TYPES_AR_RELEASE_MINOR_VERSION) ||  \
+     (CLOCK_IP_VS_0_PBCFG_AR_RELEASE_REVISION_VERSION !=                                           \
+      CLOCK_IP_TYPES_AR_RELEASE_REVISION_VERSION))
+#error "AutoSar Version Numbers of Clock_Ip_VS_0_PBcfg.h and Clock_Ip_Types.h are different"
 #endif
 
 /* Check if header file and Clock_Ip_Types.h file are of the same Software version */
-#if ((CLOCK_IP_VS_0_PBCFG_SW_MAJOR_VERSION != CLOCK_IP_TYPES_SW_MAJOR_VERSION) || \
-     (CLOCK_IP_VS_0_PBCFG_SW_MINOR_VERSION != CLOCK_IP_TYPES_SW_MINOR_VERSION) || \
-     (CLOCK_IP_VS_0_PBCFG_SW_PATCH_VERSION != CLOCK_IP_TYPES_SW_PATCH_VERSION) \
-    )
-    #error "Software Version Numbers of Clock_Ip_VS_0_PBcfg.h and Clock_Ip_Types.h are different"
+#if ((CLOCK_IP_VS_0_PBCFG_SW_MAJOR_VERSION != CLOCK_IP_TYPES_SW_MAJOR_VERSION) ||                  \
+     (CLOCK_IP_VS_0_PBCFG_SW_MINOR_VERSION != CLOCK_IP_TYPES_SW_MINOR_VERSION) ||                  \
+     (CLOCK_IP_VS_0_PBCFG_SW_PATCH_VERSION != CLOCK_IP_TYPES_SW_PATCH_VERSION))
+#error "Software Version Numbers of Clock_Ip_VS_0_PBcfg.h and Clock_Ip_Types.h are different"
 #endif
 
-#endif    /* DISABLE_MCAL_INTERMODULE_ASR_CHECK */
+#endif /* DISABLE_MCAL_INTERMODULE_ASR_CHECK */
 
 #define MCU_START_SEC_CONFIG_DATA_UNSPECIFIED
 #include "Mcu_MemMap.h"
@@ -103,5 +100,3 @@ extern const Clock_Ip_ClockConfigType Mcu_aClockConfigPB_VS_0[];
 #endif /* CLOCK_IP_VS_0_PBCFG_H */
 
 /** @} */
-
-

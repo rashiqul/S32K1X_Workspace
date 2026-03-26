@@ -12,11 +12,11 @@
 *
 * Copyright 2020-2025 NXP
 *
-* NXP Confidential and Proprietary. This software is owned or controlled by NXP and may only be 
-*   used strictly in accordance with the applicable license terms.  By expressly 
-*   accepting such terms or by downloading, installing, activating and/or otherwise 
-*   using the software, you are agreeing that you have read, and that you agree to 
-*   comply with and are bound by, such license terms.  If you do not agree to be 
+* NXP Confidential and Proprietary. This software is owned or controlled by NXP and may only be
+*   used strictly in accordance with the applicable license terms.  By expressly
+*   accepting such terms or by downloading, installing, activating and/or otherwise
+*   using the software, you are agreeing that you have read, and that you agree to
+*   comply with and are bound by, such license terms.  If you do not agree to be
 *   bound by the applicable license terms, then you may not retain, install,
 *   activate or otherwise use the software.
 ==================================================================================================*/
@@ -24,7 +24,7 @@
 #define OSIF_TIMER_SYSTEM_INTERNAL_SYSTICK
 
 #ifdef __cplusplus
-extern "C"{
+extern "C" {
 #endif
 
 /*==================================================================================================
@@ -38,33 +38,39 @@ extern "C"{
 /*==================================================================================================
 *                                 SOURCE FILE VERSION INFORMATION
 ==================================================================================================*/
-#define OSIF_TIMER_SYSTEM_INTERNAL_SYSTICK_VENDOR_ID                    43
-#define OSIF_TIMER_SYSTEM_INTERNAL_SYSTICK_AR_RELEASE_MAJOR_VERSION     4
-#define OSIF_TIMER_SYSTEM_INTERNAL_SYSTICK_AR_RELEASE_MINOR_VERSION     7
-#define OSIF_TIMER_SYSTEM_INTERNAL_SYSTICK_AR_RELEASE_REVISION_VERSION  0
-#define OSIF_TIMER_SYSTEM_INTERNAL_SYSTICK_SW_MAJOR_VERSION             3
-#define OSIF_TIMER_SYSTEM_INTERNAL_SYSTICK_SW_MINOR_VERSION             0
-#define OSIF_TIMER_SYSTEM_INTERNAL_SYSTICK_SW_PATCH_VERSION             0
+#define OSIF_TIMER_SYSTEM_INTERNAL_SYSTICK_VENDOR_ID 43
+#define OSIF_TIMER_SYSTEM_INTERNAL_SYSTICK_AR_RELEASE_MAJOR_VERSION 4
+#define OSIF_TIMER_SYSTEM_INTERNAL_SYSTICK_AR_RELEASE_MINOR_VERSION 7
+#define OSIF_TIMER_SYSTEM_INTERNAL_SYSTICK_AR_RELEASE_REVISION_VERSION 0
+#define OSIF_TIMER_SYSTEM_INTERNAL_SYSTICK_SW_MAJOR_VERSION 3
+#define OSIF_TIMER_SYSTEM_INTERNAL_SYSTICK_SW_MINOR_VERSION 0
+#define OSIF_TIMER_SYSTEM_INTERNAL_SYSTICK_SW_PATCH_VERSION 0
 
 /*==================================================================================================
 *                                       FILE VERSION CHECKS
 ==================================================================================================*/
 /* Check if OsIf_Timer_System_Internal_Systick.h file and OsIf_Cfg.h file are of the same vendor */
 #if (OSIF_TIMER_SYSTEM_INTERNAL_SYSTICK_VENDOR_ID != OSIF_CFG_VENDOR_ID)
-    #error "OsIf_Timer_System_Internal_Systick.h and OsIf_Cfg.h have different vendor ids"
+#error "OsIf_Timer_System_Internal_Systick.h and OsIf_Cfg.h have different vendor ids"
 #endif
-/* Check if OsIf_Timer_System_Internal_Systick.h file and OsIf_Cfg.h file are of the same Autosar version */
-#if ((OSIF_TIMER_SYSTEM_INTERNAL_SYSTICK_AR_RELEASE_MAJOR_VERSION    != OSIF_CFG_AR_RELEASE_MAJOR_VERSION) || \
-     (OSIF_TIMER_SYSTEM_INTERNAL_SYSTICK_AR_RELEASE_MINOR_VERSION    != OSIF_CFG_AR_RELEASE_MINOR_VERSION) || \
-     (OSIF_TIMER_SYSTEM_INTERNAL_SYSTICK_AR_RELEASE_REVISION_VERSION != OSIF_CFG_AR_RELEASE_REVISION_VERSION))
-    #error "AUTOSAR Version Numbers of OsIf_Timer_System_Internal_Systick.h and OsIf_Cfg.h are different"
+/* Check if OsIf_Timer_System_Internal_Systick.h file and OsIf_Cfg.h file are of the same Autosar
+ * version */
+#if ((OSIF_TIMER_SYSTEM_INTERNAL_SYSTICK_AR_RELEASE_MAJOR_VERSION !=                               \
+      OSIF_CFG_AR_RELEASE_MAJOR_VERSION) ||                                                        \
+     (OSIF_TIMER_SYSTEM_INTERNAL_SYSTICK_AR_RELEASE_MINOR_VERSION !=                               \
+      OSIF_CFG_AR_RELEASE_MINOR_VERSION) ||                                                        \
+     (OSIF_TIMER_SYSTEM_INTERNAL_SYSTICK_AR_RELEASE_REVISION_VERSION !=                            \
+      OSIF_CFG_AR_RELEASE_REVISION_VERSION))
+#error                                                                                             \
+    "AUTOSAR Version Numbers of OsIf_Timer_System_Internal_Systick.h and OsIf_Cfg.h are different"
 #endif
-/* Check if OsIf_Timer_System_Internal_Systick.h file and OsIf_Cfg.h file are of the same Software version */
-#if ((OSIF_TIMER_SYSTEM_INTERNAL_SYSTICK_SW_MAJOR_VERSION != OSIF_CFG_SW_MAJOR_VERSION) || \
-     (OSIF_TIMER_SYSTEM_INTERNAL_SYSTICK_SW_MINOR_VERSION != OSIF_CFG_SW_MINOR_VERSION) || \
-     (OSIF_TIMER_SYSTEM_INTERNAL_SYSTICK_SW_PATCH_VERSION != OSIF_CFG_SW_PATCH_VERSION) \
-    )
-    #error "Software Version Numbers of OsIf_Timer_System_Internal_Systick.h and OsIf_Cfg.h are different"
+/* Check if OsIf_Timer_System_Internal_Systick.h file and OsIf_Cfg.h file are of the same Software
+ * version */
+#if ((OSIF_TIMER_SYSTEM_INTERNAL_SYSTICK_SW_MAJOR_VERSION != OSIF_CFG_SW_MAJOR_VERSION) ||         \
+     (OSIF_TIMER_SYSTEM_INTERNAL_SYSTICK_SW_MINOR_VERSION != OSIF_CFG_SW_MINOR_VERSION) ||         \
+     (OSIF_TIMER_SYSTEM_INTERNAL_SYSTICK_SW_PATCH_VERSION != OSIF_CFG_SW_PATCH_VERSION))
+#error                                                                                             \
+    "Software Version Numbers of OsIf_Timer_System_Internal_Systick.h and OsIf_Cfg.h are different"
 #endif
 
 /*==================================================================================================
@@ -123,7 +129,7 @@ uint32 OsIf_Timer_System_Internal_GetCounter(void);
  * @param[in] CurrentRef - pointer to old counter value
  * @return elapsed time
  */
-uint32 OsIf_Timer_System_Internal_GetElapsed(uint32 * const CurrentRef);
+uint32 OsIf_Timer_System_Internal_GetElapsed(uint32* const CurrentRef);
 
 #define BASENXP_STOP_SEC_CODE
 #include "BaseNXP_MemMap.h"

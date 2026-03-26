@@ -12,30 +12,31 @@
 *
 *   Copyright 2020-2025 NXP
 *
-*   NXP Confidential and Proprietary. This software is owned or controlled by NXP and may only be 
-*   used strictly in accordance with the applicable license terms.  By expressly 
-*   accepting such terms or by downloading, installing, activating and/or otherwise 
-*   using the software, you are agreeing that you have read, and that you agree to 
-*   comply with and are bound by, such license terms.  If you do not agree to be 
+*   NXP Confidential and Proprietary. This software is owned or controlled by NXP and may only be
+*   used strictly in accordance with the applicable license terms.  By expressly
+*   accepting such terms or by downloading, installing, activating and/or otherwise
+*   using the software, you are agreeing that you have read, and that you agree to
+*   comply with and are bound by, such license terms.  If you do not agree to be
 *   bound by the applicable license terms, then you may not retain, install,
 *   activate or otherwise use the software.
 ==================================================================================================*/
 
 /**
-*   @file Adc_MemMap.h
-*   @implements     MemMap.h_Artifact
-*   @brief   Memory mapping specification.
-*   @details This document specifies mechanisms for the mapping of code and data to specific
-*            memory sections via memory mapping file. For many ECUs and microcontroller platforms
-*            it is of utmost necessity to be able to map code, variables and constants module
-*            wise to specific memory sections.
-*            This file contains sample code only. It is not part of the production code deliverables.
-*   @addtogroup BASENXP_COMPONENT
-*   @{
-*/
+ *   @file Adc_MemMap.h
+ *   @implements     MemMap.h_Artifact
+ *   @brief   Memory mapping specification.
+ *   @details This document specifies mechanisms for the mapping of code and data to specific
+ *            memory sections via memory mapping file. For many ECUs and microcontroller platforms
+ *            it is of utmost necessity to be able to map code, variables and constants module
+ *            wise to specific memory sections.
+ *            This file contains sample code only. It is not part of the production code
+ * deliverables.
+ *   @addtogroup BASENXP_COMPONENT
+ *   @{
+ */
 
 #ifdef __cplusplus
-extern "C"{
+extern "C" {
 #endif
 
 /*==================================================================================================
@@ -50,17 +51,17 @@ extern "C"{
 *                               SOURCE FILE VERSION INFORMATION
 ==================================================================================================*/
 /**
-* @{
-* @brief Parameters that shall be published within the memory map header file and also in the
-*       module's description file
-*/
-#define ADC_MEMMAP_VENDOR_ID                    43
-#define ADC_MEMMAP_AR_RELEASE_MAJOR_VERSION     4
-#define ADC_MEMMAP_AR_RELEASE_MINOR_VERSION     7
-#define ADC_MEMMAP_AR_RELEASE_REVISION_VERSION  0
-#define ADC_MEMMAP_SW_MAJOR_VERSION             3
-#define ADC_MEMMAP_SW_MINOR_VERSION             0
-#define ADC_MEMMAP_SW_PATCH_VERSION             0
+ * @{
+ * @brief Parameters that shall be published within the memory map header file and also in the
+ *       module's description file
+ */
+#define ADC_MEMMAP_VENDOR_ID 43
+#define ADC_MEMMAP_AR_RELEASE_MAJOR_VERSION 4
+#define ADC_MEMMAP_AR_RELEASE_MINOR_VERSION 7
+#define ADC_MEMMAP_AR_RELEASE_REVISION_VERSION 0
+#define ADC_MEMMAP_SW_MAJOR_VERSION 3
+#define ADC_MEMMAP_SW_MINOR_VERSION 0
+#define ADC_MEMMAP_SW_PATCH_VERSION 0
 /**@}*/
 /*==================================================================================================
                                       FILE VERSION CHECKS
@@ -74,10 +75,9 @@ extern "C"{
                                        DEFINES AND MACROS
 ==================================================================================================*/
 
-
 /**
-* @brief Symbol used for checking correctness of the includes
-*/
+ * @brief Symbol used for checking correctness of the includes
+ */
 #define MEMMAP_ERROR
 
 /**************************************************************************************************/
@@ -86,1609 +86,1609 @@ extern "C"{
 #ifdef _GREENHILLS_C_S32K1XX_
 /**************************************** ADC *******************************/
 #ifdef ADC_START_SEC_CONFIG_DATA_8
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_CONFIG_DATA_8
-    #define ENTERED_ADC_START_SEC_CONFIG_DATA_8
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_CONFIG_DATA_8
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma ghs section rodata=".mcal_const_cfg"
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_CONFIG_DATA_8
+#define ENTERED_ADC_START_SEC_CONFIG_DATA_8
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_CONFIG_DATA_8
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma ghs section rodata = ".mcal_const_cfg"
 #endif
 
 #ifdef ADC_STOP_SEC_CONFIG_DATA_8
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_CONFIG_DATA_8
-        #undef ENTERED_ADC_START_SEC_CONFIG_DATA_8
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_CONFIG_DATA_8
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma ghs section
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_CONFIG_DATA_8
+#undef ENTERED_ADC_START_SEC_CONFIG_DATA_8
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_CONFIG_DATA_8
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma ghs section
 #endif
 
 #ifdef ADC_START_SEC_CONFIG_DATA_16
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_CONFIG_DATA_16
-    #define ENTERED_ADC_START_SEC_CONFIG_DATA_16
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_CONFIG_DATA_16
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma ghs section rodata=".mcal_const_cfg"
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_CONFIG_DATA_16
+#define ENTERED_ADC_START_SEC_CONFIG_DATA_16
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_CONFIG_DATA_16
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma ghs section rodata = ".mcal_const_cfg"
 #endif
 
 #ifdef ADC_STOP_SEC_CONFIG_DATA_16
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_CONFIG_DATA_16
-        #undef ENTERED_ADC_START_SEC_CONFIG_DATA_16
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_CONFIG_DATA_16
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma ghs section
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_CONFIG_DATA_16
+#undef ENTERED_ADC_START_SEC_CONFIG_DATA_16
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_CONFIG_DATA_16
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma ghs section
 #endif
 
 #ifdef ADC_START_SEC_CONFIG_DATA_32
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_CONFIG_DATA_32
-    #define ENTERED_ADC_START_SEC_CONFIG_DATA_32
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_CONFIG_DATA_32
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma ghs section rodata=".mcal_const_cfg"
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_CONFIG_DATA_32
+#define ENTERED_ADC_START_SEC_CONFIG_DATA_32
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_CONFIG_DATA_32
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma ghs section rodata = ".mcal_const_cfg"
 #endif
 
 #ifdef ADC_STOP_SEC_CONFIG_DATA_32
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_CONFIG_DATA_32
-        #undef ENTERED_ADC_START_SEC_CONFIG_DATA_32
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_CONFIG_DATA_32
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma ghs section
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_CONFIG_DATA_32
+#undef ENTERED_ADC_START_SEC_CONFIG_DATA_32
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_CONFIG_DATA_32
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma ghs section
 #endif
 
 #ifdef ADC_START_SEC_CONFIG_DATA_UNSPECIFIED
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_CONFIG_DATA_UNSPECIFIED
-    #define ENTERED_ADC_START_SEC_CONFIG_DATA_UNSPECIFIED
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_CONFIG_DATA_UNSPECIFIED
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma ghs section rodata=".mcal_const_cfg"
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_CONFIG_DATA_UNSPECIFIED
+#define ENTERED_ADC_START_SEC_CONFIG_DATA_UNSPECIFIED
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_CONFIG_DATA_UNSPECIFIED
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma ghs section rodata = ".mcal_const_cfg"
 #endif
 
 #ifdef ADC_STOP_SEC_CONFIG_DATA_UNSPECIFIED
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_CONFIG_DATA_UNSPECIFIED
-        #undef ENTERED_ADC_START_SEC_CONFIG_DATA_UNSPECIFIED
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_CONFIG_DATA_UNSPECIFIED
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma ghs section
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_CONFIG_DATA_UNSPECIFIED
+#undef ENTERED_ADC_START_SEC_CONFIG_DATA_UNSPECIFIED
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_CONFIG_DATA_UNSPECIFIED
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma ghs section
 #endif
 
 #ifdef ADC_START_SEC_CONFIG_DATA_8_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_CONFIG_DATA_8_NO_CACHEABLE
-    #define ENTERED_ADC_START_SEC_CONFIG_DATA_8_NO_CACHEABLE
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_CONFIG_DATA_8_NO_CACHEABLE
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma ghs section rodata=".mcal_const_no_cacheable"
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_CONFIG_DATA_8_NO_CACHEABLE
+#define ENTERED_ADC_START_SEC_CONFIG_DATA_8_NO_CACHEABLE
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_CONFIG_DATA_8_NO_CACHEABLE
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma ghs section rodata = ".mcal_const_no_cacheable"
 #endif
 
 #ifdef ADC_STOP_SEC_CONFIG_DATA_8_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_CONFIG_DATA_8_NO_CACHEABLE
-        #undef ENTERED_ADC_START_SEC_CONFIG_DATA_8_NO_CACHEABLE
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_CONFIG_DATA_8_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma ghs section
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_CONFIG_DATA_8_NO_CACHEABLE
+#undef ENTERED_ADC_START_SEC_CONFIG_DATA_8_NO_CACHEABLE
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_CONFIG_DATA_8_NO_CACHEABLE
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma ghs section
 #endif
 
 #ifdef ADC_START_SEC_CONFIG_DATA_16_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_CONFIG_DATA_16_NO_CACHEABLE
-    #define ENTERED_ADC_START_SEC_CONFIG_DATA_16_NO_CACHEABLE
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_CONFIG_DATA_16_NO_CACHEABLE
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma ghs section rodata=".mcal_const_no_cacheable"
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_CONFIG_DATA_16_NO_CACHEABLE
+#define ENTERED_ADC_START_SEC_CONFIG_DATA_16_NO_CACHEABLE
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_CONFIG_DATA_16_NO_CACHEABLE
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma ghs section rodata = ".mcal_const_no_cacheable"
 #endif
 
 #ifdef ADC_STOP_SEC_CONFIG_DATA_16_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_CONFIG_DATA_16_NO_CACHEABLE
-        #undef ENTERED_ADC_START_SEC_CONFIG_DATA_16_NO_CACHEABLE
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_CONFIG_DATA_16_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma ghs section
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_CONFIG_DATA_16_NO_CACHEABLE
+#undef ENTERED_ADC_START_SEC_CONFIG_DATA_16_NO_CACHEABLE
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_CONFIG_DATA_16_NO_CACHEABLE
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma ghs section
 #endif
 
 #ifdef ADC_START_SEC_CONFIG_DATA_32_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_CONFIG_DATA_32_NO_CACHEABLE
-    #define ENTERED_ADC_START_SEC_CONFIG_DATA_32_NO_CACHEABLE
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_CONFIG_DATA_32_NO_CACHEABLE
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma ghs section rodata=".mcal_const_no_cacheable"
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_CONFIG_DATA_32_NO_CACHEABLE
+#define ENTERED_ADC_START_SEC_CONFIG_DATA_32_NO_CACHEABLE
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_CONFIG_DATA_32_NO_CACHEABLE
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma ghs section rodata = ".mcal_const_no_cacheable"
 #endif
 
 #ifdef ADC_STOP_SEC_CONFIG_DATA_32_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_CONFIG_DATA_32_NO_CACHEABLE
-        #undef ENTERED_ADC_START_SEC_CONFIG_DATA_32_NO_CACHEABLE
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_CONFIG_DATA_32_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma ghs section
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_CONFIG_DATA_32_NO_CACHEABLE
+#undef ENTERED_ADC_START_SEC_CONFIG_DATA_32_NO_CACHEABLE
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_CONFIG_DATA_32_NO_CACHEABLE
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma ghs section
 #endif
 
 #ifdef ADC_START_SEC_CONFIG_DATA_UNSPECIFIED_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_CONFIG_DATA_UNSPECIFIED_NO_CACHEABLE
-    #define ENTERED_ADC_START_SEC_CONFIG_DATA_UNSPECIFIED_NO_CACHEABLE
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_CONFIG_DATA_UNSPECIFIED_NO_CACHEABLE
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma ghs section rodata=".mcal_const_no_cacheable"
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_CONFIG_DATA_UNSPECIFIED_NO_CACHEABLE
+#define ENTERED_ADC_START_SEC_CONFIG_DATA_UNSPECIFIED_NO_CACHEABLE
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_CONFIG_DATA_UNSPECIFIED_NO_CACHEABLE
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma ghs section rodata = ".mcal_const_no_cacheable"
 #endif
 
 #ifdef ADC_STOP_SEC_CONFIG_DATA_UNSPECIFIED_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_CONFIG_DATA_UNSPECIFIED_NO_CACHEABLE
-        #undef ENTERED_ADC_START_SEC_CONFIG_DATA_UNSPECIFIED_NO_CACHEABLE
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_CONFIG_DATA_UNSPECIFIED_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma ghs section
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_CONFIG_DATA_UNSPECIFIED_NO_CACHEABLE
+#undef ENTERED_ADC_START_SEC_CONFIG_DATA_UNSPECIFIED_NO_CACHEABLE
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_CONFIG_DATA_UNSPECIFIED_NO_CACHEABLE
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma ghs section
 #endif
 
 #ifdef ADC_START_SEC_CONST_BOOLEAN
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_CONST_BOOLEAN
-    #define ENTERED_ADC_START_SEC_CONST_BOOLEAN
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_CONST_BOOLEAN
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma ghs section rodata=".mcal_const"
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_CONST_BOOLEAN
+#define ENTERED_ADC_START_SEC_CONST_BOOLEAN
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_CONST_BOOLEAN
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma ghs section rodata = ".mcal_const"
 #endif
 
 #ifdef ADC_STOP_SEC_CONST_BOOLEAN
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_CONST_BOOLEAN
-        #undef ENTERED_ADC_START_SEC_CONST_BOOLEAN
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_CONST_BOOLEAN
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma ghs section
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_CONST_BOOLEAN
+#undef ENTERED_ADC_START_SEC_CONST_BOOLEAN
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_CONST_BOOLEAN
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma ghs section
 #endif
 
 #ifdef ADC_START_SEC_CONST_8
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_CONST_8
-    #define ENTERED_ADC_START_SEC_CONST_8
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_CONST_8
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma ghs section rodata=".mcal_const"
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_CONST_8
+#define ENTERED_ADC_START_SEC_CONST_8
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_CONST_8
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma ghs section rodata = ".mcal_const"
 #endif
 
 #ifdef ADC_STOP_SEC_CONST_8
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_CONST_8
-        #undef ENTERED_ADC_START_SEC_CONST_8
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_CONST_8
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma ghs section
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_CONST_8
+#undef ENTERED_ADC_START_SEC_CONST_8
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_CONST_8
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma ghs section
 #endif
 
 #ifdef ADC_START_SEC_CONST_16
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_CONST_16
-    #define ENTERED_ADC_START_SEC_CONST_16
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_CONST_16
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma ghs section rodata=".mcal_const"
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_CONST_16
+#define ENTERED_ADC_START_SEC_CONST_16
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_CONST_16
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma ghs section rodata = ".mcal_const"
 #endif
 
 #ifdef ADC_STOP_SEC_CONST_16
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_CONST_16
-        #undef ENTERED_ADC_START_SEC_CONST_16
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_CONST_16
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma ghs section
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_CONST_16
+#undef ENTERED_ADC_START_SEC_CONST_16
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_CONST_16
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma ghs section
 #endif
 
 #ifdef ADC_START_SEC_CONST_32
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_CONST_32
-    #define ENTERED_ADC_START_SEC_CONST_32
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_CONST_32
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma ghs section rodata=".mcal_const"
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_CONST_32
+#define ENTERED_ADC_START_SEC_CONST_32
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_CONST_32
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma ghs section rodata = ".mcal_const"
 #endif
 
 #ifdef ADC_STOP_SEC_CONST_32
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_CONST_32
-        #undef ENTERED_ADC_START_SEC_CONST_32
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_CONST_32
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma ghs section
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_CONST_32
+#undef ENTERED_ADC_START_SEC_CONST_32
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_CONST_32
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma ghs section
 #endif
 
 #ifdef ADC_START_SEC_CONST_UNSPECIFIED
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_CONST_UNSPECIFIED
-    #define ENTERED_ADC_START_SEC_CONST_UNSPECIFIED
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_CONST_UNSPECIFIED
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma ghs section rodata=".mcal_const"
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_CONST_UNSPECIFIED
+#define ENTERED_ADC_START_SEC_CONST_UNSPECIFIED
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_CONST_UNSPECIFIED
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma ghs section rodata = ".mcal_const"
 #endif
 
 #ifdef ADC_STOP_SEC_CONST_UNSPECIFIED
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_CONST_UNSPECIFIED
-        #undef ENTERED_ADC_START_SEC_CONST_UNSPECIFIED
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_CONST_UNSPECIFIED
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma ghs section
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_CONST_UNSPECIFIED
+#undef ENTERED_ADC_START_SEC_CONST_UNSPECIFIED
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_CONST_UNSPECIFIED
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma ghs section
 #endif
 
 #ifdef ADC_START_SEC_CODE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_CODE
-    #define ENTERED_ADC_START_SEC_CODE
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_CODE
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma ghs section text=".mcal_text"
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_CODE
+#define ENTERED_ADC_START_SEC_CODE
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_CODE
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma ghs section text = ".mcal_text"
 #endif
 
 #ifdef ADC_STOP_SEC_CODE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_CODE
-        #undef ENTERED_ADC_START_SEC_CODE
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_CODE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma ghs section
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_CODE
+#undef ENTERED_ADC_START_SEC_CODE
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_CODE
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma ghs section
 #endif
 
 #ifdef ADC_START_SEC_RAMCODE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_RAMCODE
-    #define ENTERED_ADC_START_SEC_RAMCODE
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_RAMCODE
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma ghs section text=".ramcode"
-    #pragma ghs inlineprologue
-    #pragma ghs callmode=far
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_RAMCODE
+#define ENTERED_ADC_START_SEC_RAMCODE
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_RAMCODE
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma ghs section text = ".ramcode"
+#pragma ghs inlineprologue
+#pragma ghs callmode = far
 #endif
 
 #ifdef ADC_STOP_SEC_RAMCODE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_RAMCODE
-        #undef ENTERED_ADC_START_SEC_RAMCODE
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_RAMCODE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma ghs section
-    #pragma ghs noinlineprologue
-    #pragma ghs callmode=default
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_RAMCODE
+#undef ENTERED_ADC_START_SEC_RAMCODE
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_RAMCODE
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma ghs section
+#pragma ghs noinlineprologue
+#pragma ghs callmode = default
 #endif
 
 #ifdef ADC_START_SEC_CODE_AC
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_CODE_AC
-    #define ENTERED_ADC_START_SEC_CODE_AC
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_CODE_AC
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma ghs section text=".acadc_code_rom"
-    #pragma ghs inlineprologue
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_CODE_AC
+#define ENTERED_ADC_START_SEC_CODE_AC
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_CODE_AC
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma ghs section text = ".acadc_code_rom"
+#pragma ghs inlineprologue
 #endif
 
 #ifdef ADC_STOP_SEC_CODE_AC
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_CODE_AC
-        #undef ENTERED_ADC_START_SEC_CODE_AC
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_CODE_AC
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma ghs section
-    #pragma ghs noinlineprologue
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_CODE_AC
+#undef ENTERED_ADC_START_SEC_CODE_AC
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_CODE_AC
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma ghs section
+#pragma ghs noinlineprologue
 #endif
 
 #ifdef ADC_START_SEC_VAR_CLEARED_BOOLEAN
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_VAR_CLEARED_BOOLEAN
-    #define ENTERED_ADC_START_SEC_VAR_CLEARED_BOOLEAN
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_VAR_CLEARED_BOOLEAN
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma ghs section bss=".mcal_bss"
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_VAR_CLEARED_BOOLEAN
+#define ENTERED_ADC_START_SEC_VAR_CLEARED_BOOLEAN
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_VAR_CLEARED_BOOLEAN
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma ghs section bss = ".mcal_bss"
 #endif
 
 #ifdef ADC_STOP_SEC_VAR_CLEARED_BOOLEAN
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_VAR_CLEARED_BOOLEAN
-        #undef ENTERED_ADC_START_SEC_VAR_CLEARED_BOOLEAN
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_VAR_CLEARED_BOOLEAN
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma ghs section
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_VAR_CLEARED_BOOLEAN
+#undef ENTERED_ADC_START_SEC_VAR_CLEARED_BOOLEAN
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_VAR_CLEARED_BOOLEAN
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma ghs section
 #endif
 
 #ifdef ADC_START_SEC_VAR_CLEARED_8
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_VAR_CLEARED_8
-    #define ENTERED_ADC_START_SEC_VAR_CLEARED_8
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_VAR_CLEARED_8
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma ghs section bss=".mcal_bss"
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_VAR_CLEARED_8
+#define ENTERED_ADC_START_SEC_VAR_CLEARED_8
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_VAR_CLEARED_8
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma ghs section bss = ".mcal_bss"
 #endif
 
 #ifdef ADC_STOP_SEC_VAR_CLEARED_8
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_VAR_CLEARED_8
-        #undef ENTERED_ADC_START_SEC_VAR_CLEARED_8
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_VAR_CLEARED_8
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma ghs section
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_VAR_CLEARED_8
+#undef ENTERED_ADC_START_SEC_VAR_CLEARED_8
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_VAR_CLEARED_8
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma ghs section
 #endif
 
 #ifdef ADC_START_SEC_VAR_CLEARED_16
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_VAR_CLEARED_16
-    #define ENTERED_ADC_START_SEC_VAR_CLEARED_16
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_VAR_CLEARED_16
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma ghs section bss=".mcal_bss"
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_VAR_CLEARED_16
+#define ENTERED_ADC_START_SEC_VAR_CLEARED_16
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_VAR_CLEARED_16
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma ghs section bss = ".mcal_bss"
 #endif
 
 #ifdef ADC_STOP_SEC_VAR_CLEARED_16
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_VAR_CLEARED_16
-        #undef ENTERED_ADC_START_SEC_VAR_CLEARED_16
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_VAR_CLEARED_16
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma ghs section
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_VAR_CLEARED_16
+#undef ENTERED_ADC_START_SEC_VAR_CLEARED_16
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_VAR_CLEARED_16
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma ghs section
 #endif
 
 #ifdef ADC_START_SEC_VAR_CLEARED_32
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_VAR_CLEARED_32
-    #define ENTERED_ADC_START_SEC_VAR_CLEARED_32
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_VAR_CLEARED_32
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma ghs section bss=".mcal_bss"
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_VAR_CLEARED_32
+#define ENTERED_ADC_START_SEC_VAR_CLEARED_32
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_VAR_CLEARED_32
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma ghs section bss = ".mcal_bss"
 #endif
 
 #ifdef ADC_STOP_SEC_VAR_CLEARED_32
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_VAR_CLEARED_32
-        #undef ENTERED_ADC_START_SEC_VAR_CLEARED_32
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_VAR_CLEARED_32
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma ghs section
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_VAR_CLEARED_32
+#undef ENTERED_ADC_START_SEC_VAR_CLEARED_32
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_VAR_CLEARED_32
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma ghs section
 #endif
 
 #ifdef ADC_START_SEC_VAR_CLEARED_UNSPECIFIED
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_VAR_CLEARED_UNSPECIFIED
-    #define ENTERED_ADC_START_SEC_VAR_CLEARED_UNSPECIFIED
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_VAR_CLEARED_UNSPECIFIED
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma ghs section bss=".mcal_bss"
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_VAR_CLEARED_UNSPECIFIED
+#define ENTERED_ADC_START_SEC_VAR_CLEARED_UNSPECIFIED
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_VAR_CLEARED_UNSPECIFIED
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma ghs section bss = ".mcal_bss"
 #endif
 
 #ifdef ADC_STOP_SEC_VAR_CLEARED_UNSPECIFIED
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_VAR_CLEARED_UNSPECIFIED
-        #undef ENTERED_ADC_START_SEC_VAR_CLEARED_UNSPECIFIED
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_VAR_CLEARED_UNSPECIFIED
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma ghs section
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_VAR_CLEARED_UNSPECIFIED
+#undef ENTERED_ADC_START_SEC_VAR_CLEARED_UNSPECIFIED
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_VAR_CLEARED_UNSPECIFIED
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma ghs section
 #endif
 
 #ifdef ADC_START_SEC_VAR_INIT_BOOLEAN
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_VAR_INIT_BOOLEAN
-    #define ENTERED_ADC_START_SEC_VAR_INIT_BOOLEAN
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_VAR_INIT_BOOLEAN
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma ghs section data=".mcal_data" bss=".mcal_bss"
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_VAR_INIT_BOOLEAN
+#define ENTERED_ADC_START_SEC_VAR_INIT_BOOLEAN
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_VAR_INIT_BOOLEAN
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma ghs section data = ".mcal_data" bss = ".mcal_bss"
 #endif
 
 #ifdef ADC_STOP_SEC_VAR_INIT_BOOLEAN
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_VAR_INIT_BOOLEAN
-        #undef ENTERED_ADC_START_SEC_VAR_INIT_BOOLEAN
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_VAR_INIT_BOOLEAN
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma ghs section
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_VAR_INIT_BOOLEAN
+#undef ENTERED_ADC_START_SEC_VAR_INIT_BOOLEAN
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_VAR_INIT_BOOLEAN
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma ghs section
 #endif
 
 #ifdef ADC_START_SEC_VAR_INIT_8
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_VAR_INIT_8
-    #define ENTERED_ADC_START_SEC_VAR_INIT_8
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_VAR_INIT_8
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma ghs section data=".mcal_data" bss=".mcal_bss"
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_VAR_INIT_8
+#define ENTERED_ADC_START_SEC_VAR_INIT_8
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_VAR_INIT_8
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma ghs section data = ".mcal_data" bss = ".mcal_bss"
 #endif
 
 #ifdef ADC_STOP_SEC_VAR_INIT_8
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_VAR_INIT_8
-        #undef ENTERED_ADC_START_SEC_VAR_INIT_8
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_VAR_INIT_8
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma ghs section
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_VAR_INIT_8
+#undef ENTERED_ADC_START_SEC_VAR_INIT_8
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_VAR_INIT_8
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma ghs section
 #endif
 
 #ifdef ADC_START_SEC_VAR_INIT_16
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_VAR_INIT_16
-    #define ENTERED_ADC_START_SEC_VAR_INIT_16
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_VAR_INIT_16
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma ghs section data=".mcal_data" bss=".mcal_bss"
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_VAR_INIT_16
+#define ENTERED_ADC_START_SEC_VAR_INIT_16
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_VAR_INIT_16
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma ghs section data = ".mcal_data" bss = ".mcal_bss"
 #endif
 
 #ifdef ADC_STOP_SEC_VAR_INIT_16
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_VAR_INIT_16
-        #undef ENTERED_ADC_START_SEC_VAR_INIT_16
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_VAR_INIT_16
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma ghs section
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_VAR_INIT_16
+#undef ENTERED_ADC_START_SEC_VAR_INIT_16
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_VAR_INIT_16
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma ghs section
 #endif
 
 #ifdef ADC_START_SEC_VAR_INIT_32
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_VAR_INIT_32
-    #define ENTERED_ADC_START_SEC_VAR_INIT_32
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_VAR_INIT_32
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma ghs section data=".mcal_data" bss=".mcal_bss"
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_VAR_INIT_32
+#define ENTERED_ADC_START_SEC_VAR_INIT_32
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_VAR_INIT_32
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma ghs section data = ".mcal_data" bss = ".mcal_bss"
 #endif
 
 #ifdef ADC_STOP_SEC_VAR_INIT_32
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_VAR_INIT_32
-        #undef ENTERED_ADC_START_SEC_VAR_INIT_32
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_VAR_INIT_32
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma ghs section
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_VAR_INIT_32
+#undef ENTERED_ADC_START_SEC_VAR_INIT_32
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_VAR_INIT_32
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma ghs section
 #endif
 
 #ifdef ADC_START_SEC_VAR_INIT_UNSPECIFIED
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_VAR_INIT_UNSPECIFIED
-    #define ENTERED_ADC_START_SEC_VAR_INIT_UNSPECIFIED
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_VAR_INIT_UNSPECIFIED
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma ghs section data=".mcal_data" bss=".mcal_bss"
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_VAR_INIT_UNSPECIFIED
+#define ENTERED_ADC_START_SEC_VAR_INIT_UNSPECIFIED
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_VAR_INIT_UNSPECIFIED
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma ghs section data = ".mcal_data" bss = ".mcal_bss"
 #endif
 
 #ifdef ADC_STOP_SEC_VAR_INIT_UNSPECIFIED
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_VAR_INIT_UNSPECIFIED
-        #undef ENTERED_ADC_START_SEC_VAR_INIT_UNSPECIFIED
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_VAR_INIT_UNSPECIFIED
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma ghs section
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_VAR_INIT_UNSPECIFIED
+#undef ENTERED_ADC_START_SEC_VAR_INIT_UNSPECIFIED
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_VAR_INIT_UNSPECIFIED
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma ghs section
 #endif
 
 #ifdef ADC_START_SEC_VAR_CLEARED_BOOLEAN_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_VAR_CLEARED_BOOLEAN_NO_CACHEABLE
-    #define ENTERED_ADC_START_SEC_VAR_CLEARED_BOOLEAN_NO_CACHEABLE
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_VAR_CLEARED_BOOLEAN_NO_CACHEABLE
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma ghs section bss=".mcal_bss_no_cacheable"
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_VAR_CLEARED_BOOLEAN_NO_CACHEABLE
+#define ENTERED_ADC_START_SEC_VAR_CLEARED_BOOLEAN_NO_CACHEABLE
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_VAR_CLEARED_BOOLEAN_NO_CACHEABLE
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma ghs section bss = ".mcal_bss_no_cacheable"
 #endif
 
 #ifdef ADC_STOP_SEC_VAR_CLEARED_BOOLEAN_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_VAR_CLEARED_BOOLEAN_NO_CACHEABLE
-        #undef ENTERED_ADC_START_SEC_VAR_CLEARED_BOOLEAN_NO_CACHEABLE
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_VAR_CLEARED_BOOLEAN_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma ghs section
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_VAR_CLEARED_BOOLEAN_NO_CACHEABLE
+#undef ENTERED_ADC_START_SEC_VAR_CLEARED_BOOLEAN_NO_CACHEABLE
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_VAR_CLEARED_BOOLEAN_NO_CACHEABLE
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma ghs section
 #endif
 
 #ifdef ADC_START_SEC_VAR_CLEARED_8_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_VAR_CLEARED_8_NO_CACHEABLE
-    #define ENTERED_ADC_START_SEC_VAR_CLEARED_8_NO_CACHEABLE
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_VAR_CLEARED_8_NO_CACHEABLE
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma ghs section bss=".mcal_bss_no_cacheable"
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_VAR_CLEARED_8_NO_CACHEABLE
+#define ENTERED_ADC_START_SEC_VAR_CLEARED_8_NO_CACHEABLE
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_VAR_CLEARED_8_NO_CACHEABLE
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma ghs section bss = ".mcal_bss_no_cacheable"
 #endif
 
 #ifdef ADC_STOP_SEC_VAR_CLEARED_8_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_VAR_CLEARED_8_NO_CACHEABLE
-        #undef ENTERED_ADC_START_SEC_VAR_CLEARED_8_NO_CACHEABLE
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_VAR_CLEARED_8_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma ghs section
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_VAR_CLEARED_8_NO_CACHEABLE
+#undef ENTERED_ADC_START_SEC_VAR_CLEARED_8_NO_CACHEABLE
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_VAR_CLEARED_8_NO_CACHEABLE
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma ghs section
 #endif
 
 #ifdef ADC_START_SEC_VAR_CLEARED_16_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_VAR_CLEARED_16_NO_CACHEABLE
-    #define ENTERED_ADC_START_SEC_VAR_CLEARED_16_NO_CACHEABLE
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_VAR_CLEARED_16_NO_CACHEABLE
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma ghs section bss=".mcal_bss_no_cacheable"
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_VAR_CLEARED_16_NO_CACHEABLE
+#define ENTERED_ADC_START_SEC_VAR_CLEARED_16_NO_CACHEABLE
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_VAR_CLEARED_16_NO_CACHEABLE
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma ghs section bss = ".mcal_bss_no_cacheable"
 #endif
 
 #ifdef ADC_STOP_SEC_VAR_CLEARED_16_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_VAR_CLEARED_16_NO_CACHEABLE
-        #undef ENTERED_ADC_START_SEC_VAR_CLEARED_16_NO_CACHEABLE
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_VAR_CLEARED_16_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma ghs section
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_VAR_CLEARED_16_NO_CACHEABLE
+#undef ENTERED_ADC_START_SEC_VAR_CLEARED_16_NO_CACHEABLE
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_VAR_CLEARED_16_NO_CACHEABLE
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma ghs section
 #endif
 
 #ifdef ADC_START_SEC_VAR_CLEARED_32_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_VAR_CLEARED_32_NO_CACHEABLE
-    #define ENTERED_ADC_START_SEC_VAR_CLEARED_32_NO_CACHEABLE
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_VAR_CLEARED_32_NO_CACHEABLE
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma ghs section bss=".mcal_bss_no_cacheable"
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_VAR_CLEARED_32_NO_CACHEABLE
+#define ENTERED_ADC_START_SEC_VAR_CLEARED_32_NO_CACHEABLE
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_VAR_CLEARED_32_NO_CACHEABLE
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma ghs section bss = ".mcal_bss_no_cacheable"
 #endif
 
 #ifdef ADC_STOP_SEC_VAR_CLEARED_32_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_VAR_CLEARED_32_NO_CACHEABLE
-        #undef ENTERED_ADC_START_SEC_VAR_CLEARED_32_NO_CACHEABLE
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_VAR_CLEARED_32_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma ghs section
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_VAR_CLEARED_32_NO_CACHEABLE
+#undef ENTERED_ADC_START_SEC_VAR_CLEARED_32_NO_CACHEABLE
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_VAR_CLEARED_32_NO_CACHEABLE
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma ghs section
 #endif
 
 #ifdef ADC_START_SEC_VAR_CLEARED_UNSPECIFIED_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_VAR_CLEARED_UNSPECIFIED_NO_CACHEABLE
-    #define ENTERED_ADC_START_SEC_VAR_CLEARED_UNSPECIFIED_NO_CACHEABLE
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_VAR_CLEARED_UNSPECIFIED_NO_CACHEABLE
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma ghs section bss=".mcal_bss_no_cacheable"
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_VAR_CLEARED_UNSPECIFIED_NO_CACHEABLE
+#define ENTERED_ADC_START_SEC_VAR_CLEARED_UNSPECIFIED_NO_CACHEABLE
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_VAR_CLEARED_UNSPECIFIED_NO_CACHEABLE
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma ghs section bss = ".mcal_bss_no_cacheable"
 #endif
 
 #ifdef ADC_STOP_SEC_VAR_CLEARED_UNSPECIFIED_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_VAR_CLEARED_UNSPECIFIED_NO_CACHEABLE
-        #undef ENTERED_ADC_START_SEC_VAR_CLEARED_UNSPECIFIED_NO_CACHEABLE
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_VAR_CLEARED_UNSPECIFIED_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma ghs section
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_VAR_CLEARED_UNSPECIFIED_NO_CACHEABLE
+#undef ENTERED_ADC_START_SEC_VAR_CLEARED_UNSPECIFIED_NO_CACHEABLE
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_VAR_CLEARED_UNSPECIFIED_NO_CACHEABLE
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma ghs section
 #endif
 
 #ifdef ADC_START_SEC_VAR_INIT_BOOLEAN_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_VAR_INIT_BOOLEAN_NO_CACHEABLE
-    #define ENTERED_ADC_START_SEC_VAR_INIT_BOOLEAN_NO_CACHEABLE
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_VAR_INIT_BOOLEAN_NO_CACHEABLE
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma ghs section data=".mcal_data_no_cacheable" bss=".mcal_bss_no_cacheable"
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_VAR_INIT_BOOLEAN_NO_CACHEABLE
+#define ENTERED_ADC_START_SEC_VAR_INIT_BOOLEAN_NO_CACHEABLE
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_VAR_INIT_BOOLEAN_NO_CACHEABLE
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma ghs section data = ".mcal_data_no_cacheable" bss = ".mcal_bss_no_cacheable"
 #endif
 
 #ifdef ADC_STOP_SEC_VAR_INIT_BOOLEAN_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_VAR_INIT_BOOLEAN_NO_CACHEABLE
-        #undef ENTERED_ADC_START_SEC_VAR_INIT_BOOLEAN_NO_CACHEABLE
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_VAR_INIT_BOOLEAN_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma ghs section
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_VAR_INIT_BOOLEAN_NO_CACHEABLE
+#undef ENTERED_ADC_START_SEC_VAR_INIT_BOOLEAN_NO_CACHEABLE
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_VAR_INIT_BOOLEAN_NO_CACHEABLE
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma ghs section
 #endif
 
 #ifdef ADC_START_SEC_VAR_INIT_8_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_VAR_INIT_8_NO_CACHEABLE
-    #define ENTERED_ADC_START_SEC_VAR_INIT_8_NO_CACHEABLE
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_VAR_INIT_8_NO_CACHEABLE
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma ghs section data=".mcal_data_no_cacheable"  bss=".mcal_bss_no_cacheable"
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_VAR_INIT_8_NO_CACHEABLE
+#define ENTERED_ADC_START_SEC_VAR_INIT_8_NO_CACHEABLE
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_VAR_INIT_8_NO_CACHEABLE
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma ghs section data = ".mcal_data_no_cacheable" bss = ".mcal_bss_no_cacheable"
 #endif
 
 #ifdef ADC_STOP_SEC_VAR_INIT_8_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_VAR_INIT_8_NO_CACHEABLE
-        #undef ENTERED_ADC_START_SEC_VAR_INIT_8_NO_CACHEABLE
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_VAR_INIT_8_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma ghs section
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_VAR_INIT_8_NO_CACHEABLE
+#undef ENTERED_ADC_START_SEC_VAR_INIT_8_NO_CACHEABLE
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_VAR_INIT_8_NO_CACHEABLE
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma ghs section
 #endif
 
 #ifdef ADC_START_SEC_VAR_INIT_16_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_VAR_INIT_16_NO_CACHEABLE
-    #define ENTERED_ADC_START_SEC_VAR_INIT_16_NO_CACHEABLE
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_VAR_INIT_16_NO_CACHEABLE
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma ghs section data=".mcal_data_no_cacheable"  bss=".mcal_bss_no_cacheable"
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_VAR_INIT_16_NO_CACHEABLE
+#define ENTERED_ADC_START_SEC_VAR_INIT_16_NO_CACHEABLE
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_VAR_INIT_16_NO_CACHEABLE
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma ghs section data = ".mcal_data_no_cacheable" bss = ".mcal_bss_no_cacheable"
 #endif
 
 #ifdef ADC_STOP_SEC_VAR_INIT_16_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_VAR_INIT_16_NO_CACHEABLE
-        #undef ENTERED_ADC_START_SEC_VAR_INIT_16_NO_CACHEABLE
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_VAR_INIT_16_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma ghs section
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_VAR_INIT_16_NO_CACHEABLE
+#undef ENTERED_ADC_START_SEC_VAR_INIT_16_NO_CACHEABLE
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_VAR_INIT_16_NO_CACHEABLE
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma ghs section
 #endif
 
 #ifdef ADC_START_SEC_VAR_INIT_32_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_VAR_INIT_32_NO_CACHEABLE
-    #define ENTERED_ADC_START_SEC_VAR_INIT_32_NO_CACHEABLE
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_VAR_INIT_32_NO_CACHEABLE
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma ghs section data=".mcal_data_no_cacheable"  bss=".mcal_bss_no_cacheable"
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_VAR_INIT_32_NO_CACHEABLE
+#define ENTERED_ADC_START_SEC_VAR_INIT_32_NO_CACHEABLE
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_VAR_INIT_32_NO_CACHEABLE
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma ghs section data = ".mcal_data_no_cacheable" bss = ".mcal_bss_no_cacheable"
 #endif
 
 #ifdef ADC_STOP_SEC_VAR_INIT_32_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_VAR_INIT_32_NO_CACHEABLE
-        #undef ENTERED_ADC_START_SEC_VAR_INIT_32_NO_CACHEABLE
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_VAR_INIT_32_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma ghs section
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_VAR_INIT_32_NO_CACHEABLE
+#undef ENTERED_ADC_START_SEC_VAR_INIT_32_NO_CACHEABLE
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_VAR_INIT_32_NO_CACHEABLE
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma ghs section
 #endif
 
 #ifdef ADC_START_SEC_VAR_INIT_UNSPECIFIED_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_VAR_INIT_UNSPECIFIED_NO_CACHEABLE
-    #define ENTERED_ADC_START_SEC_VAR_INIT_UNSPECIFIED_NO_CACHEABLE
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_VAR_INIT_UNSPECIFIED_NO_CACHEABLE
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma ghs section data=".mcal_data_no_cacheable"  bss=".mcal_bss_no_cacheable"
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_VAR_INIT_UNSPECIFIED_NO_CACHEABLE
+#define ENTERED_ADC_START_SEC_VAR_INIT_UNSPECIFIED_NO_CACHEABLE
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_VAR_INIT_UNSPECIFIED_NO_CACHEABLE
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma ghs section data = ".mcal_data_no_cacheable" bss = ".mcal_bss_no_cacheable"
 #endif
 
 #ifdef ADC_STOP_SEC_VAR_INIT_UNSPECIFIED_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_VAR_INIT_UNSPECIFIED_NO_CACHEABLE
-        #undef ENTERED_ADC_START_SEC_VAR_INIT_UNSPECIFIED_NO_CACHEABLE
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_VAR_INIT_UNSPECIFIED_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma ghs section
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_VAR_INIT_UNSPECIFIED_NO_CACHEABLE
+#undef ENTERED_ADC_START_SEC_VAR_INIT_UNSPECIFIED_NO_CACHEABLE
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_VAR_INIT_UNSPECIFIED_NO_CACHEABLE
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma ghs section
 #endif
 
 #ifdef ADC_START_SEC_VAR_CLEARED_UNSPECIFIED_AE_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_VAR_CLEARED_UNSPECIFIED_AE_NO_CACHEABLE
-    #define ENTERED_ADC_START_SEC_VAR_CLEARED_UNSPECIFIED_AE_NO_CACHEABLE
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_VAR_CLEARED_UNSPECIFIED_AE_NO_CACHEABLE
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma ghs section bss=".ae_shared_bss" data=".ae_shared_data"
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_VAR_CLEARED_UNSPECIFIED_AE_NO_CACHEABLE
+#define ENTERED_ADC_START_SEC_VAR_CLEARED_UNSPECIFIED_AE_NO_CACHEABLE
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_VAR_CLEARED_UNSPECIFIED_AE_NO_CACHEABLE
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma ghs section bss = ".ae_shared_bss" data = ".ae_shared_data"
 #endif
 
 #ifdef ADC_STOP_SEC_VAR_CLEARED_UNSPECIFIED_AE_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_VAR_CLEARED_UNSPECIFIED_AE_NO_CACHEABLE
-        #undef ENTERED_ADC_START_SEC_VAR_CLEARED_UNSPECIFIED_AE_NO_CACHEABLE
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_VAR_CLEARED_UNSPECIFIED_AE_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma ghs section
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_VAR_CLEARED_UNSPECIFIED_AE_NO_CACHEABLE
+#undef ENTERED_ADC_START_SEC_VAR_CLEARED_UNSPECIFIED_AE_NO_CACHEABLE
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_VAR_CLEARED_UNSPECIFIED_AE_NO_CACHEABLE
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma ghs section
 #endif
 
 #ifdef ADC_START_SEC_VAR_INIT_UNSPECIFIED_AE_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_VAR_INIT_UNSPECIFIED_AE_NO_CACHEABLE
-    #define ENTERED_ADC_START_SEC_VAR_INIT_UNSPECIFIED_AE_NO_CACHEABLE
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_VAR_INIT_UNSPECIFIED_AE_NO_CACHEABLE
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma ghs section bss=".ae_shared_bss" data=".ae_shared_data"
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_VAR_INIT_UNSPECIFIED_AE_NO_CACHEABLE
+#define ENTERED_ADC_START_SEC_VAR_INIT_UNSPECIFIED_AE_NO_CACHEABLE
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_VAR_INIT_UNSPECIFIED_AE_NO_CACHEABLE
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma ghs section bss = ".ae_shared_bss" data = ".ae_shared_data"
 #endif
 
 #ifdef ADC_STOP_SEC_VAR_INIT_UNSPECIFIED_AE_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_VAR_INIT_UNSPECIFIED_AE_NO_CACHEABLE
-        #undef ENTERED_ADC_START_SEC_VAR_INIT_UNSPECIFIED_AE_NO_CACHEABLE
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_VAR_INIT_UNSPECIFIED_AE_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma ghs section
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_VAR_INIT_UNSPECIFIED_AE_NO_CACHEABLE
+#undef ENTERED_ADC_START_SEC_VAR_INIT_UNSPECIFIED_AE_NO_CACHEABLE
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_VAR_INIT_UNSPECIFIED_AE_NO_CACHEABLE
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma ghs section
 #endif
 
 #ifdef ADC_START_SEC_VAR_SHARED_INIT_UNSPECIFIED_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_VAR_SHARED_INIT_UNSPECIFIED_NO_CACHEABLE
-    #define ENTERED_ADC_START_SEC_VAR_SHARED_INIT_UNSPECIFIED_NO_CACHEABLE
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_VAR_SHARED_INIT_UNSPECIFIED_NO_CACHEABLE
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma ghs section data=".mcal_shared_data" bss=".mcal_shared_bss"
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_VAR_SHARED_INIT_UNSPECIFIED_NO_CACHEABLE
+#define ENTERED_ADC_START_SEC_VAR_SHARED_INIT_UNSPECIFIED_NO_CACHEABLE
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_VAR_SHARED_INIT_UNSPECIFIED_NO_CACHEABLE
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma ghs section data = ".mcal_shared_data" bss = ".mcal_shared_bss"
 #endif
 
 #ifdef ADC_STOP_SEC_VAR_SHARED_INIT_UNSPECIFIED_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_VAR_SHARED_INIT_UNSPECIFIED_NO_CACHEABLE
-        #undef ENTERED_ADC_START_SEC_VAR_SHARED_INIT_UNSPECIFIED_NO_CACHEABLE
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_VAR_SHARED_INIT_UNSPECIFIED_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma ghs section
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_VAR_SHARED_INIT_UNSPECIFIED_NO_CACHEABLE
+#undef ENTERED_ADC_START_SEC_VAR_SHARED_INIT_UNSPECIFIED_NO_CACHEABLE
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_VAR_SHARED_INIT_UNSPECIFIED_NO_CACHEABLE
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma ghs section
 #endif
 
 #ifdef ADC_START_SEC_VAR_SHARED_CLEARED_UNSPECIFIED_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_VAR_SHARED_CLEARED_UNSPECIFIED_NO_CACHEABLE
-    #define ENTERED_ADC_START_SEC_VAR_SHARED_CLEARED_UNSPECIFIED_NO_CACHEABLE
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_VAR_SHARED_CLEARED_UNSPECIFIED_NO_CACHEABLE
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma ghs section bss=".mcal_shared_bss"
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_VAR_SHARED_CLEARED_UNSPECIFIED_NO_CACHEABLE
+#define ENTERED_ADC_START_SEC_VAR_SHARED_CLEARED_UNSPECIFIED_NO_CACHEABLE
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_VAR_SHARED_CLEARED_UNSPECIFIED_NO_CACHEABLE
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma ghs section bss = ".mcal_shared_bss"
 #endif
 
 #ifdef ADC_STOP_SEC_VAR_SHARED_CLEARED_UNSPECIFIED_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_VAR_SHARED_CLEARED_UNSPECIFIED_NO_CACHEABLE
-        #undef ENTERED_ADC_START_SEC_VAR_SHARED_CLEARED_UNSPECIFIED_NO_CACHEABLE
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_VAR_SHARED_CLEARED_UNSPECIFIED_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma ghs section
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_VAR_SHARED_CLEARED_UNSPECIFIED_NO_CACHEABLE
+#undef ENTERED_ADC_START_SEC_VAR_SHARED_CLEARED_UNSPECIFIED_NO_CACHEABLE
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_VAR_SHARED_CLEARED_UNSPECIFIED_NO_CACHEABLE
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma ghs section
 #endif
 /**************************************************************************************************/
 /********************************************* DIAB ***********************************************/
@@ -1696,1929 +1696,1950 @@ extern "C"{
 #elif defined(_DIABDATA_C_S32K1XX_)
 /**************************************** ADC *******************************/
 #ifdef ADC_START_SEC_CONFIG_DATA_8
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_CONFIG_DATA_8
-    #define ENTERED_ADC_START_SEC_CONFIG_DATA_8
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_CONFIG_DATA_8
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #ifdef __clang__
-        #pragma clang section bss="" data="" rodata=".mcal_const_cfg"
-    #else
-        #pragma section CONST ".mcal_const_cfg"
-    #endif    
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_CONFIG_DATA_8
+#define ENTERED_ADC_START_SEC_CONFIG_DATA_8
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_CONFIG_DATA_8
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#ifdef __clang__
+#pragma clang section bss = "" data = "" rodata = ".mcal_const_cfg"
+#else
+#pragma section CONST ".mcal_const_cfg"
+#endif
 #endif
 
 #ifdef ADC_STOP_SEC_CONFIG_DATA_8
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_CONFIG_DATA_8
-        #undef ENTERED_ADC_START_SEC_CONFIG_DATA_8
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_CONFIG_DATA_8
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #ifdef __clang__
-        #pragma clang section bss="" data="" rodata=""
-    #else
-        #pragma section CONST
-    #endif
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_CONFIG_DATA_8
+#undef ENTERED_ADC_START_SEC_CONFIG_DATA_8
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_CONFIG_DATA_8
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#ifdef __clang__
+#pragma clang section bss = "" data = "" rodata = ""
+#else
+#pragma section CONST
+#endif
 #endif
 
 #ifdef ADC_START_SEC_CONFIG_DATA_16
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_CONFIG_DATA_16
-    #define ENTERED_ADC_START_SEC_CONFIG_DATA_16
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_CONFIG_DATA_16
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #ifdef __clang__
-        #pragma clang section bss="" data="" rodata=".mcal_const_cfg"
-    #else
-        #pragma section CONST ".mcal_const_cfg"
-    #endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_CONFIG_DATA_16
+#define ENTERED_ADC_START_SEC_CONFIG_DATA_16
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_CONFIG_DATA_16
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#ifdef __clang__
+#pragma clang section bss = "" data = "" rodata = ".mcal_const_cfg"
+#else
+#pragma section CONST ".mcal_const_cfg"
+#endif
 #endif
 
 #ifdef ADC_STOP_SEC_CONFIG_DATA_16
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_CONFIG_DATA_16
-        #undef ENTERED_ADC_START_SEC_CONFIG_DATA_16
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_CONFIG_DATA_16
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #ifdef __clang__
-        #pragma clang section bss="" data="" rodata=""
-    #else
-        #pragma section CONST
-    #endif
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_CONFIG_DATA_16
+#undef ENTERED_ADC_START_SEC_CONFIG_DATA_16
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_CONFIG_DATA_16
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#ifdef __clang__
+#pragma clang section bss = "" data = "" rodata = ""
+#else
+#pragma section CONST
+#endif
 #endif
 
 #ifdef ADC_START_SEC_CONFIG_DATA_32
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_CONFIG_DATA_32
-    #define ENTERED_ADC_START_SEC_CONFIG_DATA_32
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_CONFIG_DATA_32
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #ifdef __clang__
-        #pragma clang section bss="" data="" rodata=".mcal_const_cfg"
-    #else
-        #pragma section CONST ".mcal_const_cfg"
-    #endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_CONFIG_DATA_32
+#define ENTERED_ADC_START_SEC_CONFIG_DATA_32
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_CONFIG_DATA_32
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#ifdef __clang__
+#pragma clang section bss = "" data = "" rodata = ".mcal_const_cfg"
+#else
+#pragma section CONST ".mcal_const_cfg"
+#endif
 #endif
 
 #ifdef ADC_STOP_SEC_CONFIG_DATA_32
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_CONFIG_DATA_32
-        #undef ENTERED_ADC_START_SEC_CONFIG_DATA_32
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_CONFIG_DATA_32
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #ifdef __clang__
-        #pragma clang section bss="" data="" rodata=""
-    #else
-        #pragma section CONST
-    #endif
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_CONFIG_DATA_32
+#undef ENTERED_ADC_START_SEC_CONFIG_DATA_32
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_CONFIG_DATA_32
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#ifdef __clang__
+#pragma clang section bss = "" data = "" rodata = ""
+#else
+#pragma section CONST
+#endif
 #endif
 
 #ifdef ADC_START_SEC_CONFIG_DATA_UNSPECIFIED
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_CONFIG_DATA_UNSPECIFIED
-    #define ENTERED_ADC_START_SEC_CONFIG_DATA_UNSPECIFIED
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_CONFIG_DATA_UNSPECIFIED
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #ifdef __clang__
-        #pragma clang section bss="" data="" rodata=".mcal_const_cfg"
-    #else
-        #pragma section CONST ".mcal_const_cfg"
-    #endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_CONFIG_DATA_UNSPECIFIED
+#define ENTERED_ADC_START_SEC_CONFIG_DATA_UNSPECIFIED
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_CONFIG_DATA_UNSPECIFIED
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#ifdef __clang__
+#pragma clang section bss = "" data = "" rodata = ".mcal_const_cfg"
+#else
+#pragma section CONST ".mcal_const_cfg"
+#endif
 #endif
 
 #ifdef ADC_STOP_SEC_CONFIG_DATA_UNSPECIFIED
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_CONFIG_DATA_UNSPECIFIED
-        #undef ENTERED_ADC_START_SEC_CONFIG_DATA_UNSPECIFIED
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_CONFIG_DATA_UNSPECIFIED
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #ifdef __clang__
-        #pragma clang section bss="" data="" rodata=""
-    #else
-        #pragma section CONST
-    #endif
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_CONFIG_DATA_UNSPECIFIED
+#undef ENTERED_ADC_START_SEC_CONFIG_DATA_UNSPECIFIED
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_CONFIG_DATA_UNSPECIFIED
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#ifdef __clang__
+#pragma clang section bss = "" data = "" rodata = ""
+#else
+#pragma section CONST
+#endif
 #endif
 
 #ifdef ADC_START_SEC_CONFIG_DATA_8_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_CONFIG_DATA_8_NO_CACHEABLE
-    #define ENTERED_ADC_START_SEC_CONFIG_DATA_8_NO_CACHEABLE
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_CONFIG_DATA_8_NO_CACHEABLE
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #ifdef __clang__        
-        #pragma clang section bss="" data="" rodata=".mcal_const_no_cacheable"
-    #else
-        #pragma section CONST ".mcal_const_no_cacheable"
-    #endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_CONFIG_DATA_8_NO_CACHEABLE
+#define ENTERED_ADC_START_SEC_CONFIG_DATA_8_NO_CACHEABLE
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_CONFIG_DATA_8_NO_CACHEABLE
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#ifdef __clang__
+#pragma clang section bss = "" data = "" rodata = ".mcal_const_no_cacheable"
+#else
+#pragma section CONST ".mcal_const_no_cacheable"
+#endif
 #endif
 
 #ifdef ADC_STOP_SEC_CONFIG_DATA_8_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_CONFIG_DATA_8_NO_CACHEABLE
-        #undef ENTERED_ADC_START_SEC_CONFIG_DATA_8_NO_CACHEABLE
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_CONFIG_DATA_8_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #ifdef __clang__        
-        #pragma clang section bss="" data="" rodata=""
-    #else
-        #pragma section DATA
-    #endif
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_CONFIG_DATA_8_NO_CACHEABLE
+#undef ENTERED_ADC_START_SEC_CONFIG_DATA_8_NO_CACHEABLE
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_CONFIG_DATA_8_NO_CACHEABLE
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#ifdef __clang__
+#pragma clang section bss = "" data = "" rodata = ""
+#else
+#pragma section DATA
+#endif
 #endif
 
 #ifdef ADC_START_SEC_CONFIG_DATA_16_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_CONFIG_DATA_16_NO_CACHEABLE
-    #define ENTERED_ADC_START_SEC_CONFIG_DATA_16_NO_CACHEABLE
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_CONFIG_DATA_16_NO_CACHEABLE
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #ifdef __clang__        
-        #pragma clang section bss="" data="" rodata=".mcal_const_no_cacheable"
-    #else
-        #pragma section CONST ".mcal_const_no_cacheable"
-    #endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_CONFIG_DATA_16_NO_CACHEABLE
+#define ENTERED_ADC_START_SEC_CONFIG_DATA_16_NO_CACHEABLE
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_CONFIG_DATA_16_NO_CACHEABLE
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#ifdef __clang__
+#pragma clang section bss = "" data = "" rodata = ".mcal_const_no_cacheable"
+#else
+#pragma section CONST ".mcal_const_no_cacheable"
+#endif
 #endif
 
 #ifdef ADC_STOP_SEC_CONFIG_DATA_16_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_CONFIG_DATA_16_NO_CACHEABLE
-        #undef ENTERED_ADC_START_SEC_CONFIG_DATA_16_NO_CACHEABLE
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_CONFIG_DATA_16_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #ifdef __clang__        
-        #pragma clang section bss="" data="" rodata=""
-    #else
-        #pragma section DATA
-    #endif
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_CONFIG_DATA_16_NO_CACHEABLE
+#undef ENTERED_ADC_START_SEC_CONFIG_DATA_16_NO_CACHEABLE
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_CONFIG_DATA_16_NO_CACHEABLE
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#ifdef __clang__
+#pragma clang section bss = "" data = "" rodata = ""
+#else
+#pragma section DATA
+#endif
 #endif
 
 #ifdef ADC_START_SEC_CONFIG_DATA_32_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_CONFIG_DATA_32_NO_CACHEABLE
-    #define ENTERED_ADC_START_SEC_CONFIG_DATA_32_NO_CACHEABLE
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_CONFIG_DATA_32_NO_CACHEABLE
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #ifdef __clang__        
-        #pragma clang section bss="" data="" rodata=".mcal_const_no_cacheable"
-    #else
-        #pragma section CONST ".mcal_const_no_cacheable"
-    #endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_CONFIG_DATA_32_NO_CACHEABLE
+#define ENTERED_ADC_START_SEC_CONFIG_DATA_32_NO_CACHEABLE
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_CONFIG_DATA_32_NO_CACHEABLE
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#ifdef __clang__
+#pragma clang section bss = "" data = "" rodata = ".mcal_const_no_cacheable"
+#else
+#pragma section CONST ".mcal_const_no_cacheable"
+#endif
 #endif
 
 #ifdef ADC_STOP_SEC_CONFIG_DATA_32_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_CONFIG_DATA_32_NO_CACHEABLE
-        #undef ENTERED_ADC_START_SEC_CONFIG_DATA_32_NO_CACHEABLE
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_CONFIG_DATA_32_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #ifdef __clang__        
-        #pragma clang section bss="" data="" rodata=""
-    #else
-        #pragma section DATA
-    #endif
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_CONFIG_DATA_32_NO_CACHEABLE
+#undef ENTERED_ADC_START_SEC_CONFIG_DATA_32_NO_CACHEABLE
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_CONFIG_DATA_32_NO_CACHEABLE
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#ifdef __clang__
+#pragma clang section bss = "" data = "" rodata = ""
+#else
+#pragma section DATA
+#endif
 #endif
 
 #ifdef ADC_START_SEC_CONFIG_DATA_UNSPECIFIED_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_CONFIG_DATA_UNSPECIFIED_NO_CACHEABLE
-    #define ENTERED_ADC_START_SEC_CONFIG_DATA_UNSPECIFIED_NO_CACHEABLE
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_CONFIG_DATA_UNSPECIFIED_NO_CACHEABLE
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #ifdef __clang__        
-        #pragma clang section bss="" data="" rodata=".mcal_const_no_cacheable"
-    #else
-        #pragma section CONST ".mcal_const_no_cacheable"
-    #endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_CONFIG_DATA_UNSPECIFIED_NO_CACHEABLE
+#define ENTERED_ADC_START_SEC_CONFIG_DATA_UNSPECIFIED_NO_CACHEABLE
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_CONFIG_DATA_UNSPECIFIED_NO_CACHEABLE
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#ifdef __clang__
+#pragma clang section bss = "" data = "" rodata = ".mcal_const_no_cacheable"
+#else
+#pragma section CONST ".mcal_const_no_cacheable"
+#endif
 #endif
 
 #ifdef ADC_STOP_SEC_CONFIG_DATA_UNSPECIFIED_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_CONFIG_DATA_UNSPECIFIED_NO_CACHEABLE
-        #undef ENTERED_ADC_START_SEC_CONFIG_DATA_UNSPECIFIED_NO_CACHEABLE
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_CONFIG_DATA_UNSPECIFIED_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #ifdef __clang__        
-        #pragma clang section bss="" data="" rodata=""
-    #else
-        #pragma section DATA
-    #endif
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_CONFIG_DATA_UNSPECIFIED_NO_CACHEABLE
+#undef ENTERED_ADC_START_SEC_CONFIG_DATA_UNSPECIFIED_NO_CACHEABLE
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_CONFIG_DATA_UNSPECIFIED_NO_CACHEABLE
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#ifdef __clang__
+#pragma clang section bss = "" data = "" rodata = ""
+#else
+#pragma section DATA
+#endif
 #endif
 
 #ifdef ADC_START_SEC_CONST_BOOLEAN
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_CONST_BOOLEAN
-    #define ENTERED_ADC_START_SEC_CONST_BOOLEAN
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_CONST_BOOLEAN
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #ifdef __clang__
-        #pragma clang section bss="" data="" rodata=".mcal_const"
-    #else
-        #pragma section CONST ".mcal_const"
-    #endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_CONST_BOOLEAN
+#define ENTERED_ADC_START_SEC_CONST_BOOLEAN
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_CONST_BOOLEAN
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#ifdef __clang__
+#pragma clang section bss = "" data = "" rodata = ".mcal_const"
+#else
+#pragma section CONST ".mcal_const"
+#endif
 #endif
 
 #ifdef ADC_STOP_SEC_CONST_BOOLEAN
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_CONST_BOOLEAN
-        #undef ENTERED_ADC_START_SEC_CONST_BOOLEAN
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_CONST_BOOLEAN
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #ifdef __clang__
-        #pragma clang section bss="" data="" rodata=""
-    #else
-        #pragma section CONST
-    #endif
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_CONST_BOOLEAN
+#undef ENTERED_ADC_START_SEC_CONST_BOOLEAN
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_CONST_BOOLEAN
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#ifdef __clang__
+#pragma clang section bss = "" data = "" rodata = ""
+#else
+#pragma section CONST
+#endif
 #endif
 
 #ifdef ADC_START_SEC_CONST_8
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_CONST_8
-    #define ENTERED_ADC_START_SEC_CONST_8
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_CONST_8
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #ifdef __clang__
-        #pragma clang section bss="" data="" rodata=".mcal_const"
-    #else
-        #pragma section CONST ".mcal_const"
-    #endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_CONST_8
+#define ENTERED_ADC_START_SEC_CONST_8
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_CONST_8
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#ifdef __clang__
+#pragma clang section bss = "" data = "" rodata = ".mcal_const"
+#else
+#pragma section CONST ".mcal_const"
+#endif
 #endif
 
 #ifdef ADC_STOP_SEC_CONST_8
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_CONST_8
-        #undef ENTERED_ADC_START_SEC_CONST_8
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_CONST_8
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #ifdef __clang__
-        #pragma clang section bss="" data="" rodata=""
-    #else
-        #pragma section CONST
-    #endif
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_CONST_8
+#undef ENTERED_ADC_START_SEC_CONST_8
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_CONST_8
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#ifdef __clang__
+#pragma clang section bss = "" data = "" rodata = ""
+#else
+#pragma section CONST
+#endif
 #endif
 
 #ifdef ADC_START_SEC_CONST_16
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_CONST_16
-    #define ENTERED_ADC_START_SEC_CONST_16
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_CONST_16
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #ifdef __clang__
-        #pragma clang section bss="" data="" rodata=".mcal_const"
-    #else
-        #pragma section CONST ".mcal_const"
-    #endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_CONST_16
+#define ENTERED_ADC_START_SEC_CONST_16
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_CONST_16
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#ifdef __clang__
+#pragma clang section bss = "" data = "" rodata = ".mcal_const"
+#else
+#pragma section CONST ".mcal_const"
+#endif
 #endif
 
 #ifdef ADC_STOP_SEC_CONST_16
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_CONST_16
-        #undef ENTERED_ADC_START_SEC_CONST_16
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_CONST_16
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #ifdef __clang__
-        #pragma clang section bss="" data="" rodata=""
-    #else
-        #pragma section CONST
-    #endif
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_CONST_16
+#undef ENTERED_ADC_START_SEC_CONST_16
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_CONST_16
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#ifdef __clang__
+#pragma clang section bss = "" data = "" rodata = ""
+#else
+#pragma section CONST
+#endif
 #endif
 
 #ifdef ADC_START_SEC_CONST_32
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_CONST_32
-    #define ENTERED_ADC_START_SEC_CONST_32
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_CONST_32
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #ifdef __clang__
-        #pragma clang section bss="" data="" rodata=".mcal_const"
-    #else
-        #pragma section CONST ".mcal_const"
-    #endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_CONST_32
+#define ENTERED_ADC_START_SEC_CONST_32
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_CONST_32
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#ifdef __clang__
+#pragma clang section bss = "" data = "" rodata = ".mcal_const"
+#else
+#pragma section CONST ".mcal_const"
+#endif
 #endif
 
 #ifdef ADC_STOP_SEC_CONST_32
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_CONST_32
-        #undef ENTERED_ADC_START_SEC_CONST_32
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_CONST_32
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #ifdef __clang__
-        #pragma clang section bss="" data="" rodata=""
-    #else
-        #pragma section CONST
-    #endif
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_CONST_32
+#undef ENTERED_ADC_START_SEC_CONST_32
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_CONST_32
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#ifdef __clang__
+#pragma clang section bss = "" data = "" rodata = ""
+#else
+#pragma section CONST
+#endif
 #endif
 
 #ifdef ADC_START_SEC_CONST_UNSPECIFIED
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_CONST_UNSPECIFIED
-    #define ENTERED_ADC_START_SEC_CONST_UNSPECIFIED
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_CONST_UNSPECIFIED
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #ifdef __clang__
-        #pragma clang section bss="" data="" rodata=".mcal_const"
-    #else
-        #pragma section CONST ".mcal_const"
-    #endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_CONST_UNSPECIFIED
+#define ENTERED_ADC_START_SEC_CONST_UNSPECIFIED
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_CONST_UNSPECIFIED
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#ifdef __clang__
+#pragma clang section bss = "" data = "" rodata = ".mcal_const"
+#else
+#pragma section CONST ".mcal_const"
+#endif
 #endif
 
 #ifdef ADC_STOP_SEC_CONST_UNSPECIFIED
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_CONST_UNSPECIFIED
-        #undef ENTERED_ADC_START_SEC_CONST_UNSPECIFIED
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_CONST_UNSPECIFIED
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #ifdef __clang__
-        #pragma clang section bss="" data="" rodata=""
-    #else
-        #pragma section CONST
-    #endif
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_CONST_UNSPECIFIED
+#undef ENTERED_ADC_START_SEC_CONST_UNSPECIFIED
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_CONST_UNSPECIFIED
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#ifdef __clang__
+#pragma clang section bss = "" data = "" rodata = ""
+#else
+#pragma section CONST
+#endif
 #endif
 
 #ifdef ADC_START_SEC_CODE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_CODE
-    #define ENTERED_ADC_START_SEC_CODE
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_CODE
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #ifdef __clang__
-        #pragma clang section bss="" data="" rodata="" text=".mcal_text"
-    #else
-    /* no definition -> default compiler settings are used */
-    #endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_CODE
+#define ENTERED_ADC_START_SEC_CODE
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_CODE
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#ifdef __clang__
+#pragma clang section bss = "" data = "" rodata = "" text = ".mcal_text"
+#else
+/* no definition -> default compiler settings are used */
+#endif
 #endif
 
 #ifdef ADC_STOP_SEC_CODE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_CODE
-        #undef ENTERED_ADC_START_SEC_CODE
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_CODE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #ifdef __clang__
-        #pragma clang section bss="" data="" rodata="" text=""
-    #else
-    /* no definition -> default compiler settings are used */
-    #endif
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_CODE
+#undef ENTERED_ADC_START_SEC_CODE
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_CODE
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#ifdef __clang__
+#pragma clang section bss = "" data = "" rodata = "" text = ""
+#else
+/* no definition -> default compiler settings are used */
+#endif
 #endif
 
 #ifdef ADC_START_SEC_RAMCODE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_RAMCODE
-    #define ENTERED_ADC_START_SEC_RAMCODE
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_RAMCODE
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #ifdef __clang__
-        #pragma clang section bss="" data="" rodata="" text=".ramcode"
-    #else
-        #pragma section CODE ".ramcode" far-absolute
-    #endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_RAMCODE
+#define ENTERED_ADC_START_SEC_RAMCODE
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_RAMCODE
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#ifdef __clang__
+#pragma clang section bss = "" data = "" rodata = "" text = ".ramcode"
+#else
+#pragma section CODE ".ramcode" far - absolute
+#endif
 #endif
 
 #ifdef ADC_STOP_SEC_RAMCODE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_RAMCODE
-        #undef ENTERED_ADC_START_SEC_RAMCODE
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_RAMCODE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    /* default section for CODE */
-    #ifdef __clang__
-        #pragma clang section bss="" data="" rodata="" text=""
-    #else
-        #pragma section CODE
-    #endif
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_RAMCODE
+#undef ENTERED_ADC_START_SEC_RAMCODE
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_RAMCODE
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+/* default section for CODE */
+#ifdef __clang__
+#pragma clang section bss = "" data = "" rodata = "" text = ""
+#else
+#pragma section CODE
+#endif
 #endif
 
 #ifdef ADC_START_SEC_CODE_AC
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_CODE_AC
-    #define ENTERED_ADC_START_SEC_CODE_AC
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_CODE_AC
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    /* use code relative addressing mode to ensure Position-independent Code (PIC) */
-    #ifdef __clang__
-        #pragma clang section bss="" data="" rodata="" text=".acadc_code_rom"
-    #else
-        #pragma section CODE ".acadc_code_rom" far-code 
-    #endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_CODE_AC
+#define ENTERED_ADC_START_SEC_CODE_AC
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_CODE_AC
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+/* use code relative addressing mode to ensure Position-independent Code (PIC) */
+#ifdef __clang__
+#pragma clang section bss = "" data = "" rodata = "" text = ".acadc_code_rom"
+#else
+#pragma section CODE ".acadc_code_rom" far - code
+#endif
 #endif
 
 #ifdef ADC_STOP_SEC_CODE_AC
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_CODE_AC
-        #undef ENTERED_ADC_START_SEC_CODE_AC
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_CODE_AC
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    /* default section for CODE */
-    #ifdef __clang__
-        #pragma clang section bss="" data="" rodata="" text=""
-    #else
-        #pragma section CODE
-    #endif
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_CODE_AC
+#undef ENTERED_ADC_START_SEC_CODE_AC
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_CODE_AC
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+/* default section for CODE */
+#ifdef __clang__
+#pragma clang section bss = "" data = "" rodata = "" text = ""
+#else
+#pragma section CODE
+#endif
 #endif
 
 #ifdef ADC_START_SEC_VAR_CLEARED_BOOLEAN
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_VAR_CLEARED_BOOLEAN
-    #define ENTERED_ADC_START_SEC_VAR_CLEARED_BOOLEAN
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_VAR_CLEARED_BOOLEAN
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #ifdef __clang__
-        #pragma clang section bss=".mcal_bss" data=".mcal_data" rodata=""
-    #else
-        #pragma section DATA ".mcal_data" ".mcal_bss"
-    #endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_VAR_CLEARED_BOOLEAN
+#define ENTERED_ADC_START_SEC_VAR_CLEARED_BOOLEAN
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_VAR_CLEARED_BOOLEAN
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#ifdef __clang__
+#pragma clang section bss = ".mcal_bss" data = ".mcal_data" rodata = ""
+#else
+#pragma section DATA ".mcal_data"                                                                  \
+                     ".mcal_bss"
+#endif
 #endif
 
 #ifdef ADC_STOP_SEC_VAR_CLEARED_BOOLEAN
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_VAR_CLEARED_BOOLEAN
-        #undef ENTERED_ADC_START_SEC_VAR_CLEARED_BOOLEAN
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_VAR_CLEARED_BOOLEAN
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #ifdef __clang__
-        #pragma clang section bss="" data="" rodata=""
-    #else
-        #pragma section DATA
-    #endif
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_VAR_CLEARED_BOOLEAN
+#undef ENTERED_ADC_START_SEC_VAR_CLEARED_BOOLEAN
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_VAR_CLEARED_BOOLEAN
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#ifdef __clang__
+#pragma clang section bss = "" data = "" rodata = ""
+#else
+#pragma section DATA
+#endif
 #endif
 
 #ifdef ADC_START_SEC_VAR_CLEARED_8
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_VAR_CLEARED_8
-    #define ENTERED_ADC_START_SEC_VAR_CLEARED_8
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_VAR_CLEARED_8
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #ifdef __clang__
-        #pragma clang section bss=".mcal_bss" data=".mcal_data" rodata=""
-    #else
-        #pragma section DATA ".mcal_data" ".mcal_bss"
-    #endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_VAR_CLEARED_8
+#define ENTERED_ADC_START_SEC_VAR_CLEARED_8
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_VAR_CLEARED_8
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#ifdef __clang__
+#pragma clang section bss = ".mcal_bss" data = ".mcal_data" rodata = ""
+#else
+#pragma section DATA ".mcal_data"                                                                  \
+                     ".mcal_bss"
+#endif
 #endif
 
 #ifdef ADC_STOP_SEC_VAR_CLEARED_8
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_VAR_CLEARED_8
-        #undef ENTERED_ADC_START_SEC_VAR_CLEARED_8
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_VAR_CLEARED_8
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #ifdef __clang__
-        #pragma clang section bss="" data="" rodata=""
-    #else
-        #pragma section DATA
-    #endif
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_VAR_CLEARED_8
+#undef ENTERED_ADC_START_SEC_VAR_CLEARED_8
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_VAR_CLEARED_8
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#ifdef __clang__
+#pragma clang section bss = "" data = "" rodata = ""
+#else
+#pragma section DATA
+#endif
 #endif
 
 #ifdef ADC_START_SEC_VAR_CLEARED_16
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_VAR_CLEARED_16
-    #define ENTERED_ADC_START_SEC_VAR_CLEARED_16
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_VAR_CLEARED_16
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #ifdef __clang__
-        #pragma clang section bss=".mcal_bss" data=".mcal_data" rodata=""
-    #else
-        #pragma section DATA ".mcal_data" ".mcal_bss"
-    #endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_VAR_CLEARED_16
+#define ENTERED_ADC_START_SEC_VAR_CLEARED_16
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_VAR_CLEARED_16
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#ifdef __clang__
+#pragma clang section bss = ".mcal_bss" data = ".mcal_data" rodata = ""
+#else
+#pragma section DATA ".mcal_data"                                                                  \
+                     ".mcal_bss"
+#endif
 #endif
 
 #ifdef ADC_STOP_SEC_VAR_CLEARED_16
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_VAR_CLEARED_16
-        #undef ENTERED_ADC_START_SEC_VAR_CLEARED_16
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_VAR_CLEARED_16
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #ifdef __clang__
-        #pragma clang section bss="" data="" rodata=""
-    #else
-        #pragma section DATA
-    #endif
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_VAR_CLEARED_16
+#undef ENTERED_ADC_START_SEC_VAR_CLEARED_16
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_VAR_CLEARED_16
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#ifdef __clang__
+#pragma clang section bss = "" data = "" rodata = ""
+#else
+#pragma section DATA
+#endif
 #endif
 
 #ifdef ADC_START_SEC_VAR_CLEARED_32
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_VAR_CLEARED_32
-    #define ENTERED_ADC_START_SEC_VAR_CLEARED_32
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_VAR_CLEARED_32
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #ifdef __clang__
-        #pragma clang section bss=".mcal_bss" data=".mcal_data" rodata=""
-    #else
-        #pragma section DATA ".mcal_data" ".mcal_bss"
-    #endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_VAR_CLEARED_32
+#define ENTERED_ADC_START_SEC_VAR_CLEARED_32
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_VAR_CLEARED_32
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#ifdef __clang__
+#pragma clang section bss = ".mcal_bss" data = ".mcal_data" rodata = ""
+#else
+#pragma section DATA ".mcal_data"                                                                  \
+                     ".mcal_bss"
+#endif
 #endif
 
 #ifdef ADC_STOP_SEC_VAR_CLEARED_32
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_VAR_CLEARED_32
-        #undef ENTERED_ADC_START_SEC_VAR_CLEARED_32
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_VAR_CLEARED_32
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #ifdef __clang__
-        #pragma clang section bss="" data="" rodata=""
-    #else
-        #pragma section DATA
-    #endif
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_VAR_CLEARED_32
+#undef ENTERED_ADC_START_SEC_VAR_CLEARED_32
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_VAR_CLEARED_32
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#ifdef __clang__
+#pragma clang section bss = "" data = "" rodata = ""
+#else
+#pragma section DATA
+#endif
 #endif
 
 #ifdef ADC_START_SEC_VAR_CLEARED_UNSPECIFIED
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_VAR_CLEARED_UNSPECIFIED
-    #define ENTERED_ADC_START_SEC_VAR_CLEARED_UNSPECIFIED
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_VAR_CLEARED_UNSPECIFIED
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #ifdef __clang__        
-        #pragma clang section bss=".mcal_bss" data=".mcal_data" rodata=""
-    #else
-        #pragma section DATA ".mcal_data" ".mcal_bss"
-    #endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_VAR_CLEARED_UNSPECIFIED
+#define ENTERED_ADC_START_SEC_VAR_CLEARED_UNSPECIFIED
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_VAR_CLEARED_UNSPECIFIED
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#ifdef __clang__
+#pragma clang section bss = ".mcal_bss" data = ".mcal_data" rodata = ""
+#else
+#pragma section DATA ".mcal_data"                                                                  \
+                     ".mcal_bss"
+#endif
 #endif
 
 #ifdef ADC_STOP_SEC_VAR_CLEARED_UNSPECIFIED
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_VAR_CLEARED_UNSPECIFIED
-        #undef ENTERED_ADC_START_SEC_VAR_CLEARED_UNSPECIFIED
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_VAR_CLEARED_UNSPECIFIED
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #ifdef __clang__
-        #pragma clang section bss="" data="" rodata=""
-    #else
-        #pragma section DATA
-    #endif
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_VAR_CLEARED_UNSPECIFIED
+#undef ENTERED_ADC_START_SEC_VAR_CLEARED_UNSPECIFIED
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_VAR_CLEARED_UNSPECIFIED
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#ifdef __clang__
+#pragma clang section bss = "" data = "" rodata = ""
+#else
+#pragma section DATA
+#endif
 #endif
 
 #ifdef ADC_START_SEC_VAR_INIT_BOOLEAN
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_VAR_INIT_BOOLEAN
-    #define ENTERED_ADC_START_SEC_VAR_INIT_BOOLEAN
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_VAR_INIT_BOOLEAN
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #ifdef __clang__        
-        #pragma clang section bss=".mcal_bss" data=".mcal_data" rodata=""
-    #else
-        #pragma section DATA ".mcal_data" ".mcal_bss"
-    #endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_VAR_INIT_BOOLEAN
+#define ENTERED_ADC_START_SEC_VAR_INIT_BOOLEAN
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_VAR_INIT_BOOLEAN
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#ifdef __clang__
+#pragma clang section bss = ".mcal_bss" data = ".mcal_data" rodata = ""
+#else
+#pragma section DATA ".mcal_data"                                                                  \
+                     ".mcal_bss"
+#endif
 #endif
 
 #ifdef ADC_STOP_SEC_VAR_INIT_BOOLEAN
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_VAR_INIT_BOOLEAN
-        #undef ENTERED_ADC_START_SEC_VAR_INIT_BOOLEAN
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_VAR_INIT_BOOLEAN
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #ifdef __clang__        
-        #pragma clang section bss="" data="" rodata="" 
-    #else
-        #pragma section DATA 
-    #endif
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_VAR_INIT_BOOLEAN
+#undef ENTERED_ADC_START_SEC_VAR_INIT_BOOLEAN
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_VAR_INIT_BOOLEAN
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#ifdef __clang__
+#pragma clang section bss = "" data = "" rodata = ""
+#else
+#pragma section DATA
+#endif
 #endif
 
 #ifdef ADC_START_SEC_VAR_INIT_8
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_VAR_INIT_8
-    #define ENTERED_ADC_START_SEC_VAR_INIT_8
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_VAR_INIT_8
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #ifdef __clang__        
-        #pragma clang section bss=".mcal_bss" data=".mcal_data" rodata=""
-    #else
-        #pragma section DATA ".mcal_data" ".mcal_bss"
-    #endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_VAR_INIT_8
+#define ENTERED_ADC_START_SEC_VAR_INIT_8
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_VAR_INIT_8
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#ifdef __clang__
+#pragma clang section bss = ".mcal_bss" data = ".mcal_data" rodata = ""
+#else
+#pragma section DATA ".mcal_data"                                                                  \
+                     ".mcal_bss"
+#endif
 #endif
 
 #ifdef ADC_STOP_SEC_VAR_INIT_8
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_VAR_INIT_8
-        #undef ENTERED_ADC_START_SEC_VAR_INIT_8
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_VAR_INIT_8
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #ifdef __clang__        
-        #pragma clang section bss="" data="" rodata="" 
-    #else
-        #pragma section DATA 
-    #endif
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_VAR_INIT_8
+#undef ENTERED_ADC_START_SEC_VAR_INIT_8
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_VAR_INIT_8
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#ifdef __clang__
+#pragma clang section bss = "" data = "" rodata = ""
+#else
+#pragma section DATA
+#endif
 #endif
 
-
 #ifdef ADC_START_SEC_VAR_INIT_16
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_VAR_INIT_16
-    #define ENTERED_ADC_START_SEC_VAR_INIT_16
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_VAR_INIT_16
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #ifdef __clang__        
-        #pragma clang section bss=".mcal_bss" data=".mcal_data" rodata=""
-    #else
-        #pragma section DATA ".mcal_data" ".mcal_bss"
-    #endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_VAR_INIT_16
+#define ENTERED_ADC_START_SEC_VAR_INIT_16
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_VAR_INIT_16
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#ifdef __clang__
+#pragma clang section bss = ".mcal_bss" data = ".mcal_data" rodata = ""
+#else
+#pragma section DATA ".mcal_data"                                                                  \
+                     ".mcal_bss"
+#endif
 #endif
 
 #ifdef ADC_STOP_SEC_VAR_INIT_16
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_VAR_INIT_16
-        #undef ENTERED_ADC_START_SEC_VAR_INIT_16
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_VAR_INIT_16
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #ifdef __clang__        
-        #pragma clang section bss="" data="" rodata="" 
-    #else
-        #pragma section DATA 
-    #endif
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_VAR_INIT_16
+#undef ENTERED_ADC_START_SEC_VAR_INIT_16
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_VAR_INIT_16
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#ifdef __clang__
+#pragma clang section bss = "" data = "" rodata = ""
+#else
+#pragma section DATA
+#endif
 #endif
 
 #ifdef ADC_START_SEC_VAR_INIT_32
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_VAR_INIT_32
-    #define ENTERED_ADC_START_SEC_VAR_INIT_32
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_VAR_INIT_32
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #ifdef __clang__        
-        #pragma clang section bss=".mcal_bss" data=".mcal_data" rodata=""
-    #else
-        #pragma section DATA ".mcal_data" ".mcal_bss"
-    #endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_VAR_INIT_32
+#define ENTERED_ADC_START_SEC_VAR_INIT_32
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_VAR_INIT_32
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#ifdef __clang__
+#pragma clang section bss = ".mcal_bss" data = ".mcal_data" rodata = ""
+#else
+#pragma section DATA ".mcal_data"                                                                  \
+                     ".mcal_bss"
+#endif
 #endif
 
 #ifdef ADC_STOP_SEC_VAR_INIT_32
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_VAR_INIT_32
-        #undef ENTERED_ADC_START_SEC_VAR_INIT_32
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_VAR_INIT_32
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #ifdef __clang__        
-        #pragma clang section bss="" data="" rodata="" 
-    #else
-        #pragma section DATA 
-    #endif
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_VAR_INIT_32
+#undef ENTERED_ADC_START_SEC_VAR_INIT_32
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_VAR_INIT_32
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#ifdef __clang__
+#pragma clang section bss = "" data = "" rodata = ""
+#else
+#pragma section DATA
+#endif
 #endif
 
 #ifdef ADC_START_SEC_VAR_INIT_UNSPECIFIED
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_VAR_INIT_UNSPECIFIED
-    #define ENTERED_ADC_START_SEC_VAR_INIT_UNSPECIFIED
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_VAR_INIT_UNSPECIFIED
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #ifdef __clang__        
-        #pragma clang section bss=".mcal_bss" data=".mcal_data" rodata=""
-    #else
-        #pragma section DATA ".mcal_data" ".mcal_bss"
-    #endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_VAR_INIT_UNSPECIFIED
+#define ENTERED_ADC_START_SEC_VAR_INIT_UNSPECIFIED
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_VAR_INIT_UNSPECIFIED
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#ifdef __clang__
+#pragma clang section bss = ".mcal_bss" data = ".mcal_data" rodata = ""
+#else
+#pragma section DATA ".mcal_data"                                                                  \
+                     ".mcal_bss"
+#endif
 #endif
 
 #ifdef ADC_STOP_SEC_VAR_INIT_UNSPECIFIED
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_VAR_INIT_UNSPECIFIED
-        #undef ENTERED_ADC_START_SEC_VAR_INIT_UNSPECIFIED
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_VAR_INIT_UNSPECIFIED
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #ifdef __clang__        
-        #pragma clang section bss="" data="" rodata="" 
-    #else
-        #pragma section DATA 
-    #endif
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_VAR_INIT_UNSPECIFIED
+#undef ENTERED_ADC_START_SEC_VAR_INIT_UNSPECIFIED
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_VAR_INIT_UNSPECIFIED
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#ifdef __clang__
+#pragma clang section bss = "" data = "" rodata = ""
+#else
+#pragma section DATA
+#endif
 #endif
 
-
 #ifdef ADC_START_SEC_VAR_CLEARED_BOOLEAN_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_VAR_CLEARED_BOOLEAN_NO_CACHEABLE
-    #define ENTERED_ADC_START_SEC_VAR_CLEARED_BOOLEAN_NO_CACHEABLE
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_VAR_CLEARED_BOOLEAN_NO_CACHEABLE
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #ifdef __clang__        
-        #pragma clang section bss=".mcal_bss_no_cacheable" data=".mcal_data_no_cacheable" rodata=""
-    #else
-        #pragma section DATA ".mcal_data_no_cacheable" ".mcal_bss_no_cacheable"
-    #endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_VAR_CLEARED_BOOLEAN_NO_CACHEABLE
+#define ENTERED_ADC_START_SEC_VAR_CLEARED_BOOLEAN_NO_CACHEABLE
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_VAR_CLEARED_BOOLEAN_NO_CACHEABLE
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#ifdef __clang__
+#pragma clang section bss = ".mcal_bss_no_cacheable" data = ".mcal_data_no_cacheable" rodata = ""
+#else
+#pragma section DATA ".mcal_data_no_cacheable"                                                     \
+                     ".mcal_bss_no_cacheable"
+#endif
 #endif
 
 #ifdef ADC_STOP_SEC_VAR_CLEARED_BOOLEAN_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_VAR_CLEARED_BOOLEAN_NO_CACHEABLE
-        #undef ENTERED_ADC_START_SEC_VAR_CLEARED_BOOLEAN_NO_CACHEABLE
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_VAR_CLEARED_BOOLEAN_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #ifdef __clang__        
-        #pragma clang section bss="" data="" rodata="" 
-    #else
-        #pragma section DATA 
-    #endif
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_VAR_CLEARED_BOOLEAN_NO_CACHEABLE
+#undef ENTERED_ADC_START_SEC_VAR_CLEARED_BOOLEAN_NO_CACHEABLE
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_VAR_CLEARED_BOOLEAN_NO_CACHEABLE
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#ifdef __clang__
+#pragma clang section bss = "" data = "" rodata = ""
+#else
+#pragma section DATA
+#endif
 #endif
 
 #ifdef ADC_START_SEC_VAR_CLEARED_8_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_VAR_CLEARED_8_NO_CACHEABLE
-    #define ENTERED_ADC_START_SEC_VAR_CLEARED_8_NO_CACHEABLE
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_VAR_CLEARED_8_NO_CACHEABLE
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #ifdef __clang__        
-        #pragma clang section bss=".mcal_bss_no_cacheable" data=".mcal_data_no_cacheable" rodata=""
-    #else
-        #pragma section DATA ".mcal_data_no_cacheable" ".mcal_bss_no_cacheable"
-    #endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_VAR_CLEARED_8_NO_CACHEABLE
+#define ENTERED_ADC_START_SEC_VAR_CLEARED_8_NO_CACHEABLE
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_VAR_CLEARED_8_NO_CACHEABLE
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#ifdef __clang__
+#pragma clang section bss = ".mcal_bss_no_cacheable" data = ".mcal_data_no_cacheable" rodata = ""
+#else
+#pragma section DATA ".mcal_data_no_cacheable"                                                     \
+                     ".mcal_bss_no_cacheable"
+#endif
 #endif
 
 #ifdef ADC_STOP_SEC_VAR_CLEARED_8_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_VAR_CLEARED_8_NO_CACHEABLE
-        #undef ENTERED_ADC_START_SEC_VAR_CLEARED_8_NO_CACHEABLE
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_VAR_CLEARED_8_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #ifdef __clang__        
-        #pragma clang section bss="" data="" rodata=""
-    #else
-        #pragma section DATA
-    #endif
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_VAR_CLEARED_8_NO_CACHEABLE
+#undef ENTERED_ADC_START_SEC_VAR_CLEARED_8_NO_CACHEABLE
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_VAR_CLEARED_8_NO_CACHEABLE
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#ifdef __clang__
+#pragma clang section bss = "" data = "" rodata = ""
+#else
+#pragma section DATA
+#endif
 #endif
 
 #ifdef ADC_START_SEC_VAR_CLEARED_16_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_VAR_CLEARED_16_NO_CACHEABLE
-    #define ENTERED_ADC_START_SEC_VAR_CLEARED_16_NO_CACHEABLE
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_VAR_CLEARED_16_NO_CACHEABLE
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #ifdef __clang__        
-        #pragma clang section bss=".mcal_bss_no_cacheable" data=".mcal_data_no_cacheable" rodata=""
-    #else
-        #pragma section DATA ".mcal_data_no_cacheable" ".mcal_bss_no_cacheable"
-    #endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_VAR_CLEARED_16_NO_CACHEABLE
+#define ENTERED_ADC_START_SEC_VAR_CLEARED_16_NO_CACHEABLE
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_VAR_CLEARED_16_NO_CACHEABLE
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#ifdef __clang__
+#pragma clang section bss = ".mcal_bss_no_cacheable" data = ".mcal_data_no_cacheable" rodata = ""
+#else
+#pragma section DATA ".mcal_data_no_cacheable"                                                     \
+                     ".mcal_bss_no_cacheable"
+#endif
 #endif
 
 #ifdef ADC_STOP_SEC_VAR_CLEARED_16_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_VAR_CLEARED_16_NO_CACHEABLE
-        #undef ENTERED_ADC_START_SEC_VAR_CLEARED_16_NO_CACHEABLE
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_VAR_CLEARED_16_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #ifdef __clang__        
-        #pragma clang section bss="" data="" rodata=""
-    #else
-        #pragma section DATA
-    #endif
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_VAR_CLEARED_16_NO_CACHEABLE
+#undef ENTERED_ADC_START_SEC_VAR_CLEARED_16_NO_CACHEABLE
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_VAR_CLEARED_16_NO_CACHEABLE
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#ifdef __clang__
+#pragma clang section bss = "" data = "" rodata = ""
+#else
+#pragma section DATA
+#endif
 #endif
 
 #ifdef ADC_START_SEC_VAR_CLEARED_32_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_VAR_CLEARED_32_NO_CACHEABLE
-    #define ENTERED_ADC_START_SEC_VAR_CLEARED_32_NO_CACHEABLE
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_VAR_CLEARED_32_NO_CACHEABLE
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #ifdef __clang__        
-        #pragma clang section bss=".mcal_bss_no_cacheable" data=".mcal_data_no_cacheable" rodata=""
-    #else
-        #pragma section DATA ".mcal_data_no_cacheable" ".mcal_bss_no_cacheable"
-    #endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_VAR_CLEARED_32_NO_CACHEABLE
+#define ENTERED_ADC_START_SEC_VAR_CLEARED_32_NO_CACHEABLE
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_VAR_CLEARED_32_NO_CACHEABLE
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#ifdef __clang__
+#pragma clang section bss = ".mcal_bss_no_cacheable" data = ".mcal_data_no_cacheable" rodata = ""
+#else
+#pragma section DATA ".mcal_data_no_cacheable"                                                     \
+                     ".mcal_bss_no_cacheable"
+#endif
 #endif
 
 #ifdef ADC_STOP_SEC_VAR_CLEARED_32_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_VAR_CLEARED_32_NO_CACHEABLE
-        #undef ENTERED_ADC_START_SEC_VAR_CLEARED_32_NO_CACHEABLE
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_VAR_CLEARED_32_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #ifdef __clang__        
-        #pragma clang section bss="" data="" rodata=""
-    #else
-        #pragma section DATA
-    #endif
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_VAR_CLEARED_32_NO_CACHEABLE
+#undef ENTERED_ADC_START_SEC_VAR_CLEARED_32_NO_CACHEABLE
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_VAR_CLEARED_32_NO_CACHEABLE
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#ifdef __clang__
+#pragma clang section bss = "" data = "" rodata = ""
+#else
+#pragma section DATA
+#endif
 #endif
 
 #ifdef ADC_START_SEC_VAR_CLEARED_UNSPECIFIED_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_VAR_CLEARED_UNSPECIFIED_NO_CACHEABLE
-    #define ENTERED_ADC_START_SEC_VAR_CLEARED_UNSPECIFIED_NO_CACHEABLE
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_VAR_CLEARED_UNSPECIFIED_NO_CACHEABLE
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #ifdef __clang__        
-        #pragma clang section bss=".mcal_bss_no_cacheable" data=".mcal_data_no_cacheable" rodata=""
-    #else
-        #pragma section DATA ".mcal_data_no_cacheable" ".mcal_bss_no_cacheable"
-    #endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_VAR_CLEARED_UNSPECIFIED_NO_CACHEABLE
+#define ENTERED_ADC_START_SEC_VAR_CLEARED_UNSPECIFIED_NO_CACHEABLE
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_VAR_CLEARED_UNSPECIFIED_NO_CACHEABLE
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#ifdef __clang__
+#pragma clang section bss = ".mcal_bss_no_cacheable" data = ".mcal_data_no_cacheable" rodata = ""
+#else
+#pragma section DATA ".mcal_data_no_cacheable"                                                     \
+                     ".mcal_bss_no_cacheable"
+#endif
 #endif
 
 #ifdef ADC_STOP_SEC_VAR_CLEARED_UNSPECIFIED_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_VAR_CLEARED_UNSPECIFIED_NO_CACHEABLE
-        #undef ENTERED_ADC_START_SEC_VAR_CLEARED_UNSPECIFIED_NO_CACHEABLE
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_VAR_CLEARED_UNSPECIFIED_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #ifdef __clang__        
-        #pragma clang section bss="" data="" rodata=""
-    #else
-        #pragma section DATA
-    #endif
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_VAR_CLEARED_UNSPECIFIED_NO_CACHEABLE
+#undef ENTERED_ADC_START_SEC_VAR_CLEARED_UNSPECIFIED_NO_CACHEABLE
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_VAR_CLEARED_UNSPECIFIED_NO_CACHEABLE
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#ifdef __clang__
+#pragma clang section bss = "" data = "" rodata = ""
+#else
+#pragma section DATA
+#endif
 #endif
 
 #ifdef ADC_START_SEC_VAR_INIT_BOOLEAN_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_VAR_INIT_BOOLEAN_NO_CACHEABLE
-    #define ENTERED_ADC_START_SEC_VAR_INIT_BOOLEAN_NO_CACHEABLE
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_VAR_INIT_BOOLEAN_NO_CACHEABLE
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #ifdef __clang__        
-        #pragma clang section bss=".mcal_bss_no_cacheable" data=".mcal_data_no_cacheable" rodata=""
-    #else
-        #pragma section DATA ".mcal_data_no_cacheable" ".mcal_bss_no_cacheable"
-    #endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_VAR_INIT_BOOLEAN_NO_CACHEABLE
+#define ENTERED_ADC_START_SEC_VAR_INIT_BOOLEAN_NO_CACHEABLE
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_VAR_INIT_BOOLEAN_NO_CACHEABLE
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#ifdef __clang__
+#pragma clang section bss = ".mcal_bss_no_cacheable" data = ".mcal_data_no_cacheable" rodata = ""
+#else
+#pragma section DATA ".mcal_data_no_cacheable"                                                     \
+                     ".mcal_bss_no_cacheable"
+#endif
 #endif
 
 #ifdef ADC_STOP_SEC_VAR_INIT_BOOLEAN_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_VAR_INIT_BOOLEAN_NO_CACHEABLE
-        #undef ENTERED_ADC_START_SEC_VAR_INIT_BOOLEAN_NO_CACHEABLE
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_VAR_INIT_BOOLEAN_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #ifdef __clang__        
-        #pragma clang section bss="" data="" rodata=""
-    #else
-        #pragma section DATA
-    #endif
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_VAR_INIT_BOOLEAN_NO_CACHEABLE
+#undef ENTERED_ADC_START_SEC_VAR_INIT_BOOLEAN_NO_CACHEABLE
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_VAR_INIT_BOOLEAN_NO_CACHEABLE
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#ifdef __clang__
+#pragma clang section bss = "" data = "" rodata = ""
+#else
+#pragma section DATA
+#endif
 #endif
 
 #ifdef ADC_START_SEC_VAR_INIT_8_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_VAR_INIT_8_NO_CACHEABLE
-    #define ENTERED_ADC_START_SEC_VAR_INIT_8_NO_CACHEABLE
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_VAR_INIT_8_NO_CACHEABLE
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #ifdef __clang__        
-        #pragma clang section bss=".mcal_bss_no_cacheable" data=".mcal_data_no_cacheable" rodata=""
-    #else
-        #pragma section DATA ".mcal_data_no_cacheable" ".mcal_bss_no_cacheable"
-    #endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_VAR_INIT_8_NO_CACHEABLE
+#define ENTERED_ADC_START_SEC_VAR_INIT_8_NO_CACHEABLE
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_VAR_INIT_8_NO_CACHEABLE
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#ifdef __clang__
+#pragma clang section bss = ".mcal_bss_no_cacheable" data = ".mcal_data_no_cacheable" rodata = ""
+#else
+#pragma section DATA ".mcal_data_no_cacheable"                                                     \
+                     ".mcal_bss_no_cacheable"
+#endif
 #endif
 
 #ifdef ADC_STOP_SEC_VAR_INIT_8_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_VAR_INIT_8_NO_CACHEABLE
-        #undef ENTERED_ADC_START_SEC_VAR_INIT_8_NO_CACHEABLE
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_VAR_INIT_8_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #ifdef __clang__        
-        #pragma clang section bss="" data="" rodata=""
-    #else
-        #pragma section DATA
-    #endif
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_VAR_INIT_8_NO_CACHEABLE
+#undef ENTERED_ADC_START_SEC_VAR_INIT_8_NO_CACHEABLE
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_VAR_INIT_8_NO_CACHEABLE
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#ifdef __clang__
+#pragma clang section bss = "" data = "" rodata = ""
+#else
+#pragma section DATA
+#endif
 #endif
 
-
 #ifdef ADC_START_SEC_VAR_INIT_16_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_VAR_INIT_16_NO_CACHEABLE
-    #define ENTERED_ADC_START_SEC_VAR_INIT_16_NO_CACHEABLE
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_VAR_INIT_16_NO_CACHEABLE
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #ifdef __clang__        
-        #pragma clang section bss=".mcal_bss_no_cacheable" data=".mcal_data_no_cacheable" rodata=""
-    #else
-        #pragma section DATA ".mcal_data_no_cacheable" ".mcal_bss_no_cacheable"
-    #endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_VAR_INIT_16_NO_CACHEABLE
+#define ENTERED_ADC_START_SEC_VAR_INIT_16_NO_CACHEABLE
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_VAR_INIT_16_NO_CACHEABLE
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#ifdef __clang__
+#pragma clang section bss = ".mcal_bss_no_cacheable" data = ".mcal_data_no_cacheable" rodata = ""
+#else
+#pragma section DATA ".mcal_data_no_cacheable"                                                     \
+                     ".mcal_bss_no_cacheable"
+#endif
 #endif
 
 #ifdef ADC_STOP_SEC_VAR_INIT_16_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_VAR_INIT_16_NO_CACHEABLE
-        #undef ENTERED_ADC_START_SEC_VAR_INIT_16_NO_CACHEABLE
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_VAR_INIT_16_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #ifdef __clang__        
-        #pragma clang section bss="" data="" rodata=""
-    #else
-        #pragma section DATA
-    #endif
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_VAR_INIT_16_NO_CACHEABLE
+#undef ENTERED_ADC_START_SEC_VAR_INIT_16_NO_CACHEABLE
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_VAR_INIT_16_NO_CACHEABLE
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#ifdef __clang__
+#pragma clang section bss = "" data = "" rodata = ""
+#else
+#pragma section DATA
+#endif
 #endif
 
 #ifdef ADC_START_SEC_VAR_INIT_32_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_VAR_INIT_32_NO_CACHEABLE
-    #define ENTERED_ADC_START_SEC_VAR_INIT_32_NO_CACHEABLE
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_VAR_INIT_32_NO_CACHEABLE
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #ifdef __clang__        
-        #pragma clang section bss=".mcal_bss_no_cacheable" data=".mcal_data_no_cacheable" rodata=""
-    #else
-        #pragma section DATA ".mcal_data_no_cacheable" ".mcal_bss_no_cacheable"
-    #endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_VAR_INIT_32_NO_CACHEABLE
+#define ENTERED_ADC_START_SEC_VAR_INIT_32_NO_CACHEABLE
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_VAR_INIT_32_NO_CACHEABLE
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#ifdef __clang__
+#pragma clang section bss = ".mcal_bss_no_cacheable" data = ".mcal_data_no_cacheable" rodata = ""
+#else
+#pragma section DATA ".mcal_data_no_cacheable"                                                     \
+                     ".mcal_bss_no_cacheable"
+#endif
 #endif
 
 #ifdef ADC_STOP_SEC_VAR_INIT_32_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_VAR_INIT_32_NO_CACHEABLE
-        #undef ENTERED_ADC_START_SEC_VAR_INIT_32_NO_CACHEABLE
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_VAR_INIT_32_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #ifdef __clang__        
-        #pragma clang section bss="" data="" rodata=""
-    #else
-        #pragma section DATA
-    #endif
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_VAR_INIT_32_NO_CACHEABLE
+#undef ENTERED_ADC_START_SEC_VAR_INIT_32_NO_CACHEABLE
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_VAR_INIT_32_NO_CACHEABLE
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#ifdef __clang__
+#pragma clang section bss = "" data = "" rodata = ""
+#else
+#pragma section DATA
+#endif
 #endif
 
 #ifdef ADC_START_SEC_VAR_INIT_UNSPECIFIED_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_VAR_INIT_UNSPECIFIED_NO_CACHEABLE
-    #define ENTERED_ADC_START_SEC_VAR_INIT_UNSPECIFIED_NO_CACHEABLE
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_VAR_INIT_UNSPECIFIED_NO_CACHEABLE
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #ifdef __clang__        
-        #pragma clang section bss=".mcal_bss_no_cacheable" data=".mcal_data_no_cacheable" rodata=""
-    #else
-        #pragma section DATA ".mcal_data_no_cacheable" ".mcal_bss_no_cacheable"
-    #endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_VAR_INIT_UNSPECIFIED_NO_CACHEABLE
+#define ENTERED_ADC_START_SEC_VAR_INIT_UNSPECIFIED_NO_CACHEABLE
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_VAR_INIT_UNSPECIFIED_NO_CACHEABLE
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#ifdef __clang__
+#pragma clang section bss = ".mcal_bss_no_cacheable" data = ".mcal_data_no_cacheable" rodata = ""
+#else
+#pragma section DATA ".mcal_data_no_cacheable"                                                     \
+                     ".mcal_bss_no_cacheable"
+#endif
 #endif
 
 #ifdef ADC_STOP_SEC_VAR_INIT_UNSPECIFIED_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_VAR_INIT_UNSPECIFIED_NO_CACHEABLE
-        #undef ENTERED_ADC_START_SEC_VAR_INIT_UNSPECIFIED_NO_CACHEABLE
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_VAR_INIT_UNSPECIFIED_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #ifdef __clang__        
-        #pragma clang section bss="" data="" rodata=""
-    #else
-        #pragma section DATA
-    #endif
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_VAR_INIT_UNSPECIFIED_NO_CACHEABLE
+#undef ENTERED_ADC_START_SEC_VAR_INIT_UNSPECIFIED_NO_CACHEABLE
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_VAR_INIT_UNSPECIFIED_NO_CACHEABLE
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#ifdef __clang__
+#pragma clang section bss = "" data = "" rodata = ""
+#else
+#pragma section DATA
+#endif
 #endif
 
 #ifdef ADC_START_SEC_VAR_CLEARED_UNSPECIFIED_AE_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_VAR_CLEARED_UNSPECIFIED_AE_NO_CACHEABLE
-    #define ENTERED_ADC_START_SEC_VAR_CLEARED_UNSPECIFIED_AE_NO_CACHEABLE
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_VAR_CLEARED_UNSPECIFIED_AE_NO_CACHEABLE
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #ifdef __clang__        
-        #pragma clang section bss=".ae_shared_bss" data=".ae_shared_data" rodata=""
-    #else
-        #pragma section DATA ".ae_shared_data" ".ae_shared_bss"
-    #endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_VAR_CLEARED_UNSPECIFIED_AE_NO_CACHEABLE
+#define ENTERED_ADC_START_SEC_VAR_CLEARED_UNSPECIFIED_AE_NO_CACHEABLE
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_VAR_CLEARED_UNSPECIFIED_AE_NO_CACHEABLE
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#ifdef __clang__
+#pragma clang section bss = ".ae_shared_bss" data = ".ae_shared_data" rodata = ""
+#else
+#pragma section DATA ".ae_shared_data"                                                             \
+                     ".ae_shared_bss"
+#endif
 #endif
 
 #ifdef ADC_STOP_SEC_VAR_CLEARED_UNSPECIFIED_AE_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_VAR_CLEARED_UNSPECIFIED_AE_NO_CACHEABLE
-        #undef ENTERED_ADC_START_SEC_VAR_CLEARED_UNSPECIFIED_AE_NO_CACHEABLE
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_VAR_CLEARED_UNSPECIFIED_AE_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #ifdef __clang__        
-        #pragma clang section bss="" data="" rodata=""
-    #else
-        #pragma section DATA
-    #endif
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_VAR_CLEARED_UNSPECIFIED_AE_NO_CACHEABLE
+#undef ENTERED_ADC_START_SEC_VAR_CLEARED_UNSPECIFIED_AE_NO_CACHEABLE
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_VAR_CLEARED_UNSPECIFIED_AE_NO_CACHEABLE
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#ifdef __clang__
+#pragma clang section bss = "" data = "" rodata = ""
+#else
+#pragma section DATA
+#endif
 #endif
 
 #ifdef ADC_START_SEC_VAR_INIT_UNSPECIFIED_AE_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_VAR_INIT_UNSPECIFIED_AE_NO_CACHEABLE
-    #define ENTERED_ADC_START_SEC_VAR_INIT_UNSPECIFIED_AE_NO_CACHEABLE
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_VAR_INIT_UNSPECIFIED_AE_NO_CACHEABLE
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #ifdef __clang__
-        #pragma clang section bss=".ae_shared_bss" data=".ae_shared_data" rodata=""
-    #else
-        #pragma section DATA ".ae_shared_data" ".ae_shared_bss"
-    #endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_VAR_INIT_UNSPECIFIED_AE_NO_CACHEABLE
+#define ENTERED_ADC_START_SEC_VAR_INIT_UNSPECIFIED_AE_NO_CACHEABLE
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_VAR_INIT_UNSPECIFIED_AE_NO_CACHEABLE
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#ifdef __clang__
+#pragma clang section bss = ".ae_shared_bss" data = ".ae_shared_data" rodata = ""
+#else
+#pragma section DATA ".ae_shared_data"                                                             \
+                     ".ae_shared_bss"
+#endif
 #endif
 
 #ifdef ADC_STOP_SEC_VAR_INIT_UNSPECIFIED_AE_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_VAR_INIT_UNSPECIFIED_AE_NO_CACHEABLE
-        #undef ENTERED_ADC_START_SEC_VAR_INIT_UNSPECIFIED_AE_NO_CACHEABLE
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_VAR_INIT_UNSPECIFIED_AE_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #ifdef __clang__        
-        #pragma clang section bss="" data="" rodata=""
-    #else
-        #pragma section DATA
-    #endif
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_VAR_INIT_UNSPECIFIED_AE_NO_CACHEABLE
+#undef ENTERED_ADC_START_SEC_VAR_INIT_UNSPECIFIED_AE_NO_CACHEABLE
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_VAR_INIT_UNSPECIFIED_AE_NO_CACHEABLE
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#ifdef __clang__
+#pragma clang section bss = "" data = "" rodata = ""
+#else
+#pragma section DATA
+#endif
 #endif
 
 #ifdef ADC_START_SEC_VAR_SHARED_INIT_UNSPECIFIED_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_VAR_SHARED_INIT_UNSPECIFIED_NO_CACHEABLE
-    #define ENTERED_ADC_START_SEC_VAR_SHARED_INIT_UNSPECIFIED_NO_CACHEABLE
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_VAR_SHARED_INIT_UNSPECIFIED_NO_CACHEABLE
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #ifdef __clang__
-        #pragma clang section bss=".mcal_shared_bss" data=".mcal_shared_data" rodata=""
-    #else
-        #pragma section DATA ".mcal_shared_data" ".mcal_shared_bss"
-    #endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_VAR_SHARED_INIT_UNSPECIFIED_NO_CACHEABLE
+#define ENTERED_ADC_START_SEC_VAR_SHARED_INIT_UNSPECIFIED_NO_CACHEABLE
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_VAR_SHARED_INIT_UNSPECIFIED_NO_CACHEABLE
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#ifdef __clang__
+#pragma clang section bss = ".mcal_shared_bss" data = ".mcal_shared_data" rodata = ""
+#else
+#pragma section DATA ".mcal_shared_data"                                                           \
+                     ".mcal_shared_bss"
+#endif
 #endif
 
 #ifdef ADC_STOP_SEC_VAR_SHARED_INIT_UNSPECIFIED_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_VAR_SHARED_INIT_UNSPECIFIED_NO_CACHEABLE
-        #undef ENTERED_ADC_START_SEC_VAR_SHARED_INIT_UNSPECIFIED_NO_CACHEABLE
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_VAR_SHARED_INIT_UNSPECIFIED_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #ifdef __clang__        
-        #pragma clang section bss="" data="" rodata=""
-    #else
-        #pragma section DATA
-    #endif
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_VAR_SHARED_INIT_UNSPECIFIED_NO_CACHEABLE
+#undef ENTERED_ADC_START_SEC_VAR_SHARED_INIT_UNSPECIFIED_NO_CACHEABLE
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_VAR_SHARED_INIT_UNSPECIFIED_NO_CACHEABLE
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#ifdef __clang__
+#pragma clang section bss = "" data = "" rodata = ""
+#else
+#pragma section DATA
+#endif
 #endif
 
 #ifdef ADC_START_SEC_VAR_SHARED_CLEARED_UNSPECIFIED_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_VAR_SHARED_CLEARED_UNSPECIFIED_NO_CACHEABLE
-    #define ENTERED_ADC_START_SEC_VAR_SHARED_CLEARED_UNSPECIFIED_NO_CACHEABLE
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_VAR_SHARED_CLEARED_UNSPECIFIED_NO_CACHEABLE
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #ifdef __clang__
-        #pragma clang section bss=".mcal_shared_bss" data=".mcal_shared_data" rodata=""
-    #else
-        #pragma section DATA ".mcal_shared_data" ".mcal_shared_bss"
-    #endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_VAR_SHARED_CLEARED_UNSPECIFIED_NO_CACHEABLE
+#define ENTERED_ADC_START_SEC_VAR_SHARED_CLEARED_UNSPECIFIED_NO_CACHEABLE
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_VAR_SHARED_CLEARED_UNSPECIFIED_NO_CACHEABLE
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#ifdef __clang__
+#pragma clang section bss = ".mcal_shared_bss" data = ".mcal_shared_data" rodata = ""
+#else
+#pragma section DATA ".mcal_shared_data"                                                           \
+                     ".mcal_shared_bss"
+#endif
 #endif
 
 #ifdef ADC_STOP_SEC_VAR_SHARED_CLEARED_UNSPECIFIED_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_VAR_SHARED_CLEARED_UNSPECIFIED_NO_CACHEABLE
-        #undef ENTERED_ADC_START_SEC_VAR_SHARED_CLEARED_UNSPECIFIED_NO_CACHEABLE
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_VAR_SHARED_CLEARED_UNSPECIFIED_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #ifdef __clang__        
-        #pragma clang section bss="" data="" rodata=""
-    #else
-        #pragma section DATA
-    #endif
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_VAR_SHARED_CLEARED_UNSPECIFIED_NO_CACHEABLE
+#undef ENTERED_ADC_START_SEC_VAR_SHARED_CLEARED_UNSPECIFIED_NO_CACHEABLE
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_VAR_SHARED_CLEARED_UNSPECIFIED_NO_CACHEABLE
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#ifdef __clang__
+#pragma clang section bss = "" data = "" rodata = ""
+#else
+#pragma section DATA
+#endif
 #endif
 /**************************************************************************************************/
 /********************************************* CODEWARRIOR ****************************************/
@@ -3626,2689 +3647,2689 @@ extern "C"{
 #elif defined(_CODEWARRIOR_C_S32K1XX_)
 /**************************************** ADC *******************************/
 #ifdef ADC_START_SEC_CONFIG_DATA_8
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_CONFIG_DATA_8
-    #define ENTERED_ADC_START_SEC_CONFIG_DATA_8
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_CONFIG_DATA_8
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma CONST_SEG mcal_const_cfg
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_CONFIG_DATA_8
+#define ENTERED_ADC_START_SEC_CONFIG_DATA_8
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_CONFIG_DATA_8
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma CONST_SEG mcal_const_cfg
 #endif
 
 #ifdef ADC_STOP_SEC_CONFIG_DATA_8
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_CONFIG_DATA_8
-        #undef ENTERED_ADC_START_SEC_CONFIG_DATA_8
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_CONFIG_DATA_8
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma CONST_SEG DEFAULT
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_CONFIG_DATA_8
+#undef ENTERED_ADC_START_SEC_CONFIG_DATA_8
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_CONFIG_DATA_8
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma CONST_SEG DEFAULT
 #endif
 
 #ifdef ADC_START_SEC_CONFIG_DATA_16
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_CONFIG_DATA_16
-    #define ENTERED_ADC_START_SEC_CONFIG_DATA_16
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_CONFIG_DATA_16
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma CONST_SEG mcal_const_cfg
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_CONFIG_DATA_16
+#define ENTERED_ADC_START_SEC_CONFIG_DATA_16
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_CONFIG_DATA_16
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma CONST_SEG mcal_const_cfg
 #endif
 
 #ifdef ADC_STOP_SEC_CONFIG_DATA_16
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_CONFIG_DATA_16
-        #undef ENTERED_ADC_START_SEC_CONFIG_DATA_16
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_CONFIG_DATA_16
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma CONST_SEG DEFAULT
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_CONFIG_DATA_16
+#undef ENTERED_ADC_START_SEC_CONFIG_DATA_16
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_CONFIG_DATA_16
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma CONST_SEG DEFAULT
 #endif
 
 #ifdef ADC_START_SEC_CONFIG_DATA_32
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_CONFIG_DATA_32
-    #define ENTERED_ADC_START_SEC_CONFIG_DATA_32
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_CONFIG_DATA_32
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma CONST_SEG mcal_const_cfg
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_CONFIG_DATA_32
+#define ENTERED_ADC_START_SEC_CONFIG_DATA_32
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_CONFIG_DATA_32
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma CONST_SEG mcal_const_cfg
 #endif
 
 #ifdef ADC_STOP_SEC_CONFIG_DATA_32
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_CONFIG_DATA_32
-        #undef ENTERED_ADC_START_SEC_CONFIG_DATA_32
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_CONFIG_DATA_32
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma CONST_SEG DEFAULT
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_CONFIG_DATA_32
+#undef ENTERED_ADC_START_SEC_CONFIG_DATA_32
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_CONFIG_DATA_32
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma CONST_SEG DEFAULT
 #endif
 
 #ifdef ADC_START_SEC_CONFIG_DATA_UNSPECIFIED
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_CONFIG_DATA_UNSPECIFIED
-    #define ENTERED_ADC_START_SEC_CONFIG_DATA_UNSPECIFIED
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_CONFIG_DATA_UNSPECIFIED
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma CONST_SEG mcal_const_cfg
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_CONFIG_DATA_UNSPECIFIED
+#define ENTERED_ADC_START_SEC_CONFIG_DATA_UNSPECIFIED
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_CONFIG_DATA_UNSPECIFIED
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma CONST_SEG mcal_const_cfg
 #endif
 
 #ifdef ADC_STOP_SEC_CONFIG_DATA_UNSPECIFIED
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_CONFIG_DATA_UNSPECIFIED
-        #undef ENTERED_ADC_START_SEC_CONFIG_DATA_UNSPECIFIED
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_CONFIG_DATA_UNSPECIFIED
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma CONST_SEG DEFAULT
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_CONFIG_DATA_UNSPECIFIED
+#undef ENTERED_ADC_START_SEC_CONFIG_DATA_UNSPECIFIED
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_CONFIG_DATA_UNSPECIFIED
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma CONST_SEG DEFAULT
 #endif
 
 #ifdef ADC_START_SEC_CONFIG_DATA_8_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_CONFIG_DATA_8_NO_CACHEABLE
-    #define ENTERED_ADC_START_SEC_CONFIG_DATA_8_NO_CACHEABLE
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_CONFIG_DATA_8_NO_CACHEABLE
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma CONST_SEG .mcal_const_no_cacheable
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_CONFIG_DATA_8_NO_CACHEABLE
+#define ENTERED_ADC_START_SEC_CONFIG_DATA_8_NO_CACHEABLE
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_CONFIG_DATA_8_NO_CACHEABLE
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma CONST_SEG.mcal_const_no_cacheable
 #endif
 
 #ifdef ADC_STOP_SEC_CONFIG_DATA_8_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_CONFIG_DATA_8_NO_CACHEABLE
-        #undef ENTERED_ADC_START_SEC_CONFIG_DATA_8_NO_CACHEABLE
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_CONFIG_DATA_8_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma DATA_SEG DEFAULT
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_CONFIG_DATA_8_NO_CACHEABLE
+#undef ENTERED_ADC_START_SEC_CONFIG_DATA_8_NO_CACHEABLE
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_CONFIG_DATA_8_NO_CACHEABLE
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma DATA_SEG DEFAULT
 #endif
 
 #ifdef ADC_START_SEC_CONFIG_DATA_16_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_CONFIG_DATA_16_NO_CACHEABLE
-    #define ENTERED_ADC_START_SEC_CONFIG_DATA_16_NO_CACHEABLE
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_CONFIG_DATA_16_NO_CACHEABLE
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma CONST_SEG .mcal_const_no_cacheable
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_CONFIG_DATA_16_NO_CACHEABLE
+#define ENTERED_ADC_START_SEC_CONFIG_DATA_16_NO_CACHEABLE
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_CONFIG_DATA_16_NO_CACHEABLE
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma CONST_SEG.mcal_const_no_cacheable
 #endif
 
 #ifdef ADC_STOP_SEC_CONFIG_DATA_16_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_CONFIG_DATA_16_NO_CACHEABLE
-        #undef ENTERED_ADC_START_SEC_CONFIG_DATA_16_NO_CACHEABLE
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_CONFIG_DATA_16_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma DATA_SEG DEFAULT
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_CONFIG_DATA_16_NO_CACHEABLE
+#undef ENTERED_ADC_START_SEC_CONFIG_DATA_16_NO_CACHEABLE
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_CONFIG_DATA_16_NO_CACHEABLE
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma DATA_SEG DEFAULT
 #endif
 
 #ifdef ADC_START_SEC_CONFIG_DATA_32_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_CONFIG_DATA_32_NO_CACHEABLE
-    #define ENTERED_ADC_START_SEC_CONFIG_DATA_32_NO_CACHEABLE
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_CONFIG_DATA_32_NO_CACHEABLE
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma CONST_SEG .mcal_const_no_cacheable
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_CONFIG_DATA_32_NO_CACHEABLE
+#define ENTERED_ADC_START_SEC_CONFIG_DATA_32_NO_CACHEABLE
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_CONFIG_DATA_32_NO_CACHEABLE
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma CONST_SEG.mcal_const_no_cacheable
 #endif
 
 #ifdef ADC_STOP_SEC_CONFIG_DATA_32_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_CONFIG_DATA_32_NO_CACHEABLE
-        #undef ENTERED_ADC_START_SEC_CONFIG_DATA_32_NO_CACHEABLE
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_CONFIG_DATA_32_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma DATA_SEG DEFAULT
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_CONFIG_DATA_32_NO_CACHEABLE
+#undef ENTERED_ADC_START_SEC_CONFIG_DATA_32_NO_CACHEABLE
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_CONFIG_DATA_32_NO_CACHEABLE
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma DATA_SEG DEFAULT
 #endif
 
 #ifdef ADC_START_SEC_CONFIG_DATA_UNSPECIFIED_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_CONFIG_DATA_UNSPECIFIED_NO_CACHEABLE
-    #define ENTERED_ADC_START_SEC_CONFIG_DATA_UNSPECIFIED_NO_CACHEABLE
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_CONFIG_DATA_UNSPECIFIED_NO_CACHEABLE
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma CONST_SEG .mcal_const_no_cacheable
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_CONFIG_DATA_UNSPECIFIED_NO_CACHEABLE
+#define ENTERED_ADC_START_SEC_CONFIG_DATA_UNSPECIFIED_NO_CACHEABLE
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_CONFIG_DATA_UNSPECIFIED_NO_CACHEABLE
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma CONST_SEG.mcal_const_no_cacheable
 #endif
 
 #ifdef ADC_STOP_SEC_CONFIG_DATA_UNSPECIFIED_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_CONFIG_DATA_UNSPECIFIED_NO_CACHEABLE
-        #undef ENTERED_ADC_START_SEC_CONFIG_DATA_UNSPECIFIED_NO_CACHEABLE
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_CONFIG_DATA_UNSPECIFIED_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma DATA_SEG DEFAULT
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_CONFIG_DATA_UNSPECIFIED_NO_CACHEABLE
+#undef ENTERED_ADC_START_SEC_CONFIG_DATA_UNSPECIFIED_NO_CACHEABLE
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_CONFIG_DATA_UNSPECIFIED_NO_CACHEABLE
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma DATA_SEG DEFAULT
 #endif
 
 #ifdef ADC_START_SEC_CONST_BOOLEAN
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_CONST_BOOLEAN
-    #define ENTERED_ADC_START_SEC_CONST_BOOLEAN
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_CONST_BOOLEAN
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma CONST_SEG mcal_const
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_CONST_BOOLEAN
+#define ENTERED_ADC_START_SEC_CONST_BOOLEAN
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_CONST_BOOLEAN
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma CONST_SEG mcal_const
 #endif
 
 #ifdef ADC_STOP_SEC_CONST_BOOLEAN
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_CONST_BOOLEAN
-        #undef ENTERED_ADC_START_SEC_CONST_BOOLEAN
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_CONST_BOOLEAN
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma CONST_SEG DEFAULT
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_CONST_BOOLEAN
+#undef ENTERED_ADC_START_SEC_CONST_BOOLEAN
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_CONST_BOOLEAN
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma CONST_SEG DEFAULT
 #endif
 
 #ifdef ADC_START_SEC_CONST_8
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_CONST_8
-    #define ENTERED_ADC_START_SEC_CONST_8
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_CONST_8
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma CONST_SEG mcal_const
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_CONST_8
+#define ENTERED_ADC_START_SEC_CONST_8
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_CONST_8
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma CONST_SEG mcal_const
 #endif
 
 #ifdef ADC_STOP_SEC_CONST_8
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_CONST_8
-        #undef ENTERED_ADC_START_SEC_CONST_8
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_CONST_8
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma CONST_SEG DEFAULT
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_CONST_8
+#undef ENTERED_ADC_START_SEC_CONST_8
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_CONST_8
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma CONST_SEG DEFAULT
 #endif
 
 #ifdef ADC_START_SEC_CONST_16
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_CONST_16
-    #define ENTERED_ADC_START_SEC_CONST_16
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_CONST_16
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma CONST_SEG mcal_const
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_CONST_16
+#define ENTERED_ADC_START_SEC_CONST_16
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_CONST_16
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma CONST_SEG mcal_const
 #endif
 
 #ifdef ADC_STOP_SEC_CONST_16
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_CONST_16
-        #undef ENTERED_ADC_START_SEC_CONST_16
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_CONST_16
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma CONST_SEG DEFAULT
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_CONST_16
+#undef ENTERED_ADC_START_SEC_CONST_16
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_CONST_16
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma CONST_SEG DEFAULT
 #endif
 
 #ifdef ADC_START_SEC_CONST_32
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_CONST_32
-    #define ENTERED_ADC_START_SEC_CONST_32
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_CONST_32
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma CONST_SEG mcal_const
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_CONST_32
+#define ENTERED_ADC_START_SEC_CONST_32
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_CONST_32
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma CONST_SEG mcal_const
 #endif
 
 #ifdef ADC_STOP_SEC_CONST_32
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_CONST_32
-        #undef ENTERED_ADC_START_SEC_CONST_32
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_CONST_32
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma CONST_SEG DEFAULT
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_CONST_32
+#undef ENTERED_ADC_START_SEC_CONST_32
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_CONST_32
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma CONST_SEG DEFAULT
 #endif
 
 #ifdef ADC_START_SEC_CONST_UNSPECIFIED
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_CONST_UNSPECIFIED
-    #define ENTERED_ADC_START_SEC_CONST_UNSPECIFIED
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_CONST_UNSPECIFIED
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma CONST_SEG mcal_const
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_CONST_UNSPECIFIED
+#define ENTERED_ADC_START_SEC_CONST_UNSPECIFIED
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_CONST_UNSPECIFIED
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma CONST_SEG mcal_const
 #endif
 
 #ifdef ADC_STOP_SEC_CONST_UNSPECIFIED
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_CONST_UNSPECIFIED
-        #undef ENTERED_ADC_START_SEC_CONST_UNSPECIFIED
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_CONST_UNSPECIFIED
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma CONST_SEG DEFAULT
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_CONST_UNSPECIFIED
+#undef ENTERED_ADC_START_SEC_CONST_UNSPECIFIED
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_CONST_UNSPECIFIED
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma CONST_SEG DEFAULT
 #endif
 
 #ifdef ADC_START_SEC_CODE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_CODE
-    #define ENTERED_ADC_START_SEC_CODE
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_CODE
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma CODE_SEG mcal_text
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_CODE
+#define ENTERED_ADC_START_SEC_CODE
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_CODE
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma CODE_SEG mcal_text
 #endif
 
 #ifdef ADC_STOP_SEC_CODE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_CODE
-        #undef ENTERED_ADC_START_SEC_CODE
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_CODE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma CODE_SEG DEFAULT
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_CODE
+#undef ENTERED_ADC_START_SEC_CODE
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_CODE
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma CODE_SEG DEFAULT
 #endif
 
 #ifdef ADC_START_SEC_RAMCODE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_RAMCODE
-    #define ENTERED_ADC_START_SEC_RAMCODE
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_RAMCODE
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma CODE_SEG ramcode
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_RAMCODE
+#define ENTERED_ADC_START_SEC_RAMCODE
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_RAMCODE
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma CODE_SEG ramcode
 #endif
 
 #ifdef ADC_STOP_SEC_RAMCODE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_RAMCODE
-        #undef ENTERED_ADC_START_SEC_RAMCODE
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_RAMCODE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma CODE_SEG DEFAULT
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_RAMCODE
+#undef ENTERED_ADC_START_SEC_RAMCODE
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_RAMCODE
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma CODE_SEG DEFAULT
 #endif
 
 #ifdef ADC_START_SEC_CODE_AC
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_CODE_AC
-    #define ENTERED_ADC_START_SEC_CODE_AC
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_CODE_AC
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma CODE_SEG acadc_code_rom
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_CODE_AC
+#define ENTERED_ADC_START_SEC_CODE_AC
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_CODE_AC
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma CODE_SEG acadc_code_rom
 #endif
 
 #ifdef ADC_STOP_SEC_CODE_AC
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_CODE_AC
-        #undef ENTERED_ADC_START_SEC_CODE_AC
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_CODE_AC
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma CODE_SEG DEFAULT
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_CODE_AC
+#undef ENTERED_ADC_START_SEC_CODE_AC
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_CODE_AC
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma CODE_SEG DEFAULT
 #endif
 
 #ifdef ADC_START_SEC_VAR_CLEARED_BOOLEAN
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_VAR_CLEARED_BOOLEAN
-    #define ENTERED_ADC_START_SEC_VAR_CLEARED_BOOLEAN
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_VAR_CLEARED_BOOLEAN
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma DATA_SEG mcal_bss
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_VAR_CLEARED_BOOLEAN
+#define ENTERED_ADC_START_SEC_VAR_CLEARED_BOOLEAN
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_VAR_CLEARED_BOOLEAN
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma DATA_SEG mcal_bss
 #endif
 
 #ifdef ADC_STOP_SEC_VAR_CLEARED_BOOLEAN
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_VAR_CLEARED_BOOLEAN
-        #undef ENTERED_ADC_START_SEC_VAR_CLEARED_BOOLEAN
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_VAR_CLEARED_BOOLEAN
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma DATA_SEG DEFAULT
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_VAR_CLEARED_BOOLEAN
+#undef ENTERED_ADC_START_SEC_VAR_CLEARED_BOOLEAN
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_VAR_CLEARED_BOOLEAN
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma DATA_SEG DEFAULT
 #endif
 
 #ifdef ADC_START_SEC_VAR_CLEARED_8
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_VAR_CLEARED_8
-    #define ENTERED_ADC_START_SEC_VAR_CLEARED_8
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_VAR_CLEARED_8
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma DATA_SEG mcal_bss
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_VAR_CLEARED_8
+#define ENTERED_ADC_START_SEC_VAR_CLEARED_8
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_VAR_CLEARED_8
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma DATA_SEG mcal_bss
 #endif
 
 #ifdef ADC_STOP_SEC_VAR_CLEARED_8
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_VAR_CLEARED_8
-        #undef ENTERED_ADC_START_SEC_VAR_CLEARED_8
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_VAR_CLEARED_8
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma DATA_SEG DEFAULT
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_VAR_CLEARED_8
+#undef ENTERED_ADC_START_SEC_VAR_CLEARED_8
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_VAR_CLEARED_8
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma DATA_SEG DEFAULT
 #endif
 
 #ifdef ADC_START_SEC_VAR_CLEARED_16
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_VAR_CLEARED_16
-    #define ENTERED_ADC_START_SEC_VAR_CLEARED_16
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_VAR_CLEARED_16
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma DATA_SEG mcal_bss
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_VAR_CLEARED_16
+#define ENTERED_ADC_START_SEC_VAR_CLEARED_16
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_VAR_CLEARED_16
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma DATA_SEG mcal_bss
 #endif
 
 #ifdef ADC_STOP_SEC_VAR_CLEARED_16
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_VAR_CLEARED_16
-        #undef ENTERED_ADC_START_SEC_VAR_CLEARED_16
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_VAR_CLEARED_16
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma DATA_SEG DEFAULT
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_VAR_CLEARED_16
+#undef ENTERED_ADC_START_SEC_VAR_CLEARED_16
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_VAR_CLEARED_16
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma DATA_SEG DEFAULT
 #endif
 
 #ifdef ADC_START_SEC_VAR_CLEARED_32
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_VAR_CLEARED_32
-    #define ENTERED_ADC_START_SEC_VAR_CLEARED_32
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_VAR_CLEARED_32
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma DATA_SEG mcal_bss
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_VAR_CLEARED_32
+#define ENTERED_ADC_START_SEC_VAR_CLEARED_32
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_VAR_CLEARED_32
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma DATA_SEG mcal_bss
 #endif
 
 #ifdef ADC_STOP_SEC_VAR_CLEARED_32
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_VAR_CLEARED_32
-        #undef ENTERED_ADC_START_SEC_VAR_CLEARED_32
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_VAR_CLEARED_32
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma DATA_SEG DEFAULT
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_VAR_CLEARED_32
+#undef ENTERED_ADC_START_SEC_VAR_CLEARED_32
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_VAR_CLEARED_32
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma DATA_SEG DEFAULT
 #endif
 
 #ifdef ADC_START_SEC_VAR_CLEARED_UNSPECIFIED
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_VAR_CLEARED_UNSPECIFIED
-    #define ENTERED_ADC_START_SEC_VAR_CLEARED_UNSPECIFIED
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_VAR_CLEARED_UNSPECIFIED
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma DATA_SEG mcal_bss
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_VAR_CLEARED_UNSPECIFIED
+#define ENTERED_ADC_START_SEC_VAR_CLEARED_UNSPECIFIED
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_VAR_CLEARED_UNSPECIFIED
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma DATA_SEG mcal_bss
 #endif
 
 #ifdef ADC_STOP_SEC_VAR_CLEARED_UNSPECIFIED
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_VAR_CLEARED_UNSPECIFIED
-        #undef ENTERED_ADC_START_SEC_VAR_CLEARED_UNSPECIFIED
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_VAR_CLEARED_UNSPECIFIED
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma DATA_SEG DEFAULT
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_VAR_CLEARED_UNSPECIFIED
+#undef ENTERED_ADC_START_SEC_VAR_CLEARED_UNSPECIFIED
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_VAR_CLEARED_UNSPECIFIED
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma DATA_SEG DEFAULT
 #endif
 
 #ifdef ADC_START_SEC_VAR_INIT_BOOLEAN
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_VAR_INIT_BOOLEAN
-    #define ENTERED_ADC_START_SEC_VAR_INIT_BOOLEAN
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_VAR_INIT_BOOLEAN
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma DATA_SEG mcal_data
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_VAR_INIT_BOOLEAN
+#define ENTERED_ADC_START_SEC_VAR_INIT_BOOLEAN
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_VAR_INIT_BOOLEAN
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma DATA_SEG mcal_data
 #endif
 
 #ifdef ADC_STOP_SEC_VAR_INIT_BOOLEAN
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_VAR_INIT_BOOLEAN
-        #undef ENTERED_ADC_START_SEC_VAR_INIT_BOOLEAN
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_VAR_INIT_BOOLEAN
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma DATA_SEG DEFAULT
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_VAR_INIT_BOOLEAN
+#undef ENTERED_ADC_START_SEC_VAR_INIT_BOOLEAN
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_VAR_INIT_BOOLEAN
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma DATA_SEG DEFAULT
 #endif
 
 #ifdef ADC_START_SEC_VAR_INIT_8
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_VAR_INIT_8
-    #define ENTERED_ADC_START_SEC_VAR_INIT_8
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_VAR_INIT_8
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma DATA_SEG mcal_data
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_VAR_INIT_8
+#define ENTERED_ADC_START_SEC_VAR_INIT_8
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_VAR_INIT_8
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma DATA_SEG mcal_data
 #endif
 
 #ifdef ADC_STOP_SEC_VAR_INIT_8
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_VAR_INIT_8
-        #undef ENTERED_ADC_START_SEC_VAR_INIT_8
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_VAR_INIT_8
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma DATA_SEG DEFAULT
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_VAR_INIT_8
+#undef ENTERED_ADC_START_SEC_VAR_INIT_8
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_VAR_INIT_8
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma DATA_SEG DEFAULT
 #endif
 
 #ifdef ADC_START_SEC_VAR_INIT_16
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_VAR_INIT_16
-    #define ENTERED_ADC_START_SEC_VAR_INIT_16
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_VAR_INIT_16
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma DATA_SEG mcal_data
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_VAR_INIT_16
+#define ENTERED_ADC_START_SEC_VAR_INIT_16
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_VAR_INIT_16
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma DATA_SEG mcal_data
 #endif
 
 #ifdef ADC_STOP_SEC_VAR_INIT_16
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_VAR_INIT_16
-        #undef ENTERED_ADC_START_SEC_VAR_INIT_16
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_VAR_INIT_16
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma DATA_SEG DEFAULT
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_VAR_INIT_16
+#undef ENTERED_ADC_START_SEC_VAR_INIT_16
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_VAR_INIT_16
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma DATA_SEG DEFAULT
 #endif
 
 #ifdef ADC_START_SEC_VAR_INIT_32
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_VAR_INIT_32
-    #define ENTERED_ADC_START_SEC_VAR_INIT_32
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_VAR_INIT_32
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma DATA_SEG mcal_data
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_VAR_INIT_32
+#define ENTERED_ADC_START_SEC_VAR_INIT_32
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_VAR_INIT_32
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma DATA_SEG mcal_data
 #endif
 
 #ifdef ADC_STOP_SEC_VAR_INIT_32
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_VAR_INIT_32
-        #undef ENTERED_ADC_START_SEC_VAR_INIT_32
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_VAR_INIT_32
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma DATA_SEG DEFAULT
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_VAR_INIT_32
+#undef ENTERED_ADC_START_SEC_VAR_INIT_32
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_VAR_INIT_32
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma DATA_SEG DEFAULT
 #endif
 
 #ifdef ADC_START_SEC_VAR_INIT_UNSPECIFIED
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_VAR_INIT_UNSPECIFIED
-    #define ENTERED_ADC_START_SEC_VAR_INIT_UNSPECIFIED
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_VAR_INIT_UNSPECIFIED
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma DATA_SEG mcal_data
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_VAR_INIT_UNSPECIFIED
+#define ENTERED_ADC_START_SEC_VAR_INIT_UNSPECIFIED
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_VAR_INIT_UNSPECIFIED
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma DATA_SEG mcal_data
 #endif
 
 #ifdef ADC_STOP_SEC_VAR_INIT_UNSPECIFIED
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_VAR_INIT_UNSPECIFIED
-        #undef ENTERED_ADC_START_SEC_VAR_INIT_UNSPECIFIED
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_VAR_INIT_UNSPECIFIED
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma DATA_SEG DEFAULT
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_VAR_INIT_UNSPECIFIED
+#undef ENTERED_ADC_START_SEC_VAR_INIT_UNSPECIFIED
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_VAR_INIT_UNSPECIFIED
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma DATA_SEG DEFAULT
 #endif
 
 #ifdef ADC_START_SEC_VAR_CLEARED_BOOLEAN_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_VAR_CLEARED_BOOLEAN_NO_CACHEABLE
-    #define ENTERED_ADC_START_SEC_VAR_CLEARED_BOOLEAN_NO_CACHEABLE
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_VAR_CLEARED_BOOLEAN_NO_CACHEABLE
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma DATA_SEG mcal_bss
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_VAR_CLEARED_BOOLEAN_NO_CACHEABLE
+#define ENTERED_ADC_START_SEC_VAR_CLEARED_BOOLEAN_NO_CACHEABLE
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_VAR_CLEARED_BOOLEAN_NO_CACHEABLE
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma DATA_SEG mcal_bss
 #endif
 
 #ifdef ADC_STOP_SEC_VAR_CLEARED_BOOLEAN_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_VAR_CLEARED_BOOLEAN_NO_CACHEABLE
-        #undef ENTERED_ADC_START_SEC_VAR_CLEARED_BOOLEAN_NO_CACHEABLE
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_VAR_CLEARED_BOOLEAN_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma DATA_SEG DEFAULT
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_VAR_CLEARED_BOOLEAN_NO_CACHEABLE
+#undef ENTERED_ADC_START_SEC_VAR_CLEARED_BOOLEAN_NO_CACHEABLE
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_VAR_CLEARED_BOOLEAN_NO_CACHEABLE
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma DATA_SEG DEFAULT
 #endif
 
 #ifdef ADC_START_SEC_VAR_CLEARED_8_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_VAR_CLEARED_8_NO_CACHEABLE
-    #define ENTERED_ADC_START_SEC_VAR_CLEARED_8_NO_CACHEABLE
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_VAR_CLEARED_8_NO_CACHEABLE
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma DATA_SEG mcal_bss
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_VAR_CLEARED_8_NO_CACHEABLE
+#define ENTERED_ADC_START_SEC_VAR_CLEARED_8_NO_CACHEABLE
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_VAR_CLEARED_8_NO_CACHEABLE
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma DATA_SEG mcal_bss
 #endif
 
 #ifdef ADC_STOP_SEC_VAR_CLEARED_8_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_VAR_CLEARED_8_NO_CACHEABLE
-        #undef ENTERED_ADC_START_SEC_VAR_CLEARED_8_NO_CACHEABLE
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_VAR_CLEARED_8_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma DATA_SEG DEFAULT
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_VAR_CLEARED_8_NO_CACHEABLE
+#undef ENTERED_ADC_START_SEC_VAR_CLEARED_8_NO_CACHEABLE
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_VAR_CLEARED_8_NO_CACHEABLE
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma DATA_SEG DEFAULT
 #endif
 
 #ifdef ADC_START_SEC_VAR_CLEARED_16_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_VAR_CLEARED_16_NO_CACHEABLE
-    #define ENTERED_ADC_START_SEC_VAR_CLEARED_16_NO_CACHEABLE
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_VAR_CLEARED_16_NO_CACHEABLE
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma DATA_SEG mcal_bss
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_VAR_CLEARED_16_NO_CACHEABLE
+#define ENTERED_ADC_START_SEC_VAR_CLEARED_16_NO_CACHEABLE
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_VAR_CLEARED_16_NO_CACHEABLE
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma DATA_SEG mcal_bss
 #endif
 
 #ifdef ADC_STOP_SEC_VAR_CLEARED_16_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_VAR_CLEARED_16_NO_CACHEABLE
-        #undef ENTERED_ADC_START_SEC_VAR_CLEARED_16_NO_CACHEABLE
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_VAR_CLEARED_16_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma DATA_SEG DEFAULT
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_VAR_CLEARED_16_NO_CACHEABLE
+#undef ENTERED_ADC_START_SEC_VAR_CLEARED_16_NO_CACHEABLE
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_VAR_CLEARED_16_NO_CACHEABLE
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma DATA_SEG DEFAULT
 #endif
 
 #ifdef ADC_START_SEC_VAR_CLEARED_32_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_VAR_CLEARED_32_NO_CACHEABLE
-    #define ENTERED_ADC_START_SEC_VAR_CLEARED_32_NO_CACHEABLE
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_VAR_CLEARED_32_NO_CACHEABLE
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma DATA_SEG mcal_bss
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_VAR_CLEARED_32_NO_CACHEABLE
+#define ENTERED_ADC_START_SEC_VAR_CLEARED_32_NO_CACHEABLE
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_VAR_CLEARED_32_NO_CACHEABLE
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma DATA_SEG mcal_bss
 #endif
 
 #ifdef ADC_STOP_SEC_VAR_CLEARED_32_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_VAR_CLEARED_32_NO_CACHEABLE
-        #undef ENTERED_ADC_START_SEC_VAR_CLEARED_32_NO_CACHEABLE
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_VAR_CLEARED_32_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma DATA_SEG DEFAULT
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_VAR_CLEARED_32_NO_CACHEABLE
+#undef ENTERED_ADC_START_SEC_VAR_CLEARED_32_NO_CACHEABLE
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_VAR_CLEARED_32_NO_CACHEABLE
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma DATA_SEG DEFAULT
 #endif
 
 #ifdef ADC_START_SEC_VAR_CLEARED_UNSPECIFIED_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_VAR_CLEARED_UNSPECIFIED_NO_CACHEABLE
-    #define ENTERED_ADC_START_SEC_VAR_CLEARED_UNSPECIFIED_NO_CACHEABLE
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_VAR_CLEARED_UNSPECIFIED_NO_CACHEABLE
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma DATA_SEG mcal_bss
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_VAR_CLEARED_UNSPECIFIED_NO_CACHEABLE
+#define ENTERED_ADC_START_SEC_VAR_CLEARED_UNSPECIFIED_NO_CACHEABLE
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_VAR_CLEARED_UNSPECIFIED_NO_CACHEABLE
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma DATA_SEG mcal_bss
 #endif
 
 #ifdef ADC_STOP_SEC_VAR_CLEARED_UNSPECIFIED_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_VAR_CLEARED_UNSPECIFIED_NO_CACHEABLE
-        #undef ENTERED_ADC_START_SEC_VAR_CLEARED_UNSPECIFIED_NO_CACHEABLE
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_VAR_CLEARED_UNSPECIFIED_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma DATA_SEG DEFAULT
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_VAR_CLEARED_UNSPECIFIED_NO_CACHEABLE
+#undef ENTERED_ADC_START_SEC_VAR_CLEARED_UNSPECIFIED_NO_CACHEABLE
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_VAR_CLEARED_UNSPECIFIED_NO_CACHEABLE
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma DATA_SEG DEFAULT
 #endif
 
 #ifdef ADC_START_SEC_VAR_INIT_BOOLEAN_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_VAR_INIT_BOOLEAN_NO_CACHEABLE
-    #define ENTERED_ADC_START_SEC_VAR_INIT_BOOLEAN_NO_CACHEABLE
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_VAR_INIT_BOOLEAN_NO_CACHEABLE
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma DATA_SEG mcal_data
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_VAR_INIT_BOOLEAN_NO_CACHEABLE
+#define ENTERED_ADC_START_SEC_VAR_INIT_BOOLEAN_NO_CACHEABLE
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_VAR_INIT_BOOLEAN_NO_CACHEABLE
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma DATA_SEG mcal_data
 #endif
 
 #ifdef ADC_STOP_SEC_VAR_INIT_BOOLEAN_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_VAR_INIT_BOOLEAN_NO_CACHEABLE
-        #undef ENTERED_ADC_START_SEC_VAR_INIT_BOOLEAN_NO_CACHEABLE
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_VAR_INIT_BOOLEAN_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma DATA_SEG DEFAULT
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_VAR_INIT_BOOLEAN_NO_CACHEABLE
+#undef ENTERED_ADC_START_SEC_VAR_INIT_BOOLEAN_NO_CACHEABLE
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_VAR_INIT_BOOLEAN_NO_CACHEABLE
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma DATA_SEG DEFAULT
 #endif
 
 #ifdef ADC_START_SEC_VAR_INIT_8_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_VAR_INIT_8_NO_CACHEABLE
-    #define ENTERED_ADC_START_SEC_VAR_INIT_8_NO_CACHEABLE
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_VAR_INIT_8_NO_CACHEABLE
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma DATA_SEG mcal_data
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_VAR_INIT_8_NO_CACHEABLE
+#define ENTERED_ADC_START_SEC_VAR_INIT_8_NO_CACHEABLE
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_VAR_INIT_8_NO_CACHEABLE
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma DATA_SEG mcal_data
 #endif
 
 #ifdef ADC_STOP_SEC_VAR_INIT_8_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_VAR_INIT_8_NO_CACHEABLE
-        #undef ENTERED_ADC_START_SEC_VAR_INIT_8_NO_CACHEABLE
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_VAR_INIT_8_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma DATA_SEG DEFAULT
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_VAR_INIT_8_NO_CACHEABLE
+#undef ENTERED_ADC_START_SEC_VAR_INIT_8_NO_CACHEABLE
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_VAR_INIT_8_NO_CACHEABLE
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma DATA_SEG DEFAULT
 #endif
 
 #ifdef ADC_START_SEC_VAR_INIT_16_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_VAR_INIT_16_NO_CACHEABLE
-    #define ENTERED_ADC_START_SEC_VAR_INIT_16_NO_CACHEABLE
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_VAR_INIT_16_NO_CACHEABLE
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma DATA_SEG mcal_data
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_VAR_INIT_16_NO_CACHEABLE
+#define ENTERED_ADC_START_SEC_VAR_INIT_16_NO_CACHEABLE
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_VAR_INIT_16_NO_CACHEABLE
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma DATA_SEG mcal_data
 #endif
 
 #ifdef ADC_STOP_SEC_VAR_INIT_16_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_VAR_INIT_16_NO_CACHEABLE
-        #undef ENTERED_ADC_START_SEC_VAR_INIT_16_NO_CACHEABLE
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_VAR_INIT_16_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma DATA_SEG DEFAULT
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_VAR_INIT_16_NO_CACHEABLE
+#undef ENTERED_ADC_START_SEC_VAR_INIT_16_NO_CACHEABLE
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_VAR_INIT_16_NO_CACHEABLE
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma DATA_SEG DEFAULT
 #endif
 
 #ifdef ADC_START_SEC_VAR_INIT_32_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_VAR_INIT_32_NO_CACHEABLE
-    #define ENTERED_ADC_START_SEC_VAR_INIT_32_NO_CACHEABLE
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_VAR_INIT_32_NO_CACHEABLE
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma DATA_SEG mcal_data
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_VAR_INIT_32_NO_CACHEABLE
+#define ENTERED_ADC_START_SEC_VAR_INIT_32_NO_CACHEABLE
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_VAR_INIT_32_NO_CACHEABLE
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma DATA_SEG mcal_data
 #endif
 
 #ifdef ADC_STOP_SEC_VAR_INIT_32_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_VAR_INIT_32_NO_CACHEABLE
-        #undef ENTERED_ADC_START_SEC_VAR_INIT_32_NO_CACHEABLE
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_VAR_INIT_32_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma DATA_SEG DEFAULT
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_VAR_INIT_32_NO_CACHEABLE
+#undef ENTERED_ADC_START_SEC_VAR_INIT_32_NO_CACHEABLE
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_VAR_INIT_32_NO_CACHEABLE
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma DATA_SEG DEFAULT
 #endif
 
 #ifdef ADC_START_SEC_VAR_INIT_UNSPECIFIED_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_VAR_INIT_UNSPECIFIED_NO_CACHEABLE
-    #define ENTERED_ADC_START_SEC_VAR_INIT_UNSPECIFIED_NO_CACHEABLE
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_VAR_INIT_UNSPECIFIED_NO_CACHEABLE
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma DATA_SEG mcal_data
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_VAR_INIT_UNSPECIFIED_NO_CACHEABLE
+#define ENTERED_ADC_START_SEC_VAR_INIT_UNSPECIFIED_NO_CACHEABLE
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_VAR_INIT_UNSPECIFIED_NO_CACHEABLE
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma DATA_SEG mcal_data
 #endif
 
 #ifdef ADC_STOP_SEC_VAR_INIT_UNSPECIFIED_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_VAR_INIT_UNSPECIFIED_NO_CACHEABLE
-        #undef ENTERED_ADC_START_SEC_VAR_INIT_UNSPECIFIED_NO_CACHEABLE
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_VAR_INIT_UNSPECIFIED_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma DATA_SEG DEFAULT
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_VAR_INIT_UNSPECIFIED_NO_CACHEABLE
+#undef ENTERED_ADC_START_SEC_VAR_INIT_UNSPECIFIED_NO_CACHEABLE
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_VAR_INIT_UNSPECIFIED_NO_CACHEABLE
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma DATA_SEG DEFAULT
 #endif
 
 #ifdef ADC_START_SEC_VAR_CLEARED_UNSPECIFIED_AE_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_VAR_CLEARED_UNSPECIFIED_AE_NO_CACHEABLE
-    #define ENTERED_ADC_START_SEC_VAR_CLEARED_UNSPECIFIED_AE_NO_CACHEABLE
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_VAR_CLEARED_UNSPECIFIED_AE_NO_CACHEABLE
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma DATA_SEG ae_shared_bss
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_VAR_CLEARED_UNSPECIFIED_AE_NO_CACHEABLE
+#define ENTERED_ADC_START_SEC_VAR_CLEARED_UNSPECIFIED_AE_NO_CACHEABLE
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_VAR_CLEARED_UNSPECIFIED_AE_NO_CACHEABLE
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma DATA_SEG ae_shared_bss
 #endif
 
 #ifdef ADC_STOP_SEC_VAR_CLEARED_UNSPECIFIED_AE_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_VAR_CLEARED_UNSPECIFIED_AE_NO_CACHEABLE
-        #undef ENTERED_ADC_START_SEC_VAR_CLEARED_UNSPECIFIED_AE_NO_CACHEABLE
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_VAR_CLEARED_UNSPECIFIED_AE_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma DATA_SEG DEFAULT
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_VAR_CLEARED_UNSPECIFIED_AE_NO_CACHEABLE
+#undef ENTERED_ADC_START_SEC_VAR_CLEARED_UNSPECIFIED_AE_NO_CACHEABLE
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_VAR_CLEARED_UNSPECIFIED_AE_NO_CACHEABLE
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma DATA_SEG DEFAULT
 #endif
 
 #ifdef ADC_START_SEC_VAR_INIT_UNSPECIFIED_AE_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_VAR_INIT_UNSPECIFIED_AE_NO_CACHEABLE
-    #define ENTERED_ADC_START_SEC_VAR_INIT_UNSPECIFIED_AE_NO_CACHEABLE
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_VAR_INIT_UNSPECIFIED_AE_NO_CACHEABLE
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma DATA_SEG ae_shared_data
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_VAR_INIT_UNSPECIFIED_AE_NO_CACHEABLE
+#define ENTERED_ADC_START_SEC_VAR_INIT_UNSPECIFIED_AE_NO_CACHEABLE
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_VAR_INIT_UNSPECIFIED_AE_NO_CACHEABLE
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma DATA_SEG ae_shared_data
 #endif
 
 #ifdef ADC_STOP_SEC_VAR_INIT_UNSPECIFIED_AE_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_VAR_INIT_UNSPECIFIED_AE_NO_CACHEABLE
-        #undef ENTERED_ADC_START_SEC_VAR_INIT_UNSPECIFIED_AE_NO_CACHEABLE
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_VAR_INIT_UNSPECIFIED_AE_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma DATA_SEG DEFAULT
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_VAR_INIT_UNSPECIFIED_AE_NO_CACHEABLE
+#undef ENTERED_ADC_START_SEC_VAR_INIT_UNSPECIFIED_AE_NO_CACHEABLE
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_VAR_INIT_UNSPECIFIED_AE_NO_CACHEABLE
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma DATA_SEG DEFAULT
 #endif
 
 #ifdef ADC_START_SEC_VAR_SHARED_INIT_UNSPECIFIED_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_VAR_SHARED_INIT_UNSPECIFIED_NO_CACHEABLE
-    #define ENTERED_ADC_START_SEC_VAR_SHARED_INIT_UNSPECIFIED_NO_CACHEABLE
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_VAR_SHARED_INIT_UNSPECIFIED_NO_CACHEABLE
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma DATA_SEG .mcal_shared_data
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_VAR_SHARED_INIT_UNSPECIFIED_NO_CACHEABLE
+#define ENTERED_ADC_START_SEC_VAR_SHARED_INIT_UNSPECIFIED_NO_CACHEABLE
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_VAR_SHARED_INIT_UNSPECIFIED_NO_CACHEABLE
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma DATA_SEG.mcal_shared_data
 #endif
 
 #ifdef ADC_STOP_SEC_VAR_SHARED_INIT_UNSPECIFIED_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_VAR_SHARED_INIT_UNSPECIFIED_NO_CACHEABLE
-        #undef ENTERED_ADC_START_SEC_VAR_SHARED_INIT_UNSPECIFIED_NO_CACHEABLE
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_VAR_SHARED_INIT_UNSPECIFIED_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma DATA_SEG DEFAULT
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_VAR_SHARED_INIT_UNSPECIFIED_NO_CACHEABLE
+#undef ENTERED_ADC_START_SEC_VAR_SHARED_INIT_UNSPECIFIED_NO_CACHEABLE
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_VAR_SHARED_INIT_UNSPECIFIED_NO_CACHEABLE
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma DATA_SEG DEFAULT
 #endif
 
-
 #ifdef ADC_START_SEC_VAR_SHARED_CLEARED_UNSPECIFIED_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_VAR_SHARED_CLEARED_UNSPECIFIED_NO_CACHEABLE
-    #define ENTERED_ADC_START_SEC_VAR_SHARED_CLEARED_UNSPECIFIED_NO_CACHEABLE
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_VAR_SHARED_CLEARED_UNSPECIFIED_NO_CACHEABLE
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma DATA_SEG .mcal_shared_bss
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_VAR_SHARED_CLEARED_UNSPECIFIED_NO_CACHEABLE
+#define ENTERED_ADC_START_SEC_VAR_SHARED_CLEARED_UNSPECIFIED_NO_CACHEABLE
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_VAR_SHARED_CLEARED_UNSPECIFIED_NO_CACHEABLE
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma DATA_SEG.mcal_shared_bss
 #endif
 
 #ifdef ADC_STOP_SEC_VAR_SHARED_CLEARED_UNSPECIFIED_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_VAR_SHARED_CLEARED_UNSPECIFIED_NO_CACHEABLE
-        #undef ENTERED_ADC_START_SEC_VAR_SHARED_CLEARED_UNSPECIFIED_NO_CACHEABLE
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_VAR_SHARED_CLEARED_UNSPECIFIED_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma DATA_SEG DEFAULT
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_VAR_SHARED_CLEARED_UNSPECIFIED_NO_CACHEABLE
+#undef ENTERED_ADC_START_SEC_VAR_SHARED_CLEARED_UNSPECIFIED_NO_CACHEABLE
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_VAR_SHARED_CLEARED_UNSPECIFIED_NO_CACHEABLE
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma DATA_SEG DEFAULT
 #endif
 
 /**************************************************************************************************/
-/********************************************* HighTec *********************************************/
+/********************************************* HighTec
+ * *********************************************/
 /**************************************************************************************************/
 #elif defined(_HITECH_C_S32K1XX_)
 /**************************************** ADC *******************************/
 #ifdef ADC_START_SEC_CONFIG_DATA_8
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_CONFIG_DATA_8
-    #define ENTERED_ADC_START_SEC_CONFIG_DATA_8
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_CONFIG_DATA_8
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma section ".mcal_const_cfg" a
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_CONFIG_DATA_8
+#define ENTERED_ADC_START_SEC_CONFIG_DATA_8
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_CONFIG_DATA_8
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma section ".mcal_const_cfg" a
 #endif
 
 #ifdef ADC_STOP_SEC_CONFIG_DATA_8
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_CONFIG_DATA_8
-        #undef ENTERED_ADC_START_SEC_CONFIG_DATA_8
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_CONFIG_DATA_8
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma section
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_CONFIG_DATA_8
+#undef ENTERED_ADC_START_SEC_CONFIG_DATA_8
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_CONFIG_DATA_8
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma section
 #endif
 
 #ifdef ADC_START_SEC_CONFIG_DATA_16
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_CONFIG_DATA_16
-    #define ENTERED_ADC_START_SEC_CONFIG_DATA_16
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_CONFIG_DATA_16
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma section ".mcal_const_cfg" a
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_CONFIG_DATA_16
+#define ENTERED_ADC_START_SEC_CONFIG_DATA_16
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_CONFIG_DATA_16
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma section ".mcal_const_cfg" a
 #endif
 
 #ifdef ADC_STOP_SEC_CONFIG_DATA_16
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_CONFIG_DATA_16
-        #undef ENTERED_ADC_START_SEC_CONFIG_DATA_16
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_CONFIG_DATA_16
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma section
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_CONFIG_DATA_16
+#undef ENTERED_ADC_START_SEC_CONFIG_DATA_16
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_CONFIG_DATA_16
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma section
 #endif
 
 #ifdef ADC_START_SEC_CONFIG_DATA_32
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_CONFIG_DATA_32
-    #define ENTERED_ADC_START_SEC_CONFIG_DATA_32
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_CONFIG_DATA_32
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma section ".mcal_const_cfg" a
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_CONFIG_DATA_32
+#define ENTERED_ADC_START_SEC_CONFIG_DATA_32
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_CONFIG_DATA_32
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma section ".mcal_const_cfg" a
 #endif
 
 #ifdef ADC_STOP_SEC_CONFIG_DATA_32
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_CONFIG_DATA_32
-        #undef ENTERED_ADC_START_SEC_CONFIG_DATA_32
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_CONFIG_DATA_32
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma section
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_CONFIG_DATA_32
+#undef ENTERED_ADC_START_SEC_CONFIG_DATA_32
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_CONFIG_DATA_32
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma section
 #endif
 
 #ifdef ADC_START_SEC_CONFIG_DATA_UNSPECIFIED
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_CONFIG_DATA_UNSPECIFIED
-    #define ENTERED_ADC_START_SEC_CONFIG_DATA_UNSPECIFIED
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_CONFIG_DATA_UNSPECIFIED
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma section ".mcal_const_cfg" a
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_CONFIG_DATA_UNSPECIFIED
+#define ENTERED_ADC_START_SEC_CONFIG_DATA_UNSPECIFIED
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_CONFIG_DATA_UNSPECIFIED
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma section ".mcal_const_cfg" a
 #endif
 
 #ifdef ADC_STOP_SEC_CONFIG_DATA_UNSPECIFIED
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_CONFIG_DATA_UNSPECIFIED
-        #undef ENTERED_ADC_START_SEC_CONFIG_DATA_UNSPECIFIED
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_CONFIG_DATA_UNSPECIFIED
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma section
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_CONFIG_DATA_UNSPECIFIED
+#undef ENTERED_ADC_START_SEC_CONFIG_DATA_UNSPECIFIED
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_CONFIG_DATA_UNSPECIFIED
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma section
 #endif
 
 #ifdef ADC_START_SEC_CONST_BOOLEAN
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_CONST_BOOLEAN
-    #define ENTERED_ADC_START_SEC_CONST_BOOLEAN
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_CONST_BOOLEAN
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma section ".mcal_const" a
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_CONST_BOOLEAN
+#define ENTERED_ADC_START_SEC_CONST_BOOLEAN
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_CONST_BOOLEAN
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma section ".mcal_const" a
 #endif
 
 #ifdef ADC_STOP_SEC_CONST_BOOLEAN
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_CONST_BOOLEAN
-        #undef ENTERED_ADC_START_SEC_CONST_BOOLEAN
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_CONST_BOOLEAN
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma section
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_CONST_BOOLEAN
+#undef ENTERED_ADC_START_SEC_CONST_BOOLEAN
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_CONST_BOOLEAN
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma section
 #endif
 
 #ifdef ADC_START_SEC_CONST_8
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_CONST_8
-    #define ENTERED_ADC_START_SEC_CONST_8
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_CONST_8
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma section ".mcal_const" a
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_CONST_8
+#define ENTERED_ADC_START_SEC_CONST_8
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_CONST_8
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma section ".mcal_const" a
 #endif
 
 #ifdef ADC_STOP_SEC_CONST_8
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_CONST_8
-        #undef ENTERED_ADC_START_SEC_CONST_8
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_CONST_8
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma section
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_CONST_8
+#undef ENTERED_ADC_START_SEC_CONST_8
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_CONST_8
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma section
 #endif
 
 #ifdef ADC_START_SEC_CONST_16
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_CONST_16
-    #define ENTERED_ADC_START_SEC_CONST_16
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_CONST_16
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma section ".mcal_const" a
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_CONST_16
+#define ENTERED_ADC_START_SEC_CONST_16
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_CONST_16
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma section ".mcal_const" a
 #endif
 
 #ifdef ADC_STOP_SEC_CONST_16
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_CONST_16
-        #undef ENTERED_ADC_START_SEC_CONST_16
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_CONST_16
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma section
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_CONST_16
+#undef ENTERED_ADC_START_SEC_CONST_16
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_CONST_16
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma section
 #endif
 
 #ifdef ADC_START_SEC_CONST_32
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_CONST_32
-    #define ENTERED_ADC_START_SEC_CONST_32
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_CONST_32
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma section ".mcal_const" a
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_CONST_32
+#define ENTERED_ADC_START_SEC_CONST_32
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_CONST_32
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma section ".mcal_const" a
 #endif
 
 #ifdef ADC_STOP_SEC_CONST_32
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_CONST_32
-        #undef ENTERED_ADC_START_SEC_CONST_32
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_CONST_32
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma section
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_CONST_32
+#undef ENTERED_ADC_START_SEC_CONST_32
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_CONST_32
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma section
 #endif
 
 #ifdef ADC_START_SEC_CONST_UNSPECIFIED
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_CONST_UNSPECIFIED
-    #define ENTERED_ADC_START_SEC_CONST_UNSPECIFIED
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_CONST_UNSPECIFIED
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma section ".mcal_const" a
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_CONST_UNSPECIFIED
+#define ENTERED_ADC_START_SEC_CONST_UNSPECIFIED
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_CONST_UNSPECIFIED
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma section ".mcal_const" a
 #endif
 
 #ifdef ADC_STOP_SEC_CONST_UNSPECIFIED
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_CONST_UNSPECIFIED
-        #undef ENTERED_ADC_START_SEC_CONST_UNSPECIFIED
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_CONST_UNSPECIFIED
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma section
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_CONST_UNSPECIFIED
+#undef ENTERED_ADC_START_SEC_CONST_UNSPECIFIED
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_CONST_UNSPECIFIED
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma section
 #endif
 
 #ifdef ADC_START_SEC_CODE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_CODE
-    #define ENTERED_ADC_START_SEC_CODE
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_CODE
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma section ".mcal_text" avx
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_CODE
+#define ENTERED_ADC_START_SEC_CODE
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_CODE
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma section ".mcal_text" avx
 #endif
 
 #ifdef ADC_STOP_SEC_CODE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_CODE
-        #undef ENTERED_ADC_START_SEC_CODE
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_CODE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma section
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_CODE
+#undef ENTERED_ADC_START_SEC_CODE
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_CODE
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma section
 #endif
 
 #ifdef ADC_START_SEC_RAMCODE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_RAMCODE
-    #define ENTERED_ADC_START_SEC_RAMCODE
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_RAMCODE
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma section ".ramcode" avx
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_RAMCODE
+#define ENTERED_ADC_START_SEC_RAMCODE
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_RAMCODE
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma section ".ramcode" avx
 #endif
 
 #ifdef ADC_STOP_SEC_RAMCODE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_RAMCODE
-        #undef ENTERED_ADC_START_SEC_RAMCODE
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_RAMCODE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma  section
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_RAMCODE
+#undef ENTERED_ADC_START_SEC_RAMCODE
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_RAMCODE
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma section
 #endif
 
 #ifdef ADC_START_SEC_CODE_AC
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_CODE_AC
-    #define ENTERED_ADC_START_SEC_CODE_AC
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_CODE_AC
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma section ".acadc_code_rom" avx
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_CODE_AC
+#define ENTERED_ADC_START_SEC_CODE_AC
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_CODE_AC
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma section ".acadc_code_rom" avx
 #endif
 
 #ifdef ADC_STOP_SEC_CODE_AC
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_CODE_AC
-        #undef ENTERED_ADC_START_SEC_CODE_AC
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_CODE_AC
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma  section
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_CODE_AC
+#undef ENTERED_ADC_START_SEC_CODE_AC
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_CODE_AC
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma section
 #endif
 
 #ifdef ADC_START_SEC_VAR_CLEARED_BOOLEAN
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_VAR_CLEARED_BOOLEAN
-    #define ENTERED_ADC_START_SEC_VAR_CLEARED_BOOLEAN
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_VAR_CLEARED_BOOLEAN
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma section ".mcal_bss" awsB
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_VAR_CLEARED_BOOLEAN
+#define ENTERED_ADC_START_SEC_VAR_CLEARED_BOOLEAN
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_VAR_CLEARED_BOOLEAN
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma section ".mcal_bss" awsB
 #endif
 
 #ifdef ADC_STOP_SEC_VAR_CLEARED_BOOLEAN
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_VAR_CLEARED_BOOLEAN
-        #undef ENTERED_ADC_START_SEC_VAR_CLEARED_BOOLEAN
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_VAR_CLEARED_BOOLEAN
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma section
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_VAR_CLEARED_BOOLEAN
+#undef ENTERED_ADC_START_SEC_VAR_CLEARED_BOOLEAN
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_VAR_CLEARED_BOOLEAN
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma section
 #endif
 
 #ifdef ADC_START_SEC_VAR_CLEARED_8
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_VAR_CLEARED_8
-    #define ENTERED_ADC_START_SEC_VAR_CLEARED_8
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_VAR_CLEARED_8
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma section ".mcal_bss" awsB
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_VAR_CLEARED_8
+#define ENTERED_ADC_START_SEC_VAR_CLEARED_8
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_VAR_CLEARED_8
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma section ".mcal_bss" awsB
 #endif
 
 #ifdef ADC_STOP_SEC_VAR_CLEARED_8
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_VAR_CLEARED_8
-        #undef ENTERED_ADC_START_SEC_VAR_CLEARED_8
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_VAR_CLEARED_8
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma section
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_VAR_CLEARED_8
+#undef ENTERED_ADC_START_SEC_VAR_CLEARED_8
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_VAR_CLEARED_8
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma section
 #endif
 
 #ifdef ADC_START_SEC_VAR_CLEARED_16
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_VAR_CLEARED_16
-    #define ENTERED_ADC_START_SEC_VAR_CLEARED_16
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_VAR_CLEARED_16
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma section ".mcal_bss" awsB
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_VAR_CLEARED_16
+#define ENTERED_ADC_START_SEC_VAR_CLEARED_16
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_VAR_CLEARED_16
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma section ".mcal_bss" awsB
 #endif
 
 #ifdef ADC_STOP_SEC_VAR_CLEARED_16
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_VAR_CLEARED_16
-        #undef ENTERED_ADC_START_SEC_VAR_CLEARED_16
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_VAR_CLEARED_16
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma section
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_VAR_CLEARED_16
+#undef ENTERED_ADC_START_SEC_VAR_CLEARED_16
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_VAR_CLEARED_16
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma section
 #endif
 
 #ifdef ADC_START_SEC_VAR_CLEARED_32
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_VAR_CLEARED_32
-    #define ENTERED_ADC_START_SEC_VAR_CLEARED_32
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_VAR_CLEARED_32
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma section ".mcal_bss" awsB
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_VAR_CLEARED_32
+#define ENTERED_ADC_START_SEC_VAR_CLEARED_32
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_VAR_CLEARED_32
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma section ".mcal_bss" awsB
 #endif
 
 #ifdef ADC_STOP_SEC_VAR_CLEARED_32
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_VAR_CLEARED_32
-        #undef ENTERED_ADC_START_SEC_VAR_CLEARED_32
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_VAR_CLEARED_32
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma section
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_VAR_CLEARED_32
+#undef ENTERED_ADC_START_SEC_VAR_CLEARED_32
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_VAR_CLEARED_32
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma section
 #endif
 
 #ifdef ADC_START_SEC_VAR_CLEARED_UNSPECIFIED
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_VAR_CLEARED_UNSPECIFIED
-    #define ENTERED_ADC_START_SEC_VAR_CLEARED_UNSPECIFIED
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_VAR_CLEARED_UNSPECIFIED
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma section ".mcal_bss" awsB
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_VAR_CLEARED_UNSPECIFIED
+#define ENTERED_ADC_START_SEC_VAR_CLEARED_UNSPECIFIED
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_VAR_CLEARED_UNSPECIFIED
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma section ".mcal_bss" awsB
 #endif
 
 #ifdef ADC_STOP_SEC_VAR_CLEARED_UNSPECIFIED
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_VAR_CLEARED_UNSPECIFIED
-        #undef ENTERED_ADC_START_SEC_VAR_CLEARED_UNSPECIFIED
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_VAR_CLEARED_UNSPECIFIED
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma section
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_VAR_CLEARED_UNSPECIFIED
+#undef ENTERED_ADC_START_SEC_VAR_CLEARED_UNSPECIFIED
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_VAR_CLEARED_UNSPECIFIED
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma section
 #endif
 
 #ifdef ADC_START_SEC_VAR_CLEARED_UNSPECIFIED_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_VAR_CLEARED_UNSPECIFIED_NO_CACHEABLE
-    #define ENTERED_ADC_START_SEC_VAR_CLEARED_UNSPECIFIED_NO_CACHEABLE
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_VAR_CLEARED_UNSPECIFIED_NO_CACHEABLE
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma section ".mcal_bss_no_cacheable" awsB
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_VAR_CLEARED_UNSPECIFIED_NO_CACHEABLE
+#define ENTERED_ADC_START_SEC_VAR_CLEARED_UNSPECIFIED_NO_CACHEABLE
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_VAR_CLEARED_UNSPECIFIED_NO_CACHEABLE
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma section ".mcal_bss_no_cacheable" awsB
 #endif
 
 #ifdef ADC_STOP_SEC_VAR_CLEARED_UNSPECIFIED_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_VAR_CLEARED_UNSPECIFIED_NO_CACHEABLE
-        #undef ENTERED_ADC_START_SEC_VAR_CLEARED_UNSPECIFIED_NO_CACHEABLE
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_VAR_CLEARED_UNSPECIFIED_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    /* no definition -> default compiler settings are used */
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_VAR_CLEARED_UNSPECIFIED_NO_CACHEABLE
+#undef ENTERED_ADC_START_SEC_VAR_CLEARED_UNSPECIFIED_NO_CACHEABLE
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_VAR_CLEARED_UNSPECIFIED_NO_CACHEABLE
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+/* no definition -> default compiler settings are used */
 #endif
 
 #ifdef ADC_START_SEC_VAR_INIT_BOOLEAN
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_VAR_INIT_BOOLEAN
-    #define ENTERED_ADC_START_SEC_VAR_INIT_BOOLEAN
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_VAR_INIT_BOOLEAN
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma section ".mcal_data" aws
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_VAR_INIT_BOOLEAN
+#define ENTERED_ADC_START_SEC_VAR_INIT_BOOLEAN
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_VAR_INIT_BOOLEAN
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma section ".mcal_data" aws
 #endif
 
 #ifdef ADC_STOP_SEC_VAR_INIT_BOOLEAN
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_VAR_INIT_BOOLEAN
-        #undef ENTERED_ADC_START_SEC_VAR_INIT_BOOLEAN
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_VAR_INIT_BOOLEAN
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma section
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_VAR_INIT_BOOLEAN
+#undef ENTERED_ADC_START_SEC_VAR_INIT_BOOLEAN
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_VAR_INIT_BOOLEAN
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma section
 #endif
 
 #ifdef ADC_START_SEC_VAR_INIT_8
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_VAR_INIT_8
-    #define ENTERED_ADC_START_SEC_VAR_INIT_8
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_VAR_INIT_8
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma section ".mcal_data" aws
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_VAR_INIT_8
+#define ENTERED_ADC_START_SEC_VAR_INIT_8
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_VAR_INIT_8
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma section ".mcal_data" aws
 #endif
 
 #ifdef ADC_STOP_SEC_VAR_INIT_8
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_VAR_INIT_8
-        #undef ENTERED_ADC_START_SEC_VAR_INIT_8
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_VAR_INIT_8
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma section
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_VAR_INIT_8
+#undef ENTERED_ADC_START_SEC_VAR_INIT_8
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_VAR_INIT_8
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma section
 #endif
 
 #ifdef ADC_START_SEC_VAR_INIT_16
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_VAR_INIT_16
-    #define ENTERED_ADC_START_SEC_VAR_INIT_16
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_VAR_INIT_16
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma section ".mcal_data" aws
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_VAR_INIT_16
+#define ENTERED_ADC_START_SEC_VAR_INIT_16
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_VAR_INIT_16
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma section ".mcal_data" aws
 #endif
 
 #ifdef ADC_STOP_SEC_VAR_INIT_16
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_VAR_INIT_16
-        #undef ENTERED_ADC_START_SEC_VAR_INIT_16
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_VAR_INIT_16
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma section
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_VAR_INIT_16
+#undef ENTERED_ADC_START_SEC_VAR_INIT_16
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_VAR_INIT_16
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma section
 #endif
 
 #ifdef ADC_START_SEC_VAR_INIT_32
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_VAR_INIT_32
-    #define ENTERED_ADC_START_SEC_VAR_INIT_32
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_VAR_INIT_32
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma section ".mcal_data" aws
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_VAR_INIT_32
+#define ENTERED_ADC_START_SEC_VAR_INIT_32
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_VAR_INIT_32
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma section ".mcal_data" aws
 #endif
 
 #ifdef ADC_STOP_SEC_VAR_INIT_32
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_VAR_INIT_32
-        #undef ENTERED_ADC_START_SEC_VAR_INIT_32
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_VAR_INIT_32
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma section
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_VAR_INIT_32
+#undef ENTERED_ADC_START_SEC_VAR_INIT_32
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_VAR_INIT_32
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma section
 #endif
 
 #ifdef ADC_START_SEC_VAR_INIT_UNSPECIFIED
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_VAR_INIT_UNSPECIFIED
-    #define ENTERED_ADC_START_SEC_VAR_INIT_UNSPECIFIED
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_VAR_INIT_UNSPECIFIED
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma section ".mcal_data" aws
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_VAR_INIT_UNSPECIFIED
+#define ENTERED_ADC_START_SEC_VAR_INIT_UNSPECIFIED
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_VAR_INIT_UNSPECIFIED
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma section ".mcal_data" aws
 #endif
 
 #ifdef ADC_STOP_SEC_VAR_INIT_UNSPECIFIED
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_VAR_INIT_UNSPECIFIED
-        #undef ENTERED_ADC_START_SEC_VAR_INIT_UNSPECIFIED
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_VAR_INIT_UNSPECIFIED
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma section
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_VAR_INIT_UNSPECIFIED
+#undef ENTERED_ADC_START_SEC_VAR_INIT_UNSPECIFIED
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_VAR_INIT_UNSPECIFIED
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma section
 #endif
 
 #ifdef ADC_START_SEC_VAR_CLEARED_UNSPECIFIED_AE_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_VAR_CLEARED_UNSPECIFIED_AE_NO_CACHEABLE
-    #define ENTERED_ADC_START_SEC_VAR_CLEARED_UNSPECIFIED_AE_NO_CACHEABLE
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_VAR_CLEARED_UNSPECIFIED_AE_NO_CACHEABLE
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma section ".ae_shared_bss" aws
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_VAR_CLEARED_UNSPECIFIED_AE_NO_CACHEABLE
+#define ENTERED_ADC_START_SEC_VAR_CLEARED_UNSPECIFIED_AE_NO_CACHEABLE
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_VAR_CLEARED_UNSPECIFIED_AE_NO_CACHEABLE
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma section ".ae_shared_bss" aws
 #endif
 
 #ifdef ADC_STOP_SEC_VAR_CLEARED_UNSPECIFIED_AE_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_VAR_CLEARED_UNSPECIFIED_AE_NO_CACHEABLE
-        #undef ENTERED_ADC_START_SEC_VAR_CLEARED_UNSPECIFIED_AE_NO_CACHEABLE
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_VAR_CLEARED_UNSPECIFIED_AE_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma section
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_VAR_CLEARED_UNSPECIFIED_AE_NO_CACHEABLE
+#undef ENTERED_ADC_START_SEC_VAR_CLEARED_UNSPECIFIED_AE_NO_CACHEABLE
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_VAR_CLEARED_UNSPECIFIED_AE_NO_CACHEABLE
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma section
 #endif
 
 #ifdef ADC_START_SEC_VAR_INIT_UNSPECIFIED_AE_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_VAR_INIT_UNSPECIFIED_AE_NO_CACHEABLE
-    #define ENTERED_ADC_START_SEC_VAR_INIT_UNSPECIFIED_AE_NO_CACHEABLE
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_VAR_INIT_UNSPECIFIED_AE_NO_CACHEABLE
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma section ".ae_shared_data" aws
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_VAR_INIT_UNSPECIFIED_AE_NO_CACHEABLE
+#define ENTERED_ADC_START_SEC_VAR_INIT_UNSPECIFIED_AE_NO_CACHEABLE
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_VAR_INIT_UNSPECIFIED_AE_NO_CACHEABLE
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma section ".ae_shared_data" aws
 #endif
 
 #ifdef ADC_STOP_SEC_VAR_INIT_UNSPECIFIED_AE_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_VAR_INIT_UNSPECIFIED_AE_NO_CACHEABLE
-        #undef ENTERED_ADC_START_SEC_VAR_INIT_UNSPECIFIED_AE_NO_CACHEABLE
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_VAR_INIT_UNSPECIFIED_AE_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma section
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_VAR_INIT_UNSPECIFIED_AE_NO_CACHEABLE
+#undef ENTERED_ADC_START_SEC_VAR_INIT_UNSPECIFIED_AE_NO_CACHEABLE
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_VAR_INIT_UNSPECIFIED_AE_NO_CACHEABLE
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma section
 #endif
 
 #ifdef ADC_START_SEC_VAR_SHARED_INIT_UNSPECIFIED_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_VAR_SHARED_INIT_UNSPECIFIED_NO_CACHEABLE
-    #define ENTERED_ADC_START_SEC_VAR_SHARED_INIT_UNSPECIFIED_NO_CACHEABLE
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_VAR_SHARED_INIT_UNSPECIFIED_NO_CACHEABLE
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma section ".mcal_shared_data" aws
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_VAR_SHARED_INIT_UNSPECIFIED_NO_CACHEABLE
+#define ENTERED_ADC_START_SEC_VAR_SHARED_INIT_UNSPECIFIED_NO_CACHEABLE
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_VAR_SHARED_INIT_UNSPECIFIED_NO_CACHEABLE
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma section ".mcal_shared_data" aws
 #endif
 
 #ifdef ADC_STOP_SEC_VAR_SHARED_INIT_UNSPECIFIED_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_VAR_SHARED_INIT_UNSPECIFIED_NO_CACHEABLE
-        #undef ENTERED_ADC_START_SEC_VAR_SHARED_INIT_UNSPECIFIED_NO_CACHEABLE
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_VAR_SHARED_INIT_UNSPECIFIED_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma section
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_VAR_SHARED_INIT_UNSPECIFIED_NO_CACHEABLE
+#undef ENTERED_ADC_START_SEC_VAR_SHARED_INIT_UNSPECIFIED_NO_CACHEABLE
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_VAR_SHARED_INIT_UNSPECIFIED_NO_CACHEABLE
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma section
 #endif
 
 #ifdef ADC_START_SEC_VAR_SHARED_CLEARED_UNSPECIFIED_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_VAR_SHARED_CLEARED_UNSPECIFIED_NO_CACHEABLE
-    #define ENTERED_ADC_START_SEC_VAR_SHARED_CLEARED_UNSPECIFIED_NO_CACHEABLE
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_VAR_SHARED_CLEARED_UNSPECIFIED_NO_CACHEABLE
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma section ".mcal_shared_bss" aws
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_VAR_SHARED_CLEARED_UNSPECIFIED_NO_CACHEABLE
+#define ENTERED_ADC_START_SEC_VAR_SHARED_CLEARED_UNSPECIFIED_NO_CACHEABLE
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_VAR_SHARED_CLEARED_UNSPECIFIED_NO_CACHEABLE
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma section ".mcal_shared_bss" aws
 #endif
 
 #ifdef ADC_STOP_SEC_VAR_SHARED_CLEARED_UNSPECIFIED_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_VAR_SHARED_CLEARED_UNSPECIFIED_NO_CACHEABLE
-        #undef ENTERED_ADC_START_SEC_VAR_SHARED_CLEARED_UNSPECIFIED_NO_CACHEABLE
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_VAR_SHARED_CLEARED_UNSPECIFIED_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma section
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_VAR_SHARED_CLEARED_UNSPECIFIED_NO_CACHEABLE
+#undef ENTERED_ADC_START_SEC_VAR_SHARED_CLEARED_UNSPECIFIED_NO_CACHEABLE
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_VAR_SHARED_CLEARED_UNSPECIFIED_NO_CACHEABLE
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma section
 #endif
 /**************************************************************************************************/
 /********************************************* GCC *********************************************/
@@ -6316,1625 +6337,1625 @@ extern "C"{
 #elif defined(_GCC_C_S32K1XX_)
 /**************************************** ADC *******************************/
 #ifdef ADC_START_SEC_CONFIG_DATA_8
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_CONFIG_DATA_8
-    #define ENTERED_ADC_START_SEC_CONFIG_DATA_8
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_CONFIG_DATA_8
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma GCC section rodata ".mcal_const_cfg"
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_CONFIG_DATA_8
+#define ENTERED_ADC_START_SEC_CONFIG_DATA_8
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_CONFIG_DATA_8
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma GCC section rodata ".mcal_const_cfg"
 #endif
 
 #ifdef ADC_STOP_SEC_CONFIG_DATA_8
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_CONFIG_DATA_8
-        #undef ENTERED_ADC_START_SEC_CONFIG_DATA_8
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_CONFIG_DATA_8
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma GCC section rodata
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_CONFIG_DATA_8
+#undef ENTERED_ADC_START_SEC_CONFIG_DATA_8
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_CONFIG_DATA_8
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma GCC section rodata
 #endif
 
 #ifdef ADC_START_SEC_CONFIG_DATA_16
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_CONFIG_DATA_16
-    #define ENTERED_ADC_START_SEC_CONFIG_DATA_16
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_CONFIG_DATA_16
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma GCC section rodata ".mcal_const_cfg"
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_CONFIG_DATA_16
+#define ENTERED_ADC_START_SEC_CONFIG_DATA_16
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_CONFIG_DATA_16
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma GCC section rodata ".mcal_const_cfg"
 #endif
 
 #ifdef ADC_STOP_SEC_CONFIG_DATA_16
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_CONFIG_DATA_16
-        #undef ENTERED_ADC_START_SEC_CONFIG_DATA_16
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_CONFIG_DATA_16
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma GCC section rodata
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_CONFIG_DATA_16
+#undef ENTERED_ADC_START_SEC_CONFIG_DATA_16
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_CONFIG_DATA_16
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma GCC section rodata
 #endif
 
 #ifdef ADC_START_SEC_CONFIG_DATA_32
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_CONFIG_DATA_32
-    #define ENTERED_ADC_START_SEC_CONFIG_DATA_32
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_CONFIG_DATA_32
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma GCC section rodata ".mcal_const_cfg"
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_CONFIG_DATA_32
+#define ENTERED_ADC_START_SEC_CONFIG_DATA_32
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_CONFIG_DATA_32
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma GCC section rodata ".mcal_const_cfg"
 #endif
 
 #ifdef ADC_STOP_SEC_CONFIG_DATA_32
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_CONFIG_DATA_32
-        #undef ENTERED_ADC_START_SEC_CONFIG_DATA_32
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_CONFIG_DATA_32
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma GCC section rodata 
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_CONFIG_DATA_32
+#undef ENTERED_ADC_START_SEC_CONFIG_DATA_32
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_CONFIG_DATA_32
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma GCC section rodata
 #endif
 
 #ifdef ADC_START_SEC_CONFIG_DATA_UNSPECIFIED
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_CONFIG_DATA_UNSPECIFIED
-    #define ENTERED_ADC_START_SEC_CONFIG_DATA_UNSPECIFIED
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_CONFIG_DATA_UNSPECIFIED
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma GCC section rodata ".mcal_const_cfg"
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_CONFIG_DATA_UNSPECIFIED
+#define ENTERED_ADC_START_SEC_CONFIG_DATA_UNSPECIFIED
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_CONFIG_DATA_UNSPECIFIED
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma GCC section rodata ".mcal_const_cfg"
 #endif
 
 #ifdef ADC_STOP_SEC_CONFIG_DATA_UNSPECIFIED
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_CONFIG_DATA_UNSPECIFIED
-        #undef ENTERED_ADC_START_SEC_CONFIG_DATA_UNSPECIFIED
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_CONFIG_DATA_UNSPECIFIED
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma GCC section rodata 
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_CONFIG_DATA_UNSPECIFIED
+#undef ENTERED_ADC_START_SEC_CONFIG_DATA_UNSPECIFIED
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_CONFIG_DATA_UNSPECIFIED
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma GCC section rodata
 #endif
 
 #ifdef ADC_START_SEC_CONFIG_DATA_8_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_CONFIG_DATA_8_NO_CACHEABLE
-    #define ENTERED_ADC_START_SEC_CONFIG_DATA_8_NO_CACHEABLE
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_CONFIG_DATA_8_NO_CACHEABLE
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma GCC section rodata ".mcal_const_no_cacheable" 
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_CONFIG_DATA_8_NO_CACHEABLE
+#define ENTERED_ADC_START_SEC_CONFIG_DATA_8_NO_CACHEABLE
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_CONFIG_DATA_8_NO_CACHEABLE
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma GCC section rodata ".mcal_const_no_cacheable"
 #endif
 
 #ifdef ADC_STOP_SEC_CONFIG_DATA_8_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_CONFIG_DATA_8_NO_CACHEABLE
-        #undef ENTERED_ADC_START_SEC_CONFIG_DATA_8_NO_CACHEABLE
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_CONFIG_DATA_8_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma GCC section rodata
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_CONFIG_DATA_8_NO_CACHEABLE
+#undef ENTERED_ADC_START_SEC_CONFIG_DATA_8_NO_CACHEABLE
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_CONFIG_DATA_8_NO_CACHEABLE
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma GCC section rodata
 #endif
 
 #ifdef ADC_START_SEC_CONFIG_DATA_16_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_CONFIG_DATA_16_NO_CACHEABLE
-    #define ENTERED_ADC_START_SEC_CONFIG_DATA_16_NO_CACHEABLE
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_CONFIG_DATA_16_NO_CACHEABLE
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma GCC section rodata ".mcal_const_no_cacheable" 
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_CONFIG_DATA_16_NO_CACHEABLE
+#define ENTERED_ADC_START_SEC_CONFIG_DATA_16_NO_CACHEABLE
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_CONFIG_DATA_16_NO_CACHEABLE
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma GCC section rodata ".mcal_const_no_cacheable"
 #endif
 
 #ifdef ADC_STOP_SEC_CONFIG_DATA_16_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_CONFIG_DATA_16_NO_CACHEABLE
-        #undef ENTERED_ADC_START_SEC_CONFIG_DATA_16_NO_CACHEABLE
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_CONFIG_DATA_16_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma GCC section rodata
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_CONFIG_DATA_16_NO_CACHEABLE
+#undef ENTERED_ADC_START_SEC_CONFIG_DATA_16_NO_CACHEABLE
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_CONFIG_DATA_16_NO_CACHEABLE
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma GCC section rodata
 #endif
 
 #ifdef ADC_START_SEC_CONFIG_DATA_32_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_CONFIG_DATA_32_NO_CACHEABLE
-    #define ENTERED_ADC_START_SEC_CONFIG_DATA_32_NO_CACHEABLE
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_CONFIG_DATA_32_NO_CACHEABLE
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma GCC section rodata ".mcal_const_no_cacheable" 
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_CONFIG_DATA_32_NO_CACHEABLE
+#define ENTERED_ADC_START_SEC_CONFIG_DATA_32_NO_CACHEABLE
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_CONFIG_DATA_32_NO_CACHEABLE
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma GCC section rodata ".mcal_const_no_cacheable"
 #endif
 
 #ifdef ADC_STOP_SEC_CONFIG_DATA_32_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_CONFIG_DATA_32_NO_CACHEABLE
-        #undef ENTERED_ADC_START_SEC_CONFIG_DATA_32_NO_CACHEABLE
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_CONFIG_DATA_32_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma GCC section rodata
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_CONFIG_DATA_32_NO_CACHEABLE
+#undef ENTERED_ADC_START_SEC_CONFIG_DATA_32_NO_CACHEABLE
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_CONFIG_DATA_32_NO_CACHEABLE
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma GCC section rodata
 #endif
 
 #ifdef ADC_START_SEC_CONFIG_DATA_UNSPECIFIED_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_CONFIG_DATA_UNSPECIFIED_NO_CACHEABLE
-    #define ENTERED_ADC_START_SEC_CONFIG_DATA_UNSPECIFIED_NO_CACHEABLE
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_CONFIG_DATA_UNSPECIFIED_NO_CACHEABLE
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma GCC section rodata ".mcal_const_no_cacheable" 
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_CONFIG_DATA_UNSPECIFIED_NO_CACHEABLE
+#define ENTERED_ADC_START_SEC_CONFIG_DATA_UNSPECIFIED_NO_CACHEABLE
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_CONFIG_DATA_UNSPECIFIED_NO_CACHEABLE
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma GCC section rodata ".mcal_const_no_cacheable"
 #endif
 
 #ifdef ADC_STOP_SEC_CONFIG_DATA_UNSPECIFIED_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_CONFIG_DATA_UNSPECIFIED_NO_CACHEABLE
-        #undef ENTERED_ADC_START_SEC_CONFIG_DATA_UNSPECIFIED_NO_CACHEABLE
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_CONFIG_DATA_UNSPECIFIED_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma GCC section rodata
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_CONFIG_DATA_UNSPECIFIED_NO_CACHEABLE
+#undef ENTERED_ADC_START_SEC_CONFIG_DATA_UNSPECIFIED_NO_CACHEABLE
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_CONFIG_DATA_UNSPECIFIED_NO_CACHEABLE
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma GCC section rodata
 #endif
 
 #ifdef ADC_START_SEC_CONST_BOOLEAN
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_CONST_BOOLEAN
-    #define ENTERED_ADC_START_SEC_CONST_BOOLEAN
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_CONST_BOOLEAN
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma GCC section rodata ".mcal_const" 
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_CONST_BOOLEAN
+#define ENTERED_ADC_START_SEC_CONST_BOOLEAN
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_CONST_BOOLEAN
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma GCC section rodata ".mcal_const"
 #endif
 
 #ifdef ADC_STOP_SEC_CONST_BOOLEAN
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_CONST_BOOLEAN
-        #undef ENTERED_ADC_START_SEC_CONST_BOOLEAN
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_CONST_BOOLEAN
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma GCC section rodata
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_CONST_BOOLEAN
+#undef ENTERED_ADC_START_SEC_CONST_BOOLEAN
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_CONST_BOOLEAN
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma GCC section rodata
 #endif
 
 #ifdef ADC_START_SEC_CONST_8
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_CONST_8
-    #define ENTERED_ADC_START_SEC_CONST_8
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_CONST_8
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma GCC section rodata ".mcal_const" 
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_CONST_8
+#define ENTERED_ADC_START_SEC_CONST_8
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_CONST_8
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma GCC section rodata ".mcal_const"
 #endif
 
 #ifdef ADC_STOP_SEC_CONST_8
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_CONST_8
-        #undef ENTERED_ADC_START_SEC_CONST_8
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_CONST_8
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma GCC section rodata
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_CONST_8
+#undef ENTERED_ADC_START_SEC_CONST_8
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_CONST_8
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma GCC section rodata
 #endif
 
 #ifdef ADC_START_SEC_CONST_16
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_CONST_16
-    #define ENTERED_ADC_START_SEC_CONST_16
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_CONST_16
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma GCC section rodata ".mcal_const" 
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_CONST_16
+#define ENTERED_ADC_START_SEC_CONST_16
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_CONST_16
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma GCC section rodata ".mcal_const"
 #endif
 
 #ifdef ADC_STOP_SEC_CONST_16
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_CONST_16
-        #undef ENTERED_ADC_START_SEC_CONST_16
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_CONST_16
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma GCC section rodata
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_CONST_16
+#undef ENTERED_ADC_START_SEC_CONST_16
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_CONST_16
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma GCC section rodata
 #endif
 
 #ifdef ADC_START_SEC_CONST_32
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_CONST_32
-    #define ENTERED_ADC_START_SEC_CONST_32
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_CONST_32
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma GCC section rodata ".mcal_const" 
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_CONST_32
+#define ENTERED_ADC_START_SEC_CONST_32
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_CONST_32
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma GCC section rodata ".mcal_const"
 #endif
 
 #ifdef ADC_STOP_SEC_CONST_32
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_CONST_32
-        #undef ENTERED_ADC_START_SEC_CONST_32
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_CONST_32
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma GCC section rodata
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_CONST_32
+#undef ENTERED_ADC_START_SEC_CONST_32
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_CONST_32
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma GCC section rodata
 #endif
 
 #ifdef ADC_START_SEC_CONST_UNSPECIFIED
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_CONST_UNSPECIFIED
-    #define ENTERED_ADC_START_SEC_CONST_UNSPECIFIED
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_CONST_UNSPECIFIED
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma GCC section rodata ".mcal_const" 
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_CONST_UNSPECIFIED
+#define ENTERED_ADC_START_SEC_CONST_UNSPECIFIED
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_CONST_UNSPECIFIED
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma GCC section rodata ".mcal_const"
 #endif
 
 #ifdef ADC_STOP_SEC_CONST_UNSPECIFIED
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_CONST_UNSPECIFIED
-        #undef ENTERED_ADC_START_SEC_CONST_UNSPECIFIED
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_CONST_UNSPECIFIED
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma GCC section rodata
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_CONST_UNSPECIFIED
+#undef ENTERED_ADC_START_SEC_CONST_UNSPECIFIED
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_CONST_UNSPECIFIED
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma GCC section rodata
 #endif
 
 #ifdef ADC_START_SEC_CODE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_CODE
-    #define ENTERED_ADC_START_SEC_CODE
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_CODE
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma GCC section text ".mcal_text" 
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_CODE
+#define ENTERED_ADC_START_SEC_CODE
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_CODE
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma GCC section text ".mcal_text"
 #endif
 
 #ifdef ADC_STOP_SEC_CODE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_CODE
-        #undef ENTERED_ADC_START_SEC_CODE
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_CODE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma GCC section text
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_CODE
+#undef ENTERED_ADC_START_SEC_CODE
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_CODE
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma GCC section text
 #endif
 
 #ifdef ADC_START_SEC_RAMCODE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_RAMCODE
-    #define ENTERED_ADC_START_SEC_RAMCODE
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_RAMCODE
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma GCC section text ".ramcode" 
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_RAMCODE
+#define ENTERED_ADC_START_SEC_RAMCODE
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_RAMCODE
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma GCC section text ".ramcode"
 #endif
 
 #ifdef ADC_STOP_SEC_RAMCODE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_RAMCODE
-        #undef ENTERED_ADC_START_SEC_RAMCODE
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_RAMCODE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma GCC section text
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_RAMCODE
+#undef ENTERED_ADC_START_SEC_RAMCODE
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_RAMCODE
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma GCC section text
 #endif
 
 #ifdef ADC_START_SEC_CODE_AC
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_CODE_AC
-    #define ENTERED_ADC_START_SEC_CODE_AC
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_CODE_AC
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma GCC section text ".acfls_code_rom" 
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_CODE_AC
+#define ENTERED_ADC_START_SEC_CODE_AC
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_CODE_AC
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma GCC section text ".acfls_code_rom"
 #endif
 
 #ifdef ADC_STOP_SEC_CODE_AC
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_CODE_AC
-        #undef ENTERED_ADC_START_SEC_CODE_AC
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_CODE_AC
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma GCC section text
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_CODE_AC
+#undef ENTERED_ADC_START_SEC_CODE_AC
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_CODE_AC
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma GCC section text
 #endif
 
 #ifdef ADC_START_SEC_VAR_CLEARED_BOOLEAN
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_VAR_CLEARED_BOOLEAN
-    #define ENTERED_ADC_START_SEC_VAR_CLEARED_BOOLEAN
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_VAR_CLEARED_BOOLEAN
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma GCC section bss ".mcal_bss" 
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_VAR_CLEARED_BOOLEAN
+#define ENTERED_ADC_START_SEC_VAR_CLEARED_BOOLEAN
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_VAR_CLEARED_BOOLEAN
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma GCC section bss ".mcal_bss"
 #endif
 
 #ifdef ADC_STOP_SEC_VAR_CLEARED_BOOLEAN
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_VAR_CLEARED_BOOLEAN
-        #undef ENTERED_ADC_START_SEC_VAR_CLEARED_BOOLEAN
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_VAR_CLEARED_BOOLEAN
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma GCC section bss 
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_VAR_CLEARED_BOOLEAN
+#undef ENTERED_ADC_START_SEC_VAR_CLEARED_BOOLEAN
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_VAR_CLEARED_BOOLEAN
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma GCC section bss
 #endif
 
 #ifdef ADC_START_SEC_VAR_CLEARED_8
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_VAR_CLEARED_8
-    #define ENTERED_ADC_START_SEC_VAR_CLEARED_8
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_VAR_CLEARED_8
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma GCC section bss ".mcal_bss" 
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_VAR_CLEARED_8
+#define ENTERED_ADC_START_SEC_VAR_CLEARED_8
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_VAR_CLEARED_8
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma GCC section bss ".mcal_bss"
 #endif
 
 #ifdef ADC_STOP_SEC_VAR_CLEARED_8
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_VAR_CLEARED_8
-        #undef ENTERED_ADC_START_SEC_VAR_CLEARED_8
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_VAR_CLEARED_8
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma GCC section bss
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_VAR_CLEARED_8
+#undef ENTERED_ADC_START_SEC_VAR_CLEARED_8
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_VAR_CLEARED_8
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma GCC section bss
 #endif
 
 #ifdef ADC_START_SEC_VAR_CLEARED_16
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_VAR_CLEARED_16
-    #define ENTERED_ADC_START_SEC_VAR_CLEARED_16
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_VAR_CLEARED_16
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma GCC section bss ".mcal_bss" 
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_VAR_CLEARED_16
+#define ENTERED_ADC_START_SEC_VAR_CLEARED_16
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_VAR_CLEARED_16
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma GCC section bss ".mcal_bss"
 #endif
 
 #ifdef ADC_STOP_SEC_VAR_CLEARED_16
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_VAR_CLEARED_16
-        #undef ENTERED_ADC_START_SEC_VAR_CLEARED_16
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_VAR_CLEARED_16
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma GCC section bss
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_VAR_CLEARED_16
+#undef ENTERED_ADC_START_SEC_VAR_CLEARED_16
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_VAR_CLEARED_16
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma GCC section bss
 #endif
 
 #ifdef ADC_START_SEC_VAR_CLEARED_32
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_VAR_CLEARED_32
-    #define ENTERED_ADC_START_SEC_VAR_CLEARED_32
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_VAR_CLEARED_32
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma GCC section bss ".mcal_bss" 
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_VAR_CLEARED_32
+#define ENTERED_ADC_START_SEC_VAR_CLEARED_32
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_VAR_CLEARED_32
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma GCC section bss ".mcal_bss"
 #endif
 
 #ifdef ADC_STOP_SEC_VAR_CLEARED_32
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_VAR_CLEARED_32
-        #undef ENTERED_ADC_START_SEC_VAR_CLEARED_32
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_VAR_CLEARED_32
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma GCC section bss 
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_VAR_CLEARED_32
+#undef ENTERED_ADC_START_SEC_VAR_CLEARED_32
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_VAR_CLEARED_32
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma GCC section bss
 #endif
 
 #ifdef ADC_START_SEC_VAR_CLEARED_UNSPECIFIED
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_VAR_CLEARED_UNSPECIFIED
-    #define ENTERED_ADC_START_SEC_VAR_CLEARED_UNSPECIFIED
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_VAR_CLEARED_UNSPECIFIED
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma GCC section bss ".mcal_bss" 
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_VAR_CLEARED_UNSPECIFIED
+#define ENTERED_ADC_START_SEC_VAR_CLEARED_UNSPECIFIED
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_VAR_CLEARED_UNSPECIFIED
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma GCC section bss ".mcal_bss"
 #endif
 
 #ifdef ADC_STOP_SEC_VAR_CLEARED_UNSPECIFIED
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_VAR_CLEARED_UNSPECIFIED
-        #undef ENTERED_ADC_START_SEC_VAR_CLEARED_UNSPECIFIED
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_VAR_CLEARED_UNSPECIFIED
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma GCC section bss
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_VAR_CLEARED_UNSPECIFIED
+#undef ENTERED_ADC_START_SEC_VAR_CLEARED_UNSPECIFIED
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_VAR_CLEARED_UNSPECIFIED
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma GCC section bss
 #endif
 
 #ifdef ADC_START_SEC_VAR_INIT_BOOLEAN
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_VAR_INIT_BOOLEAN
-    #define ENTERED_ADC_START_SEC_VAR_INIT_BOOLEAN
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_VAR_INIT_BOOLEAN
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma GCC section data ".mcal_data" 
-    #pragma GCC section bss ".mcal_bss" 
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_VAR_INIT_BOOLEAN
+#define ENTERED_ADC_START_SEC_VAR_INIT_BOOLEAN
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_VAR_INIT_BOOLEAN
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma GCC section data ".mcal_data"
+#pragma GCC section bss ".mcal_bss"
 #endif
 
 #ifdef ADC_STOP_SEC_VAR_INIT_BOOLEAN
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_VAR_INIT_BOOLEAN
-        #undef ENTERED_ADC_START_SEC_VAR_INIT_BOOLEAN
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_VAR_INIT_BOOLEAN
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma GCC section bss 
-    #pragma GCC section data 
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_VAR_INIT_BOOLEAN
+#undef ENTERED_ADC_START_SEC_VAR_INIT_BOOLEAN
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_VAR_INIT_BOOLEAN
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma GCC section bss
+#pragma GCC section data
 #endif
 
 #ifdef ADC_START_SEC_VAR_INIT_8
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_VAR_INIT_8
-    #define ENTERED_ADC_START_SEC_VAR_INIT_8
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_VAR_INIT_8
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma GCC section data ".mcal_data" 
-    #pragma GCC section bss ".mcal_bss" 
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_VAR_INIT_8
+#define ENTERED_ADC_START_SEC_VAR_INIT_8
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_VAR_INIT_8
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma GCC section data ".mcal_data"
+#pragma GCC section bss ".mcal_bss"
 #endif
 
 #ifdef ADC_STOP_SEC_VAR_INIT_8
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_VAR_INIT_8
-        #undef ENTERED_ADC_START_SEC_VAR_INIT_8
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_VAR_INIT_8
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma GCC section bss 
-    #pragma GCC section data 
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_VAR_INIT_8
+#undef ENTERED_ADC_START_SEC_VAR_INIT_8
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_VAR_INIT_8
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma GCC section bss
+#pragma GCC section data
 #endif
 
 #ifdef ADC_START_SEC_VAR_INIT_16
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_VAR_INIT_16
-    #define ENTERED_ADC_START_SEC_VAR_INIT_16
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_VAR_INIT_16
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma GCC section data ".mcal_data" 
-    #pragma GCC section bss ".mcal_bss" 
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_VAR_INIT_16
+#define ENTERED_ADC_START_SEC_VAR_INIT_16
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_VAR_INIT_16
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma GCC section data ".mcal_data"
+#pragma GCC section bss ".mcal_bss"
 #endif
 
 #ifdef ADC_STOP_SEC_VAR_INIT_16
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_VAR_INIT_16
-        #undef ENTERED_ADC_START_SEC_VAR_INIT_16
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_VAR_INIT_16
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma GCC section bss 
-    #pragma GCC section data 
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_VAR_INIT_16
+#undef ENTERED_ADC_START_SEC_VAR_INIT_16
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_VAR_INIT_16
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma GCC section bss
+#pragma GCC section data
 #endif
 
 #ifdef ADC_START_SEC_VAR_INIT_32
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_VAR_INIT_32
-    #define ENTERED_ADC_START_SEC_VAR_INIT_32
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_VAR_INIT_32
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma GCC section data ".mcal_data" 
-    #pragma GCC section bss ".mcal_bss" 
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_VAR_INIT_32
+#define ENTERED_ADC_START_SEC_VAR_INIT_32
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_VAR_INIT_32
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma GCC section data ".mcal_data"
+#pragma GCC section bss ".mcal_bss"
 #endif
 
 #ifdef ADC_STOP_SEC_VAR_INIT_32
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_VAR_INIT_32
-        #undef ENTERED_ADC_START_SEC_VAR_INIT_32
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_VAR_INIT_32
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma GCC section bss 
-    #pragma GCC section data 
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_VAR_INIT_32
+#undef ENTERED_ADC_START_SEC_VAR_INIT_32
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_VAR_INIT_32
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma GCC section bss
+#pragma GCC section data
 #endif
 
 #ifdef ADC_START_SEC_VAR_INIT_UNSPECIFIED
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_VAR_INIT_UNSPECIFIED
-    #define ENTERED_ADC_START_SEC_VAR_INIT_UNSPECIFIED
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_VAR_INIT_UNSPECIFIED
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma GCC section data ".mcal_data" 
-    #pragma GCC section bss ".mcal_bss" 
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_VAR_INIT_UNSPECIFIED
+#define ENTERED_ADC_START_SEC_VAR_INIT_UNSPECIFIED
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_VAR_INIT_UNSPECIFIED
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma GCC section data ".mcal_data"
+#pragma GCC section bss ".mcal_bss"
 #endif
 
 #ifdef ADC_STOP_SEC_VAR_INIT_UNSPECIFIED
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_VAR_INIT_UNSPECIFIED
-        #undef ENTERED_ADC_START_SEC_VAR_INIT_UNSPECIFIED
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_VAR_INIT_UNSPECIFIED
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma GCC section bss 
-    #pragma GCC section data 
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_VAR_INIT_UNSPECIFIED
+#undef ENTERED_ADC_START_SEC_VAR_INIT_UNSPECIFIED
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_VAR_INIT_UNSPECIFIED
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma GCC section bss
+#pragma GCC section data
 #endif
 
 #ifdef ADC_START_SEC_VAR_CLEARED_BOOLEAN_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_VAR_CLEARED_BOOLEAN_NO_CACHEABLE
-    #define ENTERED_ADC_START_SEC_VAR_CLEARED_BOOLEAN_NO_CACHEABLE
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_VAR_CLEARED_BOOLEAN_NO_CACHEABLE
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma GCC section bss ".mcal_bss_no_cacheable" 
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_VAR_CLEARED_BOOLEAN_NO_CACHEABLE
+#define ENTERED_ADC_START_SEC_VAR_CLEARED_BOOLEAN_NO_CACHEABLE
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_VAR_CLEARED_BOOLEAN_NO_CACHEABLE
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma GCC section bss ".mcal_bss_no_cacheable"
 #endif
 
 #ifdef ADC_STOP_SEC_VAR_CLEARED_BOOLEAN_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_VAR_CLEARED_BOOLEAN_NO_CACHEABLE
-        #undef ENTERED_ADC_START_SEC_VAR_CLEARED_BOOLEAN_NO_CACHEABLE
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_VAR_CLEARED_BOOLEAN_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma GCC section bss 
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_VAR_CLEARED_BOOLEAN_NO_CACHEABLE
+#undef ENTERED_ADC_START_SEC_VAR_CLEARED_BOOLEAN_NO_CACHEABLE
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_VAR_CLEARED_BOOLEAN_NO_CACHEABLE
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma GCC section bss
 #endif
 
 #ifdef ADC_START_SEC_VAR_CLEARED_8_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_VAR_CLEARED_8_NO_CACHEABLE
-    #define ENTERED_ADC_START_SEC_VAR_CLEARED_8_NO_CACHEABLE
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_VAR_CLEARED_8_NO_CACHEABLE
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma GCC section bss ".mcal_bss_no_cacheable" 
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_VAR_CLEARED_8_NO_CACHEABLE
+#define ENTERED_ADC_START_SEC_VAR_CLEARED_8_NO_CACHEABLE
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_VAR_CLEARED_8_NO_CACHEABLE
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma GCC section bss ".mcal_bss_no_cacheable"
 #endif
 
 #ifdef ADC_STOP_SEC_VAR_CLEARED_8_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_VAR_CLEARED_8_NO_CACHEABLE
-        #undef ENTERED_ADC_START_SEC_VAR_CLEARED_8_NO_CACHEABLE
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_VAR_CLEARED_8_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma GCC section bss
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_VAR_CLEARED_8_NO_CACHEABLE
+#undef ENTERED_ADC_START_SEC_VAR_CLEARED_8_NO_CACHEABLE
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_VAR_CLEARED_8_NO_CACHEABLE
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma GCC section bss
 #endif
 
 #ifdef ADC_START_SEC_VAR_CLEARED_16_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_VAR_CLEARED_16_NO_CACHEABLE
-    #define ENTERED_ADC_START_SEC_VAR_CLEARED_16_NO_CACHEABLE
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_VAR_CLEARED_16_NO_CACHEABLE
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma GCC section bss ".mcal_bss_no_cacheable" 
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_VAR_CLEARED_16_NO_CACHEABLE
+#define ENTERED_ADC_START_SEC_VAR_CLEARED_16_NO_CACHEABLE
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_VAR_CLEARED_16_NO_CACHEABLE
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma GCC section bss ".mcal_bss_no_cacheable"
 #endif
 
 #ifdef ADC_STOP_SEC_VAR_CLEARED_16_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_VAR_CLEARED_16_NO_CACHEABLE
-        #undef ENTERED_ADC_START_SEC_VAR_CLEARED_16_NO_CACHEABLE
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_VAR_CLEARED_16_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma GCC section bss
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_VAR_CLEARED_16_NO_CACHEABLE
+#undef ENTERED_ADC_START_SEC_VAR_CLEARED_16_NO_CACHEABLE
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_VAR_CLEARED_16_NO_CACHEABLE
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma GCC section bss
 #endif
 
 #ifdef ADC_START_SEC_VAR_CLEARED_32_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_VAR_CLEARED_32_NO_CACHEABLE
-    #define ENTERED_ADC_START_SEC_VAR_CLEARED_32_NO_CACHEABLE
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_VAR_CLEARED_32_NO_CACHEABLE
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma GCC section bss ".mcal_bss_no_cacheable" 
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_VAR_CLEARED_32_NO_CACHEABLE
+#define ENTERED_ADC_START_SEC_VAR_CLEARED_32_NO_CACHEABLE
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_VAR_CLEARED_32_NO_CACHEABLE
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma GCC section bss ".mcal_bss_no_cacheable"
 #endif
 
 #ifdef ADC_STOP_SEC_VAR_CLEARED_32_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_VAR_CLEARED_32_NO_CACHEABLE
-        #undef ENTERED_ADC_START_SEC_VAR_CLEARED_32_NO_CACHEABLE
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_VAR_CLEARED_32_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma GCC section bss
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_VAR_CLEARED_32_NO_CACHEABLE
+#undef ENTERED_ADC_START_SEC_VAR_CLEARED_32_NO_CACHEABLE
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_VAR_CLEARED_32_NO_CACHEABLE
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma GCC section bss
 #endif
 
 #ifdef ADC_START_SEC_VAR_CLEARED_UNSPECIFIED_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_VAR_CLEARED_UNSPECIFIED_NO_CACHEABLE
-    #define ENTERED_ADC_START_SEC_VAR_CLEARED_UNSPECIFIED_NO_CACHEABLE
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_VAR_CLEARED_UNSPECIFIED_NO_CACHEABLE
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma GCC section bss ".mcal_bss_no_cacheable" 
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_VAR_CLEARED_UNSPECIFIED_NO_CACHEABLE
+#define ENTERED_ADC_START_SEC_VAR_CLEARED_UNSPECIFIED_NO_CACHEABLE
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_VAR_CLEARED_UNSPECIFIED_NO_CACHEABLE
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma GCC section bss ".mcal_bss_no_cacheable"
 #endif
 
 #ifdef ADC_STOP_SEC_VAR_CLEARED_UNSPECIFIED_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_VAR_CLEARED_UNSPECIFIED_NO_CACHEABLE
-        #undef ENTERED_ADC_START_SEC_VAR_CLEARED_UNSPECIFIED_NO_CACHEABLE
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_VAR_CLEARED_UNSPECIFIED_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma GCC section bss 
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_VAR_CLEARED_UNSPECIFIED_NO_CACHEABLE
+#undef ENTERED_ADC_START_SEC_VAR_CLEARED_UNSPECIFIED_NO_CACHEABLE
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_VAR_CLEARED_UNSPECIFIED_NO_CACHEABLE
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma GCC section bss
 #endif
 
 #ifdef ADC_START_SEC_VAR_INIT_BOOLEAN_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_VAR_INIT_BOOLEAN_NO_CACHEABLE
-    #define ENTERED_ADC_START_SEC_VAR_INIT_BOOLEAN_NO_CACHEABLE
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_VAR_INIT_BOOLEAN_NO_CACHEABLE
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma GCC section data ".mcal_data_no_cacheable" 
-    #pragma GCC section bss ".mcal_bss_no_cacheable" 
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_VAR_INIT_BOOLEAN_NO_CACHEABLE
+#define ENTERED_ADC_START_SEC_VAR_INIT_BOOLEAN_NO_CACHEABLE
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_VAR_INIT_BOOLEAN_NO_CACHEABLE
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma GCC section data ".mcal_data_no_cacheable"
+#pragma GCC section bss ".mcal_bss_no_cacheable"
 #endif
 
 #ifdef ADC_STOP_SEC_VAR_INIT_BOOLEAN_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_VAR_INIT_BOOLEAN_NO_CACHEABLE
-        #undef ENTERED_ADC_START_SEC_VAR_INIT_BOOLEAN_NO_CACHEABLE
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_VAR_INIT_BOOLEAN_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma GCC section bss
-    #pragma GCC section data
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_VAR_INIT_BOOLEAN_NO_CACHEABLE
+#undef ENTERED_ADC_START_SEC_VAR_INIT_BOOLEAN_NO_CACHEABLE
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_VAR_INIT_BOOLEAN_NO_CACHEABLE
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma GCC section bss
+#pragma GCC section data
 #endif
 
 #ifdef ADC_START_SEC_VAR_INIT_8_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_VAR_INIT_8_NO_CACHEABLE
-    #define ENTERED_ADC_START_SEC_VAR_INIT_8_NO_CACHEABLE
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_VAR_INIT_8_NO_CACHEABLE
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma GCC section data ".mcal_data_no_cacheable" 
-    #pragma GCC section bss ".mcal_bss_no_cacheable" 
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_VAR_INIT_8_NO_CACHEABLE
+#define ENTERED_ADC_START_SEC_VAR_INIT_8_NO_CACHEABLE
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_VAR_INIT_8_NO_CACHEABLE
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma GCC section data ".mcal_data_no_cacheable"
+#pragma GCC section bss ".mcal_bss_no_cacheable"
 #endif
 
 #ifdef ADC_STOP_SEC_VAR_INIT_8_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_VAR_INIT_8_NO_CACHEABLE
-        #undef ENTERED_ADC_START_SEC_VAR_INIT_8_NO_CACHEABLE
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_VAR_INIT_8_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma GCC section bss
-    #pragma GCC section data
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_VAR_INIT_8_NO_CACHEABLE
+#undef ENTERED_ADC_START_SEC_VAR_INIT_8_NO_CACHEABLE
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_VAR_INIT_8_NO_CACHEABLE
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma GCC section bss
+#pragma GCC section data
 #endif
 
 #ifdef ADC_START_SEC_VAR_INIT_16_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_VAR_INIT_16_NO_CACHEABLE
-    #define ENTERED_ADC_START_SEC_VAR_INIT_16_NO_CACHEABLE
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_VAR_INIT_16_NO_CACHEABLE
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma GCC section data ".mcal_data_no_cacheable" 
-    #pragma GCC section bss ".mcal_bss_no_cacheable" 
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_VAR_INIT_16_NO_CACHEABLE
+#define ENTERED_ADC_START_SEC_VAR_INIT_16_NO_CACHEABLE
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_VAR_INIT_16_NO_CACHEABLE
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma GCC section data ".mcal_data_no_cacheable"
+#pragma GCC section bss ".mcal_bss_no_cacheable"
 #endif
 
 #ifdef ADC_STOP_SEC_VAR_INIT_16_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_VAR_INIT_16_NO_CACHEABLE
-        #undef ENTERED_ADC_START_SEC_VAR_INIT_16_NO_CACHEABLE
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_VAR_INIT_16_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma GCC section bss
-    #pragma GCC section data
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_VAR_INIT_16_NO_CACHEABLE
+#undef ENTERED_ADC_START_SEC_VAR_INIT_16_NO_CACHEABLE
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_VAR_INIT_16_NO_CACHEABLE
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma GCC section bss
+#pragma GCC section data
 #endif
 
 #ifdef ADC_START_SEC_VAR_INIT_32_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_VAR_INIT_32_NO_CACHEABLE
-    #define ENTERED_ADC_START_SEC_VAR_INIT_32_NO_CACHEABLE
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_VAR_INIT_32_NO_CACHEABLE
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma GCC section data ".mcal_data_no_cacheable" 
-    #pragma GCC section bss ".mcal_bss_no_cacheable" 
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_VAR_INIT_32_NO_CACHEABLE
+#define ENTERED_ADC_START_SEC_VAR_INIT_32_NO_CACHEABLE
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_VAR_INIT_32_NO_CACHEABLE
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma GCC section data ".mcal_data_no_cacheable"
+#pragma GCC section bss ".mcal_bss_no_cacheable"
 #endif
 
 #ifdef ADC_STOP_SEC_VAR_INIT_32_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_VAR_INIT_32_NO_CACHEABLE
-        #undef ENTERED_ADC_START_SEC_VAR_INIT_32_NO_CACHEABLE
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_VAR_INIT_32_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma GCC section bss
-    #pragma GCC section data
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_VAR_INIT_32_NO_CACHEABLE
+#undef ENTERED_ADC_START_SEC_VAR_INIT_32_NO_CACHEABLE
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_VAR_INIT_32_NO_CACHEABLE
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma GCC section bss
+#pragma GCC section data
 #endif
 
 #ifdef ADC_START_SEC_VAR_INIT_UNSPECIFIED_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_VAR_INIT_UNSPECIFIED_NO_CACHEABLE
-    #define ENTERED_ADC_START_SEC_VAR_INIT_UNSPECIFIED_NO_CACHEABLE
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_VAR_INIT_UNSPECIFIED_NO_CACHEABLE
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma GCC section data ".mcal_data_no_cacheable" 
-    #pragma GCC section bss ".mcal_bss_no_cacheable" 
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_VAR_INIT_UNSPECIFIED_NO_CACHEABLE
+#define ENTERED_ADC_START_SEC_VAR_INIT_UNSPECIFIED_NO_CACHEABLE
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_VAR_INIT_UNSPECIFIED_NO_CACHEABLE
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma GCC section data ".mcal_data_no_cacheable"
+#pragma GCC section bss ".mcal_bss_no_cacheable"
 #endif
 
 #ifdef ADC_STOP_SEC_VAR_INIT_UNSPECIFIED_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_VAR_INIT_UNSPECIFIED_NO_CACHEABLE
-        #undef ENTERED_ADC_START_SEC_VAR_INIT_UNSPECIFIED_NO_CACHEABLE
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_VAR_INIT_UNSPECIFIED_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma GCC section bss
-    #pragma GCC section data
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_VAR_INIT_UNSPECIFIED_NO_CACHEABLE
+#undef ENTERED_ADC_START_SEC_VAR_INIT_UNSPECIFIED_NO_CACHEABLE
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_VAR_INIT_UNSPECIFIED_NO_CACHEABLE
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma GCC section bss
+#pragma GCC section data
 #endif
 
 #ifdef ADC_START_SEC_VAR_CLEARED_UNSPECIFIED_AE_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_VAR_CLEARED_UNSPECIFIED_AE_NO_CACHEABLE
-    #define ENTERED_ADC_START_SEC_VAR_CLEARED_UNSPECIFIED_AE_NO_CACHEABLE
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_VAR_CLEARED_UNSPECIFIED_AE_NO_CACHEABLE
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma GCC section bss ".ae_shared_bss" 
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_VAR_CLEARED_UNSPECIFIED_AE_NO_CACHEABLE
+#define ENTERED_ADC_START_SEC_VAR_CLEARED_UNSPECIFIED_AE_NO_CACHEABLE
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_VAR_CLEARED_UNSPECIFIED_AE_NO_CACHEABLE
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma GCC section bss ".ae_shared_bss"
 #endif
 
 #ifdef ADC_STOP_SEC_VAR_CLEARED_UNSPECIFIED_AE_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_VAR_CLEARED_UNSPECIFIED_AE_NO_CACHEABLE
-        #undef ENTERED_ADC_START_SEC_VAR_CLEARED_UNSPECIFIED_AE_NO_CACHEABLE
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_VAR_CLEARED_UNSPECIFIED_AE_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma GCC section bss 
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_VAR_CLEARED_UNSPECIFIED_AE_NO_CACHEABLE
+#undef ENTERED_ADC_START_SEC_VAR_CLEARED_UNSPECIFIED_AE_NO_CACHEABLE
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_VAR_CLEARED_UNSPECIFIED_AE_NO_CACHEABLE
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma GCC section bss
 #endif
 
 #ifdef ADC_START_SEC_VAR_INIT_UNSPECIFIED_AE_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_VAR_INIT_UNSPECIFIED_AE_NO_CACHEABLE
-    #define ENTERED_ADC_START_SEC_VAR_INIT_UNSPECIFIED_AE_NO_CACHEABLE
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_VAR_INIT_UNSPECIFIED_AE_NO_CACHEABLE
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma GCC section data ".mcal_data_no_cacheable" 
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_VAR_INIT_UNSPECIFIED_AE_NO_CACHEABLE
+#define ENTERED_ADC_START_SEC_VAR_INIT_UNSPECIFIED_AE_NO_CACHEABLE
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_VAR_INIT_UNSPECIFIED_AE_NO_CACHEABLE
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma GCC section data ".mcal_data_no_cacheable"
 #endif
 
 #ifdef ADC_STOP_SEC_VAR_INIT_UNSPECIFIED_AE_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_VAR_INIT_UNSPECIFIED_AE_NO_CACHEABLE
-        #undef ENTERED_ADC_START_SEC_VAR_INIT_UNSPECIFIED_AE_NO_CACHEABLE
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_VAR_INIT_UNSPECIFIED_AE_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma GCC section data 
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_VAR_INIT_UNSPECIFIED_AE_NO_CACHEABLE
+#undef ENTERED_ADC_START_SEC_VAR_INIT_UNSPECIFIED_AE_NO_CACHEABLE
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_VAR_INIT_UNSPECIFIED_AE_NO_CACHEABLE
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma GCC section data
 #endif
 
 #ifdef ADC_START_SEC_VAR_SHARED_INIT_UNSPECIFIED_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_VAR_SHARED_INIT_UNSPECIFIED_NO_CACHEABLE
-    #define ENTERED_ADC_START_SEC_VAR_SHARED_INIT_UNSPECIFIED_NO_CACHEABLE
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_VAR_SHARED_INIT_UNSPECIFIED_NO_CACHEABLE
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma GCC section data ".mcal_shared_data" 
-    #pragma GCC section bss ".mcal_shared_bss" 
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_VAR_SHARED_INIT_UNSPECIFIED_NO_CACHEABLE
+#define ENTERED_ADC_START_SEC_VAR_SHARED_INIT_UNSPECIFIED_NO_CACHEABLE
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_VAR_SHARED_INIT_UNSPECIFIED_NO_CACHEABLE
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma GCC section data ".mcal_shared_data"
+#pragma GCC section bss ".mcal_shared_bss"
 #endif
 
 #ifdef ADC_STOP_SEC_VAR_SHARED_INIT_UNSPECIFIED_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_VAR_SHARED_INIT_UNSPECIFIED_NO_CACHEABLE
-        #undef ENTERED_ADC_START_SEC_VAR_SHARED_INIT_UNSPECIFIED_NO_CACHEABLE
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_VAR_SHARED_INIT_UNSPECIFIED_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma GCC section data
-    #pragma GCC section bss
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_VAR_SHARED_INIT_UNSPECIFIED_NO_CACHEABLE
+#undef ENTERED_ADC_START_SEC_VAR_SHARED_INIT_UNSPECIFIED_NO_CACHEABLE
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_VAR_SHARED_INIT_UNSPECIFIED_NO_CACHEABLE
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma GCC section data
+#pragma GCC section bss
 #endif
 
 #ifdef ADC_START_SEC_VAR_SHARED_CLEARED_UNSPECIFIED_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_VAR_SHARED_CLEARED_UNSPECIFIED_NO_CACHEABLE
-    #define ENTERED_ADC_START_SEC_VAR_SHARED_CLEARED_UNSPECIFIED_NO_CACHEABLE
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_VAR_SHARED_CLEARED_UNSPECIFIED_NO_CACHEABLE
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma GCC section bss ".mcal_shared_bss" 
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_VAR_SHARED_CLEARED_UNSPECIFIED_NO_CACHEABLE
+#define ENTERED_ADC_START_SEC_VAR_SHARED_CLEARED_UNSPECIFIED_NO_CACHEABLE
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_VAR_SHARED_CLEARED_UNSPECIFIED_NO_CACHEABLE
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma GCC section bss ".mcal_shared_bss"
 #endif
 
 #ifdef ADC_STOP_SEC_VAR_SHARED_CLEARED_UNSPECIFIED_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_VAR_SHARED_CLEARED_UNSPECIFIED_NO_CACHEABLE
-        #undef ENTERED_ADC_START_SEC_VAR_SHARED_CLEARED_UNSPECIFIED_NO_CACHEABLE
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_VAR_SHARED_CLEARED_UNSPECIFIED_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma GCC section bss
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_VAR_SHARED_CLEARED_UNSPECIFIED_NO_CACHEABLE
+#undef ENTERED_ADC_START_SEC_VAR_SHARED_CLEARED_UNSPECIFIED_NO_CACHEABLE
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_VAR_SHARED_CLEARED_UNSPECIFIED_NO_CACHEABLE
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma GCC section bss
 #endif
 /**************************************************************************************************/
 /********************************************* DS5 ************************************************/
@@ -7942,1603 +7963,1603 @@ extern "C"{
 #elif defined(_ARM_DS5_C_S32K1XX_)
 /**************************************** ADC *******************************/
 #ifdef ADC_START_SEC_CONFIG_DATA_8
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_CONFIG_DATA_8
-    #define ENTERED_ADC_START_SEC_CONFIG_DATA_8
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_CONFIG_DATA_8
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma arm section rodata=".mcal_const_cfg"
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_CONFIG_DATA_8
+#define ENTERED_ADC_START_SEC_CONFIG_DATA_8
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_CONFIG_DATA_8
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma arm section rodata = ".mcal_const_cfg"
 #endif
 
 #ifdef ADC_STOP_SEC_CONFIG_DATA_8
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_CONFIG_DATA_8
-        #undef ENTERED_ADC_START_SEC_CONFIG_DATA_8
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_CONFIG_DATA_8
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    /* no definition -> default compiler settings are used */
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_CONFIG_DATA_8
+#undef ENTERED_ADC_START_SEC_CONFIG_DATA_8
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_CONFIG_DATA_8
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+/* no definition -> default compiler settings are used */
 #endif
 
 #ifdef ADC_START_SEC_CONFIG_DATA_16
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_CONFIG_DATA_16
-    #define ENTERED_ADC_START_SEC_CONFIG_DATA_16
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_CONFIG_DATA_16
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma arm section rodata=".mcal_const_cfg"
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_CONFIG_DATA_16
+#define ENTERED_ADC_START_SEC_CONFIG_DATA_16
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_CONFIG_DATA_16
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma arm section rodata = ".mcal_const_cfg"
 #endif
 
 #ifdef ADC_STOP_SEC_CONFIG_DATA_16
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_CONFIG_DATA_16
-        #undef ENTERED_ADC_START_SEC_CONFIG_DATA_16
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_CONFIG_DATA_16
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    /* no definition -> default compiler settings are used */
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_CONFIG_DATA_16
+#undef ENTERED_ADC_START_SEC_CONFIG_DATA_16
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_CONFIG_DATA_16
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+/* no definition -> default compiler settings are used */
 #endif
 
 #ifdef ADC_START_SEC_CONFIG_DATA_32
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_CONFIG_DATA_32
-    #define ENTERED_ADC_START_SEC_CONFIG_DATA_32
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_CONFIG_DATA_32
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma arm section rodata=".mcal_const_cfg"
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_CONFIG_DATA_32
+#define ENTERED_ADC_START_SEC_CONFIG_DATA_32
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_CONFIG_DATA_32
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma arm section rodata = ".mcal_const_cfg"
 #endif
 
 #ifdef ADC_STOP_SEC_CONFIG_DATA_32
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_CONFIG_DATA_32
-        #undef ENTERED_ADC_START_SEC_CONFIG_DATA_32
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_CONFIG_DATA_32
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    /* no definition -> default compiler settings are used */
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_CONFIG_DATA_32
+#undef ENTERED_ADC_START_SEC_CONFIG_DATA_32
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_CONFIG_DATA_32
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+/* no definition -> default compiler settings are used */
 #endif
 
 #ifdef ADC_START_SEC_CONFIG_DATA_UNSPECIFIED
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_CONFIG_DATA_UNSPECIFIED
-    #define ENTERED_ADC_START_SEC_CONFIG_DATA_UNSPECIFIED
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_CONFIG_DATA_UNSPECIFIED
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma arm section rodata=".mcal_const_cfg"
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_CONFIG_DATA_UNSPECIFIED
+#define ENTERED_ADC_START_SEC_CONFIG_DATA_UNSPECIFIED
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_CONFIG_DATA_UNSPECIFIED
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma arm section rodata = ".mcal_const_cfg"
 #endif
 
 #ifdef ADC_STOP_SEC_CONFIG_DATA_UNSPECIFIED
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_CONFIG_DATA_UNSPECIFIED
-        #undef ENTERED_ADC_START_SEC_CONFIG_DATA_UNSPECIFIED
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_CONFIG_DATA_UNSPECIFIED
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    /* no definition -> default compiler settings are used */
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_CONFIG_DATA_UNSPECIFIED
+#undef ENTERED_ADC_START_SEC_CONFIG_DATA_UNSPECIFIED
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_CONFIG_DATA_UNSPECIFIED
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+/* no definition -> default compiler settings are used */
 #endif
 
 #ifdef ADC_START_SEC_CONFIG_DATA_8_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_CONFIG_DATA_8_NO_CACHEABLE
-    #define ENTERED_ADC_START_SEC_CONFIG_DATA_8_NO_CACHEABLE
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_CONFIG_DATA_8_NO_CACHEABLE
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma arm section rodata=".mcal_const_no_cacheable"
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_CONFIG_DATA_8_NO_CACHEABLE
+#define ENTERED_ADC_START_SEC_CONFIG_DATA_8_NO_CACHEABLE
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_CONFIG_DATA_8_NO_CACHEABLE
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma arm section rodata = ".mcal_const_no_cacheable"
 #endif
 
 #ifdef ADC_STOP_SEC_CONFIG_DATA_8_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_CONFIG_DATA_8_NO_CACHEABLE
-        #undef ENTERED_ADC_START_SEC_CONFIG_DATA_8_NO_CACHEABLE
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_CONFIG_DATA_8_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    /* no definition -> default compiler settings are used */
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_CONFIG_DATA_8_NO_CACHEABLE
+#undef ENTERED_ADC_START_SEC_CONFIG_DATA_8_NO_CACHEABLE
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_CONFIG_DATA_8_NO_CACHEABLE
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+/* no definition -> default compiler settings are used */
 #endif
 
 #ifdef ADC_START_SEC_CONFIG_DATA_16_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_CONFIG_DATA_16_NO_CACHEABLE
-    #define ENTERED_ADC_START_SEC_CONFIG_DATA_16_NO_CACHEABLE
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_CONFIG_DATA_16_NO_CACHEABLE
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma arm section rodata=".mcal_const_no_cacheable"
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_CONFIG_DATA_16_NO_CACHEABLE
+#define ENTERED_ADC_START_SEC_CONFIG_DATA_16_NO_CACHEABLE
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_CONFIG_DATA_16_NO_CACHEABLE
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma arm section rodata = ".mcal_const_no_cacheable"
 #endif
 
 #ifdef ADC_STOP_SEC_CONFIG_DATA_16_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_CONFIG_DATA_16_NO_CACHEABLE
-        #undef ENTERED_ADC_START_SEC_CONFIG_DATA_16_NO_CACHEABLE
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_CONFIG_DATA_16_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    /* no definition -> default compiler settings are used */
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_CONFIG_DATA_16_NO_CACHEABLE
+#undef ENTERED_ADC_START_SEC_CONFIG_DATA_16_NO_CACHEABLE
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_CONFIG_DATA_16_NO_CACHEABLE
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+/* no definition -> default compiler settings are used */
 #endif
 
 #ifdef ADC_START_SEC_CONFIG_DATA_32_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_CONFIG_DATA_32_NO_CACHEABLE
-    #define ENTERED_ADC_START_SEC_CONFIG_DATA_32_NO_CACHEABLE
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_CONFIG_DATA_32_NO_CACHEABLE
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma arm section rodata=".mcal_const_no_cacheable"
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_CONFIG_DATA_32_NO_CACHEABLE
+#define ENTERED_ADC_START_SEC_CONFIG_DATA_32_NO_CACHEABLE
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_CONFIG_DATA_32_NO_CACHEABLE
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma arm section rodata = ".mcal_const_no_cacheable"
 #endif
 
 #ifdef ADC_STOP_SEC_CONFIG_DATA_32_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_CONFIG_DATA_32_NO_CACHEABLE
-        #undef ENTERED_ADC_START_SEC_CONFIG_DATA_32_NO_CACHEABLE
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_CONFIG_DATA_32_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    /* no definition -> default compiler settings are used */
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_CONFIG_DATA_32_NO_CACHEABLE
+#undef ENTERED_ADC_START_SEC_CONFIG_DATA_32_NO_CACHEABLE
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_CONFIG_DATA_32_NO_CACHEABLE
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+/* no definition -> default compiler settings are used */
 #endif
 
 #ifdef ADC_START_SEC_CONFIG_DATA_UNSPECIFIED_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_CONFIG_DATA_UNSPECIFIED_NO_CACHEABLE
-    #define ENTERED_ADC_START_SEC_CONFIG_DATA_UNSPECIFIED_NO_CACHEABLE
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_CONFIG_DATA_UNSPECIFIED_NO_CACHEABLE
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma arm section rodata=".mcal_const_no_cacheable"
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_CONFIG_DATA_UNSPECIFIED_NO_CACHEABLE
+#define ENTERED_ADC_START_SEC_CONFIG_DATA_UNSPECIFIED_NO_CACHEABLE
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_CONFIG_DATA_UNSPECIFIED_NO_CACHEABLE
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma arm section rodata = ".mcal_const_no_cacheable"
 #endif
 
 #ifdef ADC_STOP_SEC_CONFIG_DATA_UNSPECIFIED_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_CONFIG_DATA_UNSPECIFIED_NO_CACHEABLE
-        #undef ENTERED_ADC_START_SEC_CONFIG_DATA_UNSPECIFIED_NO_CACHEABLE
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_CONFIG_DATA_UNSPECIFIED_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    /* no definition -> default compiler settings are used */
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_CONFIG_DATA_UNSPECIFIED_NO_CACHEABLE
+#undef ENTERED_ADC_START_SEC_CONFIG_DATA_UNSPECIFIED_NO_CACHEABLE
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_CONFIG_DATA_UNSPECIFIED_NO_CACHEABLE
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+/* no definition -> default compiler settings are used */
 #endif
 
 #ifdef ADC_START_SEC_CONST_BOOLEAN
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_CONST_BOOLEAN
-    #define ENTERED_ADC_START_SEC_CONST_BOOLEAN
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_CONST_BOOLEAN
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma arm section rodata=".mcal_const"
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_CONST_BOOLEAN
+#define ENTERED_ADC_START_SEC_CONST_BOOLEAN
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_CONST_BOOLEAN
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma arm section rodata = ".mcal_const"
 #endif
 
 #ifdef ADC_STOP_SEC_CONST_BOOLEAN
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_CONST_BOOLEAN
-        #undef ENTERED_ADC_START_SEC_CONST_BOOLEAN
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_CONST_BOOLEAN
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    /* no definition -> default compiler settings are used */
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_CONST_BOOLEAN
+#undef ENTERED_ADC_START_SEC_CONST_BOOLEAN
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_CONST_BOOLEAN
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+/* no definition -> default compiler settings are used */
 #endif
 
 #ifdef ADC_START_SEC_CONST_8
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_CONST_8
-    #define ENTERED_ADC_START_SEC_CONST_8
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_CONST_8
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma arm section rodata=".mcal_const"
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_CONST_8
+#define ENTERED_ADC_START_SEC_CONST_8
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_CONST_8
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma arm section rodata = ".mcal_const"
 #endif
 
 #ifdef ADC_STOP_SEC_CONST_8
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_CONST_8
-        #undef ENTERED_ADC_START_SEC_CONST_8
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_CONST_8
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    /* no definition -> default compiler settings are used */
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_CONST_8
+#undef ENTERED_ADC_START_SEC_CONST_8
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_CONST_8
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+/* no definition -> default compiler settings are used */
 #endif
 
 #ifdef ADC_START_SEC_CONST_16
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_CONST_16
-    #define ENTERED_ADC_START_SEC_CONST_16
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_CONST_16
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma arm section rodata=".mcal_const"
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_CONST_16
+#define ENTERED_ADC_START_SEC_CONST_16
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_CONST_16
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma arm section rodata = ".mcal_const"
 #endif
 
 #ifdef ADC_STOP_SEC_CONST_16
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_CONST_16
-        #undef ENTERED_ADC_START_SEC_CONST_16
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_CONST_16
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    /* no definition -> default compiler settings are used */
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_CONST_16
+#undef ENTERED_ADC_START_SEC_CONST_16
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_CONST_16
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+/* no definition -> default compiler settings are used */
 #endif
 
 #ifdef ADC_START_SEC_CONST_32
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_CONST_32
-    #define ENTERED_ADC_START_SEC_CONST_32
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_CONST_32
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma arm section rodata=".mcal_const"
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_CONST_32
+#define ENTERED_ADC_START_SEC_CONST_32
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_CONST_32
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma arm section rodata = ".mcal_const"
 #endif
 
 #ifdef ADC_STOP_SEC_CONST_32
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_CONST_32
-        #undef ENTERED_ADC_START_SEC_CONST_32
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_CONST_32
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    /* no definition -> default compiler settings are used */
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_CONST_32
+#undef ENTERED_ADC_START_SEC_CONST_32
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_CONST_32
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+/* no definition -> default compiler settings are used */
 #endif
 
 #ifdef ADC_START_SEC_CONST_UNSPECIFIED
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_CONST_UNSPECIFIED
-    #define ENTERED_ADC_START_SEC_CONST_UNSPECIFIED
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_CONST_UNSPECIFIED
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma arm section rodata=".mcal_const"
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_CONST_UNSPECIFIED
+#define ENTERED_ADC_START_SEC_CONST_UNSPECIFIED
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_CONST_UNSPECIFIED
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma arm section rodata = ".mcal_const"
 #endif
 
 #ifdef ADC_STOP_SEC_CONST_UNSPECIFIED
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_CONST_UNSPECIFIED
-        #undef ENTERED_ADC_START_SEC_CONST_UNSPECIFIED
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_CONST_UNSPECIFIED
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    /* no definition -> default compiler settings are used */
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_CONST_UNSPECIFIED
+#undef ENTERED_ADC_START_SEC_CONST_UNSPECIFIED
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_CONST_UNSPECIFIED
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+/* no definition -> default compiler settings are used */
 #endif
 
 #ifdef ADC_START_SEC_CODE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_CODE
-    #define ENTERED_ADC_START_SEC_CODE
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_CODE
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma arm section code=".mcal_text"
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_CODE
+#define ENTERED_ADC_START_SEC_CODE
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_CODE
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma arm section code = ".mcal_text"
 #endif
 
 #ifdef ADC_STOP_SEC_CODE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_CODE
-        #undef ENTERED_ADC_START_SEC_CODE
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_CODE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    /* no definition -> default compiler settings are used */
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_CODE
+#undef ENTERED_ADC_START_SEC_CODE
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_CODE
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+/* no definition -> default compiler settings are used */
 #endif
 
 #ifdef ADC_START_SEC_RAMCODE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_RAMCODE
-    #define ENTERED_ADC_START_SEC_RAMCODE
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_RAMCODE
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma arm section code=".ramcode"
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_RAMCODE
+#define ENTERED_ADC_START_SEC_RAMCODE
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_RAMCODE
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma arm section code = ".ramcode"
 #endif
 
 #ifdef ADC_STOP_SEC_RAMCODE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_RAMCODE
-        #undef ENTERED_ADC_START_SEC_RAMCODE
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_RAMCODE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    /* no definition -> default compiler settings are used */
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_RAMCODE
+#undef ENTERED_ADC_START_SEC_RAMCODE
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_RAMCODE
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+/* no definition -> default compiler settings are used */
 #endif
 
 #ifdef ADC_START_SEC_CODE_AC
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_CODE_AC
-    #define ENTERED_ADC_START_SEC_CODE_AC
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_CODE_AC
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma arm section code=".acadc_code_rom"
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_CODE_AC
+#define ENTERED_ADC_START_SEC_CODE_AC
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_CODE_AC
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma arm section code = ".acadc_code_rom"
 #endif
 
 #ifdef ADC_STOP_SEC_CODE_AC
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_CODE_AC
-        #undef ENTERED_ADC_START_SEC_CODE_AC
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_CODE_AC
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    /* no definition -> default compiler settings are used */
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_CODE_AC
+#undef ENTERED_ADC_START_SEC_CODE_AC
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_CODE_AC
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+/* no definition -> default compiler settings are used */
 #endif
 
 #ifdef ADC_START_SEC_VAR_CLEARED_BOOLEAN
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_VAR_CLEARED_BOOLEAN
-    #define ENTERED_ADC_START_SEC_VAR_CLEARED_BOOLEAN
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_VAR_CLEARED_BOOLEAN
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma arm section zidata=".mcal_bss"
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_VAR_CLEARED_BOOLEAN
+#define ENTERED_ADC_START_SEC_VAR_CLEARED_BOOLEAN
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_VAR_CLEARED_BOOLEAN
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma arm section zidata = ".mcal_bss"
 #endif
 
 #ifdef ADC_STOP_SEC_VAR_CLEARED_BOOLEAN
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_VAR_CLEARED_BOOLEAN
-        #undef ENTERED_ADC_START_SEC_VAR_CLEARED_BOOLEAN
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_VAR_CLEARED_BOOLEAN
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    /* no definition -> default compiler settings are used */
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_VAR_CLEARED_BOOLEAN
+#undef ENTERED_ADC_START_SEC_VAR_CLEARED_BOOLEAN
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_VAR_CLEARED_BOOLEAN
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+/* no definition -> default compiler settings are used */
 #endif
 
 #ifdef ADC_START_SEC_VAR_CLEARED_8
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_VAR_CLEARED_8
-    #define ENTERED_ADC_START_SEC_VAR_CLEARED_8
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_VAR_CLEARED_8
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma arm section zidata=".mcal_bss"
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_VAR_CLEARED_8
+#define ENTERED_ADC_START_SEC_VAR_CLEARED_8
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_VAR_CLEARED_8
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma arm section zidata = ".mcal_bss"
 #endif
 
 #ifdef ADC_STOP_SEC_VAR_CLEARED_8
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_VAR_CLEARED_8
-        #undef ENTERED_ADC_START_SEC_VAR_CLEARED_8
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_VAR_CLEARED_8
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    /* no definition -> default compiler settings are used */
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_VAR_CLEARED_8
+#undef ENTERED_ADC_START_SEC_VAR_CLEARED_8
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_VAR_CLEARED_8
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+/* no definition -> default compiler settings are used */
 #endif
 
 #ifdef ADC_START_SEC_VAR_CLEARED_16
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_VAR_CLEARED_16
-    #define ENTERED_ADC_START_SEC_VAR_CLEARED_16
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_VAR_CLEARED_16
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma arm section zidata=".mcal_bss"
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_VAR_CLEARED_16
+#define ENTERED_ADC_START_SEC_VAR_CLEARED_16
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_VAR_CLEARED_16
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma arm section zidata = ".mcal_bss"
 #endif
 
 #ifdef ADC_STOP_SEC_VAR_CLEARED_16
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_VAR_CLEARED_16
-        #undef ENTERED_ADC_START_SEC_VAR_CLEARED_16
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_VAR_CLEARED_16
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    /* no definition -> default compiler settings are used */
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_VAR_CLEARED_16
+#undef ENTERED_ADC_START_SEC_VAR_CLEARED_16
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_VAR_CLEARED_16
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+/* no definition -> default compiler settings are used */
 #endif
 
 #ifdef ADC_START_SEC_VAR_CLEARED_32
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_VAR_CLEARED_32
-    #define ENTERED_ADC_START_SEC_VAR_CLEARED_32
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_VAR_CLEARED_32
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma arm section zidata=".mcal_bss"
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_VAR_CLEARED_32
+#define ENTERED_ADC_START_SEC_VAR_CLEARED_32
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_VAR_CLEARED_32
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma arm section zidata = ".mcal_bss"
 #endif
 
 #ifdef ADC_STOP_SEC_VAR_CLEARED_32
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_VAR_CLEARED_32
-        #undef ENTERED_ADC_START_SEC_VAR_CLEARED_32
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_VAR_CLEARED_32
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    /* no definition -> default compiler settings are used */
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_VAR_CLEARED_32
+#undef ENTERED_ADC_START_SEC_VAR_CLEARED_32
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_VAR_CLEARED_32
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+/* no definition -> default compiler settings are used */
 #endif
 
 #ifdef ADC_START_SEC_VAR_CLEARED_UNSPECIFIED
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_VAR_CLEARED_UNSPECIFIED
-    #define ENTERED_ADC_START_SEC_VAR_CLEARED_UNSPECIFIED
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_VAR_CLEARED_UNSPECIFIED
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma arm section zidata=".mcal_bss"
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_VAR_CLEARED_UNSPECIFIED
+#define ENTERED_ADC_START_SEC_VAR_CLEARED_UNSPECIFIED
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_VAR_CLEARED_UNSPECIFIED
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma arm section zidata = ".mcal_bss"
 #endif
 
 #ifdef ADC_STOP_SEC_VAR_CLEARED_UNSPECIFIED
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_VAR_CLEARED_UNSPECIFIED
-        #undef ENTERED_ADC_START_SEC_VAR_CLEARED_UNSPECIFIED
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_VAR_CLEARED_UNSPECIFIED
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    /* no definition -> default compiler settings are used */
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_VAR_CLEARED_UNSPECIFIED
+#undef ENTERED_ADC_START_SEC_VAR_CLEARED_UNSPECIFIED
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_VAR_CLEARED_UNSPECIFIED
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+/* no definition -> default compiler settings are used */
 #endif
 
 #ifdef ADC_START_SEC_VAR_INIT_BOOLEAN
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_VAR_INIT_BOOLEAN
-    #define ENTERED_ADC_START_SEC_VAR_INIT_BOOLEAN
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_VAR_INIT_BOOLEAN
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma arm section rwdata=".mcal_data"
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_VAR_INIT_BOOLEAN
+#define ENTERED_ADC_START_SEC_VAR_INIT_BOOLEAN
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_VAR_INIT_BOOLEAN
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma arm section rwdata = ".mcal_data"
 #endif
 
 #ifdef ADC_STOP_SEC_VAR_INIT_BOOLEAN
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_VAR_INIT_BOOLEAN
-        #undef ENTERED_ADC_START_SEC_VAR_INIT_BOOLEAN
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_VAR_INIT_BOOLEAN
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    /* no definition -> default compiler settings are used */
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_VAR_INIT_BOOLEAN
+#undef ENTERED_ADC_START_SEC_VAR_INIT_BOOLEAN
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_VAR_INIT_BOOLEAN
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+/* no definition -> default compiler settings are used */
 #endif
 
 #ifdef ADC_START_SEC_VAR_INIT_8
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_VAR_INIT_8
-    #define ENTERED_ADC_START_SEC_VAR_INIT_8
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_VAR_INIT_8
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma arm section rwdata=".mcal_data"
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_VAR_INIT_8
+#define ENTERED_ADC_START_SEC_VAR_INIT_8
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_VAR_INIT_8
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma arm section rwdata = ".mcal_data"
 #endif
 
 #ifdef ADC_STOP_SEC_VAR_INIT_8
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_VAR_INIT_8
-        #undef ENTERED_ADC_START_SEC_VAR_INIT_8
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_VAR_INIT_8
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    /* no definition -> default compiler settings are used */
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_VAR_INIT_8
+#undef ENTERED_ADC_START_SEC_VAR_INIT_8
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_VAR_INIT_8
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+/* no definition -> default compiler settings are used */
 #endif
 
 #ifdef ADC_START_SEC_VAR_INIT_16
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_VAR_INIT_16
-    #define ENTERED_ADC_START_SEC_VAR_INIT_16
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_VAR_INIT_16
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma arm section rwdata=".mcal_data"
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_VAR_INIT_16
+#define ENTERED_ADC_START_SEC_VAR_INIT_16
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_VAR_INIT_16
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma arm section rwdata = ".mcal_data"
 #endif
 
 #ifdef ADC_STOP_SEC_VAR_INIT_16
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_VAR_INIT_16
-        #undef ENTERED_ADC_START_SEC_VAR_INIT_16
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_VAR_INIT_16
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    /* no definition -> default compiler settings are used */
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_VAR_INIT_16
+#undef ENTERED_ADC_START_SEC_VAR_INIT_16
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_VAR_INIT_16
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+/* no definition -> default compiler settings are used */
 #endif
 
 #ifdef ADC_START_SEC_VAR_INIT_32
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_VAR_INIT_32
-    #define ENTERED_ADC_START_SEC_VAR_INIT_32
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_VAR_INIT_32
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma arm section rwdata=".mcal_data"
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_VAR_INIT_32
+#define ENTERED_ADC_START_SEC_VAR_INIT_32
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_VAR_INIT_32
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma arm section rwdata = ".mcal_data"
 #endif
 
 #ifdef ADC_STOP_SEC_VAR_INIT_32
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_VAR_INIT_32
-        #undef ENTERED_ADC_START_SEC_VAR_INIT_32
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_VAR_INIT_32
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    /* no definition -> default compiler settings are used */
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_VAR_INIT_32
+#undef ENTERED_ADC_START_SEC_VAR_INIT_32
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_VAR_INIT_32
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+/* no definition -> default compiler settings are used */
 #endif
 
 #ifdef ADC_START_SEC_VAR_INIT_UNSPECIFIED
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_VAR_INIT_UNSPECIFIED
-    #define ENTERED_ADC_START_SEC_VAR_INIT_UNSPECIFIED
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_VAR_INIT_UNSPECIFIED
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma arm section rwdata=".mcal_data"
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_VAR_INIT_UNSPECIFIED
+#define ENTERED_ADC_START_SEC_VAR_INIT_UNSPECIFIED
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_VAR_INIT_UNSPECIFIED
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma arm section rwdata = ".mcal_data"
 #endif
 
 #ifdef ADC_STOP_SEC_VAR_INIT_UNSPECIFIED
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_VAR_INIT_UNSPECIFIED
-        #undef ENTERED_ADC_START_SEC_VAR_INIT_UNSPECIFIED
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_VAR_INIT_UNSPECIFIED
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    /* no definition -> default compiler settings are used */
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_VAR_INIT_UNSPECIFIED
+#undef ENTERED_ADC_START_SEC_VAR_INIT_UNSPECIFIED
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_VAR_INIT_UNSPECIFIED
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+/* no definition -> default compiler settings are used */
 #endif
 
 #ifdef ADC_START_SEC_VAR_CLEARED_BOOLEAN_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_VAR_CLEARED_BOOLEAN_NO_CACHEABLE
-    #define ENTERED_ADC_START_SEC_VAR_CLEARED_BOOLEAN_NO_CACHEABLE
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_VAR_CLEARED_BOOLEAN_NO_CACHEABLE
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    /* no definition -> default compiler settings are used */
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_VAR_CLEARED_BOOLEAN_NO_CACHEABLE
+#define ENTERED_ADC_START_SEC_VAR_CLEARED_BOOLEAN_NO_CACHEABLE
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_VAR_CLEARED_BOOLEAN_NO_CACHEABLE
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+/* no definition -> default compiler settings are used */
 #endif
 
 #ifdef ADC_STOP_SEC_VAR_CLEARED_BOOLEAN_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_VAR_CLEARED_BOOLEAN_NO_CACHEABLE
-        #undef ENTERED_ADC_START_SEC_VAR_CLEARED_BOOLEAN_NO_CACHEABLE
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_VAR_CLEARED_BOOLEAN_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    /* no definition -> default compiler settings are used */
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_VAR_CLEARED_BOOLEAN_NO_CACHEABLE
+#undef ENTERED_ADC_START_SEC_VAR_CLEARED_BOOLEAN_NO_CACHEABLE
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_VAR_CLEARED_BOOLEAN_NO_CACHEABLE
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+/* no definition -> default compiler settings are used */
 #endif
 
 #ifdef ADC_START_SEC_VAR_CLEARED_8_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_VAR_CLEARED_8_NO_CACHEABLE
-    #define ENTERED_ADC_START_SEC_VAR_CLEARED_8_NO_CACHEABLE
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_VAR_CLEARED_8_NO_CACHEABLE
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    /* no definition -> default compiler settings are used */
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_VAR_CLEARED_8_NO_CACHEABLE
+#define ENTERED_ADC_START_SEC_VAR_CLEARED_8_NO_CACHEABLE
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_VAR_CLEARED_8_NO_CACHEABLE
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+/* no definition -> default compiler settings are used */
 #endif
 
 #ifdef ADC_STOP_SEC_VAR_CLEARED_8_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_VAR_CLEARED_8_NO_CACHEABLE
-        #undef ENTERED_ADC_START_SEC_VAR_CLEARED_8_NO_CACHEABLE
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_VAR_CLEARED_8_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    /* no definition -> default compiler settings are used */
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_VAR_CLEARED_8_NO_CACHEABLE
+#undef ENTERED_ADC_START_SEC_VAR_CLEARED_8_NO_CACHEABLE
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_VAR_CLEARED_8_NO_CACHEABLE
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+/* no definition -> default compiler settings are used */
 #endif
 
 #ifdef ADC_START_SEC_VAR_CLEARED_16_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_VAR_CLEARED_16_NO_CACHEABLE
-    #define ENTERED_ADC_START_SEC_VAR_CLEARED_16_NO_CACHEABLE
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_VAR_CLEARED_16_NO_CACHEABLE
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    /* no definition -> default compiler settings are used */
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_VAR_CLEARED_16_NO_CACHEABLE
+#define ENTERED_ADC_START_SEC_VAR_CLEARED_16_NO_CACHEABLE
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_VAR_CLEARED_16_NO_CACHEABLE
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+/* no definition -> default compiler settings are used */
 #endif
 
 #ifdef ADC_STOP_SEC_VAR_CLEARED_16_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_VAR_CLEARED_16_NO_CACHEABLE
-        #undef ENTERED_ADC_START_SEC_VAR_CLEARED_16_NO_CACHEABLE
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_VAR_CLEARED_16_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    /* no definition -> default compiler settings are used */
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_VAR_CLEARED_16_NO_CACHEABLE
+#undef ENTERED_ADC_START_SEC_VAR_CLEARED_16_NO_CACHEABLE
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_VAR_CLEARED_16_NO_CACHEABLE
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+/* no definition -> default compiler settings are used */
 #endif
 
 #ifdef ADC_START_SEC_VAR_CLEARED_32_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_VAR_CLEARED_32_NO_CACHEABLE
-    #define ENTERED_ADC_START_SEC_VAR_CLEARED_32_NO_CACHEABLE
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_VAR_CLEARED_32_NO_CACHEABLE
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    /* no definition -> default compiler settings are used */
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_VAR_CLEARED_32_NO_CACHEABLE
+#define ENTERED_ADC_START_SEC_VAR_CLEARED_32_NO_CACHEABLE
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_VAR_CLEARED_32_NO_CACHEABLE
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+/* no definition -> default compiler settings are used */
 #endif
 
 #ifdef ADC_STOP_SEC_VAR_CLEARED_32_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_VAR_CLEARED_32_NO_CACHEABLE
-        #undef ENTERED_ADC_START_SEC_VAR_CLEARED_32_NO_CACHEABLE
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_VAR_CLEARED_32_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    /* no definition -> default compiler settings are used */
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_VAR_CLEARED_32_NO_CACHEABLE
+#undef ENTERED_ADC_START_SEC_VAR_CLEARED_32_NO_CACHEABLE
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_VAR_CLEARED_32_NO_CACHEABLE
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+/* no definition -> default compiler settings are used */
 #endif
 
 #ifdef ADC_START_SEC_VAR_CLEARED_UNSPECIFIED_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_VAR_CLEARED_UNSPECIFIED_NO_CACHEABLE
-    #define ENTERED_ADC_START_SEC_VAR_CLEARED_UNSPECIFIED_NO_CACHEABLE
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_VAR_CLEARED_UNSPECIFIED_NO_CACHEABLE
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    /* no definition -> default compiler settings are used */
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_VAR_CLEARED_UNSPECIFIED_NO_CACHEABLE
+#define ENTERED_ADC_START_SEC_VAR_CLEARED_UNSPECIFIED_NO_CACHEABLE
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_VAR_CLEARED_UNSPECIFIED_NO_CACHEABLE
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+/* no definition -> default compiler settings are used */
 #endif
 
 #ifdef ADC_STOP_SEC_VAR_CLEARED_UNSPECIFIED_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_VAR_CLEARED_UNSPECIFIED_NO_CACHEABLE
-        #undef ENTERED_ADC_START_SEC_VAR_CLEARED_UNSPECIFIED_NO_CACHEABLE
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_VAR_CLEARED_UNSPECIFIED_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    /* no definition -> default compiler settings are used */
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_VAR_CLEARED_UNSPECIFIED_NO_CACHEABLE
+#undef ENTERED_ADC_START_SEC_VAR_CLEARED_UNSPECIFIED_NO_CACHEABLE
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_VAR_CLEARED_UNSPECIFIED_NO_CACHEABLE
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+/* no definition -> default compiler settings are used */
 #endif
 
 #ifdef ADC_START_SEC_VAR_INIT_BOOLEAN_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_VAR_INIT_BOOLEAN_NO_CACHEABLE
-    #define ENTERED_ADC_START_SEC_VAR_INIT_BOOLEAN_NO_CACHEABLE
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_VAR_INIT_BOOLEAN_NO_CACHEABLE
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    /* no definition -> default compiler settings are used */
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_VAR_INIT_BOOLEAN_NO_CACHEABLE
+#define ENTERED_ADC_START_SEC_VAR_INIT_BOOLEAN_NO_CACHEABLE
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_VAR_INIT_BOOLEAN_NO_CACHEABLE
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+/* no definition -> default compiler settings are used */
 #endif
 
 #ifdef ADC_STOP_SEC_VAR_INIT_BOOLEAN_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_VAR_INIT_BOOLEAN_NO_CACHEABLE
-        #undef ENTERED_ADC_START_SEC_VAR_INIT_BOOLEAN_NO_CACHEABLE
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_VAR_INIT_BOOLEAN_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    /* no definition -> default compiler settings are used */
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_VAR_INIT_BOOLEAN_NO_CACHEABLE
+#undef ENTERED_ADC_START_SEC_VAR_INIT_BOOLEAN_NO_CACHEABLE
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_VAR_INIT_BOOLEAN_NO_CACHEABLE
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+/* no definition -> default compiler settings are used */
 #endif
 
 #ifdef ADC_START_SEC_VAR_INIT_8_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_VAR_INIT_8_NO_CACHEABLE
-    #define ENTERED_ADC_START_SEC_VAR_INIT_8_NO_CACHEABLE
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_VAR_INIT_8_NO_CACHEABLE
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    /* no definition -> default compiler settings are used */
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_VAR_INIT_8_NO_CACHEABLE
+#define ENTERED_ADC_START_SEC_VAR_INIT_8_NO_CACHEABLE
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_VAR_INIT_8_NO_CACHEABLE
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+/* no definition -> default compiler settings are used */
 #endif
 
 #ifdef ADC_STOP_SEC_VAR_INIT_8_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_VAR_INIT_8_NO_CACHEABLE
-        #undef ENTERED_ADC_START_SEC_VAR_INIT_8_NO_CACHEABLE
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_VAR_INIT_8_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    /* no definition -> default compiler settings are used */
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_VAR_INIT_8_NO_CACHEABLE
+#undef ENTERED_ADC_START_SEC_VAR_INIT_8_NO_CACHEABLE
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_VAR_INIT_8_NO_CACHEABLE
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+/* no definition -> default compiler settings are used */
 #endif
 
 #ifdef ADC_START_SEC_VAR_INIT_16_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_VAR_INIT_16_NO_CACHEABLE
-    #define ENTERED_ADC_START_SEC_VAR_INIT_16_NO_CACHEABLE
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_VAR_INIT_16_NO_CACHEABLE
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    /* no definition -> default compiler settings are used */
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_VAR_INIT_16_NO_CACHEABLE
+#define ENTERED_ADC_START_SEC_VAR_INIT_16_NO_CACHEABLE
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_VAR_INIT_16_NO_CACHEABLE
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+/* no definition -> default compiler settings are used */
 #endif
 
 #ifdef ADC_STOP_SEC_VAR_INIT_16_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_VAR_INIT_16_NO_CACHEABLE
-        #undef ENTERED_ADC_START_SEC_VAR_INIT_16_NO_CACHEABLE
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_VAR_INIT_16_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    /* no definition -> default compiler settings are used */
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_VAR_INIT_16_NO_CACHEABLE
+#undef ENTERED_ADC_START_SEC_VAR_INIT_16_NO_CACHEABLE
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_VAR_INIT_16_NO_CACHEABLE
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+/* no definition -> default compiler settings are used */
 #endif
 
 #ifdef ADC_START_SEC_VAR_INIT_32_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_VAR_INIT_32_NO_CACHEABLE
-    #define ENTERED_ADC_START_SEC_VAR_INIT_32_NO_CACHEABLE
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_VAR_INIT_32_NO_CACHEABLE
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    /* no definition -> default compiler settings are used */
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_VAR_INIT_32_NO_CACHEABLE
+#define ENTERED_ADC_START_SEC_VAR_INIT_32_NO_CACHEABLE
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_VAR_INIT_32_NO_CACHEABLE
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+/* no definition -> default compiler settings are used */
 #endif
 
 #ifdef ADC_STOP_SEC_VAR_INIT_32_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_VAR_INIT_32_NO_CACHEABLE
-        #undef ENTERED_ADC_START_SEC_VAR_INIT_32_NO_CACHEABLE
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_VAR_INIT_32_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    /* no definition -> default compiler settings are used */
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_VAR_INIT_32_NO_CACHEABLE
+#undef ENTERED_ADC_START_SEC_VAR_INIT_32_NO_CACHEABLE
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_VAR_INIT_32_NO_CACHEABLE
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+/* no definition -> default compiler settings are used */
 #endif
 
 #ifdef ADC_START_SEC_VAR_INIT_UNSPECIFIED_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_VAR_INIT_UNSPECIFIED_NO_CACHEABLE
-    #define ENTERED_ADC_START_SEC_VAR_INIT_UNSPECIFIED_NO_CACHEABLE
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_VAR_INIT_UNSPECIFIED_NO_CACHEABLE
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    /* no definition -> default compiler settings are used */
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_VAR_INIT_UNSPECIFIED_NO_CACHEABLE
+#define ENTERED_ADC_START_SEC_VAR_INIT_UNSPECIFIED_NO_CACHEABLE
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_VAR_INIT_UNSPECIFIED_NO_CACHEABLE
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+/* no definition -> default compiler settings are used */
 #endif
 
 #ifdef ADC_STOP_SEC_VAR_INIT_UNSPECIFIED_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_VAR_INIT_UNSPECIFIED_NO_CACHEABLE
-        #undef ENTERED_ADC_START_SEC_VAR_INIT_UNSPECIFIED_NO_CACHEABLE
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_VAR_INIT_UNSPECIFIED_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    /* no definition -> default compiler settings are used */
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_VAR_INIT_UNSPECIFIED_NO_CACHEABLE
+#undef ENTERED_ADC_START_SEC_VAR_INIT_UNSPECIFIED_NO_CACHEABLE
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_VAR_INIT_UNSPECIFIED_NO_CACHEABLE
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+/* no definition -> default compiler settings are used */
 #endif
 
 #ifdef ADC_START_SEC_VAR_CLEARED_UNSPECIFIED_AE_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_VAR_CLEARED_UNSPECIFIED_AE_NO_CACHEABLE
-    #define ENTERED_ADC_START_SEC_VAR_CLEARED_UNSPECIFIED_AE_NO_CACHEABLE
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_VAR_CLEARED_UNSPECIFIED_AE_NO_CACHEABLE
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma arm section zidata=".ae_shared_bss"
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_VAR_CLEARED_UNSPECIFIED_AE_NO_CACHEABLE
+#define ENTERED_ADC_START_SEC_VAR_CLEARED_UNSPECIFIED_AE_NO_CACHEABLE
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_VAR_CLEARED_UNSPECIFIED_AE_NO_CACHEABLE
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma arm section zidata = ".ae_shared_bss"
 #endif
 
 #ifdef ADC_STOP_SEC_VAR_CLEARED_UNSPECIFIED_AE_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_VAR_CLEARED_UNSPECIFIED_AE_NO_CACHEABLE
-        #undef ENTERED_ADC_START_SEC_VAR_CLEARED_UNSPECIFIED_AE_NO_CACHEABLE
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_VAR_CLEARED_UNSPECIFIED_AE_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    /* no definition -> default compiler settings are used */
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_VAR_CLEARED_UNSPECIFIED_AE_NO_CACHEABLE
+#undef ENTERED_ADC_START_SEC_VAR_CLEARED_UNSPECIFIED_AE_NO_CACHEABLE
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_VAR_CLEARED_UNSPECIFIED_AE_NO_CACHEABLE
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+/* no definition -> default compiler settings are used */
 #endif
 
 #ifdef ADC_START_SEC_VAR_INIT_UNSPECIFIED_AE_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_VAR_INIT_UNSPECIFIED_AE_NO_CACHEABLE
-    #define ENTERED_ADC_START_SEC_VAR_INIT_UNSPECIFIED_AE_NO_CACHEABLE
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_VAR_INIT_UNSPECIFIED_AE_NO_CACHEABLE
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma arm section rwdata=".ae_shared_data"
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_VAR_INIT_UNSPECIFIED_AE_NO_CACHEABLE
+#define ENTERED_ADC_START_SEC_VAR_INIT_UNSPECIFIED_AE_NO_CACHEABLE
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_VAR_INIT_UNSPECIFIED_AE_NO_CACHEABLE
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma arm section rwdata = ".ae_shared_data"
 #endif
 
 #ifdef ADC_STOP_SEC_VAR_INIT_UNSPECIFIED_AE_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_VAR_INIT_UNSPECIFIED_AE_NO_CACHEABLE
-        #undef ENTERED_ADC_START_SEC_VAR_INIT_UNSPECIFIED_AE_NO_CACHEABLE
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_VAR_INIT_UNSPECIFIED_AE_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    /* no definition -> default compiler settings are used */
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_VAR_INIT_UNSPECIFIED_AE_NO_CACHEABLE
+#undef ENTERED_ADC_START_SEC_VAR_INIT_UNSPECIFIED_AE_NO_CACHEABLE
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_VAR_INIT_UNSPECIFIED_AE_NO_CACHEABLE
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+/* no definition -> default compiler settings are used */
 #endif
 
 #ifdef ADC_START_SEC_VAR_SHARED_INIT_UNSPECIFIED_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_VAR_SHARED_INIT_UNSPECIFIED_NO_CACHEABLE
-    #define ENTERED_ADC_START_SEC_VAR_SHARED_INIT_UNSPECIFIED_NO_CACHEABLE
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_VAR_SHARED_INIT_UNSPECIFIED_NO_CACHEABLE
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma arm section rwdata=".mcal_shared_data"
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_VAR_SHARED_INIT_UNSPECIFIED_NO_CACHEABLE
+#define ENTERED_ADC_START_SEC_VAR_SHARED_INIT_UNSPECIFIED_NO_CACHEABLE
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_VAR_SHARED_INIT_UNSPECIFIED_NO_CACHEABLE
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma arm section rwdata = ".mcal_shared_data"
 #endif
 
 #ifdef ADC_STOP_SEC_VAR_SHARED_INIT_UNSPECIFIED_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_VAR_SHARED_INIT_UNSPECIFIED_NO_CACHEABLE
-        #undef ENTERED_ADC_START_SEC_VAR_SHARED_INIT_UNSPECIFIED_NO_CACHEABLE
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_VAR_SHARED_INIT_UNSPECIFIED_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    /* no definition -> default compiler settings are used */
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_VAR_SHARED_INIT_UNSPECIFIED_NO_CACHEABLE
+#undef ENTERED_ADC_START_SEC_VAR_SHARED_INIT_UNSPECIFIED_NO_CACHEABLE
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_VAR_SHARED_INIT_UNSPECIFIED_NO_CACHEABLE
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+/* no definition -> default compiler settings are used */
 #endif
 
 #ifdef ADC_START_SEC_VAR_SHARED_CLEARED_UNSPECIFIED_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_VAR_SHARED_CLEARED_UNSPECIFIED_NO_CACHEABLE
-    #define ENTERED_ADC_START_SEC_VAR_SHARED_CLEARED_UNSPECIFIED_NO_CACHEABLE
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_VAR_SHARED_CLEARED_UNSPECIFIED_NO_CACHEABLE
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma arm section zidata=".mcal_shared_bss"
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_VAR_SHARED_CLEARED_UNSPECIFIED_NO_CACHEABLE
+#define ENTERED_ADC_START_SEC_VAR_SHARED_CLEARED_UNSPECIFIED_NO_CACHEABLE
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_VAR_SHARED_CLEARED_UNSPECIFIED_NO_CACHEABLE
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma arm section zidata = ".mcal_shared_bss"
 #endif
 
 #ifdef ADC_STOP_SEC_VAR_SHARED_CLEARED_UNSPECIFIED_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_VAR_SHARED_CLEARED_UNSPECIFIED_NO_CACHEABLE
-        #undef ENTERED_ADC_START_SEC_VAR_SHARED_CLEARED_UNSPECIFIED_NO_CACHEABLE
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_VAR_SHARED_CLEARED_UNSPECIFIED_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    /* no definition -> default compiler settings are used */
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_VAR_SHARED_CLEARED_UNSPECIFIED_NO_CACHEABLE
+#undef ENTERED_ADC_START_SEC_VAR_SHARED_CLEARED_UNSPECIFIED_NO_CACHEABLE
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_VAR_SHARED_CLEARED_UNSPECIFIED_NO_CACHEABLE
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+/* no definition -> default compiler settings are used */
 #endif
 /**************************************************************************************************/
 /********************************************* IAR ************************************************/
@@ -9546,1603 +9567,1603 @@ extern "C"{
 #elif defined(_IAR_C_S32K1XX_)
 /**************************************** ADC *******************************/
 #ifdef ADC_START_SEC_CONFIG_DATA_8
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_CONFIG_DATA_8
-    #define ENTERED_ADC_START_SEC_CONFIG_DATA_8
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_CONFIG_DATA_8
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma default_variable_attributes = @ ".mcal_const_cfg"
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_CONFIG_DATA_8
+#define ENTERED_ADC_START_SEC_CONFIG_DATA_8
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_CONFIG_DATA_8
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma default_variable_attributes = @ ".mcal_const_cfg"
 #endif
 
 #ifdef ADC_STOP_SEC_CONFIG_DATA_8
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_CONFIG_DATA_8
-        #undef ENTERED_ADC_START_SEC_CONFIG_DATA_8
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_CONFIG_DATA_8
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma default_variable_attributes = 
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_CONFIG_DATA_8
+#undef ENTERED_ADC_START_SEC_CONFIG_DATA_8
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_CONFIG_DATA_8
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma default_variable_attributes =
 #endif
 
 #ifdef ADC_START_SEC_CONFIG_DATA_16
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_CONFIG_DATA_16
-    #define ENTERED_ADC_START_SEC_CONFIG_DATA_16
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_CONFIG_DATA_16
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma default_variable_attributes = @ ".mcal_const_cfg"
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_CONFIG_DATA_16
+#define ENTERED_ADC_START_SEC_CONFIG_DATA_16
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_CONFIG_DATA_16
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma default_variable_attributes = @ ".mcal_const_cfg"
 #endif
 
 #ifdef ADC_STOP_SEC_CONFIG_DATA_16
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_CONFIG_DATA_16
-        #undef ENTERED_ADC_START_SEC_CONFIG_DATA_16
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_CONFIG_DATA_16
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma default_variable_attributes = 
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_CONFIG_DATA_16
+#undef ENTERED_ADC_START_SEC_CONFIG_DATA_16
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_CONFIG_DATA_16
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma default_variable_attributes =
 #endif
 
 #ifdef ADC_START_SEC_CONFIG_DATA_32
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_CONFIG_DATA_32
-    #define ENTERED_ADC_START_SEC_CONFIG_DATA_32
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_CONFIG_DATA_32
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma default_variable_attributes = @ ".mcal_const_cfg"
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_CONFIG_DATA_32
+#define ENTERED_ADC_START_SEC_CONFIG_DATA_32
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_CONFIG_DATA_32
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma default_variable_attributes = @ ".mcal_const_cfg"
 #endif
 
 #ifdef ADC_STOP_SEC_CONFIG_DATA_32
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_CONFIG_DATA_32
-        #undef ENTERED_ADC_START_SEC_CONFIG_DATA_32
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_CONFIG_DATA_32
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma default_variable_attributes = 
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_CONFIG_DATA_32
+#undef ENTERED_ADC_START_SEC_CONFIG_DATA_32
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_CONFIG_DATA_32
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma default_variable_attributes =
 #endif
 
 #ifdef ADC_START_SEC_CONFIG_DATA_UNSPECIFIED
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_CONFIG_DATA_UNSPECIFIED
-    #define ENTERED_ADC_START_SEC_CONFIG_DATA_UNSPECIFIED
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_CONFIG_DATA_UNSPECIFIED
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma default_variable_attributes = @ ".mcal_const_cfg"
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_CONFIG_DATA_UNSPECIFIED
+#define ENTERED_ADC_START_SEC_CONFIG_DATA_UNSPECIFIED
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_CONFIG_DATA_UNSPECIFIED
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma default_variable_attributes = @ ".mcal_const_cfg"
 #endif
 
 #ifdef ADC_STOP_SEC_CONFIG_DATA_UNSPECIFIED
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_CONFIG_DATA_UNSPECIFIED
-        #undef ENTERED_ADC_START_SEC_CONFIG_DATA_UNSPECIFIED
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_CONFIG_DATA_UNSPECIFIED
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma default_variable_attributes = 
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_CONFIG_DATA_UNSPECIFIED
+#undef ENTERED_ADC_START_SEC_CONFIG_DATA_UNSPECIFIED
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_CONFIG_DATA_UNSPECIFIED
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma default_variable_attributes =
 #endif
 
 #ifdef ADC_START_SEC_CONFIG_DATA_8_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_CONFIG_DATA_8_NO_CACHEABLE
-    #define ENTERED_ADC_START_SEC_CONFIG_DATA_8_NO_CACHEABLE
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_CONFIG_DATA_8_NO_CACHEABLE
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma default_variable_attributes = @ ".mcal_const_no_cacheable"
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_CONFIG_DATA_8_NO_CACHEABLE
+#define ENTERED_ADC_START_SEC_CONFIG_DATA_8_NO_CACHEABLE
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_CONFIG_DATA_8_NO_CACHEABLE
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma default_variable_attributes = @ ".mcal_const_no_cacheable"
 #endif
 
 #ifdef ADC_STOP_SEC_CONFIG_DATA_8_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_CONFIG_DATA_8_NO_CACHEABLE
-        #undef ENTERED_ADC_START_SEC_CONFIG_DATA_8_NO_CACHEABLE
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_CONFIG_DATA_8_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma default_variable_attributes =
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_CONFIG_DATA_8_NO_CACHEABLE
+#undef ENTERED_ADC_START_SEC_CONFIG_DATA_8_NO_CACHEABLE
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_CONFIG_DATA_8_NO_CACHEABLE
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma default_variable_attributes =
 #endif
 
 #ifdef ADC_START_SEC_CONFIG_DATA_16_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_CONFIG_DATA_16_NO_CACHEABLE
-    #define ENTERED_ADC_START_SEC_CONFIG_DATA_16_NO_CACHEABLE
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_CONFIG_DATA_16_NO_CACHEABLE
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma default_variable_attributes = @ ".mcal_const_no_cacheable"
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_CONFIG_DATA_16_NO_CACHEABLE
+#define ENTERED_ADC_START_SEC_CONFIG_DATA_16_NO_CACHEABLE
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_CONFIG_DATA_16_NO_CACHEABLE
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma default_variable_attributes = @ ".mcal_const_no_cacheable"
 #endif
 
 #ifdef ADC_STOP_SEC_CONFIG_DATA_16_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_CONFIG_DATA_16_NO_CACHEABLE
-        #undef ENTERED_ADC_START_SEC_CONFIG_DATA_16_NO_CACHEABLE
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_CONFIG_DATA_16_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma default_variable_attributes =
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_CONFIG_DATA_16_NO_CACHEABLE
+#undef ENTERED_ADC_START_SEC_CONFIG_DATA_16_NO_CACHEABLE
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_CONFIG_DATA_16_NO_CACHEABLE
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma default_variable_attributes =
 #endif
 
 #ifdef ADC_START_SEC_CONFIG_DATA_32_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_CONFIG_DATA_32_NO_CACHEABLE
-    #define ENTERED_ADC_START_SEC_CONFIG_DATA_32_NO_CACHEABLE
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_CONFIG_DATA_32_NO_CACHEABLE
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma default_variable_attributes = @ ".mcal_const_no_cacheable"
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_CONFIG_DATA_32_NO_CACHEABLE
+#define ENTERED_ADC_START_SEC_CONFIG_DATA_32_NO_CACHEABLE
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_CONFIG_DATA_32_NO_CACHEABLE
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma default_variable_attributes = @ ".mcal_const_no_cacheable"
 #endif
 
 #ifdef ADC_STOP_SEC_CONFIG_DATA_32_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_CONFIG_DATA_32_NO_CACHEABLE
-        #undef ENTERED_ADC_START_SEC_CONFIG_DATA_32_NO_CACHEABLE
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_CONFIG_DATA_32_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma default_variable_attributes =
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_CONFIG_DATA_32_NO_CACHEABLE
+#undef ENTERED_ADC_START_SEC_CONFIG_DATA_32_NO_CACHEABLE
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_CONFIG_DATA_32_NO_CACHEABLE
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma default_variable_attributes =
 #endif
 
 #ifdef ADC_START_SEC_CONFIG_DATA_UNSPECIFIED_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_CONFIG_DATA_UNSPECIFIED_NO_CACHEABLE
-    #define ENTERED_ADC_START_SEC_CONFIG_DATA_UNSPECIFIED_NO_CACHEABLE
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_CONFIG_DATA_UNSPECIFIED_NO_CACHEABLE
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma default_variable_attributes = @ ".mcal_const_no_cacheable"
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_CONFIG_DATA_UNSPECIFIED_NO_CACHEABLE
+#define ENTERED_ADC_START_SEC_CONFIG_DATA_UNSPECIFIED_NO_CACHEABLE
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_CONFIG_DATA_UNSPECIFIED_NO_CACHEABLE
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma default_variable_attributes = @ ".mcal_const_no_cacheable"
 #endif
 
 #ifdef ADC_STOP_SEC_CONFIG_DATA_UNSPECIFIED_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_CONFIG_DATA_UNSPECIFIED_NO_CACHEABLE
-        #undef ENTERED_ADC_START_SEC_CONFIG_DATA_UNSPECIFIED_NO_CACHEABLE
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_CONFIG_DATA_UNSPECIFIED_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma default_variable_attributes =
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_CONFIG_DATA_UNSPECIFIED_NO_CACHEABLE
+#undef ENTERED_ADC_START_SEC_CONFIG_DATA_UNSPECIFIED_NO_CACHEABLE
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_CONFIG_DATA_UNSPECIFIED_NO_CACHEABLE
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma default_variable_attributes =
 #endif
 
 #ifdef ADC_START_SEC_CONST_BOOLEAN
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_CONST_BOOLEAN
-    #define ENTERED_ADC_START_SEC_CONST_BOOLEAN
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_CONST_BOOLEAN
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma default_variable_attributes = @ ".mcal_const"
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_CONST_BOOLEAN
+#define ENTERED_ADC_START_SEC_CONST_BOOLEAN
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_CONST_BOOLEAN
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma default_variable_attributes = @ ".mcal_const"
 #endif
 
 #ifdef ADC_STOP_SEC_CONST_BOOLEAN
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_CONST_BOOLEAN
-        #undef ENTERED_ADC_START_SEC_CONST_BOOLEAN
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_CONST_BOOLEAN
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma default_variable_attributes = 
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_CONST_BOOLEAN
+#undef ENTERED_ADC_START_SEC_CONST_BOOLEAN
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_CONST_BOOLEAN
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma default_variable_attributes =
 #endif
 
 #ifdef ADC_START_SEC_CONST_8
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_CONST_8
-    #define ENTERED_ADC_START_SEC_CONST_8
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_CONST_8
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma default_variable_attributes = @ ".mcal_const"
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_CONST_8
+#define ENTERED_ADC_START_SEC_CONST_8
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_CONST_8
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma default_variable_attributes = @ ".mcal_const"
 #endif
 
 #ifdef ADC_STOP_SEC_CONST_8
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_CONST_8
-        #undef ENTERED_ADC_START_SEC_CONST_8
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_CONST_8
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma default_variable_attributes = 
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_CONST_8
+#undef ENTERED_ADC_START_SEC_CONST_8
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_CONST_8
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma default_variable_attributes =
 #endif
 
 #ifdef ADC_START_SEC_CONST_16
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_CONST_16
-    #define ENTERED_ADC_START_SEC_CONST_16
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_CONST_16
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma default_variable_attributes = @ ".mcal_const"
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_CONST_16
+#define ENTERED_ADC_START_SEC_CONST_16
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_CONST_16
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma default_variable_attributes = @ ".mcal_const"
 #endif
 
 #ifdef ADC_STOP_SEC_CONST_16
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_CONST_16
-        #undef ENTERED_ADC_START_SEC_CONST_16
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_CONST_16
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma default_variable_attributes = 
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_CONST_16
+#undef ENTERED_ADC_START_SEC_CONST_16
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_CONST_16
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma default_variable_attributes =
 #endif
 
 #ifdef ADC_START_SEC_CONST_32
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_CONST_32
-    #define ENTERED_ADC_START_SEC_CONST_32
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_CONST_32
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma default_variable_attributes = @ ".mcal_const"
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_CONST_32
+#define ENTERED_ADC_START_SEC_CONST_32
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_CONST_32
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma default_variable_attributes = @ ".mcal_const"
 #endif
 
 #ifdef ADC_STOP_SEC_CONST_32
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_CONST_32
-        #undef ENTERED_ADC_START_SEC_CONST_32
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_CONST_32
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma default_variable_attributes = 
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_CONST_32
+#undef ENTERED_ADC_START_SEC_CONST_32
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_CONST_32
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma default_variable_attributes =
 #endif
 
 #ifdef ADC_START_SEC_CONST_UNSPECIFIED
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_CONST_UNSPECIFIED
-    #define ENTERED_ADC_START_SEC_CONST_UNSPECIFIED
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_CONST_UNSPECIFIED
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma default_variable_attributes = @ ".mcal_const"
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_CONST_UNSPECIFIED
+#define ENTERED_ADC_START_SEC_CONST_UNSPECIFIED
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_CONST_UNSPECIFIED
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma default_variable_attributes = @ ".mcal_const"
 #endif
 
 #ifdef ADC_STOP_SEC_CONST_UNSPECIFIED
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_CONST_UNSPECIFIED
-        #undef ENTERED_ADC_START_SEC_CONST_UNSPECIFIED
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_CONST_UNSPECIFIED
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma default_variable_attributes = 
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_CONST_UNSPECIFIED
+#undef ENTERED_ADC_START_SEC_CONST_UNSPECIFIED
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_CONST_UNSPECIFIED
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma default_variable_attributes =
 #endif
 
 #ifdef ADC_START_SEC_CODE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_CODE
-    #define ENTERED_ADC_START_SEC_CODE
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_CODE
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma default_function_attributes = @ ".mcal_text"
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_CODE
+#define ENTERED_ADC_START_SEC_CODE
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_CODE
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma default_function_attributes = @ ".mcal_text"
 #endif
 
 #ifdef ADC_STOP_SEC_CODE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_CODE
-        #undef ENTERED_ADC_START_SEC_CODE
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_CODE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma default_function_attributes =
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_CODE
+#undef ENTERED_ADC_START_SEC_CODE
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_CODE
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma default_function_attributes =
 #endif
 
 #ifdef ADC_START_SEC_RAMCODE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_RAMCODE
-    #define ENTERED_ADC_START_SEC_RAMCODE
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_RAMCODE
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma default_function_attributes = @ ".ramcode"
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_RAMCODE
+#define ENTERED_ADC_START_SEC_RAMCODE
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_RAMCODE
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma default_function_attributes = @ ".ramcode"
 #endif
 
 #ifdef ADC_STOP_SEC_RAMCODE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_RAMCODE
-        #undef ENTERED_ADC_START_SEC_RAMCODE
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_RAMCODE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma default_function_attributes =
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_RAMCODE
+#undef ENTERED_ADC_START_SEC_RAMCODE
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_RAMCODE
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma default_function_attributes =
 #endif
 
 #ifdef ADC_START_SEC_CODE_AC
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_CODE_AC
-    #define ENTERED_ADC_START_SEC_CODE_AC
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_CODE_AC
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma default_function_attributes = @ ".acadc_code_rom"
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_CODE_AC
+#define ENTERED_ADC_START_SEC_CODE_AC
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_CODE_AC
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma default_function_attributes = @ ".acadc_code_rom"
 #endif
 
 #ifdef ADC_STOP_SEC_CODE_AC
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_CODE_AC
-        #undef ENTERED_ADC_START_SEC_CODE_AC
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_CODE_AC
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma default_function_attributes = 
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_CODE_AC
+#undef ENTERED_ADC_START_SEC_CODE_AC
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_CODE_AC
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma default_function_attributes =
 #endif
 
 #ifdef ADC_START_SEC_VAR_CLEARED_BOOLEAN
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_VAR_CLEARED_BOOLEAN
-    #define ENTERED_ADC_START_SEC_VAR_CLEARED_BOOLEAN
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_VAR_CLEARED_BOOLEAN
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma default_variable_attributes = @ ".mcal_bss"
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_VAR_CLEARED_BOOLEAN
+#define ENTERED_ADC_START_SEC_VAR_CLEARED_BOOLEAN
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_VAR_CLEARED_BOOLEAN
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma default_variable_attributes = @ ".mcal_bss"
 #endif
 
 #ifdef ADC_STOP_SEC_VAR_CLEARED_BOOLEAN
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_VAR_CLEARED_BOOLEAN
-        #undef ENTERED_ADC_START_SEC_VAR_CLEARED_BOOLEAN
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_VAR_CLEARED_BOOLEAN
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma default_variable_attributes =
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_VAR_CLEARED_BOOLEAN
+#undef ENTERED_ADC_START_SEC_VAR_CLEARED_BOOLEAN
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_VAR_CLEARED_BOOLEAN
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma default_variable_attributes =
 #endif
 
 #ifdef ADC_START_SEC_VAR_CLEARED_8
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_VAR_CLEARED_8
-    #define ENTERED_ADC_START_SEC_VAR_CLEARED_8
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_VAR_CLEARED_8
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma default_variable_attributes = @ ".mcal_bss"
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_VAR_CLEARED_8
+#define ENTERED_ADC_START_SEC_VAR_CLEARED_8
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_VAR_CLEARED_8
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma default_variable_attributes = @ ".mcal_bss"
 #endif
 
 #ifdef ADC_STOP_SEC_VAR_CLEARED_8
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_VAR_CLEARED_8
-        #undef ENTERED_ADC_START_SEC_VAR_CLEARED_8
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_VAR_CLEARED_8
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma default_variable_attributes =
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_VAR_CLEARED_8
+#undef ENTERED_ADC_START_SEC_VAR_CLEARED_8
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_VAR_CLEARED_8
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma default_variable_attributes =
 #endif
 
 #ifdef ADC_START_SEC_VAR_CLEARED_16
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_VAR_CLEARED_16
-    #define ENTERED_ADC_START_SEC_VAR_CLEARED_16
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_VAR_CLEARED_16
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma default_variable_attributes = @ ".mcal_bss"
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_VAR_CLEARED_16
+#define ENTERED_ADC_START_SEC_VAR_CLEARED_16
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_VAR_CLEARED_16
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma default_variable_attributes = @ ".mcal_bss"
 #endif
 
 #ifdef ADC_STOP_SEC_VAR_CLEARED_16
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_VAR_CLEARED_16
-        #undef ENTERED_ADC_START_SEC_VAR_CLEARED_16
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_VAR_CLEARED_16
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma default_variable_attributes =
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_VAR_CLEARED_16
+#undef ENTERED_ADC_START_SEC_VAR_CLEARED_16
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_VAR_CLEARED_16
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma default_variable_attributes =
 #endif
 
 #ifdef ADC_START_SEC_VAR_CLEARED_32
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_VAR_CLEARED_32
-    #define ENTERED_ADC_START_SEC_VAR_CLEARED_32
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_VAR_CLEARED_32
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma default_variable_attributes = @ ".mcal_bss"
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_VAR_CLEARED_32
+#define ENTERED_ADC_START_SEC_VAR_CLEARED_32
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_VAR_CLEARED_32
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma default_variable_attributes = @ ".mcal_bss"
 #endif
 
 #ifdef ADC_STOP_SEC_VAR_CLEARED_32
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_VAR_CLEARED_32
-        #undef ENTERED_ADC_START_SEC_VAR_CLEARED_32
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_VAR_CLEARED_32
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma default_variable_attributes =
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_VAR_CLEARED_32
+#undef ENTERED_ADC_START_SEC_VAR_CLEARED_32
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_VAR_CLEARED_32
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma default_variable_attributes =
 #endif
 
 #ifdef ADC_START_SEC_VAR_CLEARED_UNSPECIFIED
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_VAR_CLEARED_UNSPECIFIED
-    #define ENTERED_ADC_START_SEC_VAR_CLEARED_UNSPECIFIED
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_VAR_CLEARED_UNSPECIFIED
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma default_variable_attributes = @ ".mcal_bss"
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_VAR_CLEARED_UNSPECIFIED
+#define ENTERED_ADC_START_SEC_VAR_CLEARED_UNSPECIFIED
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_VAR_CLEARED_UNSPECIFIED
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma default_variable_attributes = @ ".mcal_bss"
 #endif
 
 #ifdef ADC_STOP_SEC_VAR_CLEARED_UNSPECIFIED
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_VAR_CLEARED_UNSPECIFIED
-        #undef ENTERED_ADC_START_SEC_VAR_CLEARED_UNSPECIFIED
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_VAR_CLEARED_UNSPECIFIED
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma default_variable_attributes =
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_VAR_CLEARED_UNSPECIFIED
+#undef ENTERED_ADC_START_SEC_VAR_CLEARED_UNSPECIFIED
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_VAR_CLEARED_UNSPECIFIED
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma default_variable_attributes =
 #endif
 
 #ifdef ADC_START_SEC_VAR_INIT_BOOLEAN
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_VAR_INIT_BOOLEAN
-    #define ENTERED_ADC_START_SEC_VAR_INIT_BOOLEAN
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_VAR_INIT_BOOLEAN
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma default_variable_attributes = @ ".mcal_data"
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_VAR_INIT_BOOLEAN
+#define ENTERED_ADC_START_SEC_VAR_INIT_BOOLEAN
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_VAR_INIT_BOOLEAN
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma default_variable_attributes = @ ".mcal_data"
 #endif
 
 #ifdef ADC_STOP_SEC_VAR_INIT_BOOLEAN
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_VAR_INIT_BOOLEAN
-        #undef ENTERED_ADC_START_SEC_VAR_INIT_BOOLEAN
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_VAR_INIT_BOOLEAN
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma default_variable_attributes =
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_VAR_INIT_BOOLEAN
+#undef ENTERED_ADC_START_SEC_VAR_INIT_BOOLEAN
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_VAR_INIT_BOOLEAN
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma default_variable_attributes =
 #endif
 
 #ifdef ADC_START_SEC_VAR_INIT_8
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_VAR_INIT_8
-    #define ENTERED_ADC_START_SEC_VAR_INIT_8
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_VAR_INIT_8
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma default_variable_attributes = @ ".mcal_data"
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_VAR_INIT_8
+#define ENTERED_ADC_START_SEC_VAR_INIT_8
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_VAR_INIT_8
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma default_variable_attributes = @ ".mcal_data"
 #endif
 
 #ifdef ADC_STOP_SEC_VAR_INIT_8
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_VAR_INIT_8
-        #undef ENTERED_ADC_START_SEC_VAR_INIT_8
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_VAR_INIT_8
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma default_variable_attributes =
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_VAR_INIT_8
+#undef ENTERED_ADC_START_SEC_VAR_INIT_8
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_VAR_INIT_8
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma default_variable_attributes =
 #endif
 
 #ifdef ADC_START_SEC_VAR_INIT_16
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_VAR_INIT_16
-    #define ENTERED_ADC_START_SEC_VAR_INIT_16
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_VAR_INIT_16
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma default_variable_attributes = @ ".mcal_data"
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_VAR_INIT_16
+#define ENTERED_ADC_START_SEC_VAR_INIT_16
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_VAR_INIT_16
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma default_variable_attributes = @ ".mcal_data"
 #endif
 
 #ifdef ADC_STOP_SEC_VAR_INIT_16
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_VAR_INIT_16
-        #undef ENTERED_ADC_START_SEC_VAR_INIT_16
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_VAR_INIT_16
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma default_variable_attributes =
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_VAR_INIT_16
+#undef ENTERED_ADC_START_SEC_VAR_INIT_16
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_VAR_INIT_16
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma default_variable_attributes =
 #endif
 
 #ifdef ADC_START_SEC_VAR_INIT_32
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_VAR_INIT_32
-    #define ENTERED_ADC_START_SEC_VAR_INIT_32
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_VAR_INIT_32
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma default_variable_attributes = @ ".mcal_data"
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_VAR_INIT_32
+#define ENTERED_ADC_START_SEC_VAR_INIT_32
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_VAR_INIT_32
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma default_variable_attributes = @ ".mcal_data"
 #endif
 
 #ifdef ADC_STOP_SEC_VAR_INIT_32
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_VAR_INIT_32
-        #undef ENTERED_ADC_START_SEC_VAR_INIT_32
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_VAR_INIT_32
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma default_variable_attributes =
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_VAR_INIT_32
+#undef ENTERED_ADC_START_SEC_VAR_INIT_32
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_VAR_INIT_32
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma default_variable_attributes =
 #endif
 
 #ifdef ADC_START_SEC_VAR_INIT_UNSPECIFIED
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_VAR_INIT_UNSPECIFIED
-    #define ENTERED_ADC_START_SEC_VAR_INIT_UNSPECIFIED
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_VAR_INIT_UNSPECIFIED
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma default_variable_attributes = @ ".mcal_data"
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_VAR_INIT_UNSPECIFIED
+#define ENTERED_ADC_START_SEC_VAR_INIT_UNSPECIFIED
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_VAR_INIT_UNSPECIFIED
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma default_variable_attributes = @ ".mcal_data"
 #endif
 
 #ifdef ADC_STOP_SEC_VAR_INIT_UNSPECIFIED
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_VAR_INIT_UNSPECIFIED
-        #undef ENTERED_ADC_START_SEC_VAR_INIT_UNSPECIFIED
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_VAR_INIT_UNSPECIFIED
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma default_variable_attributes =
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_VAR_INIT_UNSPECIFIED
+#undef ENTERED_ADC_START_SEC_VAR_INIT_UNSPECIFIED
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_VAR_INIT_UNSPECIFIED
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma default_variable_attributes =
 #endif
 
 #ifdef ADC_START_SEC_VAR_CLEARED_BOOLEAN_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_VAR_CLEARED_BOOLEAN_NO_CACHEABLE
-    #define ENTERED_ADC_START_SEC_VAR_CLEARED_BOOLEAN_NO_CACHEABLE
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_VAR_CLEARED_BOOLEAN_NO_CACHEABLE
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma default_variable_attributes = @ ".mcal_bss_no_cacheable"
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_VAR_CLEARED_BOOLEAN_NO_CACHEABLE
+#define ENTERED_ADC_START_SEC_VAR_CLEARED_BOOLEAN_NO_CACHEABLE
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_VAR_CLEARED_BOOLEAN_NO_CACHEABLE
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma default_variable_attributes = @ ".mcal_bss_no_cacheable"
 #endif
 
 #ifdef ADC_STOP_SEC_VAR_CLEARED_BOOLEAN_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_VAR_CLEARED_BOOLEAN_NO_CACHEABLE
-        #undef ENTERED_ADC_START_SEC_VAR_CLEARED_BOOLEAN_NO_CACHEABLE
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_VAR_CLEARED_BOOLEAN_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma default_variable_attributes =
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_VAR_CLEARED_BOOLEAN_NO_CACHEABLE
+#undef ENTERED_ADC_START_SEC_VAR_CLEARED_BOOLEAN_NO_CACHEABLE
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_VAR_CLEARED_BOOLEAN_NO_CACHEABLE
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma default_variable_attributes =
 #endif
 
 #ifdef ADC_START_SEC_VAR_CLEARED_8_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_VAR_CLEARED_8_NO_CACHEABLE
-    #define ENTERED_ADC_START_SEC_VAR_CLEARED_8_NO_CACHEABLE
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_VAR_CLEARED_8_NO_CACHEABLE
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma default_variable_attributes = @ ".mcal_bss_no_cacheable"
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_VAR_CLEARED_8_NO_CACHEABLE
+#define ENTERED_ADC_START_SEC_VAR_CLEARED_8_NO_CACHEABLE
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_VAR_CLEARED_8_NO_CACHEABLE
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma default_variable_attributes = @ ".mcal_bss_no_cacheable"
 #endif
 
 #ifdef ADC_STOP_SEC_VAR_CLEARED_8_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_VAR_CLEARED_8_NO_CACHEABLE
-        #undef ENTERED_ADC_START_SEC_VAR_CLEARED_8_NO_CACHEABLE
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_VAR_CLEARED_8_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma default_variable_attributes =
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_VAR_CLEARED_8_NO_CACHEABLE
+#undef ENTERED_ADC_START_SEC_VAR_CLEARED_8_NO_CACHEABLE
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_VAR_CLEARED_8_NO_CACHEABLE
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma default_variable_attributes =
 #endif
 
 #ifdef ADC_START_SEC_VAR_CLEARED_16_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_VAR_CLEARED_16_NO_CACHEABLE
-    #define ENTERED_ADC_START_SEC_VAR_CLEARED_16_NO_CACHEABLE
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_VAR_CLEARED_16_NO_CACHEABLE
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma default_variable_attributes = @ ".mcal_bss_no_cacheable"
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_VAR_CLEARED_16_NO_CACHEABLE
+#define ENTERED_ADC_START_SEC_VAR_CLEARED_16_NO_CACHEABLE
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_VAR_CLEARED_16_NO_CACHEABLE
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma default_variable_attributes = @ ".mcal_bss_no_cacheable"
 #endif
 
 #ifdef ADC_STOP_SEC_VAR_CLEARED_16_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_VAR_CLEARED_16_NO_CACHEABLE
-        #undef ENTERED_ADC_START_SEC_VAR_CLEARED_16_NO_CACHEABLE
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_VAR_CLEARED_16_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma default_variable_attributes =
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_VAR_CLEARED_16_NO_CACHEABLE
+#undef ENTERED_ADC_START_SEC_VAR_CLEARED_16_NO_CACHEABLE
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_VAR_CLEARED_16_NO_CACHEABLE
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma default_variable_attributes =
 #endif
 
 #ifdef ADC_START_SEC_VAR_CLEARED_32_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_VAR_CLEARED_32_NO_CACHEABLE
-    #define ENTERED_ADC_START_SEC_VAR_CLEARED_32_NO_CACHEABLE
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_VAR_CLEARED_32_NO_CACHEABLE
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma default_variable_attributes = @ ".mcal_bss_no_cacheable"
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_VAR_CLEARED_32_NO_CACHEABLE
+#define ENTERED_ADC_START_SEC_VAR_CLEARED_32_NO_CACHEABLE
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_VAR_CLEARED_32_NO_CACHEABLE
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma default_variable_attributes = @ ".mcal_bss_no_cacheable"
 #endif
 
 #ifdef ADC_STOP_SEC_VAR_CLEARED_32_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_VAR_CLEARED_32_NO_CACHEABLE
-        #undef ENTERED_ADC_START_SEC_VAR_CLEARED_32_NO_CACHEABLE
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_VAR_CLEARED_32_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma default_variable_attributes =
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_VAR_CLEARED_32_NO_CACHEABLE
+#undef ENTERED_ADC_START_SEC_VAR_CLEARED_32_NO_CACHEABLE
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_VAR_CLEARED_32_NO_CACHEABLE
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma default_variable_attributes =
 #endif
 
 #ifdef ADC_START_SEC_VAR_CLEARED_UNSPECIFIED_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_VAR_CLEARED_UNSPECIFIED_NO_CACHEABLE
-    #define ENTERED_ADC_START_SEC_VAR_CLEARED_UNSPECIFIED_NO_CACHEABLE
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_VAR_CLEARED_UNSPECIFIED_NO_CACHEABLE
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma default_variable_attributes = @ ".mcal_bss_no_cacheable"
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_VAR_CLEARED_UNSPECIFIED_NO_CACHEABLE
+#define ENTERED_ADC_START_SEC_VAR_CLEARED_UNSPECIFIED_NO_CACHEABLE
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_VAR_CLEARED_UNSPECIFIED_NO_CACHEABLE
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma default_variable_attributes = @ ".mcal_bss_no_cacheable"
 #endif
 
 #ifdef ADC_STOP_SEC_VAR_CLEARED_UNSPECIFIED_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_VAR_CLEARED_UNSPECIFIED_NO_CACHEABLE
-        #undef ENTERED_ADC_START_SEC_VAR_CLEARED_UNSPECIFIED_NO_CACHEABLE
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_VAR_CLEARED_UNSPECIFIED_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma default_variable_attributes =
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_VAR_CLEARED_UNSPECIFIED_NO_CACHEABLE
+#undef ENTERED_ADC_START_SEC_VAR_CLEARED_UNSPECIFIED_NO_CACHEABLE
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_VAR_CLEARED_UNSPECIFIED_NO_CACHEABLE
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma default_variable_attributes =
 #endif
 
 #ifdef ADC_START_SEC_VAR_INIT_BOOLEAN_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_VAR_INIT_BOOLEAN_NO_CACHEABLE
-    #define ENTERED_ADC_START_SEC_VAR_INIT_BOOLEAN_NO_CACHEABLE
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_VAR_INIT_BOOLEAN_NO_CACHEABLE
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma default_variable_attributes = @ ".mcal_data_no_cacheable"
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_VAR_INIT_BOOLEAN_NO_CACHEABLE
+#define ENTERED_ADC_START_SEC_VAR_INIT_BOOLEAN_NO_CACHEABLE
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_VAR_INIT_BOOLEAN_NO_CACHEABLE
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma default_variable_attributes = @ ".mcal_data_no_cacheable"
 #endif
 
 #ifdef ADC_STOP_SEC_VAR_INIT_BOOLEAN_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_VAR_INIT_BOOLEAN_NO_CACHEABLE
-        #undef ENTERED_ADC_START_SEC_VAR_INIT_BOOLEAN_NO_CACHEABLE
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_VAR_INIT_BOOLEAN_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma default_variable_attributes =
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_VAR_INIT_BOOLEAN_NO_CACHEABLE
+#undef ENTERED_ADC_START_SEC_VAR_INIT_BOOLEAN_NO_CACHEABLE
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_VAR_INIT_BOOLEAN_NO_CACHEABLE
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma default_variable_attributes =
 #endif
 
 #ifdef ADC_START_SEC_VAR_INIT_8_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_VAR_INIT_8_NO_CACHEABLE
-    #define ENTERED_ADC_START_SEC_VAR_INIT_8_NO_CACHEABLE
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_VAR_INIT_8_NO_CACHEABLE
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-   #pragma default_variable_attributes = @ ".mcal_data_no_cacheable"
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_VAR_INIT_8_NO_CACHEABLE
+#define ENTERED_ADC_START_SEC_VAR_INIT_8_NO_CACHEABLE
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_VAR_INIT_8_NO_CACHEABLE
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma default_variable_attributes = @ ".mcal_data_no_cacheable"
 #endif
 
 #ifdef ADC_STOP_SEC_VAR_INIT_8_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_VAR_INIT_8_NO_CACHEABLE
-        #undef ENTERED_ADC_START_SEC_VAR_INIT_8_NO_CACHEABLE
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_VAR_INIT_8_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma default_variable_attributes =
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_VAR_INIT_8_NO_CACHEABLE
+#undef ENTERED_ADC_START_SEC_VAR_INIT_8_NO_CACHEABLE
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_VAR_INIT_8_NO_CACHEABLE
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma default_variable_attributes =
 #endif
 
 #ifdef ADC_START_SEC_VAR_INIT_16_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_VAR_INIT_16_NO_CACHEABLE
-    #define ENTERED_ADC_START_SEC_VAR_INIT_16_NO_CACHEABLE
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_VAR_INIT_16_NO_CACHEABLE
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-   #pragma default_variable_attributes = @ ".mcal_data_no_cacheable"
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_VAR_INIT_16_NO_CACHEABLE
+#define ENTERED_ADC_START_SEC_VAR_INIT_16_NO_CACHEABLE
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_VAR_INIT_16_NO_CACHEABLE
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma default_variable_attributes = @ ".mcal_data_no_cacheable"
 #endif
 
 #ifdef ADC_STOP_SEC_VAR_INIT_16_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_VAR_INIT_16_NO_CACHEABLE
-        #undef ENTERED_ADC_START_SEC_VAR_INIT_16_NO_CACHEABLE
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_VAR_INIT_16_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma default_variable_attributes =
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_VAR_INIT_16_NO_CACHEABLE
+#undef ENTERED_ADC_START_SEC_VAR_INIT_16_NO_CACHEABLE
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_VAR_INIT_16_NO_CACHEABLE
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma default_variable_attributes =
 #endif
 
 #ifdef ADC_START_SEC_VAR_INIT_32_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_VAR_INIT_32_NO_CACHEABLE
-    #define ENTERED_ADC_START_SEC_VAR_INIT_32_NO_CACHEABLE
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_VAR_INIT_32_NO_CACHEABLE
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-   #pragma default_variable_attributes = @ ".mcal_data_no_cacheable"
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_VAR_INIT_32_NO_CACHEABLE
+#define ENTERED_ADC_START_SEC_VAR_INIT_32_NO_CACHEABLE
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_VAR_INIT_32_NO_CACHEABLE
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma default_variable_attributes = @ ".mcal_data_no_cacheable"
 #endif
 
 #ifdef ADC_STOP_SEC_VAR_INIT_32_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_VAR_INIT_32_NO_CACHEABLE
-        #undef ENTERED_ADC_START_SEC_VAR_INIT_32_NO_CACHEABLE
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_VAR_INIT_32_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma default_variable_attributes =
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_VAR_INIT_32_NO_CACHEABLE
+#undef ENTERED_ADC_START_SEC_VAR_INIT_32_NO_CACHEABLE
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_VAR_INIT_32_NO_CACHEABLE
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma default_variable_attributes =
 #endif
 
 #ifdef ADC_START_SEC_VAR_INIT_UNSPECIFIED_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_VAR_INIT_UNSPECIFIED_NO_CACHEABLE
-    #define ENTERED_ADC_START_SEC_VAR_INIT_UNSPECIFIED_NO_CACHEABLE
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_VAR_INIT_UNSPECIFIED_NO_CACHEABLE
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-   #pragma default_variable_attributes = @ ".mcal_data_no_cacheable"
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_VAR_INIT_UNSPECIFIED_NO_CACHEABLE
+#define ENTERED_ADC_START_SEC_VAR_INIT_UNSPECIFIED_NO_CACHEABLE
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_VAR_INIT_UNSPECIFIED_NO_CACHEABLE
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma default_variable_attributes = @ ".mcal_data_no_cacheable"
 #endif
 
 #ifdef ADC_STOP_SEC_VAR_INIT_UNSPECIFIED_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_VAR_INIT_UNSPECIFIED_NO_CACHEABLE
-        #undef ENTERED_ADC_START_SEC_VAR_INIT_UNSPECIFIED_NO_CACHEABLE
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_VAR_INIT_UNSPECIFIED_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma default_variable_attributes = 
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_VAR_INIT_UNSPECIFIED_NO_CACHEABLE
+#undef ENTERED_ADC_START_SEC_VAR_INIT_UNSPECIFIED_NO_CACHEABLE
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_VAR_INIT_UNSPECIFIED_NO_CACHEABLE
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma default_variable_attributes =
 #endif
 
 #ifdef ADC_START_SEC_VAR_CLEARED_UNSPECIFIED_AE_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_VAR_CLEARED_UNSPECIFIED_AE_NO_CACHEABLE
-    #define ENTERED_ADC_START_SEC_VAR_CLEARED_UNSPECIFIED_AE_NO_CACHEABLE
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_VAR_CLEARED_UNSPECIFIED_AE_NO_CACHEABLE
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma default_variable_attributes = @ ".ae_shared_bss"
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_VAR_CLEARED_UNSPECIFIED_AE_NO_CACHEABLE
+#define ENTERED_ADC_START_SEC_VAR_CLEARED_UNSPECIFIED_AE_NO_CACHEABLE
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_VAR_CLEARED_UNSPECIFIED_AE_NO_CACHEABLE
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma default_variable_attributes = @ ".ae_shared_bss"
 #endif
 
 #ifdef ADC_STOP_SEC_VAR_CLEARED_UNSPECIFIED_AE_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_VAR_CLEARED_UNSPECIFIED_AE_NO_CACHEABLE
-        #undef ENTERED_ADC_START_SEC_VAR_CLEARED_UNSPECIFIED_AE_NO_CACHEABLE
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_VAR_CLEARED_UNSPECIFIED_AE_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma default_variable_attributes = 
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_VAR_CLEARED_UNSPECIFIED_AE_NO_CACHEABLE
+#undef ENTERED_ADC_START_SEC_VAR_CLEARED_UNSPECIFIED_AE_NO_CACHEABLE
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_VAR_CLEARED_UNSPECIFIED_AE_NO_CACHEABLE
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma default_variable_attributes =
 #endif
 
 #ifdef ADC_START_SEC_VAR_INIT_UNSPECIFIED_AE_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_VAR_INIT_UNSPECIFIED_AE_NO_CACHEABLE
-    #define ENTERED_ADC_START_SEC_VAR_INIT_UNSPECIFIED_AE_NO_CACHEABLE
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_VAR_INIT_UNSPECIFIED_AE_NO_CACHEABLE
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma default_variable_attributes = @ ".ae_shared_data"
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_VAR_INIT_UNSPECIFIED_AE_NO_CACHEABLE
+#define ENTERED_ADC_START_SEC_VAR_INIT_UNSPECIFIED_AE_NO_CACHEABLE
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_VAR_INIT_UNSPECIFIED_AE_NO_CACHEABLE
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma default_variable_attributes = @ ".ae_shared_data"
 #endif
 
 #ifdef ADC_STOP_SEC_VAR_INIT_UNSPECIFIED_AE_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_VAR_INIT_UNSPECIFIED_AE_NO_CACHEABLE
-        #undef ENTERED_ADC_START_SEC_VAR_INIT_UNSPECIFIED_AE_NO_CACHEABLE
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_VAR_INIT_UNSPECIFIED_AE_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma default_variable_attributes = 
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_VAR_INIT_UNSPECIFIED_AE_NO_CACHEABLE
+#undef ENTERED_ADC_START_SEC_VAR_INIT_UNSPECIFIED_AE_NO_CACHEABLE
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_VAR_INIT_UNSPECIFIED_AE_NO_CACHEABLE
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma default_variable_attributes =
 #endif
 
 #ifdef ADC_START_SEC_VAR_SHARED_INIT_UNSPECIFIED_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_VAR_SHARED_INIT_UNSPECIFIED_NO_CACHEABLE
-    #define ENTERED_ADC_START_SEC_VAR_SHARED_INIT_UNSPECIFIED_NO_CACHEABLE
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_VAR_SHARED_INIT_UNSPECIFIED_NO_CACHEABLE
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma default_variable_attributes = @ ".mcal_shared_data"
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_VAR_SHARED_INIT_UNSPECIFIED_NO_CACHEABLE
+#define ENTERED_ADC_START_SEC_VAR_SHARED_INIT_UNSPECIFIED_NO_CACHEABLE
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_VAR_SHARED_INIT_UNSPECIFIED_NO_CACHEABLE
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma default_variable_attributes = @ ".mcal_shared_data"
 #endif
 
 #ifdef ADC_STOP_SEC_VAR_SHARED_INIT_UNSPECIFIED_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_VAR_SHARED_INIT_UNSPECIFIED_NO_CACHEABLE
-        #undef ENTERED_ADC_START_SEC_VAR_SHARED_INIT_UNSPECIFIED_NO_CACHEABLE
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_VAR_SHARED_INIT_UNSPECIFIED_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma default_variable_attributes = 
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_VAR_SHARED_INIT_UNSPECIFIED_NO_CACHEABLE
+#undef ENTERED_ADC_START_SEC_VAR_SHARED_INIT_UNSPECIFIED_NO_CACHEABLE
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_VAR_SHARED_INIT_UNSPECIFIED_NO_CACHEABLE
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma default_variable_attributes =
 #endif
 
 #ifdef ADC_START_SEC_VAR_SHARED_CLEARED_UNSPECIFIED_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_VAR_SHARED_CLEARED_UNSPECIFIED_NO_CACHEABLE
-    #define ENTERED_ADC_START_SEC_VAR_SHARED_CLEARED_UNSPECIFIED_NO_CACHEABLE
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_VAR_SHARED_CLEARED_UNSPECIFIED_NO_CACHEABLE
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma default_variable_attributes = @ ".mcal_shared_bss"
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_VAR_SHARED_CLEARED_UNSPECIFIED_NO_CACHEABLE
+#define ENTERED_ADC_START_SEC_VAR_SHARED_CLEARED_UNSPECIFIED_NO_CACHEABLE
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_VAR_SHARED_CLEARED_UNSPECIFIED_NO_CACHEABLE
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma default_variable_attributes = @ ".mcal_shared_bss"
 #endif
 
 #ifdef ADC_STOP_SEC_VAR_SHARED_CLEARED_UNSPECIFIED_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_VAR_SHARED_CLEARED_UNSPECIFIED_NO_CACHEABLE
-        #undef ENTERED_ADC_START_SEC_VAR_SHARED_CLEARED_UNSPECIFIED_NO_CACHEABLE
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_VAR_SHARED_CLEARED_UNSPECIFIED_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma default_variable_attributes = 
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_VAR_SHARED_CLEARED_UNSPECIFIED_NO_CACHEABLE
+#undef ENTERED_ADC_START_SEC_VAR_SHARED_CLEARED_UNSPECIFIED_NO_CACHEABLE
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_VAR_SHARED_CLEARED_UNSPECIFIED_NO_CACHEABLE
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma default_variable_attributes =
 #endif
 /**************************************************************************************************/
 /******************************************** ARM-DS6 *********************************************/
@@ -11150,1652 +11171,1652 @@ extern "C"{
 #elif defined(_ARM_DS6_S32K1XX_)
 /**************************************** ADC *******************************/
 #ifdef ADC_START_SEC_CONFIG_DATA_8
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_CONFIG_DATA_8
-    #define ENTERED_ADC_START_SEC_CONFIG_DATA_8
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_CONFIG_DATA_8
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma clang section rodata=".mcal_const_cfg"
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_CONFIG_DATA_8
+#define ENTERED_ADC_START_SEC_CONFIG_DATA_8
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_CONFIG_DATA_8
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma clang section rodata = ".mcal_const_cfg"
 #endif
 
 #ifdef ADC_STOP_SEC_CONFIG_DATA_8
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_CONFIG_DATA_8
-        #undef ENTERED_ADC_START_SEC_CONFIG_DATA_8
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_CONFIG_DATA_8
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma clang section rodata=""
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_CONFIG_DATA_8
+#undef ENTERED_ADC_START_SEC_CONFIG_DATA_8
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_CONFIG_DATA_8
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma clang section rodata = ""
 #endif
 
 #ifdef ADC_START_SEC_CONFIG_DATA_16
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_CONFIG_DATA_16
-    #define ENTERED_ADC_START_SEC_CONFIG_DATA_16
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_CONFIG_DATA_16
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma clang section rodata=".mcal_const_cfg"
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_CONFIG_DATA_16
+#define ENTERED_ADC_START_SEC_CONFIG_DATA_16
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_CONFIG_DATA_16
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma clang section rodata = ".mcal_const_cfg"
 #endif
 
 #ifdef ADC_STOP_SEC_CONFIG_DATA_16
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_CONFIG_DATA_16
-        #undef ENTERED_ADC_START_SEC_CONFIG_DATA_16
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_CONFIG_DATA_16
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma clang section rodata=""
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_CONFIG_DATA_16
+#undef ENTERED_ADC_START_SEC_CONFIG_DATA_16
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_CONFIG_DATA_16
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma clang section rodata = ""
 #endif
 
 #ifdef ADC_START_SEC_CONFIG_DATA_32
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_CONFIG_DATA_32
-    #define ENTERED_ADC_START_SEC_CONFIG_DATA_32
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_CONFIG_DATA_32
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma clang section rodata=".mcal_const_cfg"
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_CONFIG_DATA_32
+#define ENTERED_ADC_START_SEC_CONFIG_DATA_32
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_CONFIG_DATA_32
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma clang section rodata = ".mcal_const_cfg"
 #endif
 
 #ifdef ADC_STOP_SEC_CONFIG_DATA_32
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_CONFIG_DATA_32
-        #undef ENTERED_ADC_START_SEC_CONFIG_DATA_32
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_CONFIG_DATA_32
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma clang section rodata=""
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_CONFIG_DATA_32
+#undef ENTERED_ADC_START_SEC_CONFIG_DATA_32
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_CONFIG_DATA_32
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma clang section rodata = ""
 #endif
 
 #ifdef ADC_START_SEC_CONFIG_DATA_UNSPECIFIED
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_CONFIG_DATA_UNSPECIFIED
-    #define ENTERED_ADC_START_SEC_CONFIG_DATA_UNSPECIFIED
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_CONFIG_DATA_UNSPECIFIED
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma clang section rodata=".mcal_const_cfg"
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_CONFIG_DATA_UNSPECIFIED
+#define ENTERED_ADC_START_SEC_CONFIG_DATA_UNSPECIFIED
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_CONFIG_DATA_UNSPECIFIED
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma clang section rodata = ".mcal_const_cfg"
 #endif
 
 #ifdef ADC_STOP_SEC_CONFIG_DATA_UNSPECIFIED
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_CONFIG_DATA_UNSPECIFIED
-        #undef ENTERED_ADC_START_SEC_CONFIG_DATA_UNSPECIFIED
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_CONFIG_DATA_UNSPECIFIED
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma clang section rodata=""
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_CONFIG_DATA_UNSPECIFIED
+#undef ENTERED_ADC_START_SEC_CONFIG_DATA_UNSPECIFIED
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_CONFIG_DATA_UNSPECIFIED
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma clang section rodata = ""
 #endif
 
 #ifdef ADC_START_SEC_CONFIG_DATA_8_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_CONFIG_DATA_8_NO_CACHEABLE
-    #define ENTERED_ADC_START_SEC_CONFIG_DATA_8_NO_CACHEABLE
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_CONFIG_DATA_8_NO_CACHEABLE
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma clang section rodata=".mcal_const_no_cacheable" 
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_CONFIG_DATA_8_NO_CACHEABLE
+#define ENTERED_ADC_START_SEC_CONFIG_DATA_8_NO_CACHEABLE
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_CONFIG_DATA_8_NO_CACHEABLE
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma clang section rodata = ".mcal_const_no_cacheable"
 #endif
 
 #ifdef ADC_STOP_SEC_CONFIG_DATA_8_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_CONFIG_DATA_8_NO_CACHEABLE
-        #undef ENTERED_ADC_START_SEC_CONFIG_DATA_8_NO_CACHEABLE
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_CONFIG_DATA_8_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma clang section rodata=""
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_CONFIG_DATA_8_NO_CACHEABLE
+#undef ENTERED_ADC_START_SEC_CONFIG_DATA_8_NO_CACHEABLE
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_CONFIG_DATA_8_NO_CACHEABLE
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma clang section rodata = ""
 #endif
 
 #ifdef ADC_START_SEC_CONFIG_DATA_16_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_CONFIG_DATA_16_NO_CACHEABLE
-    #define ENTERED_ADC_START_SEC_CONFIG_DATA_16_NO_CACHEABLE
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_CONFIG_DATA_16_NO_CACHEABLE
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma clang section rodata=".mcal_const_no_cacheable" 
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_CONFIG_DATA_16_NO_CACHEABLE
+#define ENTERED_ADC_START_SEC_CONFIG_DATA_16_NO_CACHEABLE
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_CONFIG_DATA_16_NO_CACHEABLE
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma clang section rodata = ".mcal_const_no_cacheable"
 #endif
 
 #ifdef ADC_STOP_SEC_CONFIG_DATA_16_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_CONFIG_DATA_16_NO_CACHEABLE
-        #undef ENTERED_ADC_START_SEC_CONFIG_DATA_16_NO_CACHEABLE
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_CONFIG_DATA_16_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma clang section rodata=""
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_CONFIG_DATA_16_NO_CACHEABLE
+#undef ENTERED_ADC_START_SEC_CONFIG_DATA_16_NO_CACHEABLE
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_CONFIG_DATA_16_NO_CACHEABLE
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma clang section rodata = ""
 #endif
 
 #ifdef ADC_START_SEC_CONFIG_DATA_32_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_CONFIG_DATA_32_NO_CACHEABLE
-    #define ENTERED_ADC_START_SEC_CONFIG_DATA_32_NO_CACHEABLE
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_CONFIG_DATA_32_NO_CACHEABLE
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma clang section rodata=".mcal_const_no_cacheable" 
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_CONFIG_DATA_32_NO_CACHEABLE
+#define ENTERED_ADC_START_SEC_CONFIG_DATA_32_NO_CACHEABLE
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_CONFIG_DATA_32_NO_CACHEABLE
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma clang section rodata = ".mcal_const_no_cacheable"
 #endif
 
 #ifdef ADC_STOP_SEC_CONFIG_DATA_32_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_CONFIG_DATA_32_NO_CACHEABLE
-        #undef ENTERED_ADC_START_SEC_CONFIG_DATA_32_NO_CACHEABLE
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_CONFIG_DATA_32_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma clang section rodata=""
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_CONFIG_DATA_32_NO_CACHEABLE
+#undef ENTERED_ADC_START_SEC_CONFIG_DATA_32_NO_CACHEABLE
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_CONFIG_DATA_32_NO_CACHEABLE
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma clang section rodata = ""
 #endif
 
 #ifdef ADC_START_SEC_CONFIG_DATA_UNSPECIFIED_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_CONFIG_DATA_UNSPECIFIED_NO_CACHEABLE
-    #define ENTERED_ADC_START_SEC_CONFIG_DATA_UNSPECIFIED_NO_CACHEABLE
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_CONFIG_DATA_UNSPECIFIED_NO_CACHEABLE
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma clang section rodata=".mcal_const_no_cacheable" 
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_CONFIG_DATA_UNSPECIFIED_NO_CACHEABLE
+#define ENTERED_ADC_START_SEC_CONFIG_DATA_UNSPECIFIED_NO_CACHEABLE
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_CONFIG_DATA_UNSPECIFIED_NO_CACHEABLE
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma clang section rodata = ".mcal_const_no_cacheable"
 #endif
 
 #ifdef ADC_STOP_SEC_CONFIG_DATA_UNSPECIFIED_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_CONFIG_DATA_UNSPECIFIED_NO_CACHEABLE
-        #undef ENTERED_ADC_START_SEC_CONFIG_DATA_UNSPECIFIED_NO_CACHEABLE
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_CONFIG_DATA_UNSPECIFIED_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma clang section rodata=""
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_CONFIG_DATA_UNSPECIFIED_NO_CACHEABLE
+#undef ENTERED_ADC_START_SEC_CONFIG_DATA_UNSPECIFIED_NO_CACHEABLE
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_CONFIG_DATA_UNSPECIFIED_NO_CACHEABLE
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma clang section rodata = ""
 #endif
 
 #ifdef ADC_START_SEC_CONST_BOOLEAN
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_CONST_BOOLEAN
-    #define ENTERED_ADC_START_SEC_CONST_BOOLEAN
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_CONST_BOOLEAN
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma clang section rodata=".mcal_const" 
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_CONST_BOOLEAN
+#define ENTERED_ADC_START_SEC_CONST_BOOLEAN
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_CONST_BOOLEAN
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma clang section rodata = ".mcal_const"
 #endif
 
 #ifdef ADC_STOP_SEC_CONST_BOOLEAN
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_CONST_BOOLEAN
-        #undef ENTERED_ADC_START_SEC_CONST_BOOLEAN
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_CONST_BOOLEAN
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma clang section rodata=""
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_CONST_BOOLEAN
+#undef ENTERED_ADC_START_SEC_CONST_BOOLEAN
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_CONST_BOOLEAN
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma clang section rodata = ""
 #endif
 
 #ifdef ADC_START_SEC_CONST_8
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_CONST_8
-    #define ENTERED_ADC_START_SEC_CONST_8
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_CONST_8
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma clang section rodata=".mcal_const" 
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_CONST_8
+#define ENTERED_ADC_START_SEC_CONST_8
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_CONST_8
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma clang section rodata = ".mcal_const"
 #endif
 
 #ifdef ADC_STOP_SEC_CONST_8
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_CONST_8
-        #undef ENTERED_ADC_START_SEC_CONST_8
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_CONST_8
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma clang section rodata=""
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_CONST_8
+#undef ENTERED_ADC_START_SEC_CONST_8
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_CONST_8
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma clang section rodata = ""
 #endif
 
 #ifdef ADC_START_SEC_CONST_16
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_CONST_16
-    #define ENTERED_ADC_START_SEC_CONST_16
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_CONST_16
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma clang section rodata=".mcal_const" 
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_CONST_16
+#define ENTERED_ADC_START_SEC_CONST_16
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_CONST_16
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma clang section rodata = ".mcal_const"
 #endif
 
 #ifdef ADC_STOP_SEC_CONST_16
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_CONST_16
-        #undef ENTERED_ADC_START_SEC_CONST_16
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_CONST_16
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma clang section rodata=""
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_CONST_16
+#undef ENTERED_ADC_START_SEC_CONST_16
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_CONST_16
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma clang section rodata = ""
 #endif
 
 #ifdef ADC_START_SEC_CONST_32
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_CONST_32
-    #define ENTERED_ADC_START_SEC_CONST_32
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_CONST_32
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma clang section rodata=".mcal_const" 
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_CONST_32
+#define ENTERED_ADC_START_SEC_CONST_32
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_CONST_32
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma clang section rodata = ".mcal_const"
 #endif
 
 #ifdef ADC_STOP_SEC_CONST_32
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_CONST_32
-        #undef ENTERED_ADC_START_SEC_CONST_32
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_CONST_32
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma clang section rodata=""
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_CONST_32
+#undef ENTERED_ADC_START_SEC_CONST_32
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_CONST_32
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma clang section rodata = ""
 #endif
 
 #ifdef ADC_START_SEC_CONST_UNSPECIFIED
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_CONST_UNSPECIFIED
-    #define ENTERED_ADC_START_SEC_CONST_UNSPECIFIED
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_CONST_UNSPECIFIED
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma clang section rodata=".mcal_const" 
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_CONST_UNSPECIFIED
+#define ENTERED_ADC_START_SEC_CONST_UNSPECIFIED
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_CONST_UNSPECIFIED
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma clang section rodata = ".mcal_const"
 #endif
 
 #ifdef ADC_STOP_SEC_CONST_UNSPECIFIED
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_CONST_UNSPECIFIED
-        #undef ENTERED_ADC_START_SEC_CONST_UNSPECIFIED
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_CONST_UNSPECIFIED
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma clang section rodata=""
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_CONST_UNSPECIFIED
+#undef ENTERED_ADC_START_SEC_CONST_UNSPECIFIED
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_CONST_UNSPECIFIED
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma clang section rodata = ""
 #endif
 
 #ifdef ADC_START_SEC_CODE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_CODE
-    #define ENTERED_ADC_START_SEC_CODE
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_CODE
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma clang section text=".mcal_text" 
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_CODE
+#define ENTERED_ADC_START_SEC_CODE
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_CODE
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma clang section text = ".mcal_text"
 #endif
 
 #ifdef ADC_STOP_SEC_CODE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_CODE
-        #undef ENTERED_ADC_START_SEC_CODE
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_CODE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma clang section text=""
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_CODE
+#undef ENTERED_ADC_START_SEC_CODE
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_CODE
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma clang section text = ""
 #endif
 
 #ifdef ADC_START_SEC_RAMCODE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_RAMCODE
-    #define ENTERED_ADC_START_SEC_RAMCODE
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_RAMCODE
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma clang section text=".ramcode" 
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_RAMCODE
+#define ENTERED_ADC_START_SEC_RAMCODE
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_RAMCODE
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma clang section text = ".ramcode"
 #endif
 
 #ifdef ADC_STOP_SEC_RAMCODE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_RAMCODE
-        #undef ENTERED_ADC_START_SEC_RAMCODE
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_RAMCODE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma clang section text=""
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_RAMCODE
+#undef ENTERED_ADC_START_SEC_RAMCODE
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_RAMCODE
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma clang section text = ""
 #endif
 
 #ifdef ADC_START_SEC_CODE_AC
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_CODE_AC
-    #define ENTERED_ADC_START_SEC_CODE_AC
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_CODE_AC
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma clang section text=".acfls_code_rom" 
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_CODE_AC
+#define ENTERED_ADC_START_SEC_CODE_AC
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_CODE_AC
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma clang section text = ".acfls_code_rom"
 #endif
 
 #ifdef ADC_STOP_SEC_CODE_AC
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_CODE_AC
-        #undef ENTERED_ADC_START_SEC_CODE_AC
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_CODE_AC
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma clang section text=""
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_CODE_AC
+#undef ENTERED_ADC_START_SEC_CODE_AC
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_CODE_AC
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma clang section text = ""
 #endif
 
 #ifdef ADC_START_SEC_VAR_CLEARED_BOOLEAN
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_VAR_CLEARED_BOOLEAN
-    #define ENTERED_ADC_START_SEC_VAR_CLEARED_BOOLEAN
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_VAR_CLEARED_BOOLEAN
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma clang section bss=".mcal_bss" 
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_VAR_CLEARED_BOOLEAN
+#define ENTERED_ADC_START_SEC_VAR_CLEARED_BOOLEAN
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_VAR_CLEARED_BOOLEAN
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma clang section bss = ".mcal_bss"
 #endif
 
 #ifdef ADC_STOP_SEC_VAR_CLEARED_BOOLEAN
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_VAR_CLEARED_BOOLEAN
-        #undef ENTERED_ADC_START_SEC_VAR_CLEARED_BOOLEAN
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_VAR_CLEARED_BOOLEAN
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma clang section bss=""
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_VAR_CLEARED_BOOLEAN
+#undef ENTERED_ADC_START_SEC_VAR_CLEARED_BOOLEAN
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_VAR_CLEARED_BOOLEAN
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma clang section bss = ""
 #endif
 
 #ifdef ADC_START_SEC_VAR_CLEARED_8
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_VAR_CLEARED_8
-    #define ENTERED_ADC_START_SEC_VAR_CLEARED_8
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_VAR_CLEARED_8
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma clang section bss=".mcal_bss" 
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_VAR_CLEARED_8
+#define ENTERED_ADC_START_SEC_VAR_CLEARED_8
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_VAR_CLEARED_8
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma clang section bss = ".mcal_bss"
 #endif
 
 #ifdef ADC_STOP_SEC_VAR_CLEARED_8
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_VAR_CLEARED_8
-        #undef ENTERED_ADC_START_SEC_VAR_CLEARED_8
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_VAR_CLEARED_8
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma clang section bss=""
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_VAR_CLEARED_8
+#undef ENTERED_ADC_START_SEC_VAR_CLEARED_8
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_VAR_CLEARED_8
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma clang section bss = ""
 #endif
 
 #ifdef ADC_START_SEC_VAR_CLEARED_16
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_VAR_CLEARED_16
-    #define ENTERED_ADC_START_SEC_VAR_CLEARED_16
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_VAR_CLEARED_16
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma clang section bss=".mcal_bss" 
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_VAR_CLEARED_16
+#define ENTERED_ADC_START_SEC_VAR_CLEARED_16
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_VAR_CLEARED_16
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma clang section bss = ".mcal_bss"
 #endif
 
 #ifdef ADC_STOP_SEC_VAR_CLEARED_16
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_VAR_CLEARED_16
-        #undef ENTERED_ADC_START_SEC_VAR_CLEARED_16
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_VAR_CLEARED_16
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma clang section bss=""
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_VAR_CLEARED_16
+#undef ENTERED_ADC_START_SEC_VAR_CLEARED_16
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_VAR_CLEARED_16
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma clang section bss = ""
 #endif
 
 #ifdef ADC_START_SEC_VAR_CLEARED_32
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_VAR_CLEARED_32
-    #define ENTERED_ADC_START_SEC_VAR_CLEARED_32
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_VAR_CLEARED_32
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma clang section bss=".mcal_bss" 
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_VAR_CLEARED_32
+#define ENTERED_ADC_START_SEC_VAR_CLEARED_32
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_VAR_CLEARED_32
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma clang section bss = ".mcal_bss"
 #endif
 
 #ifdef ADC_STOP_SEC_VAR_CLEARED_32
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_VAR_CLEARED_32
-        #undef ENTERED_ADC_START_SEC_VAR_CLEARED_32
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_VAR_CLEARED_32
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma clang section bss=""
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_VAR_CLEARED_32
+#undef ENTERED_ADC_START_SEC_VAR_CLEARED_32
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_VAR_CLEARED_32
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma clang section bss = ""
 #endif
 
 #ifdef ADC_START_SEC_VAR_CLEARED_UNSPECIFIED
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_VAR_CLEARED_UNSPECIFIED
-    #define ENTERED_ADC_START_SEC_VAR_CLEARED_UNSPECIFIED
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_VAR_CLEARED_UNSPECIFIED
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma clang section bss=".mcal_bss" 
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_VAR_CLEARED_UNSPECIFIED
+#define ENTERED_ADC_START_SEC_VAR_CLEARED_UNSPECIFIED
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_VAR_CLEARED_UNSPECIFIED
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma clang section bss = ".mcal_bss"
 #endif
 
 #ifdef ADC_STOP_SEC_VAR_CLEARED_UNSPECIFIED
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_VAR_CLEARED_UNSPECIFIED
-        #undef ENTERED_ADC_START_SEC_VAR_CLEARED_UNSPECIFIED
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_VAR_CLEARED_UNSPECIFIED
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma clang section bss=""
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_VAR_CLEARED_UNSPECIFIED
+#undef ENTERED_ADC_START_SEC_VAR_CLEARED_UNSPECIFIED
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_VAR_CLEARED_UNSPECIFIED
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma clang section bss = ""
 #endif
 
 #ifdef ADC_START_SEC_VAR_INIT_BOOLEAN
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_VAR_INIT_BOOLEAN
-    #define ENTERED_ADC_START_SEC_VAR_INIT_BOOLEAN
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_VAR_INIT_BOOLEAN
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma clang section data=".mcal_data" 
-    #pragma clang section bss=".mcal_bss" 
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_VAR_INIT_BOOLEAN
+#define ENTERED_ADC_START_SEC_VAR_INIT_BOOLEAN
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_VAR_INIT_BOOLEAN
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma clang section data = ".mcal_data"
+#pragma clang section bss = ".mcal_bss"
 #endif
 
 #ifdef ADC_STOP_SEC_VAR_INIT_BOOLEAN
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_VAR_INIT_BOOLEAN
-        #undef ENTERED_ADC_START_SEC_VAR_INIT_BOOLEAN
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_VAR_INIT_BOOLEAN
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma clang section bss=""
-    #pragma clang section data=""
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_VAR_INIT_BOOLEAN
+#undef ENTERED_ADC_START_SEC_VAR_INIT_BOOLEAN
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_VAR_INIT_BOOLEAN
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma clang section bss = ""
+#pragma clang section data = ""
 #endif
 
 #ifdef ADC_START_SEC_VAR_INIT_8
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_VAR_INIT_8
-    #define ENTERED_ADC_START_SEC_VAR_INIT_8
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_VAR_INIT_8
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma clang section data=".mcal_data" 
-    #pragma clang section bss=".mcal_bss" 
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_VAR_INIT_8
+#define ENTERED_ADC_START_SEC_VAR_INIT_8
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_VAR_INIT_8
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma clang section data = ".mcal_data"
+#pragma clang section bss = ".mcal_bss"
 #endif
 
 #ifdef ADC_STOP_SEC_VAR_INIT_8
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_VAR_INIT_8
-        #undef ENTERED_ADC_START_SEC_VAR_INIT_8
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_VAR_INIT_8
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma clang section bss=""
-    #pragma clang section data=""
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_VAR_INIT_8
+#undef ENTERED_ADC_START_SEC_VAR_INIT_8
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_VAR_INIT_8
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma clang section bss = ""
+#pragma clang section data = ""
 #endif
 
 #ifdef ADC_START_SEC_VAR_INIT_16
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_VAR_INIT_16
-    #define ENTERED_ADC_START_SEC_VAR_INIT_16
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_VAR_INIT_16
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma clang section data=".mcal_data" 
-    #pragma clang section bss=".mcal_bss" 
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_VAR_INIT_16
+#define ENTERED_ADC_START_SEC_VAR_INIT_16
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_VAR_INIT_16
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma clang section data = ".mcal_data"
+#pragma clang section bss = ".mcal_bss"
 #endif
 
 #ifdef ADC_STOP_SEC_VAR_INIT_16
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_VAR_INIT_16
-        #undef ENTERED_ADC_START_SEC_VAR_INIT_16
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_VAR_INIT_16
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma clang section bss=""
-    #pragma clang section data=""
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_VAR_INIT_16
+#undef ENTERED_ADC_START_SEC_VAR_INIT_16
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_VAR_INIT_16
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma clang section bss = ""
+#pragma clang section data = ""
 #endif
 
 #ifdef ADC_START_SEC_VAR_INIT_32
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_VAR_INIT_32
-    #define ENTERED_ADC_START_SEC_VAR_INIT_32
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_VAR_INIT_32
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma clang section data=".mcal_data" 
-    #pragma clang section bss=".mcal_bss" 
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_VAR_INIT_32
+#define ENTERED_ADC_START_SEC_VAR_INIT_32
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_VAR_INIT_32
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma clang section data = ".mcal_data"
+#pragma clang section bss = ".mcal_bss"
 #endif
 
 #ifdef ADC_STOP_SEC_VAR_INIT_32
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_VAR_INIT_32
-        #undef ENTERED_ADC_START_SEC_VAR_INIT_32
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_VAR_INIT_32
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma clang section bss=""
-    #pragma clang section data=""
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_VAR_INIT_32
+#undef ENTERED_ADC_START_SEC_VAR_INIT_32
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_VAR_INIT_32
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma clang section bss = ""
+#pragma clang section data = ""
 #endif
 
 #ifdef ADC_START_SEC_VAR_INIT_UNSPECIFIED
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_VAR_INIT_UNSPECIFIED
-    #define ENTERED_ADC_START_SEC_VAR_INIT_UNSPECIFIED
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_VAR_INIT_UNSPECIFIED
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma clang section data=".mcal_data" 
-    #pragma clang section bss=".mcal_bss" 
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_VAR_INIT_UNSPECIFIED
+#define ENTERED_ADC_START_SEC_VAR_INIT_UNSPECIFIED
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_VAR_INIT_UNSPECIFIED
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma clang section data = ".mcal_data"
+#pragma clang section bss = ".mcal_bss"
 #endif
 
 #ifdef ADC_STOP_SEC_VAR_INIT_UNSPECIFIED
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_VAR_INIT_UNSPECIFIED
-        #undef ENTERED_ADC_START_SEC_VAR_INIT_UNSPECIFIED
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_VAR_INIT_UNSPECIFIED
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma clang section bss=""
-    #pragma clang section data=""
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_VAR_INIT_UNSPECIFIED
+#undef ENTERED_ADC_START_SEC_VAR_INIT_UNSPECIFIED
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_VAR_INIT_UNSPECIFIED
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma clang section bss = ""
+#pragma clang section data = ""
 #endif
 
 #ifdef ADC_START_SEC_VAR_CLEARED_BOOLEAN_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_VAR_CLEARED_BOOLEAN_NO_CACHEABLE
-    #define ENTERED_ADC_START_SEC_VAR_CLEARED_BOOLEAN_NO_CACHEABLE
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_VAR_CLEARED_BOOLEAN_NO_CACHEABLE
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma clang section bss=".mcal_bss_no_cacheable" 
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_VAR_CLEARED_BOOLEAN_NO_CACHEABLE
+#define ENTERED_ADC_START_SEC_VAR_CLEARED_BOOLEAN_NO_CACHEABLE
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_VAR_CLEARED_BOOLEAN_NO_CACHEABLE
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma clang section bss = ".mcal_bss_no_cacheable"
 #endif
 
 #ifdef ADC_STOP_SEC_VAR_CLEARED_BOOLEAN_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_VAR_CLEARED_BOOLEAN_NO_CACHEABLE
-        #undef ENTERED_ADC_START_SEC_VAR_CLEARED_BOOLEAN_NO_CACHEABLE
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_VAR_CLEARED_BOOLEAN_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma clang section bss=""
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_VAR_CLEARED_BOOLEAN_NO_CACHEABLE
+#undef ENTERED_ADC_START_SEC_VAR_CLEARED_BOOLEAN_NO_CACHEABLE
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_VAR_CLEARED_BOOLEAN_NO_CACHEABLE
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma clang section bss = ""
 #endif
 
 #ifdef ADC_START_SEC_VAR_CLEARED_8_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_VAR_CLEARED_8_NO_CACHEABLE
-    #define ENTERED_ADC_START_SEC_VAR_CLEARED_8_NO_CACHEABLE
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_VAR_CLEARED_8_NO_CACHEABLE
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma clang section bss=".mcal_bss_no_cacheable" 
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_VAR_CLEARED_8_NO_CACHEABLE
+#define ENTERED_ADC_START_SEC_VAR_CLEARED_8_NO_CACHEABLE
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_VAR_CLEARED_8_NO_CACHEABLE
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma clang section bss = ".mcal_bss_no_cacheable"
 #endif
 
 #ifdef ADC_STOP_SEC_VAR_CLEARED_8_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_VAR_CLEARED_8_NO_CACHEABLE
-        #undef ENTERED_ADC_START_SEC_VAR_CLEARED_8_NO_CACHEABLE
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_VAR_CLEARED_8_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma clang section bss=""
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_VAR_CLEARED_8_NO_CACHEABLE
+#undef ENTERED_ADC_START_SEC_VAR_CLEARED_8_NO_CACHEABLE
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_VAR_CLEARED_8_NO_CACHEABLE
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma clang section bss = ""
 #endif
 
 #ifdef ADC_START_SEC_VAR_CLEARED_16_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_VAR_CLEARED_16_NO_CACHEABLE
-    #define ENTERED_ADC_START_SEC_VAR_CLEARED_16_NO_CACHEABLE
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_VAR_CLEARED_16_NO_CACHEABLE
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma clang section bss=".mcal_bss_no_cacheable" 
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_VAR_CLEARED_16_NO_CACHEABLE
+#define ENTERED_ADC_START_SEC_VAR_CLEARED_16_NO_CACHEABLE
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_VAR_CLEARED_16_NO_CACHEABLE
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma clang section bss = ".mcal_bss_no_cacheable"
 #endif
 
 #ifdef ADC_STOP_SEC_VAR_CLEARED_16_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_VAR_CLEARED_16_NO_CACHEABLE
-        #undef ENTERED_ADC_START_SEC_VAR_CLEARED_16_NO_CACHEABLE
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_VAR_CLEARED_16_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma clang section bss=""
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_VAR_CLEARED_16_NO_CACHEABLE
+#undef ENTERED_ADC_START_SEC_VAR_CLEARED_16_NO_CACHEABLE
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_VAR_CLEARED_16_NO_CACHEABLE
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma clang section bss = ""
 #endif
 
 #ifdef ADC_START_SEC_VAR_CLEARED_32_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_VAR_CLEARED_32_NO_CACHEABLE
-    #define ENTERED_ADC_START_SEC_VAR_CLEARED_32_NO_CACHEABLE
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_VAR_CLEARED_32_NO_CACHEABLE
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma clang section bss=".mcal_bss_no_cacheable" 
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_VAR_CLEARED_32_NO_CACHEABLE
+#define ENTERED_ADC_START_SEC_VAR_CLEARED_32_NO_CACHEABLE
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_VAR_CLEARED_32_NO_CACHEABLE
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma clang section bss = ".mcal_bss_no_cacheable"
 #endif
 
 #ifdef ADC_STOP_SEC_VAR_CLEARED_32_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_VAR_CLEARED_32_NO_CACHEABLE
-        #undef ENTERED_ADC_START_SEC_VAR_CLEARED_32_NO_CACHEABLE
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_VAR_CLEARED_32_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma clang section bss=""
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_VAR_CLEARED_32_NO_CACHEABLE
+#undef ENTERED_ADC_START_SEC_VAR_CLEARED_32_NO_CACHEABLE
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_VAR_CLEARED_32_NO_CACHEABLE
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma clang section bss = ""
 #endif
 
 #ifdef ADC_START_SEC_VAR_CLEARED_UNSPECIFIED_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_VAR_CLEARED_UNSPECIFIED_NO_CACHEABLE
-    #define ENTERED_ADC_START_SEC_VAR_CLEARED_UNSPECIFIED_NO_CACHEABLE
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_VAR_CLEARED_UNSPECIFIED_NO_CACHEABLE
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma clang section bss=".mcal_bss_no_cacheable" 
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_VAR_CLEARED_UNSPECIFIED_NO_CACHEABLE
+#define ENTERED_ADC_START_SEC_VAR_CLEARED_UNSPECIFIED_NO_CACHEABLE
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_VAR_CLEARED_UNSPECIFIED_NO_CACHEABLE
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma clang section bss = ".mcal_bss_no_cacheable"
 #endif
 
 #ifdef ADC_STOP_SEC_VAR_CLEARED_UNSPECIFIED_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_VAR_CLEARED_UNSPECIFIED_NO_CACHEABLE
-        #undef ENTERED_ADC_START_SEC_VAR_CLEARED_UNSPECIFIED_NO_CACHEABLE
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_VAR_CLEARED_UNSPECIFIED_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma clang section bss=""
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_VAR_CLEARED_UNSPECIFIED_NO_CACHEABLE
+#undef ENTERED_ADC_START_SEC_VAR_CLEARED_UNSPECIFIED_NO_CACHEABLE
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_VAR_CLEARED_UNSPECIFIED_NO_CACHEABLE
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma clang section bss = ""
 #endif
 
 #ifdef ADC_START_SEC_VAR_INIT_BOOLEAN_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_VAR_INIT_BOOLEAN_NO_CACHEABLE
-    #define ENTERED_ADC_START_SEC_VAR_INIT_BOOLEAN_NO_CACHEABLE
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_VAR_INIT_BOOLEAN_NO_CACHEABLE
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma clang section data=".mcal_data_no_cacheable" 
-    #pragma clang section bss=".mcal_bss_no_cacheable" 
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_VAR_INIT_BOOLEAN_NO_CACHEABLE
+#define ENTERED_ADC_START_SEC_VAR_INIT_BOOLEAN_NO_CACHEABLE
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_VAR_INIT_BOOLEAN_NO_CACHEABLE
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma clang section data = ".mcal_data_no_cacheable"
+#pragma clang section bss = ".mcal_bss_no_cacheable"
 #endif
 
 #ifdef ADC_STOP_SEC_VAR_INIT_BOOLEAN_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_VAR_INIT_BOOLEAN_NO_CACHEABLE
-        #undef ENTERED_ADC_START_SEC_VAR_INIT_BOOLEAN_NO_CACHEABLE
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_VAR_INIT_BOOLEAN_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma clang section bss=""
-    #pragma clang section data=""
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_VAR_INIT_BOOLEAN_NO_CACHEABLE
+#undef ENTERED_ADC_START_SEC_VAR_INIT_BOOLEAN_NO_CACHEABLE
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_VAR_INIT_BOOLEAN_NO_CACHEABLE
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma clang section bss = ""
+#pragma clang section data = ""
 #endif
 
 #ifdef ADC_START_SEC_VAR_INIT_8_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_VAR_INIT_8_NO_CACHEABLE
-    #define ENTERED_ADC_START_SEC_VAR_INIT_8_NO_CACHEABLE
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_VAR_INIT_8_NO_CACHEABLE
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma clang section data=".mcal_data_no_cacheable" 
-    #pragma clang section bss=".mcal_bss_no_cacheable" 
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_VAR_INIT_8_NO_CACHEABLE
+#define ENTERED_ADC_START_SEC_VAR_INIT_8_NO_CACHEABLE
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_VAR_INIT_8_NO_CACHEABLE
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma clang section data = ".mcal_data_no_cacheable"
+#pragma clang section bss = ".mcal_bss_no_cacheable"
 #endif
 
 #ifdef ADC_STOP_SEC_VAR_INIT_8_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_VAR_INIT_8_NO_CACHEABLE
-        #undef ENTERED_ADC_START_SEC_VAR_INIT_8_NO_CACHEABLE
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_VAR_INIT_8_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma clang section bss=""
-    #pragma clang section data=""
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_VAR_INIT_8_NO_CACHEABLE
+#undef ENTERED_ADC_START_SEC_VAR_INIT_8_NO_CACHEABLE
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_VAR_INIT_8_NO_CACHEABLE
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma clang section bss = ""
+#pragma clang section data = ""
 #endif
 
 #ifdef ADC_START_SEC_VAR_INIT_16_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_VAR_INIT_16_NO_CACHEABLE
-    #define ENTERED_ADC_START_SEC_VAR_INIT_16_NO_CACHEABLE
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_VAR_INIT_16_NO_CACHEABLE
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma clang section data=".mcal_data_no_cacheable" 
-    #pragma clang section bss=".mcal_bss_no_cacheable" 
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_VAR_INIT_16_NO_CACHEABLE
+#define ENTERED_ADC_START_SEC_VAR_INIT_16_NO_CACHEABLE
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_VAR_INIT_16_NO_CACHEABLE
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma clang section data = ".mcal_data_no_cacheable"
+#pragma clang section bss = ".mcal_bss_no_cacheable"
 #endif
 
 #ifdef ADC_STOP_SEC_VAR_INIT_16_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_VAR_INIT_16_NO_CACHEABLE
-        #undef ENTERED_ADC_START_SEC_VAR_INIT_16_NO_CACHEABLE
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_VAR_INIT_16_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma clang section bss=""
-    #pragma clang section data=""
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_VAR_INIT_16_NO_CACHEABLE
+#undef ENTERED_ADC_START_SEC_VAR_INIT_16_NO_CACHEABLE
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_VAR_INIT_16_NO_CACHEABLE
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma clang section bss = ""
+#pragma clang section data = ""
 #endif
 
 #ifdef ADC_START_SEC_VAR_INIT_32_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_VAR_INIT_32_NO_CACHEABLE
-    #define ENTERED_ADC_START_SEC_VAR_INIT_32_NO_CACHEABLE
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_VAR_INIT_32_NO_CACHEABLE
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma clang section data=".mcal_data_no_cacheable" 
-    #pragma clang section bss=".mcal_bss_no_cacheable" 
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_VAR_INIT_32_NO_CACHEABLE
+#define ENTERED_ADC_START_SEC_VAR_INIT_32_NO_CACHEABLE
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_VAR_INIT_32_NO_CACHEABLE
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma clang section data = ".mcal_data_no_cacheable"
+#pragma clang section bss = ".mcal_bss_no_cacheable"
 #endif
 
 #ifdef ADC_STOP_SEC_VAR_INIT_32_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_VAR_INIT_32_NO_CACHEABLE
-        #undef ENTERED_ADC_START_SEC_VAR_INIT_32_NO_CACHEABLE
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_VAR_INIT_32_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma clang section bss=""
-    #pragma clang section data=""
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_VAR_INIT_32_NO_CACHEABLE
+#undef ENTERED_ADC_START_SEC_VAR_INIT_32_NO_CACHEABLE
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_VAR_INIT_32_NO_CACHEABLE
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma clang section bss = ""
+#pragma clang section data = ""
 #endif
 
 #ifdef ADC_START_SEC_VAR_INIT_UNSPECIFIED_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_VAR_INIT_UNSPECIFIED_NO_CACHEABLE
-    #define ENTERED_ADC_START_SEC_VAR_INIT_UNSPECIFIED_NO_CACHEABLE
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_VAR_INIT_UNSPECIFIED_NO_CACHEABLE
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma clang section data=".mcal_data_no_cacheable" 
-    #pragma clang section bss=".mcal_bss_no_cacheable" 
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_VAR_INIT_UNSPECIFIED_NO_CACHEABLE
+#define ENTERED_ADC_START_SEC_VAR_INIT_UNSPECIFIED_NO_CACHEABLE
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_VAR_INIT_UNSPECIFIED_NO_CACHEABLE
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma clang section data = ".mcal_data_no_cacheable"
+#pragma clang section bss = ".mcal_bss_no_cacheable"
 #endif
 
 #ifdef ADC_STOP_SEC_VAR_INIT_UNSPECIFIED_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_VAR_INIT_UNSPECIFIED_NO_CACHEABLE
-        #undef ENTERED_ADC_START_SEC_VAR_INIT_UNSPECIFIED_NO_CACHEABLE
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_VAR_INIT_UNSPECIFIED_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma clang section bss=""
-    #pragma clang section data=""
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_VAR_INIT_UNSPECIFIED_NO_CACHEABLE
+#undef ENTERED_ADC_START_SEC_VAR_INIT_UNSPECIFIED_NO_CACHEABLE
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_VAR_INIT_UNSPECIFIED_NO_CACHEABLE
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma clang section bss = ""
+#pragma clang section data = ""
 #endif
 
 #ifdef ADC_START_SEC_VAR_CLEARED_UNSPECIFIED_AE_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_VAR_CLEARED_UNSPECIFIED_AE_NO_CACHEABLE
-    #define ENTERED_ADC_START_SEC_VAR_CLEARED_UNSPECIFIED_AE_NO_CACHEABLE
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_VAR_CLEARED_UNSPECIFIED_AE_NO_CACHEABLE
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma clang section bss=".mcal_bss_no_cacheable" 
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_VAR_CLEARED_UNSPECIFIED_AE_NO_CACHEABLE
+#define ENTERED_ADC_START_SEC_VAR_CLEARED_UNSPECIFIED_AE_NO_CACHEABLE
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_VAR_CLEARED_UNSPECIFIED_AE_NO_CACHEABLE
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma clang section bss = ".mcal_bss_no_cacheable"
 #endif
 
 #ifdef ADC_STOP_SEC_VAR_CLEARED_UNSPECIFIED_AE_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_VAR_CLEARED_UNSPECIFIED_AE_NO_CACHEABLE
-        #undef ENTERED_ADC_START_SEC_VAR_CLEARED_UNSPECIFIED_AE_NO_CACHEABLE
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_VAR_CLEARED_UNSPECIFIED_AE_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma clang section bss=""
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_VAR_CLEARED_UNSPECIFIED_AE_NO_CACHEABLE
+#undef ENTERED_ADC_START_SEC_VAR_CLEARED_UNSPECIFIED_AE_NO_CACHEABLE
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_VAR_CLEARED_UNSPECIFIED_AE_NO_CACHEABLE
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma clang section bss = ""
 #endif
 
 #ifdef ADC_START_SEC_VAR_INIT_UNSPECIFIED_AE_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_VAR_INIT_UNSPECIFIED_AE_NO_CACHEABLE
-    #define ENTERED_ADC_START_SEC_VAR_INIT_UNSPECIFIED_AE_NO_CACHEABLE
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_VAR_INIT_UNSPECIFIED_AE_NO_CACHEABLE
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma clang section data=".mcal_data_no_cacheable" 
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_VAR_INIT_UNSPECIFIED_AE_NO_CACHEABLE
+#define ENTERED_ADC_START_SEC_VAR_INIT_UNSPECIFIED_AE_NO_CACHEABLE
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_VAR_INIT_UNSPECIFIED_AE_NO_CACHEABLE
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma clang section data = ".mcal_data_no_cacheable"
 #endif
 
 #ifdef ADC_STOP_SEC_VAR_INIT_UNSPECIFIED_AE_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_VAR_INIT_UNSPECIFIED_AE_NO_CACHEABLE
-        #undef ENTERED_ADC_START_SEC_VAR_INIT_UNSPECIFIED_AE_NO_CACHEABLE
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_VAR_INIT_UNSPECIFIED_AE_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma clang section data=""
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_VAR_INIT_UNSPECIFIED_AE_NO_CACHEABLE
+#undef ENTERED_ADC_START_SEC_VAR_INIT_UNSPECIFIED_AE_NO_CACHEABLE
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_VAR_INIT_UNSPECIFIED_AE_NO_CACHEABLE
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma clang section data = ""
 #endif
 
 #ifdef ADC_START_SEC_VAR_SHARED_INIT_UNSPECIFIED_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_VAR_SHARED_INIT_UNSPECIFIED_NO_CACHEABLE
-    #define ENTERED_ADC_START_SEC_VAR_SHARED_INIT_UNSPECIFIED_NO_CACHEABLE
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_VAR_SHARED_INIT_UNSPECIFIED_NO_CACHEABLE
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma clang section data=".mcal_shared_data" 
-    #pragma clang section bss=".mcal_shared_bss"  
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_VAR_SHARED_INIT_UNSPECIFIED_NO_CACHEABLE
+#define ENTERED_ADC_START_SEC_VAR_SHARED_INIT_UNSPECIFIED_NO_CACHEABLE
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_VAR_SHARED_INIT_UNSPECIFIED_NO_CACHEABLE
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma clang section data = ".mcal_shared_data"
+#pragma clang section bss = ".mcal_shared_bss"
 #endif
 
 #ifdef ADC_STOP_SEC_VAR_SHARED_INIT_UNSPECIFIED_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_VAR_SHARED_INIT_UNSPECIFIED_NO_CACHEABLE
-        #undef ENTERED_ADC_START_SEC_VAR_SHARED_INIT_UNSPECIFIED_NO_CACHEABLE
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_VAR_SHARED_INIT_UNSPECIFIED_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma clang section data=""
-    #pragma clang section bss=""
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_VAR_SHARED_INIT_UNSPECIFIED_NO_CACHEABLE
+#undef ENTERED_ADC_START_SEC_VAR_SHARED_INIT_UNSPECIFIED_NO_CACHEABLE
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_VAR_SHARED_INIT_UNSPECIFIED_NO_CACHEABLE
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma clang section data = ""
+#pragma clang section bss = ""
 #endif
 
 #ifdef ADC_START_SEC_VAR_SHARED_CLEARED_UNSPECIFIED_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef ADC_START_SEC_VAR_SHARED_CLEARED_UNSPECIFIED_NO_CACHEABLE
-    #define ENTERED_ADC_START_SEC_VAR_SHARED_CLEARED_UNSPECIFIED_NO_CACHEABLE
-    #ifndef MEMMAP_MATCH_ERROR
-        #define MEMMAP_MATCH_ERROR
-    #else
-        #ifndef ADC_STOP_SEC_VAR_SHARED_CLEARED_UNSPECIFIED_NO_CACHEABLE
-        #error "MemMap.h, no valid matching start-stop section defined."
-        #endif
-    #endif
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma clang section bss=".mcal_shared_bss" 
+/**
+ * @file Adc_MemMap.h
+ */
+#undef ADC_START_SEC_VAR_SHARED_CLEARED_UNSPECIFIED_NO_CACHEABLE
+#define ENTERED_ADC_START_SEC_VAR_SHARED_CLEARED_UNSPECIFIED_NO_CACHEABLE
+#ifndef MEMMAP_MATCH_ERROR
+#define MEMMAP_MATCH_ERROR
+#else
+#ifndef ADC_STOP_SEC_VAR_SHARED_CLEARED_UNSPECIFIED_NO_CACHEABLE
+#error "MemMap.h, no valid matching start-stop section defined."
+#endif
+#endif
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma clang section bss = ".mcal_shared_bss"
 #endif
 
 #ifdef ADC_STOP_SEC_VAR_SHARED_CLEARED_UNSPECIFIED_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #ifdef ENTERED_ADC_START_SEC_VAR_SHARED_CLEARED_UNSPECIFIED_NO_CACHEABLE
-        #undef ENTERED_ADC_START_SEC_VAR_SHARED_CLEARED_UNSPECIFIED_NO_CACHEABLE
-    #else
-        #error "MemMap.h, no valid matching start-stop section defined."
-    #endif
-    #ifdef MEMMAP_MATCH_ERROR
-        #undef MEMMAP_MATCH_ERROR
-    #endif
-    #undef ADC_STOP_SEC_VAR_SHARED_CLEARED_UNSPECIFIED_NO_CACHEABLE
-    /**
-    * @file Adc_MemMap.h
-    */
-    #undef MEMMAP_ERROR
-    #pragma clang section bss=""
+/**
+ * @file Adc_MemMap.h
+ */
+#ifdef ENTERED_ADC_START_SEC_VAR_SHARED_CLEARED_UNSPECIFIED_NO_CACHEABLE
+#undef ENTERED_ADC_START_SEC_VAR_SHARED_CLEARED_UNSPECIFIED_NO_CACHEABLE
+#else
+#error "MemMap.h, no valid matching start-stop section defined."
 #endif
-#endif 
+#ifdef MEMMAP_MATCH_ERROR
+#undef MEMMAP_MATCH_ERROR
+#endif
+#undef ADC_STOP_SEC_VAR_SHARED_CLEARED_UNSPECIFIED_NO_CACHEABLE
+/**
+ * @file Adc_MemMap.h
+ */
+#undef MEMMAP_ERROR
+#pragma clang section bss = ""
+#endif
+#endif
 /**************************************************************************************************/
 /****************************************** Report error ******************************************/
 /**************************************************************************************************/
 #ifdef MEMMAP_ERROR
-    #error "MemMap.h, no valid memory mapping symbol defined."
+#error "MemMap.h, no valid memory mapping symbol defined."
 #endif
-                                                                                                     
-/*================================================================================================== 
-*                                            ENUMS                                                   
-==================================================================================================*/ 
-                                                                                                     
-/*================================================================================================== 
-*                                 STRUCTURES AND OTHER TYPEDEFS                                      
-==================================================================================================*/ 
-                                                                                                     
-/*================================================================================================== 
-*                                 GLOBAL VARIABLE DECLARATIONS                                       
-==================================================================================================*/ 
-                                                                                                     
-/*================================================================================================== 
-*                                     FUNCTION PROTOTYPES                                            
-==================================================================================================*/ 
-                                                                                                     
-#ifdef __cplusplus                                                                                   
-}                                                                                                    
-#endif                                                                                               
-                                                                                                     
-/** @} */                                                                                            
+
+/*==================================================================================================
+*                                            ENUMS
+==================================================================================================*/
+
+/*==================================================================================================
+*                                 STRUCTURES AND OTHER TYPEDEFS
+==================================================================================================*/
+
+/*==================================================================================================
+*                                 GLOBAL VARIABLE DECLARATIONS
+==================================================================================================*/
+
+/*==================================================================================================
+*                                     FUNCTION PROTOTYPES
+==================================================================================================*/
+
+#ifdef __cplusplus
+}
+#endif
+
+/** @} */

@@ -1,7 +1,7 @@
 /*==================================================================================================
 *   Project              : RTD AUTOSAR 4.7
 *   Platform             : CORTEXM
-*   Peripheral           : 
+*   Peripheral           :
 *   Dependencies         : none
 *
 *   Autosar Version      : 4.7.0
@@ -23,20 +23,20 @@
 ==================================================================================================*/
 
 /**
-*   @file Det.c
-*   @details This sample code shows how to implement det logging mechanism.
-*            This file contains sample code only. It is not part of the production code deliverables.
-*            Structure of buffers are created using static linked list technique to keep buffer size minimal and easy to trace and debug error event logs.
-*            In production mode, users can implement a simpler mechanism for better performance or more complex solution to be compatible with debug equipment system.
-*            Please follow Specification of Default Error Tracer for detail.
-*
-*   @addtogroup DET_MODULE
-*   @{
-*/
-
+ *   @file Det.c
+ *   @details This sample code shows how to implement det logging mechanism.
+ *            This file contains sample code only. It is not part of the production code
+ * deliverables. Structure of buffers are created using static linked list technique to keep buffer
+ * size minimal and easy to trace and debug error event logs. In production mode, users can
+ * implement a simpler mechanism for better performance or more complex solution to be compatible
+ * with debug equipment system. Please follow Specification of Default Error Tracer for detail.
+ *
+ *   @addtogroup DET_MODULE
+ *   @{
+ */
 
 #ifdef __cplusplus
-extern "C"{
+extern "C" {
 #endif
 
 /*==================================================================================================
@@ -45,73 +45,72 @@ extern "C"{
 * 2) needed interfaces from external units
 * 3) internal and external interfaces from this unit
 ==================================================================================================*/
-#include "Mcal.h"
-#include "OsIf.h"
 #include "Det.h"
 #include "Det_LinkedList.h"
+#include "Mcal.h"
+#include "OsIf.h"
 /*==================================================================================================
 *                                        LOCAL MACROS
 ==================================================================================================*/
-#define DET_VENDOR_ID_C                     43
-#define DET_AR_RELEASE_MAJOR_VERSION_C      4
-#define DET_AR_RELEASE_MINOR_VERSION_C      7
-#define DET_AR_RELEASE_REVISION_VERSION_C   0
-#define DET_SW_MAJOR_VERSION_C              3
-#define DET_SW_MINOR_VERSION_C              0
-#define DET_SW_PATCH_VERSION_C              0
+#define DET_VENDOR_ID_C 43
+#define DET_AR_RELEASE_MAJOR_VERSION_C 4
+#define DET_AR_RELEASE_MINOR_VERSION_C 7
+#define DET_AR_RELEASE_REVISION_VERSION_C 0
+#define DET_SW_MAJOR_VERSION_C 3
+#define DET_SW_MINOR_VERSION_C 0
+#define DET_SW_PATCH_VERSION_C 0
 /*==================================================================================================
 *                                      FILE VERSION CHECKS
 ==================================================================================================*/
 /* Check if source file and DET header file are of the same vendor */
 #if (DET_VENDOR_ID_C != DET_VENDOR_ID)
-    #error "Det.c and Det.h have different vendor ids"
+#error "Det.c and Det.h have different vendor ids"
 #endif
 
 /* Check if source file and DET header file are of the same Autosar version */
-#if ((DET_AR_RELEASE_MAJOR_VERSION_C != DET_AR_RELEASE_MAJOR_VERSION) || \
-     (DET_AR_RELEASE_MINOR_VERSION_C != DET_AR_RELEASE_MINOR_VERSION) || \
+#if ((DET_AR_RELEASE_MAJOR_VERSION_C != DET_AR_RELEASE_MAJOR_VERSION) ||                           \
+     (DET_AR_RELEASE_MINOR_VERSION_C != DET_AR_RELEASE_MINOR_VERSION) ||                           \
      (DET_AR_RELEASE_REVISION_VERSION_C != DET_AR_RELEASE_REVISION_VERSION))
-  #error "AutoSar Version Numbers of Det.c and Det.h are different"
+#error "AutoSar Version Numbers of Det.c and Det.h are different"
 #endif
 
 /* Check if source file and DET header file are of the same Software version */
-#if ((DET_SW_MAJOR_VERSION_C != DET_SW_MAJOR_VERSION) || \
-     (DET_SW_MINOR_VERSION_C != DET_SW_MINOR_VERSION) || \
+#if ((DET_SW_MAJOR_VERSION_C != DET_SW_MAJOR_VERSION) ||                                           \
+     (DET_SW_MINOR_VERSION_C != DET_SW_MINOR_VERSION) ||                                           \
      (DET_SW_PATCH_VERSION_C != DET_SW_PATCH_VERSION))
-    #error "Software Version Numbers of Det.c and Det.h are different"
+#error "Software Version Numbers of Det.c and Det.h are different"
 #endif
 
 /* Check if source file and DET header file are of the same vendor */
 #if (DET_VENDOR_ID_C != DET_LINKEDLIST_VENDOR_ID)
-    #error "Det.c and Det_LinkedList.h have different vendor ids"
+#error "Det.c and Det_LinkedList.h have different vendor ids"
 #endif
 
 /* Check if source file and DET header file are of the same Autosar version */
-#if ((DET_AR_RELEASE_MAJOR_VERSION_C != DET_LINKEDLIST_AR_RELEASE_MAJOR_VERSION) || \
-     (DET_AR_RELEASE_MINOR_VERSION_C != DET_LINKEDLIST_AR_RELEASE_MINOR_VERSION) || \
+#if ((DET_AR_RELEASE_MAJOR_VERSION_C != DET_LINKEDLIST_AR_RELEASE_MAJOR_VERSION) ||                \
+     (DET_AR_RELEASE_MINOR_VERSION_C != DET_LINKEDLIST_AR_RELEASE_MINOR_VERSION) ||                \
      (DET_AR_RELEASE_REVISION_VERSION_C != DET_LINKEDLIST_AR_RELEASE_REVISION_VERSION))
-  #error "AutoSar Version Numbers of Det.c and Det_LinkedList.h are different"
+#error "AutoSar Version Numbers of Det.c and Det_LinkedList.h are different"
 #endif
 
 /* Check if source file and DET header file are of the same Software version */
-#if ((DET_SW_MAJOR_VERSION_C != DET_LINKEDLIST_SW_MAJOR_VERSION) || \
-     (DET_SW_MINOR_VERSION_C != DET_LINKEDLIST_SW_MINOR_VERSION) || \
+#if ((DET_SW_MAJOR_VERSION_C != DET_LINKEDLIST_SW_MAJOR_VERSION) ||                                \
+     (DET_SW_MINOR_VERSION_C != DET_LINKEDLIST_SW_MINOR_VERSION) ||                                \
      (DET_SW_PATCH_VERSION_C != DET_LINKEDLIST_SW_PATCH_VERSION))
-    #error "Software Version Numbers of Det.c and Det_LinkedList.h are different"
+#error "Software Version Numbers of Det.c and Det_LinkedList.h are different"
 #endif
 
 #ifndef DISABLE_MCAL_INTERMODULE_ASR_CHECK
-    /* Check if source file and Mcal.h are of the same version */
-   #if ((DET_AR_RELEASE_MAJOR_VERSION_C != MCAL_AR_RELEASE_MAJOR_VERSION) || \
-        (DET_AR_RELEASE_MINOR_VERSION_C != MCAL_AR_RELEASE_MINOR_VERSION)    \
-       )
-       #error "AutoSar Version Numbers of Det.c and Mcal.h are different"
-   #endif
-    /* Checks against OsIf.h */
-    #if ((DET_AR_RELEASE_MAJOR_VERSION_C != OSIF_AR_RELEASE_MAJOR_VERSION) || \
-         (DET_AR_RELEASE_MINOR_VERSION_C != OSIF_AR_RELEASE_MINOR_VERSION))
-        #error "AUTOSAR Version Numbers of Det.c and OsIf.h are different"
-    #endif
+/* Check if source file and Mcal.h are of the same version */
+#if ((DET_AR_RELEASE_MAJOR_VERSION_C != MCAL_AR_RELEASE_MAJOR_VERSION) ||                          \
+     (DET_AR_RELEASE_MINOR_VERSION_C != MCAL_AR_RELEASE_MINOR_VERSION))
+#error "AutoSar Version Numbers of Det.c and Mcal.h are different"
+#endif
+/* Checks against OsIf.h */
+#if ((DET_AR_RELEASE_MAJOR_VERSION_C != OSIF_AR_RELEASE_MAJOR_VERSION) ||                          \
+     (DET_AR_RELEASE_MINOR_VERSION_C != OSIF_AR_RELEASE_MINOR_VERSION))
+#error "AUTOSAR Version Numbers of Det.c and OsIf.h are different"
+#endif
 #endif
 /*==================================================================================================
 *                          LOCAL TYPEDEFS (STRUCTURES, UNIONS, ENUMS)
@@ -121,16 +120,13 @@ extern "C"{
 *                                       LOCAL CONSTANTS
 ==================================================================================================*/
 
-
 /*==================================================================================================
 *                                       LOCAL VARIABLES
 ==================================================================================================*/
 
-
 /*==================================================================================================
 *                                       GLOBAL CONSTANTS
 ==================================================================================================*/
-
 
 /*==================================================================================================
 *                                       GLOBAL VARIABLES
@@ -138,33 +134,40 @@ extern "C"{
 #define DET_START_SEC_VAR_CLEARED_8_NO_CACHEABLE
 #include "Det_MemMap.h"
 /* Variables to store last DET error */
-uint8 Det_InstanceId[DET_NO_ECU_CORES][DET_MAX_NUMBER_OF_EVENTS];               /**< @brief DET instance ID*/
-uint8 Det_ApiId[DET_NO_ECU_CORES][DET_MAX_NUMBER_OF_EVENTS];                    /**< @brief DET API ID*/
-uint8 Det_ErrorId[DET_NO_ECU_CORES][DET_MAX_NUMBER_OF_EVENTS];                  /**< @brief DET Error ID*/
+uint8 Det_InstanceId[DET_NO_ECU_CORES][DET_MAX_NUMBER_OF_EVENTS]; /**< @brief DET instance ID*/
+uint8 Det_ApiId[DET_NO_ECU_CORES][DET_MAX_NUMBER_OF_EVENTS];      /**< @brief DET API ID*/
+uint8 Det_ErrorId[DET_NO_ECU_CORES][DET_MAX_NUMBER_OF_EVENTS];    /**< @brief DET Error ID*/
 /* Variables to store last DET runtime error */
-uint8 Det_RuntimeInstanceId[DET_NO_ECU_CORES][DET_MAX_NUMBER_OF_EVENTS];        /**< @brief DET Runtime instance ID*/
-uint8 Det_RuntimeApiId[DET_NO_ECU_CORES][DET_MAX_NUMBER_OF_EVENTS];             /**< @brief DET Runtime API ID*/
-uint8 Det_RuntimeErrorId[DET_NO_ECU_CORES][DET_MAX_NUMBER_OF_EVENTS];           /**< @brief DET Runtime Error ID*/
+uint8 Det_RuntimeInstanceId[DET_NO_ECU_CORES]
+                           [DET_MAX_NUMBER_OF_EVENTS]; /**< @brief DET Runtime instance ID*/
+uint8 Det_RuntimeApiId[DET_NO_ECU_CORES][DET_MAX_NUMBER_OF_EVENTS]; /**< @brief DET Runtime API ID*/
+uint8 Det_RuntimeErrorId[DET_NO_ECU_CORES]
+                        [DET_MAX_NUMBER_OF_EVENTS]; /**< @brief DET Runtime Error ID*/
 /* Variables to store last DET transient error */
-uint8 Det_TransientInstanceId[DET_NO_ECU_CORES][DET_MAX_NUMBER_OF_EVENTS];      /**< @brief DET Transient instance ID*/
-uint8 Det_TransientApiId[DET_NO_ECU_CORES][DET_MAX_NUMBER_OF_EVENTS];           /**< @brief DET Transient API ID*/
-uint8 Det_TransientFaultId[DET_NO_ECU_CORES][DET_MAX_NUMBER_OF_EVENTS];         /**< @brief DET Transient Error ID*/
+uint8 Det_TransientInstanceId[DET_NO_ECU_CORES]
+                             [DET_MAX_NUMBER_OF_EVENTS]; /**< @brief DET Transient instance ID*/
+uint8 Det_TransientApiId[DET_NO_ECU_CORES]
+                        [DET_MAX_NUMBER_OF_EVENTS]; /**< @brief DET Transient API ID*/
+uint8 Det_TransientFaultId[DET_NO_ECU_CORES]
+                          [DET_MAX_NUMBER_OF_EVENTS]; /**< @brief DET Transient Error ID*/
 #define DET_STOP_SEC_VAR_CLEARED_8_NO_CACHEABLE
 #include "Det_MemMap.h"
 
 #define DET_START_SEC_VAR_CLEARED_16_NO_CACHEABLE
 #include "Det_MemMap.h"
-uint16 Det_TransientModuleId[DET_NO_ECU_CORES][DET_MAX_NUMBER_OF_EVENTS];       /**< @brief DET Transient module ID*/
-uint16 Det_ModuleId[DET_NO_ECU_CORES][DET_MAX_NUMBER_OF_EVENTS];                /**< @brief DET module ID*/
-uint16 Det_RuntimeModuleId[DET_NO_ECU_CORES][DET_MAX_NUMBER_OF_EVENTS];         /**< @brief DET Runtime module ID*/
+uint16 Det_TransientModuleId[DET_NO_ECU_CORES]
+                            [DET_MAX_NUMBER_OF_EVENTS]; /**< @brief DET Transient module ID*/
+uint16 Det_ModuleId[DET_NO_ECU_CORES][DET_MAX_NUMBER_OF_EVENTS]; /**< @brief DET module ID*/
+uint16 Det_RuntimeModuleId[DET_NO_ECU_CORES]
+                          [DET_MAX_NUMBER_OF_EVENTS]; /**< @brief DET Runtime module ID*/
 #define DET_STOP_SEC_VAR_CLEARED_16_NO_CACHEABLE
 #include "Det_MemMap.h"
 
 #define DET_START_SEC_VAR_CLEARED_32_NO_CACHEABLE
 #include "Det_MemMap.h"
-uint32 Det_numEventErrors[DET_NO_ECU_CORES];               /**< @brief number of DET error ID*/
-uint32 Det_numRuntimeEventErrors[DET_NO_ECU_CORES];        /**< @brief number of runtime DET error ID*/
-uint32 Det_numTransientEventErrors[DET_NO_ECU_CORES];      /**< @brief number of transient DET error ID*/
+uint32 Det_numEventErrors[DET_NO_ECU_CORES];          /**< @brief number of DET error ID*/
+uint32 Det_numRuntimeEventErrors[DET_NO_ECU_CORES];   /**< @brief number of runtime DET error ID*/
+uint32 Det_numTransientEventErrors[DET_NO_ECU_CORES]; /**< @brief number of transient DET error ID*/
 #define DET_STOP_SEC_VAR_CLEARED_32_NO_CACHEABLE
 #include "Det_MemMap.h"
 
@@ -227,8 +230,7 @@ boolean Det_OverflowTransientErrorFlag[DET_NO_ECU_CORES] = {FALSE};
 #define DET_START_SEC_CODE
 #include "Det_MemMap.h"
 /* @brief   Delete node after seach in Normal Linked List */
-LOCAL_INLINE void Det_UnlinkNode(uint16 u16NodeToDel,
-                                 Det_LinkedListStateType *pDetErrorState);
+LOCAL_INLINE void Det_UnlinkNode(uint16 u16NodeToDel, Det_LinkedListStateType* pDetErrorState);
 /* @brief   Initialize the linked list */
 LOCAL_INLINE void Det_InitLinkedList(void);
 #define DET_STOP_SEC_CODE
@@ -245,9 +247,9 @@ LOCAL_INLINE void Det_InitLinkedList(void);
 
 /*================================================================================================*/
 /**
-* @brief          This function initializes the DET module.
-* @details        This is a function stub only. Functionality is void in this implementation.
-*/
+ * @brief          This function initializes the DET module.
+ * @details        This is a function stub only. Functionality is void in this implementation.
+ */
 void Det_Init(void)
 {
     uint32 u32CoreId = (uint32)OsIf_GetCoreID();
@@ -261,42 +263,33 @@ void Det_Init(void)
 
 /*================================================================================================*/
 /**
-* @brief   This function provides the service for reporting of development errors.
-* @details This is a function stub only. It only loads the global IDs with the IDs of the latest error that occured
-*
-* @param[in]     ModuleId    Module ID of Calling Module
-* @param[in]     InstanceId  Index of Module starting at 0
-* @param[in]     ApiId       ID of API with Error
-* @param[in]     ErrorId     ID of Error
-*
-* @return        Std_ReturnType - E_OK: Reporting error success - E_NOT_OK: Reporting error fail
-*/
-Std_ReturnType Det_ReportError(uint16 ModuleId,
-                               uint8 InstanceId,
-                               uint8 ApiId,
-                               uint8 ErrorId)
+ * @brief   This function provides the service for reporting of development errors.
+ * @details This is a function stub only. It only loads the global IDs with the IDs of the latest
+ * error that occured
+ *
+ * @param[in]     ModuleId    Module ID of Calling Module
+ * @param[in]     InstanceId  Index of Module starting at 0
+ * @param[in]     ApiId       ID of API with Error
+ * @param[in]     ErrorId     ID of Error
+ *
+ * @return        Std_ReturnType - E_OK: Reporting error success - E_NOT_OK: Reporting error fail
+ */
+Std_ReturnType Det_ReportError(uint16 ModuleId, uint8 InstanceId, uint8 ApiId, uint8 ErrorId)
 {
     uint16 u16NodeToAdd;
     Std_ReturnType RetVal;
     uint32 u32CoreId = (uint32)OsIf_GetCoreID();
 
     OsIf_SuspendAllInterrupts();
-    if (DET_UNINIT == Det_ModuleState[u32CoreId])
-    {
+    if (DET_UNINIT == Det_ModuleState[u32CoreId]) {
         Det_Init();
     }
-    u16NodeToAdd = Det_InitDataNode(ModuleId,
-                                    InstanceId,
-                                    ApiId,
-                                    ErrorId,
-                                    &Det_aErrorState[u32CoreId]);
+    u16NodeToAdd =
+        Det_InitDataNode(ModuleId, InstanceId, ApiId, ErrorId, &Det_aErrorState[u32CoreId]);
 
-    if (u16NodeToAdd != DET_NULL)
-    {
+    if (u16NodeToAdd != DET_NULL) {
         RetVal = Det_LinkNodeToHead(u16NodeToAdd, &Det_aErrorState[u32CoreId]);
-    }
-    else
-    {
+    } else {
         /* Can not add more node because of full linked list */
         RetVal = (Std_ReturnType)E_NOT_OK;
     }
@@ -307,42 +300,33 @@ Std_ReturnType Det_ReportError(uint16 ModuleId,
 
 /*================================================================================================*/
 /**
-* @brief   This function provides the service for reporting of runtime errors.
-* @details This is a function stub only. It only loads the global IDs with the IDs of the latest error that occured
-*
-* @param[in]     ModuleId    Module ID of Calling Module
-* @param[in]     InstanceId  Index of Module starting at 0
-* @param[in]     ApiId       ID of API with Error
-* @param[in]     ErrorId     ID of Error
-*
-* @return        Std_ReturnType - E_OK: Reporting error success - E_NOT_OK: Reporting error fail
-*/
-Std_ReturnType Det_ReportRuntimeError(uint16 ModuleId,
-                                      uint8 InstanceId,
-                                      uint8 ApiId,
-                                      uint8 ErrorId)
+ * @brief   This function provides the service for reporting of runtime errors.
+ * @details This is a function stub only. It only loads the global IDs with the IDs of the latest
+ * error that occured
+ *
+ * @param[in]     ModuleId    Module ID of Calling Module
+ * @param[in]     InstanceId  Index of Module starting at 0
+ * @param[in]     ApiId       ID of API with Error
+ * @param[in]     ErrorId     ID of Error
+ *
+ * @return        Std_ReturnType - E_OK: Reporting error success - E_NOT_OK: Reporting error fail
+ */
+Std_ReturnType Det_ReportRuntimeError(uint16 ModuleId, uint8 InstanceId, uint8 ApiId, uint8 ErrorId)
 {
     uint16 u16NodeToAdd;
     Std_ReturnType RetVal;
     uint32 u32CoreId = (uint32)OsIf_GetCoreID();
 
     OsIf_SuspendAllInterrupts();
-    if (DET_UNINIT == Det_ModuleState[u32CoreId])
-    {
+    if (DET_UNINIT == Det_ModuleState[u32CoreId]) {
         Det_Init();
     }
-    u16NodeToAdd = Det_InitDataNode(ModuleId,
-                                    InstanceId,
-                                    ApiId,
-                                    ErrorId,
-                                    &Det_aRuntimeErrorState[u32CoreId]);
+    u16NodeToAdd =
+        Det_InitDataNode(ModuleId, InstanceId, ApiId, ErrorId, &Det_aRuntimeErrorState[u32CoreId]);
 
-    if (u16NodeToAdd != DET_NULL)
-    {
+    if (u16NodeToAdd != DET_NULL) {
         RetVal = Det_LinkNodeToHead(u16NodeToAdd, &Det_aRuntimeErrorState[u32CoreId]);
-    }
-    else
-    {
+    } else {
         /* Can not add more node because of full linked list */
         RetVal = (Std_ReturnType)E_NOT_OK;
     }
@@ -353,19 +337,18 @@ Std_ReturnType Det_ReportRuntimeError(uint16 ModuleId,
 
 /*================================================================================================*/
 /**
-* @brief   This function provides the service for reporting of transient errors.
-* @details This is a function stub only. It only loads the global IDs with the IDs of the latest error that occured
-*
-* @param[in]     ModuleId    Module ID of Calling Module
-* @param[in]     InstanceId  Index of Module starting at 0
-* @param[in]     ApiId       ID of API with Error
-* @param[in]     FaultId     ID of Fault
-*
-* @return        Std_ReturnType - E_OK: Reporting error success - E_NOT_OK: Reporting error fail
-*/
-Std_ReturnType Det_ReportTransientFault(uint16 ModuleId,
-                                        uint8 InstanceId,
-                                        uint8 ApiId,
+ * @brief   This function provides the service for reporting of transient errors.
+ * @details This is a function stub only. It only loads the global IDs with the IDs of the latest
+ * error that occured
+ *
+ * @param[in]     ModuleId    Module ID of Calling Module
+ * @param[in]     InstanceId  Index of Module starting at 0
+ * @param[in]     ApiId       ID of API with Error
+ * @param[in]     FaultId     ID of Fault
+ *
+ * @return        Std_ReturnType - E_OK: Reporting error success - E_NOT_OK: Reporting error fail
+ */
+Std_ReturnType Det_ReportTransientFault(uint16 ModuleId, uint8 InstanceId, uint8 ApiId,
                                         uint8 FaultId)
 {
     uint16 u16NodeToAdd;
@@ -373,22 +356,15 @@ Std_ReturnType Det_ReportTransientFault(uint16 ModuleId,
     uint32 u32CoreId = (uint32)OsIf_GetCoreID();
 
     OsIf_SuspendAllInterrupts();
-    if (DET_UNINIT == Det_ModuleState[u32CoreId])
-    {
+    if (DET_UNINIT == Det_ModuleState[u32CoreId]) {
         Det_Init();
     }
-    u16NodeToAdd = Det_InitDataNode(ModuleId,
-                                    InstanceId,
-                                    ApiId,
-                                    FaultId,
+    u16NodeToAdd = Det_InitDataNode(ModuleId, InstanceId, ApiId, FaultId,
                                     &Det_aTransientErrorState[u32CoreId]);
 
-    if (u16NodeToAdd != DET_NULL)
-    {
+    if (u16NodeToAdd != DET_NULL) {
         RetVal = Det_LinkNodeToHead(u16NodeToAdd, &Det_aTransientErrorState[u32CoreId]);
-    }
-    else
-    {
+    } else {
         /* Can not add more node because of full linked list */
         RetVal = (Std_ReturnType)E_NOT_OK;
     }
@@ -399,63 +375,52 @@ Std_ReturnType Det_ReportTransientFault(uint16 ModuleId,
 
 /*================================================================================================*/
 /**
-* @brief   This function provides the starting after the Det_Init has been called.
-* @details This is a function stub only.  Det_Init and Det_Start shall always be available.
-*          Functionality is void in this implementation
-*
-*/
+ * @brief   This function provides the starting after the Det_Init has been called.
+ * @details This is a function stub only.  Det_Init and Det_Start shall always be available.
+ *          Functionality is void in this implementation
+ *
+ */
 void Det_Start(void)
 {
     /* Do nothing */
 }
 
 /**
-* @brief   Initialize data of node in Det Array.
-* @details Initialize data of node in Det Array.
-*
-* @param[in]     ModuleId    Module ID of Calling Module
-* @param[in]     InstanceId  Index of Module starting at 0
-* @param[in]     ApiId       ID of API with Error
-* @param[in]     FaultId     ID of Fault
-*
-* @return        uint16      Index of the return node in Det Array
-*/
-uint16 Det_InitDataNode(uint16 ModuleId,
-                        uint8 InstanceId,
-                        uint8 ApiId,
-                        uint8 ErrorId,
-                        Det_LinkedListStateType *pDetErrorState)
+ * @brief   Initialize data of node in Det Array.
+ * @details Initialize data of node in Det Array.
+ *
+ * @param[in]     ModuleId    Module ID of Calling Module
+ * @param[in]     InstanceId  Index of Module starting at 0
+ * @param[in]     ApiId       ID of API with Error
+ * @param[in]     FaultId     ID of Fault
+ *
+ * @return        uint16      Index of the return node in Det Array
+ */
+uint16 Det_InitDataNode(uint16 ModuleId, uint8 InstanceId, uint8 ApiId, uint8 ErrorId,
+                        Det_LinkedListStateType* pDetErrorState)
 {
     uint16 u16Count;
-    uint16 u16RetNode  = DET_NULL;
-    uint32 *pNumError  = pDetErrorState->pNumErrors;
-    uint16 *pModuleId  = pDetErrorState->pModuleId;
-    uint8 *pInstanceId = pDetErrorState->pInstanceId;
-    uint8 *pApiId      = pDetErrorState->pApiId;
-    uint8 *pErrorId    = pDetErrorState->pErrorId;
+    uint16 u16RetNode = DET_NULL;
+    uint32* pNumError = pDetErrorState->pNumErrors;
+    uint16* pModuleId = pDetErrorState->pModuleId;
+    uint8* pInstanceId = pDetErrorState->pInstanceId;
+    uint8* pApiId = pDetErrorState->pApiId;
+    uint8* pErrorId = pDetErrorState->pErrorId;
 
-    if (*pNumError < DET_MAX_NUMBER_OF_EVENTS)
-    {
-        for (u16Count = (uint16)0; u16Count < DET_MAX_NUMBER_OF_EVENTS; u16Count++)
-        {
-            if (
-                (DET_NO_MODULE   == pModuleId[u16Count]) &&
+    if (*pNumError < DET_MAX_NUMBER_OF_EVENTS) {
+        for (u16Count = (uint16)0; u16Count < DET_MAX_NUMBER_OF_EVENTS; u16Count++) {
+            if ((DET_NO_MODULE == pModuleId[u16Count]) &&
                 (DET_NO_INIT_VAL == pInstanceId[u16Count]) &&
-                (DET_NO_INIT_VAL == pApiId[u16Count]) &&
-                (DET_NO_INIT_VAL == pErrorId[u16Count])
-               )
-            {
-                pModuleId[u16Count]   = ModuleId;
+                (DET_NO_INIT_VAL == pApiId[u16Count]) && (DET_NO_INIT_VAL == pErrorId[u16Count])) {
+                pModuleId[u16Count] = ModuleId;
                 pInstanceId[u16Count] = InstanceId;
-                pApiId[u16Count]      = ApiId;
-                pErrorId[u16Count]    = ErrorId;
+                pApiId[u16Count] = ApiId;
+                pErrorId[u16Count] = ErrorId;
                 u16RetNode = u16Count;
                 break;
             }
         }
-    }
-    else
-    {
+    } else {
         /* the DET error array is full, need to return invalid value */
         *(pDetErrorState->pOverflow) = TRUE;
     }
@@ -464,39 +429,35 @@ uint16 Det_InitDataNode(uint16 ModuleId,
 }
 
 /**
-* @brief   Add node into head of Normal Linked List.
-* @details Add node into head of Normal Linked List.
-*
-* @param[in]     u16NodeToAdd    index of node need to be added in the linked list
-* @param[in]     pDetErrorState  pointer of linked list state
-*
-* @return        Std_ReturnType - E_OK: Linking node success - E_NOT_OK: Linking node fail
-*/
-Std_ReturnType Det_LinkNodeToHead(uint16 u16NodeToAdd, Det_LinkedListStateType *pDetErrorState)
+ * @brief   Add node into head of Normal Linked List.
+ * @details Add node into head of Normal Linked List.
+ *
+ * @param[in]     u16NodeToAdd    index of node need to be added in the linked list
+ * @param[in]     pDetErrorState  pointer of linked list state
+ *
+ * @return        Std_ReturnType - E_OK: Linking node success - E_NOT_OK: Linking node fail
+ */
+Std_ReturnType Det_LinkNodeToHead(uint16 u16NodeToAdd, Det_LinkedListStateType* pDetErrorState)
 {
     Std_ReturnType RetVal = (Std_ReturnType)E_OK;
-    uint16 *pNextIdxAtNodeToAdd = &((pDetErrorState->pNextIdxList)[u16NodeToAdd]);
-    uint16 *pHead = pDetErrorState->pHead;
-    uint16 *pTail = pDetErrorState->pTail;
-    uint32 *pNumError = pDetErrorState->pNumErrors;
+    uint16* pNextIdxAtNodeToAdd = &((pDetErrorState->pNextIdxList)[u16NodeToAdd]);
+    uint16* pHead = pDetErrorState->pHead;
+    uint16* pTail = pDetErrorState->pTail;
+    uint32* pNumError = pDetErrorState->pNumErrors;
 
-    if (*pNextIdxAtNodeToAdd == DET_NULL)
-    {
-        /* if the node to add is the first node of linked list, 
+    if (*pNextIdxAtNodeToAdd == DET_NULL) {
+        /* if the node to add is the first node of linked list,
            next index of the node will be NULL value */
         *pNextIdxAtNodeToAdd = *pHead;
         /* The tail is always assigned to the first node of the linked list */
         /* The head is always change when pushing node into the linked list */
         /* It's convenient for finding the lastest node in the linked list */
         *pHead = u16NodeToAdd;
-        if (0U == *pNumError)
-        {
+        if (0U == *pNumError) {
             *pTail = u16NodeToAdd;
         }
         (*pNumError)++;
-    }
-    else
-    {
+    } else {
         RetVal = (Std_ReturnType)E_NOT_OK;
     }
 
@@ -504,60 +465,45 @@ Std_ReturnType Det_LinkNodeToHead(uint16 u16NodeToAdd, Det_LinkedListStateType *
 }
 
 /**
-* @brief   Delete all node in the linked list that have same ModuleId, InstanceId, ApiId, ErrorId
-* @details Delete all node in the linked list that have same ModuleId, InstanceId, ApiId, ErrorId
-*
-* @param[in]     ModuleId    Module ID of Calling Module
-* @param[in]     InstanceId  Index of Module starting at 0
-* @param[in]     ApiId       ID of API with Error
-* @param[in]     FaultId     ID of Fault
-* @param[in]     pDetErrorState  pointer of linked list state
-*
-* @return        boolean - TRUE: Deleting node success - FALSE: not found node to delete
-*/
-boolean Det_DelAllNodesSameId(uint16 ModuleId,
-                              uint8 InstanceId,
-                              uint8 ApiId,
-                              uint8 ErrorId,
-                              Det_LinkedListStateType *pDetErrorState)
+ * @brief   Delete all node in the linked list that have same ModuleId, InstanceId, ApiId, ErrorId
+ * @details Delete all node in the linked list that have same ModuleId, InstanceId, ApiId, ErrorId
+ *
+ * @param[in]     ModuleId    Module ID of Calling Module
+ * @param[in]     InstanceId  Index of Module starting at 0
+ * @param[in]     ApiId       ID of API with Error
+ * @param[in]     FaultId     ID of Fault
+ * @param[in]     pDetErrorState  pointer of linked list state
+ *
+ * @return        boolean - TRUE: Deleting node success - FALSE: not found node to delete
+ */
+boolean Det_DelAllNodesSameId(uint16 ModuleId, uint8 InstanceId, uint8 ApiId, uint8 ErrorId,
+                              Det_LinkedListStateType* pDetErrorState)
 {
     uint16 u16Count;
     uint16 u16TempNodeIdx;
     boolean RetVal = FALSE;
-    uint32 *pNumError  = pDetErrorState->pNumErrors;
-    uint16 *pModuleId  = pDetErrorState->pModuleId;
-    uint8 *pInstanceId = pDetErrorState->pInstanceId;
-    uint8 *pApiId      = pDetErrorState->pApiId;
-    uint8 *pErrorId    = pDetErrorState->pErrorId;
-    if (*pNumError != 0U)
-    {
+    uint32* pNumError = pDetErrorState->pNumErrors;
+    uint16* pModuleId = pDetErrorState->pModuleId;
+    uint8* pInstanceId = pDetErrorState->pInstanceId;
+    uint8* pApiId = pDetErrorState->pApiId;
+    uint8* pErrorId = pDetErrorState->pErrorId;
+    if (*pNumError != 0U) {
         u16Count = *(pDetErrorState->pHead);
-        do
-        {
-            if (
-                (ModuleId   == pModuleId[u16Count]) &&
-                (InstanceId == pInstanceId[u16Count]) &&
-                (ApiId      == pApiId[u16Count]) &&
-                (ErrorId    == pErrorId[u16Count])
-               )
-            {
+        do {
+            if ((ModuleId == pModuleId[u16Count]) && (InstanceId == pInstanceId[u16Count]) &&
+                (ApiId == pApiId[u16Count]) && (ErrorId == pErrorId[u16Count])) {
                 /* Store next of the node to delete */
                 /* The purpose is to continue scanning the linked list after deleting the node*/
                 u16TempNodeIdx = pDetErrorState->pNextIdxList[u16Count];
                 Det_UnlinkNode(u16Count, pDetErrorState);
                 u16Count = u16TempNodeIdx;
                 RetVal = TRUE;
-            }
-            else
-            {
+            } else {
                 u16Count = pDetErrorState->pNextIdxList[u16Count];
             }
 
-        }
-        while (u16Count != DET_NULL);
-    }
-    else
-    {
+        } while (u16Count != DET_NULL);
+    } else {
         /* Not found the node because of empty linked list. Need to return invalid index */
         /* Do Nothing because RetVal is default asigned to FALSE */
     }
@@ -566,39 +512,31 @@ boolean Det_DelAllNodesSameId(uint16 ModuleId,
 }
 /*
  * @brief   Delete node after seach in Normal Linked List
-*/
-LOCAL_INLINE void Det_UnlinkNode(uint16 u16NodeToDel,
-                                 Det_LinkedListStateType *pDetErrorState)
+ */
+LOCAL_INLINE void Det_UnlinkNode(uint16 u16NodeToDel, Det_LinkedListStateType* pDetErrorState)
 {
-    uint32 *pNumError  = pDetErrorState->pNumErrors;
-    uint16 *pModuleId  = pDetErrorState->pModuleId;
-    uint8 *pInstanceId = pDetErrorState->pInstanceId;
-    uint8 *pApiId      = pDetErrorState->pApiId;
-    uint8 *pErrorId    = pDetErrorState->pErrorId;
-    uint16 *pHead      = pDetErrorState->pHead;
-    uint16 *pTail      = pDetErrorState->pTail;
-    uint16 u16Count    = *pHead;
-    uint16 *pNextIdx   = pDetErrorState->pNextIdxList;
+    uint32* pNumError = pDetErrorState->pNumErrors;
+    uint16* pModuleId = pDetErrorState->pModuleId;
+    uint8* pInstanceId = pDetErrorState->pInstanceId;
+    uint8* pApiId = pDetErrorState->pApiId;
+    uint8* pErrorId = pDetErrorState->pErrorId;
+    uint16* pHead = pDetErrorState->pHead;
+    uint16* pTail = pDetErrorState->pTail;
+    uint16 u16Count = *pHead;
+    uint16* pNextIdx = pDetErrorState->pNextIdxList;
 
     /* Delete the link of the node to delete */
-    if (u16NodeToDel == *pHead)
-    {
+    if (u16NodeToDel == *pHead) {
         *pHead = pNextIdx[u16NodeToDel];
         pNextIdx[u16NodeToDel] = DET_NULL;
-    }
-    else if (u16NodeToDel == *pTail)
-    {
-        while(pNextIdx[u16Count] != *pTail)
-        {
+    } else if (u16NodeToDel == *pTail) {
+        while (pNextIdx[u16Count] != *pTail) {
             u16Count = pNextIdx[u16Count];
         };
         pNextIdx[u16Count] = DET_NULL;
         *pTail = u16Count;
-    }
-    else
-    {
-        while (pNextIdx[u16Count] != u16NodeToDel)
-        {
+    } else {
+        while (pNextIdx[u16Count] != u16NodeToDel) {
             u16Count = pNextIdx[u16Count];
         }
         pNextIdx[u16Count] = pNextIdx[u16NodeToDel];
@@ -606,26 +544,25 @@ LOCAL_INLINE void Det_UnlinkNode(uint16 u16NodeToDel,
     }
     (*pNumError)--;
     /* Reset Head, Tail if the linked list is empty */
-    if (0U == *pNumError)
-    {
+    if (0U == *pNumError) {
         *pHead = DET_NULL;
         *pTail = DET_NULL;
     }
     /* Delete data of the note to delete */
-    pModuleId[u16NodeToDel]   = DET_NO_MODULE;
+    pModuleId[u16NodeToDel] = DET_NO_MODULE;
     pInstanceId[u16NodeToDel] = DET_NO_INIT_VAL;
-    pApiId[u16NodeToDel]      = DET_NO_INIT_VAL;
-    pErrorId[u16NodeToDel]    = DET_NO_INIT_VAL;
+    pApiId[u16NodeToDel] = DET_NO_INIT_VAL;
+    pErrorId[u16NodeToDel] = DET_NO_INIT_VAL;
 }
 
 /**
-* @brief   Free all nodes in the linked list
-* @details Free all nodes in the linked list
-*
-* @param[in]     pDetErrorState  pointer of linked list state
-*
-*/
-void Det_FreeNodesInLinkedList(Det_LinkedListStateType *pDetErrorState)
+ * @brief   Free all nodes in the linked list
+ * @details Free all nodes in the linked list
+ *
+ * @param[in]     pDetErrorState  pointer of linked list state
+ *
+ */
+void Det_FreeNodesInLinkedList(Det_LinkedListStateType* pDetErrorState)
 {
     uint16 u16Count;
     /**
@@ -633,21 +570,20 @@ void Det_FreeNodesInLinkedList(Det_LinkedListStateType *pDetErrorState)
      * Compiler optimization can cause 4-byte unaligned access on the STR instruction
      * used to access 8-bit/16-bit variables (encountered error on GCC compiler with -Os option).
      **/
-    volatile uint16 *pModuleId  = pDetErrorState->pModuleId;
-    volatile uint8 *pInstanceId = pDetErrorState->pInstanceId;
-    volatile uint8 *pApiId      = pDetErrorState->pApiId;
-    volatile uint8 *pErrorId    = pDetErrorState->pErrorId;
-    volatile uint16 *pNextIdx   = pDetErrorState->pNextIdxList;
-    volatile uint16 *pHead      = pDetErrorState->pHead;
-    volatile uint16 *pTail      = pDetErrorState->pTail;
+    volatile uint16* pModuleId = pDetErrorState->pModuleId;
+    volatile uint8* pInstanceId = pDetErrorState->pInstanceId;
+    volatile uint8* pApiId = pDetErrorState->pApiId;
+    volatile uint8* pErrorId = pDetErrorState->pErrorId;
+    volatile uint16* pNextIdx = pDetErrorState->pNextIdxList;
+    volatile uint16* pHead = pDetErrorState->pHead;
+    volatile uint16* pTail = pDetErrorState->pTail;
 
-    for (u16Count = 0; u16Count < DET_MAX_NUMBER_OF_EVENTS; u16Count++)
-    {
-        pNextIdx[u16Count]    = DET_NULL;
-        pModuleId[u16Count]   = DET_NO_MODULE;
+    for (u16Count = 0; u16Count < DET_MAX_NUMBER_OF_EVENTS; u16Count++) {
+        pNextIdx[u16Count] = DET_NULL;
+        pModuleId[u16Count] = DET_NO_MODULE;
         pInstanceId[u16Count] = DET_NO_INIT_VAL;
-        pApiId[u16Count]      = DET_NO_INIT_VAL;
-        pErrorId[u16Count]    = DET_NO_INIT_VAL;
+        pApiId[u16Count] = DET_NO_INIT_VAL;
+        pErrorId[u16Count] = DET_NO_INIT_VAL;
     }
     *pHead = DET_NO_MODULE;
     *pTail = DET_NO_MODULE;
@@ -655,49 +591,49 @@ void Det_FreeNodesInLinkedList(Det_LinkedListStateType *pDetErrorState)
 }
 
 /*
-* @brief   Initialize the linked list
-*/ 
+ * @brief   Initialize the linked list
+ */
 LOCAL_INLINE void Det_InitLinkedList(void)
 {
     uint32 u32CoreId = (uint32)OsIf_GetCoreID();
 
-    Det_numEventErrors[u32CoreId]          = 0U;
-    Det_numRuntimeEventErrors[u32CoreId]   = 0U;
+    Det_numEventErrors[u32CoreId] = 0U;
+    Det_numRuntimeEventErrors[u32CoreId] = 0U;
     Det_numTransientEventErrors[u32CoreId] = 0U;
 
-    Det_OverflowErrorFlag[u32CoreId]          = FALSE;
-    Det_OverflowRuntimeErrorFlag[u32CoreId]   = FALSE;
+    Det_OverflowErrorFlag[u32CoreId] = FALSE;
+    Det_OverflowRuntimeErrorFlag[u32CoreId] = FALSE;
     Det_OverflowTransientErrorFlag[u32CoreId] = FALSE;
 
-    Det_aErrorState[u32CoreId].pModuleId    = Det_ModuleId[u32CoreId];
-    Det_aErrorState[u32CoreId].pInstanceId  = Det_InstanceId[u32CoreId];
-    Det_aErrorState[u32CoreId].pApiId       = Det_ApiId[u32CoreId];
-    Det_aErrorState[u32CoreId].pErrorId     = Det_ErrorId[u32CoreId];
-    Det_aErrorState[u32CoreId].pNumErrors   = &Det_numEventErrors[u32CoreId];
+    Det_aErrorState[u32CoreId].pModuleId = Det_ModuleId[u32CoreId];
+    Det_aErrorState[u32CoreId].pInstanceId = Det_InstanceId[u32CoreId];
+    Det_aErrorState[u32CoreId].pApiId = Det_ApiId[u32CoreId];
+    Det_aErrorState[u32CoreId].pErrorId = Det_ErrorId[u32CoreId];
+    Det_aErrorState[u32CoreId].pNumErrors = &Det_numEventErrors[u32CoreId];
     Det_aErrorState[u32CoreId].pNextIdxList = Det_NextIdxList[u32CoreId];
-    Det_aErrorState[u32CoreId].pHead        = &Det_Head[u32CoreId];
-    Det_aErrorState[u32CoreId].pTail        = &Det_Tail[u32CoreId];
-    Det_aErrorState[u32CoreId].pOverflow    = &Det_OverflowErrorFlag[u32CoreId];
+    Det_aErrorState[u32CoreId].pHead = &Det_Head[u32CoreId];
+    Det_aErrorState[u32CoreId].pTail = &Det_Tail[u32CoreId];
+    Det_aErrorState[u32CoreId].pOverflow = &Det_OverflowErrorFlag[u32CoreId];
 
-    Det_aRuntimeErrorState[u32CoreId].pModuleId    = Det_RuntimeModuleId[u32CoreId];
-    Det_aRuntimeErrorState[u32CoreId].pInstanceId  = Det_RuntimeInstanceId[u32CoreId];
-    Det_aRuntimeErrorState[u32CoreId].pApiId       = Det_RuntimeApiId[u32CoreId];
-    Det_aRuntimeErrorState[u32CoreId].pErrorId     = Det_RuntimeErrorId[u32CoreId];
-    Det_aRuntimeErrorState[u32CoreId].pNumErrors   = &Det_numRuntimeEventErrors[u32CoreId];
+    Det_aRuntimeErrorState[u32CoreId].pModuleId = Det_RuntimeModuleId[u32CoreId];
+    Det_aRuntimeErrorState[u32CoreId].pInstanceId = Det_RuntimeInstanceId[u32CoreId];
+    Det_aRuntimeErrorState[u32CoreId].pApiId = Det_RuntimeApiId[u32CoreId];
+    Det_aRuntimeErrorState[u32CoreId].pErrorId = Det_RuntimeErrorId[u32CoreId];
+    Det_aRuntimeErrorState[u32CoreId].pNumErrors = &Det_numRuntimeEventErrors[u32CoreId];
     Det_aRuntimeErrorState[u32CoreId].pNextIdxList = Det_Runtime_NextIdxList[u32CoreId];
-    Det_aRuntimeErrorState[u32CoreId].pHead        = &Det_Runtime_Head[u32CoreId];
-    Det_aRuntimeErrorState[u32CoreId].pTail        = &Det_Runtime_Tail[u32CoreId];
-    Det_aRuntimeErrorState[u32CoreId].pOverflow    = &Det_OverflowRuntimeErrorFlag[u32CoreId];
+    Det_aRuntimeErrorState[u32CoreId].pHead = &Det_Runtime_Head[u32CoreId];
+    Det_aRuntimeErrorState[u32CoreId].pTail = &Det_Runtime_Tail[u32CoreId];
+    Det_aRuntimeErrorState[u32CoreId].pOverflow = &Det_OverflowRuntimeErrorFlag[u32CoreId];
 
-    Det_aTransientErrorState[u32CoreId].pModuleId    = Det_TransientModuleId[u32CoreId];
-    Det_aTransientErrorState[u32CoreId].pInstanceId  = Det_TransientInstanceId[u32CoreId];
-    Det_aTransientErrorState[u32CoreId].pApiId       = Det_TransientApiId[u32CoreId];
-    Det_aTransientErrorState[u32CoreId].pErrorId     = Det_TransientFaultId[u32CoreId];
-    Det_aTransientErrorState[u32CoreId].pNumErrors   = &Det_numTransientEventErrors[u32CoreId];
+    Det_aTransientErrorState[u32CoreId].pModuleId = Det_TransientModuleId[u32CoreId];
+    Det_aTransientErrorState[u32CoreId].pInstanceId = Det_TransientInstanceId[u32CoreId];
+    Det_aTransientErrorState[u32CoreId].pApiId = Det_TransientApiId[u32CoreId];
+    Det_aTransientErrorState[u32CoreId].pErrorId = Det_TransientFaultId[u32CoreId];
+    Det_aTransientErrorState[u32CoreId].pNumErrors = &Det_numTransientEventErrors[u32CoreId];
     Det_aTransientErrorState[u32CoreId].pNextIdxList = Det_Transient_NextIdxList[u32CoreId];
-    Det_aTransientErrorState[u32CoreId].pHead        = &Det_Transient_Head[u32CoreId];
-    Det_aTransientErrorState[u32CoreId].pTail        = &Det_Transient_Tail[u32CoreId];
-    Det_aTransientErrorState[u32CoreId].pOverflow    = &Det_OverflowTransientErrorFlag[u32CoreId];
+    Det_aTransientErrorState[u32CoreId].pHead = &Det_Transient_Head[u32CoreId];
+    Det_aTransientErrorState[u32CoreId].pTail = &Det_Transient_Tail[u32CoreId];
+    Det_aTransientErrorState[u32CoreId].pOverflow = &Det_OverflowTransientErrorFlag[u32CoreId];
 
     Det_ModuleState[u32CoreId] = DET_INIT;
 }

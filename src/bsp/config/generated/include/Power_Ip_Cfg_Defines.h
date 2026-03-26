@@ -1,7 +1,7 @@
 /*==================================================================================================
 *   Project              : RTD AUTOSAR 4.7
 *   Platform             : CORTEXM
-*   Peripheral           : 
+*   Peripheral           :
 *   Dependencies         : none
 *
 *   Autosar Version      : 4.7.0
@@ -12,11 +12,11 @@
 *
 *   Copyright 2020-2025 NXP
 *
-*   NXP Confidential and Proprietary. This software is owned or controlled by NXP and may only be 
-*   used strictly in accordance with the applicable license terms.  By expressly 
-*   accepting such terms or by downloading, installing, activating and/or otherwise 
-*   using the software, you are agreeing that you have read, and that you agree to 
-*   comply with and are bound by, such license terms.  If you do not agree to be 
+*   NXP Confidential and Proprietary. This software is owned or controlled by NXP and may only be
+*   used strictly in accordance with the applicable license terms.  By expressly
+*   accepting such terms or by downloading, installing, activating and/or otherwise
+*   using the software, you are agreeing that you have read, and that you agree to
+*   comply with and are bound by, such license terms.  If you do not agree to be
 *   bound by the applicable license terms, then you may not retain, install,
 *   activate or otherwise use the software.
 ==================================================================================================*/
@@ -25,20 +25,19 @@
 #define POWER_IP_CFG_DEFINES_H
 
 /**
-*   @file       Power_Ip_Cfg_Defines.h
-*   @version    3.0.0
-*
-*   @brief   AUTOSAR Mcu - Post-Build(PB) configuration file code template.
-*   @details Code template for Post-Build(PB) configuration file generation.
-*
-*   @addtogroup POWER_DRIVER_CONFIGURATION Power Ip Driver
-*   @{
-*/
+ *   @file       Power_Ip_Cfg_Defines.h
+ *   @version    3.0.0
+ *
+ *   @brief   AUTOSAR Mcu - Post-Build(PB) configuration file code template.
+ *   @details Code template for Post-Build(PB) configuration file generation.
+ *
+ *   @addtogroup POWER_DRIVER_CONFIGURATION Power Ip Driver
+ *   @{
+ */
 
 #ifdef __cplusplus
-extern "C"{
+extern "C" {
 #endif
-
 
 /*==================================================================================================
                                          INCLUDE FILES
@@ -54,145 +53,147 @@ extern "C"{
 /*==================================================================================================
                                SOURCE FILE VERSION INFORMATION
 ==================================================================================================*/
-#define POWER_IP_CFG_DEFINES_VENDOR_ID                       43
-#define POWER_IP_CFG_DEFINES_AR_RELEASE_MAJOR_VERSION        4
-#define POWER_IP_CFG_DEFINES_AR_RELEASE_MINOR_VERSION        7
-#define POWER_IP_CFG_DEFINES_AR_RELEASE_REVISION_VERSION     0
-#define POWER_IP_CFG_DEFINES_SW_MAJOR_VERSION                3
-#define POWER_IP_CFG_DEFINES_SW_MINOR_VERSION                0
-#define POWER_IP_CFG_DEFINES_SW_PATCH_VERSION                0
+#define POWER_IP_CFG_DEFINES_VENDOR_ID 43
+#define POWER_IP_CFG_DEFINES_AR_RELEASE_MAJOR_VERSION 4
+#define POWER_IP_CFG_DEFINES_AR_RELEASE_MINOR_VERSION 7
+#define POWER_IP_CFG_DEFINES_AR_RELEASE_REVISION_VERSION 0
+#define POWER_IP_CFG_DEFINES_SW_MAJOR_VERSION 3
+#define POWER_IP_CFG_DEFINES_SW_MINOR_VERSION 0
+#define POWER_IP_CFG_DEFINES_SW_PATCH_VERSION 0
 
 /*==================================================================================================
                                       FILE VERSION CHECKS
 ==================================================================================================*/
 #ifndef DISABLE_MCAL_INTERMODULE_ASR_CHECK
 /* Check if Power_Ip_Cfg_Defines.h file and Mcal.h file are of the same Autosar version */
-#if ((POWER_IP_CFG_DEFINES_AR_RELEASE_MAJOR_VERSION    != MCAL_AR_RELEASE_MAJOR_VERSION) || \
-     (POWER_IP_CFG_DEFINES_AR_RELEASE_MINOR_VERSION    != MCAL_AR_RELEASE_MINOR_VERSION))
-    #error "AutoSar Version Numbers of Power_Ip_Cfg_Defines.h and Mcal.h are different"
+#if ((POWER_IP_CFG_DEFINES_AR_RELEASE_MAJOR_VERSION != MCAL_AR_RELEASE_MAJOR_VERSION) ||           \
+     (POWER_IP_CFG_DEFINES_AR_RELEASE_MINOR_VERSION != MCAL_AR_RELEASE_MINOR_VERSION))
+#error "AutoSar Version Numbers of Power_Ip_Cfg_Defines.h and Mcal.h are different"
 #endif
-#endif    /* DISABLE_MCAL_INTERMODULE_ASR_CHECK */
+#endif /* DISABLE_MCAL_INTERMODULE_ASR_CHECK */
 
 /*==================================================================================================
                                            DEFINES AND MACROS
 ==================================================================================================*/
 /**
-* @brief            define for interrupt CMU, PMC, SCG peripheral
-*/
-#define POWER_IP_CMU_PMC_SCG_INTERRUPT              (STD_OFF)
+ * @brief            define for interrupt CMU, PMC, SCG peripheral
+ */
+#define POWER_IP_CMU_PMC_SCG_INTERRUPT (STD_OFF)
 /**
-* @brief            ISR Mcu_PMC_UnderOverVoltage_ISR is/is not available (STD_ON/STD_OFF)
-*/
-#define POWER_IP_VOLTAGE_ERROR_ISR_USED             (STD_OFF)
+ * @brief            ISR Mcu_PMC_UnderOverVoltage_ISR is/is not available (STD_ON/STD_OFF)
+ */
+#define POWER_IP_VOLTAGE_ERROR_ISR_USED (STD_OFF)
 
 /**
-* @brief            Derivative used.
-*/
+ * @brief            Derivative used.
+ */
 #define POWER_IP_DERIVATIVE_005
 
 /**
-* @brief            Support for Low Power mode.
-*/
-#if (defined(POWER_IP_DERIVATIVE_008) || defined(POWER_IP_DERIVATIVE_007) || defined(POWER_IP_DERIVATIVE_005) || defined(POWER_IP_DERIVATIVE_003))
-  #define POWER_IP_HSRUN_SUPPORT    STD_ON
+ * @brief            Support for Low Power mode.
+ */
+#if (defined(POWER_IP_DERIVATIVE_008) || defined(POWER_IP_DERIVATIVE_007) ||                       \
+     defined(POWER_IP_DERIVATIVE_005) || defined(POWER_IP_DERIVATIVE_003))
+#define POWER_IP_HSRUN_SUPPORT STD_ON
 #else
-  #define POWER_IP_HSRUN_SUPPORT    STD_OFF
+#define POWER_IP_HSRUN_SUPPORT STD_OFF
 #endif
 /**
-* @brief            Support for Low Power mode.
-*/
-#define POWER_IP_ENTER_LOW_POWER_MODE                    (STD_ON)
+ * @brief            Support for Low Power mode.
+ */
+#define POWER_IP_ENTER_LOW_POWER_MODE (STD_ON)
 
 /**
-* @brief
-*/
-#define POWER_IP_PERFORM_RESET_API                       (STD_OFF)
+ * @brief
+ */
+#define POWER_IP_PERFORM_RESET_API (STD_OFF)
 
 /**
-* @brief            ISR Mcu_ResetAlternate_ISR is/is not available (STD_ON/STD_OFF)
-*/
-#define POWER_IP_RESET_ALTERNATE_ISR_USED           (STD_OFF)
+ * @brief            ISR Mcu_ResetAlternate_ISR is/is not available (STD_ON/STD_OFF)
+ */
+#define POWER_IP_RESET_ALTERNATE_ISR_USED (STD_OFF)
 
 /**
-* @brief            Enable the usage of Non-Autosar Peripheral CMU.
-*/
-#define MCU_ENABLE_CMU_PERIPHERAL                    (STD_OFF)
+ * @brief            Enable the usage of Non-Autosar Peripheral CMU.
+ */
+#define MCU_ENABLE_CMU_PERIPHERAL (STD_OFF)
 
 /**
-* @brief            This parameter shall be set True, if the H/W does not have a PLL or the PLL circuitry is enabled after the power on without S/W intervention.
-*/
-#define POWER_IP_NO_PLL                              (STD_ON)
+ * @brief            This parameter shall be set True, if the H/W does not have a PLL or the PLL
+ * circuitry is enabled after the power on without S/W intervention.
+ */
+#define POWER_IP_NO_PLL (STD_ON)
 
 /**
-* @brief            If this parameter is set to TRUE, the Reset Control Module (RMC) initialization has to be disabled in the Power driver.
-*/
-#define POWER_IP_DISABLE_RCM_INIT                              (STD_OFF)
+ * @brief            If this parameter is set to TRUE, the Reset Control Module (RMC) initialization
+ * has to be disabled in the Power driver.
+ */
+#define POWER_IP_DISABLE_RCM_INIT (STD_OFF)
 
 /**
-* @brief            If this parameter is set to TRUE, the Power Management Controller (PMC) initialization has to be disabled from the Power driver.
-*/
-#define POWER_IP_DISABLE_PMC_INIT                              (STD_OFF)
+ * @brief            If this parameter is set to TRUE, the Power Management Controller (PMC)
+ * initialization has to be disabled from the Power driver.
+ */
+#define POWER_IP_DISABLE_PMC_INIT (STD_OFF)
 
 /**
-* @brief            If this parameter is set to TRUE,the System Mode Controller (SMC) initialization has to be disabled in the Power driver.
-*/
-#define POWER_IP_DISABLE_SMC_INIT                              (STD_OFF)
+ * @brief            If this parameter is set to TRUE,the System Mode Controller (SMC)
+ * initialization has to be disabled in the Power driver.
+ */
+#define POWER_IP_DISABLE_SMC_INIT (STD_OFF)
 
 /**
-* @brief           This define controls the availability of function Mcu_SleepOnExit
-*/
-#define POWER_IP_SLEEPONEXIT_SUPPORT         (STD_ON)
+ * @brief           This define controls the availability of function Mcu_SleepOnExit
+ */
+#define POWER_IP_SLEEPONEXIT_SUPPORT (STD_ON)
 /**
-* @brief            Low Voltage Detect Status and Control 1 Register support (PMC_LVDSC1).
-*/
-#define POWER_IP_PMC_LVDSC1_SUPPORT     (STD_ON)
+ * @brief            Low Voltage Detect Status and Control 1 Register support (PMC_LVDSC1).
+ */
+#define POWER_IP_PMC_LVDSC1_SUPPORT (STD_ON)
 
 /**
-* @brief            PMC_AE Configuration Register (CONFIG) and PMC_AE Monitor Register (MONITOR).
-*/
-#define POWER_IP_PMC_AE_SUPPORT         (STD_OFF)
+ * @brief            PMC_AE Configuration Register (CONFIG) and PMC_AE Monitor Register (MONITOR).
+ */
+#define POWER_IP_PMC_AE_SUPPORT (STD_OFF)
 
 /**
-* @brief            AEC Configuration Register (RSTGEN_CFG).
-*/
-#define POWER_IP_AEC_SUPPORT            (STD_OFF)
+ * @brief            AEC Configuration Register (RSTGEN_CFG).
+ */
+#define POWER_IP_AEC_SUPPORT (STD_OFF)
 
 /**
-* @brief            Enable the usage of Non-Autosar API Mcu_GetPowerMode_State() for getting infos system platform configuration.
-*/
-#define POWER_IP_POWERMODE_STATE_API    (STD_OFF)
+ * @brief            Enable the usage of Non-Autosar API Mcu_GetPowerMode_State() for getting infos
+ * system platform configuration.
+ */
+#define POWER_IP_POWERMODE_STATE_API (STD_OFF)
 
 /**
-* @brief            Enable the usage of Non-Autosar API  Power_Ip_SRAMRetentionConfig().
-*/
-#define POWER_IP_SRAM_RETEN_CONFIG_API   (STD_OFF)
+ * @brief            Enable the usage of Non-Autosar API  Power_Ip_SRAMRetentionConfig().
+ */
+#define POWER_IP_SRAM_RETEN_CONFIG_API (STD_OFF)
 
 /**
-* @brief            Enable the usage of Non-Autosar API  Power_Ip_PmcAeConfig().
-*/
-#define POWER_IP_PMCAECONFIG_API     (STD_OFF)
+ * @brief            Enable the usage of Non-Autosar API  Power_Ip_PmcAeConfig().
+ */
+#define POWER_IP_PMCAECONFIG_API (STD_OFF)
 
 /**
-* @brief            Enable the usage of Non-Autosar API  Power_Ip_AecResetConfig().
-*/
-#define POWER_IP_AECRESETCONFIG_API     (STD_OFF)
-
+ * @brief            Enable the usage of Non-Autosar API  Power_Ip_AecResetConfig().
+ */
+#define POWER_IP_AECRESETCONFIG_API (STD_OFF)
 
 /**
-* @brief        Support for MultiPartition.
-*/
-#define POWER_IP_MULTIPARTITION_SUPPORT            (STD_OFF)
-#define POWER_IP_PARTITION_0                       ((uint8)0UL)
+ * @brief        Support for MultiPartition.
+ */
+#define POWER_IP_MULTIPARTITION_SUPPORT (STD_OFF)
+#define POWER_IP_PARTITION_0 ((uint8)0UL)
 /*==================================================================================================
                                              ENUMS
 ==================================================================================================*/
 
-
 /*==================================================================================================
                                  STRUCTURES AND OTHER TYPEDEFS
 ==================================================================================================*/
-
-
 
 #ifdef __cplusplus
 }
@@ -200,5 +201,3 @@ extern "C"{
 
 /** @} */
 #endif /* #ifndef POWER_IP_CFG_DEFINES_H */
-
-
