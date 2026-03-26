@@ -1,7 +1,7 @@
 /*==================================================================================================
 *   Project              : RTD AUTOSAR 4.7
 *   Platform             : CORTEXM
-*   Peripheral           : 
+*   Peripheral           :
 *   Dependencies         : none
 *
 *   Autosar Version      : 4.7.0
@@ -12,32 +12,29 @@
 *
 *   Copyright 2020-2025 NXP
 *
-*   NXP Confidential and Proprietary. This software is owned or controlled by NXP and may only be 
-*   used strictly in accordance with the applicable license terms.  By expressly 
-*   accepting such terms or by downloading, installing, activating and/or otherwise 
-*   using the software, you are agreeing that you have read, and that you agree to 
-*   comply with and are bound by, such license terms.  If you do not agree to be 
+*   NXP Confidential and Proprietary. This software is owned or controlled by NXP and may only be
+*   used strictly in accordance with the applicable license terms.  By expressly
+*   accepting such terms or by downloading, installing, activating and/or otherwise
+*   using the software, you are agreeing that you have read, and that you agree to
+*   comply with and are bound by, such license terms.  If you do not agree to be
 *   bound by the applicable license terms, then you may not retain, install,
 *   activate or otherwise use the software.
 ==================================================================================================*/
 /**
-*   @file       Mcu_VS_0_PBcfg.c
-*   @implements Mcu_PBcfg.c_Artifact
-*   @version    3.0.0
-*
-*   @brief      AUTOSAR Mcu - Data structures for the Mcu driver.
-*   @details    Postbuild structure configurations for the driver initalization.
-*
-*   @addtogroup MCU
-*   @{
-*/
-
+ *   @file       Mcu_VS_0_PBcfg.c
+ *   @implements Mcu_PBcfg.c_Artifact
+ *   @version    3.0.0
+ *
+ *   @brief      AUTOSAR Mcu - Data structures for the Mcu driver.
+ *   @details    Postbuild structure configurations for the driver initalization.
+ *
+ *   @addtogroup MCU
+ *   @{
+ */
 
 #ifdef __cplusplus
-extern "C"
-{
+extern "C" {
 #endif
-
 
 /*==================================================================================================
 *                                          INCLUDE FILES
@@ -54,13 +51,13 @@ extern "C"
 /*==================================================================================================
 *                              SOURCE FILE VERSION INFORMATION
 ==================================================================================================*/
-#define MCU_VS_0_PBCFG_VENDOR_ID_C                     43
-#define MCU_VS_0_PBCFG_AR_RELEASE_MAJOR_VERSION_C      4
-#define MCU_VS_0_PBCFG_AR_RELEASE_MINOR_VERSION_C      7
-#define MCU_VS_0_PBCFG_AR_RELEASE_REVISION_VERSION_C   0
-#define MCU_VS_0_PBCFG_SW_MAJOR_VERSION_C              3
-#define MCU_VS_0_PBCFG_SW_MINOR_VERSION_C              0
-#define MCU_VS_0_PBCFG_SW_PATCH_VERSION_C              0
+#define MCU_VS_0_PBCFG_VENDOR_ID_C 43
+#define MCU_VS_0_PBCFG_AR_RELEASE_MAJOR_VERSION_C 4
+#define MCU_VS_0_PBCFG_AR_RELEASE_MINOR_VERSION_C 7
+#define MCU_VS_0_PBCFG_AR_RELEASE_REVISION_VERSION_C 0
+#define MCU_VS_0_PBCFG_SW_MAJOR_VERSION_C 3
+#define MCU_VS_0_PBCFG_SW_MINOR_VERSION_C 0
+#define MCU_VS_0_PBCFG_SW_PATCH_VERSION_C 0
 
 /*==================================================================================================
 *                                     FILE VERSION CHECKS
@@ -68,32 +65,29 @@ extern "C"
 
 /* Check if source file and Mcu.h file are of the same vendor */
 #if (MCU_VS_0_PBCFG_VENDOR_ID_C != MCU_VENDOR_ID)
-    #error "Mcu_VS_0_PBcfg.c and Mcu.h have different vendor ids"
+#error "Mcu_VS_0_PBcfg.c and Mcu.h have different vendor ids"
 #endif
 /* Check if source file and Mcu.h file are of the same Autosar version */
-#if ((MCU_VS_0_PBCFG_AR_RELEASE_MAJOR_VERSION_C != MCU_AR_RELEASE_MAJOR_VERSION) || \
-     (MCU_VS_0_PBCFG_AR_RELEASE_MINOR_VERSION_C != MCU_AR_RELEASE_MINOR_VERSION) || \
-     (MCU_VS_0_PBCFG_AR_RELEASE_REVISION_VERSION_C != MCU_AR_RELEASE_REVISION_VERSION) \
-    )
-    #error "AutoSar Version Numbers of Mcu_VS_0_PBcfg.c and Mcu.h are different"
+#if ((MCU_VS_0_PBCFG_AR_RELEASE_MAJOR_VERSION_C != MCU_AR_RELEASE_MAJOR_VERSION) ||                \
+     (MCU_VS_0_PBCFG_AR_RELEASE_MINOR_VERSION_C != MCU_AR_RELEASE_MINOR_VERSION) ||                \
+     (MCU_VS_0_PBCFG_AR_RELEASE_REVISION_VERSION_C != MCU_AR_RELEASE_REVISION_VERSION))
+#error "AutoSar Version Numbers of Mcu_VS_0_PBcfg.c and Mcu.h are different"
 #endif
 /* Check if source file and Mcu.h file are of the same Software version */
-#if ((MCU_VS_0_PBCFG_SW_MAJOR_VERSION_C != MCU_SW_MAJOR_VERSION) || \
-     (MCU_VS_0_PBCFG_SW_MINOR_VERSION_C != MCU_SW_MINOR_VERSION) || \
-     (MCU_VS_0_PBCFG_SW_PATCH_VERSION_C != MCU_SW_PATCH_VERSION) \
-    )
-    #error "Software Version Numbers of Mcu_VS_0_PBcfg.c and Mcu.h are different"
+#if ((MCU_VS_0_PBCFG_SW_MAJOR_VERSION_C != MCU_SW_MAJOR_VERSION) ||                                \
+     (MCU_VS_0_PBCFG_SW_MINOR_VERSION_C != MCU_SW_MINOR_VERSION) ||                                \
+     (MCU_VS_0_PBCFG_SW_PATCH_VERSION_C != MCU_SW_PATCH_VERSION))
+#error "Software Version Numbers of Mcu_VS_0_PBcfg.c and Mcu.h are different"
 #endif
 
 #if (MCU_DISABLE_DEM_REPORT_ERROR_STATUS == STD_OFF)
-    #ifndef DISABLE_MCAL_INTERMODULE_ASR_CHECK
-    /* Check if source file and Dem.h file are of the same Autosar version */
-    #if ((MCU_VS_0_PBCFG_AR_RELEASE_MAJOR_VERSION_C != DEM_AR_RELEASE_MAJOR_VERSION) || \
-        (MCU_VS_0_PBCFG_AR_RELEASE_MINOR_VERSION_C != DEM_AR_RELEASE_MINOR_VERSION) \
-        )
-        #error "AutoSar Version Numbers of Mcu_VS_0_PBcfg.c and Dem.h are different"
-    #endif
-    #endif    /* DISABLE_MCAL_INTERMODULE_ASR_CHECK */
+#ifndef DISABLE_MCAL_INTERMODULE_ASR_CHECK
+/* Check if source file and Dem.h file are of the same Autosar version */
+#if ((MCU_VS_0_PBCFG_AR_RELEASE_MAJOR_VERSION_C != DEM_AR_RELEASE_MAJOR_VERSION) ||                \
+     (MCU_VS_0_PBCFG_AR_RELEASE_MINOR_VERSION_C != DEM_AR_RELEASE_MINOR_VERSION))
+#error "AutoSar Version Numbers of Mcu_VS_0_PBcfg.c and Dem.h are different"
+#endif
+#endif /* DISABLE_MCAL_INTERMODULE_ASR_CHECK */
 #endif /* (MCU_DISABLE_DEM_REPORT_ERROR_STATUS == STD_OFF) */
 /*==================================================================================================
 *                          LOCAL TYPEDEFS (STRUCTURES, UNIONS, ENUMS)
@@ -123,19 +117,19 @@ extern "C"
 #include "Mcu_MemMap.h"
 
 /**
-* @brief          Initialization data for the MCU driver.
-* @details        A pointer to such a structure is provided to the MCU initialization routines for configuration.
-*
-*/
-const Mcu_ConfigType Mcu_Config_VS_0=
-{
+ * @brief          Initialization data for the MCU driver.
+ * @details        A pointer to such a structure is provided to the MCU initialization routines for
+ * configuration.
+ *
+ */
+const Mcu_ConfigType Mcu_Config_VS_0 = {
 #if (MCU_INIT_CLOCK == STD_ON)
     /* Globally enable/disable SCM, loss of clock and loss of lock notification. */
     MCU_CLK_NOTIF_DIS,
 #endif
 #if (MCU_MULTIPARTITION_SUPPORT == STD_ON)
     /* The ID for Partition. */
-    (uint8)MCU_PARTITION_0,        /* Mcu Partition ID */
+    (uint8)MCU_PARTITION_0, /* Mcu Partition ID */
 #endif
 #if (MCU_DISABLE_DEM_REPORT_ERROR_STATUS == STD_OFF)
     /* Pointer to DEM error reporting configurations. */
@@ -166,14 +160,11 @@ const Mcu_ConfigType Mcu_Config_VS_0=
 
 #endif /* (MCU_INIT_CLOCK == STD_ON) */
     /* Pointer to Low Level Mcu driver configuration. */
-    &Power_Ip_HwIPsConfigPB_VS_0
-};
-
+    &Power_Ip_HwIPsConfigPB_VS_0};
 
 #define MCU_STOP_SEC_CONFIG_DATA_UNSPECIFIED
 
 #include "Mcu_MemMap.h"
-
 
 /*==================================================================================================
                                    LOCAL FUNCTION PROTOTYPES
@@ -187,11 +178,8 @@ const Mcu_ConfigType Mcu_Config_VS_0=
                                        GLOBAL FUNCTIONS
 ==================================================================================================*/
 
-
 #ifdef __cplusplus
 }
 #endif
 
 /** @} */
-
-

@@ -12,22 +12,21 @@
 *
 *   Copyright 2020-2025 NXP
 *
-*   NXP Confidential and Proprietary. This software is owned or controlled by NXP and may only be 
-*   used strictly in accordance with the applicable license terms.  By expressly 
-*   accepting such terms or by downloading, installing, activating and/or otherwise 
-*   using the software, you are agreeing that you have read, and that you agree to 
-*   comply with and are bound by, such license terms.  If you do not agree to be 
+*   NXP Confidential and Proprietary. This software is owned or controlled by NXP and may only be
+*   used strictly in accordance with the applicable license terms.  By expressly
+*   accepting such terms or by downloading, installing, activating and/or otherwise
+*   using the software, you are agreeing that you have read, and that you agree to
+*   comply with and are bound by, such license terms.  If you do not agree to be
 *   bound by the applicable license terms, then you may not retain, install,
 *   activate or otherwise use the software.
 ==================================================================================================*/
 
 /**
-*   @file    Port_Ci_Port_Ip.c
-*
-*   @addtogroup Port_IPL
-*   @{
-*/
-
+ *   @file    Port_Ci_Port_Ip.c
+ *
+ *   @addtogroup Port_IPL
+ *   @{
+ */
 
 #ifdef __cplusplus
 extern "C" {
@@ -41,9 +40,9 @@ extern "C" {
 =================================================================================================*/
 #include "Port_Ci_Port_Ip.h"
 #ifdef PORT_ENABLE_USER_MODE_SUPPORT
-   #define USER_MODE_REG_PROT_ENABLED   (PORT_ENABLE_USER_MODE_SUPPORT)
-   #include "RegLockMacros.h"
-   #include "OsIf_Internal.h"
+#define USER_MODE_REG_PROT_ENABLED (PORT_ENABLE_USER_MODE_SUPPORT)
+#include "OsIf_Internal.h"
+#include "RegLockMacros.h"
 #endif
 #include "SchM_Port.h"
 #ifdef MCAL_ENABLE_FAULT_INJECTION
@@ -54,70 +53,65 @@ extern "C" {
                                SOURCE FILE VERSION INFORMATION
 ==================================================================================================*/
 /**
-* @brief        Parameters that shall be published within the Port driver header file and also in the
-*               module description file
-* @details      The integration of incompatible files shall be avoided.
-*
-*/
-#define PORT_CI_PORT_IP_VENDOR_ID_C                    43
-#define PORT_CI_PORT_IP_AR_RELEASE_MAJOR_VERSION_C     4
-#define PORT_CI_PORT_IP_AR_RELEASE_MINOR_VERSION_C     7
-#define PORT_CI_PORT_IP_AR_RELEASE_REVISION_VERSION_C  0
-#define PORT_CI_PORT_IP_SW_MAJOR_VERSION_C             3
-#define PORT_CI_PORT_IP_SW_MINOR_VERSION_C             0
-#define PORT_CI_PORT_IP_SW_PATCH_VERSION_C             0
+ * @brief        Parameters that shall be published within the Port driver header file and also in
+ * the module description file
+ * @details      The integration of incompatible files shall be avoided.
+ *
+ */
+#define PORT_CI_PORT_IP_VENDOR_ID_C 43
+#define PORT_CI_PORT_IP_AR_RELEASE_MAJOR_VERSION_C 4
+#define PORT_CI_PORT_IP_AR_RELEASE_MINOR_VERSION_C 7
+#define PORT_CI_PORT_IP_AR_RELEASE_REVISION_VERSION_C 0
+#define PORT_CI_PORT_IP_SW_MAJOR_VERSION_C 3
+#define PORT_CI_PORT_IP_SW_MINOR_VERSION_C 0
+#define PORT_CI_PORT_IP_SW_PATCH_VERSION_C 0
 
 /*=================================================================================================
 *                                      FILE VERSION CHECKS
 =================================================================================================*/
 /* Check if the files Port_Ci_Port_Ip.c and Port_Ci_Port_Ip.h are of the same vendor */
 #if (PORT_CI_PORT_IP_VENDOR_ID_C != PORT_CI_PORT_IP_VENDOR_ID_H)
-    #error "Port_Ci_Port_Ip.c and Port_Ci_Port_Ip.h have different vendor ids"
+#error "Port_Ci_Port_Ip.c and Port_Ci_Port_Ip.h have different vendor ids"
 #endif
 /* Check if the files Port_Ci_Port_Ip.c and Port_Ci_Port_Ip.h are of the same Autosar version */
-#if ((PORT_CI_PORT_IP_AR_RELEASE_MAJOR_VERSION_C    != PORT_CI_PORT_IP_AR_RELEASE_MAJOR_VERSION_H)  || \
-     (PORT_CI_PORT_IP_AR_RELEASE_MINOR_VERSION_C    != PORT_CI_PORT_IP_AR_RELEASE_MINOR_VERSION_H)  || \
-     (PORT_CI_PORT_IP_AR_RELEASE_REVISION_VERSION_C != PORT_CI_PORT_IP_AR_RELEASE_REVISION_VERSION_H)  \
-    )
-    #error "AutoSar Version Numbers of Port_Ci_Port_Ip.c and Port_Ci_Port_Ip.h are different"
+#if ((PORT_CI_PORT_IP_AR_RELEASE_MAJOR_VERSION_C != PORT_CI_PORT_IP_AR_RELEASE_MAJOR_VERSION_H) || \
+     (PORT_CI_PORT_IP_AR_RELEASE_MINOR_VERSION_C != PORT_CI_PORT_IP_AR_RELEASE_MINOR_VERSION_H) || \
+     (PORT_CI_PORT_IP_AR_RELEASE_REVISION_VERSION_C !=                                             \
+      PORT_CI_PORT_IP_AR_RELEASE_REVISION_VERSION_H))
+#error "AutoSar Version Numbers of Port_Ci_Port_Ip.c and Port_Ci_Port_Ip.h are different"
 #endif
 /* Check if the files Port_Ci_Port_Ip.c and Port_Ci_Port_Ip.h are of the same software version */
-#if ((PORT_CI_PORT_IP_SW_MAJOR_VERSION_C != PORT_CI_PORT_IP_SW_MAJOR_VERSION_H) || \
-     (PORT_CI_PORT_IP_SW_MINOR_VERSION_C != PORT_CI_PORT_IP_SW_MINOR_VERSION_H) || \
-     (PORT_CI_PORT_IP_SW_PATCH_VERSION_C != PORT_CI_PORT_IP_SW_PATCH_VERSION_H)    \
-    )
-    #error "Software Version Numbers of Port_Ci_Port_Ip.c and Port_Ci_Port_Ip.h are different"
+#if ((PORT_CI_PORT_IP_SW_MAJOR_VERSION_C != PORT_CI_PORT_IP_SW_MAJOR_VERSION_H) ||                 \
+     (PORT_CI_PORT_IP_SW_MINOR_VERSION_C != PORT_CI_PORT_IP_SW_MINOR_VERSION_H) ||                 \
+     (PORT_CI_PORT_IP_SW_PATCH_VERSION_C != PORT_CI_PORT_IP_SW_PATCH_VERSION_H))
+#error "Software Version Numbers of Port_Ci_Port_Ip.c and Port_Ci_Port_Ip.h are different"
 #endif
 
 #ifndef DISABLE_MCAL_INTERMODULE_ASR_CHECK
-    /* Check if the files Port_Ci_Port_Ip.c and RegLockMacros.h are of the same version */
-    #ifdef PORT_ENABLE_USER_MODE_SUPPORT
-        #if ((PORT_CI_PORT_IP_AR_RELEASE_MAJOR_VERSION_C != REGLOCKMACROS_AR_RELEASE_MAJOR_VERSION) || \
-            (PORT_CI_PORT_IP_AR_RELEASE_MINOR_VERSION_C  != REGLOCKMACROS_AR_RELEASE_MINOR_VERSION)   \
-            )
-            #error "AutoSar Version Numbers of Port_Ci_Port_Ip.c and RegLockMacros.h are different"
-        #endif
+/* Check if the files Port_Ci_Port_Ip.c and RegLockMacros.h are of the same version */
+#ifdef PORT_ENABLE_USER_MODE_SUPPORT
+#if ((PORT_CI_PORT_IP_AR_RELEASE_MAJOR_VERSION_C != REGLOCKMACROS_AR_RELEASE_MAJOR_VERSION) ||     \
+     (PORT_CI_PORT_IP_AR_RELEASE_MINOR_VERSION_C != REGLOCKMACROS_AR_RELEASE_MINOR_VERSION))
+#error "AutoSar Version Numbers of Port_Ci_Port_Ip.c and RegLockMacros.h are different"
+#endif
 
-        /* Check if the files Port_Ci_Port_Ip.c and OsIf_Internal.h are of the same version */
-        #if ((PORT_CI_PORT_IP_AR_RELEASE_MAJOR_VERSION_C != OSIF_INTERNAL_AR_RELEASE_MAJOR_VERSION) || \
-            (PORT_CI_PORT_IP_AR_RELEASE_MINOR_VERSION_C  != OSIF_INTERNAL_AR_RELEASE_MINOR_VERSION)   \
-            )
-            #error "AutoSar Version Numbers of Port_Ci_Port_Ip.c and OsIf_Internal.h are different"
-        #endif
-    #endif
-    /* Check if the files Port_Ci_Port_Ip.c and SchM_Port.h are of the same version */
-    #if ((PORT_CI_PORT_IP_AR_RELEASE_MAJOR_VERSION_C != SCHM_PORT_AR_RELEASE_MAJOR_VERSION) || \
-        (PORT_CI_PORT_IP_AR_RELEASE_MINOR_VERSION_C  != SCHM_PORT_AR_RELEASE_MINOR_VERSION)   \
-        )
-        #error "AutoSar Version Numbers of Port_Ci_Port_Ip.c and SchM_Port.h are different"
-    #endif
-    #ifdef MCAL_ENABLE_FAULT_INJECTION
-        #if ((PORT_CI_PORT_IP_AR_RELEASE_MAJOR_VERSION_C != MCAL_AR_RELEASE_MAJOR_VERSION) || \
-             (PORT_CI_PORT_IP_AR_RELEASE_MINOR_VERSION_C != MCAL_AR_RELEASE_MINOR_VERSION)    \
-            )
-            #error "AutoSar Version Numbers of Port_Ci_Port_Ip.c and Mcal.h are different"
-        #endif
-    #endif
+/* Check if the files Port_Ci_Port_Ip.c and OsIf_Internal.h are of the same version */
+#if ((PORT_CI_PORT_IP_AR_RELEASE_MAJOR_VERSION_C != OSIF_INTERNAL_AR_RELEASE_MAJOR_VERSION) ||     \
+     (PORT_CI_PORT_IP_AR_RELEASE_MINOR_VERSION_C != OSIF_INTERNAL_AR_RELEASE_MINOR_VERSION))
+#error "AutoSar Version Numbers of Port_Ci_Port_Ip.c and OsIf_Internal.h are different"
+#endif
+#endif
+/* Check if the files Port_Ci_Port_Ip.c and SchM_Port.h are of the same version */
+#if ((PORT_CI_PORT_IP_AR_RELEASE_MAJOR_VERSION_C != SCHM_PORT_AR_RELEASE_MAJOR_VERSION) ||         \
+     (PORT_CI_PORT_IP_AR_RELEASE_MINOR_VERSION_C != SCHM_PORT_AR_RELEASE_MINOR_VERSION))
+#error "AutoSar Version Numbers of Port_Ci_Port_Ip.c and SchM_Port.h are different"
+#endif
+#ifdef MCAL_ENABLE_FAULT_INJECTION
+#if ((PORT_CI_PORT_IP_AR_RELEASE_MAJOR_VERSION_C != MCAL_AR_RELEASE_MAJOR_VERSION) ||              \
+     (PORT_CI_PORT_IP_AR_RELEASE_MINOR_VERSION_C != MCAL_AR_RELEASE_MINOR_VERSION))
+#error "AutoSar Version Numbers of Port_Ci_Port_Ip.c and Mcal.h are different"
+#endif
+#endif
 #endif
 /*=================================================================================================
 *                          LOCAL TYPEDEFS (STRUCTURES, UNIONS, ENUMS)
@@ -146,14 +140,14 @@ extern "C" {
 #include "Port_MemMap.h"
 
 /**
-* @brief Base address array for PORT instances
-*/
-PORT_Type * const Port_au32PortCiPortBaseAddr[PORT_INSTANCE_COUNT] = IP_PORT_BASE_PTRS;
+ * @brief Base address array for PORT instances
+ */
+PORT_Type* const Port_au32PortCiPortBaseAddr[PORT_INSTANCE_COUNT] = IP_PORT_BASE_PTRS;
 
 /**
-* @brief Base address array for GPIO instances
-*/
-GPIO_Type * const Port_au32PortCiGpioBaseAddr[GPIO_INSTANCE_COUNT] = IP_GPIO_BASE_PTRS;
+ * @brief Base address array for GPIO instances
+ */
+GPIO_Type* const Port_au32PortCiGpioBaseAddr[GPIO_INSTANCE_COUNT] = IP_GPIO_BASE_PTRS;
 
 #define PORT_STOP_SEC_CONST_32
 #include "Port_MemMap.h"
@@ -171,7 +165,7 @@ GPIO_Type * const Port_au32PortCiGpioBaseAddr[GPIO_INSTANCE_COUNT] = IP_GPIO_BAS
  * @param[in] pinNumber the number of configured pins in structure
  * @param[in] config the configuration structure
  */
-static void Port_Ci_Port_Ip_PinInit(const Port_Ci_Port_Ip_PinSettingsConfig * config);
+static void Port_Ci_Port_Ip_PinInit(const Port_Ci_Port_Ip_PinSettingsConfig* config);
 
 #ifdef FEATURE_PORT_CI_PORT_IP_HAS_ADC_INTERLEAVE
 /*!
@@ -181,12 +175,8 @@ static void Port_Ci_Port_Ip_PinInit(const Port_Ci_Port_Ip_PinSettingsConfig * co
  * @param[in] pin Port pin number
  * @param[in] muxing Pin muxing slot selection
  */
-Port_Ci_Port_Ip_PortMux Port_Ci_Port_Ip_ConfigureInterleave
-(
-    const PORT_Type * const base,
-    uint32 pin,
-    Port_Ci_Port_Ip_PortMux muxing
-);
+Port_Ci_Port_Ip_PortMux Port_Ci_Port_Ip_ConfigureInterleave(const PORT_Type* const base, uint32 pin,
+                                                            Port_Ci_Port_Ip_PortMux muxing);
 #endif /* FEATURE_PORT_CI_PORT_IP_HAS_ADC_INTERLEAVE */
 
 /*==================================================================================================
@@ -197,70 +187,60 @@ Port_Ci_Port_Ip_PortMux Port_Ci_Port_Ip_ConfigureInterleave
 /*FUNCTION**********************************************************************
  *
  * Function Name : Port_Ci_Port_Ip_GetAdcInterleaveVal
- * Description   : This function calculates appropriate value to enable or disable in SIM_CHIPCTL[ADC_INTERLEAVE_EN]
+ * Description   : This function calculates appropriate value to enable or disable in
+ *SIM_CHIPCTL[ADC_INTERLEAVE_EN]
  *
  ******************************************************************************/
-static uint32 Port_Ci_Port_Ip_GetAdcInterleaveVal
-(
-    const PORT_Type * base,
-    const uint32 pinPortIdx,
-    const uint32 currentVal
-)
+static uint32 Port_Ci_Port_Ip_GetAdcInterleaveVal(const PORT_Type* base, const uint32 pinPortIdx,
+                                                  const uint32 currentVal)
 {
     uint32 adcInterleaveVal = (uint32)PIN_ADC_INTERLEAVE_INVALID;
     /* calculate appropriate value to enable or disable in SIM_CHIPCTL[ADC_INTERLEAVE_EN] */
-    if ((uint32)base == (uint32)IP_PORTB)
-    {
-        switch (pinPortIdx)
-        {
-            case 0:
-                adcInterleaveVal = (uint32)PIN_ADC_INTERLEAVE_ENABLE0;
-                adcInterleaveVal |= currentVal;
-                break;
-            case 1:
-                adcInterleaveVal = (uint32)PIN_ADC_INTERLEAVE_ENABLE1;
-                adcInterleaveVal |= currentVal;
-                break;
-            case 13:
-                adcInterleaveVal = (uint32)PIN_ADC_INTERLEAVE_ENABLE2;
-                adcInterleaveVal |= currentVal;
-                break;
-            case 14:
-                adcInterleaveVal = (uint32)PIN_ADC_INTERLEAVE_ENABLE3;
-                adcInterleaveVal |= currentVal;
-                break;
-            case 15:
-                adcInterleaveVal = (uint32)PIN_ADC_INTERLEAVE_DISABLE0;
-                adcInterleaveVal &= currentVal;
-                break;
-            case 16:
-                adcInterleaveVal = (uint32)PIN_ADC_INTERLEAVE_DISABLE1;
-                adcInterleaveVal &= currentVal;
-                break;
-            default:
-                /* invalid command */
-                break;
+    if ((uint32)base == (uint32)IP_PORTB) {
+        switch (pinPortIdx) {
+        case 0:
+            adcInterleaveVal = (uint32)PIN_ADC_INTERLEAVE_ENABLE0;
+            adcInterleaveVal |= currentVal;
+            break;
+        case 1:
+            adcInterleaveVal = (uint32)PIN_ADC_INTERLEAVE_ENABLE1;
+            adcInterleaveVal |= currentVal;
+            break;
+        case 13:
+            adcInterleaveVal = (uint32)PIN_ADC_INTERLEAVE_ENABLE2;
+            adcInterleaveVal |= currentVal;
+            break;
+        case 14:
+            adcInterleaveVal = (uint32)PIN_ADC_INTERLEAVE_ENABLE3;
+            adcInterleaveVal |= currentVal;
+            break;
+        case 15:
+            adcInterleaveVal = (uint32)PIN_ADC_INTERLEAVE_DISABLE0;
+            adcInterleaveVal &= currentVal;
+            break;
+        case 16:
+            adcInterleaveVal = (uint32)PIN_ADC_INTERLEAVE_DISABLE1;
+            adcInterleaveVal &= currentVal;
+            break;
+        default:
+            /* invalid command */
+            break;
         }
-    }
-    else if ((uint32)base == (uint32)IP_PORTC)
-    {
-        switch (pinPortIdx)
-        {
-            case 0:
-                adcInterleaveVal = (uint32)PIN_ADC_INTERLEAVE_DISABLE2;
-                adcInterleaveVal &= currentVal;
-                break;
-            case 1:
-                adcInterleaveVal = (uint32)PIN_ADC_INTERLEAVE_DISABLE3;
-                adcInterleaveVal &= currentVal;
-                break;
-            default:
-                /* invalid command */
-                break;
+    } else if ((uint32)base == (uint32)IP_PORTC) {
+        switch (pinPortIdx) {
+        case 0:
+            adcInterleaveVal = (uint32)PIN_ADC_INTERLEAVE_DISABLE2;
+            adcInterleaveVal &= currentVal;
+            break;
+        case 1:
+            adcInterleaveVal = (uint32)PIN_ADC_INTERLEAVE_DISABLE3;
+            adcInterleaveVal &= currentVal;
+            break;
+        default:
+            /* invalid command */
+            break;
         }
-    }
-    else
-    {
+    } else {
         /* invalid command */
     }
     return adcInterleaveVal;
@@ -272,21 +252,18 @@ static uint32 Port_Ci_Port_Ip_GetAdcInterleaveVal
  * Description   : Configure the Interleave feature
  *
  *END**************************************************************************/
-Port_Ci_Port_Ip_PortMux Port_Ci_Port_Ip_ConfigureInterleave
-(
-    const PORT_Type * const base,
-    uint32 pin,
-    Port_Ci_Port_Ip_PortMux muxing
-)
+Port_Ci_Port_Ip_PortMux Port_Ci_Port_Ip_ConfigureInterleave(const PORT_Type* const base, uint32 pin,
+                                                            Port_Ci_Port_Ip_PortMux muxing)
 {
     Port_Ci_Port_Ip_PortMux retMuxing = muxing;
-    if (muxing == PORT_MUX_ADC_INTERLEAVE)
-    {
+    if (muxing == PORT_MUX_ADC_INTERLEAVE) {
         /* Get ADC Interleave from SIM and enable/disable desired bit */
-        uint32 chipCtlReg = (IP_SIM->CHIPCTL & SIM_CHIPCTL_ADC_INTERLEAVE_EN_MASK) >> SIM_CHIPCTL_ADC_INTERLEAVE_EN_SHIFT;
-        Port_Ci_Port_Ip_InterleaveMux interleaveVal = (Port_Ci_Port_Ip_InterleaveMux)Port_Ci_Port_Ip_GetAdcInterleaveVal(base, pin, chipCtlReg);
-        if (interleaveVal != PIN_ADC_INTERLEAVE_INVALID)
-        {
+        uint32 chipCtlReg = (IP_SIM->CHIPCTL & SIM_CHIPCTL_ADC_INTERLEAVE_EN_MASK) >>
+                            SIM_CHIPCTL_ADC_INTERLEAVE_EN_SHIFT;
+        Port_Ci_Port_Ip_InterleaveMux interleaveVal =
+            (Port_Ci_Port_Ip_InterleaveMux)Port_Ci_Port_Ip_GetAdcInterleaveVal(base, pin,
+                                                                               chipCtlReg);
+        if (interleaveVal != PIN_ADC_INTERLEAVE_INVALID) {
             SchM_Enter_Port_PORT_EXCLUSIVE_AREA_05();
             IP_SIM->CHIPCTL &= ~(SIM_CHIPCTL_ADC_INTERLEAVE_EN_MASK);
             IP_SIM->CHIPCTL |= SIM_CHIPCTL_ADC_INTERLEAVE_EN(interleaveVal);
@@ -306,7 +283,7 @@ Port_Ci_Port_Ip_PortMux Port_Ci_Port_Ip_ConfigureInterleave
  * provided in the given structure.
  *
  ******************************************************************************/
-static void Port_Ci_Port_Ip_PinInit(const Port_Ci_Port_Ip_PinSettingsConfig * config)
+static void Port_Ci_Port_Ip_PinInit(const Port_Ci_Port_Ip_PinSettingsConfig* config)
 {
     uint32 pinsValues = 0U;
     uint32 digitalFilters;
@@ -316,10 +293,10 @@ static void Port_Ci_Port_Ip_PinInit(const Port_Ci_Port_Ip_PinSettingsConfig * co
 #endif /* FEATURE_PORT_CI_PORT_IP_HAS_ADC_INTERLEAVE */
     PORT_CI_PORT_DEV_ASSERT((boolean)(config != NULL_PTR));
     PORT_CI_PORT_DEV_ASSERT((boolean)(config->pinPortIdx < 32));
-    PORT_CI_PORT_DEV_ASSERT((boolean)((config->portBase->PCR[config->pinPortIdx]) & PORT_PCR_LK_MASK) == 0);
+    PORT_CI_PORT_DEV_ASSERT(
+        (boolean)((config->portBase->PCR[config->pinPortIdx]) & PORT_PCR_LK_MASK) == 0);
 
-    if (config->pullConfig != PORT_INTERNAL_PULL_NOT_ENABLED)
-    {
+    if (config->pullConfig != PORT_INTERNAL_PULL_NOT_ENABLED) {
         pinsValues |= PORT_PCR_PE(1);
         pinsValues |= PORT_PCR_PS(config->pullConfig);
     }
@@ -339,16 +316,19 @@ static void Port_Ci_Port_Ip_PinInit(const Port_Ci_Port_Ip_PinSettingsConfig * co
     pinsValues |= PORT_PCR_ODE(config->openDrain);
 #endif /* STD_ON == FEATURE_PORT_CI_PORT_IP_HAS_OPEN_DRAIN */
 #endif /* FEATURE_PORT_CI_PORT_IP_HAS_OPEN_DRAIN */
-    pinsValues |= PORT_PCR_PFE(config->passiveFilter?1U:0U);
+    pinsValues |= PORT_PCR_PFE(config->passiveFilter ? 1U : 0U);
 
     muxing = config->mux;
 
 #ifdef FEATURE_PORT_CI_PORT_IP_HAS_ADC_INTERLEAVE
-#if (defined(MCAL_ENABLE_USER_MODE_SUPPORT) && defined(PORT_ENABLE_USER_MODE_SUPPORT) && (STD_ON == PORT_ENABLE_USER_MODE_SUPPORT))
-    retMuxing = (Port_Ci_Port_Ip_PortMux)OsIf_Trusted_Call_Return3param(Port_Ci_Port_Ip_ConfigureInterleave,(config->portBase),(config->pinPortIdx),(muxing));
+#if (defined(MCAL_ENABLE_USER_MODE_SUPPORT) && defined(PORT_ENABLE_USER_MODE_SUPPORT) &&           \
+     (STD_ON == PORT_ENABLE_USER_MODE_SUPPORT))
+    retMuxing = (Port_Ci_Port_Ip_PortMux)OsIf_Trusted_Call_Return3param(
+        Port_Ci_Port_Ip_ConfigureInterleave, (config->portBase), (config->pinPortIdx), (muxing));
 #else
     retMuxing = Port_Ci_Port_Ip_ConfigureInterleave(config->portBase, config->pinPortIdx, muxing);
-#endif /* (defined(MCAL_ENABLE_USER_MODE_SUPPORT) && defined(PORT_ENABLE_USER_MODE_SUPPORT) && (STD_ON == PORT_ENABLE_USER_MODE_SUPPORT)) */
+#endif /* (defined(MCAL_ENABLE_USER_MODE_SUPPORT) && defined(PORT_ENABLE_USER_MODE_SUPPORT) &&     \
+          (STD_ON == PORT_ENABLE_USER_MODE_SUPPORT)) */
 #endif /* FEATURE_PORT_CI_PORT_IP_HAS_ADC_INTERLEAVE */
 #ifdef FEATURE_PORT_CI_PORT_IP_HAS_ADC_INTERLEAVE
     muxing = retMuxing;
@@ -360,32 +340,27 @@ static void Port_Ci_Port_Ip_PinInit(const Port_Ci_Port_Ip_PinSettingsConfig * co
     /* Read current digital filter of port */
     digitalFilters = (uint32)(config->portBase->DFER);
     digitalFilters &= ~(1UL << (config->pinPortIdx));
-    digitalFilters |= (((uint32)(config->digitalFilter?1U:0U)) << (config->pinPortIdx));
+    digitalFilters |= (((uint32)(config->digitalFilter ? 1U : 0U)) << (config->pinPortIdx));
     /* Write to digital filter enable register */
     config->portBase->DFER = digitalFilters;
     SchM_Exit_Port_PORT_EXCLUSIVE_AREA_00();
 
     /* Configure initial value for GPIO pin in GPIO mux */
-    /* SWS_Port_00055 : The function Port_Init shall set the port pin output latch to a default level (defined during configuration) before setting the port pin direction to output. */
-    if (PORT_MUX_AS_GPIO == muxing)
-    {
-        /* Check if the direction of the pin is OUTPUT. In this case the driver needs to set the output level too */
-        if (PORT_CI_PORT_PIN_OUT == config->direction)
-        {
-            if ((uint8)1 == config->initValue)
-            {
+    /* SWS_Port_00055 : The function Port_Init shall set the port pin output latch to a default
+     * level (defined during configuration) before setting the port pin direction to output. */
+    if (PORT_MUX_AS_GPIO == muxing) {
+        /* Check if the direction of the pin is OUTPUT. In this case the driver needs to set the
+         * output level too */
+        if (PORT_CI_PORT_PIN_OUT == config->direction) {
+            if ((uint8)1 == config->initValue) {
                 SchM_Enter_Port_PORT_EXCLUSIVE_AREA_01();
                 config->gpioBase->PSOR |= ((uint32)1 << (config->pinPortIdx));
                 SchM_Exit_Port_PORT_EXCLUSIVE_AREA_01();
-            }
-            else if ((uint8)0 == config->initValue)
-            {
+            } else if ((uint8)0 == config->initValue) {
                 SchM_Enter_Port_PORT_EXCLUSIVE_AREA_02();
                 config->gpioBase->PCOR |= ((uint32)1 << (config->pinPortIdx));
                 SchM_Exit_Port_PORT_EXCLUSIVE_AREA_02();
-            }
-            else
-            {
+            } else {
                 /* No action to be done */
             }
             /* Set the pin direction as output in the PDDR register of GPIO IP */
@@ -394,8 +369,7 @@ static void Port_Ci_Port_Ip_PinInit(const Port_Ci_Port_Ip_PinSettingsConfig * co
             SchM_Exit_Port_PORT_EXCLUSIVE_AREA_03();
         }
         /* The direction of pin is INPUT or HIGH Z */
-        else
-        {
+        else {
             /* Clear the pin direction as input in the PDDR register of GPIO IP */
             SchM_Enter_Port_PORT_EXCLUSIVE_AREA_03();
             config->gpioBase->PDDR &= ~((uint32)1 << (config->pinPortIdx));
@@ -405,9 +379,9 @@ static void Port_Ci_Port_Ip_PinInit(const Port_Ci_Port_Ip_PinSettingsConfig * co
             SchM_Enter_Port_PORT_EXCLUSIVE_AREA_04();
             config->gpioBase->PIDR &= ~((uint32)1 << (config->pinPortIdx));
 
-            /* Check if the pin is HIGH_Z. In this case the driver needs to disable port input in PIDR register of GPIO IP*/
-            if (PORT_CI_PORT_PIN_HIGH_Z == config->direction)
-            {
+            /* Check if the pin is HIGH_Z. In this case the driver needs to disable port input in
+             * PIDR register of GPIO IP*/
+            if (PORT_CI_PORT_PIN_HIGH_Z == config->direction) {
                 config->gpioBase->PIDR |= ((uint32)1 << (config->pinPortIdx));
             }
             SchM_Exit_Port_PORT_EXCLUSIVE_AREA_04();
@@ -418,7 +392,9 @@ static void Port_Ci_Port_Ip_PinInit(const Port_Ci_Port_Ip_PinSettingsConfig * co
     MCAL_FAULT_INJECTION_POINT(PORT_CHANGE_DIRECTION_VALUE);
 #endif
 
-    /* SWS_Port_00043 : The function Port_Init shall avoid glitches and spikes on the affected port pins. Hint: Perform output enable and/or input enable as a final step of the pad initialization. */
+    /* SWS_Port_00043 : The function Port_Init shall avoid glitches and spikes on the affected port
+     * pins. Hint: Perform output enable and/or input enable as a final step of the pad
+     * initialization. */
     /* Write to Multiplexed Signal Configuration Register */
     config->portBase->PCR[config->pinPortIdx] = pinsValues;
 }
@@ -435,16 +411,12 @@ static void Port_Ci_Port_Ip_PinInit(const Port_Ci_Port_Ip_PinSettingsConfig * co
  *
  * @implements Port_Ci_Port_Ip_Init_Activity
  ******************************************************************************/
-Port_Ci_Port_Ip_PortStatusType Port_Ci_Port_Ip_Init
-(
-    uint32 pinCount,
-    const Port_Ci_Port_Ip_PinSettingsConfig config[]
-)
+Port_Ci_Port_Ip_PortStatusType
+Port_Ci_Port_Ip_Init(uint32 pinCount, const Port_Ci_Port_Ip_PinSettingsConfig config[])
 {
     uint32 i;
 
-    for (i = 0U; i < pinCount; i++)
-    {
+    for (i = 0U; i < pinCount; i++) {
         Port_Ci_Port_Ip_PinInit(&config[i]);
     }
 
@@ -458,23 +430,21 @@ Port_Ci_Port_Ip_PortStatusType Port_Ci_Port_Ip_Init
  *
  * @implements Port_Ci_Port_Ip_SetMuxModeSel_Activity
  ******************************************************************************/
-void Port_Ci_Port_Ip_SetMuxModeSel
-(
-    PORT_Type * const base,
-    uint32 pin,
-    Port_Ci_Port_Ip_PortMux mux
-)
+void Port_Ci_Port_Ip_SetMuxModeSel(PORT_Type* const base, uint32 pin, Port_Ci_Port_Ip_PortMux mux)
 {
     uint32 regValue;
     PORT_CI_PORT_DEV_ASSERT((boolean)(pin < PORT_PCR_COUNT));
     PORT_CI_PORT_DEV_ASSERT((boolean)((base->PCR[pin]) & PORT_PCR_LK_MASK) == 0);
 
 #ifdef FEATURE_PORT_CI_PORT_IP_HAS_ADC_INTERLEAVE
-#if (defined(MCAL_ENABLE_USER_MODE_SUPPORT) && defined(PORT_ENABLE_USER_MODE_SUPPORT) && (STD_ON == PORT_ENABLE_USER_MODE_SUPPORT))
-    Port_Ci_Port_Ip_PortMux muxing = (Port_Ci_Port_Ip_PortMux)OsIf_Trusted_Call_Return3param(Port_Ci_Port_Ip_ConfigureInterleave,(base),(pin),(mux));
+#if (defined(MCAL_ENABLE_USER_MODE_SUPPORT) && defined(PORT_ENABLE_USER_MODE_SUPPORT) &&           \
+     (STD_ON == PORT_ENABLE_USER_MODE_SUPPORT))
+    Port_Ci_Port_Ip_PortMux muxing = (Port_Ci_Port_Ip_PortMux)OsIf_Trusted_Call_Return3param(
+        Port_Ci_Port_Ip_ConfigureInterleave, (base), (pin), (mux));
 #else
     Port_Ci_Port_Ip_PortMux muxing = Port_Ci_Port_Ip_ConfigureInterleave(base, pin, mux);
-#endif /* (defined(MCAL_ENABLE_USER_MODE_SUPPORT) && defined(PORT_ENABLE_USER_MODE_SUPPORT) && (STD_ON == PORT_ENABLE_USER_MODE_SUPPORT)) */
+#endif /* (defined(MCAL_ENABLE_USER_MODE_SUPPORT) && defined(PORT_ENABLE_USER_MODE_SUPPORT) &&     \
+          (STD_ON == PORT_ENABLE_USER_MODE_SUPPORT)) */
 #else
     Port_Ci_Port_Ip_PortMux muxing = mux;
 #endif /* FEATURE_PORT_CI_PORT_IP_HAS_ADC_INTERLEAVE */
@@ -494,11 +464,7 @@ void Port_Ci_Port_Ip_SetMuxModeSel
  *
  * @implements Port_Ci_Port_Ip_EnableDigitalFilter_Activity
  ******************************************************************************/
-void Port_Ci_Port_Ip_EnableDigitalFilter
-(
-    PORT_Type * const base,
-    uint32 pin
-)
+void Port_Ci_Port_Ip_EnableDigitalFilter(PORT_Type* const base, uint32 pin)
 {
     PORT_CI_PORT_DEV_ASSERT((boolean)(pin < PORT_PCR_COUNT));
     SchM_Enter_Port_PORT_EXCLUSIVE_AREA_07();
@@ -514,11 +480,7 @@ void Port_Ci_Port_Ip_EnableDigitalFilter
  *
  * @implements Port_Ci_Port_Ip_DisableDigitalFilter_Activity
  ******************************************************************************/
-void Port_Ci_Port_Ip_DisableDigitalFilter
-(
-    PORT_Type * const base,
-    uint32 pin
-)
+void Port_Ci_Port_Ip_DisableDigitalFilter(PORT_Type* const base, uint32 pin)
 {
     PORT_CI_PORT_DEV_ASSERT((boolean)(pin < PORT_PCR_COUNT));
     SchM_Enter_Port_PORT_EXCLUSIVE_AREA_08();
@@ -534,11 +496,8 @@ void Port_Ci_Port_Ip_DisableDigitalFilter
  *
  * @implements Port_Ci_Port_Ip_ConfigDigitalFilter_Activity
  ******************************************************************************/
-void Port_Ci_Port_Ip_ConfigDigitalFilter
-(
-    PORT_Type * const base,
-    const Port_Ci_Port_Ip_DigitalFilterConfigType * config
-)
+void Port_Ci_Port_Ip_ConfigDigitalFilter(PORT_Type* const base,
+                                         const Port_Ci_Port_Ip_DigitalFilterConfigType* config)
 {
     PORT_CI_PORT_DEV_ASSERT((boolean)(config->u8Width <= PORT_DFWR_FILT_MASK));
     base->DFCR = PORT_DFCR_CS(config->u8Clock);
@@ -554,13 +513,8 @@ void Port_Ci_Port_Ip_ConfigDigitalFilter
  *
  * @implements Port_Ci_Port_Ip_SetGlobalPinControl_Activity
  ******************************************************************************/
-void Port_Ci_Port_Ip_SetGlobalPinControl
-(
-    PORT_Type * const base,
-    uint16 pins,
-    uint16 value,
-    Port_Ci_Port_Ip_PortGlobalControlPins halfPort
-)
+void Port_Ci_Port_Ip_SetGlobalPinControl(PORT_Type* const base, uint16 pins, uint16 value,
+                                         Port_Ci_Port_Ip_PortGlobalControlPins halfPort)
 {
     uint16 mask = 0;
     mask |= PORT_PCR_PS_MASK;
@@ -581,18 +535,17 @@ void Port_Ci_Port_Ip_SetGlobalPinControl
 #endif /* FEATURE_PORT_CI_PORT_IP_HAS_OPEN_DRAIN */
     mask &= value;
 
-    switch (halfPort)
-    {
-        case PORT_GLOBAL_CONTROL_LOWER_HALF_PINS:
-            base->GPCLR = (((uint32)pins) << PORT_GPCLR_GPWE_SHIFT) | (uint32)mask;
-            break;
-        case PORT_GLOBAL_CONTROL_UPPER_HALF_PINS:
-            base->GPCHR = (((uint32)pins) << PORT_GPCHR_GPWE_SHIFT) | (uint32)mask;
-            break;
-        default:
-            /* nothing to configure */
-            PORT_CI_PORT_DEV_ASSERT((boolean)FALSE);
-            break;
+    switch (halfPort) {
+    case PORT_GLOBAL_CONTROL_LOWER_HALF_PINS:
+        base->GPCLR = (((uint32)pins) << PORT_GPCLR_GPWE_SHIFT) | (uint32)mask;
+        break;
+    case PORT_GLOBAL_CONTROL_UPPER_HALF_PINS:
+        base->GPCHR = (((uint32)pins) << PORT_GPCHR_GPWE_SHIFT) | (uint32)mask;
+        break;
+    default:
+        /* nothing to configure */
+        PORT_CI_PORT_DEV_ASSERT((boolean)FALSE);
+        break;
     }
 }
 

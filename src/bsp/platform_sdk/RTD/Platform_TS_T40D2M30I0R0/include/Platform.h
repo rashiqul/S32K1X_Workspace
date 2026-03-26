@@ -1,7 +1,7 @@
 /*==================================================================================================
 *   Project              : RTD AUTOSAR 4.7
 *   Platform             : CORTEXM
-*   Peripheral           : 
+*   Peripheral           :
 *   Dependencies         : none
 *
 *   Autosar Version      : 4.7.0
@@ -12,11 +12,11 @@
 *
 *   Copyright 2020-2025 NXP
 *
-*   NXP Confidential and Proprietary. This software is owned or controlled by NXP and may only be 
-*   used strictly in accordance with the applicable license terms.  By expressly 
-*   accepting such terms or by downloading, installing, activating and/or otherwise 
-*   using the software, you are agreeing that you have read, and that you agree to 
-*   comply with and are bound by, such license terms.  If you do not agree to be 
+*   NXP Confidential and Proprietary. This software is owned or controlled by NXP and may only be
+*   used strictly in accordance with the applicable license terms.  By expressly
+*   accepting such terms or by downloading, installing, activating and/or otherwise
+*   using the software, you are agreeing that you have read, and that you agree to
+*   comply with and are bound by, such license terms.  If you do not agree to be
 *   bound by the applicable license terms, then you may not retain, install,
 *   activate or otherwise use the software.
 ==================================================================================================*/
@@ -40,54 +40,50 @@
 /*==================================================================================================
 *                              SOURCE FILE VERSION INFORMATION
 ==================================================================================================*/
-#define CDD_PLATFORM_VENDOR_ID                     43
-#define CDD_PLATFORM_MODULE_ID                     255
-#define CDD_PLATFORM_AR_RELEASE_MAJOR_VERSION      4
-#define CDD_PLATFORM_AR_RELEASE_MINOR_VERSION      7
-#define CDD_PLATFORM_AR_RELEASE_REVISION_VERSION   0
-#define CDD_PLATFORM_SW_MAJOR_VERSION              3
-#define CDD_PLATFORM_SW_MINOR_VERSION              0
-#define CDD_PLATFORM_SW_PATCH_VERSION              0
+#define CDD_PLATFORM_VENDOR_ID 43
+#define CDD_PLATFORM_MODULE_ID 255
+#define CDD_PLATFORM_AR_RELEASE_MAJOR_VERSION 4
+#define CDD_PLATFORM_AR_RELEASE_MINOR_VERSION 7
+#define CDD_PLATFORM_AR_RELEASE_REVISION_VERSION 0
+#define CDD_PLATFORM_SW_MAJOR_VERSION 3
+#define CDD_PLATFORM_SW_MINOR_VERSION 0
+#define CDD_PLATFORM_SW_PATCH_VERSION 0
 
 /*==================================================================================================
 *                                     FILE VERSION CHECKS
 ==================================================================================================*/
 /* Check if current file and Platform_Cfg header file are of the same vendor */
 #if (CDD_PLATFORM_VENDOR_ID != CDD_PLATFORM_CFG_VENDOR_ID)
-    #error "Platform.h and Platform_Cfg.h have different vendor ids"
+#error "Platform.h and Platform_Cfg.h have different vendor ids"
 #endif
 /* Check if current file and Platform_Cfg header file are of the same Autosar version */
-#if ((CDD_PLATFORM_AR_RELEASE_MAJOR_VERSION    != CDD_PLATFORM_CFG_AR_RELEASE_MAJOR_VERSION) || \
-     (CDD_PLATFORM_AR_RELEASE_MINOR_VERSION    != CDD_PLATFORM_CFG_AR_RELEASE_MINOR_VERSION) || \
-     (CDD_PLATFORM_AR_RELEASE_REVISION_VERSION != CDD_PLATFORM_CFG_AR_RELEASE_REVISION_VERSION) \
-    )
-    #error "AutoSar Version Numbers of Platform.h and Platform_Cfg.h are different"
+#if ((CDD_PLATFORM_AR_RELEASE_MAJOR_VERSION != CDD_PLATFORM_CFG_AR_RELEASE_MAJOR_VERSION) ||       \
+     (CDD_PLATFORM_AR_RELEASE_MINOR_VERSION != CDD_PLATFORM_CFG_AR_RELEASE_MINOR_VERSION) ||       \
+     (CDD_PLATFORM_AR_RELEASE_REVISION_VERSION != CDD_PLATFORM_CFG_AR_RELEASE_REVISION_VERSION))
+#error "AutoSar Version Numbers of Platform.h and Platform_Cfg.h are different"
 #endif
 /* Check if current file and Platform_Cfg header file are of the same Software version */
-#if ((CDD_PLATFORM_SW_MAJOR_VERSION != CDD_PLATFORM_CFG_SW_MAJOR_VERSION) || \
-     (CDD_PLATFORM_SW_MINOR_VERSION != CDD_PLATFORM_CFG_SW_MINOR_VERSION) || \
-     (CDD_PLATFORM_SW_PATCH_VERSION != CDD_PLATFORM_CFG_SW_PATCH_VERSION) \
-    )
-    #error "Software Version Numbers of Platform.h and Platform_Cfg.h are different"
+#if ((CDD_PLATFORM_SW_MAJOR_VERSION != CDD_PLATFORM_CFG_SW_MAJOR_VERSION) ||                       \
+     (CDD_PLATFORM_SW_MINOR_VERSION != CDD_PLATFORM_CFG_SW_MINOR_VERSION) ||                       \
+     (CDD_PLATFORM_SW_PATCH_VERSION != CDD_PLATFORM_CFG_SW_PATCH_VERSION))
+#error "Software Version Numbers of Platform.h and Platform_Cfg.h are different"
 #endif
 
 /* Check if current file and Platform_Iwp header file are of the same vendor */
 #if (CDD_PLATFORM_VENDOR_ID != CDD_PLATFORM_IPW_VENDOR_ID)
-    #error "Platform.h and Platform_Iwp.h have different vendor ids"
+#error "Platform.h and Platform_Iwp.h have different vendor ids"
 #endif
 /* Check if current file and Platform_Cfg header file are of the same Autosar version */
-#if ((CDD_PLATFORM_AR_RELEASE_MAJOR_VERSION    != CDD_PLATFORM_IPW_AR_RELEASE_MAJOR_VERSION) || \
-     (CDD_PLATFORM_AR_RELEASE_MINOR_VERSION    != CDD_PLATFORM_IPW_AR_RELEASE_MINOR_VERSION) || \
-     (CDD_PLATFORM_AR_RELEASE_REVISION_VERSION != CDD_PLATFORM_IPW_AR_RELEASE_REVISION_VERSION) \
-    )
-    #error "AutoSar Version Numbers of Platform.h and Platform_Ipw.h are different"
+#if ((CDD_PLATFORM_AR_RELEASE_MAJOR_VERSION != CDD_PLATFORM_IPW_AR_RELEASE_MAJOR_VERSION) ||       \
+     (CDD_PLATFORM_AR_RELEASE_MINOR_VERSION != CDD_PLATFORM_IPW_AR_RELEASE_MINOR_VERSION) ||       \
+     (CDD_PLATFORM_AR_RELEASE_REVISION_VERSION != CDD_PLATFORM_IPW_AR_RELEASE_REVISION_VERSION))
+#error "AutoSar Version Numbers of Platform.h and Platform_Ipw.h are different"
 #endif
 /* Check if current file and Platform_Cfg header file are of the same Software version */
-#if ((CDD_PLATFORM_SW_MAJOR_VERSION != CDD_PLATFORM_IPW_SW_MAJOR_VERSION) || \
-     (CDD_PLATFORM_SW_MINOR_VERSION != CDD_PLATFORM_IPW_SW_MINOR_VERSION) || \
-     (CDD_PLATFORM_SW_PATCH_VERSION != CDD_PLATFORM_IPW_SW_PATCH_VERSION) \
-    )
-    #error "Software Version Numbers of Platform.h and Platform_Ipw.h are different"
+#if ((CDD_PLATFORM_SW_MAJOR_VERSION != CDD_PLATFORM_IPW_SW_MAJOR_VERSION) ||                       \
+     (CDD_PLATFORM_SW_MINOR_VERSION != CDD_PLATFORM_IPW_SW_MINOR_VERSION) ||                       \
+     (CDD_PLATFORM_SW_PATCH_VERSION != CDD_PLATFORM_IPW_SW_PATCH_VERSION))
+#error "Software Version Numbers of Platform.h and Platform_Ipw.h are different"
 #endif
 /*==================================================================================================
 *                                      FUNCTION PROTOTYPES
@@ -99,7 +95,6 @@ extern "C" {
 
 #define PLATFORM_START_SEC_CODE
 #include "Platform_MemMap.h"
-
 
 /**
  * @brief         Initializes the paltform settings based on user configuration.
@@ -114,10 +109,10 @@ extern "C" {
  * @api
  *
  * */
-void Platform_Init(const Platform_ConfigType *pConfig);
+void Platform_Init(const Platform_ConfigType* pConfig);
 
-#ifdef  PLATFORM_ENABLE_INT_CTRL
-#if  (PLATFORM_ENABLE_INT_CTRL == STD_ON)
+#ifdef PLATFORM_ENABLE_INT_CTRL
+#if (PLATFORM_ENABLE_INT_CTRL == STD_ON)
 /**
  * @brief         Configures (enables/disables) an interrupt request.
  *
@@ -159,7 +154,7 @@ Std_ReturnType Platform_SetIrqPriority(IRQn_Type eIrqNumber, uint8 u8Priority);
  * @api
  *
  * */
-Std_ReturnType Platform_GetIrqPriority(IRQn_Type eIrqNumber, uint8 * u8Priority);
+Std_ReturnType Platform_GetIrqPriority(IRQn_Type eIrqNumber, uint8* u8Priority);
 
 /**
  * @brief         Installs a new handler for an interrupt request.
@@ -185,13 +180,8 @@ Std_ReturnType Platform_InstallIrqHandler(IRQn_Type eIrqNumber,
 #endif /* PLATFORM_ENABLE_INT_CTRL == STD_ON */
 #endif /* PLATFORM_ENABLE_INT_CTRL*/
 
-
-
-
-
-
 #if (PLATFORM_ENABLE_MPU == STD_ON)
- /**
+/**
  * @brief         Configures the region selected by u8RegionNum with the data from pUserConfigPtr
  *
  * @details       This function is Reentrant
@@ -205,7 +195,8 @@ Std_ReturnType Platform_InstallIrqHandler(IRQn_Type eIrqNumber,
  * @pre
  *
  * */
-void Platform_Mpu_SetRegionConfig(uint8 u8RegionNum, const Platform_Mpu_RegionConfigType * const pUserConfigPtr);
+void Platform_Mpu_SetRegionConfig(uint8 u8RegionNum,
+                                  const Platform_Mpu_RegionConfigType* const pUserConfigPtr);
 
 /**
  * @brief         Enables or disabled a specific region
@@ -238,11 +229,9 @@ void Platform_Mpu_EnableRegion(uint8 u8RegionNum, boolean bEnable);
  * @pre
  *
  * */
-void Platform_Mpu_SetAccessMode(uint8 u8RegionNum,
-                          Platform_Mpu_MasterType eMaster,
-                          Platform_Mpu_SupervisorAccessModeType eSupervisorMode,
-                          Platform_Mpu_UserAccessModeType eUserMode
-                         );
+void Platform_Mpu_SetAccessMode(uint8 u8RegionNum, Platform_Mpu_MasterType eMaster,
+                                Platform_Mpu_SupervisorAccessModeType eSupervisorMode,
+                                Platform_Mpu_UserAccessModeType eUserMode);
 
 /**
  * @brief         Retrieve error details
@@ -257,10 +246,9 @@ void Platform_Mpu_SetAccessMode(uint8 u8RegionNum,
  * @pre
  *
  * */
-Std_ReturnType Platform_Mpu_GetErrorDetails(Platform_Mpu_ErrorDetailsType * pErrorDetails);
+Std_ReturnType Platform_Mpu_GetErrorDetails(Platform_Mpu_ErrorDetailsType* pErrorDetails);
 
 #endif /* #if (STD_ON == PLATFORM_ENABLE_MPU)  */
-
 
 #define PLATFORM_STOP_SEC_CODE
 #include "Platform_MemMap.h"

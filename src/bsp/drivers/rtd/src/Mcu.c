@@ -1,7 +1,7 @@
 /*==================================================================================================
 *   Project              : RTD AUTOSAR 4.7
 *   Platform             : CORTEXM
-*   Peripheral           : 
+*   Peripheral           :
 *   Dependencies         : none
 *
 *   Autosar Version      : 4.7.0
@@ -12,30 +12,29 @@
 *
 *   Copyright 2020-2025 NXP
 *
-*   NXP Confidential and Proprietary. This software is owned or controlled by NXP and may only be 
-*   used strictly in accordance with the applicable license terms.  By expressly 
-*   accepting such terms or by downloading, installing, activating and/or otherwise 
-*   using the software, you are agreeing that you have read, and that you agree to 
-*   comply with and are bound by, such license terms.  If you do not agree to be 
+*   NXP Confidential and Proprietary. This software is owned or controlled by NXP and may only be
+*   used strictly in accordance with the applicable license terms.  By expressly
+*   accepting such terms or by downloading, installing, activating and/or otherwise
+*   using the software, you are agreeing that you have read, and that you agree to
+*   comply with and are bound by, such license terms.  If you do not agree to be
 *   bound by the applicable license terms, then you may not retain, install,
 *   activate or otherwise use the software.
 ==================================================================================================*/
 /**
-*   @file       Mcu.c
-*   @implements Mcu.c_Artifact
-*   @version    3.0.0
-*
-*   @brief      AUTOSAR Mcu - Implements the AUTOSAR MCU driver functionality.
-*   @details    Implements the AUTOSAR MCU driver. All the API functions are described by AUTOSAR
-*
-*   @addtogroup MCU_DRIVER Mcu Driver
-*   @{
-*/
+ *   @file       Mcu.c
+ *   @implements Mcu.c_Artifact
+ *   @version    3.0.0
+ *
+ *   @brief      AUTOSAR Mcu - Implements the AUTOSAR MCU driver functionality.
+ *   @details    Implements the AUTOSAR MCU driver. All the API functions are described by AUTOSAR
+ *
+ *   @addtogroup MCU_DRIVER Mcu Driver
+ *   @{
+ */
 
 #ifdef __cplusplus
-extern "C"{
+extern "C" {
 #endif
-
 
 /*==================================================================================================
 *                                        INCLUDE FILES
@@ -46,28 +45,28 @@ extern "C"{
 #include "Mcal.h"
 
 /**
-* @brief Mcu.c shall include Mcu.h
-*/
+ * @brief Mcu.c shall include Mcu.h
+ */
 #include "Mcu.h"
 
 /* Get the prototypes of IPW functions. */
 #include "Mcu_Ipw.h"
 
 #if (MCU_DEV_ERROR_DETECT == STD_ON)
-    #include "Det.h"
+#include "Det.h"
 #endif /* (MCU_DEV_ERROR_DETECT == STD_ON) */
 
 /*==================================================================================================
 *                               SOURCE FILE VERSION INFORMATION
 ==================================================================================================*/
 
-#define MCU_VENDOR_ID_C                      43
-#define MCU_AR_RELEASE_MAJOR_VERSION_C       4
-#define MCU_AR_RELEASE_MINOR_VERSION_C       7
-#define MCU_AR_RELEASE_REVISION_VERSION_C    0
-#define MCU_SW_MAJOR_VERSION_C               3
-#define MCU_SW_MINOR_VERSION_C               0
-#define MCU_SW_PATCH_VERSION_C               0
+#define MCU_VENDOR_ID_C 43
+#define MCU_AR_RELEASE_MAJOR_VERSION_C 4
+#define MCU_AR_RELEASE_MINOR_VERSION_C 7
+#define MCU_AR_RELEASE_REVISION_VERSION_C 0
+#define MCU_SW_MAJOR_VERSION_C 3
+#define MCU_SW_MINOR_VERSION_C 0
+#define MCU_SW_PATCH_VERSION_C 0
 
 /*==================================================================================================
 *                                     FILE VERSION CHECKS
@@ -75,86 +74,78 @@ extern "C"{
 #if (MCU_DEV_ERROR_DETECT == STD_ON)
 #ifndef DISABLE_MCAL_INTERMODULE_ASR_CHECK
 /* Check if Mcu.c file and Det.h file are of the same Autosar version */
-#if ((MCU_AR_RELEASE_MAJOR_VERSION_C != DET_AR_RELEASE_MAJOR_VERSION) || \
+#if ((MCU_AR_RELEASE_MAJOR_VERSION_C != DET_AR_RELEASE_MAJOR_VERSION) ||                           \
      (MCU_AR_RELEASE_MINOR_VERSION_C != DET_AR_RELEASE_MINOR_VERSION))
-    #error "AutoSar Version Numbers of Mcu.c and Det.h are different"
+#error "AutoSar Version Numbers of Mcu.c and Det.h are different"
 #endif
 #endif
 #endif /* (MCU_DEV_ERROR_DETECT == STD_ON) */
 
 #ifndef DISABLE_MCAL_INTERMODULE_ASR_CHECK
 /* Check if Mcu.c file and Mcal.h file are of the same Autosar version */
-#if ((MCU_AR_RELEASE_MAJOR_VERSION_C != MCAL_AR_RELEASE_MAJOR_VERSION) || \
+#if ((MCU_AR_RELEASE_MAJOR_VERSION_C != MCAL_AR_RELEASE_MAJOR_VERSION) ||                          \
      (MCU_AR_RELEASE_MINOR_VERSION_C != MCAL_AR_RELEASE_MINOR_VERSION))
-    #error "AutoSar Version Numbers of Mcu.c and Mcal.h are different"
+#error "AutoSar Version Numbers of Mcu.c and Mcal.h are different"
 #endif
 #endif
 
 /* Check if Mcu.c file and Mcu.h file are of the same vendor */
 #if (MCU_VENDOR_ID_C != MCU_VENDOR_ID)
-    #error "Mcu.c and Mcu.h have different vendor ids"
+#error "Mcu.c and Mcu.h have different vendor ids"
 #endif
 
 /* Check if Mcu.c file and Mcu.h file are of the same Autosar version */
-#if ((MCU_AR_RELEASE_MAJOR_VERSION_C != MCU_AR_RELEASE_MAJOR_VERSION) || \
-     (MCU_AR_RELEASE_MINOR_VERSION_C != MCU_AR_RELEASE_MINOR_VERSION) || \
-     (MCU_AR_RELEASE_REVISION_VERSION_C != MCU_AR_RELEASE_REVISION_VERSION) \
-    )
-    #error "AutoSar Version Numbers of Mcu.c and Mcu.h are different"
+#if ((MCU_AR_RELEASE_MAJOR_VERSION_C != MCU_AR_RELEASE_MAJOR_VERSION) ||                           \
+     (MCU_AR_RELEASE_MINOR_VERSION_C != MCU_AR_RELEASE_MINOR_VERSION) ||                           \
+     (MCU_AR_RELEASE_REVISION_VERSION_C != MCU_AR_RELEASE_REVISION_VERSION))
+#error "AutoSar Version Numbers of Mcu.c and Mcu.h are different"
 #endif
 
 /* Check if Mcu.c file and Mcu.h file are of the same Software version */
-#if ((MCU_SW_MAJOR_VERSION_C != MCU_SW_MAJOR_VERSION) || \
-     (MCU_SW_MINOR_VERSION_C != MCU_SW_MINOR_VERSION) || \
-     (MCU_SW_PATCH_VERSION_C != MCU_SW_PATCH_VERSION) \
-    )
-    #error "Software Version Numbers of Mcu.c and Mcu.h are different"
+#if ((MCU_SW_MAJOR_VERSION_C != MCU_SW_MAJOR_VERSION) ||                                           \
+     (MCU_SW_MINOR_VERSION_C != MCU_SW_MINOR_VERSION) ||                                           \
+     (MCU_SW_PATCH_VERSION_C != MCU_SW_PATCH_VERSION))
+#error "Software Version Numbers of Mcu.c and Mcu.h are different"
 #endif
 
 /* Check if Mcu.c file and Mcu_Ipw.h file are of the same vendor */
 #if (MCU_VENDOR_ID_C != MCU_IPW_VENDOR_ID)
-    #error "Mcu.c and Mcu_Ipw.h have different vendor ids"
+#error "Mcu.c and Mcu_Ipw.h have different vendor ids"
 #endif
 
 /* Check if Mcu.c file and Mcu_Ipw.h file are of the same Autosar version */
-#if ((MCU_AR_RELEASE_MAJOR_VERSION_C != MCU_IPW_AR_RELEASE_MAJOR_VERSION) || \
-     (MCU_AR_RELEASE_MINOR_VERSION_C != MCU_IPW_AR_RELEASE_MINOR_VERSION) || \
-     (MCU_AR_RELEASE_REVISION_VERSION_C != MCU_IPW_AR_RELEASE_REVISION_VERSION) \
-    )
-    #error "AutoSar Version Numbers of Mcu.c and Mcu_Ipw.h are different"
+#if ((MCU_AR_RELEASE_MAJOR_VERSION_C != MCU_IPW_AR_RELEASE_MAJOR_VERSION) ||                       \
+     (MCU_AR_RELEASE_MINOR_VERSION_C != MCU_IPW_AR_RELEASE_MINOR_VERSION) ||                       \
+     (MCU_AR_RELEASE_REVISION_VERSION_C != MCU_IPW_AR_RELEASE_REVISION_VERSION))
+#error "AutoSar Version Numbers of Mcu.c and Mcu_Ipw.h are different"
 #endif
 
 /* Check if Mcu.c file and Mcu_Ipw.h file are of the same Software version */
-#if ((MCU_SW_MAJOR_VERSION_C != MCU_IPW_SW_MAJOR_VERSION) || \
-     (MCU_SW_MINOR_VERSION_C != MCU_IPW_SW_MINOR_VERSION) || \
-     (MCU_SW_PATCH_VERSION_C != MCU_IPW_SW_PATCH_VERSION) \
-    )
-    #error "Software Version Numbers of Mcu.c and Mcu_Ipw.h are different"
+#if ((MCU_SW_MAJOR_VERSION_C != MCU_IPW_SW_MAJOR_VERSION) ||                                       \
+     (MCU_SW_MINOR_VERSION_C != MCU_IPW_SW_MINOR_VERSION) ||                                       \
+     (MCU_SW_PATCH_VERSION_C != MCU_IPW_SW_PATCH_VERSION))
+#error "Software Version Numbers of Mcu.c and Mcu_Ipw.h are different"
 #endif
 /*==================================================================================================
 *                          LOCAL TYPEDEFS (STRUCTURES, UNIONS, ENUMS)
 ==================================================================================================*/
 /**
-* @brief  This enumerated type contains the Mcu driver's possible states.
-*/
-typedef enum
-{
-    MCU_UNINIT = 0x3U,  /**< @brief The Mcu driver is uninitialized.         */
-    MCU_IDLE   = 0xCU,  /**< @brief = 0xE1 The Mcu driver is currently idle. */
-    MCU_BUSY   = 0xAU   /**< @brief = 0xD2 The Mcu driver is currently busy. */
+ * @brief  This enumerated type contains the Mcu driver's possible states.
+ */
+typedef enum {
+    MCU_UNINIT = 0x3U, /**< @brief The Mcu driver is uninitialized.         */
+    MCU_IDLE = 0xCU,   /**< @brief = 0xE1 The Mcu driver is currently idle. */
+    MCU_BUSY = 0xAU    /**< @brief = 0xD2 The Mcu driver is currently busy. */
 
 } Mcu_StatusType;
-
 
 /*==================================================================================================
 *                                       LOCAL MACROS
 ==================================================================================================*/
 
-
 /*==================================================================================================
 *                                       LOCAL CONSTANTS
 ==================================================================================================*/
-
 
 /*==================================================================================================
 *                                       LOCAL VARIABLES
@@ -165,21 +156,21 @@ typedef enum
 
 #if (MCU_INIT_CLOCK == STD_ON)
 /**
-* @brief            Array for saving the Clock configuration Ids.
-*/
+ * @brief            Array for saving the Clock configuration Ids.
+ */
 static uint8 Mcu_au8ClockConfigIds[MCU_MAX_CLKCONFIGS];
 #endif /* (MCU_INIT_CLOCK == STD_ON) */
 
 /**
-* @brief            Array for saving the Mode configuration Ids.
-*/
+ * @brief            Array for saving the Mode configuration Ids.
+ */
 static uint8 Mcu_au8ModeConfigIds[MCU_MAX_MODECONFIGS];
 
 #ifndef MCU_MAX_NORAMCONFIGS
 /**
-* @brief            Array for saving the Ram sectors configuration Ids.
-*                   If no RamConfig is defined, remove all usages of this array.
-*/
+ * @brief            Array for saving the Ram sectors configuration Ids.
+ *                   If no RamConfig is defined, remove all usages of this array.
+ */
 static uint8 Mcu_au8RamConfigIds[MCU_MAX_RAMCONFIGS];
 #endif /* ( 0 != MCU_MAX_RAMCONFIGS ) */
 
@@ -187,17 +178,14 @@ static uint8 Mcu_au8RamConfigIds[MCU_MAX_RAMCONFIGS];
 
 #include "Mcu_MemMap.h"
 
-
 #define MCU_START_SEC_VAR_INIT_UNSPECIFIED
 
 #include "Mcu_MemMap.h"
 
-
 /**
-*  @brief Variable that indicates the state of the driver.
-*/
+ *  @brief Variable that indicates the state of the driver.
+ */
 static Mcu_StatusType Mcu_eStatus = MCU_UNINIT;
-
 
 #define MCU_STOP_SEC_VAR_INIT_UNSPECIFIED
 
@@ -208,14 +196,14 @@ static Mcu_StatusType Mcu_eStatus = MCU_UNINIT;
 #include "Mcu_MemMap.h"
 
 /**
-* @brief            Local copy of the pointer to the configuration data.
-*/
-#if ((defined(MCU_CMU_ERROR_ISR_USED) && (MCU_CMU_ERROR_ISR_USED == STD_ON)) || (defined(MCU_CGU_DETECT_ISR_USED) && (MCU_CGU_DETECT_ISR_USED == STD_ON)))
-const Mcu_ConfigType * Mcu_pConfigPtr;
+ * @brief            Local copy of the pointer to the configuration data.
+ */
+#if ((defined(MCU_CMU_ERROR_ISR_USED) && (MCU_CMU_ERROR_ISR_USED == STD_ON)) ||                    \
+     (defined(MCU_CGU_DETECT_ISR_USED) && (MCU_CGU_DETECT_ISR_USED == STD_ON)))
+const Mcu_ConfigType* Mcu_pConfigPtr;
 #else
-static const Mcu_ConfigType * Mcu_pConfigPtr;
+static const Mcu_ConfigType* Mcu_pConfigPtr;
 #endif
-
 
 #define MCU_STOP_SEC_VAR_CLEARED_UNSPECIFIED
 
@@ -224,7 +212,6 @@ static const Mcu_ConfigType * Mcu_pConfigPtr;
 *                                       GLOBAL CONSTANTS
 ==================================================================================================*/
 
-
 /*==================================================================================================
 *                                       GLOBAL VARIABLES
 ==================================================================================================*/
@@ -232,16 +219,13 @@ static const Mcu_ConfigType * Mcu_pConfigPtr;
 
 #include "Mcu_MemMap.h"
 
-
 #if (MCU_DISABLE_DEM_REPORT_ERROR_STATUS == STD_OFF)
-const Mcu_DemConfigType * Mcu_pDemCfgPtr;
+const Mcu_DemConfigType* Mcu_pDemCfgPtr;
 #endif /* (MCU_DISABLE_DEM_REPORT_ERROR_STATUS == STD_OFF) */
-
 
 #define MCU_STOP_SEC_VAR_CLEARED_UNSPECIFIED
 
 #include "Mcu_MemMap.h"
-
 
 /*==================================================================================================
 *                                   LOCAL FUNCTION PROTOTYPES
@@ -250,11 +234,9 @@ const Mcu_DemConfigType * Mcu_pDemCfgPtr;
 
 #include "Mcu_MemMap.h"
 
-
 #if (MCU_PARAM_CHECK == STD_ON)
-static Std_ReturnType Mcu_CheckInit(const Mcu_ConfigType * ConfigPtr);
+static Std_ReturnType Mcu_CheckInit(const Mcu_ConfigType* ConfigPtr);
 #endif /* (MCU_PARAM_CHECK == STD_ON) */
-
 
 #ifndef MCU_MAX_NORAMCONFIGS
 #if (MCU_PARAM_CHECK == STD_ON)
@@ -262,43 +244,36 @@ static Std_ReturnType Mcu_CheckInitRamSection(Mcu_RamSectionType RamSection);
 #endif /* (MCU_PARAM_CHECK == STD_ON) */
 #endif /* ifndef MCU_MAX_NORAMCONFIGS */
 
-
-#if (MCU_INIT_CLOCK  == STD_ON)
+#if (MCU_INIT_CLOCK == STD_ON)
 #if (MCU_PARAM_CHECK == STD_ON)
 static Std_ReturnType Mcu_CheckInitClock(Mcu_ClockType ClockSetting);
 #endif /* (MCU_PARAM_CHECK == STD_ON) */
 #endif /* (MCU_INIT_CLOCK  == STD_ON) */
 
-
 #if (MCU_PARAM_CHECK == STD_ON)
 static Std_ReturnType Mcu_CheckSetMode(Power_Ip_ModeType McuMode);
 #endif /* (MCU_PARAM_CHECK == STD_ON) */
 
-
-#if (MCU_INIT_CLOCK   == STD_ON)
-#if (MCU_NO_PLL       == STD_OFF)
-#if ( MCU_PARAM_CHECK == STD_ON )
+#if (MCU_INIT_CLOCK == STD_ON)
+#if (MCU_NO_PLL == STD_OFF)
+#if (MCU_PARAM_CHECK == STD_ON)
 static Std_ReturnType Mcu_CheckDistributePllClock(void);
 #endif /* (MCU_PARAM_CHECK == STD_ON)  */
 #endif /* (MCU_NO_PLL      == STD_OFF) */
 #endif /* (MCU_INIT_CLOCK  == STD_ON)  */
 
-#if ( \
-      (MCU_PERFORM_RESET_API   == STD_ON) && \
-      (MCU_PARAM_CHECK         == STD_ON)    \
-    )
+#if ((MCU_PERFORM_RESET_API == STD_ON) && (MCU_PARAM_CHECK == STD_ON))
 static Std_ReturnType Mcu_CheckPerformReset(void);
 #endif
 
-
 #if (MCU_VERSION_INFO_API == STD_ON)
-#if (MCU_PARAM_CHECK      == STD_ON)
-static Std_ReturnType Mcu_CheckGetVersionInfo(const Std_VersionInfoType * VersionInfo);
+#if (MCU_PARAM_CHECK == STD_ON)
+static Std_ReturnType Mcu_CheckGetVersionInfo(const Std_VersionInfoType* VersionInfo);
 #endif /* (MCU_PARAM_CHECK == STD_ON) */
 #endif /* (MCU_VERSION_INFO_API == STD_ON) */
 
 #ifdef MCU_DISABLE_CMU_API
-#if ( (MCU_DISABLE_CMU_API == STD_ON) && (MCU_PARAM_CHECK == STD_ON) )
+#if ((MCU_DISABLE_CMU_API == STD_ON) && (MCU_PARAM_CHECK == STD_ON))
 static Std_ReturnType Mcu_CheckDisableCMU(Clock_Ip_NameType ClockName);
 
 #endif /* ( (MCU_DISABLE_CMU_API == STD_ON) && (MCU_PARAM_CHECK == STD_ON) ) */
@@ -309,12 +284,9 @@ static Std_ReturnType Mcu_CheckDisableCMU(Clock_Ip_NameType ClockName);
 static Std_ReturnType Mcu_HLDChecksEntry(uint8 McuServiceID);
 #endif /* (MCU_VALIDATE_GLOBAL_CALL == STD_ON) */
 
-
 #if (MCU_VALIDATE_GLOBAL_CALL == STD_ON)
 /* MCU state check, exit point. */
-static void Mcu_HLDChecksExit(  Std_ReturnType RetStatus,
-                                uint8 McuServiceID
-                              );
+static void Mcu_HLDChecksExit(Std_ReturnType RetStatus, uint8 McuServiceID);
 #endif /* (MCU_VALIDATE_GLOBAL_CALL == STD_ON) */
 
 /*==================================================================================================
@@ -322,10 +294,10 @@ static void Mcu_HLDChecksExit(  Std_ReturnType RetStatus,
 ==================================================================================================*/
 #if (MCU_PARAM_CHECK == STD_ON)
 /**
-* @brief Mcu_CheckInit - checks for Mcu_Init
-* @implements Mcu_CheckInit_Activity
-*/
-static Std_ReturnType Mcu_CheckInit(const Mcu_ConfigType * ConfigPtr)
+ * @brief Mcu_CheckInit - checks for Mcu_Init
+ * @implements Mcu_CheckInit_Activity
+ */
+static Std_ReturnType Mcu_CheckInit(const Mcu_ConfigType* ConfigPtr)
 {
     Std_ReturnType CheckStatus = (Std_ReturnType)E_OK;
 #if defined(MCU_MULTIPARTITION_SUPPORT)
@@ -336,35 +308,35 @@ static Std_ReturnType Mcu_CheckInit(const Mcu_ConfigType * ConfigPtr)
 #endif /* (MCU_MULTIPARTITION_SUPPORT == STD_ON) */
 #endif
 #if (MCU_PRECOMPILE_SUPPORT == STD_OFF)
-    if (NULL_PTR == ConfigPtr)
-    {
+    if (NULL_PTR == ConfigPtr) {
         CheckStatus = (Std_ReturnType)E_NOT_OK;
 
-        (void) Det_ReportError((uint16)MCU_MODULE_ID, MCU_INSTANCE_ID, MCU_INIT_ID, MCU_E_INIT_FAILED);
+        (void)Det_ReportError((uint16)MCU_MODULE_ID, MCU_INSTANCE_ID, MCU_INIT_ID,
+                              MCU_E_INIT_FAILED);
     }
-#else /* MCU_PRECOMPILE_SUPPORT == STD_ON */
-    if (NULL_PTR != ConfigPtr)
-    {
+#else  /* MCU_PRECOMPILE_SUPPORT == STD_ON */
+    if (NULL_PTR != ConfigPtr) {
         CheckStatus = (Std_ReturnType)E_NOT_OK;
 
-        (void) Det_ReportError((uint16)MCU_MODULE_ID, MCU_INSTANCE_ID, MCU_INIT_ID, MCU_E_INIT_FAILED);
+        (void)Det_ReportError((uint16)MCU_MODULE_ID, MCU_INSTANCE_ID, MCU_INIT_ID,
+                              MCU_E_INIT_FAILED);
     }
 #endif /* (MCU_PRECOMPILE_SUPPORT == STD_ON) */
 #if defined(MCU_MULTIPARTITION_SUPPORT)
 #if (MCU_MULTIPARTITION_SUPPORT == STD_ON)
 #if (MCU_PRECOMPILE_SUPPORT == STD_ON)
-    if (u8UserId != (&Mcu_PreCompileConfig)->McuInitPartitionId)
-    {
+    if (u8UserId != (&Mcu_PreCompileConfig)->McuInitPartitionId) {
         CheckStatus = (Std_ReturnType)E_NOT_OK;
 
-        (void) Det_ReportError((uint16)MCU_MODULE_ID, MCU_INSTANCE_ID, MCU_INIT_ID, MCU_E_PARAM_CONFIG);
+        (void)Det_ReportError((uint16)MCU_MODULE_ID, MCU_INSTANCE_ID, MCU_INIT_ID,
+                              MCU_E_PARAM_CONFIG);
     }
 #else
-    if (u8UserId != ConfigPtr->McuInitPartitionId)
-    {
+    if (u8UserId != ConfigPtr->McuInitPartitionId) {
         CheckStatus = (Std_ReturnType)E_NOT_OK;
 
-        (void) Det_ReportError((uint16)MCU_MODULE_ID, MCU_INSTANCE_ID, MCU_INIT_ID, MCU_E_PARAM_CONFIG);
+        (void)Det_ReportError((uint16)MCU_MODULE_ID, MCU_INSTANCE_ID, MCU_INIT_ID,
+                              MCU_E_PARAM_CONFIG);
     }
 #endif /* (MCU_PRECOMPILE_SUPPORT == STD_ON) */
 #endif /* (MCU_MULTIPARTITION_SUPPORT == STD_ON) */
@@ -376,9 +348,9 @@ static Std_ReturnType Mcu_CheckInit(const Mcu_ConfigType * ConfigPtr)
 #ifndef MCU_MAX_NORAMCONFIGS
 #if (MCU_PARAM_CHECK == STD_ON)
 /**
-* @brief Mcu_CheckInitRamSection - checks for Mcu_InitRamSection
-* @implements Mcu_CheckInitRamSection_Activity
-*/
+ * @brief Mcu_CheckInitRamSection - checks for Mcu_InitRamSection
+ * @implements Mcu_CheckInitRamSection_Activity
+ */
 static Std_ReturnType Mcu_CheckInitRamSection(Mcu_RamSectionType RamSection)
 {
     const uint8 RamConfigId = Mcu_au8RamConfigIds[RamSection];
@@ -391,44 +363,43 @@ static Std_ReturnType Mcu_CheckInitRamSection(Mcu_RamSectionType RamSection)
 #endif /* (MCU_MULTIPARTITION_SUPPORT == STD_ON) */
 #endif
     /* Check if the Ram section's ID is in range. */
-    if (RamSection >= Mcu_pConfigPtr->NoRamConfigs)
-    {
+    if (RamSection >= Mcu_pConfigPtr->NoRamConfigs) {
         CheckStatus = (Std_ReturnType)E_NOT_OK;
 
-        (void) Det_ReportError((uint16)MCU_MODULE_ID, MCU_INSTANCE_ID, MCU_INITRAMSECTION_ID, MCU_E_PARAM_RAMSECTION);
-    }
-    else
-    {
+        (void)Det_ReportError((uint16)MCU_MODULE_ID, MCU_INSTANCE_ID, MCU_INITRAMSECTION_ID,
+                              MCU_E_PARAM_RAMSECTION);
+    } else {
         /* Check if Ram memory configuration is valid. */
-        if (NULL_PTR == Mcu_pConfigPtr->RamConfigArrayPtr)
-        {
+        if (NULL_PTR == Mcu_pConfigPtr->RamConfigArrayPtr) {
             CheckStatus = (Std_ReturnType)E_NOT_OK;
 
-            (void) Det_ReportError((uint16)MCU_MODULE_ID, MCU_INSTANCE_ID, MCU_INITRAMSECTION_ID, MCU_E_PARAM_RAMSECTION);
+            (void)Det_ReportError((uint16)MCU_MODULE_ID, MCU_INSTANCE_ID, MCU_INITRAMSECTION_ID,
+                                  MCU_E_PARAM_RAMSECTION);
         }
         /* Check if Ram write size is valid. */
-        else
-        {
-            if (
-                    ( (Mcu_RamWriteSizeType)1U != ((*Mcu_pConfigPtr->RamConfigArrayPtr)[RamConfigId]).RamWriteSize ) &&
-                    ( (Mcu_RamWriteSizeType)2U != ((*Mcu_pConfigPtr->RamConfigArrayPtr)[RamConfigId]).RamWriteSize ) &&
-                    ( (Mcu_RamWriteSizeType)4U != ((*Mcu_pConfigPtr->RamConfigArrayPtr)[RamConfigId]).RamWriteSize ) &&
-                    ( (Mcu_RamWriteSizeType)8U != ((*Mcu_pConfigPtr->RamConfigArrayPtr)[RamConfigId]).RamWriteSize )
-               )
-            {
+        else {
+            if (((Mcu_RamWriteSizeType)1U !=
+                 ((*Mcu_pConfigPtr->RamConfigArrayPtr)[RamConfigId]).RamWriteSize) &&
+                ((Mcu_RamWriteSizeType)2U !=
+                 ((*Mcu_pConfigPtr->RamConfigArrayPtr)[RamConfigId]).RamWriteSize) &&
+                ((Mcu_RamWriteSizeType)4U !=
+                 ((*Mcu_pConfigPtr->RamConfigArrayPtr)[RamConfigId]).RamWriteSize) &&
+                ((Mcu_RamWriteSizeType)8U !=
+                 ((*Mcu_pConfigPtr->RamConfigArrayPtr)[RamConfigId]).RamWriteSize)) {
                 CheckStatus = (Std_ReturnType)E_NOT_OK;
 
-                (void) Det_ReportError((uint16)MCU_MODULE_ID, MCU_INSTANCE_ID, MCU_INITRAMSECTION_ID, MCU_E_PARAM_RAMSECTION);
+                (void)Det_ReportError((uint16)MCU_MODULE_ID, MCU_INSTANCE_ID, MCU_INITRAMSECTION_ID,
+                                      MCU_E_PARAM_RAMSECTION);
             }
         }
     }
 #if defined(MCU_MULTIPARTITION_SUPPORT)
 #if (MCU_MULTIPARTITION_SUPPORT == STD_ON)
-    if ( u8UserId != ((*Mcu_pConfigPtr->RamConfigArrayPtr)[RamConfigId]).RamPartitionId )
-    {
+    if (u8UserId != ((*Mcu_pConfigPtr->RamConfigArrayPtr)[RamConfigId]).RamPartitionId) {
         CheckStatus = (Std_ReturnType)E_NOT_OK;
 
-        (void) Det_ReportError((uint16)MCU_MODULE_ID, MCU_INSTANCE_ID, MCU_INITRAMSECTION_ID, MCU_E_PARAM_CONFIG);
+        (void)Det_ReportError((uint16)MCU_MODULE_ID, MCU_INSTANCE_ID, MCU_INITRAMSECTION_ID,
+                              MCU_E_PARAM_CONFIG);
     }
 #endif /* (MCU_MULTIPARTITION_SUPPORT == STD_ON) */
 #endif
@@ -437,38 +408,37 @@ static Std_ReturnType Mcu_CheckInitRamSection(Mcu_RamSectionType RamSection)
 #endif /* (MCU_PARAM_CHECK == STD_ON) */
 #endif /* ifndef MCU_MAX_NORAMCONFIGS */
 
-
-#if (MCU_INIT_CLOCK  == STD_ON)
+#if (MCU_INIT_CLOCK == STD_ON)
 #if (MCU_PARAM_CHECK == STD_ON)
 /**
-* @brief Mcu_CheckInitClock - checks for Mcu_InitClock
-* @implements Mcu_CheckInitClock_Activity
-*/
+ * @brief Mcu_CheckInitClock - checks for Mcu_InitClock
+ * @implements Mcu_CheckInitClock_Activity
+ */
 static Std_ReturnType Mcu_CheckInitClock(Mcu_ClockType ClockSetting)
 {
     Std_ReturnType CheckStatus = (Std_ReturnType)E_OK;
 #if defined(MCU_MULTIPARTITION_SUPPORT)
 #if (MCU_MULTIPARTITION_SUPPORT == STD_ON)
-    const uint8 ClockConfigId =  Mcu_au8ClockConfigIds[ClockSetting];
+    const uint8 ClockConfigId = Mcu_au8ClockConfigIds[ClockSetting];
     uint8 u8UserId;
 
     u8UserId = (uint8)Mcu_GetPartitionID();
 #endif /* (MCU_MULTIPARTITION_SUPPORT == STD_ON) */
 #endif
 
-    if (ClockSetting >= Mcu_pConfigPtr->NoClkConfigs)
-    {
+    if (ClockSetting >= Mcu_pConfigPtr->NoClkConfigs) {
         CheckStatus = (Std_ReturnType)E_NOT_OK;
 
-        (void) Det_ReportError((uint16)MCU_MODULE_ID, MCU_INSTANCE_ID, MCU_INITCLOCK_ID, MCU_E_PARAM_CLOCK);
+        (void)Det_ReportError((uint16)MCU_MODULE_ID, MCU_INSTANCE_ID, MCU_INITCLOCK_ID,
+                              MCU_E_PARAM_CLOCK);
     }
 #if defined(MCU_MULTIPARTITION_SUPPORT)
 #if (MCU_MULTIPARTITION_SUPPORT == STD_ON)
-    if ( u8UserId != ((*Mcu_pConfigPtr->ClockConfigArrayPtr)[ClockConfigId]).ClockPartitionId )
-    {
+    if (u8UserId != ((*Mcu_pConfigPtr->ClockConfigArrayPtr)[ClockConfigId]).ClockPartitionId) {
         CheckStatus = (Std_ReturnType)E_NOT_OK;
 
-        (void) Det_ReportError((uint16)MCU_MODULE_ID, MCU_INSTANCE_ID, MCU_INITCLOCK_ID, MCU_E_PARAM_CONFIG);
+        (void)Det_ReportError((uint16)MCU_MODULE_ID, MCU_INSTANCE_ID, MCU_INITCLOCK_ID,
+                              MCU_E_PARAM_CONFIG);
     }
 #endif /* (MCU_MULTIPARTITION_SUPPORT == STD_ON) */
 #endif
@@ -477,12 +447,11 @@ static Std_ReturnType Mcu_CheckInitClock(Mcu_ClockType ClockSetting)
 #endif /* (MCU_PARAM_CHECK == STD_ON) */
 #endif /* (MCU_INIT_CLOCK  == STD_ON) */
 
-
 #if (MCU_PARAM_CHECK == STD_ON)
 /**
-* @brief Mcu_CheckSetMode - checks for Mcu_SetMode
-* @implements Mcu_CheckSetMode_Activity
-*/
+ * @brief Mcu_CheckSetMode - checks for Mcu_SetMode
+ * @implements Mcu_CheckSetMode_Activity
+ */
 static Std_ReturnType Mcu_CheckSetMode(Power_Ip_ModeType McuMode)
 {
     Std_ReturnType CheckStatus = (Std_ReturnType)E_OK;
@@ -495,19 +464,19 @@ static Std_ReturnType Mcu_CheckSetMode(Power_Ip_ModeType McuMode)
 #endif /* (MCU_MULTIPARTITION_SUPPORT == STD_ON) */
 #endif
 
-    if (McuMode >= Mcu_pConfigPtr->NoModeConfigs)
-    {
+    if (McuMode >= Mcu_pConfigPtr->NoModeConfigs) {
         CheckStatus = (Std_ReturnType)E_NOT_OK;
 
-        (void) Det_ReportError((uint16)MCU_MODULE_ID, MCU_INSTANCE_ID, MCU_SETMODE_ID, MCU_E_PARAM_MODE);
+        (void)Det_ReportError((uint16)MCU_MODULE_ID, MCU_INSTANCE_ID, MCU_SETMODE_ID,
+                              MCU_E_PARAM_MODE);
     }
 #if defined(MCU_MULTIPARTITION_SUPPORT)
 #if (MCU_MULTIPARTITION_SUPPORT == STD_ON)
-    if ( u8UserId != ((*Mcu_pConfigPtr->ModeConfigArrayPtr)[McuModeId]).PowerPartitionId )
-    {
+    if (u8UserId != ((*Mcu_pConfigPtr->ModeConfigArrayPtr)[McuModeId]).PowerPartitionId) {
         CheckStatus = (Std_ReturnType)E_NOT_OK;
 
-        (void) Det_ReportError((uint16)MCU_MODULE_ID, MCU_INSTANCE_ID, MCU_SETMODE_ID, MCU_E_PARAM_CONFIG);
+        (void)Det_ReportError((uint16)MCU_MODULE_ID, MCU_INSTANCE_ID, MCU_SETMODE_ID,
+                              MCU_E_PARAM_CONFIG);
     }
 #endif /* (MCU_MULTIPARTITION_SUPPORT == STD_ON) */
 #endif
@@ -515,23 +484,22 @@ static Std_ReturnType Mcu_CheckSetMode(Power_Ip_ModeType McuMode)
 }
 #endif /* (MCU_PARAM_CHECK == STD_ON) */
 
-
-#if (MCU_INIT_CLOCK  == STD_ON)
-#if (MCU_NO_PLL      == STD_OFF)
+#if (MCU_INIT_CLOCK == STD_ON)
+#if (MCU_NO_PLL == STD_OFF)
 #if (MCU_PARAM_CHECK == STD_ON)
 /**
-* @brief Mcu_CheckDistributePllClock - checks for Mcu_DistributePllClock
-* @implements Mcu_CheckDistributePllClock_Activity
-*/
+ * @brief Mcu_CheckDistributePllClock - checks for Mcu_DistributePllClock
+ * @implements Mcu_CheckDistributePllClock_Activity
+ */
 static Std_ReturnType Mcu_CheckDistributePllClock(void)
 {
     Std_ReturnType CheckStatus = (Std_ReturnType)E_OK;
 
-    if ( MCU_PLL_LOCKED != Mcu_Ipw_GetPllStatus() )
-    {
+    if (MCU_PLL_LOCKED != Mcu_Ipw_GetPllStatus()) {
         CheckStatus = (Std_ReturnType)E_NOT_OK;
 
-        (void) Det_ReportError((uint16)MCU_MODULE_ID, MCU_INSTANCE_ID, MCU_DISTRIBUTEPLLCLOCK_ID, MCU_E_PLL_NOT_LOCKED);
+        (void)Det_ReportError((uint16)MCU_MODULE_ID, MCU_INSTANCE_ID, MCU_DISTRIBUTEPLLCLOCK_ID,
+                              MCU_E_PLL_NOT_LOCKED);
     }
 
     return CheckStatus;
@@ -540,15 +508,11 @@ static Std_ReturnType Mcu_CheckDistributePllClock(void)
 #endif /* (MCU_NO_PLL      == STD_OFF) */
 #endif /* (MCU_INIT_CLOCK  == STD_ON)  */
 
-
-#if ( \
-     (MCU_PERFORM_RESET_API   == STD_ON) && \
-     (MCU_PARAM_CHECK         == STD_ON)    \
-    )
+#if ((MCU_PERFORM_RESET_API == STD_ON) && (MCU_PARAM_CHECK == STD_ON))
 /**
-* @brief Mcu_CheckPerformReset - checks for Mcu_PerformReset
-* @implements Mcu_CheckPerformReset_Activity
-*/
+ * @brief Mcu_CheckPerformReset - checks for Mcu_PerformReset
+ * @implements Mcu_CheckPerformReset_Activity
+ */
 static Std_ReturnType Mcu_CheckPerformReset(void)
 {
     Std_ReturnType CheckStatus = (Std_ReturnType)E_OK;
@@ -557,22 +521,21 @@ static Std_ReturnType Mcu_CheckPerformReset(void)
 }
 #endif /* ( (MCU_PERFORM_RESET_API == STD_ON) && (MCU_PARAM_CHECK == STD_ON) ) */
 
-
 #if (MCU_VERSION_INFO_API == STD_ON)
-#if (MCU_PARAM_CHECK      == STD_ON)
+#if (MCU_PARAM_CHECK == STD_ON)
 /**
-* @brief Mcu_CheckGetVersionInfo - checks for Mcu_GetVersionInfo
-* @implements Mcu_CheckGetVersionInfo_Activity
-*/
-static Std_ReturnType Mcu_CheckGetVersionInfo(const Std_VersionInfoType * VersionInfo)
+ * @brief Mcu_CheckGetVersionInfo - checks for Mcu_GetVersionInfo
+ * @implements Mcu_CheckGetVersionInfo_Activity
+ */
+static Std_ReturnType Mcu_CheckGetVersionInfo(const Std_VersionInfoType* VersionInfo)
 {
     Std_ReturnType CheckStatus = (Std_ReturnType)E_OK;
 
-    if (NULL_PTR == VersionInfo)
-    {
+    if (NULL_PTR == VersionInfo) {
         CheckStatus = (Std_ReturnType)E_NOT_OK;
 
-        (void)Det_ReportError((uint16)MCU_MODULE_ID, MCU_INSTANCE_ID, MCU_GETVERSIONINFO_ID, MCU_E_PARAM_POINTER);
+        (void)Det_ReportError((uint16)MCU_MODULE_ID, MCU_INSTANCE_ID, MCU_GETVERSIONINFO_ID,
+                              MCU_E_PARAM_POINTER);
     }
 
     return CheckStatus;
@@ -581,19 +544,19 @@ static Std_ReturnType Mcu_CheckGetVersionInfo(const Std_VersionInfoType * Versio
 #endif /* (MCU_VERSION_INFO_API == STD_ON) */
 
 #ifdef MCU_DISABLE_CMU_API
-#if ( (MCU_DISABLE_CMU_API == STD_ON) && (MCU_PARAM_CHECK == STD_ON) )
+#if ((MCU_DISABLE_CMU_API == STD_ON) && (MCU_PARAM_CHECK == STD_ON))
 /**
-* @brief Mcu_CheckDisableCMU - checks for Mcu_Disable_CMU
-*/
+ * @brief Mcu_CheckDisableCMU - checks for Mcu_Disable_CMU
+ */
 static Std_ReturnType Mcu_CheckDisableCMU(Clock_Ip_NameType ClockName)
 {
     Std_ReturnType CheckStatus = (Std_ReturnType)E_OK;
 
-    if (((uint8)ClockName) >= ((uint8)RESERVED_CLK))
-    {
+    if (((uint8)ClockName) >= ((uint8)RESERVED_CLK)) {
         CheckStatus = (Std_ReturnType)E_NOT_OK;
 
-        (void) Det_ReportError((uint16)MCU_MODULE_ID, MCU_INSTANCE_ID, MCU_DISABLECMU_ID, MCU_E_CMU_INDEX_OUT_OF_RANGE);
+        (void)Det_ReportError((uint16)MCU_MODULE_ID, MCU_INSTANCE_ID, MCU_DISABLECMU_ID,
+                              MCU_E_CMU_INDEX_OUT_OF_RANGE);
     }
 
     return CheckStatus;
@@ -604,30 +567,29 @@ static Std_ReturnType Mcu_CheckDisableCMU(Clock_Ip_NameType ClockName)
 #if (MCU_VALIDATE_GLOBAL_CALL == STD_ON)
 /* MCU state check, entry point. */
 /**
-* @brief Mcu_HLDChecksEntry - checks for invalid mode transitions.
-* @implements Mcu_HLDChecksEntry_Activity
-*/
+ * @brief Mcu_HLDChecksEntry - checks for invalid mode transitions.
+ * @implements Mcu_HLDChecksEntry_Activity
+ */
 static Std_ReturnType Mcu_HLDChecksEntry(uint8 McuServiceID)
 {
     Std_ReturnType CheckStatus = (Std_ReturnType)E_OK;
 
-    if (MCU_INIT_ID == McuServiceID)
-    {
-        if (MCU_UNINIT != Mcu_eStatus) /* If "Mcu_Init" was already called (i.e. driver is initialized). */
+    if (MCU_INIT_ID == McuServiceID) {
+        if (MCU_UNINIT !=
+            Mcu_eStatus) /* If "Mcu_Init" was already called (i.e. driver is initialized). */
         {
             CheckStatus = (Std_ReturnType)E_NOT_OK;
-            (void) Det_ReportError((uint16)MCU_MODULE_ID, MCU_INSTANCE_ID, McuServiceID, MCU_E_ALREADY_INITIALIZED);
+            (void)Det_ReportError((uint16)MCU_MODULE_ID, MCU_INSTANCE_ID, McuServiceID,
+                                  MCU_E_ALREADY_INITIALIZED);
         }
-    }
-    else
-    {
-        if (MCU_UNINIT == Mcu_eStatus) /* If "Mcu_Init" was not called (i.e driver is uninitialized). */
+    } else {
+        if (MCU_UNINIT ==
+            Mcu_eStatus) /* If "Mcu_Init" was not called (i.e driver is uninitialized). */
         {
             CheckStatus = (Std_ReturnType)E_NOT_OK;
-            (void) Det_ReportError((uint16)MCU_MODULE_ID, MCU_INSTANCE_ID, McuServiceID, MCU_E_UNINIT);
-        }
-        else
-        {
+            (void)Det_ReportError((uint16)MCU_MODULE_ID, MCU_INSTANCE_ID, McuServiceID,
+                                  MCU_E_UNINIT);
+        } else {
             Mcu_eStatus = MCU_BUSY;
         }
     }
@@ -637,30 +599,21 @@ static Std_ReturnType Mcu_HLDChecksEntry(uint8 McuServiceID)
 
 #endif /* (MCU_VALIDATE_GLOBAL_CALL == STD_ON) */
 
-
 #if (MCU_VALIDATE_GLOBAL_CALL == STD_ON)
 /* MCU state check, exit point. */
 /**
-* @brief Mcu_HLDChecksExit - checks for invalid mode transitions.
-* @implements Mcu_HLDChecksExit_Activity
-*/
-static void Mcu_HLDChecksExit(  Std_ReturnType RetStatus,
-                                uint8 McuServiceID
-                              )
+ * @brief Mcu_HLDChecksExit - checks for invalid mode transitions.
+ * @implements Mcu_HLDChecksExit_Activity
+ */
+static void Mcu_HLDChecksExit(Std_ReturnType RetStatus, uint8 McuServiceID)
 {
-    if (MCU_INIT_ID == McuServiceID)
-    {
-        if ((Std_ReturnType)E_OK == (Std_ReturnType)RetStatus)
-        {
+    if (MCU_INIT_ID == McuServiceID) {
+        if ((Std_ReturnType)E_OK == (Std_ReturnType)RetStatus) {
             Mcu_eStatus = MCU_IDLE;
-        }
-        else
-        {
+        } else {
             Mcu_eStatus = MCU_UNINIT;
         }
-    }
-    else
-    {
+    } else {
         Mcu_eStatus = MCU_IDLE;
     }
 }
@@ -671,53 +624,52 @@ static void Mcu_HLDChecksExit(  Std_ReturnType RetStatus,
 ==================================================================================================*/
 
 /**
-* @brief            MCU driver initialization function.
-* @details          This routine initializes the MCU Driver.
-*                   The intention of this function is to make the configuration setting for power
-*                   down, clock and Ram sections visible within the MCU Driver.
-*
-* @param[in]        ConfigPtr   Pointer to configuration structure.
-*
-* @return           void
-*
-* @api
-*
-* @implements Mcu_Init_Activity
-*/
-void Mcu_Init(const Mcu_ConfigType * ConfigPtr)
+ * @brief            MCU driver initialization function.
+ * @details          This routine initializes the MCU Driver.
+ *                   The intention of this function is to make the configuration setting for power
+ *                   down, clock and Ram sections visible within the MCU Driver.
+ *
+ * @param[in]        ConfigPtr   Pointer to configuration structure.
+ *
+ * @return           void
+ *
+ * @api
+ *
+ * @implements Mcu_Init_Activity
+ */
+void Mcu_Init(const Mcu_ConfigType* ConfigPtr)
 {
     /* Temporary variable for looping through all the configurations. */
     uint32 NoConfigs;
 
-#if ( (MCU_VALIDATE_GLOBAL_CALL == STD_ON) || (MCU_PARAM_CHECK == STD_ON) )
+#if ((MCU_VALIDATE_GLOBAL_CALL == STD_ON) || (MCU_PARAM_CHECK == STD_ON))
     Std_ReturnType CheckStatus;
 #endif /* ( (MCU_VALIDATE_GLOBAL_CALL == STD_ON) || (MCU_PARAM_CHECK == STD_ON) ) */
 
 #if (MCU_VALIDATE_GLOBAL_CALL == STD_ON)
-    CheckStatus = (Std_ReturnType) Mcu_HLDChecksEntry(MCU_INIT_ID);
+    CheckStatus = (Std_ReturnType)Mcu_HLDChecksEntry(MCU_INIT_ID);
 
-    if ( (Std_ReturnType)E_OK == CheckStatus )
-    {
+    if ((Std_ReturnType)E_OK == CheckStatus) {
 #else
     Mcu_eStatus = MCU_IDLE;
-#endif /* (MCU_VALIDATE_GLOBAL_CALL == STD_ON) */
+#endif  /* (MCU_VALIDATE_GLOBAL_CALL == STD_ON) */
         /* Get a local copy of the driver initalization structure. */
 
 #if (MCU_PARAM_CHECK == STD_ON)
         /* When PostBuild is used and #(Variants) > 1, the input parameter 'ConfigPtr' is mandatory
          * to be different than NULL_PTR. */
-        /* Check the config. In case of error, return immediately. The "Mcu_CheckInit" function will report DET errors. */
+        /* Check the config. In case of error, return immediately. The "Mcu_CheckInit" function will
+         * report DET errors. */
         CheckStatus = Mcu_CheckInit(ConfigPtr);
 
-        if ((Std_ReturnType)E_OK == CheckStatus)
-        {
+        if ((Std_ReturnType)E_OK == CheckStatus) {
 #endif /* (MCU_PARAM_CHECK == STD_ON) */
 
 #if (MCU_PRECOMPILE_SUPPORT == STD_ON)
             Mcu_pConfigPtr = &Mcu_PreCompileConfig;
             MCU_PARAM_UNUSED(ConfigPtr);
 #else
-            Mcu_pConfigPtr = ConfigPtr;
+    Mcu_pConfigPtr = ConfigPtr;
 #endif /* (MCU_PRECOMPILE_SUPPORT == STD_ON) */
 
 #if (MCU_DISABLE_DEM_REPORT_ERROR_STATUS == STD_OFF)
@@ -726,38 +678,35 @@ void Mcu_Init(const Mcu_ConfigType * ConfigPtr)
 #endif /* (MCU_DISABLE_DEM_REPORT_ERROR_STATUS == STD_OFF) */
 
             /* Save the Mcu Mode IDs configurations. */
-            for (NoConfigs = (uint32)0U; NoConfigs < Mcu_pConfigPtr->NoModeConfigs; NoConfigs++)
-            {
-                Mcu_au8ModeConfigIds[(*Mcu_pConfigPtr->ModeConfigArrayPtr)[NoConfigs].ModeConfigId] = (uint8)NoConfigs;
+            for (NoConfigs = (uint32)0U; NoConfigs < Mcu_pConfigPtr->NoModeConfigs; NoConfigs++) {
+                Mcu_au8ModeConfigIds[(*Mcu_pConfigPtr->ModeConfigArrayPtr)[NoConfigs]
+                                         .ModeConfigId] = (uint8)NoConfigs;
             }
 
 #if (MCU_INIT_CLOCK == STD_ON)
             /* Save the Mcu Clock IDs configurations. */
-            for (NoConfigs = (uint32)0U; NoConfigs < Mcu_pConfigPtr->NoClkConfigs; NoConfigs++)
-            {
-                Mcu_au8ClockConfigIds[(*Mcu_pConfigPtr->ClockConfigArrayPtr)[NoConfigs].ClkConfigId] = (uint8)NoConfigs;
+            for (NoConfigs = (uint32)0U; NoConfigs < Mcu_pConfigPtr->NoClkConfigs; NoConfigs++) {
+                Mcu_au8ClockConfigIds[(*Mcu_pConfigPtr->ClockConfigArrayPtr)[NoConfigs]
+                                          .ClkConfigId] = (uint8)NoConfigs;
             }
 #endif /* (MCU_INIT_CLOCK == STD_ON) */
 
 #ifndef MCU_MAX_NORAMCONFIGS
             /* Save the Mcu Ram Sector IDs configurations. */
-            for (NoConfigs = (uint32)0U; NoConfigs < Mcu_pConfigPtr->NoRamConfigs; NoConfigs++)
-            {
-                Mcu_au8RamConfigIds[(*Mcu_pConfigPtr->RamConfigArrayPtr)[NoConfigs].RamSectorId] = (uint8)NoConfigs;
+            for (NoConfigs = (uint32)0U; NoConfigs < Mcu_pConfigPtr->NoRamConfigs; NoConfigs++) {
+                Mcu_au8RamConfigIds[(*Mcu_pConfigPtr->RamConfigArrayPtr)[NoConfigs].RamSectorId] =
+                    (uint8)NoConfigs;
             }
 #endif /* (0 != MCU_MAX_RAMCONFIGS) */
 
             Mcu_Ipw_Init(Mcu_pConfigPtr->HwIPsConfigPtr);
 
 #if (MCU_PARAM_CHECK == STD_ON)
-        }
-        else
-        {
+        } else {
             /* Clean the init pointer in case of an error. */
             Mcu_pConfigPtr = NULL_PTR;
         }
 #endif /* (MCU_PARAM_CHECK == STD_ON) */
-
 
 #if (MCU_VALIDATE_GLOBAL_CALL == STD_ON)
         /* The driver is now initialized. Set the proper status. */
@@ -766,30 +715,30 @@ void Mcu_Init(const Mcu_ConfigType * ConfigPtr)
 #endif /* (MCU_VALIDATE_GLOBAL_CALL == STD_ON) */
 }
 
-
 /**
-* @brief            MCU driver initialization of Ram sections.
-* @details          Function initializes the ram section selected by RamSection parameter.
-*                   The section base address, size and value to be written are provided from
-*                   the configuration structure.
-*                   The function will write the value specified in the configuration structure
-*                   indexed by RamSection.
-*                   After the write it will read back the RAM to verify that the requested value was
-*                   written.
-*
-* @param[in]        RamSection   Index of ram section from configuration structure to be initialized.
-*
-* @return           Command has or has not been accepted.
-* @retval           E_OK        Valid parameter, the driver state allowed execution and the RAM
-*                               check was successful
-* @retval           E_NOT_OK    Invalid parameter, the driver state did not allowed execution or
-*                               the RAM check was not successful
-*
-* @api
-*
-* @implements Mcu_InitRamSection_Activity
-*
-*/
+ * @brief            MCU driver initialization of Ram sections.
+ * @details          Function initializes the ram section selected by RamSection parameter.
+ *                   The section base address, size and value to be written are provided from
+ *                   the configuration structure.
+ *                   The function will write the value specified in the configuration structure
+ *                   indexed by RamSection.
+ *                   After the write it will read back the RAM to verify that the requested value
+ * was written.
+ *
+ * @param[in]        RamSection   Index of ram section from configuration structure to be
+ * initialized.
+ *
+ * @return           Command has or has not been accepted.
+ * @retval           E_OK        Valid parameter, the driver state allowed execution and the RAM
+ *                               check was successful
+ * @retval           E_NOT_OK    Invalid parameter, the driver state did not allowed execution or
+ *                               the RAM check was not successful
+ *
+ * @api
+ *
+ * @implements Mcu_InitRamSection_Activity
+ *
+ */
 Std_ReturnType Mcu_InitRamSection(Mcu_RamSectionType RamSection)
 {
 #ifndef MCU_MAX_NORAMCONFIGS
@@ -800,25 +749,23 @@ Std_ReturnType Mcu_InitRamSection(Mcu_RamSectionType RamSection)
 
 #if (MCU_VALIDATE_GLOBAL_CALL == STD_ON)
     /* Check if the driver is initialized. */
-    if ( (Std_ReturnType)E_OK == (Std_ReturnType) Mcu_HLDChecksEntry(MCU_INITRAMSECTION_ID) )
-    {
+    if ((Std_ReturnType)E_OK == (Std_ReturnType)Mcu_HLDChecksEntry(MCU_INITRAMSECTION_ID)) {
 #endif /* (MCU_VALIDATE_GLOBAL_CALL == STD_ON) */
 
 #ifndef MCU_MAX_NORAMCONFIGS
-    #if (MCU_PARAM_CHECK == STD_ON)
+#if (MCU_PARAM_CHECK == STD_ON)
         /* Check if Ram memory configuration is valid. */
         /* If no ramConfig is defined, the function will return immediately. */
-        if ( (Std_ReturnType)E_OK == (Std_ReturnType) Mcu_CheckInitRamSection(RamSection) )
-        {
-    #endif /* (MCU_PARAM_CHECK == STD_ON) */
+        if ((Std_ReturnType)E_OK == (Std_ReturnType)Mcu_CheckInitRamSection(RamSection)) {
+#endif /* (MCU_PARAM_CHECK == STD_ON) */
             /* Get Ram settings from the configuration structure. */
             RamStatus = Mcu_Ipw_InitRamSection(&(*Mcu_pConfigPtr->RamConfigArrayPtr)[RamConfigId]);
-    #if (MCU_PARAM_CHECK == STD_ON)
+#if (MCU_PARAM_CHECK == STD_ON)
         }
-    #endif /* (MCU_PARAM_CHECK == STD_ON) */
+#endif /* (MCU_PARAM_CHECK == STD_ON) */
 #else
-        /* To avoid compiler warning. */
-        MCU_PARAM_UNUSED(RamSection);
+    /* To avoid compiler warning. */
+    MCU_PARAM_UNUSED(RamSection);
 #endif /* #ifndef MCU_MAX_NORAMCONFIGS */
 
 #if (MCU_VALIDATE_GLOBAL_CALL == STD_ON)
@@ -829,44 +776,41 @@ Std_ReturnType Mcu_InitRamSection(Mcu_RamSectionType RamSection)
     return RamStatus;
 }
 
-
 #if (MCU_INIT_CLOCK == STD_ON)
 /**
-* @brief            MCU driver clock initialization function.
-* @details          This function intializes the PLL and MCU specific clock options. The clock
-*                       setting is provided from the configuration structure.
-*
-* @param[in]        ClockSetting   Clock setting ID from config structure to be used.
-*
-* @return           Command has or has not been accepted.
-* @retval           E_OK        The driver state allowed the execution of the function and the
-*                                   provided parameter was in range
-* @retval           E_NOT_OK    The driver state did not allowed execution or the parameter was
-*                                   invalid
-*
-* @api
-*
-* @implements Mcu_InitClock_Activity
-*/
+ * @brief            MCU driver clock initialization function.
+ * @details          This function intializes the PLL and MCU specific clock options. The clock
+ *                       setting is provided from the configuration structure.
+ *
+ * @param[in]        ClockSetting   Clock setting ID from config structure to be used.
+ *
+ * @return           Command has or has not been accepted.
+ * @retval           E_OK        The driver state allowed the execution of the function and the
+ *                                   provided parameter was in range
+ * @retval           E_NOT_OK    The driver state did not allowed execution or the parameter was
+ *                                   invalid
+ *
+ * @api
+ *
+ * @implements Mcu_InitClock_Activity
+ */
 Std_ReturnType Mcu_InitClock(Mcu_ClockType ClockSetting)
 {
-    const uint8 ClockConfigId =  Mcu_au8ClockConfigIds[ClockSetting];
+    const uint8 ClockConfigId = Mcu_au8ClockConfigIds[ClockSetting];
     /* Return the success of the clock initalization operation. */
-#if ( (MCU_VALIDATE_GLOBAL_CALL == STD_ON) || (MCU_PARAM_CHECK == STD_ON) )
+#if ((MCU_VALIDATE_GLOBAL_CALL == STD_ON) || (MCU_PARAM_CHECK == STD_ON))
     Std_ReturnType ClockStatus = (Std_ReturnType)E_NOT_OK;
 #else
     Std_ReturnType ClockStatus;
 #endif
 
 #if (MCU_VALIDATE_GLOBAL_CALL == STD_ON)
-    if ( (Std_ReturnType)E_OK == (Std_ReturnType) Mcu_HLDChecksEntry(MCU_INITCLOCK_ID) )
-    {
+    if ((Std_ReturnType)E_OK == (Std_ReturnType)Mcu_HLDChecksEntry(MCU_INITCLOCK_ID)) {
 #endif /* (MCU_VALIDATE_GLOBAL_CALL == STD_ON) */
 
         /* Check if Clock configuration is valid. */
 #if (MCU_PARAM_CHECK == STD_ON)
-        if ( (Std_ReturnType)E_OK == (Std_ReturnType) Mcu_CheckInitClock(ClockSetting) )
-        {
+        if ((Std_ReturnType)E_OK == (Std_ReturnType)Mcu_CheckInitClock(ClockSetting)) {
 #endif /* (MCU_PARAM_CHECK == STD_ON) */
             Mcu_Ipw_InitClock(&(*Mcu_pConfigPtr->ClockConfigArrayPtr)[ClockConfigId]);
 
@@ -885,43 +829,38 @@ Std_ReturnType Mcu_InitClock(Mcu_ClockType ClockSetting)
 }
 #endif /* (MCU_INIT_CLOCK == STD_ON) */
 
-
 /**
-* @brief            This function sets the MCU power mode.
-* @details          This function activates MCU power mode from config structure selected by McuMode
-*                       parameter.
-*                   If the driver state is invalid or McuMode is not in range the function will skip
-*                       changing the mcu mode.
-*
-* @param[in]        McuMode   MCU mode setting ID from config structure to be set.
-*
-* @return           void
-*
-* @api
-*
-* @implements Mcu_SetMode_Activity
-*/
+ * @brief            This function sets the MCU power mode.
+ * @details          This function activates MCU power mode from config structure selected by
+ * McuMode parameter. If the driver state is invalid or McuMode is not in range the function will
+ * skip changing the mcu mode.
+ *
+ * @param[in]        McuMode   MCU mode setting ID from config structure to be set.
+ *
+ * @return           void
+ *
+ * @api
+ *
+ * @implements Mcu_SetMode_Activity
+ */
 void Mcu_SetMode(Mcu_ModeType McuMode)
 {
     const uint8 McuModeId = Mcu_au8ModeConfigIds[McuMode];
 
 #if (MCU_VALIDATE_GLOBAL_CALL == STD_ON)
-    if ( (Std_ReturnType)E_OK == (Std_ReturnType) Mcu_HLDChecksEntry(MCU_SETMODE_ID) )
-    {
+    if ((Std_ReturnType)E_OK == (Std_ReturnType)Mcu_HLDChecksEntry(MCU_SETMODE_ID)) {
 #endif /*( MCU_VALIDATE_GLOBAL_CALL == STD_ON )*/
 
 #if (MCU_PARAM_CHECK == STD_ON)
         /* Check if Mode configuration is valid. */
-        if ( (Std_ReturnType)E_OK == (Std_ReturnType) Mcu_CheckSetMode(McuMode) )
-        {
+        if ((Std_ReturnType)E_OK == (Std_ReturnType)Mcu_CheckSetMode(McuMode)) {
 #endif /* (MCU_PARAM_CHECK == STD_ON) */
 
-            Mcu_Ipw_SetMode( &(*Mcu_pConfigPtr->ModeConfigArrayPtr)[McuModeId] );
+            Mcu_Ipw_SetMode(&(*Mcu_pConfigPtr->ModeConfigArrayPtr)[McuModeId]);
 
 #if (MCU_PARAM_CHECK == STD_ON)
         }
 #endif /* (MCU_PARAM_CHECK == STD_ON) */
-
 
 #if (MCU_VALIDATE_GLOBAL_CALL == STD_ON)
         Mcu_HLDChecksExit((Std_ReturnType)E_OK, MCU_SETMODE_ID);
@@ -932,22 +871,22 @@ void Mcu_SetMode(Mcu_ModeType McuMode)
 #if (MCU_INIT_CLOCK == STD_ON)
 #if (MCU_NO_PLL == STD_OFF)
 /**
-* @brief            This function activates the PLL clock to the MCU clock distribution.
-* @details          Function completes the PLL configuration and then activates the PLL clock to
-*                       MCU. If the MCU_NO_PLL is TRUE the Mcu_DistributePllClock has to be
-*                       disabled.
-*                   The function will not distribute the PLL clock if the driver state does not
-*                       allow it, or the PLL is not stable.
-*
-* @return           Std_ReturnType
-* @retval           E_OK        Command has been accepted.
-* @retval           E_NOT_OK    Command has not been accepted.
-*
-* @api
-*
-* @implements Mcu_DistributePllClock_Activity
-*
-*/
+ * @brief            This function activates the PLL clock to the MCU clock distribution.
+ * @details          Function completes the PLL configuration and then activates the PLL clock to
+ *                       MCU. If the MCU_NO_PLL is TRUE the Mcu_DistributePllClock has to be
+ *                       disabled.
+ *                   The function will not distribute the PLL clock if the driver state does not
+ *                       allow it, or the PLL is not stable.
+ *
+ * @return           Std_ReturnType
+ * @retval           E_OK        Command has been accepted.
+ * @retval           E_NOT_OK    Command has not been accepted.
+ *
+ * @api
+ *
+ * @implements Mcu_DistributePllClock_Activity
+ *
+ */
 Std_ReturnType Mcu_DistributePllClock(void)
 {
 #if (MCU_VALIDATE_GLOBAL_CALL == STD_ON)
@@ -958,14 +897,12 @@ Std_ReturnType Mcu_DistributePllClock(void)
 #endif /* (MCU_VALIDATE_GLOBAL_CALL == STD_ON) */
 
 #if (MCU_VALIDATE_GLOBAL_CALL == STD_ON)
-    if ( (Std_ReturnType)E_OK == (Std_ReturnType) Mcu_HLDChecksEntry(MCU_DISTRIBUTEPLLCLOCK_ID) )
-    {
+    if ((Std_ReturnType)E_OK == (Std_ReturnType)Mcu_HLDChecksEntry(MCU_DISTRIBUTEPLLCLOCK_ID)) {
 #endif /* (MCU_VALIDATE_GLOBAL_CALL == STD_ON) */
 
 #if (MCU_PARAM_CHECK == STD_ON)
         /* Check if the PLL is locked. */
-        if ( (Std_ReturnType)E_OK == (Std_ReturnType)Mcu_CheckDistributePllClock() )
-        {
+        if ((Std_ReturnType)E_OK == (Std_ReturnType)Mcu_CheckDistributePllClock()) {
 #endif /* (MCU_PARAM_CHECK == STD_ON) */
 
             /* Set the PLL as System Clock if it is locked and enabled by the current mode.
@@ -978,7 +915,6 @@ Std_ReturnType Mcu_DistributePllClock(void)
         }
 #endif /* (MCU_PARAM_CHECK == STD_ON) */
 
-
 #if (MCU_VALIDATE_GLOBAL_CALL == STD_ON)
         Mcu_HLDChecksExit((Std_ReturnType)E_OK, MCU_DISTRIBUTEPLLCLOCK_ID);
     }
@@ -989,40 +925,38 @@ Std_ReturnType Mcu_DistributePllClock(void)
 #endif /* (MCU_NO_PLL == STD_OFF) */
 #endif /* (MCU_INIT_CLOCK == STD_ON) */
 
-
 /**
-* @brief            This function returns the lock status of the PLL.
-* @details          The user takes care that the PLL is locked by executing Mcu_GetPllStatus.
-*                       If the MCU_NO_PLL is TRUE the MCU_GetPllStatus has to return
-*                       MCU_PLL_STATUS_UNDEFINED.
-*                   It will also return MCU_PLL_STATUS_UNDEFINED if the driver state was invalid
-*
-* @return           Provides the lock status of the PLL.
-* @retval           MCU_PLL_STATUS_UNDEFINED    PLL Status is unknown.
-* @retval           MCU_PLL_LOCKED              PLL is locked.
-* @retval           MCU_PLL_UNLOCKED            PLL is unlocked.
-*
-* @api
-*
-* @implements Mcu_GetPllStatus_Activity
-*
-*
-*/
+ * @brief            This function returns the lock status of the PLL.
+ * @details          The user takes care that the PLL is locked by executing Mcu_GetPllStatus.
+ *                       If the MCU_NO_PLL is TRUE the MCU_GetPllStatus has to return
+ *                       MCU_PLL_STATUS_UNDEFINED.
+ *                   It will also return MCU_PLL_STATUS_UNDEFINED if the driver state was invalid
+ *
+ * @return           Provides the lock status of the PLL.
+ * @retval           MCU_PLL_STATUS_UNDEFINED    PLL Status is unknown.
+ * @retval           MCU_PLL_LOCKED              PLL is locked.
+ * @retval           MCU_PLL_UNLOCKED            PLL is unlocked.
+ *
+ * @api
+ *
+ * @implements Mcu_GetPllStatus_Activity
+ *
+ *
+ */
 Mcu_PllStatusType Mcu_GetPllStatus(void)
 {
     /* Return variable. */
-#if ( (MCU_VALIDATE_GLOBAL_CALL == STD_ON) || (MCU_NO_PLL == STD_ON) )
+#if ((MCU_VALIDATE_GLOBAL_CALL == STD_ON) || (MCU_NO_PLL == STD_ON))
     Mcu_PllStatusType PllStatus = MCU_PLL_STATUS_UNDEFINED;
 #else
     Mcu_PllStatusType PllStatus;
 #endif
 
 #if (MCU_VALIDATE_GLOBAL_CALL == STD_ON)
-    if ( (Std_ReturnType)E_OK == (Std_ReturnType) Mcu_HLDChecksEntry(MCU_GETPLLSTATUS_ID) )
-    {
+    if ((Std_ReturnType)E_OK == (Std_ReturnType)Mcu_HLDChecksEntry(MCU_GETPLLSTATUS_ID)) {
 #endif /* (MCU_VALIDATE_GLOBAL_CALL == STD_ON) */
 
-    /* If the PLL is not used in the configuration, return MCU_PLL_STATUS_UNDEFINED. */
+        /* If the PLL is not used in the configuration, return MCU_PLL_STATUS_UNDEFINED. */
 #if (MCU_NO_PLL == STD_OFF)
         /* Get status of the PLL (if enabled in current mode).
            At this point, the return value can be only MCU_PLL_LOCKED or MCU_PLL_UNLOCKED. */
@@ -1038,33 +972,31 @@ Mcu_PllStatusType Mcu_GetPllStatus(void)
 }
 
 /**
-* @brief            This function returns the Reset reason.
-* @details          This routine returns the Reset reason that is read from the hardware.
-*
-*
-* @return           Reason of the Reset event.
-*
-* @api
-*
-* @implements Mcu_GetResetReason_Activity
-*/
+ * @brief            This function returns the Reset reason.
+ * @details          This routine returns the Reset reason that is read from the hardware.
+ *
+ *
+ * @return           Reason of the Reset event.
+ *
+ * @api
+ *
+ * @implements Mcu_GetResetReason_Activity
+ */
 Mcu_ResetType Mcu_GetResetReason(void)
 {
     /* Return value of the function. */
     Mcu_ResetType ResetReason = MCU_RESET_UNDEFINED;
 
 #if (MCU_VALIDATE_GLOBAL_CALL == STD_ON)
-    if ( (Std_ReturnType)E_OK == (Std_ReturnType) Mcu_HLDChecksEntry(MCU_GETRESETREASON_ID) )
-    {
+    if ((Std_ReturnType)E_OK == (Std_ReturnType)Mcu_HLDChecksEntry(MCU_GETRESETREASON_ID)) {
 #else
-    if (MCU_UNINIT != Mcu_eStatus)
-    {
+    if (MCU_UNINIT != Mcu_eStatus) {
 #endif /* (MCU_VALIDATE_GLOBAL_CALL == STD_ON) */
         /* Get the reset reason. */
         ResetReason = Mcu_Ipw_GetResetReason();
 
 #if (MCU_VALIDATE_GLOBAL_CALL == STD_ON)
-        Mcu_HLDChecksExit( (Std_ReturnType)E_OK, MCU_GETRESETREASON_ID);
+        Mcu_HLDChecksExit((Std_ReturnType)E_OK, MCU_GETRESETREASON_ID);
     }
 #else
     }
@@ -1073,19 +1005,18 @@ Mcu_ResetType Mcu_GetResetReason(void)
     return ResetReason;
 }
 
-
 /**
-* @brief            This function returns the Raw Reset value.
-* @details          This routine returns the Raw Reset value that is read from the hardware.
-*
-* @return           Description of the returned value.
-* @retval           uint32   Code of the Raw reset value.
-*
-* @api
-*
-* @implements Mcu_GetResetRawValue_Activity
-*
-*/
+ * @brief            This function returns the Raw Reset value.
+ * @details          This routine returns the Raw Reset value that is read from the hardware.
+ *
+ * @return           Description of the returned value.
+ * @retval           uint32   Code of the Raw reset value.
+ *
+ * @api
+ *
+ * @implements Mcu_GetResetRawValue_Activity
+ *
+ */
 Mcu_RawResetType Mcu_GetResetRawValue(void)
 {
     /* Return value of the function. */
@@ -1096,10 +1027,9 @@ Mcu_RawResetType Mcu_GetResetRawValue(void)
 #endif
 
 #if (MCU_VALIDATE_GLOBAL_CALL == STD_ON)
-    if ( (Std_ReturnType)E_OK == (Std_ReturnType) Mcu_HLDChecksEntry(MCU_GETRESETRAWVALUE_ID) )
-    {
+    if ((Std_ReturnType)E_OK == (Std_ReturnType)Mcu_HLDChecksEntry(MCU_GETRESETRAWVALUE_ID)) {
 #endif /* (MCU_VALIDATE_GLOBAL_CALL == STD_ON) */
-        RawResetValue = (Mcu_RawResetType) Mcu_Ipw_GetResetRawValue();
+        RawResetValue = (Mcu_RawResetType)Mcu_Ipw_GetResetRawValue();
 
 #if (MCU_VALIDATE_GLOBAL_CALL == STD_ON)
         Mcu_HLDChecksExit((Std_ReturnType)E_OK, MCU_GETRESETRAWVALUE_ID);
@@ -1111,27 +1041,25 @@ Mcu_RawResetType Mcu_GetResetRawValue(void)
 
 #if (MCU_PERFORM_RESET_API == STD_ON)
 /**
-* @brief            This function performs a microcontroller reset.
-* @details          This function performs a microcontroller reset by using the hardware feature of
-*                   the microcontroller. In case the function returns, the user must reset the
-*                   platform using an alternate reset mechanism
-*
-* @return           void
-*
-* @api
-*
-* @implements Mcu_PerformReset_Activity
-*/
+ * @brief            This function performs a microcontroller reset.
+ * @details          This function performs a microcontroller reset by using the hardware feature of
+ *                   the microcontroller. In case the function returns, the user must reset the
+ *                   platform using an alternate reset mechanism
+ *
+ * @return           void
+ *
+ * @api
+ *
+ * @implements Mcu_PerformReset_Activity
+ */
 void Mcu_PerformReset(void)
 {
 #if (MCU_VALIDATE_GLOBAL_CALL == STD_ON)
-    if ( (Std_ReturnType)E_OK == (Std_ReturnType) Mcu_HLDChecksEntry(MCU_PERFORMRESET_ID) )
-    {
+    if ((Std_ReturnType)E_OK == (Std_ReturnType)Mcu_HLDChecksEntry(MCU_PERFORMRESET_ID)) {
 #endif /* (MCU_VALIDATE_GLOBAL_CALL == STD_ON) */
 
 #if (MCU_PARAM_CHECK == STD_ON)
-        if ( (Std_ReturnType)E_OK == (Std_ReturnType)Mcu_CheckPerformReset() )
-        {
+        if ((Std_ReturnType)E_OK == (Std_ReturnType)Mcu_CheckPerformReset()) {
 #endif /* (MCU_PARAM_CHECK == STD_ON) */
 
 #if (MCU_RESET_CALLOUT_USED == STD_ON)
@@ -1153,25 +1081,23 @@ void Mcu_PerformReset(void)
 }
 #endif /* (MCU_PERFORM_RESET_API == STD_ON) */
 
-
 #if (MCU_VERSION_INFO_API == STD_ON)
 /**
-* @brief            This function returns the Version Information for the MCU module.
-* @details          This function returns the vendor id, module id, major, minor and patch version.
-*
-* @param[in,out]    versioninfo   A pointer to a variable to store version info.
-*
-* @return           void
-*
-* @api
-*
-* @implements Mcu_GetVersionInfo_Activity
-*/
-void Mcu_GetVersionInfo(Std_VersionInfoType * versioninfo)
+ * @brief            This function returns the Version Information for the MCU module.
+ * @details          This function returns the vendor id, module id, major, minor and patch version.
+ *
+ * @param[in,out]    versioninfo   A pointer to a variable to store version info.
+ *
+ * @return           void
+ *
+ * @api
+ *
+ * @implements Mcu_GetVersionInfo_Activity
+ */
+void Mcu_GetVersionInfo(Std_VersionInfoType* versioninfo)
 {
 #if (MCU_PARAM_CHECK == STD_ON)
-    if ( (Std_ReturnType)E_OK == (Std_ReturnType) Mcu_CheckGetVersionInfo(versioninfo) )
-    {
+    if ((Std_ReturnType)E_OK == (Std_ReturnType)Mcu_CheckGetVersionInfo(versioninfo)) {
 #endif /* (MCU_PARAM_CHECK == STD_ON) */
         (versioninfo)->vendorID = (uint16)MCU_VENDOR_ID;
         (versioninfo)->moduleID = (uint8)MCU_MODULE_ID;
@@ -1186,26 +1112,25 @@ void Mcu_GetVersionInfo(Std_VersionInfoType * versioninfo)
 
 #if (MCU_POWERMODE_STATE_API == STD_ON)
 /**
-* @brief            This function returns the System Status (power mode, clock settings)
-* @details          The return value is the content register read from hardware. The return
-*                   value shall evidentiate the current running mode.
-*
-* @return           Get the state of the power mode.
-* @retval           uint32   Content of register.
-*
-* @api
-*
-*/
+ * @brief            This function returns the System Status (power mode, clock settings)
+ * @details          The return value is the content register read from hardware. The return
+ *                   value shall evidentiate the current running mode.
+ *
+ * @return           Get the state of the power mode.
+ * @retval           uint32   Content of register.
+ *
+ * @api
+ *
+ */
 Mcu_PowerModeStateType Mcu_GetPowerModeState(void)
 {
     /* Return value of this function. */
     Mcu_PowerModeStateType PowerModeState = (Mcu_PowerModeStateType)0U;
 
 #if (MCU_VALIDATE_GLOBAL_CALL == STD_ON)
-    if ( (Std_ReturnType)E_OK == (Std_ReturnType) Mcu_HLDChecksEntry(MCU_GETPOWERMODESTATE_ID) )
-    {
+    if ((Std_ReturnType)E_OK == (Std_ReturnType)Mcu_HLDChecksEntry(MCU_GETPOWERMODESTATE_ID)) {
 #endif /* (MCU_VALIDATE_GLOBAL_CALL == STD_ON) */
-        PowerModeState = (Mcu_PowerModeStateType) Mcu_Ipw_GetPowerModeState();
+        PowerModeState = (Mcu_PowerModeStateType)Mcu_Ipw_GetPowerModeState();
 
 #if (MCU_VALIDATE_GLOBAL_CALL == STD_ON)
         Mcu_HLDChecksExit((Std_ReturnType)E_OK, MCU_GETPOWERMODESTATE_ID);
@@ -1233,13 +1158,11 @@ Mcu_PowerModeStateType Mcu_GetPowerModeState(void)
 void Mcu_DisableCmu(Clock_Ip_NameType ClockName)
 {
 #if (MCU_VALIDATE_GLOBAL_CALL == STD_ON)
-    if ( (Std_ReturnType)E_OK == (Std_ReturnType) Mcu_HLDChecksEntry(MCU_DISABLECMU_ID) )
-    {
+    if ((Std_ReturnType)E_OK == (Std_ReturnType)Mcu_HLDChecksEntry(MCU_DISABLECMU_ID)) {
 #endif /* (MCU_VALIDATE_GLOBAL_CALL == STD_ON) */
 
 #if (MCU_PARAM_CHECK == STD_ON)
-        if ( (Std_ReturnType)E_OK == (Std_ReturnType) Mcu_CheckDisableCMU(ClockName) )
-        {
+        if ((Std_ReturnType)E_OK == (Std_ReturnType)Mcu_CheckDisableCMU(ClockName)) {
 #endif /* (MCU_PARAM_CHECK == STD_ON) */
             Mcu_Ipw_DisableCmu(ClockName);
 #if (MCU_PARAM_CHECK == STD_ON)
@@ -1273,8 +1196,7 @@ uint64 Mcu_GetClockFrequency(Clock_Ip_NameType ClockName)
     uint64 Frequency = 0U;
 
 #if (MCU_VALIDATE_GLOBAL_CALL == STD_ON)
-    if ( (Std_ReturnType)E_OK == (Std_ReturnType) Mcu_HLDChecksEntry(MCU_GETCLOCKFREQUENCY_ID) )
-    {
+    if ((Std_ReturnType)E_OK == (Std_ReturnType)Mcu_HLDChecksEntry(MCU_GETCLOCKFREQUENCY_ID)) {
 #endif /* (MCU_VALIDATE_GLOBAL_CALL == STD_ON) */
 
         Frequency = MCU_Ipw_GetClockFrequency(ClockName);
@@ -1291,36 +1213,35 @@ uint64 Mcu_GetClockFrequency(Clock_Ip_NameType ClockName)
 #endif /* MCU_GET_CLOCK_FREQUENCY_API */
 
 #ifdef MCU_SLEEPONEXIT_SUPPORT
-  #if (MCU_SLEEPONEXIT_SUPPORT == STD_ON)
+#if (MCU_SLEEPONEXIT_SUPPORT == STD_ON)
 /**
-* @brief            This function disable/enable SleepOnExit.
-* @details          Disable/enable Sleep on exit when returning from Handler mode to Thread mode.
-*
-* @param[in]        Mcu_SleepOnExitType   The value will be configured to SLEEPONEXIT bits.
-*                                         MCU_SLEEP_ON_EXIT_DISABLED - Disable SLEEPONEXIT bit.
-*                                         MCU_SLEEP_ON_EXIT_ENABLED - Enable SLEEPONEXIT bit.
-* @return           void
-*
-* @api
-*
-* @implements Mcu_SleepOnExit_Activity
-*
-*/
+ * @brief            This function disable/enable SleepOnExit.
+ * @details          Disable/enable Sleep on exit when returning from Handler mode to Thread mode.
+ *
+ * @param[in]        Mcu_SleepOnExitType   The value will be configured to SLEEPONEXIT bits.
+ *                                         MCU_SLEEP_ON_EXIT_DISABLED - Disable SLEEPONEXIT bit.
+ *                                         MCU_SLEEP_ON_EXIT_ENABLED - Enable SLEEPONEXIT bit.
+ * @return           void
+ *
+ * @api
+ *
+ * @implements Mcu_SleepOnExit_Activity
+ *
+ */
 void Mcu_SleepOnExit(Mcu_SleepOnExitType SleepOnExit)
 {
-#if ( MCU_VALIDATE_GLOBAL_CALL == STD_ON )
-    if ((Std_ReturnType)E_OK == (Std_ReturnType)Mcu_HLDChecksEntry(MCU_SLEEPONEXIT_ID))
-    {
+#if (MCU_VALIDATE_GLOBAL_CALL == STD_ON)
+    if ((Std_ReturnType)E_OK == (Std_ReturnType)Mcu_HLDChecksEntry(MCU_SLEEPONEXIT_ID)) {
 #endif /*( MCU_VALIDATE_GLOBAL_CALL == STD_ON )*/
 
-            Mcu_Ipw_SleepOnExit(SleepOnExit);
+        Mcu_Ipw_SleepOnExit(SleepOnExit);
 
-#if ( MCU_VALIDATE_GLOBAL_CALL == STD_ON )
-        Mcu_HLDChecksExit( (Std_ReturnType)E_OK ,MCU_SLEEPONEXIT_ID);
+#if (MCU_VALIDATE_GLOBAL_CALL == STD_ON)
+        Mcu_HLDChecksExit((Std_ReturnType)E_OK, MCU_SLEEPONEXIT_ID);
     }
 #endif /*( MCU_VALIDATE_GLOBAL_CALL == STD_ON )*/
 }
-  #endif
+#endif
 #endif
 
 #ifdef MCU_SRAM_RETEN_CONFIG_API
@@ -1342,21 +1263,19 @@ void Mcu_SleepOnExit(Mcu_SleepOnExitType SleepOnExit)
  */
 void Mcu_SRAMRetentionConfig(Mcu_SRAMRetenConfigType SRAMRetenConfig)
 {
-#if ( MCU_VALIDATE_GLOBAL_CALL == STD_ON )
-    if ((Std_ReturnType)E_OK == (Std_ReturnType)Mcu_HLDChecksEntry(MCU_SRAMRETENCONFIG_ID))
-    {
+#if (MCU_VALIDATE_GLOBAL_CALL == STD_ON)
+    if ((Std_ReturnType)E_OK == (Std_ReturnType)Mcu_HLDChecksEntry(MCU_SRAMRETENCONFIG_ID)) {
 #endif /*( MCU_VALIDATE_GLOBAL_CALL == STD_ON )*/
 
-            Mcu_Ipw_SRAMRetentionConfig(SRAMRetenConfig);
+        Mcu_Ipw_SRAMRetentionConfig(SRAMRetenConfig);
 
-#if ( MCU_VALIDATE_GLOBAL_CALL == STD_ON )
-        Mcu_HLDChecksExit( (Std_ReturnType)E_OK ,MCU_SRAMRETENCONFIG_ID);
+#if (MCU_VALIDATE_GLOBAL_CALL == STD_ON)
+        Mcu_HLDChecksExit((Std_ReturnType)E_OK, MCU_SRAMRETENCONFIG_ID);
     }
 #endif /*( MCU_VALIDATE_GLOBAL_CALL == STD_ON )*/
 }
 #endif
 #endif
-
 
 #if (MCU_INIT_CLOCK == STD_ON)
 /**
@@ -1374,20 +1293,20 @@ void Mcu_ClkSrcFailureNotification(Clock_Ip_NameType ClockName)
 {
     (void)ClockName;
 
-    if ( (NULL_PTR != Mcu_pConfigPtr) && (Mcu_pConfigPtr->ClkSrcFailureNotification == MCU_CLK_NOTIF_EN))
-    {
+    if ((NULL_PTR != Mcu_pConfigPtr) &&
+        (Mcu_pConfigPtr->ClkSrcFailureNotification == MCU_CLK_NOTIF_EN)) {
 #if (defined(MCU_CMU_ERROR_ISR_USED) && (MCU_CMU_ERROR_ISR_USED == STD_ON))
-    #if defined(MCU_CMU_FCCU_NOTIFICATION)
+#if defined(MCU_CMU_FCCU_NOTIFICATION)
         /* CMU clock out of bounds notification. */
         MCU_CMU_FCCU_NOTIFICATION(ClockName);
-    #endif
-    #ifdef MCU_ERROR_ISR_NOTIFICATION
+#endif
+#ifdef MCU_ERROR_ISR_NOTIFICATION
         MCU_ERROR_ISR_NOTIFICATION(MCU_E_ISR_CLOCK_FAILURE);
-    #endif
+#endif
 #elif (defined(MCU_CGU_DETECT_ISR_USED) && (MCU_CGU_DETECT_ISR_USED == STD_ON))
-        #if defined(MCU_CGU_NOTIFICATION)
+#if defined(MCU_CGU_NOTIFICATION)
         MCU_CGU_NOTIFICATION(ClockName, MCU_ISR_CLOCK_INACTIVE);
-        #endif
+#endif
 #else
         /* Nothing else to be done. */
 #endif /* (MCU_CMU_ERROR_ISR_USED == STD_OFF && MCU_CGU_DETECT_ISR_USED == STD_OFF) */
@@ -1399,21 +1318,20 @@ void Mcu_ClkSrcFailureNotification(Clock_Ip_NameType ClockName)
 #ifdef MCU_PMCAECONFIG_API
 #if (MCU_PMCAECONFIG_API == STD_ON)
 /**
-* @brief            This function configure the Power Management Controller AE.
-* @details          This function configure the Power Management Controller AE of
-*                   the microcontroller.
-*
-* @return           void
-*
-* @api
-*
-*
-*/
+ * @brief            This function configure the Power Management Controller AE.
+ * @details          This function configure the Power Management Controller AE of
+ *                   the microcontroller.
+ *
+ * @return           void
+ *
+ * @api
+ *
+ *
+ */
 void Mcu_PmcAeConfig(void)
 {
 #if (MCU_VALIDATE_GLOBAL_CALL == STD_ON)
-    if ( (Std_ReturnType)E_OK == (Std_ReturnType) Mcu_HLDChecksEntry(MCU_PMCAECONFIG_ID) )
-    {
+    if ((Std_ReturnType)E_OK == (Std_ReturnType)Mcu_HLDChecksEntry(MCU_PMCAECONFIG_ID)) {
 #endif /* (MCU_VALIDATE_GLOBAL_CALL == STD_ON) */
         Mcu_Ipw_PmcAeConfig(Mcu_pConfigPtr->HwIPsConfigPtr);
 #if (MCU_VALIDATE_GLOBAL_CALL == STD_ON)
@@ -1427,21 +1345,20 @@ void Mcu_PmcAeConfig(void)
 #ifdef MCU_AECRESETCONFIG_API
 #if (MCU_AECRESETCONFIG_API == STD_ON)
 /**
-* @brief            This function configure the Reset config AEC.
-* @details          This function configure the Reset config AEC of
-*                   the microcontroller.
-*
-* @return           void
-*
-* @api
-*
-*
-*/
+ * @brief            This function configure the Reset config AEC.
+ * @details          This function configure the Reset config AEC of
+ *                   the microcontroller.
+ *
+ * @return           void
+ *
+ * @api
+ *
+ *
+ */
 void Mcu_AecResetConfig(void)
 {
 #if (MCU_VALIDATE_GLOBAL_CALL == STD_ON)
-    if ( (Std_ReturnType)E_OK == (Std_ReturnType) Mcu_HLDChecksEntry(MCU_AECRESETCONFIG_ID) )
-    {
+    if ((Std_ReturnType)E_OK == (Std_ReturnType)Mcu_HLDChecksEntry(MCU_AECRESETCONFIG_ID)) {
 #endif /* (MCU_VALIDATE_GLOBAL_CALL == STD_ON) */
         Mcu_Ipw_AecResetConfig(Mcu_pConfigPtr->HwIPsConfigPtr);
 #if (MCU_VALIDATE_GLOBAL_CALL == STD_ON)
@@ -1451,7 +1368,6 @@ void Mcu_AecResetConfig(void)
 }
 #endif /* (MCU_AECRESETCONFIG_API == STD_ON) */
 #endif
-
 
 #define MCU_STOP_SEC_CODE
 

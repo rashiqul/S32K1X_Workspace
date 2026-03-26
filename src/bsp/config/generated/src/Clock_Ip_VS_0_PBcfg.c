@@ -1,7 +1,7 @@
 /*==================================================================================================
 *   Project              : RTD AUTOSAR 4.7
 *   Platform             : CORTEXM
-*   Peripheral           : 
+*   Peripheral           :
 *   Dependencies         : none
 *
 *   Autosar Version      : 4.7.0
@@ -22,20 +22,19 @@
 ==================================================================================================*/
 
 /**
-*   @file       Clock_Ip_VS_0_PBcfg.c
-*   @version    3.0.0
-*
-*   @brief   AUTOSAR Mcu - Post-Build(PB) configuration file code template.
-*   @details Code template for Post-Build(PB) configuration file generation.
-*
-*   @addtogroup CLOCK_DRIVER_CONFIGURATION Clock Driver
-*   @{
-*/
+ *   @file       Clock_Ip_VS_0_PBcfg.c
+ *   @version    3.0.0
+ *
+ *   @brief   AUTOSAR Mcu - Post-Build(PB) configuration file code template.
+ *   @details Code template for Post-Build(PB) configuration file generation.
+ *
+ *   @addtogroup CLOCK_DRIVER_CONFIGURATION Clock Driver
+ *   @{
+ */
 
 #ifdef __cplusplus
-extern "C"{
+extern "C" {
 #endif
-
 
 /*==================================================================================================
                                          INCLUDE FILES
@@ -44,94 +43,93 @@ extern "C"{
  3) internal and external interfaces from this unit
 ==================================================================================================*/
 #include "Clock_Ip_VS_0_PBcfg.h"
-#include "Std_Types.h"
 #include "Clock_Ip.h"
 #include "Clock_Ip_Private.h"
+#include "Std_Types.h"
 
 /*==================================================================================================
 *                              SOURCE FILE VERSION INFORMATION
 ==================================================================================================*/
-#define CLOCK_IP_VS_0_PBCFG_VENDOR_ID_C                      43
-#define CLOCK_IP_VS_0_PBCFG_AR_RELEASE_MAJOR_VERSION_C       4
-#define CLOCK_IP_VS_0_PBCFG_AR_RELEASE_MINOR_VERSION_C       7
-#define CLOCK_IP_VS_0_PBCFG_AR_RELEASE_REVISION_VERSION_C    0
-#define CLOCK_IP_VS_0_PBCFG_SW_MAJOR_VERSION_C               3
-#define CLOCK_IP_VS_0_PBCFG_SW_MINOR_VERSION_C               0
-#define CLOCK_IP_VS_0_PBCFG_SW_PATCH_VERSION_C               0
+#define CLOCK_IP_VS_0_PBCFG_VENDOR_ID_C 43
+#define CLOCK_IP_VS_0_PBCFG_AR_RELEASE_MAJOR_VERSION_C 4
+#define CLOCK_IP_VS_0_PBCFG_AR_RELEASE_MINOR_VERSION_C 7
+#define CLOCK_IP_VS_0_PBCFG_AR_RELEASE_REVISION_VERSION_C 0
+#define CLOCK_IP_VS_0_PBCFG_SW_MAJOR_VERSION_C 3
+#define CLOCK_IP_VS_0_PBCFG_SW_MINOR_VERSION_C 0
+#define CLOCK_IP_VS_0_PBCFG_SW_PATCH_VERSION_C 0
 
 /*==================================================================================================
 *                                     FILE VERSION CHECKS
 ==================================================================================================*/
 /* Check if source file and Clock_Ip_VS_0_PBcfg.h file are of the same vendor */
 #if (CLOCK_IP_VS_0_PBCFG_VENDOR_ID_C != CLOCK_IP_VS_0_PBCFG_VENDOR_ID)
-    #error "Clock_Ip_VS_0_PBcfg.c and Clock_Ip_VS_0_PBcfg.h have different vendor ids"
+#error "Clock_Ip_VS_0_PBcfg.c and Clock_Ip_VS_0_PBcfg.h have different vendor ids"
 #endif
 
 /* Check if source file and Clock_Ip_VS_0_PBcfg.h file are of the same Autosar version */
-#if ((CLOCK_IP_VS_0_PBCFG_AR_RELEASE_MAJOR_VERSION_C != CLOCK_IP_VS_0_PBCFG_AR_RELEASE_MAJOR_VERSION) || \
-     (CLOCK_IP_VS_0_PBCFG_AR_RELEASE_MINOR_VERSION_C != CLOCK_IP_VS_0_PBCFG_AR_RELEASE_MINOR_VERSION) || \
-     (CLOCK_IP_VS_0_PBCFG_AR_RELEASE_REVISION_VERSION_C != CLOCK_IP_VS_0_PBCFG_AR_RELEASE_REVISION_VERSION) \
-    )
-    #error "AutoSar Version Numbers of Clock_Ip_VS_0_PBcfg.c and Clock_Ip_VS_0_PBcfg.h are different"
+#if ((CLOCK_IP_VS_0_PBCFG_AR_RELEASE_MAJOR_VERSION_C !=                                            \
+      CLOCK_IP_VS_0_PBCFG_AR_RELEASE_MAJOR_VERSION) ||                                             \
+     (CLOCK_IP_VS_0_PBCFG_AR_RELEASE_MINOR_VERSION_C !=                                            \
+      CLOCK_IP_VS_0_PBCFG_AR_RELEASE_MINOR_VERSION) ||                                             \
+     (CLOCK_IP_VS_0_PBCFG_AR_RELEASE_REVISION_VERSION_C !=                                         \
+      CLOCK_IP_VS_0_PBCFG_AR_RELEASE_REVISION_VERSION))
+#error "AutoSar Version Numbers of Clock_Ip_VS_0_PBcfg.c and Clock_Ip_VS_0_PBcfg.h are different"
 #endif
 
 /* Check if source file and Clock_Ip_VS_0_PBcfg.h file are of the same Software version */
-#if ((CLOCK_IP_VS_0_PBCFG_SW_MAJOR_VERSION_C != CLOCK_IP_VS_0_PBCFG_SW_MAJOR_VERSION) || \
-     (CLOCK_IP_VS_0_PBCFG_SW_MINOR_VERSION_C != CLOCK_IP_VS_0_PBCFG_SW_MINOR_VERSION) || \
-     (CLOCK_IP_VS_0_PBCFG_SW_PATCH_VERSION_C != CLOCK_IP_VS_0_PBCFG_SW_PATCH_VERSION) \
-    )
-    #error "Software Version Numbers of Clock_Ip_VS_0_PBcfg.c and Clock_Ip_VS_0_PBcfg.h are different"
+#if ((CLOCK_IP_VS_0_PBCFG_SW_MAJOR_VERSION_C != CLOCK_IP_VS_0_PBCFG_SW_MAJOR_VERSION) ||           \
+     (CLOCK_IP_VS_0_PBCFG_SW_MINOR_VERSION_C != CLOCK_IP_VS_0_PBCFG_SW_MINOR_VERSION) ||           \
+     (CLOCK_IP_VS_0_PBCFG_SW_PATCH_VERSION_C != CLOCK_IP_VS_0_PBCFG_SW_PATCH_VERSION))
+#error "Software Version Numbers of Clock_Ip_VS_0_PBcfg.c and Clock_Ip_VS_0_PBcfg.h are different"
 #endif
 
 #ifndef DISABLE_MCAL_INTERMODULE_ASR_CHECK
 /* Check if source file and Std_Types.h file are of the same Autosar version */
-#if ((CLOCK_IP_VS_0_PBCFG_AR_RELEASE_MAJOR_VERSION_C != STD_AR_RELEASE_MAJOR_VERSION) || \
-     (CLOCK_IP_VS_0_PBCFG_AR_RELEASE_MINOR_VERSION_C != STD_AR_RELEASE_MINOR_VERSION) \
-    )
-    #error "AutoSar Version Numbers of Clock_Ip_VS_0_PBcfg.c and Std_Types.h are different"
+#if ((CLOCK_IP_VS_0_PBCFG_AR_RELEASE_MAJOR_VERSION_C != STD_AR_RELEASE_MAJOR_VERSION) ||           \
+     (CLOCK_IP_VS_0_PBCFG_AR_RELEASE_MINOR_VERSION_C != STD_AR_RELEASE_MINOR_VERSION))
+#error "AutoSar Version Numbers of Clock_Ip_VS_0_PBcfg.c and Std_Types.h are different"
 #endif
-#endif    /* DISABLE_MCAL_INTERMODULE_ASR_CHECK */
+#endif /* DISABLE_MCAL_INTERMODULE_ASR_CHECK */
 
 /* Check if source file and Clock_Ip.h file are of the same vendor */
 #if (CLOCK_IP_VS_0_PBCFG_VENDOR_ID_C != CLOCK_IP_VENDOR_ID)
-    #error "Clock_Ip_VS_0_PBcfg.c and Clock_Ip.h have different vendor ids"
+#error "Clock_Ip_VS_0_PBcfg.c and Clock_Ip.h have different vendor ids"
 #endif
 
 /* Check if source file and Clock_Ip.h file are of the same Autosar version */
-#if ((CLOCK_IP_VS_0_PBCFG_AR_RELEASE_MAJOR_VERSION_C != CLOCK_IP_AR_RELEASE_MAJOR_VERSION) || \
-     (CLOCK_IP_VS_0_PBCFG_AR_RELEASE_MINOR_VERSION_C != CLOCK_IP_AR_RELEASE_MINOR_VERSION) || \
-     (CLOCK_IP_VS_0_PBCFG_AR_RELEASE_REVISION_VERSION_C != CLOCK_IP_AR_RELEASE_REVISION_VERSION) \
-    )
-    #error "AutoSar Version Numbers of Clock_Ip_VS_0_PBcfg.c and Clock_Ip.h are different"
+#if ((CLOCK_IP_VS_0_PBCFG_AR_RELEASE_MAJOR_VERSION_C != CLOCK_IP_AR_RELEASE_MAJOR_VERSION) ||      \
+     (CLOCK_IP_VS_0_PBCFG_AR_RELEASE_MINOR_VERSION_C != CLOCK_IP_AR_RELEASE_MINOR_VERSION) ||      \
+     (CLOCK_IP_VS_0_PBCFG_AR_RELEASE_REVISION_VERSION_C != CLOCK_IP_AR_RELEASE_REVISION_VERSION))
+#error "AutoSar Version Numbers of Clock_Ip_VS_0_PBcfg.c and Clock_Ip.h are different"
 #endif
 
 /* Check if source file and Clock_Ip.h file are of the same Software version */
-#if ((CLOCK_IP_VS_0_PBCFG_SW_MAJOR_VERSION_C != CLOCK_IP_SW_MAJOR_VERSION) || \
-     (CLOCK_IP_VS_0_PBCFG_SW_MINOR_VERSION_C != CLOCK_IP_SW_MINOR_VERSION) || \
-     (CLOCK_IP_VS_0_PBCFG_SW_PATCH_VERSION_C != CLOCK_IP_SW_PATCH_VERSION) \
-    )
-    #error "Software Version Numbers of Clock_Ip_VS_0_PBcfg.c and Clock_Ip.h are different"
+#if ((CLOCK_IP_VS_0_PBCFG_SW_MAJOR_VERSION_C != CLOCK_IP_SW_MAJOR_VERSION) ||                      \
+     (CLOCK_IP_VS_0_PBCFG_SW_MINOR_VERSION_C != CLOCK_IP_SW_MINOR_VERSION) ||                      \
+     (CLOCK_IP_VS_0_PBCFG_SW_PATCH_VERSION_C != CLOCK_IP_SW_PATCH_VERSION))
+#error "Software Version Numbers of Clock_Ip_VS_0_PBcfg.c and Clock_Ip.h are different"
 #endif
 
 /* Check if source file and Clock_Ip_Private.h file are of the same vendor */
 #if (CLOCK_IP_VS_0_PBCFG_VENDOR_ID_C != CLOCK_IP_PRIVATE_VENDOR_ID)
-    #error "Clock_Ip_VS_0_PBcfg.c and Clock_Ip_Private.h have different vendor ids"
+#error "Clock_Ip_VS_0_PBcfg.c and Clock_Ip_Private.h have different vendor ids"
 #endif
 
 /* Check if source file and Clock_Ip_Private.h file are of the same Autosar version */
-#if ((CLOCK_IP_VS_0_PBCFG_AR_RELEASE_MAJOR_VERSION_C != CLOCK_IP_PRIVATE_AR_RELEASE_MAJOR_VERSION) || \
-     (CLOCK_IP_VS_0_PBCFG_AR_RELEASE_MINOR_VERSION_C != CLOCK_IP_PRIVATE_AR_RELEASE_MINOR_VERSION) || \
-     (CLOCK_IP_VS_0_PBCFG_AR_RELEASE_REVISION_VERSION_C != CLOCK_IP_PRIVATE_AR_RELEASE_REVISION_VERSION) \
-    )
-    #error "AutoSar Version Numbers of Clock_Ip_VS_0_PBcfg.c and Clock_Ip_Private.h are different"
+#if ((CLOCK_IP_VS_0_PBCFG_AR_RELEASE_MAJOR_VERSION_C !=                                            \
+      CLOCK_IP_PRIVATE_AR_RELEASE_MAJOR_VERSION) ||                                                \
+     (CLOCK_IP_VS_0_PBCFG_AR_RELEASE_MINOR_VERSION_C !=                                            \
+      CLOCK_IP_PRIVATE_AR_RELEASE_MINOR_VERSION) ||                                                \
+     (CLOCK_IP_VS_0_PBCFG_AR_RELEASE_REVISION_VERSION_C !=                                         \
+      CLOCK_IP_PRIVATE_AR_RELEASE_REVISION_VERSION))
+#error "AutoSar Version Numbers of Clock_Ip_VS_0_PBcfg.c and Clock_Ip_Private.h are different"
 #endif
 
 /* Check if source file and Clock_Ip_Private.h file are of the same Software version */
-#if ((CLOCK_IP_VS_0_PBCFG_SW_MAJOR_VERSION_C != CLOCK_IP_PRIVATE_SW_MAJOR_VERSION) || \
-     (CLOCK_IP_VS_0_PBCFG_SW_MINOR_VERSION_C != CLOCK_IP_PRIVATE_SW_MINOR_VERSION) || \
-     (CLOCK_IP_VS_0_PBCFG_SW_PATCH_VERSION_C != CLOCK_IP_PRIVATE_SW_PATCH_VERSION) \
-    )
-    #error "Software Version Numbers of Clock_Ip_VS_0_PBcfg.c and Clock_Ip_Private.h are different"
+#if ((CLOCK_IP_VS_0_PBCFG_SW_MAJOR_VERSION_C != CLOCK_IP_PRIVATE_SW_MAJOR_VERSION) ||              \
+     (CLOCK_IP_VS_0_PBCFG_SW_MINOR_VERSION_C != CLOCK_IP_PRIVATE_SW_MINOR_VERSION) ||              \
+     (CLOCK_IP_VS_0_PBCFG_SW_PATCH_VERSION_C != CLOCK_IP_PRIVATE_SW_PATCH_VERSION))
+#error "Software Version Numbers of Clock_Ip_VS_0_PBcfg.c and Clock_Ip_Private.h are different"
 #endif
 
 /*==================================================================================================
@@ -161,9 +159,8 @@ extern "C"{
 #define MCU_START_SEC_CONFIG_DATA_UNSPECIFIED
 #include "Mcu_MemMap.h"
 
-
 /* *************************************************************************
- * Configuration structure for Clock Configuration 
+ * Configuration structure for Clock Configuration
  * ************************************************************************* */
 
 const Clock_Ip_ClockConfigType Mcu_aClockConfigPB_VS_0[1U] = {
@@ -171,508 +168,466 @@ const Clock_Ip_ClockConfigType Mcu_aClockConfigPB_VS_0[1U] = {
     {
 #if defined(CLOCK_IP_MULTIPARTITION_SUPPORT)
 #if (CLOCK_IP_MULTIPARTITION_SUPPORT == STD_ON)
-        CLOCK_IP_PARTITION_0,               /* Clock Partition ID */
+        CLOCK_IP_PARTITION_0, /* Clock Partition ID */
 #endif
 #endif
-        0U,                          /* clkConfigId */
+        0U, /* clkConfigId */
 
-        (NULL_PTR),               /* Register data if register value optimization is enabled */
-        2U,                       /* ircoscsCount */
-        1U,                       /* xoscsCount */
-        0U,                       /* pllsCount */
-        28U,                       /* selectorsCount */
-        18U,                       /* dividersCount */
-        0U,                       /* dividerTriggersCount */
-        0U,                       /* fracDivsCount */
-        4U,                       /* extClksCount */
-        41U,                       /* gatesCount */
-        0U,                       /* pcfsCount */
-        0U,                       /* cmusCount */
-        1U,                       /* configureFrequenciesCount */
-
+        (NULL_PTR), /* Register data if register value optimization is enabled */
+        2U,         /* ircoscsCount */
+        1U,         /* xoscsCount */
+        0U,         /* pllsCount */
+        28U,        /* selectorsCount */
+        18U,        /* dividersCount */
+        0U,         /* dividerTriggersCount */
+        0U,         /* fracDivsCount */
+        4U,         /* extClksCount */
+        41U,        /* gatesCount */
+        0U,         /* pcfsCount */
+        0U,         /* cmusCount */
+        1U,         /* configureFrequenciesCount */
 
         /* IRCOSC initialization. */
         {
 
-            #if CLOCK_IP_IRCOSCS_NO > 0U
+#if CLOCK_IP_IRCOSCS_NO > 0U
             {
-                SIRC_CLK,       /* name */
-                1U,                     /* Enabled ircosc */
-                0U,                     /* Enabled regulator */
-                1U,                     /* Ircosc range */
-                1U,                     /* Ircosc enable in VLP mode */
-                0U,                     /* Ircosc disable in STOP mode */
+                SIRC_CLK, /* name */
+                1U,       /* Enabled ircosc */
+                0U,       /* Enabled regulator */
+                1U,       /* Ircosc range */
+                1U,       /* Ircosc enable in VLP mode */
+                0U,       /* Ircosc disable in STOP mode */
             },
-            #endif
+#endif
 
-            #if CLOCK_IP_IRCOSCS_NO > 1U
+#if CLOCK_IP_IRCOSCS_NO > 1U
             {
-                FIRC_CLK,       /* name */
-                1U,                     /* Enabled ircosc */
-                0U,                     /* Enabled regulator */
-                0U,                     /* Ircosc range */
-                0U,                     /* Ircosc disable in VLP mode */
-                0U,                     /* Ircosc disable in STOP mode */
+                FIRC_CLK, /* name */
+                1U,       /* Enabled ircosc */
+                0U,       /* Enabled regulator */
+                0U,       /* Ircosc range */
+                0U,       /* Ircosc disable in VLP mode */
+                0U,       /* Ircosc disable in STOP mode */
             },
-            #endif
+#endif
         },
 
         /* XOSC initialization. */
 
         {
 
-            #if CLOCK_IP_XOSCS_NO > 0U
+#if CLOCK_IP_XOSCS_NO > 0U
             {
-                SOSC_CLK,              /* Clock name associated to xosc */
-                8000000U,              /* External oscillator frequency */ 
-                1U,                     /* Enable xosc */
-                0U,                   /* Startup stabilization time */
-                1U,                     /* XOSC bypass option */
-                0U,                   /* Comparator is not enabled */ 
-                0U,                     /* Crystal overdrive protection */
-                0U,                     /* High gain value */
-                CLOCK_IP_HAS_MONITOR_DISABLE,                     /* Monitor type */
-                0U,                     /* Automatic level controller */
-                0U,                     /* Level Shifter Current */
-                0U,                     /* Comparator Current */
+                SOSC_CLK,                     /* Clock name associated to xosc */
+                8000000U,                     /* External oscillator frequency */
+                1U,                           /* Enable xosc */
+                0U,                           /* Startup stabilization time */
+                1U,                           /* XOSC bypass option */
+                0U,                           /* Comparator is not enabled */
+                0U,                           /* Crystal overdrive protection */
+                0U,                           /* High gain value */
+                CLOCK_IP_HAS_MONITOR_DISABLE, /* Monitor type */
+                0U,                           /* Automatic level controller */
+                0U,                           /* Level Shifter Current */
+                0U,                           /* Comparator Current */
             },
-            #endif
+#endif
         },
-
 
         /* PLL initialization. */
         {
             {
-                RESERVED_CLK,           /* name */
-                0U,                     /* enable */
-                RESERVED_CLK,           /* inputReference */
-                0U,                     /* Bypass */
-                0U,                     /* predivider */
-                0U,                     /* multiplier */
-                0U,                     /* postdivider */
-                0U,                     /* numeratorFracLoopDiv */
-                0U,                     /* mulFactorDiv */
-                0U,                     /* ModulationBypass */
-                0U,                     /* Modulation type: Spread spectrum modulation bypassed */
-                0U,                     /* modulationPeriod */
-                0U,                     /* incrementStep */
-                0U,                     /* sigmaDelta */
-                0U,                     /* ditherControl */
-                0U,                     /* ditherControlValue */
-                0U,                     /* Monitor type  */
-                {                      /* Dividers */
-                        0U,
-                        0U,
-                        0U,
+                RESERVED_CLK, /* name */
+                0U,           /* enable */
+                RESERVED_CLK, /* inputReference */
+                0U,           /* Bypass */
+                0U,           /* predivider */
+                0U,           /* multiplier */
+                0U,           /* postdivider */
+                0U,           /* numeratorFracLoopDiv */
+                0U,           /* mulFactorDiv */
+                0U,           /* ModulationBypass */
+                0U,           /* Modulation type: Spread spectrum modulation bypassed */
+                0U,           /* modulationPeriod */
+                0U,           /* incrementStep */
+                0U,           /* sigmaDelta */
+                0U,           /* ditherControl */
+                0U,           /* ditherControlValue */
+                0U,           /* Monitor type  */
+                {
+                    /* Dividers */
+                    0U,
+                    0U,
+                    0U,
                 },
-                0U,                     /* SoftwareDisable */
+                0U, /* SoftwareDisable */
             },
         },
-
-
 
         /* SELECTOR initialization. */
         {
 
-            #if CLOCK_IP_SELECTORS_NO > 0U
+#if CLOCK_IP_SELECTORS_NO > 0U
             {
-                SCS_RUN_CLK,                    /* Clock name associated to selector */
-                FIRC_CLK,                    /* Name of the selected input source */
+                SCS_RUN_CLK, /* Clock name associated to selector */
+                FIRC_CLK,    /* Name of the selected input source */
             },
-            #endif
+#endif
 
-            #if CLOCK_IP_SELECTORS_NO > 1U
+#if CLOCK_IP_SELECTORS_NO > 1U
             {
-                SCS_VLPR_CLK,                    /* Clock name associated to selector */
-                SIRC_CLK,                    /* Name of the selected input source */
+                SCS_VLPR_CLK, /* Clock name associated to selector */
+                SIRC_CLK,     /* Name of the selected input source */
             },
-            #endif
+#endif
 
-            #if CLOCK_IP_SELECTORS_NO > 2U
+#if CLOCK_IP_SELECTORS_NO > 2U
             {
-                SCS_HSRUN_CLK,                    /* Clock name associated to selector */
-                FIRC_CLK,                    /* Name of the selected input source */
+                SCS_HSRUN_CLK, /* Clock name associated to selector */
+                FIRC_CLK,      /* Name of the selected input source */
             },
-            #endif
+#endif
 
-            #if CLOCK_IP_SELECTORS_NO > 3U
+#if CLOCK_IP_SELECTORS_NO > 3U
             {
-                SCG_CLKOUT_CLK,                    /* Clock name associated to selector */
-                FIRC_CLK,                    /* Name of the selected input source */
+                SCG_CLKOUT_CLK, /* Clock name associated to selector */
+                FIRC_CLK,       /* Name of the selected input source */
             },
-            #endif
+#endif
 
-            #if CLOCK_IP_SELECTORS_NO > 4U
+#if CLOCK_IP_SELECTORS_NO > 4U
             {
-                RTC_CLK,                    /* Clock name associated to selector */
-                SOSCDIV1_CLK,                    /* Name of the selected input source */
+                RTC_CLK,      /* Clock name associated to selector */
+                SOSCDIV1_CLK, /* Name of the selected input source */
             },
-            #endif
+#endif
 
-            #if CLOCK_IP_SELECTORS_NO > 5U
+#if CLOCK_IP_SELECTORS_NO > 5U
             {
-                LPO_CLK,                    /* Clock name associated to selector */
-                LPO_128K_CLK,                    /* Name of the selected input source */
+                LPO_CLK,      /* Clock name associated to selector */
+                LPO_128K_CLK, /* Name of the selected input source */
             },
-            #endif
+#endif
 
-            #if CLOCK_IP_SELECTORS_NO > 6U
+#if CLOCK_IP_SELECTORS_NO > 6U
             {
-                TRACE_CLK,                    /* Clock name associated to selector */
-                CORE_CLK,                    /* Name of the selected input source */
+                TRACE_CLK, /* Clock name associated to selector */
+                CORE_CLK,  /* Name of the selected input source */
             },
-            #endif
+#endif
 
-            #if CLOCK_IP_SELECTORS_NO > 7U
+#if CLOCK_IP_SELECTORS_NO > 7U
             {
-                CLKOUT0_CLK,                    /* Clock name associated to selector */
-                RTC_CLK,                    /* Name of the selected input source */
+                CLKOUT0_CLK, /* Clock name associated to selector */
+                RTC_CLK,     /* Name of the selected input source */
             },
-            #endif
+#endif
 
-            #if CLOCK_IP_SELECTORS_NO > 8U
+#if CLOCK_IP_SELECTORS_NO > 8U
             {
-                FTM0_EXT_CLK,                    /* Clock name associated to selector */
-                TCLK0_REF_CLK,                    /* Name of the selected input source */
+                FTM0_EXT_CLK,  /* Clock name associated to selector */
+                TCLK0_REF_CLK, /* Name of the selected input source */
             },
-            #endif
+#endif
 
-            #if CLOCK_IP_SELECTORS_NO > 9U
+#if CLOCK_IP_SELECTORS_NO > 9U
             {
-                FTM1_EXT_CLK,                    /* Clock name associated to selector */
-                TCLK0_REF_CLK,                    /* Name of the selected input source */
+                FTM1_EXT_CLK,  /* Clock name associated to selector */
+                TCLK0_REF_CLK, /* Name of the selected input source */
             },
-            #endif
+#endif
 
-            #if CLOCK_IP_SELECTORS_NO > 10U
+#if CLOCK_IP_SELECTORS_NO > 10U
             {
-                FTM2_EXT_CLK,                    /* Clock name associated to selector */
-                TCLK0_REF_CLK,                    /* Name of the selected input source */
+                FTM2_EXT_CLK,  /* Clock name associated to selector */
+                TCLK0_REF_CLK, /* Name of the selected input source */
             },
-            #endif
+#endif
 
-            #if CLOCK_IP_SELECTORS_NO > 11U
+#if CLOCK_IP_SELECTORS_NO > 11U
             {
-                FTM3_EXT_CLK,                    /* Clock name associated to selector */
-                TCLK0_REF_CLK,                    /* Name of the selected input source */
+                FTM3_EXT_CLK,  /* Clock name associated to selector */
+                TCLK0_REF_CLK, /* Name of the selected input source */
             },
-            #endif
+#endif
 
-            #if CLOCK_IP_SELECTORS_NO > 12U
+#if CLOCK_IP_SELECTORS_NO > 12U
             {
-                FTM0_CLK,                    /* Clock name associated to selector */
-                SIRCDIV1_CLK,                    /* Name of the selected input source */
+                FTM0_CLK,     /* Clock name associated to selector */
+                SIRCDIV1_CLK, /* Name of the selected input source */
             },
-            #endif
+#endif
 
-            #if CLOCK_IP_SELECTORS_NO > 13U
+#if CLOCK_IP_SELECTORS_NO > 13U
             {
-                FTM1_CLK,                    /* Clock name associated to selector */
-                SIRCDIV1_CLK,                    /* Name of the selected input source */
+                FTM1_CLK,     /* Clock name associated to selector */
+                SIRCDIV1_CLK, /* Name of the selected input source */
             },
-            #endif
+#endif
 
-            #if CLOCK_IP_SELECTORS_NO > 14U
+#if CLOCK_IP_SELECTORS_NO > 14U
             {
-                FTM2_CLK,                    /* Clock name associated to selector */
-                SIRCDIV1_CLK,                    /* Name of the selected input source */
+                FTM2_CLK,     /* Clock name associated to selector */
+                SIRCDIV1_CLK, /* Name of the selected input source */
             },
-            #endif
+#endif
 
-            #if CLOCK_IP_SELECTORS_NO > 15U
+#if CLOCK_IP_SELECTORS_NO > 15U
             {
-                FTM3_CLK,                    /* Clock name associated to selector */
-                SIRCDIV1_CLK,                    /* Name of the selected input source */
+                FTM3_CLK,     /* Clock name associated to selector */
+                SIRCDIV1_CLK, /* Name of the selected input source */
             },
-            #endif
+#endif
 
-            #if CLOCK_IP_SELECTORS_NO > 16U
+#if CLOCK_IP_SELECTORS_NO > 16U
             {
-                ADC1_CLK,                    /* Clock name associated to selector */
-                SIRCDIV2_CLK,                    /* Name of the selected input source */
+                ADC1_CLK,     /* Clock name associated to selector */
+                SIRCDIV2_CLK, /* Name of the selected input source */
             },
-            #endif
+#endif
 
-            #if CLOCK_IP_SELECTORS_NO > 17U
+#if CLOCK_IP_SELECTORS_NO > 17U
             {
-                LPSPI0_CLK,                    /* Clock name associated to selector */
-                SIRCDIV2_CLK,                    /* Name of the selected input source */
+                LPSPI0_CLK,   /* Clock name associated to selector */
+                SIRCDIV2_CLK, /* Name of the selected input source */
             },
-            #endif
+#endif
 
-            #if CLOCK_IP_SELECTORS_NO > 18U
+#if CLOCK_IP_SELECTORS_NO > 18U
             {
-                LPSPI1_CLK,                    /* Clock name associated to selector */
-                SIRCDIV2_CLK,                    /* Name of the selected input source */
+                LPSPI1_CLK,   /* Clock name associated to selector */
+                SIRCDIV2_CLK, /* Name of the selected input source */
             },
-            #endif
+#endif
 
-            #if CLOCK_IP_SELECTORS_NO > 19U
+#if CLOCK_IP_SELECTORS_NO > 19U
             {
-                LPSPI2_CLK,                    /* Clock name associated to selector */
-                SIRCDIV2_CLK,                    /* Name of the selected input source */
+                LPSPI2_CLK,   /* Clock name associated to selector */
+                SIRCDIV2_CLK, /* Name of the selected input source */
             },
-            #endif
+#endif
 
-            #if CLOCK_IP_SELECTORS_NO > 20U
+#if CLOCK_IP_SELECTORS_NO > 20U
             {
-                LPIT0_CLK,                    /* Clock name associated to selector */
-                SIRCDIV2_CLK,                    /* Name of the selected input source */
+                LPIT0_CLK,    /* Clock name associated to selector */
+                SIRCDIV2_CLK, /* Name of the selected input source */
             },
-            #endif
+#endif
 
-            #if CLOCK_IP_SELECTORS_NO > 21U
+#if CLOCK_IP_SELECTORS_NO > 21U
             {
-                ADC0_CLK,                    /* Clock name associated to selector */
-                SIRCDIV2_CLK,                    /* Name of the selected input source */
+                ADC0_CLK,     /* Clock name associated to selector */
+                SIRCDIV2_CLK, /* Name of the selected input source */
             },
-            #endif
+#endif
 
-            #if CLOCK_IP_SELECTORS_NO > 22U
+#if CLOCK_IP_SELECTORS_NO > 22U
             {
-                FlexIO_CLK,                    /* Clock name associated to selector */
-                SIRCDIV2_CLK,                    /* Name of the selected input source */
+                FlexIO_CLK,   /* Clock name associated to selector */
+                SIRCDIV2_CLK, /* Name of the selected input source */
             },
-            #endif
+#endif
 
-            #if CLOCK_IP_SELECTORS_NO > 23U
+#if CLOCK_IP_SELECTORS_NO > 23U
             {
-                LPI2C0_CLK,                    /* Clock name associated to selector */
-                SIRCDIV2_CLK,                    /* Name of the selected input source */
+                LPI2C0_CLK,   /* Clock name associated to selector */
+                SIRCDIV2_CLK, /* Name of the selected input source */
             },
-            #endif
+#endif
 
-            #if CLOCK_IP_SELECTORS_NO > 24U
+#if CLOCK_IP_SELECTORS_NO > 24U
             {
-                LPUART0_CLK,                    /* Clock name associated to selector */
-                SIRCDIV2_CLK,                    /* Name of the selected input source */
+                LPUART0_CLK,  /* Clock name associated to selector */
+                SIRCDIV2_CLK, /* Name of the selected input source */
             },
-            #endif
+#endif
 
-            #if CLOCK_IP_SELECTORS_NO > 25U
+#if CLOCK_IP_SELECTORS_NO > 25U
             {
-                LPUART1_CLK,                    /* Clock name associated to selector */
-                SIRCDIV2_CLK,                    /* Name of the selected input source */
+                LPUART1_CLK,  /* Clock name associated to selector */
+                SIRCDIV2_CLK, /* Name of the selected input source */
             },
-            #endif
+#endif
 
-            #if CLOCK_IP_SELECTORS_NO > 26U
+#if CLOCK_IP_SELECTORS_NO > 26U
             {
-                LPUART2_CLK,                    /* Clock name associated to selector */
-                SIRCDIV2_CLK,                    /* Name of the selected input source */
+                LPUART2_CLK,  /* Clock name associated to selector */
+                SIRCDIV2_CLK, /* Name of the selected input source */
             },
-            #endif
+#endif
 
-            #if CLOCK_IP_SELECTORS_NO > 27U
+#if CLOCK_IP_SELECTORS_NO > 27U
             {
-                LPTMR0_CLK,                    /* Clock name associated to selector */
-                SIRCDIV2_CLK,                    /* Name of the selected input source */
+                LPTMR0_CLK,   /* Clock name associated to selector */
+                SIRCDIV2_CLK, /* Name of the selected input source */
             },
-            #endif
+#endif
         },
-
 
         /* DIVIDER initialization. */
 
         {
 
-            #if CLOCK_IP_DIVIDERS_NO > 0U
-            {
-                SIRCDIV1_CLK,                    /* name */
-                1U,                              /* value */
-                {
-                    0U,
-                }
-            },
-            #endif
+#if CLOCK_IP_DIVIDERS_NO > 0U
+            {SIRCDIV1_CLK, /* name */
+             1U,           /* value */
+             {
+                 0U,
+             }},
+#endif
 
-            #if CLOCK_IP_DIVIDERS_NO > 1U
-            {
-                SIRCDIV2_CLK,                    /* name */
-                1U,                              /* value */
-                {
-                    0U,
-                }
-            },
-            #endif
+#if CLOCK_IP_DIVIDERS_NO > 1U
+            {SIRCDIV2_CLK, /* name */
+             1U,           /* value */
+             {
+                 0U,
+             }},
+#endif
 
-            #if CLOCK_IP_DIVIDERS_NO > 2U
-            {
-                FIRCDIV1_CLK,                    /* name */
-                1U,                              /* value */
-                {
-                    0U,
-                }
-            },
-            #endif
+#if CLOCK_IP_DIVIDERS_NO > 2U
+            {FIRCDIV1_CLK, /* name */
+             1U,           /* value */
+             {
+                 0U,
+             }},
+#endif
 
-            #if CLOCK_IP_DIVIDERS_NO > 3U
-            {
-                FIRCDIV2_CLK,                    /* name */
-                1U,                              /* value */
-                {
-                    0U,
-                }
-            },
-            #endif
+#if CLOCK_IP_DIVIDERS_NO > 3U
+            {FIRCDIV2_CLK, /* name */
+             1U,           /* value */
+             {
+                 0U,
+             }},
+#endif
 
-            #if CLOCK_IP_DIVIDERS_NO > 4U
-            {
-                SOSCDIV1_CLK,                    /* name */
-                1U,                              /* value */
-                {
-                    0U,
-                }
-            },
-            #endif
+#if CLOCK_IP_DIVIDERS_NO > 4U
+            {SOSCDIV1_CLK, /* name */
+             1U,           /* value */
+             {
+                 0U,
+             }},
+#endif
 
-            #if CLOCK_IP_DIVIDERS_NO > 5U
-            {
-                SOSCDIV2_CLK,                    /* name */
-                1U,                              /* value */
-                {
-                    0U,
-                }
-            },
-            #endif
+#if CLOCK_IP_DIVIDERS_NO > 5U
+            {SOSCDIV2_CLK, /* name */
+             1U,           /* value */
+             {
+                 0U,
+             }},
+#endif
 
-            #if CLOCK_IP_DIVIDERS_NO > 6U
-            {
-                CORE_RUN_CLK,                    /* name */
-                1U,                              /* value */
-                {
-                    0U,
-                }
-            },
-            #endif
+#if CLOCK_IP_DIVIDERS_NO > 6U
+            {CORE_RUN_CLK, /* name */
+             1U,           /* value */
+             {
+                 0U,
+             }},
+#endif
 
-            #if CLOCK_IP_DIVIDERS_NO > 7U
-            {
-                CORE_VLPR_CLK,                    /* name */
-                8U,                              /* value */
-                {
-                    0U,
-                }
-            },
-            #endif
+#if CLOCK_IP_DIVIDERS_NO > 7U
+            {CORE_VLPR_CLK, /* name */
+             8U,            /* value */
+             {
+                 0U,
+             }},
+#endif
 
-            #if CLOCK_IP_DIVIDERS_NO > 8U
-            {
-                CORE_HSRUN_CLK,                    /* name */
-                1U,                              /* value */
-                {
-                    0U,
-                }
-            },
-            #endif
+#if CLOCK_IP_DIVIDERS_NO > 8U
+            {CORE_HSRUN_CLK, /* name */
+             1U,             /* value */
+             {
+                 0U,
+             }},
+#endif
 
-            #if CLOCK_IP_DIVIDERS_NO > 9U
-            {
-                BUS_RUN_CLK,                    /* name */
-                1U,                              /* value */
-                {
-                    0U,
-                }
-            },
-            #endif
+#if CLOCK_IP_DIVIDERS_NO > 9U
+            {BUS_RUN_CLK, /* name */
+             1U,          /* value */
+             {
+                 0U,
+             }},
+#endif
 
-            #if CLOCK_IP_DIVIDERS_NO > 10U
-            {
-                BUS_VLPR_CLK,                    /* name */
-                1U,                              /* value */
-                {
-                    0U,
-                }
-            },
-            #endif
+#if CLOCK_IP_DIVIDERS_NO > 10U
+            {BUS_VLPR_CLK, /* name */
+             1U,           /* value */
+             {
+                 0U,
+             }},
+#endif
 
-            #if CLOCK_IP_DIVIDERS_NO > 11U
-            {
-                BUS_HSRUN_CLK,                    /* name */
-                1U,                              /* value */
-                {
-                    0U,
-                }
-            },
-            #endif
+#if CLOCK_IP_DIVIDERS_NO > 11U
+            {BUS_HSRUN_CLK, /* name */
+             1U,            /* value */
+             {
+                 0U,
+             }},
+#endif
 
-            #if CLOCK_IP_DIVIDERS_NO > 12U
-            {
-                SLOW_RUN_CLK,                    /* name */
-                4U,                              /* value */
-                {
-                    0U,
-                }
-            },
-            #endif
+#if CLOCK_IP_DIVIDERS_NO > 12U
+            {SLOW_RUN_CLK, /* name */
+             4U,           /* value */
+             {
+                 0U,
+             }},
+#endif
 
-            #if CLOCK_IP_DIVIDERS_NO > 13U
-            {
-                SLOW_VLPR_CLK,                    /* name */
-                4U,                              /* value */
-                {
-                    0U,
-                }
-            },
-            #endif
+#if CLOCK_IP_DIVIDERS_NO > 13U
+            {SLOW_VLPR_CLK, /* name */
+             4U,            /* value */
+             {
+                 0U,
+             }},
+#endif
 
-            #if CLOCK_IP_DIVIDERS_NO > 14U
-            {
-                SLOW_HSRUN_CLK,                    /* name */
-                4U,                              /* value */
-                {
-                    0U,
-                }
-            },
-            #endif
+#if CLOCK_IP_DIVIDERS_NO > 14U
+            {SLOW_HSRUN_CLK, /* name */
+             4U,             /* value */
+             {
+                 0U,
+             }},
+#endif
 
-            #if CLOCK_IP_DIVIDERS_NO > 15U
-            {
-                CLKOUT0_CLK,                    /* name */
-                5U,                              /* value */
-                {
-                    0U,
-                }
-            },
-            #endif
+#if CLOCK_IP_DIVIDERS_NO > 15U
+            {CLKOUT0_CLK, /* name */
+             5U,          /* value */
+             {
+                 0U,
+             }},
+#endif
 
-            #if CLOCK_IP_DIVIDERS_NO > 16U
-            {
-                LPTMR0_CLK,                    /* name */
-                1U,                              /* value */
-                {
-                    1U,
-                }
-            },
-            #endif
+#if CLOCK_IP_DIVIDERS_NO > 16U
+            {LPTMR0_CLK, /* name */
+             1U,         /* value */
+             {
+                 1U,
+             }},
+#endif
 
-            #if CLOCK_IP_DIVIDERS_NO > 17U
-            {
-                TRACE_CLK,                    /* name */
-                1U,                              /* value */
-                {
-                    1U,
-                }
-            },
-            #endif
+#if CLOCK_IP_DIVIDERS_NO > 17U
+            {TRACE_CLK, /* name */
+             1U,        /* value */
+             {
+                 1U,
+             }},
+#endif
 
-            #if CLOCK_IP_DIVIDERS_NO > 18U
-            {
-                RESERVED_CLK,                    /* name */
-                0U,                              /* value */
-                {                    0U,
-                }
-            },
-            #endif
+#if CLOCK_IP_DIVIDERS_NO > 18U
+            {RESERVED_CLK, /* name */
+             0U,           /* value */
+             {
+                 0U,
+             }},
+#endif
 
-            #if CLOCK_IP_DIVIDERS_NO > 19U
-            {
-                RESERVED_CLK,                    /* name */
-                0U,                              /* value */
-                {                    0U,
-                }
-            },
-            #endif
+#if CLOCK_IP_DIVIDERS_NO > 19U
+            {RESERVED_CLK, /* name */
+             0U,           /* value */
+             {
+                 0U,
+             }},
+#endif
         },
 
         /* TRIGGER DIVIDER Initialization. */
@@ -683,8 +638,6 @@ const Clock_Ip_ClockConfigType Mcu_aClockConfigPB_VS_0[1U] = {
                 RESERVED_CLK,             /* input source name */
             },
         },
-
-
 
         /* FRACTIONAL DIVIDER initialization. */
         {
@@ -698,335 +651,330 @@ const Clock_Ip_ClockConfigType Mcu_aClockConfigPB_VS_0[1U] = {
             },
         },
 
-
-
         /* EXTERNAL CLOCKS initialization. */
         {
 
-            #if CLOCK_IP_EXT_CLKS_NO > 0U
+#if CLOCK_IP_EXT_CLKS_NO > 0U
             {
-                TCLK0_REF_CLK,                    /* name */
-                0U,                              /* value */
+                TCLK0_REF_CLK, /* name */
+                0U,            /* value */
             },
-            #endif
+#endif
 
-            #if CLOCK_IP_EXT_CLKS_NO > 1U
+#if CLOCK_IP_EXT_CLKS_NO > 1U
             {
-                TCLK1_REF_CLK,                    /* name */
-                0U,                              /* value */
+                TCLK1_REF_CLK, /* name */
+                0U,            /* value */
             },
-            #endif
+#endif
 
-            #if CLOCK_IP_EXT_CLKS_NO > 2U
+#if CLOCK_IP_EXT_CLKS_NO > 2U
             {
-                TCLK2_REF_CLK,                    /* name */
-                0U,                              /* value */
+                TCLK2_REF_CLK, /* name */
+                0U,            /* value */
             },
-            #endif
+#endif
 
-            #if CLOCK_IP_EXT_CLKS_NO > 3U
+#if CLOCK_IP_EXT_CLKS_NO > 3U
             {
-                RTC_CLKIN,                    /* name */
-                32768U,                              /* value */
+                RTC_CLKIN, /* name */
+                32768U,    /* value */
             },
-            #endif
+#endif
         },
-
-
 
         /* CLOCK GATES initialization. */
         {
 
-            #if CLOCK_IP_GATES_NO > 0U
+#if CLOCK_IP_GATES_NO > 0U
             {
-                LPO_32K_CLK,                    /* name */
-                1U,                           /* enable */
+                LPO_32K_CLK, /* name */
+                1U,          /* enable */
             },
-            #endif
+#endif
 
-            #if CLOCK_IP_GATES_NO > 1U
+#if CLOCK_IP_GATES_NO > 1U
             {
-                LPO_1K_CLK,                    /* name */
-                1U,                           /* enable */
+                LPO_1K_CLK, /* name */
+                1U,         /* enable */
             },
-            #endif
+#endif
 
-            #if CLOCK_IP_GATES_NO > 2U
+#if CLOCK_IP_GATES_NO > 2U
             {
-                ADC0_CLK,                    /* name */
-                1U,                           /* enable */
+                ADC0_CLK, /* name */
+                1U,       /* enable */
             },
-            #endif
+#endif
 
-            #if CLOCK_IP_GATES_NO > 3U
+#if CLOCK_IP_GATES_NO > 3U
             {
-                ADC1_CLK,                    /* name */
-                1U,                           /* enable */
+                ADC1_CLK, /* name */
+                1U,       /* enable */
             },
-            #endif
+#endif
 
-            #if CLOCK_IP_GATES_NO > 4U
+#if CLOCK_IP_GATES_NO > 4U
             {
-                CLKOUT0_CLK,                    /* name */
-                1U,                           /* enable */
+                CLKOUT0_CLK, /* name */
+                1U,          /* enable */
             },
-            #endif
+#endif
 
-            #if CLOCK_IP_GATES_NO > 5U
+#if CLOCK_IP_GATES_NO > 5U
             {
-                CMP0_CLK,                    /* name */
-                1U,                           /* enable */
+                CMP0_CLK, /* name */
+                1U,       /* enable */
             },
-            #endif
+#endif
 
-            #if CLOCK_IP_GATES_NO > 6U
+#if CLOCK_IP_GATES_NO > 6U
             {
-                CRC0_CLK,                    /* name */
-                1U,                           /* enable */
+                CRC0_CLK, /* name */
+                1U,       /* enable */
             },
-            #endif
+#endif
 
-            #if CLOCK_IP_GATES_NO > 7U
+#if CLOCK_IP_GATES_NO > 7U
             {
-                DMA0_CLK,                    /* name */
-                1U,                           /* enable */
+                DMA0_CLK, /* name */
+                1U,       /* enable */
             },
-            #endif
+#endif
 
-            #if CLOCK_IP_GATES_NO > 8U
+#if CLOCK_IP_GATES_NO > 8U
             {
-                DMAMUX0_CLK,                    /* name */
-                1U,                           /* enable */
+                DMAMUX0_CLK, /* name */
+                1U,          /* enable */
             },
-            #endif
+#endif
 
-            #if CLOCK_IP_GATES_NO > 9U
+#if CLOCK_IP_GATES_NO > 9U
             {
-                EIM0_CLK,                    /* name */
-                1U,                           /* enable */
+                EIM0_CLK, /* name */
+                1U,       /* enable */
             },
-            #endif
+#endif
 
-            #if CLOCK_IP_GATES_NO > 10U
+#if CLOCK_IP_GATES_NO > 10U
             {
-                ERM0_CLK,                    /* name */
-                1U,                           /* enable */
+                ERM0_CLK, /* name */
+                1U,       /* enable */
             },
-            #endif
+#endif
 
-            #if CLOCK_IP_GATES_NO > 11U
+#if CLOCK_IP_GATES_NO > 11U
             {
-                EWM0_CLK,                    /* name */
-                1U,                           /* enable */
+                EWM0_CLK, /* name */
+                1U,       /* enable */
             },
-            #endif
+#endif
 
-            #if CLOCK_IP_GATES_NO > 12U
+#if CLOCK_IP_GATES_NO > 12U
             {
-                FLEXCAN0_CLK,                    /* name */
-                1U,                           /* enable */
+                FLEXCAN0_CLK, /* name */
+                1U,           /* enable */
             },
-            #endif
+#endif
 
-            #if CLOCK_IP_GATES_NO > 13U
+#if CLOCK_IP_GATES_NO > 13U
             {
-                FLEXCAN1_CLK,                    /* name */
-                1U,                           /* enable */
+                FLEXCAN1_CLK, /* name */
+                1U,           /* enable */
             },
-            #endif
+#endif
 
-            #if CLOCK_IP_GATES_NO > 14U
+#if CLOCK_IP_GATES_NO > 14U
             {
-                FLEXCAN2_CLK,                    /* name */
-                1U,                           /* enable */
+                FLEXCAN2_CLK, /* name */
+                1U,           /* enable */
             },
-            #endif
+#endif
 
-            #if CLOCK_IP_GATES_NO > 15U
+#if CLOCK_IP_GATES_NO > 15U
             {
-                FlexIO_CLK,                    /* name */
-                1U,                           /* enable */
+                FlexIO_CLK, /* name */
+                1U,         /* enable */
             },
-            #endif
+#endif
 
-            #if CLOCK_IP_GATES_NO > 16U
+#if CLOCK_IP_GATES_NO > 16U
             {
-                FTFC_CLK,                    /* name */
-                1U,                           /* enable */
+                FTFC_CLK, /* name */
+                1U,       /* enable */
             },
-            #endif
+#endif
 
-            #if CLOCK_IP_GATES_NO > 17U
+#if CLOCK_IP_GATES_NO > 17U
             {
-                FTM0_CLK,                    /* name */
-                1U,                           /* enable */
+                FTM0_CLK, /* name */
+                1U,       /* enable */
             },
-            #endif
+#endif
 
-            #if CLOCK_IP_GATES_NO > 18U
+#if CLOCK_IP_GATES_NO > 18U
             {
-                FTM1_CLK,                    /* name */
-                1U,                           /* enable */
+                FTM1_CLK, /* name */
+                1U,       /* enable */
             },
-            #endif
+#endif
 
-            #if CLOCK_IP_GATES_NO > 19U
+#if CLOCK_IP_GATES_NO > 19U
             {
-                FTM2_CLK,                    /* name */
-                1U,                           /* enable */
+                FTM2_CLK, /* name */
+                1U,       /* enable */
             },
-            #endif
+#endif
 
-            #if CLOCK_IP_GATES_NO > 20U
+#if CLOCK_IP_GATES_NO > 20U
             {
-                FTM3_CLK,                    /* name */
-                1U,                           /* enable */
+                FTM3_CLK, /* name */
+                1U,       /* enable */
             },
-            #endif
+#endif
 
-            #if CLOCK_IP_GATES_NO > 21U
+#if CLOCK_IP_GATES_NO > 21U
             {
-                LPI2C0_CLK,                    /* name */
-                1U,                           /* enable */
+                LPI2C0_CLK, /* name */
+                1U,         /* enable */
             },
-            #endif
+#endif
 
-            #if CLOCK_IP_GATES_NO > 22U
+#if CLOCK_IP_GATES_NO > 22U
             {
-                LPIT0_CLK,                    /* name */
-                1U,                           /* enable */
+                LPIT0_CLK, /* name */
+                1U,        /* enable */
             },
-            #endif
+#endif
 
-            #if CLOCK_IP_GATES_NO > 23U
+#if CLOCK_IP_GATES_NO > 23U
             {
-                LPSPI0_CLK,                    /* name */
-                1U,                           /* enable */
+                LPSPI0_CLK, /* name */
+                1U,         /* enable */
             },
-            #endif
+#endif
 
-            #if CLOCK_IP_GATES_NO > 24U
+#if CLOCK_IP_GATES_NO > 24U
             {
-                LPSPI1_CLK,                    /* name */
-                1U,                           /* enable */
+                LPSPI1_CLK, /* name */
+                1U,         /* enable */
             },
-            #endif
+#endif
 
-            #if CLOCK_IP_GATES_NO > 25U
+#if CLOCK_IP_GATES_NO > 25U
             {
-                LPSPI2_CLK,                    /* name */
-                1U,                           /* enable */
+                LPSPI2_CLK, /* name */
+                1U,         /* enable */
             },
-            #endif
+#endif
 
-            #if CLOCK_IP_GATES_NO > 26U
+#if CLOCK_IP_GATES_NO > 26U
             {
-                LPTMR0_CLK,                    /* name */
-                1U,                           /* enable */
+                LPTMR0_CLK, /* name */
+                1U,         /* enable */
             },
-            #endif
+#endif
 
-            #if CLOCK_IP_GATES_NO > 27U
+#if CLOCK_IP_GATES_NO > 27U
             {
-                LPUART0_CLK,                    /* name */
-                1U,                           /* enable */
+                LPUART0_CLK, /* name */
+                1U,          /* enable */
             },
-            #endif
+#endif
 
-            #if CLOCK_IP_GATES_NO > 28U
+#if CLOCK_IP_GATES_NO > 28U
             {
-                LPUART1_CLK,                    /* name */
-                1U,                           /* enable */
+                LPUART1_CLK, /* name */
+                1U,          /* enable */
             },
-            #endif
+#endif
 
-            #if CLOCK_IP_GATES_NO > 29U
+#if CLOCK_IP_GATES_NO > 29U
             {
-                LPUART2_CLK,                    /* name */
-                1U,                           /* enable */
+                LPUART2_CLK, /* name */
+                1U,          /* enable */
             },
-            #endif
+#endif
 
-            #if CLOCK_IP_GATES_NO > 30U
+#if CLOCK_IP_GATES_NO > 30U
             {
-                MPU0_CLK,                    /* name */
-                1U,                           /* enable */
+                MPU0_CLK, /* name */
+                1U,       /* enable */
             },
-            #endif
+#endif
 
-            #if CLOCK_IP_GATES_NO > 31U
+#if CLOCK_IP_GATES_NO > 31U
             {
-                MSCM0_CLK,                    /* name */
-                1U,                           /* enable */
+                MSCM0_CLK, /* name */
+                1U,        /* enable */
             },
-            #endif
+#endif
 
-            #if CLOCK_IP_GATES_NO > 32U
+#if CLOCK_IP_GATES_NO > 32U
             {
-                PDB0_CLK,                    /* name */
-                1U,                           /* enable */
+                PDB0_CLK, /* name */
+                1U,       /* enable */
             },
-            #endif
+#endif
 
-            #if CLOCK_IP_GATES_NO > 33U
+#if CLOCK_IP_GATES_NO > 33U
             {
-                PDB1_CLK,                    /* name */
-                1U,                           /* enable */
+                PDB1_CLK, /* name */
+                1U,       /* enable */
             },
-            #endif
+#endif
 
-            #if CLOCK_IP_GATES_NO > 34U
+#if CLOCK_IP_GATES_NO > 34U
             {
-                PORTA_CLK,                    /* name */
-                1U,                           /* enable */
+                PORTA_CLK, /* name */
+                1U,        /* enable */
             },
-            #endif
+#endif
 
-            #if CLOCK_IP_GATES_NO > 35U
+#if CLOCK_IP_GATES_NO > 35U
             {
-                PORTB_CLK,                    /* name */
-                1U,                           /* enable */
+                PORTB_CLK, /* name */
+                1U,        /* enable */
             },
-            #endif
+#endif
 
-            #if CLOCK_IP_GATES_NO > 36U
+#if CLOCK_IP_GATES_NO > 36U
             {
-                PORTC_CLK,                    /* name */
-                1U,                           /* enable */
+                PORTC_CLK, /* name */
+                1U,        /* enable */
             },
-            #endif
+#endif
 
-            #if CLOCK_IP_GATES_NO > 37U
+#if CLOCK_IP_GATES_NO > 37U
             {
-                PORTD_CLK,                    /* name */
-                1U,                           /* enable */
+                PORTD_CLK, /* name */
+                1U,        /* enable */
             },
-            #endif
+#endif
 
-            #if CLOCK_IP_GATES_NO > 38U
+#if CLOCK_IP_GATES_NO > 38U
             {
-                PORTE_CLK,                    /* name */
-                1U,                           /* enable */
+                PORTE_CLK, /* name */
+                1U,        /* enable */
             },
-            #endif
+#endif
 
-            #if CLOCK_IP_GATES_NO > 39U
+#if CLOCK_IP_GATES_NO > 39U
             {
-                RTC0_CLK,                    /* name */
-                1U,                           /* enable */
+                RTC0_CLK, /* name */
+                1U,       /* enable */
             },
-            #endif
+#endif
 
-            #if CLOCK_IP_GATES_NO > 40U
+#if CLOCK_IP_GATES_NO > 40U
             {
-                TRACE_CLK,                    /* name */
-                1U,                           /* enable */
+                TRACE_CLK, /* name */
+                1U,        /* enable */
             },
-            #endif
+#endif
         },
 
-
-        /* PCFS initialization. */ 
+        /* PCFS initialization. */
         {
             {
                 RESERVED_CLK,
@@ -1037,23 +985,22 @@ const Clock_Ip_ClockConfigType Mcu_aClockConfigPB_VS_0[1U] = {
             },
         },
 
-
-        /* Clock monitor */ 
+        /* Clock monitor */
         {
             {
                 RESERVED_CLK,
                 0U,
                 0U,
-                CLOCK_IP_MAXIMUM_0_POINT_01_PERCENTAGE_DEVIATION,           /* Monitor maximum allowed frequency variation. */
-                CLOCK_IP_LOWEST_LATENCY,                                    /* Latency of clock monitor reaction. */
+                CLOCK_IP_MAXIMUM_0_POINT_01_PERCENTAGE_DEVIATION, /* Monitor maximum allowed
+                                                                     frequency variation. */
+                CLOCK_IP_LOWEST_LATENCY, /* Latency of clock monitor reaction. */
                 0U,
                 {
-                        0U,          /* Start index in register values array */
-                        0U,          /* End index in register values array */
+                    0U, /* Start index in register values array */
+                    0U, /* End index in register values array */
                 },
             },
         },
-
 
         /* Specific peripheral initialization. */
         {
@@ -1075,7 +1022,6 @@ const Clock_Ip_ClockConfigType Mcu_aClockConfigPB_VS_0[1U] = {
     },
 };
 
-
 #define MCU_STOP_SEC_CONFIG_DATA_UNSPECIFIED
 #include "Mcu_MemMap.h"
 
@@ -1096,5 +1042,3 @@ const Clock_Ip_ClockConfigType Mcu_aClockConfigPB_VS_0[1U] = {
 #endif
 
 /** @} */
-
-

@@ -12,26 +12,25 @@
 *
 *   Copyright 2020-2025 NXP
 *
-*   NXP Confidential and Proprietary. This software is owned or controlled by NXP and may only be 
-*   used strictly in accordance with the applicable license terms.  By expressly 
-*   accepting such terms or by downloading, installing, activating and/or otherwise 
-*   using the software, you are agreeing that you have read, and that you agree to 
-*   comply with and are bound by, such license terms.  If you do not agree to be 
+*   NXP Confidential and Proprietary. This software is owned or controlled by NXP and may only be
+*   used strictly in accordance with the applicable license terms.  By expressly
+*   accepting such terms or by downloading, installing, activating and/or otherwise
+*   using the software, you are agreeing that you have read, and that you agree to
+*   comply with and are bound by, such license terms.  If you do not agree to be
 *   bound by the applicable license terms, then you may not retain, install,
 *   activate or otherwise use the software.
 ==================================================================================================*/
 
 /**
-*   @file      Port_Ci_Port_Ip_Cfg.c
-*
-*   @addtogroup Port_CFG
-*   @{
-*/
+ *   @file      Port_Ci_Port_Ip_Cfg.c
+ *
+ *   @addtogroup Port_CFG
+ *   @{
+ */
 
 #ifdef __cplusplus
-extern "C"{
+extern "C" {
 #endif
-
 
 /*==================================================================================================
                                          INCLUDE FILES
@@ -44,34 +43,35 @@ extern "C"{
 /*==================================================================================================
 *                              SOURCE FILE VERSION INFORMATION
 ==================================================================================================*/
-#define PORT_CI_PORT_IP_VENDOR_ID_CFG_C                     43
-#define PORT_CI_PORT_IP_AR_RELEASE_MAJOR_VERSION_CFG_C      4
-#define PORT_CI_PORT_IP_AR_RELEASE_MINOR_VERSION_CFG_C      7
-#define PORT_CI_PORT_IP_AR_RELEASE_REVISION_VERSION_CFG_C   0
-#define PORT_CI_PORT_IP_SW_MAJOR_VERSION_CFG_C              3
-#define PORT_CI_PORT_IP_SW_MINOR_VERSION_CFG_C              0
-#define PORT_CI_PORT_IP_SW_PATCH_VERSION_CFG_C              0
+#define PORT_CI_PORT_IP_VENDOR_ID_CFG_C 43
+#define PORT_CI_PORT_IP_AR_RELEASE_MAJOR_VERSION_CFG_C 4
+#define PORT_CI_PORT_IP_AR_RELEASE_MINOR_VERSION_CFG_C 7
+#define PORT_CI_PORT_IP_AR_RELEASE_REVISION_VERSION_CFG_C 0
+#define PORT_CI_PORT_IP_SW_MAJOR_VERSION_CFG_C 3
+#define PORT_CI_PORT_IP_SW_MINOR_VERSION_CFG_C 0
+#define PORT_CI_PORT_IP_SW_PATCH_VERSION_CFG_C 0
 
 /*==================================================================================================
 *                                     FILE VERSION CHECKS
 ==================================================================================================*/
 /* Check if Port_Ci_Port_Ip_Cfg.c and Port_Ci_Port_Ip_Cfg.h are of the same vendor */
 #if (PORT_CI_PORT_IP_VENDOR_ID_CFG_C != PORT_CI_PORT_IP_VENDOR_ID_CFG_H)
-    #error "Port_Ci_Port_Ip_Cfg.c and Port_Ci_Port_Ip_Cfg.h have different vendor ids"
+#error "Port_Ci_Port_Ip_Cfg.c and Port_Ci_Port_Ip_Cfg.h have different vendor ids"
 #endif
 /* Check if Port_Ci_Port_Ip_Cfg.c and Port_Ci_Port_Ip_Cfg.h are of the same Autosar version */
-#if ((PORT_CI_PORT_IP_AR_RELEASE_MAJOR_VERSION_CFG_C    != PORT_CI_PORT_IP_AR_RELEASE_MAJOR_VERSION_CFG_H)    || \
-     (PORT_CI_PORT_IP_AR_RELEASE_MINOR_VERSION_CFG_C    != PORT_CI_PORT_IP_AR_RELEASE_MINOR_VERSION_CFG_H)    || \
-     (PORT_CI_PORT_IP_AR_RELEASE_REVISION_VERSION_CFG_C != PORT_CI_PORT_IP_AR_RELEASE_REVISION_VERSION_CFG_H)    \
-    )
-    #error "AutoSar Version Numbers of Port_Ci_Port_Ip_Cfg.c and Port_Ci_Port_Ip_Cfg.h are different"
+#if ((PORT_CI_PORT_IP_AR_RELEASE_MAJOR_VERSION_CFG_C !=                                            \
+      PORT_CI_PORT_IP_AR_RELEASE_MAJOR_VERSION_CFG_H) ||                                           \
+     (PORT_CI_PORT_IP_AR_RELEASE_MINOR_VERSION_CFG_C !=                                            \
+      PORT_CI_PORT_IP_AR_RELEASE_MINOR_VERSION_CFG_H) ||                                           \
+     (PORT_CI_PORT_IP_AR_RELEASE_REVISION_VERSION_CFG_C !=                                         \
+      PORT_CI_PORT_IP_AR_RELEASE_REVISION_VERSION_CFG_H))
+#error "AutoSar Version Numbers of Port_Ci_Port_Ip_Cfg.c and Port_Ci_Port_Ip_Cfg.h are different"
 #endif
 /* Check if Port_Ci_Port_Ip_Cfg.c and Port_Ci_Port_Ip_Cfg.h are of the same Software version */
-#if ((PORT_CI_PORT_IP_SW_MAJOR_VERSION_CFG_C != PORT_CI_PORT_IP_SW_MAJOR_VERSION_CFG_H) || \
-     (PORT_CI_PORT_IP_SW_MINOR_VERSION_CFG_C != PORT_CI_PORT_IP_SW_MINOR_VERSION_CFG_H) || \
-     (PORT_CI_PORT_IP_SW_PATCH_VERSION_CFG_C != PORT_CI_PORT_IP_SW_PATCH_VERSION_CFG_H)    \
-    )
-    #error "Software Version Numbers of Port_Ci_Port_Ip_Cfg.c and Port_Ci_Port_Ip_Cfg.h are different"
+#if ((PORT_CI_PORT_IP_SW_MAJOR_VERSION_CFG_C != PORT_CI_PORT_IP_SW_MAJOR_VERSION_CFG_H) ||         \
+     (PORT_CI_PORT_IP_SW_MINOR_VERSION_CFG_C != PORT_CI_PORT_IP_SW_MINOR_VERSION_CFG_H) ||         \
+     (PORT_CI_PORT_IP_SW_PATCH_VERSION_CFG_C != PORT_CI_PORT_IP_SW_PATCH_VERSION_CFG_H))
+#error "Software Version Numbers of Port_Ci_Port_Ip_Cfg.c and Port_Ci_Port_Ip_Cfg.h are different"
 #endif
 
 /*==================================================================================================
@@ -98,7 +98,6 @@ extern "C"{
                                            GLOBAL VARIABLES
 ==================================================================================================*/
 
-
 /*==================================================================================================
                                       LOCAL FUNCTION PROTOTYPES
 ==================================================================================================*/
@@ -111,11 +110,8 @@ extern "C"{
                                            GLOBAL FUNCTIONS
 ==================================================================================================*/
 
-
 #ifdef __cplusplus
 }
 #endif
 
 /** @} */
-
-

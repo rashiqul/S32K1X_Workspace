@@ -1,7 +1,7 @@
 /*==================================================================================================
 *   Project              : RTD AUTOSAR 4.7
 *   Platform             : CORTEXM
-*   Peripheral           : 
+*   Peripheral           :
 *   Dependencies         : none
 *
 *   Autosar Version      : 4.7.0
@@ -12,29 +12,28 @@
 *
 *   Copyright 2020-2025 NXP
 *
-*   NXP Confidential and Proprietary. This software is owned or controlled by NXP and may only be 
-*   used strictly in accordance with the applicable license terms.  By expressly 
-*   accepting such terms or by downloading, installing, activating and/or otherwise 
-*   using the software, you are agreeing that you have read, and that you agree to 
-*   comply with and are bound by, such license terms.  If you do not agree to be 
+*   NXP Confidential and Proprietary. This software is owned or controlled by NXP and may only be
+*   used strictly in accordance with the applicable license terms.  By expressly
+*   accepting such terms or by downloading, installing, activating and/or otherwise
+*   using the software, you are agreeing that you have read, and that you agree to
+*   comply with and are bound by, such license terms.  If you do not agree to be
 *   bound by the applicable license terms, then you may not retain, install,
 *   activate or otherwise use the software.
 ==================================================================================================*/
 /**
-*   @file       Clock_Ip.c
-*   @version    3.0.0
-*
-*   @brief   CLOCK driver implementations.
-*   @details CLOCK driver implementations.
-*
-*   @addtogroup CLOCK_DRIVER Clock Ip Driver
-*   @{
-*/
+ *   @file       Clock_Ip.c
+ *   @version    3.0.0
+ *
+ *   @brief   CLOCK driver implementations.
+ *   @details CLOCK driver implementations.
+ *
+ *   @addtogroup CLOCK_DRIVER Clock Ip Driver
+ *   @{
+ */
 
 #ifdef __cplusplus
-extern "C"{
+extern "C" {
 #endif
-
 
 /*==================================================================================================
 *                                          INCLUDE FILES
@@ -49,43 +48,41 @@ extern "C"{
 /*==================================================================================================
                                SOURCE FILE VERSION INFORMATION
 ==================================================================================================*/
-#define CLOCK_IP_VENDOR_ID_C                      43
-#define CLOCK_IP_AR_RELEASE_MAJOR_VERSION_C       4
-#define CLOCK_IP_AR_RELEASE_MINOR_VERSION_C       7
-#define CLOCK_IP_AR_RELEASE_REVISION_VERSION_C    0
-#define CLOCK_IP_SW_MAJOR_VERSION_C               3
-#define CLOCK_IP_SW_MINOR_VERSION_C               0
-#define CLOCK_IP_SW_PATCH_VERSION_C               0
+#define CLOCK_IP_VENDOR_ID_C 43
+#define CLOCK_IP_AR_RELEASE_MAJOR_VERSION_C 4
+#define CLOCK_IP_AR_RELEASE_MINOR_VERSION_C 7
+#define CLOCK_IP_AR_RELEASE_REVISION_VERSION_C 0
+#define CLOCK_IP_SW_MAJOR_VERSION_C 3
+#define CLOCK_IP_SW_MINOR_VERSION_C 0
+#define CLOCK_IP_SW_PATCH_VERSION_C 0
 
 /*==================================================================================================
 *                                     FILE VERSION CHECKS
 ==================================================================================================*/
 /* Check if Clock_Ip.c file and Clock_Ip_Private.h file are of the same vendor */
 #if (CLOCK_IP_VENDOR_ID_C != CLOCK_IP_PRIVATE_VENDOR_ID)
-    #error "Clock_Ip.c and Clock_Ip_Private.h have different vendor ids"
+#error "Clock_Ip.c and Clock_Ip_Private.h have different vendor ids"
 #endif
 
 /* Check if Clock_Ip.c file and Clock_Ip_Private.h file are of the same Autosar version */
-#if ((CLOCK_IP_AR_RELEASE_MAJOR_VERSION_C != CLOCK_IP_PRIVATE_AR_RELEASE_MAJOR_VERSION) || \
-     (CLOCK_IP_AR_RELEASE_MINOR_VERSION_C != CLOCK_IP_PRIVATE_AR_RELEASE_MINOR_VERSION) || \
-     (CLOCK_IP_AR_RELEASE_REVISION_VERSION_C != CLOCK_IP_PRIVATE_AR_RELEASE_REVISION_VERSION) \
-    )
-    #error "AutoSar Version Numbers of Clock_Ip.c and Clock_Ip_Private.h are different"
+#if ((CLOCK_IP_AR_RELEASE_MAJOR_VERSION_C != CLOCK_IP_PRIVATE_AR_RELEASE_MAJOR_VERSION) ||         \
+     (CLOCK_IP_AR_RELEASE_MINOR_VERSION_C != CLOCK_IP_PRIVATE_AR_RELEASE_MINOR_VERSION) ||         \
+     (CLOCK_IP_AR_RELEASE_REVISION_VERSION_C != CLOCK_IP_PRIVATE_AR_RELEASE_REVISION_VERSION))
+#error "AutoSar Version Numbers of Clock_Ip.c and Clock_Ip_Private.h are different"
 #endif
 
 /* Check if Clock_Ip.c file and Clock_Ip_Private.h file are of the same Software version */
-#if ((CLOCK_IP_SW_MAJOR_VERSION_C != CLOCK_IP_PRIVATE_SW_MAJOR_VERSION) || \
-     (CLOCK_IP_SW_MINOR_VERSION_C != CLOCK_IP_PRIVATE_SW_MINOR_VERSION) || \
-     (CLOCK_IP_SW_PATCH_VERSION_C != CLOCK_IP_PRIVATE_SW_PATCH_VERSION) \
-    )
-    #error "Software Version Numbers of Clock_Ip.c and Clock_Ip_Private.h are different"
+#if ((CLOCK_IP_SW_MAJOR_VERSION_C != CLOCK_IP_PRIVATE_SW_MAJOR_VERSION) ||                         \
+     (CLOCK_IP_SW_MINOR_VERSION_C != CLOCK_IP_PRIVATE_SW_MINOR_VERSION) ||                         \
+     (CLOCK_IP_SW_PATCH_VERSION_C != CLOCK_IP_PRIVATE_SW_PATCH_VERSION))
+#error "Software Version Numbers of Clock_Ip.c and Clock_Ip_Private.h are different"
 #endif
 
 #ifndef DISABLE_MCAL_INTERMODULE_ASR_CHECK
 /* Check if Clock_Ip.c file and OsIf.h file are of the same Autosar version */
-#if ((CLOCK_IP_AR_RELEASE_MAJOR_VERSION_C    != OSIF_AR_RELEASE_MAJOR_VERSION) || \
-     (CLOCK_IP_AR_RELEASE_MINOR_VERSION_C    != OSIF_AR_RELEASE_MINOR_VERSION))
-    #error "AutoSar Version Numbers of Clock_Ip.c and OsIf.h are different"
+#if ((CLOCK_IP_AR_RELEASE_MAJOR_VERSION_C != OSIF_AR_RELEASE_MAJOR_VERSION) ||                     \
+     (CLOCK_IP_AR_RELEASE_MINOR_VERSION_C != OSIF_AR_RELEASE_MINOR_VERSION))
+#error "AutoSar Version Numbers of Clock_Ip.c and OsIf.h are different"
 #endif
 #endif
 
@@ -96,19 +93,18 @@ extern "C"{
 /*!
  * @brief Clock ip driver context
  */
-typedef struct
-{
-    boolean ClockTreeIsConsumingPll;                /**< Clock tree is using a PLL output. */
-    boolean WaitStatesAreSupported;                 /**< Wait states are supported. */
-    uint8 HwPllsNo;                                 /**< Number of plls . */
-    uint8 HwDfsNo;                                  /**< Number of fractional dividers . */
+typedef struct {
+    boolean ClockTreeIsConsumingPll; /**< Clock tree is using a PLL output. */
+    boolean WaitStatesAreSupported;  /**< Wait states are supported. */
+    uint8 HwPllsNo;                  /**< Number of plls . */
+    uint8 HwDfsNo;                   /**< Number of fractional dividers . */
 
 } Clock_Ip_DriverContextType;
 
 /*==================================================================================================
 *                                          LOCAL MACROS
 ==================================================================================================*/
-#define CLOCK_IP_WAIT_STATES_DELAY              0XEFFFFFFFU
+#define CLOCK_IP_WAIT_STATES_DELAY 0XEFFFFFFFU
 
 /*==================================================================================================
 *                                         LOCAL CONSTANTS
@@ -118,7 +114,8 @@ typedef struct
 #include "Mcu_MemMap.h"
 
 #if !((CLOCK_IP_CMU_INFO_SIZE > 0U) || defined(CLOCK_IP_CGU_INTERRUPT))
-static const Clock_Ip_ClockConfigType *Clock_Ip_pxConfig;                                           /* Reference to the current clock configuration */
+static const Clock_Ip_ClockConfigType*
+    Clock_Ip_pxConfig; /* Reference to the current clock configuration */
 #endif
 
 /* Clock stop initialized section data */
@@ -158,7 +155,8 @@ static Clock_Ip_DriverContextType DriverContext;
 #include "Mcu_MemMap.h"
 
 #if (CLOCK_IP_CMU_INFO_SIZE > 0U) || defined(CLOCK_IP_CGU_INTERRUPT)
-const Clock_Ip_ClockConfigType *Clock_Ip_pxConfig;                                           /* Reference to the current clock configuration */
+const Clock_Ip_ClockConfigType*
+    Clock_Ip_pxConfig; /* Reference to the current clock configuration */
 #endif
 
 /* Clock stop initialized section data */
@@ -169,7 +167,7 @@ const Clock_Ip_ClockConfigType *Clock_Ip_pxConfig;                              
 #define MCU_START_SEC_VAR_INIT_BOOLEAN
 #include "Mcu_MemMap.h"
 
-    boolean Clock_Ip_bSentFromUpdateDriverContext = TRUE;
+boolean Clock_Ip_bSentFromUpdateDriverContext = TRUE;
 
 /* Clock stop initialized section data */
 #define MCU_STOP_SEC_VAR_INIT_BOOLEAN
@@ -195,29 +193,31 @@ uint8 Clock_Ip_FreqIds[CLOCK_IP_FEATURE_NAMES_NO];
 #define MCU_START_SEC_CODE
 #include "Mcu_MemMap.h"
 
-static void Clock_Ip_NotificatonsEmptyCallback(Clock_Ip_NotificationType Notification, Clock_Ip_NameType ClockName);
-static void Clock_Ip_ResetClockConfiguration(Clock_Ip_ClockConfigType const * Config);
-static void Clock_Ip_UpdateDriverContext(Clock_Ip_ClockConfigType const * Config);
+static void Clock_Ip_NotificatonsEmptyCallback(Clock_Ip_NotificationType Notification,
+                                               Clock_Ip_NameType ClockName);
+static void Clock_Ip_ResetClockConfiguration(Clock_Ip_ClockConfigType const* Config);
+static void Clock_Ip_UpdateDriverContext(Clock_Ip_ClockConfigType const* Config);
 static void Clock_Ip_CallEmptyCallbacks(void);
 static void Clock_Ip_SetWaitStates(void);
 
 #if (defined(CLOCK_IP_DEV_ERROR_DETECT) && (CLOCK_IP_DEV_ERROR_DETECT == STD_ON))
-static void Clock_Ip_CheckClockConfiguration(Clock_Ip_ClockConfigType const * Config);
-static void Clock_Ip_CheckIrcoscClocks(Clock_Ip_ClockConfigType const * Config);
-static void Clock_Ip_CheckXoscClocks(Clock_Ip_ClockConfigType const * Config);
-static void Clock_Ip_CheckPllClocks(Clock_Ip_ClockConfigType const * Config);
-static void Clock_Ip_CheckExtSigClocks(Clock_Ip_ClockConfigType const * Config);
-static void Clock_Ip_CheckSelectorClocks(Clock_Ip_ClockConfigType const * Config);
-static void Clock_Ip_CheckDividerClocks(Clock_Ip_ClockConfigType const * Config);
-static void Clock_Ip_CheckDividerTriggerClocks(Clock_Ip_ClockConfigType const * Config);
-static void Clock_Ip_CheckFracDividerClocks(Clock_Ip_ClockConfigType const * Config);
-static void Clock_Ip_CheckGateClocks(Clock_Ip_ClockConfigType const * Config);
-static void Clock_Ip_CheckPcfsClocks(Clock_Ip_ClockConfigType const * Config);
-static void Clock_Ip_CheckCmuClocks(Clock_Ip_ClockConfigType const * Config);
+static void Clock_Ip_CheckClockConfiguration(Clock_Ip_ClockConfigType const* Config);
+static void Clock_Ip_CheckIrcoscClocks(Clock_Ip_ClockConfigType const* Config);
+static void Clock_Ip_CheckXoscClocks(Clock_Ip_ClockConfigType const* Config);
+static void Clock_Ip_CheckPllClocks(Clock_Ip_ClockConfigType const* Config);
+static void Clock_Ip_CheckExtSigClocks(Clock_Ip_ClockConfigType const* Config);
+static void Clock_Ip_CheckSelectorClocks(Clock_Ip_ClockConfigType const* Config);
+static void Clock_Ip_CheckDividerClocks(Clock_Ip_ClockConfigType const* Config);
+static void Clock_Ip_CheckDividerTriggerClocks(Clock_Ip_ClockConfigType const* Config);
+static void Clock_Ip_CheckFracDividerClocks(Clock_Ip_ClockConfigType const* Config);
+static void Clock_Ip_CheckGateClocks(Clock_Ip_ClockConfigType const* Config);
+static void Clock_Ip_CheckPcfsClocks(Clock_Ip_ClockConfigType const* Config);
+static void Clock_Ip_CheckCmuClocks(Clock_Ip_ClockConfigType const* Config);
 #endif
 
 /* Clock Report Error Callback */
-static Clock_Ip_NotificationsCallbackType Clock_Ip_pfkNotificationsCallback = &Clock_Ip_NotificatonsEmptyCallback;
+static Clock_Ip_NotificationsCallbackType Clock_Ip_pfkNotificationsCallback =
+    &Clock_Ip_NotificatonsEmptyCallback;
 
 #define MCU_STOP_SEC_CODE
 #include "Mcu_MemMap.h"
@@ -237,9 +237,8 @@ static Clock_Ip_NotificationsCallbackType Clock_Ip_pfkNotificationsCallback = &C
  * Description   : Notification clock call back.
  *
  *END**************************************************************************/
-static void Clock_Ip_NotificatonsEmptyCallback( Clock_Ip_NotificationType Notification,
-                                                Clock_Ip_NameType ClockName
-                                               )
+static void Clock_Ip_NotificatonsEmptyCallback(Clock_Ip_NotificationType Notification,
+                                               Clock_Ip_NameType ClockName)
 {
     /* No implementation */
     (void)Notification;
@@ -252,7 +251,7 @@ static void Clock_Ip_NotificatonsEmptyCallback( Clock_Ip_NotificationType Notifi
  * Description   : Updates context of the driver, internal memory, clock objects.
  *
  *END**************************************************************************/
-static void Clock_Ip_UpdateDriverContext(Clock_Ip_ClockConfigType const * Config)
+static void Clock_Ip_UpdateDriverContext(Clock_Ip_ClockConfigType const* Config)
 {
     uint8 Index;
     (void)Config;
@@ -260,9 +259,10 @@ static void Clock_Ip_UpdateDriverContext(Clock_Ip_ClockConfigType const * Config
     /* Initialize clock objects */
     Clock_Ip_Command(Clock_Ip_pxConfig, CLOCK_IP_INITIALIZE_CLOCK_OBJECTS_COMMAND);
 
-    for (Index = 0U; Index < Config->ExtClksCount; Index++)    /* Set external signal frequency. */
+    for (Index = 0U; Index < Config->ExtClksCount; Index++) /* Set external signal frequency. */
     {
-        Clock_Ip_SetExternalSignalFrequency(Config->ExtClks[Index].Name, Config->ExtClks[Index].Value);
+        Clock_Ip_SetExternalSignalFrequency(Config->ExtClks[Index].Name,
+                                            Config->ExtClks[Index].Value);
     }
 
     /* Call empty callbacks */
@@ -270,8 +270,7 @@ static void Clock_Ip_UpdateDriverContext(Clock_Ip_ClockConfigType const * Config
 
 #if CLOCK_IP_CONFIGURED_FREQUENCIES_COUNT > 0U
 
-    for (Index = 1U; Index < Config->ConfigureFrequenciesCount; Index++)
-    {
+    for (Index = 1U; Index < Config->ConfigureFrequenciesCount; Index++) {
         Clock_Ip_FreqIds[Config->ConfiguredFrequencies[Index].Name] = Index;
     }
 
@@ -279,31 +278,32 @@ static void Clock_Ip_UpdateDriverContext(Clock_Ip_ClockConfigType const * Config
 }
 
 #if (defined(CLOCK_IP_DEV_ERROR_DETECT))
-    #if (CLOCK_IP_DEV_ERROR_DETECT == STD_ON)
+#if (CLOCK_IP_DEV_ERROR_DETECT == STD_ON)
 /*FUNCTION**********************************************************************
  *
  * Function Name : Clock_Ip_CheckIrcoscClocks
  * Description   : Checks clock names from ircoscs array
  *
  *END**************************************************************************/
-static void Clock_Ip_CheckIrcoscClocks(Clock_Ip_ClockConfigType const * Config)
+static void Clock_Ip_CheckIrcoscClocks(Clock_Ip_ClockConfigType const* Config)
 {
 #if CLOCK_IP_IRCOSCS_COUNT > 1U
     uint32 Index;
 #endif
-    if (Config->IrcoscsCount != 0U)
-    {
+    if (Config->IrcoscsCount != 0U) {
 #if CLOCK_IP_IRCOSCS_COUNT > 1U
-        if (Config->IrcoscsCount > 1U)
-        {
-            for (Index = 0U; Index < (Config->IrcoscsCount - 1U); Index++)
-            {
-                CLOCK_IP_DEV_ASSERT(((uint32)Config->Ircoscs[Index].Name) < ((uint32)Config->Ircoscs[Index+1U].Name));
-                CLOCK_IP_DEV_ASSERT((Clock_Ip_au8ClockNameTypes[Config->Ircoscs[Index].Name] & CLOCK_IP_IRCOSC_OBJECT) != 0U);
+        if (Config->IrcoscsCount > 1U) {
+            for (Index = 0U; Index < (Config->IrcoscsCount - 1U); Index++) {
+                CLOCK_IP_DEV_ASSERT(((uint32)Config->Ircoscs[Index].Name) <
+                                    ((uint32)Config->Ircoscs[Index + 1U].Name));
+                CLOCK_IP_DEV_ASSERT((Clock_Ip_au8ClockNameTypes[Config->Ircoscs[Index].Name] &
+                                     CLOCK_IP_IRCOSC_OBJECT) != 0U);
             }
         }
 #endif
-        CLOCK_IP_DEV_ASSERT((Clock_Ip_au8ClockNameTypes[Config->Ircoscs[Config->IrcoscsCount - 1U].Name] & CLOCK_IP_IRCOSC_OBJECT) != 0U);
+        CLOCK_IP_DEV_ASSERT(
+            (Clock_Ip_au8ClockNameTypes[Config->Ircoscs[Config->IrcoscsCount - 1U].Name] &
+             CLOCK_IP_IRCOSC_OBJECT) != 0U);
     }
 }
 
@@ -313,25 +313,26 @@ static void Clock_Ip_CheckIrcoscClocks(Clock_Ip_ClockConfigType const * Config)
  * Description   : Checks clock names from xoscs array
  *
  *END**************************************************************************/
-static void Clock_Ip_CheckXoscClocks(Clock_Ip_ClockConfigType const * Config)
+static void Clock_Ip_CheckXoscClocks(Clock_Ip_ClockConfigType const* Config)
 {
 #if CLOCK_IP_XOSCS_COUNT > 1U
     uint32 Index;
 #endif
 
-    if (Config->XoscsCount != 0U)
-    {
+    if (Config->XoscsCount != 0U) {
 #if CLOCK_IP_XOSCS_COUNT > 1U
-        if (Config->XoscsCount > 1U)
-        {
-            for (Index = 0U; Index < (Config->XoscsCount - 1U); Index++)
-            {
-                CLOCK_IP_DEV_ASSERT(((uint32)Config->Xoscs[Index].Name) < ((uint32)Config->Xoscs[Index+1U].Name));
-                CLOCK_IP_DEV_ASSERT((Clock_Ip_au8ClockNameTypes[Config->Xoscs[Index].Name] & CLOCK_IP_XOSC_OBJECT) != 0U);
+        if (Config->XoscsCount > 1U) {
+            for (Index = 0U; Index < (Config->XoscsCount - 1U); Index++) {
+                CLOCK_IP_DEV_ASSERT(((uint32)Config->Xoscs[Index].Name) <
+                                    ((uint32)Config->Xoscs[Index + 1U].Name));
+                CLOCK_IP_DEV_ASSERT((Clock_Ip_au8ClockNameTypes[Config->Xoscs[Index].Name] &
+                                     CLOCK_IP_XOSC_OBJECT) != 0U);
             }
         }
 #endif
-        CLOCK_IP_DEV_ASSERT((Clock_Ip_au8ClockNameTypes[Config->Xoscs[Config->XoscsCount - 1U].Name] & CLOCK_IP_XOSC_OBJECT) != 0U);
+        CLOCK_IP_DEV_ASSERT(
+            (Clock_Ip_au8ClockNameTypes[Config->Xoscs[Config->XoscsCount - 1U].Name] &
+             CLOCK_IP_XOSC_OBJECT) != 0U);
     }
 }
 
@@ -341,24 +342,24 @@ static void Clock_Ip_CheckXoscClocks(Clock_Ip_ClockConfigType const * Config)
  * Description   : Checks clock names from plls array
  *
  *END**************************************************************************/
-static void Clock_Ip_CheckPllClocks(Clock_Ip_ClockConfigType const * Config)
+static void Clock_Ip_CheckPllClocks(Clock_Ip_ClockConfigType const* Config)
 {
 #if CLOCK_IP_PLLS_COUNT > 1U
     uint32 Index;
 #endif
-    if (Config->PllsCount != 0U)
-    {
+    if (Config->PllsCount != 0U) {
 #if CLOCK_IP_PLLS_COUNT > 1U
-        if (Config->PllsCount > 1U)
-        {
-            for (Index = 0U; Index < (Config->PllsCount - 1U); Index++)
-            {
-                CLOCK_IP_DEV_ASSERT(((uint32)Config->Plls[Index].Name) < ((uint32)Config->Plls[Index+1U].Name));
-                CLOCK_IP_DEV_ASSERT((Clock_Ip_au8ClockNameTypes[Config->Plls[Index].Name] & CLOCK_IP_PLL_OBJECT) != 0U);
+        if (Config->PllsCount > 1U) {
+            for (Index = 0U; Index < (Config->PllsCount - 1U); Index++) {
+                CLOCK_IP_DEV_ASSERT(((uint32)Config->Plls[Index].Name) <
+                                    ((uint32)Config->Plls[Index + 1U].Name));
+                CLOCK_IP_DEV_ASSERT((Clock_Ip_au8ClockNameTypes[Config->Plls[Index].Name] &
+                                     CLOCK_IP_PLL_OBJECT) != 0U);
             }
         }
 #endif
-        CLOCK_IP_DEV_ASSERT((Clock_Ip_au8ClockNameTypes[Config->Plls[Config->PllsCount - 1U].Name] & CLOCK_IP_PLL_OBJECT) != 0U);
+        CLOCK_IP_DEV_ASSERT((Clock_Ip_au8ClockNameTypes[Config->Plls[Config->PllsCount - 1U].Name] &
+                             CLOCK_IP_PLL_OBJECT) != 0U);
     }
 }
 
@@ -368,24 +369,25 @@ static void Clock_Ip_CheckPllClocks(Clock_Ip_ClockConfigType const * Config)
  * Description   : Checks clock names from ext signal clocks array
  *
  *END**************************************************************************/
-static void Clock_Ip_CheckExtSigClocks(Clock_Ip_ClockConfigType const * Config)
+static void Clock_Ip_CheckExtSigClocks(Clock_Ip_ClockConfigType const* Config)
 {
 #if CLOCK_IP_EXT_CLKS_NO > 1U
     uint32 Index;
 #endif
-    if (Config->ExtClksCount != 0U)
-    {
+    if (Config->ExtClksCount != 0U) {
 #if CLOCK_IP_EXT_CLKS_NO > 1U
-        if (Config->ExtClksCount > 1U)
-        {
-            for (Index = 0U; Index < (Config->ExtClksCount - 1U); Index++)
-            {
-                CLOCK_IP_DEV_ASSERT(((uint32)Config->ExtClks[Index].Name) < ((uint32)Config->ExtClks[Index+1U].Name));
-                CLOCK_IP_DEV_ASSERT((Clock_Ip_au8ClockNameTypes[Config->ExtClks[Index].Name] & CLOCK_IP_EXT_SIG_OBJECT) != 0U);
+        if (Config->ExtClksCount > 1U) {
+            for (Index = 0U; Index < (Config->ExtClksCount - 1U); Index++) {
+                CLOCK_IP_DEV_ASSERT(((uint32)Config->ExtClks[Index].Name) <
+                                    ((uint32)Config->ExtClks[Index + 1U].Name));
+                CLOCK_IP_DEV_ASSERT((Clock_Ip_au8ClockNameTypes[Config->ExtClks[Index].Name] &
+                                     CLOCK_IP_EXT_SIG_OBJECT) != 0U);
             }
         }
 #endif
-        CLOCK_IP_DEV_ASSERT((Clock_Ip_au8ClockNameTypes[Config->ExtClks[Config->ExtClksCount - 1U].Name] & CLOCK_IP_EXT_SIG_OBJECT) != 0U);
+        CLOCK_IP_DEV_ASSERT(
+            (Clock_Ip_au8ClockNameTypes[Config->ExtClks[Config->ExtClksCount - 1U].Name] &
+             CLOCK_IP_EXT_SIG_OBJECT) != 0U);
     }
 }
 
@@ -395,20 +397,20 @@ static void Clock_Ip_CheckExtSigClocks(Clock_Ip_ClockConfigType const * Config)
  * Description   : Checks clock names from selectors array
  *
  *END**************************************************************************/
-static void Clock_Ip_CheckSelectorClocks(Clock_Ip_ClockConfigType const * Config)
+static void Clock_Ip_CheckSelectorClocks(Clock_Ip_ClockConfigType const* Config)
 {
     uint32 Index;
 
-    if (Config->SelectorsCount != 0U)
-    {
-        if (Config->SelectorsCount > 1U)
-        {
-            for (Index = 0U; Index < (Config->SelectorsCount - 1U); Index++)
-            {
-                CLOCK_IP_DEV_ASSERT((Clock_Ip_au8ClockNameTypes[Config->Selectors[Index].Name] & CLOCK_IP_SELECTOR_OBJECT) != 0U);
+    if (Config->SelectorsCount != 0U) {
+        if (Config->SelectorsCount > 1U) {
+            for (Index = 0U; Index < (Config->SelectorsCount - 1U); Index++) {
+                CLOCK_IP_DEV_ASSERT((Clock_Ip_au8ClockNameTypes[Config->Selectors[Index].Name] &
+                                     CLOCK_IP_SELECTOR_OBJECT) != 0U);
             }
         }
-        CLOCK_IP_DEV_ASSERT((Clock_Ip_au8ClockNameTypes[Config->Selectors[Config->SelectorsCount - 1U].Name] & CLOCK_IP_SELECTOR_OBJECT) != 0U);
+        CLOCK_IP_DEV_ASSERT(
+            (Clock_Ip_au8ClockNameTypes[Config->Selectors[Config->SelectorsCount - 1U].Name] &
+             CLOCK_IP_SELECTOR_OBJECT) != 0U);
     }
 }
 
@@ -418,20 +420,20 @@ static void Clock_Ip_CheckSelectorClocks(Clock_Ip_ClockConfigType const * Config
  * Description   : Checks clock names from dividers array
  *
  *END**************************************************************************/
-static void Clock_Ip_CheckDividerClocks(Clock_Ip_ClockConfigType const * Config)
+static void Clock_Ip_CheckDividerClocks(Clock_Ip_ClockConfigType const* Config)
 {
     uint32 Index;
 
-    if (Config->DividersCount != 0U)
-    {
-        if (Config->DividersCount > 1U)
-        {
-            for (Index = 0U; Index < (Config->DividersCount - 1U); Index++)
-            {
-                CLOCK_IP_DEV_ASSERT((Clock_Ip_au8ClockNameTypes[Config->Dividers[Index].Name] & CLOCK_IP_DIVIDER_OBJECT) != 0U);
+    if (Config->DividersCount != 0U) {
+        if (Config->DividersCount > 1U) {
+            for (Index = 0U; Index < (Config->DividersCount - 1U); Index++) {
+                CLOCK_IP_DEV_ASSERT((Clock_Ip_au8ClockNameTypes[Config->Dividers[Index].Name] &
+                                     CLOCK_IP_DIVIDER_OBJECT) != 0U);
             }
         }
-        CLOCK_IP_DEV_ASSERT((Clock_Ip_au8ClockNameTypes[Config->Dividers[Config->DividersCount - 1U].Name] & CLOCK_IP_DIVIDER_OBJECT) != 0U);
+        CLOCK_IP_DEV_ASSERT(
+            (Clock_Ip_au8ClockNameTypes[Config->Dividers[Config->DividersCount - 1U].Name] &
+             CLOCK_IP_DIVIDER_OBJECT) != 0U);
     }
 }
 
@@ -441,25 +443,28 @@ static void Clock_Ip_CheckDividerClocks(Clock_Ip_ClockConfigType const * Config)
  * Description   : Checks clock names from divider triggers array
  *
  *END**************************************************************************/
-static void Clock_Ip_CheckDividerTriggerClocks(Clock_Ip_ClockConfigType const * Config)
+static void Clock_Ip_CheckDividerTriggerClocks(Clock_Ip_ClockConfigType const* Config)
 {
 #if CLOCK_IP_DIVIDER_TRIGGERS_COUNT > 1U
     uint32 Index;
 #endif
 
-    if (Config->DividerTriggersCount != 0U)
-    {
+    if (Config->DividerTriggersCount != 0U) {
 #if CLOCK_IP_DIVIDER_TRIGGERS_COUNT > 1U
-        if (Config->DividerTriggersCount > 1U)
-        {
-            for (Index = 0U; Index < (Config->DividerTriggersCount - 1U); Index++)
-            {
-                CLOCK_IP_DEV_ASSERT(((uint32)Config->DividerTriggers[Index].Name) < ((uint32)Config->DividerTriggers[Index+1U].Name));
-                CLOCK_IP_DEV_ASSERT((Clock_Ip_au8ClockNameTypes[Config->DividerTriggers[Index].Name] & CLOCK_IP_DIVIDER_TRIGGER_OBJECT) != 0U);
+        if (Config->DividerTriggersCount > 1U) {
+            for (Index = 0U; Index < (Config->DividerTriggersCount - 1U); Index++) {
+                CLOCK_IP_DEV_ASSERT(((uint32)Config->DividerTriggers[Index].Name) <
+                                    ((uint32)Config->DividerTriggers[Index + 1U].Name));
+                CLOCK_IP_DEV_ASSERT(
+                    (Clock_Ip_au8ClockNameTypes[Config->DividerTriggers[Index].Name] &
+                     CLOCK_IP_DIVIDER_TRIGGER_OBJECT) != 0U);
             }
         }
 #endif
-        CLOCK_IP_DEV_ASSERT((Clock_Ip_au8ClockNameTypes[Config->DividerTriggers[Config->DividerTriggersCount - 1U].Name] & CLOCK_IP_DIVIDER_TRIGGER_OBJECT) != 0U);
+        CLOCK_IP_DEV_ASSERT(
+            (Clock_Ip_au8ClockNameTypes[Config->DividerTriggers[Config->DividerTriggersCount - 1U]
+                                            .Name] &
+             CLOCK_IP_DIVIDER_TRIGGER_OBJECT) != 0U);
     }
 }
 
@@ -469,25 +474,26 @@ static void Clock_Ip_CheckDividerTriggerClocks(Clock_Ip_ClockConfigType const * 
  * Description   : Checks clock names from fractional divider array
  *
  *END**************************************************************************/
-static void Clock_Ip_CheckFracDividerClocks(Clock_Ip_ClockConfigType const * Config)
+static void Clock_Ip_CheckFracDividerClocks(Clock_Ip_ClockConfigType const* Config)
 {
 #if CLOCK_IP_FRACTIONAL_DIVIDERS_COUNT > 1U
     uint32 Index;
 #endif
 
-    if (Config->FracDivsCount != 0U)
-    {
+    if (Config->FracDivsCount != 0U) {
 #if CLOCK_IP_FRACTIONAL_DIVIDERS_COUNT > 1U
-        if (Config->FracDivsCount > 1U)
-        {
-            for (Index = 0U; Index < (Config->FracDivsCount - 1U); Index++)
-            {
-                CLOCK_IP_DEV_ASSERT(((uint32)Config->FracDivs[Index].Name) < ((uint32)Config->FracDivs[Index+1U].Name));
-                CLOCK_IP_DEV_ASSERT((Clock_Ip_au8ClockNameTypes[Config->FracDivs[Index].Name] & CLOCK_IP_FRAC_DIV_OBJECT) != 0U);
+        if (Config->FracDivsCount > 1U) {
+            for (Index = 0U; Index < (Config->FracDivsCount - 1U); Index++) {
+                CLOCK_IP_DEV_ASSERT(((uint32)Config->FracDivs[Index].Name) <
+                                    ((uint32)Config->FracDivs[Index + 1U].Name));
+                CLOCK_IP_DEV_ASSERT((Clock_Ip_au8ClockNameTypes[Config->FracDivs[Index].Name] &
+                                     CLOCK_IP_FRAC_DIV_OBJECT) != 0U);
             }
         }
 #endif
-        CLOCK_IP_DEV_ASSERT((Clock_Ip_au8ClockNameTypes[Config->FracDivs[Config->FracDivsCount - 1U].Name] & CLOCK_IP_FRAC_DIV_OBJECT) != 0U);
+        CLOCK_IP_DEV_ASSERT(
+            (Clock_Ip_au8ClockNameTypes[Config->FracDivs[Config->FracDivsCount - 1U].Name] &
+             CLOCK_IP_FRAC_DIV_OBJECT) != 0U);
     }
 }
 
@@ -497,21 +503,22 @@ static void Clock_Ip_CheckFracDividerClocks(Clock_Ip_ClockConfigType const * Con
  * Description   : Checks clock names from gates array
  *
  *END**************************************************************************/
-static void Clock_Ip_CheckGateClocks(Clock_Ip_ClockConfigType const * Config)
+static void Clock_Ip_CheckGateClocks(Clock_Ip_ClockConfigType const* Config)
 {
     uint32 Index;
 
-    if (Config->GatesCount != 0U)
-    {
-        if (Config->GatesCount > 1U)
-        {
-            for (Index = 0U; Index < (Config->GatesCount - 1U); Index++)
-            {
-                CLOCK_IP_DEV_ASSERT(((uint32)Config->Gates[Index].Name) < ((uint32)Config->Gates[Index+1U].Name));
-                CLOCK_IP_DEV_ASSERT((Clock_Ip_au8ClockNameTypes[Config->Gates[Index].Name] & CLOCK_IP_GATE_OBJECT) != 0U);
+    if (Config->GatesCount != 0U) {
+        if (Config->GatesCount > 1U) {
+            for (Index = 0U; Index < (Config->GatesCount - 1U); Index++) {
+                CLOCK_IP_DEV_ASSERT(((uint32)Config->Gates[Index].Name) <
+                                    ((uint32)Config->Gates[Index + 1U].Name));
+                CLOCK_IP_DEV_ASSERT((Clock_Ip_au8ClockNameTypes[Config->Gates[Index].Name] &
+                                     CLOCK_IP_GATE_OBJECT) != 0U);
             }
         }
-        CLOCK_IP_DEV_ASSERT((Clock_Ip_au8ClockNameTypes[Config->Gates[Config->GatesCount - 1U].Name] & CLOCK_IP_GATE_OBJECT) != 0U);
+        CLOCK_IP_DEV_ASSERT(
+            (Clock_Ip_au8ClockNameTypes[Config->Gates[Config->GatesCount - 1U].Name] &
+             CLOCK_IP_GATE_OBJECT) != 0U);
     }
 }
 
@@ -521,20 +528,19 @@ static void Clock_Ip_CheckGateClocks(Clock_Ip_ClockConfigType const * Config)
  * Description   : Checks clock names from pcfs array
  *
  *END**************************************************************************/
-static void Clock_Ip_CheckPcfsClocks(Clock_Ip_ClockConfigType const * Config)
+static void Clock_Ip_CheckPcfsClocks(Clock_Ip_ClockConfigType const* Config)
 {
     uint32 Index;
 
-    if (Config->PcfsCount != 0U)
-    {
-        if (Config->PcfsCount > 1U)
-        {
-            for (Index = 0U; Index < (Config->PcfsCount - 1U); Index++)
-            {
-                CLOCK_IP_DEV_ASSERT((Clock_Ip_au8ClockNameTypes[Config->Pcfs[Index].Name] & CLOCK_IP_PCFS_OBJECT) != 0U);
+    if (Config->PcfsCount != 0U) {
+        if (Config->PcfsCount > 1U) {
+            for (Index = 0U; Index < (Config->PcfsCount - 1U); Index++) {
+                CLOCK_IP_DEV_ASSERT((Clock_Ip_au8ClockNameTypes[Config->Pcfs[Index].Name] &
+                                     CLOCK_IP_PCFS_OBJECT) != 0U);
             }
         }
-        CLOCK_IP_DEV_ASSERT((Clock_Ip_au8ClockNameTypes[Config->Pcfs[Config->PcfsCount - 1U].Name] & CLOCK_IP_PCFS_OBJECT) != 0U);
+        CLOCK_IP_DEV_ASSERT((Clock_Ip_au8ClockNameTypes[Config->Pcfs[Config->PcfsCount - 1U].Name] &
+                             CLOCK_IP_PCFS_OBJECT) != 0U);
     }
 }
 
@@ -544,23 +550,22 @@ static void Clock_Ip_CheckPcfsClocks(Clock_Ip_ClockConfigType const * Config)
  * Description   : Checks clock names from cmu array
  *
  *END**************************************************************************/
-static void Clock_Ip_CheckCmuClocks(Clock_Ip_ClockConfigType const * Config)
+static void Clock_Ip_CheckCmuClocks(Clock_Ip_ClockConfigType const* Config)
 {
     uint32 Index;
 
-    if (Config->CmusCount != 0U)
-    {
-        if (Config->CmusCount > 1U)
-        {
-            for (Index = 0U; Index < (Config->CmusCount - 1U); Index++)
-            {
-                CLOCK_IP_DEV_ASSERT((Clock_Ip_au8ClockNameTypes[Config->Cmus[Index].Name] & CLOCK_IP_CMU_OBJECT) != 0U);
+    if (Config->CmusCount != 0U) {
+        if (Config->CmusCount > 1U) {
+            for (Index = 0U; Index < (Config->CmusCount - 1U); Index++) {
+                CLOCK_IP_DEV_ASSERT((Clock_Ip_au8ClockNameTypes[Config->Cmus[Index].Name] &
+                                     CLOCK_IP_CMU_OBJECT) != 0U);
             }
         }
-        CLOCK_IP_DEV_ASSERT((Clock_Ip_au8ClockNameTypes[Config->Cmus[Config->CmusCount - 1U].Name] & CLOCK_IP_CMU_OBJECT) != 0U);
+        CLOCK_IP_DEV_ASSERT((Clock_Ip_au8ClockNameTypes[Config->Cmus[Config->CmusCount - 1U].Name] &
+                             CLOCK_IP_CMU_OBJECT) != 0U);
     }
 }
-    #endif
+#endif
 #endif
 
 #define CLOCK_IP_NO_CALLBACK 0U
@@ -568,9 +573,7 @@ static void Clock_Ip_CheckCmuClocks(Clock_Ip_ClockConfigType const * Config)
 /* Call empty callbacks to improve CCOV*/
 static void Clock_Ip_CallEmptyCallbacks(void)
 {
-
-    if (FALSE == FunctionWasCalled)
-    {
+    if (FALSE == FunctionWasCalled) {
         FunctionWasCalled = TRUE;
 
         Clock_Ip_axCmuCallbacks[CLOCK_IP_NO_CALLBACK].Set(NULL_PTR, 0U);
@@ -586,7 +589,7 @@ static void Clock_Ip_CallEmptyCallbacks(void)
         (void)Clock_Ip_axFracDivCallbacks[CLOCK_IP_NO_CALLBACK].Complete(CLOCK_IS_OFF);
 
         Clock_Ip_axGateCallbacks[CLOCK_IP_NO_CALLBACK].Set(NULL_PTR);
-        Clock_Ip_axGateCallbacks[CLOCK_IP_NO_CALLBACK].Update(CLOCK_IS_OFF,FALSE);
+        Clock_Ip_axGateCallbacks[CLOCK_IP_NO_CALLBACK].Update(CLOCK_IS_OFF, FALSE);
 
         Clock_Ip_axIntOscCallbacks[CLOCK_IP_NO_CALLBACK].Set(NULL_PTR);
 
@@ -599,39 +602,49 @@ static void Clock_Ip_CallEmptyCallbacks(void)
     }
 }
 
-static void Clock_Ip_ResetClockConfiguration(Clock_Ip_ClockConfigType const * Config)
+static void Clock_Ip_ResetClockConfiguration(Clock_Ip_ClockConfigType const* Config)
 {
     uint32 CallbackIndex;
     uint32 Index;
 
-    for (Index = Config->SelectorsCount ; Index > 0U; Index--)    /* Ramp down all selectors from configuration to SAFE_CLOCK */
+    for (Index = Config->SelectorsCount; Index > 0U;
+         Index--) /* Ramp down all selectors from configuration to SAFE_CLOCK */
     {
-        CallbackIndex = Clock_Ip_au8SelectorCallbackIndex[Clock_Ip_au8ClockFeatures[Config->Selectors[Index - 1U].Name][CLOCK_IP_CALLBACK]];
+        CallbackIndex = Clock_Ip_au8SelectorCallbackIndex
+            [Clock_Ip_au8ClockFeatures[Config->Selectors[Index - 1U].Name][CLOCK_IP_CALLBACK]];
         Clock_Ip_axSelectorCallbacks[CallbackIndex].Reset(&Config->Selectors[Index - 1U]);
     }
 
-    for (Index = Config->FracDivsCount; Index > 0U; Index--)    /* Put in reset state all fractional dividers from configuration */
+    for (Index = Config->FracDivsCount; Index > 0U;
+         Index--) /* Put in reset state all fractional dividers from configuration */
     {
-        CallbackIndex = Clock_Ip_au8FractionalDividerCallbackIndex[Clock_Ip_au8ClockFeatures[Config->FracDivs[Index - 1U].Name][CLOCK_IP_CALLBACK]];
+        CallbackIndex = Clock_Ip_au8FractionalDividerCallbackIndex
+            [Clock_Ip_au8ClockFeatures[Config->FracDivs[Index - 1U].Name][CLOCK_IP_CALLBACK]];
         Clock_Ip_axFracDivCallbacks[CallbackIndex].Reset(&Config->FracDivs[Index - 1U]);
     }
 
-    for (Index = Config->PllsCount; Index > 0U; Index--)       /* Power down all plls from configuration */
+    for (Index = Config->PllsCount; Index > 0U;
+         Index--) /* Power down all plls from configuration */
     {
-        CallbackIndex = Clock_Ip_au8PllCallbackIndex[Clock_Ip_au8ClockFeatures[Config->Plls[Index - 1U].Name][CLOCK_IP_CALLBACK]];
+        CallbackIndex =
+            Clock_Ip_au8PllCallbackIndex[Clock_Ip_au8ClockFeatures[Config->Plls[Index - 1U].Name]
+                                                                  [CLOCK_IP_CALLBACK]];
         Clock_Ip_axPllCallbacks[CallbackIndex].Reset(&Config->Plls[Index - 1U]);
     }
 
-    for (Index = Config->XoscsCount; Index > 0U; Index--)     /* Power down all xoscs from configuration */
+    for (Index = Config->XoscsCount; Index > 0U;
+         Index--) /* Power down all xoscs from configuration */
     {
-        CallbackIndex = Clock_Ip_au8XoscCallbackIndex[Clock_Ip_au8ClockFeatures[Config->Xoscs[Index - 1U].Name][CLOCK_IP_CALLBACK]];
+        CallbackIndex =
+            Clock_Ip_au8XoscCallbackIndex[Clock_Ip_au8ClockFeatures[Config->Xoscs[Index - 1U].Name]
+                                                                   [CLOCK_IP_CALLBACK]];
         Clock_Ip_axExtOscCallbacks[CallbackIndex].Reset(&Config->Xoscs[Index - 1U]);
     }
 }
 
 #if (defined(CLOCK_IP_DEV_ERROR_DETECT))
-    #if (CLOCK_IP_DEV_ERROR_DETECT == STD_ON)
-static void Clock_Ip_CheckClockConfiguration(Clock_Ip_ClockConfigType const * Config)
+#if (CLOCK_IP_DEV_ERROR_DETECT == STD_ON)
+static void Clock_Ip_CheckClockConfiguration(Clock_Ip_ClockConfigType const* Config)
 {
     Clock_Ip_CheckIrcoscClocks(Config);
     Clock_Ip_CheckXoscClocks(Config);
@@ -645,7 +658,7 @@ static void Clock_Ip_CheckClockConfiguration(Clock_Ip_ClockConfigType const * Co
     Clock_Ip_CheckPcfsClocks(Config);
     Clock_Ip_CheckCmuClocks(Config);
 }
-    #endif
+#endif
 #endif
 /*==================================================================================================
 *                                        GLOBAL FUNCTIONS
@@ -664,7 +677,7 @@ static void Clock_Ip_CheckClockConfiguration(Clock_Ip_ClockConfigType const * Co
  *
  * @implements Clock_Ip_Init_Activity
  * END**********************************************************************************/
-Clock_Ip_StatusType Clock_Ip_Init(Clock_Ip_ClockConfigType const * Config)
+Clock_Ip_StatusType Clock_Ip_Init(Clock_Ip_ClockConfigType const* Config)
 {
     Clock_Ip_StatusType ClockStatus = CLOCK_IP_ERROR;
 
@@ -690,26 +703,22 @@ Clock_Ip_StatusType Clock_Ip_Init(Clock_Ip_ClockConfigType const * Config)
     (void)CLOCK_IP_CMU_INDEX;
 
 #if (defined(CLOCK_IP_ENABLE_USER_MODE_SUPPORT))
-  #if (STD_ON == CLOCK_IP_ENABLE_USER_MODE_SUPPORT)
+#if (STD_ON == CLOCK_IP_ENABLE_USER_MODE_SUPPORT)
     /* Set user access allowed for Clock */
     Clock_Ip_Command(Config, CLOCK_IP_SET_USER_ACCESS_ALLOWED_COMMAND);
-  #endif
+#endif
 #endif
     CLOCK_IP_DEV_ASSERT(NULL_PTR != Config);
 
     Clock_Ip_InitClock(Config);
 
-    if (DriverContext.ClockTreeIsConsumingPll)
-    {
+    if (DriverContext.ClockTreeIsConsumingPll) {
         PllStatus = Clock_Ip_GetPllStatus();
-        if (CLOCK_IP_PLL_LOCKED == PllStatus)
-        {
+        if (CLOCK_IP_PLL_LOCKED == PllStatus) {
             Clock_Ip_DistributePll();
             ClockStatus = CLOCK_IP_SUCCESS;
         }
-    }
-    else
-    {
+    } else {
         ClockStatus = CLOCK_IP_SUCCESS;
     }
 
@@ -729,7 +738,7 @@ Clock_Ip_StatusType Clock_Ip_Init(Clock_Ip_ClockConfigType const * Config)
  *
  * @implements Clock_Ip_InitClock_Activity
  * END**********************************************************************************/
-void Clock_Ip_InitClock(Clock_Ip_ClockConfigType const * Config)
+void Clock_Ip_InitClock(Clock_Ip_ClockConfigType const* Config)
 {
     uint32 CallbackIndex;
     uint32 Index;
@@ -751,11 +760,13 @@ void Clock_Ip_InitClock(Clock_Ip_ClockConfigType const * Config)
     /* Clear all the settings for CMU0/1/2... */
     /* In case one clock configuration has the CMU disabled, then need to make the transition to
     reset state of CMU modules. */
-    if (NULL_PTR != Clock_Ip_pxConfig)
-    {
-        for (Index = 0U; Index < Config->CmusCount; Index++)    /* Reset all clock monitor units from previous configuration. */
+    if (NULL_PTR != Clock_Ip_pxConfig) {
+        for (Index = 0U; Index < Config->CmusCount;
+             Index++) /* Reset all clock monitor units from previous configuration. */
         {
-            CallbackIndex = Clock_Ip_au8CmuCallbackIndex[Clock_Ip_au8ClockFeatures[Config->Cmus[Index].Name][CLOCK_IP_CALLBACK]];
+            CallbackIndex =
+                Clock_Ip_au8CmuCallbackIndex[Clock_Ip_au8ClockFeatures[Config->Cmus[Index].Name]
+                                                                      [CLOCK_IP_CALLBACK]];
             Clock_Ip_axCmuCallbacks[CallbackIndex].Reset(&Config->Cmus[Index]);
         }
     }
@@ -771,144 +782,175 @@ void Clock_Ip_InitClock(Clock_Ip_ClockConfigType const * Config)
      *** be clocked from PLLs shouldn't be configured.
      *******************************************************/
 
-    for (Index = 0U; Index < Config->IrcoscsCount; Index++)   /* Set internal oscillators from configuration */
+    for (Index = 0U; Index < Config->IrcoscsCount;
+         Index++) /* Set internal oscillators from configuration */
     {
-        CallbackIndex = Clock_Ip_au8IrcoscCallbackIndex[Clock_Ip_au8ClockFeatures[Config->Ircoscs[Index].Name][CLOCK_IP_CALLBACK]];
+        CallbackIndex =
+            Clock_Ip_au8IrcoscCallbackIndex[Clock_Ip_au8ClockFeatures[Config->Ircoscs[Index].Name]
+                                                                     [CLOCK_IP_CALLBACK]];
         Clock_Ip_axIntOscCallbacks[CallbackIndex].Set(&Config->Ircoscs[Index]);
     }
 
     /* Initialize clock objects, internal driver data */
     Clock_Ip_UpdateDriverContext(Config);
 
-    for (Index = 0U; Index < Config->XoscsCount; Index++)     /* Configure all xoscs from configuration */
+    for (Index = 0U; Index < Config->XoscsCount;
+         Index++) /* Configure all xoscs from configuration */
     {
-        CallbackIndex = Clock_Ip_au8XoscCallbackIndex[Clock_Ip_au8ClockFeatures[Config->Xoscs[Index].Name][CLOCK_IP_CALLBACK]];
+        CallbackIndex =
+            Clock_Ip_au8XoscCallbackIndex[Clock_Ip_au8ClockFeatures[Config->Xoscs[Index].Name]
+                                                                   [CLOCK_IP_CALLBACK]];
         Clock_Ip_axExtOscCallbacks[CallbackIndex].Set(&Config->Xoscs[Index]);
     }
 
     /* Configure the PCFS  */
-    for (Index = 0U; Index < Config->PcfsCount; Index++)       /* Configure all progressive frequency switching clocks from configuration */
+    for (Index = 0U; Index < Config->PcfsCount;
+         Index++) /* Configure all progressive frequency switching clocks from configuration */
     {
-        CallbackIndex = Clock_Ip_au8PcfsCallbackIndex[Clock_Ip_au8ClockFeatures[Config->Pcfs[Index].Name][CLOCK_IP_CALLBACK]];
+        CallbackIndex =
+            Clock_Ip_au8PcfsCallbackIndex[Clock_Ip_au8ClockFeatures[Config->Pcfs[Index].Name]
+                                                                   [CLOCK_IP_CALLBACK]];
         Clock_Ip_axPcfsCallbacks[CallbackIndex].Set(&Config->Pcfs[Index], Index);
     }
 
     /* Configure the clock divider triggers that are under MCU control */
-    for (Index = 0U; Index < Config->DividerTriggersCount; Index++)    /* Set divider triggers from configuration. */
+    for (Index = 0U; Index < Config->DividerTriggersCount;
+         Index++) /* Set divider triggers from configuration. */
     {
-        CallbackIndex = Clock_Ip_au8DividerTriggerCallbackIndex[Clock_Ip_au8ClockFeatures[Config->DividerTriggers[Index].Name][CLOCK_IP_CALLBACK]];
-        Clock_Ip_axDividerTriggerCallbacks[CallbackIndex].Configure(&Config->DividerTriggers[Index]);
+        CallbackIndex = Clock_Ip_au8DividerTriggerCallbackIndex
+            [Clock_Ip_au8ClockFeatures[Config->DividerTriggers[Index].Name][CLOCK_IP_CALLBACK]];
+        Clock_Ip_axDividerTriggerCallbacks[CallbackIndex].Configure(
+            &Config->DividerTriggers[Index]);
     }
 
     /* Configure the clock dividers that are under MCU control */
-    for (Index = 0U; Index < Config->DividersCount; Index++)    /* Set dividers from configuration. */
+    for (Index = 0U; Index < Config->DividersCount; Index++) /* Set dividers from configuration. */
     {
-        CallbackIndex = Clock_Ip_au8DividerCallbackIndex[Clock_Ip_au8ClockFeatures[Config->Dividers[Index].Name][CLOCK_IP_CALLBACK]];
+        CallbackIndex =
+            Clock_Ip_au8DividerCallbackIndex[Clock_Ip_au8ClockFeatures[Config->Dividers[Index].Name]
+                                                                      [CLOCK_IP_CALLBACK]];
         Clock_Ip_axDividerCallbacks[CallbackIndex].Set(&Config->Dividers[Index]);
     }
 
     /* Trigger update for all divider trigger that are under MCU control */
-    for (Index = 0U; Index < Config->DividerTriggersCount; Index++)    /* Set divider triggers from configuration. */
+    for (Index = 0U; Index < Config->DividerTriggersCount;
+         Index++) /* Set divider triggers from configuration. */
     {
-        CallbackIndex = Clock_Ip_au8DividerTriggerCallbackIndex[Clock_Ip_au8ClockFeatures[Config->DividerTriggers[Index].Name][CLOCK_IP_CALLBACK]];
-        Clock_Ip_axDividerTriggerCallbacks[CallbackIndex].TriggerUpdate(&Config->DividerTriggers[Index]);
+        CallbackIndex = Clock_Ip_au8DividerTriggerCallbackIndex
+            [Clock_Ip_au8ClockFeatures[Config->DividerTriggers[Index].Name][CLOCK_IP_CALLBACK]];
+        Clock_Ip_axDividerTriggerCallbacks[CallbackIndex].TriggerUpdate(
+            &Config->DividerTriggers[Index]);
     }
 
     /* Configure PLL clock generators */
-    for (Index = 0U; Index < Config->PllsCount; Index++)       /* Configure all plls from configuration asynchronously. Do not enable. */
+    for (Index = 0U; Index < Config->PllsCount;
+         Index++) /* Configure all plls from configuration asynchronously. Do not enable. */
     {
-        CallbackIndex = Clock_Ip_au8PllCallbackIndex[Clock_Ip_au8ClockFeatures[Config->Plls[Index].Name][CLOCK_IP_CALLBACK]];
+        CallbackIndex =
+            Clock_Ip_au8PllCallbackIndex[Clock_Ip_au8ClockFeatures[Config->Plls[Index].Name]
+                                                                  [CLOCK_IP_CALLBACK]];
         Clock_Ip_axPllCallbacks[CallbackIndex].Set(&Config->Plls[Index]);
     }
 
-    for (Index = 0U; Index < Config->CmusCount; Index++)     /* Set the Clock Monitoring Units that are under mcu control. Cmus are not enabled. */
+    for (Index = 0U; Index < Config->CmusCount;
+         Index++) /* Set the Clock Monitoring Units that are under mcu control. Cmus are not
+                     enabled. */
     {
-        CallbackIndex = Clock_Ip_au8CmuCallbackIndex[Clock_Ip_au8ClockFeatures[Config->Cmus[Index].Name][CLOCK_IP_CALLBACK]];
+        CallbackIndex =
+            Clock_Ip_au8CmuCallbackIndex[Clock_Ip_au8ClockFeatures[Config->Cmus[Index].Name]
+                                                                  [CLOCK_IP_CALLBACK]];
         Clock_Ip_axCmuCallbacks[CallbackIndex].Set(&Config->Cmus[Index], Index);
     }
 
-    for (Index = 0U; Index < Config->XoscsCount; Index++)     /* Wait for all xoscs from configuration to lock */
+    for (Index = 0U; Index < Config->XoscsCount;
+         Index++) /* Wait for all xoscs from configuration to lock */
     {
-        CallbackIndex = Clock_Ip_au8XoscCallbackIndex[Clock_Ip_au8ClockFeatures[Config->Xoscs[Index].Name][CLOCK_IP_CALLBACK]];
+        CallbackIndex =
+            Clock_Ip_au8XoscCallbackIndex[Clock_Ip_au8ClockFeatures[Config->Xoscs[Index].Name]
+                                                                   [CLOCK_IP_CALLBACK]];
         Clock_Ip_axExtOscCallbacks[CallbackIndex].Complete(&Config->Xoscs[Index]);
     }
 
     /* Configure PLL clock generators */
-    for (Index = 0U; Index < Config->PllsCount; Index++)       /* Enable plls according to configuration asynchronously. Do not wait. */
+    for (Index = 0U; Index < Config->PllsCount;
+         Index++) /* Enable plls according to configuration asynchronously. Do not wait. */
     {
-        CallbackIndex = Clock_Ip_au8PllCallbackIndex[Clock_Ip_au8ClockFeatures[Config->Plls[Index].Name][CLOCK_IP_CALLBACK]];
+        CallbackIndex =
+            Clock_Ip_au8PllCallbackIndex[Clock_Ip_au8ClockFeatures[Config->Plls[Index].Name]
+                                                                  [CLOCK_IP_CALLBACK]];
         Clock_Ip_axPllCallbacks[CallbackIndex].Enable(&Config->Plls[Index]);
     }
 
     /* Configure fractional dividers */
     /* Note: The DFS configuration might actually need to be done after we
      * know that the PLLs are all locked in "Clock_Ip_GetPllStatus". */
-    for (Index = 0U; Index < Config->FracDivsCount; Index++)    /* Configure all fractional dividers from configuration asynchronously. Do not wait. */
+    for (Index = 0U; Index < Config->FracDivsCount;
+         Index++) /* Configure all fractional dividers from configuration asynchronously. Do not
+                     wait. */
     {
-        CallbackIndex = Clock_Ip_au8FractionalDividerCallbackIndex[Clock_Ip_au8ClockFeatures[Config->FracDivs[Index].Name][CLOCK_IP_CALLBACK]];
+        CallbackIndex = Clock_Ip_au8FractionalDividerCallbackIndex
+            [Clock_Ip_au8ClockFeatures[Config->FracDivs[Index].Name][CLOCK_IP_CALLBACK]];
         Clock_Ip_axFracDivCallbacks[CallbackIndex].Set(&Config->FracDivs[Index]);
     }
 
-    DriverContext.ClockTreeIsConsumingPll = FALSE;                                  /* Check if clock tree is using a PLL output */
+    DriverContext.ClockTreeIsConsumingPll = FALSE; /* Check if clock tree is using a PLL output */
 #if (defined(CLOCK_IP_SUPPORTS_WAIT_STATES))
-#if(CLOCK_IP_SUPPORTS_WAIT_STATES == STD_ON)
-    DriverContext.WaitStatesAreSupported = TRUE;                                    /* Wait states are supported */
+#if (CLOCK_IP_SUPPORTS_WAIT_STATES == STD_ON)
+    DriverContext.WaitStatesAreSupported = TRUE; /* Wait states are supported */
 #else
-    DriverContext.WaitStatesAreSupported = FALSE;                                   /* Wait states are not supported */
+    DriverContext.WaitStatesAreSupported = FALSE; /* Wait states are not supported */
 #endif /*CLOCK_IP_SUPPORTS_WAIT_STATES == STD_ON */
 #else
-    DriverContext.WaitStatesAreSupported = FALSE;                                   /* Wait states are not supported */
+    DriverContext.WaitStatesAreSupported = FALSE; /* Wait states are not supported */
 #endif /* #if (defined(CLOCK_IP_SUPPORTS_WAIT_STATES)) */
-    DriverContext.HwPllsNo = CLOCK_IP_NUMBER_OF_HARDWARE_PLL;                       /* Number of plls */
-    DriverContext.HwDfsNo = CLOCK_IP_NUMBER_OF_HARDWARE_DFS;                        /* Number of fractional dividers */
-
+    DriverContext.HwPllsNo = CLOCK_IP_NUMBER_OF_HARDWARE_PLL; /* Number of plls */
+    DriverContext.HwDfsNo = CLOCK_IP_NUMBER_OF_HARDWARE_DFS;  /* Number of fractional dividers */
 
     /* Configure wait states */
     Clock_Ip_SetWaitStates();
-
 
     /* Switch the clock multiplexers under MCU control to the configured source clocks */
     /* Note: if the configured source clock of a ClockMux is the output clock of a PLL/DFS,
      * the configuration will be skipped and the respective ClockMux will be switched in
      * the "Clock_Ip_DistributePllClock" function instead, when the source clock will have
      * stabilized already. */
-    for (Index = 0U; Index < Config->SelectorsCount; Index++)    /* Set only if selected inputs are not clocked from PLLs */
+    for (Index = 0U; Index < Config->SelectorsCount;
+         Index++) /* Set only if selected inputs are not clocked from PLLs */
     {
-        if ((PLL_TYPE != Clock_Ip_aeSourceTypeClockName[Config->Selectors[Index].Value]))
-        {
-
-            CallbackIndex = Clock_Ip_au8SelectorCallbackIndex[Clock_Ip_au8ClockFeatures[Config->Selectors[Index].Name][CLOCK_IP_CALLBACK]];
+        if ((PLL_TYPE != Clock_Ip_aeSourceTypeClockName[Config->Selectors[Index].Value])) {
+            CallbackIndex = Clock_Ip_au8SelectorCallbackIndex
+                [Clock_Ip_au8ClockFeatures[Config->Selectors[Index].Name][CLOCK_IP_CALLBACK]];
             Clock_Ip_axSelectorCallbacks[CallbackIndex].Set(&Config->Selectors[Index]);
-        }
-        else
-        {
+        } else {
             /* At least one mux is consuming pll */
             DriverContext.ClockTreeIsConsumingPll = TRUE;
         }
     }
 
     /* Check if the clock tree is using a PLL output */
-    if ( FALSE == DriverContext.ClockTreeIsConsumingPll )
-    {
-        for (Index = 0U; Index < Config->GatesCount; Index++)    /* Set clock gates that are under clock control. */
+    if (FALSE == DriverContext.ClockTreeIsConsumingPll) {
+        for (Index = 0U; Index < Config->GatesCount;
+             Index++) /* Set clock gates that are under clock control. */
         {
-            CallbackIndex = Clock_Ip_au8GateCallbackIndex[Clock_Ip_au8ClockFeatures[Config->Gates[Index].Name][CLOCK_IP_CALLBACK]];
+            CallbackIndex =
+                Clock_Ip_au8GateCallbackIndex[Clock_Ip_au8ClockFeatures[Config->Gates[Index].Name]
+                                                                       [CLOCK_IP_CALLBACK]];
             Clock_Ip_axGateCallbacks[CallbackIndex].Set(&Config->Gates[Index]);
         }
 
         /* Enable the Clock Monitoring Units ( CMU0 .. n ) according to configuration. */
-        for (Index = 0U; Index < Config->CmusCount; Index++)
-        {
-            CallbackIndex = Clock_Ip_au8CmuCallbackIndex[Clock_Ip_au8ClockFeatures[Config->Cmus[Index].Name][CLOCK_IP_CALLBACK]];
+        for (Index = 0U; Index < Config->CmusCount; Index++) {
+            CallbackIndex =
+                Clock_Ip_au8CmuCallbackIndex[Clock_Ip_au8ClockFeatures[Config->Cmus[Index].Name]
+                                                                      [CLOCK_IP_CALLBACK]];
             Clock_Ip_axCmuCallbacks[CallbackIndex].Enable(&Config->Cmus[Index]);
         }
         /* Disable safe clock if it is supported by platform and it is configured/required. */
-        /* Note: Safe clock is the fast internal oscillator clock. It is clocking the clock tree until pll is distributed.
-         * At the end of configuration it can be disabled if it is supported on this platform and required/configured. */
+        /* Note: Safe clock is the fast internal oscillator clock. It is clocking the clock tree
+         * until pll is distributed. At the end of configuration it can be disabled if it is
+         * supported on this platform and required/configured. */
         Clock_Ip_Command(Config, CLOCK_IP_DISABLE_SAFE_CLOCK_COMMAND);
-    }
-    else
-    {
+    } else {
         /* The clock tree is using at least one PLL/DFS output clock as source. */
         /* The user must wait until the PLLs and DFSs are locked by polling Clock_Ip_GetPllStatus */
         /* and then call "Clock_Ip_DistributePllClock" */
@@ -933,32 +975,28 @@ Clock_Ip_PllStatusType Clock_Ip_GetPllStatus(void)
     uint32 Index;
     uint32 CallbackIndex;
 
-    for (Index = 0U; Index < DriverContext.HwPllsNo; Index++)
-    {
-        CallbackIndex = Clock_Ip_au8PllCallbackIndex[Clock_Ip_au8ClockFeatures[Clock_Ip_aeHwPllName[Index]][CLOCK_IP_CALLBACK]];
+    for (Index = 0U; Index < DriverContext.HwPllsNo; Index++) {
+        CallbackIndex =
+            Clock_Ip_au8PllCallbackIndex[Clock_Ip_au8ClockFeatures[Clock_Ip_aeHwPllName[Index]]
+                                                                  [CLOCK_IP_CALLBACK]];
         PllStatus = Clock_Ip_axPllCallbacks[CallbackIndex].Complete(Clock_Ip_aeHwPllName[Index]);
-        if (STATUS_PLL_UNLOCKED == PllStatus)
-        {
+        if (STATUS_PLL_UNLOCKED == PllStatus) {
             RetValue = CLOCK_IP_PLL_UNLOCKED;
             break;
-        }
-        else
-        {
-            if (STATUS_PLL_LOCKED == PllStatus)
-            {
+        } else {
+            if (STATUS_PLL_LOCKED == PllStatus) {
                 RetValue = CLOCK_IP_PLL_LOCKED;
             }
         }
     }
 
-    if (CLOCK_IP_PLL_LOCKED == RetValue)
-    {
-        for (Index = 0U; Index < DriverContext.HwDfsNo; Index++)
-        {
-            CallbackIndex = Clock_Ip_au8FractionalDividerCallbackIndex[Clock_Ip_au8ClockFeatures[Clock_Ip_aeHwDfsName[Index]][CLOCK_IP_CALLBACK]];
-            DfsStatus = Clock_Ip_axFracDivCallbacks[CallbackIndex].Complete(Clock_Ip_aeHwDfsName[Index]);
-            if (STATUS_DFS_UNLOCKED == DfsStatus)
-            {
+    if (CLOCK_IP_PLL_LOCKED == RetValue) {
+        for (Index = 0U; Index < DriverContext.HwDfsNo; Index++) {
+            CallbackIndex = Clock_Ip_au8FractionalDividerCallbackIndex
+                [Clock_Ip_au8ClockFeatures[Clock_Ip_aeHwDfsName[Index]][CLOCK_IP_CALLBACK]];
+            DfsStatus =
+                Clock_Ip_axFracDivCallbacks[CallbackIndex].Complete(Clock_Ip_aeHwDfsName[Index]);
+            if (STATUS_DFS_UNLOCKED == DfsStatus) {
                 RetValue = CLOCK_IP_PLL_UNLOCKED;
                 break;
             }
@@ -972,52 +1010,59 @@ Clock_Ip_PllStatusType Clock_Ip_GetPllStatus(void)
  *
  * Function Name : Clock_Ip_DistributePll
  * Description   : Function completes the PLL configuration and then activates the PLL clock to Mcu
- * The function will not distribute the PLL clock if the driver state does not allow it, or the PLL is not stable.
+ * The function will not distribute the PLL clock if the driver state does not allow it, or the PLL
+ * is not stable.
  *
  * @implements Clock_Ip_DistributePll_Activity
  * END**********************************************************************************/
 void Clock_Ip_DistributePll(void)
 {
-
     uint32 Index;
     uint32 CallbackIndex;
 
     CLOCK_IP_DEV_ASSERT(NULL_PTR != Clock_Ip_pxConfig);
     /* 'Clock_Ip_pxConfig' is set by Clock_Ip_InitClock().
      *  It doesn't make sense to call PLL distribution without clock initialization. */
-    if (NULL_PTR != Clock_Ip_pxConfig)
-    {
-        for (Index = 0U; Index < Clock_Ip_pxConfig->SelectorsCount; Index++)    /* Set only if selected inputs are clocked from PLLs */
+    if (NULL_PTR != Clock_Ip_pxConfig) {
+        for (Index = 0U; Index < Clock_Ip_pxConfig->SelectorsCount;
+             Index++) /* Set only if selected inputs are clocked from PLLs */
         {
-            if (PLL_TYPE == Clock_Ip_aeSourceTypeClockName[Clock_Ip_pxConfig->Selectors[Index].Value])
-            {
-
-                CallbackIndex = Clock_Ip_au8SelectorCallbackIndex[Clock_Ip_au8ClockFeatures[Clock_Ip_pxConfig->Selectors[Index].Name][CLOCK_IP_CALLBACK]];
-                Clock_Ip_axSelectorCallbacks[CallbackIndex].Set(&Clock_Ip_pxConfig->Selectors[Index]);
+            if (PLL_TYPE ==
+                Clock_Ip_aeSourceTypeClockName[Clock_Ip_pxConfig->Selectors[Index].Value]) {
+                CallbackIndex = Clock_Ip_au8SelectorCallbackIndex
+                    [Clock_Ip_au8ClockFeatures[Clock_Ip_pxConfig->Selectors[Index].Name]
+                                              [CLOCK_IP_CALLBACK]];
+                Clock_Ip_axSelectorCallbacks[CallbackIndex].Set(
+                    &Clock_Ip_pxConfig->Selectors[Index]);
             }
         }
 
         /* In the case of PLL is enabled but PLL clock source is not used by any clock Mux.
-           So, no need to re-configure for CMUs, because they are configured by Clock_Ip_InitClock */
+           So, no need to re-configure for CMUs, because they are configured by Clock_Ip_InitClock
+         */
         /* Check if the clock tree is using a PLL output */
-        if ( DriverContext.ClockTreeIsConsumingPll )
-        {
-            for (Index = 0U; Index < Clock_Ip_pxConfig->GatesCount; Index++)    /* Set clock gates that are under clock control. */
+        if (DriverContext.ClockTreeIsConsumingPll) {
+            for (Index = 0U; Index < Clock_Ip_pxConfig->GatesCount;
+                 Index++) /* Set clock gates that are under clock control. */
             {
-                CallbackIndex = Clock_Ip_au8GateCallbackIndex[Clock_Ip_au8ClockFeatures[Clock_Ip_pxConfig->Gates[Index].Name][CLOCK_IP_CALLBACK]];
+                CallbackIndex = Clock_Ip_au8GateCallbackIndex
+                    [Clock_Ip_au8ClockFeatures[Clock_Ip_pxConfig->Gates[Index].Name]
+                                              [CLOCK_IP_CALLBACK]];
                 Clock_Ip_axGateCallbacks[CallbackIndex].Set(&Clock_Ip_pxConfig->Gates[Index]);
             }
 
             /* Enable the Clock Monitoring Units ( CMU0 .. n ) according to configuration. */
-            for (Index = 0U; Index < Clock_Ip_pxConfig->CmusCount; Index++)
-            {
-                CallbackIndex = Clock_Ip_au8CmuCallbackIndex[Clock_Ip_au8ClockFeatures[Clock_Ip_pxConfig->Cmus[Index].Name][CLOCK_IP_CALLBACK]];
+            for (Index = 0U; Index < Clock_Ip_pxConfig->CmusCount; Index++) {
+                CallbackIndex = Clock_Ip_au8CmuCallbackIndex
+                    [Clock_Ip_au8ClockFeatures[Clock_Ip_pxConfig->Cmus[Index].Name]
+                                              [CLOCK_IP_CALLBACK]];
                 Clock_Ip_axCmuCallbacks[CallbackIndex].Enable(&Clock_Ip_pxConfig->Cmus[Index]);
             }
 
             /* Disable safe clock if it is supported by platform and it is configured/required. */
-            /* Note: Safe clock is the fast internal oscillator clock. It is clocking the clock tree until pll is distributed.
-             * At the end of configuration it can be disabled if it is supported on this platform and required/configured. */
+            /* Note: Safe clock is the fast internal oscillator clock. It is clocking the clock tree
+             * until pll is distributed. At the end of configuration it can be disabled if it is
+             * supported on this platform and required/configured. */
             Clock_Ip_Command(Clock_Ip_pxConfig, CLOCK_IP_DISABLE_SAFE_CLOCK_COMMAND);
         }
     }
@@ -1032,10 +1077,10 @@ void Clock_Ip_DistributePll(void)
  * END**********************************************************************************/
 void Clock_Ip_DisableClockMonitor(Clock_Ip_NameType ClockName)
 {
-
     uint32 CallbackIndex;
 
-    CallbackIndex = Clock_Ip_au8CmuCallbackIndex[Clock_Ip_au8ClockFeatures[ClockName][CLOCK_IP_CALLBACK]];
+    CallbackIndex =
+        Clock_Ip_au8CmuCallbackIndex[Clock_Ip_au8ClockFeatures[ClockName][CLOCK_IP_CALLBACK]];
     Clock_Ip_axCmuCallbacks[CallbackIndex].Disable(ClockName);
 }
 /*FUNCTION******************************************************************************
@@ -1061,11 +1106,11 @@ void Clock_Ip_InstallNotificationsCallback(Clock_Ip_NotificationsCallbackType Ca
  * END**********************************************************************************/
 void Clock_Ip_DisableModuleClock(Clock_Ip_NameType ClockName)
 {
-
     uint32 CallbackIndex;
 
-    CallbackIndex = Clock_Ip_au8GateCallbackIndex[Clock_Ip_au8ClockFeatures[ClockName][CLOCK_IP_CALLBACK]];
-    Clock_Ip_axGateCallbacks[CallbackIndex].Update(ClockName,TRUE);
+    CallbackIndex =
+        Clock_Ip_au8GateCallbackIndex[Clock_Ip_au8ClockFeatures[ClockName][CLOCK_IP_CALLBACK]];
+    Clock_Ip_axGateCallbacks[CallbackIndex].Update(ClockName, TRUE);
 }
 
 /*FUNCTION******************************************************************************
@@ -1077,13 +1122,12 @@ void Clock_Ip_DisableModuleClock(Clock_Ip_NameType ClockName)
  * END**********************************************************************************/
 void Clock_Ip_EnableModuleClock(Clock_Ip_NameType ClockName)
 {
-
     uint32 CallbackIndex;
 
-    CallbackIndex = Clock_Ip_au8GateCallbackIndex[Clock_Ip_au8ClockFeatures[ClockName][CLOCK_IP_CALLBACK]];
-    Clock_Ip_axGateCallbacks[CallbackIndex].Update(ClockName,FALSE);
+    CallbackIndex =
+        Clock_Ip_au8GateCallbackIndex[Clock_Ip_au8ClockFeatures[ClockName][CLOCK_IP_CALLBACK]];
+    Clock_Ip_axGateCallbacks[CallbackIndex].Update(ClockName, FALSE);
 }
-
 
 #ifdef CLOCK_IP_POWER_NOTIFICATIONS
 #if (CLOCK_IP_POWER_NOTIFICATIONS == STD_ON)
@@ -1094,9 +1138,10 @@ void Clock_Ip_EnableModuleClock(Clock_Ip_NameType ClockName)
  *
  * @implements Clock_Ip_PowerNotifications_Activity
  * END**********************************************************************************/
-void Clock_Ip_PowerNotifications(Clock_Ip_PowerModesType PowerMode,Clock_Ip_PowerNotificationType Notification)
+void Clock_Ip_PowerNotifications(Clock_Ip_PowerModesType PowerMode,
+                                 Clock_Ip_PowerNotificationType Notification)
 {
-    Clock_Ip_bSentFromUpdateDriverContext  = FALSE;
+    Clock_Ip_bSentFromUpdateDriverContext = FALSE;
     Clock_Ip_Command(Clock_Ip_pxConfig, CLOCK_IP_INITIALIZE_CLOCK_OBJECTS_COMMAND);
 
     Clock_Ip_ClockPowerNotifications(PowerMode, Notification);
@@ -1104,9 +1149,8 @@ void Clock_Ip_PowerNotifications(Clock_Ip_PowerModesType PowerMode,Clock_Ip_Powe
 #endif
 #endif
 
-
 #if (defined(CLOCK_IP_GET_FREQUENCY_API))
-  #if (CLOCK_IP_GET_FREQUENCY_API == STD_ON)
+#if (CLOCK_IP_GET_FREQUENCY_API == STD_ON)
 /*FUNCTION**********************************************************************
  *
  * Function Name : Clock_Ip_GetClockFrequency
@@ -1117,16 +1161,15 @@ void Clock_Ip_PowerNotifications(Clock_Ip_PowerModesType PowerMode,Clock_Ip_Powe
 uint64 Clock_Ip_GetClockFrequency(Clock_Ip_NameType ClockName)
 {
 #if (defined(CLOCK_IP_DEV_ERROR_DETECT))
-  #if (CLOCK_IP_DEV_ERROR_DETECT == STD_ON)
-    CLOCK_IP_DEV_ASSERT((((uint32)ClockName) < ((uint32)CLOCK_IP_NAMES_NO)) && (THE_LAST_PRODUCER_CLK != ClockName));
-  #endif
+#if (CLOCK_IP_DEV_ERROR_DETECT == STD_ON)
+    CLOCK_IP_DEV_ASSERT((((uint32)ClockName) < ((uint32)CLOCK_IP_NAMES_NO)) &&
+                        (THE_LAST_PRODUCER_CLK != ClockName));
+#endif
 #endif
     return Clock_Ip_GetFreq(ClockName);
 }
-    #endif
 #endif
-
-
+#endif
 
 /*FUNCTION**********************************************************************
  *
@@ -1139,26 +1182,22 @@ static void Clock_Ip_SetWaitStates(void)
     uint32 Counter = CLOCK_IP_WAIT_STATES_DELAY;
 
     /* HW doesn't support wait states configuration */
-    if (DriverContext.WaitStatesAreSupported)
-    {
+    if (DriverContext.WaitStatesAreSupported) {
 #if (defined(CLOCK_IP_DEV_ERROR_DETECT))
-  #if (CLOCK_IP_DEV_ERROR_DETECT == STD_ON)
+#if (CLOCK_IP_DEV_ERROR_DETECT == STD_ON)
         /* Error, software shouldn't reach this point,
            hardware doesn't support wait states */
         CLOCK_IP_DEV_ASSERT(FALSE);
-  #endif
+#endif
 #endif
         /* Wait states are not supported by HW,
            insert a delay . */
 
-        do
-        {
+        do {
             Counter--;
-        }
-        while(Counter > 0u);
+        } while (Counter > 0u);
     }
 }
-
 
 /*FUNCTION**********************************************************************
  *
@@ -1168,7 +1207,7 @@ static void Clock_Ip_SetWaitStates(void)
  *END**************************************************************************/
 void Clock_Ip_ReportClockErrors(Clock_Ip_NotificationType Error, Clock_Ip_NameType ClockName)
 {
-    Clock_Ip_pfkNotificationsCallback(Error,ClockName);
+    Clock_Ip_pfkNotificationsCallback(Error, ClockName);
 }
 
 /*FUNCTION**********************************************************************
@@ -1177,13 +1216,11 @@ void Clock_Ip_ReportClockErrors(Clock_Ip_NotificationType Error, Clock_Ip_NameTy
  * Description   : Checks for timeout condition
  *
  *END**************************************************************************/
-void Clock_Ip_StartTimeout(uint32 *StartTimeOut,
-                       uint32 *ElapsedTimeOut,
-                       uint32 *TimeoutTicksOut,
-                       uint32 TimeoutUs)
+void Clock_Ip_StartTimeout(uint32* StartTimeOut, uint32* ElapsedTimeOut, uint32* TimeoutTicksOut,
+                           uint32 TimeoutUs)
 {
-    *StartTimeOut    = OsIf_GetCounter(CLOCK_IP_TIMEOUT_TYPE);
-    *ElapsedTimeOut  = 0U;
+    *StartTimeOut = OsIf_GetCounter(CLOCK_IP_TIMEOUT_TYPE);
+    *ElapsedTimeOut = 0U;
     *TimeoutTicksOut = OsIf_MicrosToTicks(TimeoutUs, CLOCK_IP_TIMEOUT_TYPE);
 }
 
@@ -1193,15 +1230,13 @@ void Clock_Ip_StartTimeout(uint32 *StartTimeOut,
  * Description   : Checks for timeout expiration condition
  *
  *END**************************************************************************/
-boolean Clock_Ip_TimeoutExpired(uint32 *StartTimeInOut,
-                            uint32 *ElapsedTimeInOut,
-                            uint32 TimeoutTicks)
+boolean Clock_Ip_TimeoutExpired(uint32* StartTimeInOut, uint32* ElapsedTimeInOut,
+                                uint32 TimeoutTicks)
 {
     boolean RetVal = FALSE;
     *ElapsedTimeInOut += OsIf_GetElapsed(StartTimeInOut, CLOCK_IP_TIMEOUT_TYPE);
 
-    if (*ElapsedTimeInOut >= TimeoutTicks)
-    {
+    if (*ElapsedTimeInOut >= TimeoutTicks) {
         RetVal = TRUE;
     }
     return RetVal;
@@ -1213,26 +1248,25 @@ boolean Clock_Ip_TimeoutExpired(uint32 *StartTimeInOut,
  * Description   : Write register values
  *
  *END**************************************************************************/
-#if (defined(CLOCK_IP_REGISTER_VALUES_OPTIMIZATION) && (CLOCK_IP_REGISTER_VALUES_OPTIMIZATION == STD_ON))
-void Clock_Ip_WriteRegisterValues(const Clock_Ip_RegisterIndexType *Indexes)
+#if (defined(CLOCK_IP_REGISTER_VALUES_OPTIMIZATION) &&                                             \
+     (CLOCK_IP_REGISTER_VALUES_OPTIMIZATION == STD_ON))
+void Clock_Ip_WriteRegisterValues(const Clock_Ip_RegisterIndexType* Indexes)
 {
-    uint32 *RegAddr;
+    uint32* RegAddr;
     uint32 RegData;
     uint32 Index;
 
     CLOCK_IP_DEV_ASSERT(NULL_PTR != Clock_Ip_pxConfig);
     /* 'Clock_Ip_pxConfig' is set by Clock_Ip_InitClock().
      *  It doesn't make sense to call this function without clock initialization. */
-    if (NULL_PTR != Clock_Ip_pxConfig)
-    {
+    if (NULL_PTR != Clock_Ip_pxConfig) {
         /* Register values array must be valid */
         CLOCK_IP_DEV_ASSERT(NULL_PTR != Clock_Ip_pxConfig->RegValues);
 
         /* Valus of indexes must be valid */
         CLOCK_IP_DEV_ASSERT(Indexes->StartIndex < Indexes->EndIndex);
 
-        for (Index = Indexes->StartIndex; Index < Indexes->EndIndex; Index++)
-        {
+        for (Index = Indexes->StartIndex; Index < Indexes->EndIndex; Index++) {
             RegAddr = (*Clock_Ip_pxConfig->RegValues)[Index].RegisterAddr;
             RegData = (*Clock_Ip_pxConfig->RegValues)[Index].RegisterData;
             *RegAddr = RegData;

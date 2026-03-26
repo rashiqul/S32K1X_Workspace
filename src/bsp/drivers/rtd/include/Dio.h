@@ -12,11 +12,11 @@
 *
 *   Copyright 2020-2025 NXP
 *
-*   NXP Confidential and Proprietary. This software is owned or controlled by NXP and may only be 
-*   used strictly in accordance with the applicable license terms.  By expressly 
-*   accepting such terms or by downloading, installing, activating and/or otherwise 
-*   using the software, you are agreeing that you have read, and that you agree to 
-*   comply with and are bound by, such license terms.  If you do not agree to be 
+*   NXP Confidential and Proprietary. This software is owned or controlled by NXP and may only be
+*   used strictly in accordance with the applicable license terms.  By expressly
+*   accepting such terms or by downloading, installing, activating and/or otherwise
+*   using the software, you are agreeing that you have read, and that you agree to
+*   comply with and are bound by, such license terms.  If you do not agree to be
 *   bound by the applicable license terms, then you may not retain, install,
 *   activate or otherwise use the software.
 ==================================================================================================*/
@@ -25,15 +25,15 @@
 #define DIO_H
 
 /**
-*   @file Dio.h
-*   @implements Dio.h_Artifact
-*
-*   @defgroup DIO_HLD Dio HLD
-*   @{
-*/
+ *   @file Dio.h
+ *   @implements Dio.h_Artifact
+ *
+ *   @defgroup DIO_HLD Dio HLD
+ *   @{
+ */
 
 #ifdef __cplusplus
-extern "C"{
+extern "C" {
 #endif
 
 /*=================================================================================================
@@ -42,175 +42,166 @@ extern "C"{
 * 2) needed interfaces from external units
 * 3) internal and external interfaces from this unit
 =================================================================================================*/
-#include "Std_Types.h"
-#include "Mcal.h"
 #include "Dio_Cfg.h"
+#include "Mcal.h"
+#include "Std_Types.h"
 
 /*=================================================================================================
 *                              SOURCE FILE VERSION INFORMATION
 =================================================================================================*/
 
-#define DIO_VENDOR_ID                    43
-#define DIO_MODULE_ID                    120
-#define DIO_AR_RELEASE_MAJOR_VERSION     4
-#define DIO_AR_RELEASE_MINOR_VERSION     7
-#define DIO_AR_RELEASE_REVISION_VERSION  0
-#define DIO_SW_MAJOR_VERSION             3
-#define DIO_SW_MINOR_VERSION             0
-#define DIO_SW_PATCH_VERSION             0
-
+#define DIO_VENDOR_ID 43
+#define DIO_MODULE_ID 120
+#define DIO_AR_RELEASE_MAJOR_VERSION 4
+#define DIO_AR_RELEASE_MINOR_VERSION 7
+#define DIO_AR_RELEASE_REVISION_VERSION 0
+#define DIO_SW_MAJOR_VERSION 3
+#define DIO_SW_MINOR_VERSION 0
+#define DIO_SW_PATCH_VERSION 0
 
 /*=================================================================================================
 *                                     FILE VERSION CHECKS
 =================================================================================================*/
 #ifndef DISABLE_MCAL_INTERMODULE_ASR_CHECK
-    /* Check if header file and Std_Types.h file are of the same Autosar version */
-    #if ((DIO_AR_RELEASE_MAJOR_VERSION != STD_AR_RELEASE_MAJOR_VERSION) || \
-         (DIO_AR_RELEASE_MINOR_VERSION != STD_AR_RELEASE_MINOR_VERSION)    \
-        )
-        #error "AutoSar Version Numbers of Dio.h and Std_Types.h are different"
-    #endif
-    /* Check if source file and Mcal.h header file are of the same Autosar version */
-    #if ((DIO_AR_RELEASE_MAJOR_VERSION != MCAL_AR_RELEASE_MAJOR_VERSION) || \
-         (DIO_AR_RELEASE_MINOR_VERSION != MCAL_AR_RELEASE_MINOR_VERSION)    \
-        )
-        #error "AutoSar Version Numbers of Dio.h and Mcal.h are different"
-    #endif
+/* Check if header file and Std_Types.h file are of the same Autosar version */
+#if ((DIO_AR_RELEASE_MAJOR_VERSION != STD_AR_RELEASE_MAJOR_VERSION) ||                             \
+     (DIO_AR_RELEASE_MINOR_VERSION != STD_AR_RELEASE_MINOR_VERSION))
+#error "AutoSar Version Numbers of Dio.h and Std_Types.h are different"
+#endif
+/* Check if source file and Mcal.h header file are of the same Autosar version */
+#if ((DIO_AR_RELEASE_MAJOR_VERSION != MCAL_AR_RELEASE_MAJOR_VERSION) ||                            \
+     (DIO_AR_RELEASE_MINOR_VERSION != MCAL_AR_RELEASE_MINOR_VERSION))
+#error "AutoSar Version Numbers of Dio.h and Mcal.h are different"
+#endif
 #endif
 
 /* Check if Dio header file and Dio configuration header file are of the same vendor */
 #if (DIO_VENDOR_ID != DIO_VENDOR_ID_CFG_H)
-    #error "Dio.h and Dio_Cfg.h have different vendor ids"
+#error "Dio.h and Dio_Cfg.h have different vendor ids"
 #endif
 
 /* Check if Dio header file and Dio configuration header file are of the same Autosar version */
-#if ((DIO_AR_RELEASE_MAJOR_VERSION    != DIO_AR_RELEASE_MAJOR_VERSION_CFG_H) || \
-     (DIO_AR_RELEASE_MINOR_VERSION    != DIO_AR_RELEASE_MINOR_VERSION_CFG_H) || \
-     (DIO_AR_RELEASE_REVISION_VERSION != DIO_AR_RELEASE_REVISION_VERSION_CFG_H) \
-    )
-    #error "AutoSar Version Numbers of Dio.h and Dio_Cfg.h are different"
+#if ((DIO_AR_RELEASE_MAJOR_VERSION != DIO_AR_RELEASE_MAJOR_VERSION_CFG_H) ||                       \
+     (DIO_AR_RELEASE_MINOR_VERSION != DIO_AR_RELEASE_MINOR_VERSION_CFG_H) ||                       \
+     (DIO_AR_RELEASE_REVISION_VERSION != DIO_AR_RELEASE_REVISION_VERSION_CFG_H))
+#error "AutoSar Version Numbers of Dio.h and Dio_Cfg.h are different"
 #endif
 
 /* Check if Dio source file and Dio configuration header file are of the same Software version */
-#if ((DIO_SW_MAJOR_VERSION != DIO_SW_MAJOR_VERSION_CFG_H) || \
-     (DIO_SW_MINOR_VERSION != DIO_SW_MINOR_VERSION_CFG_H) || \
-     (DIO_SW_PATCH_VERSION != DIO_SW_PATCH_VERSION_CFG_H)    \
-    )
-    #error "Software Version Numbers of Dio.h and Dio_Cfg.h are different"
+#if ((DIO_SW_MAJOR_VERSION != DIO_SW_MAJOR_VERSION_CFG_H) ||                                       \
+     (DIO_SW_MINOR_VERSION != DIO_SW_MINOR_VERSION_CFG_H) ||                                       \
+     (DIO_SW_PATCH_VERSION != DIO_SW_PATCH_VERSION_CFG_H))
+#error "Software Version Numbers of Dio.h and Dio_Cfg.h are different"
 #endif
 /*=================================================================================================
 *                                          CONSTANTS
 =================================================================================================*/
 /**
-* @brief          The DIO module is not properly configured
-*/
-#define DIO_E_PARAM_CONFIG                      ((uint8)0xF0U)
+ * @brief          The DIO module is not properly configured
+ */
+#define DIO_E_PARAM_CONFIG ((uint8)0xF0U)
 
 /**
-* @brief          Invalid channel name requested.
-*
-* @implements     Dio_ErrorCodes_define
-*/
-#define DIO_E_PARAM_INVALID_CHANNEL_ID          ((uint8)0x0AU)
+ * @brief          Invalid channel name requested.
+ *
+ * @implements     Dio_ErrorCodes_define
+ */
+#define DIO_E_PARAM_INVALID_CHANNEL_ID ((uint8)0x0AU)
 
 /**
-* @brief          Invalid port name requested.
-*
-* @implements     Dio_ErrorCodes_define
-*/
-#define DIO_E_PARAM_INVALID_PORT_ID             ((uint8)0x14U)
+ * @brief          Invalid port name requested.
+ *
+ * @implements     Dio_ErrorCodes_define
+ */
+#define DIO_E_PARAM_INVALID_PORT_ID ((uint8)0x14U)
 
 /**
-* @brief          Invalid ChannelGroup id passed.
-*
-* @implements     Dio_ErrorCodes_define
-*/
-#define DIO_E_PARAM_INVALID_GROUP_ID            ((uint8)0x1FU)
+ * @brief          Invalid ChannelGroup id passed.
+ *
+ * @implements     Dio_ErrorCodes_define
+ */
+#define DIO_E_PARAM_INVALID_GROUP_ID ((uint8)0x1FU)
 
 /**
-* @brief          API service called with a NULL pointer.
-* @details        In case of this error, the API service shall return
-*                 immediately without any further action, beside reporting
-*                 this development error.
-*
-* @implements     Dio_ErrorCodes_define
-*/
-#define DIO_E_PARAM_POINTER                     ((uint8)0x20U)
+ * @brief          API service called with a NULL pointer.
+ * @details        In case of this error, the API service shall return
+ *                 immediately without any further action, beside reporting
+ *                 this development error.
+ *
+ * @implements     Dio_ErrorCodes_define
+ */
+#define DIO_E_PARAM_POINTER ((uint8)0x20U)
 
 /**
-* @brief          API service called with invalid channel level value.
-* @details        In case of this error, the API service shall return
-*                 immediately without any further action, beside reporting
-*                 this development error.
-*
-* @implements     Dio_ErrorCodes_define
-*/
-#define DIO_E_PARAM_LEVEL                       ((uint8)0x21U)
-
-
-/**
-* @brief          API service ID for @p Dio_ReadChannel() function.
-* @details        Parameters used when raising an error/exception.
-*/
-#define DIO_READCHANNEL_ID                      ((uint8)0x00U)
+ * @brief          API service called with invalid channel level value.
+ * @details        In case of this error, the API service shall return
+ *                 immediately without any further action, beside reporting
+ *                 this development error.
+ *
+ * @implements     Dio_ErrorCodes_define
+ */
+#define DIO_E_PARAM_LEVEL ((uint8)0x21U)
 
 /**
-* @brief          API service ID for @p Dio_WriteChannel() function.
-* @details        Parameters used when raising an error/exception.
-*/
-#define DIO_WRITECHANNEL_ID                     ((uint8)0x01U)
+ * @brief          API service ID for @p Dio_ReadChannel() function.
+ * @details        Parameters used when raising an error/exception.
+ */
+#define DIO_READCHANNEL_ID ((uint8)0x00U)
 
 /**
-* @brief          API service ID for @p Dio_FlipChannel() function.
-* @details        Parameters used when raising an error/exception.
-*/
-#define DIO_FLIPCHANNEL_ID                      ((uint8)0x11U)
+ * @brief          API service ID for @p Dio_WriteChannel() function.
+ * @details        Parameters used when raising an error/exception.
+ */
+#define DIO_WRITECHANNEL_ID ((uint8)0x01U)
 
 /**
-* @brief          API service ID for @p Dio_ReadPort() function.
-* @details        Parameters used when raising an error/exception.
-*/
-#define DIO_READPORT_ID                         ((uint8)0x02U)
+ * @brief          API service ID for @p Dio_FlipChannel() function.
+ * @details        Parameters used when raising an error/exception.
+ */
+#define DIO_FLIPCHANNEL_ID ((uint8)0x11U)
 
 /**
-* @brief          API service ID for @p Dio_WritePort() function.
-* @details        Parameters used when raising an error/exception.
-*/
-#define DIO_WRITEPORT_ID                        ((uint8)0x03U)
+ * @brief          API service ID for @p Dio_ReadPort() function.
+ * @details        Parameters used when raising an error/exception.
+ */
+#define DIO_READPORT_ID ((uint8)0x02U)
 
 /**
-* @brief          API service ID for @p Dio_ReadChannel() Group function.
-* @details        Parameters used when raising an error/exception.
-*/
-#define DIO_READCHANNELGROUP_ID                 ((uint8)0x04U)
+ * @brief          API service ID for @p Dio_WritePort() function.
+ * @details        Parameters used when raising an error/exception.
+ */
+#define DIO_WRITEPORT_ID ((uint8)0x03U)
 
 /**
-* @brief          API service ID for @p Dio_WriteChannel() Group function.
-* @details        Parameters used when raising an error/exception.
-*/
-#define DIO_WRITECHANNELGROUP_ID                ((uint8)0x05U)
-
-
-/**
-* @brief          API service ID for DIO Get Version() Info function.
-* @details        Parameters used when raising an error/exception.
-*/
-#define DIO_GETVERSIONINFO_ID                   ((uint8)0x12U)
+ * @brief          API service ID for @p Dio_ReadChannel() Group function.
+ * @details        Parameters used when raising an error/exception.
+ */
+#define DIO_READCHANNELGROUP_ID ((uint8)0x04U)
 
 /**
-* @brief          API service ID for @p Dio_MaskedWritePort() function.
-* @details        Parameters used when raising an error/exception.
-*/
-#define DIO_MASKEDWRITEPORT_ID                  ((uint8)0x13U)
-
+ * @brief          API service ID for @p Dio_WriteChannel() Group function.
+ * @details        Parameters used when raising an error/exception.
+ */
+#define DIO_WRITECHANNELGROUP_ID ((uint8)0x05U)
 
 /**
-* @brief          Instance ID of the Dio driver.
-*
-* @implements     .
-*/
-#define DIO_INSTANCE_ID                         ((uint8)0x00U)
+ * @brief          API service ID for DIO Get Version() Info function.
+ * @details        Parameters used when raising an error/exception.
+ */
+#define DIO_GETVERSIONINFO_ID ((uint8)0x12U)
 
+/**
+ * @brief          API service ID for @p Dio_MaskedWritePort() function.
+ * @details        Parameters used when raising an error/exception.
+ */
+#define DIO_MASKEDWRITEPORT_ID ((uint8)0x13U)
+
+/**
+ * @brief          Instance ID of the Dio driver.
+ *
+ * @implements     .
+ */
+#define DIO_INSTANCE_ID ((uint8)0x00U)
 
 /*=================================================================================================
 *                                      DEFINES AND MACROS
@@ -248,7 +239,7 @@ extern "C"{
  * @param[in]  VersionInfo Pointer to where to store the version
  *             information of this module.
  */
-void Dio_GetVersionInfo(Std_VersionInfoType * VersionInfo);
+void Dio_GetVersionInfo(Std_VersionInfoType* VersionInfo);
 #endif /* (STD_ON == DIO_VERSION_INFO_API) */
 
 /*!
@@ -275,9 +266,7 @@ Dio_LevelType Dio_ReadChannel(Dio_ChannelType ChannelId);
  * @param[in] ChannelId Specifies the required channel id.
  * @param[in] Level Specifies the channel desired level.
  */
-void Dio_WriteChannel(Dio_ChannelType ChannelId,
-                                      Dio_LevelType Level
-                     );
+void Dio_WriteChannel(Dio_ChannelType ChannelId, Dio_LevelType Level);
 
 #if (STD_ON == DIO_FLIP_CHANNEL_API)
 /*!
@@ -323,9 +312,7 @@ Dio_PortLevelType Dio_ReadPort(Dio_PortType PortId);
  * @param[in] PortId Specifies the required port id.
  * @param[in] Level Specifies the required levels for the port pins.
  */
-void Dio_WritePort(Dio_PortType PortId,
-                                   Dio_PortLevelType Level
-                  );
+void Dio_WritePort(Dio_PortType PortId, Dio_PortLevelType Level);
 #endif /* (STD_OFF == DIO_VIRTWRAPPER_SUPPORT) */
 #endif /*DIO_VIRTWRAPPER_SUPPORT*/
 
@@ -340,7 +327,7 @@ void Dio_WritePort(Dio_PortType PortId,
  *
  * @return         The channel group levels.
  */
-Dio_PortLevelType Dio_ReadChannelGroup(const Dio_ChannelGroupType * ChannelGroupIdPtr);
+Dio_PortLevelType Dio_ReadChannelGroup(const Dio_ChannelGroupType* ChannelGroupIdPtr);
 #endif /* (STD_OFF == DIO_VIRTWRAPPER_SUPPORT) */
 #endif /*DIO_VIRTWRAPPER_SUPPORT*/
 
@@ -359,9 +346,7 @@ Dio_PortLevelType Dio_ReadChannelGroup(const Dio_ChannelGroupType * ChannelGroup
  * @param[in] ChannelGroupIdPtr Pointer to the channel group.
  * @param[in] Level Desired levels for the channel group.
  */
-void Dio_WriteChannelGroup(const Dio_ChannelGroupType * ChannelGroupIdPtr,
-                                           Dio_PortLevelType Level
-                          );
+void Dio_WriteChannelGroup(const Dio_ChannelGroupType* ChannelGroupIdPtr, Dio_PortLevelType Level);
 #endif /* (STD_OFF == DIO_VIRTWRAPPER_SUPPORT) */
 #endif /*DIO_VIRTWRAPPER_SUPPORT*/
 
@@ -379,14 +364,10 @@ void Dio_WriteChannelGroup(const Dio_ChannelGroupType * ChannelGroupIdPtr,
  *
  * @pre This function can be used only if @p DIO_MASKEDWRITEPORT_API has been enabled.
  */
-void Dio_MaskedWritePort(Dio_PortType PortId,
-                                         Dio_PortLevelType Level,
-                                         Dio_PortLevelType Mask
-                        );
+void Dio_MaskedWritePort(Dio_PortType PortId, Dio_PortLevelType Level, Dio_PortLevelType Mask);
 #endif /* ((STD_ON == DIO_MASKEDWRITEPORT_API) || defined(__DOXYGEN__)) */
 #endif /* (STD_OFF == DIO_VIRTWRAPPER_SUPPORT) */
 #endif /*DIO_VIRTWRAPPER_SUPPORT*/
-
 
 #define DIO_STOP_SEC_CODE
 #include "Dio_MemMap.h"

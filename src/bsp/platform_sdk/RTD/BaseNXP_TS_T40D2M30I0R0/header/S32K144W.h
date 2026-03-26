@@ -26,17 +26,17 @@
 **
 **     Revisions:
 **
-**     - rev. 1.0 Taru Shree 23-Oct-19  Initial release based on 
+**     - rev. 1.0 Taru Shree 23-Oct-19  Initial release based on
 **                                      RM Rev.12 Draft B.
 **     - rev. 1.1 Taru Shree 12-Feb-20  1)Initial release based on
 **                                      RM Rev.12.
-**                                      2)CAN- 
+**                                      2)CAN-
 **                                      CAN_RAMn_COUNT is changed from
 **                                      128 to 256.
 **                                      3)DMA-
 **                                      DCHMID register array is removed.
 **                                      4)GPIO-
-**                                      Following peripheral instance names are 
+**                                      Following peripheral instance names are
 **                                      changed-
 **                                      -from GPIOA to PTA.
 **                                      -from GPIOB to PTB.
@@ -55,10 +55,10 @@
 **                                      -LPSPIx_REG is changed to LPSPIx.
 **                                      -LPTMR0_REG is changed to LPTMR0.
 **     - rev.1.2 Taru Shree 09-March-20 1)Initial release based on
-**                                      RM Rev.12.1. 
-**                                      2)FTFM Interrupts are updated.   
+**                                      RM Rev.12.1.
+**                                      2)FTFM Interrupts are updated.
 **                                      3)PCC-
-**                                      PCC_ATX register is removed.          
+**                                      PCC_ATX register is removed.
 **     - rev.1.3 Taru Shree 25-Feb-21   1)Initial release based on
 **                                      RM Rev.13.
 **                                      2)Read_Collision interrupt is
@@ -68,10 +68,10 @@
 **     - rev.1.4 Taru Shree 09-Feb-22   1)Initial release based on
 **                                      RM Rev.14.
 **                                      2)FLEXCAN-
-**                                      FLEXCAN_RAMn_COUNT’s value is 
+**                                      FLEXCAN_RAMn_COUNT’s value is
 **                                      changed from 256 to 128.
 **                                      3)SCG-
-**                                      FIRCCSR register: FIRCERR bitfield 
+**                                      FIRCCSR register: FIRCERR bitfield
 **                                      is removed.
 **
 ** ###################################################################
@@ -90,7 +90,7 @@
  */
 
 /* Prevention from multiple including the same memory map */
-#if !defined(S32K144W_H_)  /* Check if memory map has not been already included */
+#if !defined(S32K144W_H_) /* Check if memory map has not been already included */
 #define S32K144W_H_
 
 /* ----------------------------------------------------------------------------
@@ -136,4 +136,4 @@
 #include "S32K144W_TRGMUX.h"
 #include "S32K144W_WDOG.h"
 
-#endif  /* #if !defined(S32K144W_H_) */
+#endif /* #if !defined(S32K144W_H_) */

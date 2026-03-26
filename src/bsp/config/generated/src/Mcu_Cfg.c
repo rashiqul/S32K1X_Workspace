@@ -1,7 +1,7 @@
 /*==================================================================================================
 *   Project              : RTD AUTOSAR 4.7
 *   Platform             : CORTEXM
-*   Peripheral           : 
+*   Peripheral           :
 *   Dependencies         : none
 *
 *   Autosar Version      : 4.7.0
@@ -12,32 +12,29 @@
 *
 *   Copyright 2020-2025 NXP
 *
-*   NXP Confidential and Proprietary. This software is owned or controlled by NXP and may only be 
-*   used strictly in accordance with the applicable license terms.  By expressly 
-*   accepting such terms or by downloading, installing, activating and/or otherwise 
-*   using the software, you are agreeing that you have read, and that you agree to 
-*   comply with and are bound by, such license terms.  If you do not agree to be 
+*   NXP Confidential and Proprietary. This software is owned or controlled by NXP and may only be
+*   used strictly in accordance with the applicable license terms.  By expressly
+*   accepting such terms or by downloading, installing, activating and/or otherwise
+*   using the software, you are agreeing that you have read, and that you agree to
+*   comply with and are bound by, such license terms.  If you do not agree to be
 *   bound by the applicable license terms, then you may not retain, install,
 *   activate or otherwise use the software.
 ==================================================================================================*/
 /**
-*   @file       Mcu_Cfg.c
-*   @implements Mcu_Cfg.c_Artifact
-*   @version    3.0.0
-*
-*   @brief      AUTOSAR Mcu - Data structures for the Mcu driver.
-*   @details    Precompile structure configuration for the driver initialization.
-*
-*   @addtogroup MCU
-*   @{
-*/
-
+ *   @file       Mcu_Cfg.c
+ *   @implements Mcu_Cfg.c_Artifact
+ *   @version    3.0.0
+ *
+ *   @brief      AUTOSAR Mcu - Data structures for the Mcu driver.
+ *   @details    Precompile structure configuration for the driver initialization.
+ *
+ *   @addtogroup MCU
+ *   @{
+ */
 
 #ifdef __cplusplus
-extern "C"
-{
+extern "C" {
 #endif
-
 
 /*==================================================================================================
 *                                          INCLUDE FILES
@@ -55,13 +52,13 @@ extern "C"
 *                              SOURCE FILE VERSION INFORMATION
 ==================================================================================================*/
 
-#define MCU_CFG_VENDOR_ID_C                       43
-#define MCU_CFG_AR_RELEASE_MAJOR_VERSION_C        4
-#define MCU_CFG_AR_RELEASE_MINOR_VERSION_C        7
-#define MCU_CFG_AR_RELEASE_REVISION_VERSION_C     0
-#define MCU_CFG_SW_MAJOR_VERSION_C                3
-#define MCU_CFG_SW_MINOR_VERSION_C                0
-#define MCU_CFG_SW_PATCH_VERSION_C                0
+#define MCU_CFG_VENDOR_ID_C 43
+#define MCU_CFG_AR_RELEASE_MAJOR_VERSION_C 4
+#define MCU_CFG_AR_RELEASE_MINOR_VERSION_C 7
+#define MCU_CFG_AR_RELEASE_REVISION_VERSION_C 0
+#define MCU_CFG_SW_MAJOR_VERSION_C 3
+#define MCU_CFG_SW_MINOR_VERSION_C 0
+#define MCU_CFG_SW_PATCH_VERSION_C 0
 
 /*==================================================================================================
 *                                     FILE VERSION CHECKS
@@ -69,33 +66,30 @@ extern "C"
 
 /* Check if source file and Mcu.h file are of the same vendor */
 #if (MCU_CFG_VENDOR_ID_C != MCU_VENDOR_ID)
-    #error "Mcu_Cfg.c and Mcu.h have different vendor ids"
+#error "Mcu_Cfg.c and Mcu.h have different vendor ids"
 #endif
 /* Check if source file and Mcu.h file are of the same Autosar version */
-#if ((MCU_CFG_AR_RELEASE_MAJOR_VERSION_C != MCU_AR_RELEASE_MAJOR_VERSION) || \
-     (MCU_CFG_AR_RELEASE_MINOR_VERSION_C != MCU_AR_RELEASE_MINOR_VERSION) || \
-     (MCU_CFG_AR_RELEASE_REVISION_VERSION_C != MCU_AR_RELEASE_REVISION_VERSION) \
-    )
-    #error "AutoSar Version Numbers of Mcu_Cfg.c and Mcu.h are different"
+#if ((MCU_CFG_AR_RELEASE_MAJOR_VERSION_C != MCU_AR_RELEASE_MAJOR_VERSION) ||                       \
+     (MCU_CFG_AR_RELEASE_MINOR_VERSION_C != MCU_AR_RELEASE_MINOR_VERSION) ||                       \
+     (MCU_CFG_AR_RELEASE_REVISION_VERSION_C != MCU_AR_RELEASE_REVISION_VERSION))
+#error "AutoSar Version Numbers of Mcu_Cfg.c and Mcu.h are different"
 #endif
 /* Check if source file and Mcu.h file are of the same Software version */
-#if ((MCU_CFG_SW_MAJOR_VERSION_C != MCU_SW_MAJOR_VERSION) || \
-     (MCU_CFG_SW_MINOR_VERSION_C != MCU_SW_MINOR_VERSION) || \
-     (MCU_CFG_SW_PATCH_VERSION_C != MCU_SW_PATCH_VERSION) \
-    )
-    #error "Software Version Numbers of Mcu_Cfg.c and Mcu.h are different"
+#if ((MCU_CFG_SW_MAJOR_VERSION_C != MCU_SW_MAJOR_VERSION) ||                                       \
+     (MCU_CFG_SW_MINOR_VERSION_C != MCU_SW_MINOR_VERSION) ||                                       \
+     (MCU_CFG_SW_PATCH_VERSION_C != MCU_SW_PATCH_VERSION))
+#error "Software Version Numbers of Mcu_Cfg.c and Mcu.h are different"
 #endif
 
 #if (MCU_DISABLE_DEM_REPORT_ERROR_STATUS == STD_OFF)
-    #ifndef DISABLE_MCAL_INTERMODULE_ASR_CHECK
-    /* Check if source file and Dem.h file are of the same Autosar version */
-    #if ((MCU_CFG_AR_RELEASE_MAJOR_VERSION_C != DEM_AR_RELEASE_MAJOR_VERSION) || \
-        (MCU_CFG_AR_RELEASE_MINOR_VERSION_C != DEM_AR_RELEASE_MINOR_VERSION) \
-        )
-        #error "AutoSar Version Numbers of Mcu_Cfg.c and Dem.h are different"
-    #endif
+#ifndef DISABLE_MCAL_INTERMODULE_ASR_CHECK
+/* Check if source file and Dem.h file are of the same Autosar version */
+#if ((MCU_CFG_AR_RELEASE_MAJOR_VERSION_C != DEM_AR_RELEASE_MAJOR_VERSION) ||                       \
+     (MCU_CFG_AR_RELEASE_MINOR_VERSION_C != DEM_AR_RELEASE_MINOR_VERSION))
+#error "AutoSar Version Numbers of Mcu_Cfg.c and Dem.h are different"
+#endif
 
-    #endif    /* DISABLE_MCAL_INTERMODULE_ASR_CHECK */
+#endif /* DISABLE_MCAL_INTERMODULE_ASR_CHECK */
 #endif /* (MCU_DISABLE_DEM_REPORT_ERROR_STATUS == STD_OFF) */
 
 /*==================================================================================================
@@ -127,11 +121,10 @@ extern "C"
 
 #if (MCU_DISABLE_DEM_REPORT_ERROR_STATUS == STD_OFF)
 /**
-* @brief        DEM error reporting configuration
-* @details      Set the state and id for Mcal_DemErrorType.
-*/
-const Mcu_DemConfigType Mcu_DemConfig =
-{
+ * @brief        DEM error reporting configuration
+ * @details      Set the state and id for Mcal_DemErrorType.
+ */
+const Mcu_DemConfigType Mcu_DemConfig = {
     /* DEM error reporting MCU_E_TIMEOUT_FAILURE */
     {(uint32)STD_OFF, 0U},
     /* DEM error reporting MCU_E_INVALIDFXOSC_CONFIG */
@@ -141,15 +134,12 @@ const Mcu_DemConfigType Mcu_DemConfig =
     /* DEM error reporting MCU_E_CLOCK_FAILURE */
     {(uint32)STD_OFF, 0U},
     /* DEM error reporting MCU_E_SWITCHMODE_FAILURE */
-    {(uint32)STD_OFF, 0U}
-};
+    {(uint32)STD_OFF, 0U}};
 #endif /* (MCU_DISABLE_DEM_REPORT_ERROR_STATUS == STD_OFF) */
-
 
 #define MCU_STOP_SEC_CONFIG_DATA_UNSPECIFIED
 
 #include "Mcu_MemMap.h"
-
 
 /*==================================================================================================
                                    LOCAL FUNCTION PROTOTYPES
@@ -168,5 +158,3 @@ const Mcu_DemConfigType Mcu_DemConfig =
 #endif
 
 /** @} */
-
-

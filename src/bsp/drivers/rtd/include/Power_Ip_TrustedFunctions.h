@@ -1,7 +1,7 @@
 /*==================================================================================================
 *   Project              : RTD AUTOSAR 4.7
 *   Platform             : CORTEXM
-*   Peripheral           : 
+*   Peripheral           :
 *   Dependencies         : none
 *
 *   Autosar Version      : 4.7.0
@@ -12,11 +12,11 @@
 *
 *   Copyright 2020-2025 NXP
 *
-*   NXP Confidential and Proprietary. This software is owned or controlled by NXP and may only be 
-*   used strictly in accordance with the applicable license terms.  By expressly 
-*   accepting such terms or by downloading, installing, activating and/or otherwise 
-*   using the software, you are agreeing that you have read, and that you agree to 
-*   comply with and are bound by, such license terms.  If you do not agree to be 
+*   NXP Confidential and Proprietary. This software is owned or controlled by NXP and may only be
+*   used strictly in accordance with the applicable license terms.  By expressly
+*   accepting such terms or by downloading, installing, activating and/or otherwise
+*   using the software, you are agreeing that you have read, and that you agree to
+*   comply with and are bound by, such license terms.  If you do not agree to be
 *   bound by the applicable license terms, then you may not retain, install,
 *   activate or otherwise use the software.
 ==================================================================================================*/
@@ -36,7 +36,7 @@
 */
 
 #if defined(__cplusplus)
-extern "C"{
+extern "C" {
 #endif
 /*==================================================================================================
 *                                          INCLUDE FILES
@@ -44,20 +44,20 @@ extern "C"{
 * 2) needed interfaces from external units
 * 3) internal and external interfaces from this unit
 ==================================================================================================*/
-#include "Std_Types.h"
 #include "Power_Ip_Cfg.h"
 #include "Power_Ip_Types.h"
+#include "Std_Types.h"
 
 /*==================================================================================================
                                SOURCE FILE VERSION INFORMATION
 ==================================================================================================*/
-#define POWER_IP_TRUSTEDFUNCTIONS_VENDOR_ID                       43
-#define POWER_IP_TRUSTEDFUNCTIONS_AR_RELEASE_MAJOR_VERSION        4
-#define POWER_IP_TRUSTEDFUNCTIONS_AR_RELEASE_MINOR_VERSION        7
-#define POWER_IP_TRUSTEDFUNCTIONS_AR_RELEASE_REVISION_VERSION     0
-#define POWER_IP_TRUSTEDFUNCTIONS_SW_MAJOR_VERSION                3
-#define POWER_IP_TRUSTEDFUNCTIONS_SW_MINOR_VERSION                0
-#define POWER_IP_TRUSTEDFUNCTIONS_SW_PATCH_VERSION                0
+#define POWER_IP_TRUSTEDFUNCTIONS_VENDOR_ID 43
+#define POWER_IP_TRUSTEDFUNCTIONS_AR_RELEASE_MAJOR_VERSION 4
+#define POWER_IP_TRUSTEDFUNCTIONS_AR_RELEASE_MINOR_VERSION 7
+#define POWER_IP_TRUSTEDFUNCTIONS_AR_RELEASE_REVISION_VERSION 0
+#define POWER_IP_TRUSTEDFUNCTIONS_SW_MAJOR_VERSION 3
+#define POWER_IP_TRUSTEDFUNCTIONS_SW_MINOR_VERSION 0
+#define POWER_IP_TRUSTEDFUNCTIONS_SW_PATCH_VERSION 0
 
 /*==================================================================================================
                                       FILE VERSION CHECKS
@@ -65,49 +65,58 @@ extern "C"{
 
 #ifndef DISABLE_MCAL_INTERMODULE_ASR_CHECK
 /* Check if source file and Std_Types.h file are of the same Autosar version */
-#if ((POWER_IP_TRUSTEDFUNCTIONS_AR_RELEASE_MAJOR_VERSION != STD_AR_RELEASE_MAJOR_VERSION) || \
-     (POWER_IP_TRUSTEDFUNCTIONS_AR_RELEASE_MINOR_VERSION != STD_AR_RELEASE_MINOR_VERSION) \
-    )
-    #error "AutoSar Version Numbers of Power_Ip_TrustedFunctions.h  and Std_Types.h are different"
+#if ((POWER_IP_TRUSTEDFUNCTIONS_AR_RELEASE_MAJOR_VERSION != STD_AR_RELEASE_MAJOR_VERSION) ||       \
+     (POWER_IP_TRUSTEDFUNCTIONS_AR_RELEASE_MINOR_VERSION != STD_AR_RELEASE_MINOR_VERSION))
+#error "AutoSar Version Numbers of Power_Ip_TrustedFunctions.h  and Std_Types.h are different"
 #endif
 #endif
 
 /* Check if Power_Ip_TrustedFunctions.h file and Power_Ip_Cfg.h file have same versions */
-#if (POWER_IP_TRUSTEDFUNCTIONS_VENDOR_ID  != POWER_IP_CFG_VENDOR_ID)
-    #error "Power_Ip_TrustedFunctions.h and Power_Ip_Cfg.h have different vendor IDs"
+#if (POWER_IP_TRUSTEDFUNCTIONS_VENDOR_ID != POWER_IP_CFG_VENDOR_ID)
+#error "Power_Ip_TrustedFunctions.h and Power_Ip_Cfg.h have different vendor IDs"
 #endif
 
-/* Check if Power_Ip_TrustedFunctions.h file and Power_Ip_Cfg.h file are of the same Autosar version */
-#if ((POWER_IP_TRUSTEDFUNCTIONS_AR_RELEASE_MAJOR_VERSION    != POWER_IP_CFG_AR_RELEASE_MAJOR_VERSION) || \
-     (POWER_IP_TRUSTEDFUNCTIONS_AR_RELEASE_MINOR_VERSION    != POWER_IP_CFG_AR_RELEASE_MINOR_VERSION) || \
-     (POWER_IP_TRUSTEDFUNCTIONS_AR_RELEASE_REVISION_VERSION != POWER_IP_CFG_AR_RELEASE_REVISION_VERSION))
-    #error "AutoSar Version Numbers of Power_Ip_TrustedFunctions.h and Power_Ip_Cfg.h are different"
+/* Check if Power_Ip_TrustedFunctions.h file and Power_Ip_Cfg.h file are of the same Autosar version
+ */
+#if ((POWER_IP_TRUSTEDFUNCTIONS_AR_RELEASE_MAJOR_VERSION !=                                        \
+      POWER_IP_CFG_AR_RELEASE_MAJOR_VERSION) ||                                                    \
+     (POWER_IP_TRUSTEDFUNCTIONS_AR_RELEASE_MINOR_VERSION !=                                        \
+      POWER_IP_CFG_AR_RELEASE_MINOR_VERSION) ||                                                    \
+     (POWER_IP_TRUSTEDFUNCTIONS_AR_RELEASE_REVISION_VERSION !=                                     \
+      POWER_IP_CFG_AR_RELEASE_REVISION_VERSION))
+#error "AutoSar Version Numbers of Power_Ip_TrustedFunctions.h and Power_Ip_Cfg.h are different"
 #endif
 
-/* Check if Power_Ip_TrustedFunctions.h file and Power_Ip_Cfg.h file are of the same Software version */
-#if ((POWER_IP_TRUSTEDFUNCTIONS_SW_MAJOR_VERSION != POWER_IP_CFG_SW_MAJOR_VERSION) || \
-     (POWER_IP_TRUSTEDFUNCTIONS_SW_MINOR_VERSION != POWER_IP_CFG_SW_MINOR_VERSION) || \
+/* Check if Power_Ip_TrustedFunctions.h file and Power_Ip_Cfg.h file are of the same Software
+ * version */
+#if ((POWER_IP_TRUSTEDFUNCTIONS_SW_MAJOR_VERSION != POWER_IP_CFG_SW_MAJOR_VERSION) ||              \
+     (POWER_IP_TRUSTEDFUNCTIONS_SW_MINOR_VERSION != POWER_IP_CFG_SW_MINOR_VERSION) ||              \
      (POWER_IP_TRUSTEDFUNCTIONS_SW_PATCH_VERSION != POWER_IP_CFG_SW_PATCH_VERSION))
-    #error "Software Version Numbers of Power_Ip_TrustedFunctions.h and Power_Ip_Cfg.h are different"
+#error "Software Version Numbers of Power_Ip_TrustedFunctions.h and Power_Ip_Cfg.h are different"
 #endif
 
 /* Check if Power_Ip_TrustedFunctions.h file and Power_Ip_Types.h file have same versions */
-#if (POWER_IP_TRUSTEDFUNCTIONS_VENDOR_ID  != POWER_IP_TYPES_VENDOR_ID)
-    #error "Power_Ip_TrustedFunctions.h and Power_Ip_Types.h have different vendor IDs"
+#if (POWER_IP_TRUSTEDFUNCTIONS_VENDOR_ID != POWER_IP_TYPES_VENDOR_ID)
+#error "Power_Ip_TrustedFunctions.h and Power_Ip_Types.h have different vendor IDs"
 #endif
 
-/* Check if Power_Ip_TrustedFunctions.h file and Power_Ip_Types.h file are of the same Autosar version */
-#if ((POWER_IP_TRUSTEDFUNCTIONS_AR_RELEASE_MAJOR_VERSION    != POWER_IP_TYPES_AR_RELEASE_MAJOR_VERSION) || \
-     (POWER_IP_TRUSTEDFUNCTIONS_AR_RELEASE_MINOR_VERSION    != POWER_IP_TYPES_AR_RELEASE_MINOR_VERSION) || \
-     (POWER_IP_TRUSTEDFUNCTIONS_AR_RELEASE_REVISION_VERSION != POWER_IP_TYPES_AR_RELEASE_REVISION_VERSION))
-    #error "AutoSar Version Numbers of Power_Ip_TrustedFunctions.h and Power_Ip_Types.h are different"
+/* Check if Power_Ip_TrustedFunctions.h file and Power_Ip_Types.h file are of the same Autosar
+ * version */
+#if ((POWER_IP_TRUSTEDFUNCTIONS_AR_RELEASE_MAJOR_VERSION !=                                        \
+      POWER_IP_TYPES_AR_RELEASE_MAJOR_VERSION) ||                                                  \
+     (POWER_IP_TRUSTEDFUNCTIONS_AR_RELEASE_MINOR_VERSION !=                                        \
+      POWER_IP_TYPES_AR_RELEASE_MINOR_VERSION) ||                                                  \
+     (POWER_IP_TRUSTEDFUNCTIONS_AR_RELEASE_REVISION_VERSION !=                                     \
+      POWER_IP_TYPES_AR_RELEASE_REVISION_VERSION))
+#error "AutoSar Version Numbers of Power_Ip_TrustedFunctions.h and Power_Ip_Types.h are different"
 #endif
 
-/* Check if Power_Ip_TrustedFunctions.h file and Power_Ip_Types.h file are of the same Software version */
-#if ((POWER_IP_TRUSTEDFUNCTIONS_SW_MAJOR_VERSION != POWER_IP_TYPES_SW_MAJOR_VERSION) || \
-     (POWER_IP_TRUSTEDFUNCTIONS_SW_MINOR_VERSION != POWER_IP_TYPES_SW_MINOR_VERSION) || \
+/* Check if Power_Ip_TrustedFunctions.h file and Power_Ip_Types.h file are of the same Software
+ * version */
+#if ((POWER_IP_TRUSTEDFUNCTIONS_SW_MAJOR_VERSION != POWER_IP_TYPES_SW_MAJOR_VERSION) ||            \
+     (POWER_IP_TRUSTEDFUNCTIONS_SW_MINOR_VERSION != POWER_IP_TYPES_SW_MINOR_VERSION) ||            \
      (POWER_IP_TRUSTEDFUNCTIONS_SW_PATCH_VERSION != POWER_IP_TYPES_SW_PATCH_VERSION))
-    #error "Software Version Numbers of Power_Ip_TrustedFunctions.h and Power_Ip_Types.h are different"
+#error "Software Version Numbers of Power_Ip_TrustedFunctions.h and Power_Ip_Types.h are different"
 #endif
 
 /*==================================================================================================
@@ -134,13 +143,12 @@ extern "C"{
 *                                       FUNCTION PROTOTYPES
 ==================================================================================================*/
 
-
 /* Clock start section code */
 #define MCU_START_SEC_CODE
 #include "Mcu_MemMap.h"
 
 #ifdef POWER_IP_ENABLE_USER_MODE_SUPPORT
-  #if (STD_ON == POWER_IP_ENABLE_USER_MODE_SUPPORT)
+#if (STD_ON == POWER_IP_ENABLE_USER_MODE_SUPPORT)
 
 #ifdef POWER_IP_SLEEPONEXIT_SUPPORT
 #if (POWER_IP_SLEEPONEXIT_SUPPORT == STD_ON)
@@ -161,7 +169,7 @@ extern void Power_Ip_CM4_DisableSleepOnExit(void);
  *
  */
 extern void Power_Ip_CM4_EnableSleepOnExit(void);
-  #endif
+#endif
 #endif
 
 /**
@@ -200,7 +208,7 @@ extern void Power_Ip_CM4_SystemReset(void);
  * @return       None
  *
  */
-extern void Power_Ip_PMC_PowerInit(const Power_Ip_PMC_ConfigType * ConfigPtr);
+extern void Power_Ip_PMC_PowerInit(const Power_Ip_PMC_ConfigType* ConfigPtr);
 
 #if (defined(POWER_IP_DISABLE_RCM_INIT) && (STD_OFF == POWER_IP_DISABLE_RCM_INIT))
 /**
@@ -210,7 +218,7 @@ extern void Power_Ip_PMC_PowerInit(const Power_Ip_PMC_ConfigType * ConfigPtr);
  * @return       None
  *
  */
-extern void Power_Ip_RCM_ResetInit(const Power_Ip_RCM_ConfigType * ConfigPtr);
+extern void Power_Ip_RCM_ResetInit(const Power_Ip_RCM_ConfigType* ConfigPtr);
 #endif
 
 /**
@@ -253,7 +261,7 @@ extern void Power_Ip_SIM_SRAMRetentionConfig(Power_Ip_SRAMRetenConfigType SRAMRe
  * @return       None
  *
  */
-extern void Power_Ip_SMC_AllowedModesConfig(const Power_Ip_SMC_ConfigType * ConfigPtr);
+extern void Power_Ip_SMC_AllowedModesConfig(const Power_Ip_SMC_ConfigType* ConfigPtr);
 #endif
 
 /**
@@ -263,15 +271,14 @@ extern void Power_Ip_SMC_AllowedModesConfig(const Power_Ip_SMC_ConfigType * Conf
  * @return       uint32
  *
  */
-extern uint32 Power_Ip_SMC_ModeConfig(const Power_Ip_ModeConfigType * ModeConfigPtr);
+extern uint32 Power_Ip_SMC_ModeConfig(const Power_Ip_ModeConfigType* ModeConfigPtr);
 
-  #endif
+#endif
 #endif /* POWER_IP_ENABLE_USER_MODE_SUPPORT */
 
 /* Clock stop section code */
 #define MCU_STOP_SEC_CODE
 #include "Mcu_MemMap.h"
-
 
 #if defined(__cplusplus)
 }
@@ -280,5 +287,3 @@ extern uint32 Power_Ip_SMC_ModeConfig(const Power_Ip_ModeConfigType * ModeConfig
 /*! @}*/
 
 #endif /* CLOCK_IP_TRUSTEDFUNCTIONS_H */
-
-

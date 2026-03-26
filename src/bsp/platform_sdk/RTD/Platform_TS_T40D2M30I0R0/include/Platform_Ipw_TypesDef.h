@@ -1,7 +1,7 @@
 /*==================================================================================================
 *   Project              : RTD AUTOSAR 4.7
 *   Platform             : CORTEXM
-*   Peripheral           : 
+*   Peripheral           :
 *   Dependencies         : none
 *
 *   Autosar Version      : 4.7.0
@@ -12,11 +12,11 @@
 *
 *   Copyright 2020-2025 NXP
 *
-*   NXP Confidential and Proprietary. This software is owned or controlled by NXP and may only be 
-*   used strictly in accordance with the applicable license terms.  By expressly 
-*   accepting such terms or by downloading, installing, activating and/or otherwise 
-*   using the software, you are agreeing that you have read, and that you agree to 
-*   comply with and are bound by, such license terms.  If you do not agree to be 
+*   NXP Confidential and Proprietary. This software is owned or controlled by NXP and may only be
+*   used strictly in accordance with the applicable license terms.  By expressly
+*   accepting such terms or by downloading, installing, activating and/or otherwise
+*   using the software, you are agreeing that you have read, and that you agree to
+*   comply with and are bound by, such license terms.  If you do not agree to be
 *   bound by the applicable license terms, then you may not retain, install,
 *   activate or otherwise use the software.
 ==================================================================================================*/
@@ -25,12 +25,12 @@
 #define IPW_PLATFORM_IPW_TYPESDEF_H_
 
 /**
-*   @file
-*
-*   @internal
-*   @addtogroup Platform_Ipw
-*   @{
-*/
+ *   @file
+ *
+ *   @internal
+ *   @addtogroup Platform_Ipw
+ *   @{
+ */
 
 /*==================================================================================================
 *                                        INCLUDE FILES
@@ -38,110 +38,126 @@
 
 #include "Platform_CfgDefines.h"
 #if (PLATFORM_DEV_ERROR_DETECT == STD_ON)
-    #include "Det.h"
+#include "Det.h"
 #endif
 #if (PLATFORM_ENABLE_INT_CTRL == STD_ON)
-    #include "IntCtrl_Ip_TypesDef.h"
+#include "IntCtrl_Ip_TypesDef.h"
 #endif
 #if (PLATFORM_SYS_CFG == STD_ON)
-    #include "System_Ip_CfgDefines.h"
+#include "System_Ip_CfgDefines.h"
 #endif
 #if (PLATFORM_ENABLE_MPU == STD_ON)
-    #include "Mpu_Ip.h"
+#include "Mpu_Ip.h"
 #endif
 /*==================================================================================================
 *                                SOURCE FILE VERSION INFORMATION
 ==================================================================================================*/
 
-#define CDD_PLATFORM_IPW_TYPESDEF_VENDOR_ID                       43
-#define CDD_PLATFORM_IPW_TYPESDEF_AR_RELEASE_MAJOR_VERSION        4
-#define CDD_PLATFORM_IPW_TYPESDEF_AR_RELEASE_MINOR_VERSION        7
-#define CDD_PLATFORM_IPW_TYPESDEF_AR_RELEASE_REVISION_VERSION     0
-#define CDD_PLATFORM_IPW_TYPESDEF_SW_MAJOR_VERSION                3
-#define CDD_PLATFORM_IPW_TYPESDEF_SW_MINOR_VERSION                0
-#define CDD_PLATFORM_IPW_TYPESDEF_SW_PATCH_VERSION                0
+#define CDD_PLATFORM_IPW_TYPESDEF_VENDOR_ID 43
+#define CDD_PLATFORM_IPW_TYPESDEF_AR_RELEASE_MAJOR_VERSION 4
+#define CDD_PLATFORM_IPW_TYPESDEF_AR_RELEASE_MINOR_VERSION 7
+#define CDD_PLATFORM_IPW_TYPESDEF_AR_RELEASE_REVISION_VERSION 0
+#define CDD_PLATFORM_IPW_TYPESDEF_SW_MAJOR_VERSION 3
+#define CDD_PLATFORM_IPW_TYPESDEF_SW_MINOR_VERSION 0
+#define CDD_PLATFORM_IPW_TYPESDEF_SW_PATCH_VERSION 0
 
 /*==================================================================================================
                                       FILE VERSION CHECKS
 ==================================================================================================*/
 /* Check if current file and Platform_CfgDefines header file are of the same vendor */
 #if (CDD_PLATFORM_IPW_TYPESDEF_VENDOR_ID != CDD_PLATFORM_CFGDEFINES_VENDOR_ID)
-    #error "Platform_Ipw_TypesDef.h and Platform_CfgDefines.h have different vendor ids"
+#error "Platform_Ipw_TypesDef.h and Platform_CfgDefines.h have different vendor ids"
 #endif
 /* Check if current file and Platform_CfgDefines header file are of the same Autosar version */
-#if ((CDD_PLATFORM_IPW_TYPESDEF_AR_RELEASE_MAJOR_VERSION    != CDD_PLATFORM_CFGDEFINES_AR_RELEASE_MAJOR_VERSION) || \
-     (CDD_PLATFORM_IPW_TYPESDEF_AR_RELEASE_MINOR_VERSION    != CDD_PLATFORM_CFGDEFINES_AR_RELEASE_MINOR_VERSION) || \
-     (CDD_PLATFORM_IPW_TYPESDEF_AR_RELEASE_REVISION_VERSION != CDD_PLATFORM_CFGDEFINES_AR_RELEASE_REVISION_VERSION) \
-    )
-    #error "AutoSar Version Numbers of Platform_Ipw_TypesDef.h and Platform_CfgDefines.h are different"
+#if ((CDD_PLATFORM_IPW_TYPESDEF_AR_RELEASE_MAJOR_VERSION !=                                        \
+      CDD_PLATFORM_CFGDEFINES_AR_RELEASE_MAJOR_VERSION) ||                                         \
+     (CDD_PLATFORM_IPW_TYPESDEF_AR_RELEASE_MINOR_VERSION !=                                        \
+      CDD_PLATFORM_CFGDEFINES_AR_RELEASE_MINOR_VERSION) ||                                         \
+     (CDD_PLATFORM_IPW_TYPESDEF_AR_RELEASE_REVISION_VERSION !=                                     \
+      CDD_PLATFORM_CFGDEFINES_AR_RELEASE_REVISION_VERSION))
+#error "AutoSar Version Numbers of Platform_Ipw_TypesDef.h and Platform_CfgDefines.h are different"
 #endif
 
 /* Check if current file and Platform_CfgDefines header file are of the same Software version */
-#if ((CDD_PLATFORM_IPW_TYPESDEF_SW_MAJOR_VERSION != CDD_PLATFORM_CFGDEFINES_SW_MAJOR_VERSION) || \
-     (CDD_PLATFORM_IPW_TYPESDEF_SW_MINOR_VERSION != CDD_PLATFORM_CFGDEFINES_SW_MINOR_VERSION) || \
-     (CDD_PLATFORM_IPW_TYPESDEF_SW_PATCH_VERSION != CDD_PLATFORM_CFGDEFINES_SW_PATCH_VERSION) \
-    )
-    #error "Software Version Numbers of Platform_Ipw_TypesDef.h and Platform_CfgDefines.h are different"
+#if ((CDD_PLATFORM_IPW_TYPESDEF_SW_MAJOR_VERSION != CDD_PLATFORM_CFGDEFINES_SW_MAJOR_VERSION) ||   \
+     (CDD_PLATFORM_IPW_TYPESDEF_SW_MINOR_VERSION != CDD_PLATFORM_CFGDEFINES_SW_MINOR_VERSION) ||   \
+     (CDD_PLATFORM_IPW_TYPESDEF_SW_PATCH_VERSION != CDD_PLATFORM_CFGDEFINES_SW_PATCH_VERSION))
+#error "Software Version Numbers of Platform_Ipw_TypesDef.h and Platform_CfgDefines.h are different"
 #endif
 
 #if (PLATFORM_ENABLE_INT_CTRL == STD_ON)
 /* Check if current file and IntCtrl_Ip_TypesDef header file are of the same vendor */
 #if (CDD_PLATFORM_IPW_TYPESDEF_VENDOR_ID != CDD_PLATFORM_INTCTRL_IP_TYPESDEF_VENDOR_ID)
-    #error "Platform_Ipw_TypesDef.c and IntCtrl_Ip_TypesDef.h have different vendor ids"
+#error "Platform_Ipw_TypesDef.c and IntCtrl_Ip_TypesDef.h have different vendor ids"
 #endif
 /* Check if current file and IntCtrl_Ip_TypesDef header file are of the same Autosar version */
-#if ((CDD_PLATFORM_IPW_TYPESDEF_AR_RELEASE_MAJOR_VERSION    != CDD_PLATFORM_INTCTRL_IP_TYPESDEF_AR_RELEASE_MAJOR_VERSION) || \
-     (CDD_PLATFORM_IPW_TYPESDEF_AR_RELEASE_MINOR_VERSION    != CDD_PLATFORM_INTCTRL_IP_TYPESDEF_AR_RELEASE_MINOR_VERSION) || \
-     (CDD_PLATFORM_IPW_TYPESDEF_AR_RELEASE_REVISION_VERSION != CDD_PLATFORM_INTCTRL_IP_TYPESDEF_AR_RELEASE_REVISION_VERSION) \
-    )
-    #error "AutoSar Version Numbers of Platform_Ipw_TypesDef.h and IntCtrl_Ip_TypesDef.h are different"
+#if ((CDD_PLATFORM_IPW_TYPESDEF_AR_RELEASE_MAJOR_VERSION !=                                        \
+      CDD_PLATFORM_INTCTRL_IP_TYPESDEF_AR_RELEASE_MAJOR_VERSION) ||                                \
+     (CDD_PLATFORM_IPW_TYPESDEF_AR_RELEASE_MINOR_VERSION !=                                        \
+      CDD_PLATFORM_INTCTRL_IP_TYPESDEF_AR_RELEASE_MINOR_VERSION) ||                                \
+     (CDD_PLATFORM_IPW_TYPESDEF_AR_RELEASE_REVISION_VERSION !=                                     \
+      CDD_PLATFORM_INTCTRL_IP_TYPESDEF_AR_RELEASE_REVISION_VERSION))
+#error "AutoSar Version Numbers of Platform_Ipw_TypesDef.h and IntCtrl_Ip_TypesDef.h are different"
 #endif
 /* Check if current file and IntCtrl_Ip_TypesDef header file are of the same Software version */
-#if ((CDD_PLATFORM_IPW_TYPESDEF_SW_MAJOR_VERSION != CDD_PLATFORM_INTCTRL_IP_TYPESDEF_SW_MAJOR_VERSION) || \
-     (CDD_PLATFORM_IPW_TYPESDEF_SW_MINOR_VERSION != CDD_PLATFORM_INTCTRL_IP_TYPESDEF_SW_MINOR_VERSION) || \
-     (CDD_PLATFORM_IPW_TYPESDEF_SW_PATCH_VERSION != CDD_PLATFORM_INTCTRL_IP_TYPESDEF_SW_PATCH_VERSION) \
-    )
-    #error "Software Version Numbers of Platform_Ipw_TypesDef.h and IntCtrl_Ip_TypesDef.h are different"
+#if ((CDD_PLATFORM_IPW_TYPESDEF_SW_MAJOR_VERSION !=                                                \
+      CDD_PLATFORM_INTCTRL_IP_TYPESDEF_SW_MAJOR_VERSION) ||                                        \
+     (CDD_PLATFORM_IPW_TYPESDEF_SW_MINOR_VERSION !=                                                \
+      CDD_PLATFORM_INTCTRL_IP_TYPESDEF_SW_MINOR_VERSION) ||                                        \
+     (CDD_PLATFORM_IPW_TYPESDEF_SW_PATCH_VERSION !=                                                \
+      CDD_PLATFORM_INTCTRL_IP_TYPESDEF_SW_PATCH_VERSION))
+#error "Software Version Numbers of Platform_Ipw_TypesDef.h and IntCtrl_Ip_TypesDef.h are different"
 #endif
 #endif
 
 #if (PLATFORM_SYS_CFG == STD_ON)
 /* Check if current file and System_Ip_CfgDefines header file are of the same vendor */
 #if (CDD_PLATFORM_IPW_TYPESDEF_VENDOR_ID != CDD_PLATFORM_SYSTEM_IP_CFG_DEFINES_VENDOR_ID)
-    #error "Platform_Ipw_TypesDef.c and System_Ip_CfgDefines.h have different vendor ids"
+#error "Platform_Ipw_TypesDef.c and System_Ip_CfgDefines.h have different vendor ids"
 #endif
 /* Check if current file and System_Ip_CfgDefines header file are of the same Software version */
-#if ((CDD_PLATFORM_IPW_TYPESDEF_SW_MAJOR_VERSION != CDD_PLATFORM_SYSTEM_IP_CFG_DEFINES_SW_MAJOR_VERSION) || \
-     (CDD_PLATFORM_IPW_TYPESDEF_SW_MINOR_VERSION != CDD_PLATFORM_SYSTEM_IP_CFG_DEFINES_SW_MINOR_VERSION) || \
-     (CDD_PLATFORM_IPW_TYPESDEF_SW_PATCH_VERSION != CDD_PLATFORM_SYSTEM_IP_CFG_DEFINES_SW_PATCH_VERSION) \
-    )
-    #error "Software Version Numbers of Platform_Ipw_TypesDef.h and System_Ip_CfgDefines.h are different"
+#if ((CDD_PLATFORM_IPW_TYPESDEF_SW_MAJOR_VERSION !=                                                \
+      CDD_PLATFORM_SYSTEM_IP_CFG_DEFINES_SW_MAJOR_VERSION) ||                                      \
+     (CDD_PLATFORM_IPW_TYPESDEF_SW_MINOR_VERSION !=                                                \
+      CDD_PLATFORM_SYSTEM_IP_CFG_DEFINES_SW_MINOR_VERSION) ||                                      \
+     (CDD_PLATFORM_IPW_TYPESDEF_SW_PATCH_VERSION !=                                                \
+      CDD_PLATFORM_SYSTEM_IP_CFG_DEFINES_SW_PATCH_VERSION))
+#error                                                                                             \
+    "Software Version Numbers of Platform_Ipw_TypesDef.h and System_Ip_CfgDefines.h are different"
 #endif
 /* Check if current file and System_Ip_CfgDefines header file are of the same Autosar version */
-#if ((CDD_PLATFORM_IPW_TYPESDEF_AR_RELEASE_MAJOR_VERSION    != CDD_PLATFORM_SYSTEM_IP_CFG_DEFINES_AR_RELEASE_MAJOR_VERSION) || \
-     (CDD_PLATFORM_IPW_TYPESDEF_AR_RELEASE_MINOR_VERSION    != CDD_PLATFORM_SYSTEM_IP_CFG_DEFINES_AR_RELEASE_MINOR_VERSION) || \
-     (CDD_PLATFORM_IPW_TYPESDEF_AR_RELEASE_REVISION_VERSION != CDD_PLATFORM_SYSTEM_IP_CFG_DEFINES_AR_RELEASE_REVISION_VERSION) \
-    )
-    #error "AutoSar Version Numbers of Platform_Ipw_TypesDef.h and System_Ip_CfgDefines.h are different"
+#if ((CDD_PLATFORM_IPW_TYPESDEF_AR_RELEASE_MAJOR_VERSION !=                                        \
+      CDD_PLATFORM_SYSTEM_IP_CFG_DEFINES_AR_RELEASE_MAJOR_VERSION) ||                              \
+     (CDD_PLATFORM_IPW_TYPESDEF_AR_RELEASE_MINOR_VERSION !=                                        \
+      CDD_PLATFORM_SYSTEM_IP_CFG_DEFINES_AR_RELEASE_MINOR_VERSION) ||                              \
+     (CDD_PLATFORM_IPW_TYPESDEF_AR_RELEASE_REVISION_VERSION !=                                     \
+      CDD_PLATFORM_SYSTEM_IP_CFG_DEFINES_AR_RELEASE_REVISION_VERSION))
+#error "AutoSar Version Numbers of Platform_Ipw_TypesDef.h and System_Ip_CfgDefines.h are different"
 #endif
 #endif
 
 #if (PLATFORM_ENABLE_MPU == STD_ON)
 /* Check if Platform_Ipw_TypesDef.h and Mpu_Ip.h are of the same vendor */
 #if (CDD_PLATFORM_IPW_TYPESDEF_VENDOR_ID != CDD_PLATFORM_MPU_IP_TYPES_DEF_VENDOR_ID)
-    #error "Platform_Ipw_TypesDef.h and Mpu_Ip.h have different vendor ids"
+#error "Platform_Ipw_TypesDef.h and Mpu_Ip.h have different vendor ids"
 #endif
 /* Check if Platform_Ipw_TypesDef.h file and Mpu_Ip.h file are of the same Autosar version */
-#if ((CDD_PLATFORM_IPW_TYPESDEF_AR_RELEASE_MAJOR_VERSION != CDD_PLATFORM_MPU_IP_TYPES_DEF_AR_RELEASE_MAJOR_VERSION) || \
-    (CDD_PLATFORM_IPW_TYPESDEF_AR_RELEASE_MINOR_VERSION != CDD_PLATFORM_MPU_IP_TYPES_DEF_AR_RELEASE_MINOR_VERSION) || \
-    (CDD_PLATFORM_IPW_TYPESDEF_AR_RELEASE_REVISION_VERSION != CDD_PLATFORM_MPU_IP_TYPES_DEF_AR_RELEASE_REVISION_VERSION))
-    #error "AutoSar Version Numbers of Platform_Ipw_TypesDef.h and Mpu_Ip.h are different"
+#if ((CDD_PLATFORM_IPW_TYPESDEF_AR_RELEASE_MAJOR_VERSION !=                                        \
+      CDD_PLATFORM_MPU_IP_TYPES_DEF_AR_RELEASE_MAJOR_VERSION) ||                                   \
+     (CDD_PLATFORM_IPW_TYPESDEF_AR_RELEASE_MINOR_VERSION !=                                        \
+      CDD_PLATFORM_MPU_IP_TYPES_DEF_AR_RELEASE_MINOR_VERSION) ||                                   \
+     (CDD_PLATFORM_IPW_TYPESDEF_AR_RELEASE_REVISION_VERSION !=                                     \
+      CDD_PLATFORM_MPU_IP_TYPES_DEF_AR_RELEASE_REVISION_VERSION))
+#error "AutoSar Version Numbers of Platform_Ipw_TypesDef.h and Mpu_Ip.h are different"
 #endif
 /* Check if Platform_Ipw_TypesDef.h file and Mpu_Ip.h file are of the same Software version */
-#if ((CDD_PLATFORM_IPW_TYPESDEF_SW_MAJOR_VERSION != CDD_PLATFORM_MPU_IP_TYPES_DEF_SW_MAJOR_VERSION) || \
-    (CDD_PLATFORM_IPW_TYPESDEF_SW_MINOR_VERSION != CDD_PLATFORM_MPU_IP_TYPES_DEF_SW_MINOR_VERSION) || \
-    (CDD_PLATFORM_IPW_TYPESDEF_SW_PATCH_VERSION != CDD_PLATFORM_MPU_IP_TYPES_DEF_SW_PATCH_VERSION))
-    #error "Software Version Numbers of Platform_Ipw_TypesDef.h and Mpu_Ip.h are different"
+#if ((CDD_PLATFORM_IPW_TYPESDEF_SW_MAJOR_VERSION !=                                                \
+      CDD_PLATFORM_MPU_IP_TYPES_DEF_SW_MAJOR_VERSION) ||                                           \
+     (CDD_PLATFORM_IPW_TYPESDEF_SW_MINOR_VERSION !=                                                \
+      CDD_PLATFORM_MPU_IP_TYPES_DEF_SW_MINOR_VERSION) ||                                           \
+     (CDD_PLATFORM_IPW_TYPESDEF_SW_PATCH_VERSION !=                                                \
+      CDD_PLATFORM_MPU_IP_TYPES_DEF_SW_PATCH_VERSION))
+#error "Software Version Numbers of Platform_Ipw_TypesDef.h and Mpu_Ip.h are different"
 #endif
 #endif
 
@@ -153,37 +169,34 @@
  * @internal
  * @brief          Configuration structure core-related interrupt requests.
  */
-typedef struct
-{
+typedef struct {
     System_Ip_IrqType eIrq;
     boolean bEnable;
-}Platform_SystemIrqConfigType;
+} Platform_SystemIrqConfigType;
 
 /**
  * @internal
  * @brief          Configuration structure system settings.
  */
-typedef struct
-{
-    const Platform_SystemIrqConfigType *aSystemIrqs;
+typedef struct {
+    const Platform_SystemIrqConfigType* aSystemIrqs;
     uint8 u8SysIrqsCount;
     boolean bAhbSlavePriority;
-}Platform_SystemConfigType;
+} Platform_SystemConfigType;
 #endif
 /**
  * @internal
  * @brief          Configuration structure for PLATFORM IP wrapper.
  */
-typedef struct
-{
+typedef struct {
 #if (PLATFORM_ENABLE_INT_CTRL == STD_ON)
-    const IntCtrl_Ip_CtrlConfigType *pIntCtrlConfig;
+    const IntCtrl_Ip_CtrlConfigType* pIntCtrlConfig;
 #endif
 #if (PLATFORM_SYS_CFG == STD_ON)
-    const Platform_SystemConfigType *aSystemConfig;
+    const Platform_SystemConfigType* aSystemConfig;
 #endif
 #if (PLATFORM_ENABLE_MPU == STD_ON)
-    const Mpu_Ip_ConfigType *Platform_Ipw_pMpuConfig;
+    const Mpu_Ip_ConfigType* Platform_Ipw_pMpuConfig;
 #endif /* PLATFORM_ENABLE_MPU == STD_ON */
 } Platform_Ipw_ConfigType;
 

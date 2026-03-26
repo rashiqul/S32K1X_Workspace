@@ -12,11 +12,11 @@
 *
 *   Copyright 2020-2025 NXP
 *
-*   NXP Confidential and Proprietary. This software is owned or controlled by NXP and may only be 
-*   used strictly in accordance with the applicable license terms.  By expressly 
-*   accepting such terms or by downloading, installing, activating and/or otherwise 
-*   using the software, you are agreeing that you have read, and that you agree to 
-*   comply with and are bound by, such license terms.  If you do not agree to be 
+*   NXP Confidential and Proprietary. This software is owned or controlled by NXP and may only be
+*   used strictly in accordance with the applicable license terms.  By expressly
+*   accepting such terms or by downloading, installing, activating and/or otherwise
+*   using the software, you are agreeing that you have read, and that you agree to
+*   comply with and are bound by, such license terms.  If you do not agree to be
 *   bound by the applicable license terms, then you may not retain, install,
 *   activate or otherwise use the software.
 ==================================================================================================*/
@@ -24,14 +24,14 @@
 #define GPIO_DIO_IP_CFG_H
 
 /**
-*   @file Gpio_Dio_Ip_Cfg.h
-*
-*   @addtogroup DIO_IPL
-*   @{
-*/
+ *   @file Gpio_Dio_Ip_Cfg.h
+ *
+ *   @addtogroup DIO_IPL
+ *   @{
+ */
 
 #ifdef __cplusplus
-extern "C"{
+extern "C" {
 #endif
 
 /*==================================================================================================
@@ -44,13 +44,13 @@ extern "C"{
 /*==================================================================================================
 *                              SOURCE FILE VERSION INFORMATION
 ==================================================================================================*/
-#define GPIO_DIO_IP_VENDOR_ID_CFG_H                       43
-#define GPIO_DIO_IP_AR_RELEASE_MAJOR_VERSION_CFG_H        4
-#define GPIO_DIO_IP_AR_RELEASE_MINOR_VERSION_CFG_H        7
-#define GPIO_DIO_IP_AR_RELEASE_REVISION_VERSION_CFG_H     0
-#define GPIO_DIO_IP_SW_MAJOR_VERSION_CFG_H                3
-#define GPIO_DIO_IP_SW_MINOR_VERSION_CFG_H                0
-#define GPIO_DIO_IP_SW_PATCH_VERSION_CFG_H                0
+#define GPIO_DIO_IP_VENDOR_ID_CFG_H 43
+#define GPIO_DIO_IP_AR_RELEASE_MAJOR_VERSION_CFG_H 4
+#define GPIO_DIO_IP_AR_RELEASE_MINOR_VERSION_CFG_H 7
+#define GPIO_DIO_IP_AR_RELEASE_REVISION_VERSION_CFG_H 0
+#define GPIO_DIO_IP_SW_MAJOR_VERSION_CFG_H 3
+#define GPIO_DIO_IP_SW_MINOR_VERSION_CFG_H 0
+#define GPIO_DIO_IP_SW_PATCH_VERSION_CFG_H 0
 
 /*==================================================================================================
 *                                     FILE VERSION CHECKS
@@ -63,13 +63,14 @@ extern "C"{
 /*==================================================================================================
 *                                      DEFINES AND MACROS
 ==================================================================================================*/
-#define DIO_VIRTWRAPPER_SUPPORT        (STD_OFF)
+#define DIO_VIRTWRAPPER_SUPPORT (STD_OFF)
 
-/* @brief          Pre-processor switch to enable/disable development error detection for Gpio Ip API
-*
-* @implements     GpioDioErrorDetect_define
-*/
-#define GPIO_DIO_IP_DEV_ERROR_DETECT                         (STD_OFF)
+/* @brief          Pre-processor switch to enable/disable development error detection for Gpio Ip
+ * API
+ *
+ * @implements     GpioDioErrorDetect_define
+ */
+#define GPIO_DIO_IP_DEV_ERROR_DETECT (STD_OFF)
 
 /*==================================================================================================
 *                                             ENUMS
@@ -79,7 +80,6 @@ extern "C"{
 *                                STRUCTURES AND OTHER TYPEDEFS
 ==================================================================================================*/
 
-
 /*==================================================================================================
 *                                GLOBAL VARIABLE DECLARATIONS
 ==================================================================================================*/
@@ -88,7 +88,6 @@ extern "C"{
 *                                    FUNCTION PROTOTYPES
 ==================================================================================================*/
 
-
 #ifdef __cplusplus
 }
 #endif
@@ -96,4 +95,3 @@ extern "C"{
 #endif /* GPIO_DIO_IP_CFG_H */
 
 /** @} */
-

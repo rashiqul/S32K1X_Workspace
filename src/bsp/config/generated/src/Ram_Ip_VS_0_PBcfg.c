@@ -1,7 +1,7 @@
 /*==================================================================================================
 *   Project              : RTD AUTOSAR 4.7
 *   Platform             : CORTEXM
-*   Peripheral           : 
+*   Peripheral           :
 *   Dependencies         : none
 *
 *   Autosar Version      : 4.7.0
@@ -12,30 +12,28 @@
 *
 *   Copyright 2020-2025 NXP
 *
-*   NXP Confidential and Proprietary. This software is owned or controlled by NXP and may only be 
-*   used strictly in accordance with the applicable license terms.  By expressly 
-*   accepting such terms or by downloading, installing, activating and/or otherwise 
-*   using the software, you are agreeing that you have read, and that you agree to 
-*   comply with and are bound by, such license terms.  If you do not agree to be 
+*   NXP Confidential and Proprietary. This software is owned or controlled by NXP and may only be
+*   used strictly in accordance with the applicable license terms.  By expressly
+*   accepting such terms or by downloading, installing, activating and/or otherwise
+*   using the software, you are agreeing that you have read, and that you agree to
+*   comply with and are bound by, such license terms.  If you do not agree to be
 *   bound by the applicable license terms, then you may not retain, install,
 *   activate or otherwise use the software.
 ==================================================================================================*/
 /**
-*   @file       Ram_Ip_VS_0_PBcfg.c
-*   @version    3.0.0
-*
-*   @brief   AUTOSAR Mcu - Post-Build(PB) configuration file code template.
-*   @details Code template for Post-Build(PB) configuration file generation.
-*
-*   @addtogroup RAM_DRIVER_CONFIGURATION Ram Ip Driver
-*   @{
-*/
-
+ *   @file       Ram_Ip_VS_0_PBcfg.c
+ *   @version    3.0.0
+ *
+ *   @brief   AUTOSAR Mcu - Post-Build(PB) configuration file code template.
+ *   @details Code template for Post-Build(PB) configuration file generation.
+ *
+ *   @addtogroup RAM_DRIVER_CONFIGURATION Ram Ip Driver
+ *   @{
+ */
 
 #ifdef __cplusplus
-extern "C"{
+extern "C" {
 #endif
-
 
 /*==================================================================================================
                                          INCLUDE FILES
@@ -43,50 +41,47 @@ extern "C"{
  2) needed interfaces from external units
  3) internal and external interfaces from this unit
 ==================================================================================================*/
-#include "Std_Types.h"
 #include "Ram_Ip_Cfg.h"
+#include "Std_Types.h"
 /*==================================================================================================
 *                              SOURCE FILE VERSION INFORMATION
 ==================================================================================================*/
 
-#define RAM_IP_VS_0_PBCFG_VENDOR_ID_C                      43
-#define RAM_IP_VS_0_PBCFG_AR_RELEASE_MAJOR_VERSION_C       4
-#define RAM_IP_VS_0_PBCFG_AR_RELEASE_MINOR_VERSION_C       7
-#define RAM_IP_VS_0_PBCFG_AR_RELEASE_REVISION_VERSION_C    0
-#define RAM_IP_VS_0_PBCFG_SW_MAJOR_VERSION_C               3
-#define RAM_IP_VS_0_PBCFG_SW_MINOR_VERSION_C               0
-#define RAM_IP_VS_0_PBCFG_SW_PATCH_VERSION_C               0
+#define RAM_IP_VS_0_PBCFG_VENDOR_ID_C 43
+#define RAM_IP_VS_0_PBCFG_AR_RELEASE_MAJOR_VERSION_C 4
+#define RAM_IP_VS_0_PBCFG_AR_RELEASE_MINOR_VERSION_C 7
+#define RAM_IP_VS_0_PBCFG_AR_RELEASE_REVISION_VERSION_C 0
+#define RAM_IP_VS_0_PBCFG_SW_MAJOR_VERSION_C 3
+#define RAM_IP_VS_0_PBCFG_SW_MINOR_VERSION_C 0
+#define RAM_IP_VS_0_PBCFG_SW_PATCH_VERSION_C 0
 
 /*==================================================================================================
 *                                     FILE VERSION CHECKS
 ==================================================================================================*/
 /* Check if source file and Ram_Ip_Cfg.h file are of the same vendor */
 #if (RAM_IP_VS_0_PBCFG_VENDOR_ID_C != RAM_IP_CFG_VENDOR_ID)
-    #error "Ram_Ip_VS_0_PBcfg.c and Ram_Ip_Cfg.h have different vendor ids"
+#error "Ram_Ip_VS_0_PBcfg.c and Ram_Ip_Cfg.h have different vendor ids"
 #endif
 /* Check if source file and Ram_Ip_Cfg.h file are of the same Autosar version */
-#if ((RAM_IP_VS_0_PBCFG_AR_RELEASE_MAJOR_VERSION_C != RAM_IP_CFG_AR_RELEASE_MAJOR_VERSION) || \
-     (RAM_IP_VS_0_PBCFG_AR_RELEASE_MINOR_VERSION_C != RAM_IP_CFG_AR_RELEASE_MINOR_VERSION) || \
-     (RAM_IP_VS_0_PBCFG_AR_RELEASE_REVISION_VERSION_C != RAM_IP_CFG_AR_RELEASE_REVISION_VERSION) \
-    )
-    #error "AutoSar Version Numbers of Ram_Ip_VS_0_PBcfg.c and Ram_Ip_Cfg.h are different"
+#if ((RAM_IP_VS_0_PBCFG_AR_RELEASE_MAJOR_VERSION_C != RAM_IP_CFG_AR_RELEASE_MAJOR_VERSION) ||      \
+     (RAM_IP_VS_0_PBCFG_AR_RELEASE_MINOR_VERSION_C != RAM_IP_CFG_AR_RELEASE_MINOR_VERSION) ||      \
+     (RAM_IP_VS_0_PBCFG_AR_RELEASE_REVISION_VERSION_C != RAM_IP_CFG_AR_RELEASE_REVISION_VERSION))
+#error "AutoSar Version Numbers of Ram_Ip_VS_0_PBcfg.c and Ram_Ip_Cfg.h are different"
 #endif
 /* Check if source file and Ram_Ip_Cfg.h file are of the same Software version */
-#if ((RAM_IP_VS_0_PBCFG_SW_MAJOR_VERSION_C != RAM_IP_CFG_SW_MAJOR_VERSION) || \
-     (RAM_IP_VS_0_PBCFG_SW_MINOR_VERSION_C != RAM_IP_CFG_SW_MINOR_VERSION) || \
-     (RAM_IP_VS_0_PBCFG_SW_PATCH_VERSION_C != RAM_IP_CFG_SW_PATCH_VERSION) \
-    )
-    #error "Software Version Numbers of Ram_Ip_VS_0_PBcfg.c and Ram_Ip_Cfg.h are different"
+#if ((RAM_IP_VS_0_PBCFG_SW_MAJOR_VERSION_C != RAM_IP_CFG_SW_MAJOR_VERSION) ||                      \
+     (RAM_IP_VS_0_PBCFG_SW_MINOR_VERSION_C != RAM_IP_CFG_SW_MINOR_VERSION) ||                      \
+     (RAM_IP_VS_0_PBCFG_SW_PATCH_VERSION_C != RAM_IP_CFG_SW_PATCH_VERSION))
+#error "Software Version Numbers of Ram_Ip_VS_0_PBcfg.c and Ram_Ip_Cfg.h are different"
 #endif
 
 #ifndef DISABLE_MCAL_INTERMODULE_ASR_CHECK
 /* Check if source file and Std_Types.h file are of the same Autosar version */
-#if ((RAM_IP_VS_0_PBCFG_AR_RELEASE_MAJOR_VERSION_C != STD_AR_RELEASE_MAJOR_VERSION) || \
-     (RAM_IP_VS_0_PBCFG_AR_RELEASE_MINOR_VERSION_C != STD_AR_RELEASE_MINOR_VERSION) \
-    )
-    #error "AutoSar Version Numbers of Ram_Ip_VS_0_PBcfg.c and Std_Types.h are different"
+#if ((RAM_IP_VS_0_PBCFG_AR_RELEASE_MAJOR_VERSION_C != STD_AR_RELEASE_MAJOR_VERSION) ||             \
+     (RAM_IP_VS_0_PBCFG_AR_RELEASE_MINOR_VERSION_C != STD_AR_RELEASE_MINOR_VERSION))
+#error "AutoSar Version Numbers of Ram_Ip_VS_0_PBcfg.c and Std_Types.h are different"
 #endif
-#endif    /* DISABLE_MCAL_INTERMODULE_ASR_CHECK */
+#endif /* DISABLE_MCAL_INTERMODULE_ASR_CHECK */
 
 /*==================================================================================================
                           LOCAL TYPEDEFS (STRUCTURES, UNIONS, ENUMS)
@@ -115,11 +110,8 @@ extern "C"{
 #define MCU_START_SEC_CONFIG_DATA_UNSPECIFIED
 #include "Mcu_MemMap.h"
 
-
-
 #define MCU_STOP_SEC_CONFIG_DATA_UNSPECIFIED
 #include "Mcu_MemMap.h"
-
 
 /*==================================================================================================
                                    LOCAL FUNCTION PROTOTYPES
@@ -138,4 +130,3 @@ extern "C"{
 #endif
 
 /** @} */
-

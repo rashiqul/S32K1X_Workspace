@@ -12,33 +12,33 @@
 *
 * Copyright 2020-2025 NXP
 *
-* NXP Confidential and Proprietary. This software is owned or controlled by NXP and may only be 
-*   used strictly in accordance with the applicable license terms.  By expressly 
-*   accepting such terms or by downloading, installing, activating and/or otherwise 
-*   using the software, you are agreeing that you have read, and that you agree to 
-*   comply with and are bound by, such license terms.  If you do not agree to be 
+* NXP Confidential and Proprietary. This software is owned or controlled by NXP and may only be
+*   used strictly in accordance with the applicable license terms.  By expressly
+*   accepting such terms or by downloading, installing, activating and/or otherwise
+*   using the software, you are agreeing that you have read, and that you agree to
+*   comply with and are bound by, such license terms.  If you do not agree to be
 *   bound by the applicable license terms, then you may not retain, install,
 *   activate or otherwise use the software.
 ==================================================================================================*/
 /**
-*   @file           ComStack_Types.h
-*   @implements     ComStack_Types.h_Artifact
-*   @version 3.0.0
-*
-*   @brief   AUTOSAR BaseNXP - Communication stack types header file.
-*   @details AUTOSAR communication stack type header file.
-*            This file contains sample code only. It is not part of the production code deliverables
-*   @addtogroup BASENXP_COMPONENT
-*   @{
-*/
+ *   @file           ComStack_Types.h
+ *   @implements     ComStack_Types.h_Artifact
+ *   @version 3.0.0
+ *
+ *   @brief   AUTOSAR BaseNXP - Communication stack types header file.
+ *   @details AUTOSAR communication stack type header file.
+ *            This file contains sample code only. It is not part of the production code
+ * deliverables
+ *   @addtogroup BASENXP_COMPONENT
+ *   @{
+ */
 
 #ifndef COMSTACKTYPES_H
 #define COMSTACKTYPES_H
 
 #ifdef __cplusplus
-extern "C"{
+extern "C" {
 #endif
-
 
 /*==================================================================================================
 *                                         INCLUDE FILES
@@ -72,7 +72,6 @@ extern "C"{
 /*==================================================================================================
 *                                     FUNCTION PROTOTYPES
 ==================================================================================================*/
-
 
 #ifdef __cplusplus
 }

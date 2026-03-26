@@ -12,27 +12,27 @@
 *
 * Copyright 2020-2025 NXP
 *
-* NXP Confidential and Proprietary. This software is owned or controlled by NXP and may only be 
-*   used strictly in accordance with the applicable license terms.  By expressly 
-*   accepting such terms or by downloading, installing, activating and/or otherwise 
-*   using the software, you are agreeing that you have read, and that you agree to 
-*   comply with and are bound by, such license terms.  If you do not agree to be 
+* NXP Confidential and Proprietary. This software is owned or controlled by NXP and may only be
+*   used strictly in accordance with the applicable license terms.  By expressly
+*   accepting such terms or by downloading, installing, activating and/or otherwise
+*   using the software, you are agreeing that you have read, and that you agree to
+*   comply with and are bound by, such license terms.  If you do not agree to be
 *   bound by the applicable license terms, then you may not retain, install,
 *   activate or otherwise use the software.
 ==================================================================================================*/
 /**
-*   @file    BaseNXP.h
-*
-*   @version 3.0.0
-*
-*   @addtogroup BASENXP_COMPONENT
-*   @{
-*/
+ *   @file    BaseNXP.h
+ *
+ *   @version 3.0.0
+ *
+ *   @addtogroup BASENXP_COMPONENT
+ *   @{
+ */
 #ifndef BASENXP_H
 #define BASENXP_H
 
 #ifdef __cplusplus
-extern "C"{
+extern "C" {
 #endif
 
 /*==================================================================================================
@@ -46,33 +46,32 @@ extern "C"{
 /*==================================================================================================
 *                               SOURCE FILE VERSION INFORMATION
 ==================================================================================================*/
-#define BASENXP_VENDOR_ID                    43
-#define BASENXP_AR_RELEASE_MAJOR_VERSION     4
-#define BASENXP_AR_RELEASE_MINOR_VERSION     7
-#define BASENXP_AR_RELEASE_REVISION_VERSION  0
-#define BASENXP_SW_MAJOR_VERSION             3
-#define BASENXP_SW_MINOR_VERSION             0
-#define BASENXP_SW_PATCH_VERSION             0
+#define BASENXP_VENDOR_ID 43
+#define BASENXP_AR_RELEASE_MAJOR_VERSION 4
+#define BASENXP_AR_RELEASE_MINOR_VERSION 7
+#define BASENXP_AR_RELEASE_REVISION_VERSION 0
+#define BASENXP_SW_MAJOR_VERSION 3
+#define BASENXP_SW_MINOR_VERSION 0
+#define BASENXP_SW_PATCH_VERSION 0
 
 /*==================================================================================================
 *                                       FILE VERSION CHECKS
 ==================================================================================================*/
 /* Check if BaseNXP.h file and OsIf.h file are of the same vendor */
 #if (BASENXP_VENDOR_ID != OSIF_VENDOR_ID)
-    #error "BaseNXP.h and OsIf.h have different vendor ids"
+#error "BaseNXP.h and OsIf.h have different vendor ids"
 #endif
 /* Check if BaseNXP.h file and OsIf.h file are of the same Autosar version */
-#if ((BASENXP_AR_RELEASE_MAJOR_VERSION    != OSIF_AR_RELEASE_MAJOR_VERSION) || \
-     (BASENXP_AR_RELEASE_MINOR_VERSION    != OSIF_AR_RELEASE_MINOR_VERSION) || \
+#if ((BASENXP_AR_RELEASE_MAJOR_VERSION != OSIF_AR_RELEASE_MAJOR_VERSION) ||                        \
+     (BASENXP_AR_RELEASE_MINOR_VERSION != OSIF_AR_RELEASE_MINOR_VERSION) ||                        \
      (BASENXP_AR_RELEASE_REVISION_VERSION != OSIF_AR_RELEASE_REVISION_VERSION))
-    #error "AUTOSAR Version Numbers of BaseNXP.h and OsIf.h are different"
+#error "AUTOSAR Version Numbers of BaseNXP.h and OsIf.h are different"
 #endif
 /* Check if BaseNXP.h file and OsIf.h file are of the same Software version */
-#if ((BASENXP_SW_MAJOR_VERSION != OSIF_SW_MAJOR_VERSION) || \
-     (BASENXP_SW_MINOR_VERSION != OSIF_SW_MINOR_VERSION) || \
-     (BASENXP_SW_PATCH_VERSION != OSIF_SW_PATCH_VERSION) \
-    )
-    #error "Software Version Numbers of BaseNXP.h and OsIf.h are different"
+#if ((BASENXP_SW_MAJOR_VERSION != OSIF_SW_MAJOR_VERSION) ||                                        \
+     (BASENXP_SW_MINOR_VERSION != OSIF_SW_MINOR_VERSION) ||                                        \
+     (BASENXP_SW_PATCH_VERSION != OSIF_SW_PATCH_VERSION))
+#error "Software Version Numbers of BaseNXP.h and OsIf.h are different"
 #endif
 
 /*==================================================================================================
@@ -86,4 +85,3 @@ extern "C"{
 #endif /* BASENXP_H */
 
 /** @} */
-

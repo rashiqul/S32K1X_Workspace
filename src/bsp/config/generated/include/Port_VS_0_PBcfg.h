@@ -12,11 +12,11 @@
 *
 *   Copyright 2020-2025 NXP
 *
-*   NXP Confidential and Proprietary. This software is owned or controlled by NXP and may only be 
-*   used strictly in accordance with the applicable license terms.  By expressly 
-*   accepting such terms or by downloading, installing, activating and/or otherwise 
-*   using the software, you are agreeing that you have read, and that you agree to 
-*   comply with and are bound by, such license terms.  If you do not agree to be 
+*   NXP Confidential and Proprietary. This software is owned or controlled by NXP and may only be
+*   used strictly in accordance with the applicable license terms.  By expressly
+*   accepting such terms or by downloading, installing, activating and/or otherwise
+*   using the software, you are agreeing that you have read, and that you agree to
+*   comply with and are bound by, such license terms.  If you do not agree to be
 *   bound by the applicable license terms, then you may not retain, install,
 *   activate or otherwise use the software.
 ==================================================================================================*/
@@ -25,14 +25,14 @@
 #define PORT_VS_0_PBCFG_H
 
 /**
-*   @file    Port_VS_0_PBcfg.h
-*
-*   @addtogroup Port_CFG
-*   @{
-*/
+ *   @file    Port_VS_0_PBcfg.h
+ *
+ *   @addtogroup Port_CFG
+ *   @{
+ */
 
 #ifdef __cplusplus
-extern "C"{
+extern "C" {
 #endif
 
 /*==================================================================================================
@@ -46,18 +46,18 @@ extern "C"{
 *                                 SOURCE FILE VERSION INFORMATION
 ==================================================================================================*/
 /**
-* @brief        Parameters that shall be published within the Port driver header file and also in the
-*               module description file
-* @details      The integration of incompatible files shall be avoided.
-*
-*/
-#define PORT_VENDOR_ID_VS_0_PBCFG_H                       43
-#define PORT_AR_RELEASE_MAJOR_VERSION_VS_0_PBCFG_H        4
-#define PORT_AR_RELEASE_MINOR_VERSION_VS_0_PBCFG_H        7
-#define PORT_AR_RELEASE_REVISION_VERSION_VS_0_PBCFG_H     0
-#define PORT_SW_MAJOR_VERSION_VS_0_PBCFG_H                3
-#define PORT_SW_MINOR_VERSION_VS_0_PBCFG_H                0
-#define PORT_SW_PATCH_VERSION_VS_0_PBCFG_H                0
+ * @brief        Parameters that shall be published within the Port driver header file and also in
+ * the module description file
+ * @details      The integration of incompatible files shall be avoided.
+ *
+ */
+#define PORT_VENDOR_ID_VS_0_PBCFG_H 43
+#define PORT_AR_RELEASE_MAJOR_VERSION_VS_0_PBCFG_H 4
+#define PORT_AR_RELEASE_MINOR_VERSION_VS_0_PBCFG_H 7
+#define PORT_AR_RELEASE_REVISION_VERSION_VS_0_PBCFG_H 0
+#define PORT_SW_MAJOR_VERSION_VS_0_PBCFG_H 3
+#define PORT_SW_MINOR_VERSION_VS_0_PBCFG_H 0
+#define PORT_SW_PATCH_VERSION_VS_0_PBCFG_H 0
 
 /*==================================================================================================
 *                                      FILE VERSION CHECKS
@@ -90,7 +90,6 @@ extern "C"{
 #define PORT_START_SEC_CONFIG_DATA_UNSPECIFIED
 #include "Port_MemMap.h"
 
-
 #define PORT_STOP_SEC_CONFIG_DATA_UNSPECIFIED
 #include "Port_MemMap.h"
 
@@ -101,4 +100,3 @@ extern "C"{
 /** @} */
 
 #endif /* PORT_VS_0_PBCFG_H */
-
