@@ -180,7 +180,7 @@ const Port_ConfigType Port_Config = {PORT_MAX_CONFIGURED_PADS_U16,
 #if (0UL != PORT_MAX_UNUSED_PADS_U16)
                                      Port_au16NoUnUsedPadsArrayDefault_VS_0,
 #else
-                                      NULL_PTR,
+                                     NULL_PTR,
 #endif
                                      &Port_UnUsedPin_VS_0,
                                      Port_aPinConfigDefault_VS_0,
@@ -188,7 +188,7 @@ const Port_ConfigType Port_Config = {PORT_MAX_CONFIGURED_PADS_U16,
 #if (0UL != PORT_MAX_CONFIGURED_DIGITAL_FILTER_PORTS_VS_0_U8)
                                      Port_aDigitalFilter_VS_0,
 #else
-                                      NULL_PTR,
+                                     NULL_PTR,
 #endif
                                      au32Port_PinToPartitionMap_VS_0,
                                      au8Port_PartitionList_VS_0,

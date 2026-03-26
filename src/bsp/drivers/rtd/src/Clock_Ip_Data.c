@@ -844,27 +844,31 @@ const uint8 Clock_Ip_au8ClockFeatures[CLOCK_IP_NAMES_NO][CLOCK_IP_FEATURES_NO] =
                                             0U},                /*   CLOCK_IS_OFF               */
                                                                 /*   LPO_128K_CLK clock         */
         {0U, CLOCK_IP_NO_CALLBACK, 0U, 0U, 0U, 0U, 0U, 0U, 0U}, /*   LPO_128K_CLK clock         */
-        /*   SIRC_CLK clock             */ {0U, CLOCK_IP_SIRCOSC, 0U, 0U, 0U, 0U, 0U, 0U, 0U}, /*   SIRC_CLK
-                                                                                                  clock
-                                                                                                */
+                                                                /*   SIRC_CLK clock             */
+        {0U, CLOCK_IP_SIRCOSC, 0U, 0U, 0U, 0U, 0U, 0U, 0U},     /*   SIRC_CLK
+                                                                   clock
+                                                                 */
         /*   SIRC_VLP_CLK clock         */
         {0U, CLOCK_IP_SIRCOSC_VLP, 0U, 0U, 0U, 0U, 0U, 0U, 0U},  /*   SIRC_VLP_CLK clock         */
                                                                  /*   SIRC_STOP_CLK clock        */
         {0U, CLOCK_IP_SIRCOSC_STOP, 0U, 0U, 0U, 0U, 0U, 0U, 0U}, /*   SIRC_STOP_CLK clock        */
-        /*   FIRC_CLK clock             */ {0U, CLOCK_IP_FIRCOSC, 0U, 0U, 0U, 0U, 0U, 0U, 0U}, /*   FIRC_CLK
-                                                                                                  clock
-                                                                                                */
+                                                                 /*   FIRC_CLK clock             */
+        {0U, CLOCK_IP_FIRCOSC, 0U, 0U, 0U, 0U, 0U, 0U, 0U},      /*   FIRC_CLK
+                                                                    clock
+                                                                  */
         /*   FIRC_VLP_CLK clock         */
         {0U, CLOCK_IP_FIRCOSC_VLP, 0U, 0U, 0U, 0U, 0U, 0U, 0U},  /*   FIRC_VLP_CLK clock         */
                                                                  /*   FIRC_STOP_CLK clock        */
         {0U, CLOCK_IP_FIRCOSC_STOP, 0U, 0U, 0U, 0U, 0U, 0U, 0U}, /*   FIRC_STOP_CLK clock        */
-        /*   SOSC_CLK clock             */ {0U, CLOCK_IP_SYS_OSC, 0U, 0U, 0U, 0U, 0U, 0U, 0U}, /*   SOSC_CLK
-                                                                                                  clock
-                                                                                                */
+                                                                 /*   SOSC_CLK clock             */
+        {0U, CLOCK_IP_SYS_OSC, 0U, 0U, 0U, 0U, 0U, 0U, 0U},      /*   SOSC_CLK
+                                                                    clock
+                                                                  */
 #if defined(CLOCK_IP_HAS_SPLL_CLK)
-        /*   SPLL_CLK clock             */ {0U, CLOCK_IP_SYS_PLL, 0U, 0U, 0U, 0U, 0U, 0U, 0U}, /*   SPLL_CLK
-                                                                                                  clock
-                                                                                                */
+        /*   SPLL_CLK clock             */
+        {0U, CLOCK_IP_SYS_PLL, 0U, 0U, 0U, 0U, 0U, 0U, 0U}, /*   SPLL_CLK
+                                                               clock
+                                                             */
 #endif
         /*   SIRCDIV1_CLK clock         */
         {0U, CLOCK_IP_ASYNC_DIV1, 0U, 0U, 0U, CLOCK_IP_DIV_0_INDEX, 0U, 0U,
@@ -957,49 +961,59 @@ const uint8 Clock_Ip_au8ClockFeatures[CLOCK_IP_NAMES_NO][CLOCK_IP_FEATURES_NO] =
         {0U, CLOCK_IP_DIVSLOW_HSRUN, 0U, (uint8)HSRUN_MODE, 0U, 0U, 0U, 0U,
          0U}, /*   SLOW_HSRUN_CLK clock       */
 #endif
-        /*   RTC_CLK clock              */ {0U, CLOCK_IP_RTC_SEL, 0U, 0U, 0U, 0U, 0U, 0U, 0U}, /*   RTC_CLK
-                                                                                                  clock
-                                                                                                */
-        /*   LPO_CLK clock              */ {0U, CLOCK_IP_LPO_SEL, 0U, 0U, 0U, 0U, 0U, 0U, 0U}, /*   LPO_CLK
-                                                                                                  clock
-                                                                                                */
+        /*   RTC_CLK clock              */
+        {0U, CLOCK_IP_RTC_SEL, 0U, 0U, 0U, 0U, 0U, 0U, 0U}, /*   RTC_CLK
+                                                               clock
+                                                             */
+                                                            /*   LPO_CLK clock              */
+        {0U, CLOCK_IP_LPO_SEL, 0U, 0U, 0U, 0U, 0U, 0U, 0U}, /*   LPO_CLK
+                                                               clock
+                                                             */
         /*   SCG_CLKOUT_CLK clock       */
         {0U, CLOCK_IP_CLKOUT_MUX, 0U, 0U, 0U, 0U, 0U, 0U, 0U}, /*   SCG_CLKOUT_CLK clock       */
-        /*   FTM0_EXT_CLK clock         */ {0U, CLOCK_IP_FTM_MUX, 0U, 0U, 0U, 0U, 0U, 0U, 0U}, /*   FTM0_EXT_CLK
-                                                                                                  clock
-                                                                                                */
-        /*   FTM1_EXT_CLK clock         */ {1U, CLOCK_IP_FTM_MUX, 0U, 0U, 0U, 0U, 0U, 0U, 0U}, /*   FTM1_EXT_CLK
-                                                                                                  clock
-                                                                                                */
+                                                               /*   FTM0_EXT_CLK clock         */
+        {0U, CLOCK_IP_FTM_MUX, 0U, 0U, 0U, 0U, 0U, 0U, 0U},    /*   FTM0_EXT_CLK
+                                                                  clock
+                                                                */
+                                                               /*   FTM1_EXT_CLK clock         */
+        {1U, CLOCK_IP_FTM_MUX, 0U, 0U, 0U, 0U, 0U, 0U, 0U},    /*   FTM1_EXT_CLK
+                                                                  clock
+                                                                */
 #if defined(CLOCK_IP_HAS_FTM2_EXT_CLK)
-        /*   FTM2_EXT_CLK clock         */ {2U, CLOCK_IP_FTM_MUX, 0U, 0U, 0U, 0U, 0U, 0U, 0U}, /*   FTM2_EXT_CLK
-                                                                                                  clock
-                                                                                                */
+        /*   FTM2_EXT_CLK clock         */
+        {2U, CLOCK_IP_FTM_MUX, 0U, 0U, 0U, 0U, 0U, 0U, 0U}, /*   FTM2_EXT_CLK
+                                                               clock
+                                                             */
 #endif
 #if defined(CLOCK_IP_HAS_FTM3_EXT_CLK)
-        /*   FTM3_EXT_CLK clock         */ {3U, CLOCK_IP_FTM_MUX, 0U, 0U, 0U, 0U, 0U, 0U, 0U}, /*   FTM3_EXT_CLK
-                                                                                                  clock
-                                                                                                */
+        /*   FTM3_EXT_CLK clock         */
+        {3U, CLOCK_IP_FTM_MUX, 0U, 0U, 0U, 0U, 0U, 0U, 0U}, /*   FTM3_EXT_CLK
+                                                               clock
+                                                             */
 #endif
 #if defined(CLOCK_IP_HAS_FTM4_EXT_CLK)
-        /*   FTM4_EXT_CLK clock         */ {4U, CLOCK_IP_FTM_MUX, 0U, 0U, 0U, 0U, 0U, 0U, 0U}, /*   FTM4_EXT_CLK
-                                                                                                  clock
-                                                                                                */
+        /*   FTM4_EXT_CLK clock         */
+        {4U, CLOCK_IP_FTM_MUX, 0U, 0U, 0U, 0U, 0U, 0U, 0U}, /*   FTM4_EXT_CLK
+                                                               clock
+                                                             */
 #endif
 #if defined(CLOCK_IP_HAS_FTM5_EXT_CLK)
-        /*   FTM5_EXT_CLK clock         */ {5U, CLOCK_IP_FTM_MUX, 0U, 0U, 0U, 0U, 0U, 0U, 0U}, /*   FTM5_EXT_CLK
-                                                                                                  clock
-                                                                                                */
+        /*   FTM5_EXT_CLK clock         */
+        {5U, CLOCK_IP_FTM_MUX, 0U, 0U, 0U, 0U, 0U, 0U, 0U}, /*   FTM5_EXT_CLK
+                                                               clock
+                                                             */
 #endif
 #if defined(CLOCK_IP_HAS_FTM6_EXT_CLK)
-        /*   FTM6_EXT_CLK clock         */ {6U, CLOCK_IP_FTM_MUX, 0U, 0U, 0U, 0U, 0U, 0U, 0U}, /*   FTM6_EXT_CLK
-                                                                                                  clock
-                                                                                                */
+        /*   FTM6_EXT_CLK clock         */
+        {6U, CLOCK_IP_FTM_MUX, 0U, 0U, 0U, 0U, 0U, 0U, 0U}, /*   FTM6_EXT_CLK
+                                                               clock
+                                                             */
 #endif
 #if defined(CLOCK_IP_HAS_FTM7_EXT_CLK)
-        /*   FTM7_EXT_CLK clock         */ {7U, CLOCK_IP_FTM_MUX, 0U, 0U, 0U, 0U, 0U, 0U, 0U}, /*   FTM7_EXT_CLK
-                                                                                                  clock
-                                                                                                */
+        /*   FTM7_EXT_CLK clock         */
+        {7U, CLOCK_IP_FTM_MUX, 0U, 0U, 0U, 0U, 0U, 0U, 0U}, /*   FTM7_EXT_CLK
+                                                               clock
+                                                             */
 #endif
         /*   THE_LAST_PRODUCER_CLK      */
         {0U, CLOCK_IP_NO_CALLBACK, 0U, 0U, 0U, 0U, 0U, 0U, 0U}, /*   THE_LAST_PRODUCER_CLK      */
@@ -1192,12 +1206,14 @@ const uint8 Clock_Ip_au8ClockFeatures[CLOCK_IP_NAMES_NO][CLOCK_IP_FEATURES_NO] =
          0U}, /*   QSPI_SFIF_CLK_HYP_PREMUX_CLK clock */
 #endif
 #if defined(CLOCK_IP_HAS_QSPI_SFIF_CLK)
-        /*   QSPI_SFIF_CLK */ {0U, CLOCK_IP_NO_CALLBACK, 0U, 0U, 0U, 0U, 0U, 0U, 0U}, /*   QSPI_SFIF_CLK
-                                                                                         clock */
+        /*   QSPI_SFIF_CLK */
+        {0U, CLOCK_IP_NO_CALLBACK, 0U, 0U, 0U, 0U, 0U, 0U, 0U}, /*   QSPI_SFIF_CLK
+                                                                   clock */
 #endif
 #if defined(CLOCK_IP_HAS_QSPI_2xSFIF_CLK)
-        /*   QSPI_2xSFIF_CLK */ {0U, CLOCK_IP_NO_CALLBACK, 0U, 0U, 0U, 0U, 0U, 0U, 0U}, /*   QSPI_2xSFIF_CLK
-                                                                                           clock */
+        /*   QSPI_2xSFIF_CLK */
+        {0U, CLOCK_IP_NO_CALLBACK, 0U, 0U, 0U, 0U, 0U, 0U, 0U}, /*   QSPI_2xSFIF_CLK
+                                                                   clock */
 #endif
         /*   RTC0_CLK clock             */
         {0U, CLOCK_IP_GATE, 0U, 0U, 0U, 0U, CLOCK_IP_PCC_61_INDEX, 0U, 0U}, /*   RTC0_CLK clock */
@@ -2161,8 +2177,8 @@ const uint32 Clock_Ip_au8ClockNameTypes[CLOCK_IP_NAMES_NO] = {
     (CLOCK_IP_IRCOSC_OBJECT | CLOCK_IP_XOSC_OBJECT | CLOCK_IP_PLL_OBJECT |
      CLOCK_IP_SELECTOR_OBJECT | CLOCK_IP_DIVIDER_OBJECT | CLOCK_IP_DIVIDER_TRIGGER_OBJECT |
      CLOCK_IP_FRAC_DIV_OBJECT | CLOCK_IP_EXT_SIG_OBJECT | CLOCK_IP_GATE_OBJECT |
-     CLOCK_IP_PCFS_OBJECT |
-     CLOCK_IP_CMU_OBJECT), /*   FTFM clock            */ /*   FTM0_CLK clock             */
+     CLOCK_IP_PCFS_OBJECT | CLOCK_IP_CMU_OBJECT),
+    /*   FTFM clock            */ /*   FTM0_CLK clock             */
     (CLOCK_IP_IRCOSC_OBJECT | CLOCK_IP_XOSC_OBJECT | CLOCK_IP_PLL_OBJECT |
      CLOCK_IP_SELECTOR_OBJECT | CLOCK_IP_DIVIDER_OBJECT | CLOCK_IP_DIVIDER_TRIGGER_OBJECT |
      CLOCK_IP_FRAC_DIV_OBJECT | CLOCK_IP_EXT_SIG_OBJECT | CLOCK_IP_GATE_OBJECT |

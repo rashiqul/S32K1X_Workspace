@@ -621,7 +621,7 @@ Std_ReturnType Port_Ipw_Set2PinsDirection(Port_PinType Pin1Index, Port_PinType P
              ((uint16)0 != (u16PinChangeDirFlagWord1 & (uint16)(1UL << u8PinDescBitOffset1)))) &&
             (((boolean)TRUE == pConfigPtr->pUsedPadConfig[Pin2Index].bDC) ||
              ((uint16)0 != (u16PinChangeDirFlagWord2 & (uint16)(1UL << u8PinDescBitOffset2))))) {
-#endif      /* (STD_ON == PORT_DEV_ERROR_DETECT) */
+#endif /* (STD_ON == PORT_DEV_ERROR_DETECT) */
             /* Check if the pins belong to the same port. In this case, we need to write the PDDR
              * register once to set direction of both pins in the same time */
             if (GPIO_PORT_U32(Pin1) == GPIO_PORT_U32(Pin2)) {

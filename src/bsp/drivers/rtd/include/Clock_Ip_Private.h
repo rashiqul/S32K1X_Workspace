@@ -187,8 +187,9 @@ extern "C" {
 #define CLOCK_IP_PRODUCERS_NO CLOCK_IP_FEATURE_PRODUCERS_NO
 
 /* Define clock features */
-#define CLOCK_IP_MODULE_INSTANCE 0U /* Instance of the module where clock element is implemented.  \
-                                     */
+#define CLOCK_IP_MODULE_INSTANCE                                                                   \
+    0U /* Instance of the module where clock element is implemented.                               \
+        */
 #define CLOCK_IP_CALLBACK                                                                          \
     1U /* Actions to be done for different implementations of a clock element. */
 #define CLOCK_IP_EXTENSION_INDEX 2U  /* Specific clock feature extension */
