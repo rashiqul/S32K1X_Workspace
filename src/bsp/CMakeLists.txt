@@ -89,6 +89,7 @@ target_compile_options(s32k1_bsp PRIVATE
         -Wundef
         -Wdouble-promotion
         -Wno-unused-parameter
+        -Wno-unknown-pragmas
     >
 )
 
