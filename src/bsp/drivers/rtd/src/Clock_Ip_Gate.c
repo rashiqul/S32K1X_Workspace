@@ -1,7 +1,7 @@
 /*==================================================================================================
 *   Project              : RTD AUTOSAR 4.7
 *   Platform             : CORTEXM
-*   Peripheral           :
+*   Peripheral           : 
 *   Dependencies         : none
 *
 *   Autosar Version      : 4.7.0
@@ -12,28 +12,30 @@
 *
 *   Copyright 2020-2025 NXP
 *
-*   NXP Confidential and Proprietary. This software is owned or controlled by NXP and may only be
-*   used strictly in accordance with the applicable license terms.  By expressly
-*   accepting such terms or by downloading, installing, activating and/or otherwise
-*   using the software, you are agreeing that you have read, and that you agree to
-*   comply with and are bound by, such license terms.  If you do not agree to be
+*   NXP Confidential and Proprietary. This software is owned or controlled by NXP and may only be 
+*   used strictly in accordance with the applicable license terms.  By expressly 
+*   accepting such terms or by downloading, installing, activating and/or otherwise 
+*   using the software, you are agreeing that you have read, and that you agree to 
+*   comply with and are bound by, such license terms.  If you do not agree to be 
 *   bound by the applicable license terms, then you may not retain, install,
 *   activate or otherwise use the software.
 ==================================================================================================*/
 /**
- *   @file       Clock_Ip_Gate.c
- *   @version    3.0.0
- *
- *   @brief   CLOCK driver implementations.
- *   @details CLOCK driver implementations.
- *
- *   @addtogroup CLOCK_DRIVER Clock Ip Driver
- *   @{
- */
+*   @file       Clock_Ip_Gate.c
+*   @version    3.0.0
+*
+*   @brief   CLOCK driver implementations.
+*   @details CLOCK driver implementations.
+*
+*   @addtogroup CLOCK_DRIVER Clock Ip Driver
+*   @{
+*/
+
 
 #ifdef __cplusplus
-extern "C" {
+extern "C"{
 #endif
+
 
 /*==================================================================================================
 *                                          INCLUDE FILES
@@ -42,40 +44,42 @@ extern "C" {
 * 3) internal and external interfaces from this unit
 ==================================================================================================*/
 
+
 #include "Clock_Ip_Private.h"
 
 /*==================================================================================================
                                SOURCE FILE VERSION INFORMATION
 ==================================================================================================*/
-#define CLOCK_IP_GATE_VENDOR_ID_C 43
-#define CLOCK_IP_GATE_AR_RELEASE_MAJOR_VERSION_C 4
-#define CLOCK_IP_GATE_AR_RELEASE_MINOR_VERSION_C 7
-#define CLOCK_IP_GATE_AR_RELEASE_REVISION_VERSION_C 0
-#define CLOCK_IP_GATE_SW_MAJOR_VERSION_C 3
-#define CLOCK_IP_GATE_SW_MINOR_VERSION_C 0
-#define CLOCK_IP_GATE_SW_PATCH_VERSION_C 0
+#define CLOCK_IP_GATE_VENDOR_ID_C                      43
+#define CLOCK_IP_GATE_AR_RELEASE_MAJOR_VERSION_C       4
+#define CLOCK_IP_GATE_AR_RELEASE_MINOR_VERSION_C       7
+#define CLOCK_IP_GATE_AR_RELEASE_REVISION_VERSION_C    0
+#define CLOCK_IP_GATE_SW_MAJOR_VERSION_C               3
+#define CLOCK_IP_GATE_SW_MINOR_VERSION_C               0
+#define CLOCK_IP_GATE_SW_PATCH_VERSION_C               0
 
 /*==================================================================================================
 *                                     FILE VERSION CHECKS
 ==================================================================================================*/
 /* Check if Clock_Ip_Gate.c file and Clock_Ip_Private.h file are of the same vendor */
 #if (CLOCK_IP_GATE_VENDOR_ID_C != CLOCK_IP_PRIVATE_VENDOR_ID)
-#error "Clock_Ip_Gate.c and Clock_Ip_Private.h have different vendor ids"
+    #error "Clock_Ip_Gate.c and Clock_Ip_Private.h have different vendor ids"
 #endif
 
 /* Check if Clock_Ip_Gate.c file and Clock_Ip_Private.h file are of the same Autosar version */
-#if ((CLOCK_IP_GATE_AR_RELEASE_MAJOR_VERSION_C != CLOCK_IP_PRIVATE_AR_RELEASE_MAJOR_VERSION) ||    \
-     (CLOCK_IP_GATE_AR_RELEASE_MINOR_VERSION_C != CLOCK_IP_PRIVATE_AR_RELEASE_MINOR_VERSION) ||    \
-     (CLOCK_IP_GATE_AR_RELEASE_REVISION_VERSION_C !=                                               \
-      CLOCK_IP_PRIVATE_AR_RELEASE_REVISION_VERSION))
-#error "AutoSar Version Numbers of Clock_Ip_Gate.c and Clock_Ip_Private.h are different"
+#if ((CLOCK_IP_GATE_AR_RELEASE_MAJOR_VERSION_C != CLOCK_IP_PRIVATE_AR_RELEASE_MAJOR_VERSION) || \
+     (CLOCK_IP_GATE_AR_RELEASE_MINOR_VERSION_C != CLOCK_IP_PRIVATE_AR_RELEASE_MINOR_VERSION) || \
+     (CLOCK_IP_GATE_AR_RELEASE_REVISION_VERSION_C != CLOCK_IP_PRIVATE_AR_RELEASE_REVISION_VERSION) \
+    )
+    #error "AutoSar Version Numbers of Clock_Ip_Gate.c and Clock_Ip_Private.h are different"
 #endif
 
 /* Check if Clock_Ip_Gate.c file and Clock_Ip_Private.h file are of the same Software version */
-#if ((CLOCK_IP_GATE_SW_MAJOR_VERSION_C != CLOCK_IP_PRIVATE_SW_MAJOR_VERSION) ||                    \
-     (CLOCK_IP_GATE_SW_MINOR_VERSION_C != CLOCK_IP_PRIVATE_SW_MINOR_VERSION) ||                    \
-     (CLOCK_IP_GATE_SW_PATCH_VERSION_C != CLOCK_IP_PRIVATE_SW_PATCH_VERSION))
-#error "Software Version Numbers of Clock_Ip_Gate.c and Clock_Ip_Private.h are different"
+#if ((CLOCK_IP_GATE_SW_MAJOR_VERSION_C != CLOCK_IP_PRIVATE_SW_MAJOR_VERSION) || \
+     (CLOCK_IP_GATE_SW_MINOR_VERSION_C != CLOCK_IP_PRIVATE_SW_MINOR_VERSION) || \
+     (CLOCK_IP_GATE_SW_PATCH_VERSION_C != CLOCK_IP_PRIVATE_SW_PATCH_VERSION) \
+    )
+    #error "Software Version Numbers of Clock_Ip_Gate.c and Clock_Ip_Private.h are different"
 #endif
 
 /*==================================================================================================
@@ -114,30 +118,37 @@ extern "C" {
 void Clock_Ip_ClockSetPccCgcEnable_TrustedCall(Clock_Ip_GateConfigType const* Config);
 #endif
 
+
 #ifdef CLOCK_IP_SIM_CLKOUT_ENABLE
 /* Write configuration of clock gate to register */
 void Clock_Ip_ClockSetSimClkoutEnable_TrustedCall(Clock_Ip_GateConfigType const* Config);
 #endif
+
 
 #ifdef CLOCK_IP_SIM_LPO32K_ENABLE
 /* Write configuration of clock gate to register */
 void Clock_Ip_ClockSetSimLPO32KEnable_TrustedCall(Clock_Ip_GateConfigType const* Config);
 #endif
 
+
 #ifdef CLOCK_IP_SIM_LPO1K_ENABLE
 /* Write configuration of clock gate to register */
 void Clock_Ip_ClockSetSimLPO1KEnable_TrustedCall(Clock_Ip_GateConfigType const* Config);
 #endif
+
 
 #ifdef CLOCK_IP_SIM_PLATCGC_CGC
 /* Write configuration of clock gate to register */
 void Clock_Ip_ClockSetSimGate_TrustedCall(Clock_Ip_GateConfigType const* Config);
 #endif
 
+
 #ifdef CLOCK_IP_SIM_TRACE_ENABLE
 /* Write configuration of clock gate to register */
 void Clock_Ip_ClockSetSimTraceEnable_TrustedCall(Clock_Ip_GateConfigType const* Config);
 #endif
+
+
 
 /*==================================================================================================
 *                                    LOCAL FUNCTION PROTOTYPES
@@ -150,30 +161,37 @@ static void Clock_Ip_ClockSetPccCgcEnable(Clock_Ip_GateConfigType const* Config)
 static void Clock_Ip_ClockUpdatePccCgcEnable(Clock_Ip_NameType ClockName, boolean Gate);
 #endif
 
+
 #ifdef CLOCK_IP_SIM_CLKOUT_ENABLE
 static void Clock_Ip_ClockSetSimClkoutEnable(Clock_Ip_GateConfigType const* Config);
 static void Clock_Ip_ClockUpdateSimClkoutEnable(Clock_Ip_NameType ClockName, boolean Gate);
 #endif
+
 
 #ifdef CLOCK_IP_SIM_LPO32K_ENABLE
 static void Clock_Ip_ClockSetSimLPO32KEnable(Clock_Ip_GateConfigType const* Config);
 static void Clock_Ip_ClockUpdateSimLPO32KEnable(Clock_Ip_NameType ClockName, boolean Gate);
 #endif
 
+
 #ifdef CLOCK_IP_SIM_LPO1K_ENABLE
 static void Clock_Ip_ClockSetSimLPO1KEnable(Clock_Ip_GateConfigType const* Config);
 static void Clock_Ip_ClockUpdateSimLPO1KEnable(Clock_Ip_NameType ClockName, boolean Gate);
 #endif
+
 
 #ifdef CLOCK_IP_SIM_PLATCGC_CGC
 static void Clock_Ip_ClockSetSimGate(Clock_Ip_GateConfigType const* Config);
 static void Clock_Ip_ClockUpdateSimGate(Clock_Ip_NameType ClockName, boolean Gate);
 #endif
 
+
 #ifdef CLOCK_IP_SIM_TRACE_ENABLE
 static void Clock_Ip_ClockSetSimTraceEnable(Clock_Ip_GateConfigType const* Config);
 static void Clock_Ip_ClockUpdateSimTraceEnable(Clock_Ip_NameType ClockName, boolean Gate);
 #endif
+
+
 
 /* Clock stop section code */
 #define MCU_STOP_SEC_CODE
@@ -203,14 +221,15 @@ static void Clock_Ip_ClockUpdateGateEmpty(Clock_Ip_NameType ClockName, boolean G
 #ifdef CLOCK_IP_PCC_CGC_ENABLE
 static void Clock_Ip_ClockSetPccCgcEnable(Clock_Ip_GateConfigType const* Config)
 {
-    if (NULL_PTR != Config) {
-#ifdef CLOCK_IP_ENABLE_USER_MODE_SUPPORT
-#if (STD_ON == CLOCK_IP_ENABLE_USER_MODE_SUPPORT)
-        OsIf_Trusted_Call1param(Clock_Ip_ClockSetPccCgcEnable_TrustedCall, (Config));
-#else
+    if (NULL_PTR != Config)
+    {
+    #ifdef CLOCK_IP_ENABLE_USER_MODE_SUPPORT
+      #if (STD_ON == CLOCK_IP_ENABLE_USER_MODE_SUPPORT)
+        OsIf_Trusted_Call1param(Clock_Ip_ClockSetPccCgcEnable_TrustedCall,(Config));
+      #else
         Clock_Ip_ClockSetPccCgcEnable_TrustedCall(Config);
-#endif
-#endif /* CLOCK_IP_ENABLE_USER_MODE_SUPPORT */
+      #endif
+    #endif /* CLOCK_IP_ENABLE_USER_MODE_SUPPORT */
     }
 }
 static void Clock_Ip_ClockUpdatePccCgcEnable(Clock_Ip_NameType ClockName, boolean Gate)
@@ -218,9 +237,12 @@ static void Clock_Ip_ClockUpdatePccCgcEnable(Clock_Ip_NameType ClockName, boolea
     Clock_Ip_GateConfigType Config;
 
     Config.Name = ClockName;
-    if (TRUE == Gate) {
+    if (TRUE == Gate)
+    {
         Config.Enable = 0U;
-    } else {
+    }
+    else
+    {
         Config.Enable = 1U;
     }
     /* Write configuration to register */
@@ -228,17 +250,19 @@ static void Clock_Ip_ClockUpdatePccCgcEnable(Clock_Ip_NameType ClockName, boolea
 }
 #endif
 
+
 #ifdef CLOCK_IP_SIM_CLKOUT_ENABLE
 static void Clock_Ip_ClockSetSimClkoutEnable(Clock_Ip_GateConfigType const* Config)
 {
-    if (NULL_PTR != Config) {
-#ifdef CLOCK_IP_ENABLE_USER_MODE_SUPPORT
-#if (STD_ON == CLOCK_IP_ENABLE_USER_MODE_SUPPORT)
-        OsIf_Trusted_Call1param(Clock_Ip_ClockSetSimClkoutEnable_TrustedCall, (Config));
-#else
+    if (NULL_PTR != Config)
+    {
+    #ifdef CLOCK_IP_ENABLE_USER_MODE_SUPPORT
+      #if (STD_ON == CLOCK_IP_ENABLE_USER_MODE_SUPPORT)
+        OsIf_Trusted_Call1param(Clock_Ip_ClockSetSimClkoutEnable_TrustedCall,(Config));
+      #else
         Clock_Ip_ClockSetSimClkoutEnable_TrustedCall(Config);
-#endif
-#endif /* CLOCK_IP_ENABLE_USER_MODE_SUPPORT */
+      #endif
+    #endif /* CLOCK_IP_ENABLE_USER_MODE_SUPPORT */
     }
 }
 static void Clock_Ip_ClockUpdateSimClkoutEnable(Clock_Ip_NameType ClockName, boolean Gate)
@@ -246,9 +270,12 @@ static void Clock_Ip_ClockUpdateSimClkoutEnable(Clock_Ip_NameType ClockName, boo
     Clock_Ip_GateConfigType Config;
 
     Config.Name = ClockName;
-    if (TRUE == Gate) {
+    if (TRUE == Gate)
+    {
         Config.Enable = 0U;
-    } else {
+    }
+    else
+    {
         Config.Enable = 1U;
     }
     /* Write configuration to register */
@@ -256,17 +283,19 @@ static void Clock_Ip_ClockUpdateSimClkoutEnable(Clock_Ip_NameType ClockName, boo
 }
 #endif
 
+
 #ifdef CLOCK_IP_SIM_LPO32K_ENABLE
 static void Clock_Ip_ClockSetSimLPO32KEnable(Clock_Ip_GateConfigType const* Config)
 {
-    if (NULL_PTR != Config) {
-#ifdef CLOCK_IP_ENABLE_USER_MODE_SUPPORT
-#if (STD_ON == CLOCK_IP_ENABLE_USER_MODE_SUPPORT)
-        OsIf_Trusted_Call1param(Clock_Ip_ClockSetSimLPO32KEnable_TrustedCall, (Config));
-#else
+    if (NULL_PTR != Config)
+    {
+    #ifdef CLOCK_IP_ENABLE_USER_MODE_SUPPORT
+      #if (STD_ON == CLOCK_IP_ENABLE_USER_MODE_SUPPORT)
+        OsIf_Trusted_Call1param(Clock_Ip_ClockSetSimLPO32KEnable_TrustedCall,(Config));
+      #else
         Clock_Ip_ClockSetSimLPO32KEnable_TrustedCall(Config);
-#endif
-#endif /* CLOCK_IP_ENABLE_USER_MODE_SUPPORT */
+      #endif
+    #endif /* CLOCK_IP_ENABLE_USER_MODE_SUPPORT */
     }
 }
 static void Clock_Ip_ClockUpdateSimLPO32KEnable(Clock_Ip_NameType ClockName, boolean Gate)
@@ -274,9 +303,12 @@ static void Clock_Ip_ClockUpdateSimLPO32KEnable(Clock_Ip_NameType ClockName, boo
     Clock_Ip_GateConfigType Config;
 
     Config.Name = ClockName;
-    if (TRUE == Gate) {
+    if (TRUE == Gate)
+    {
         Config.Enable = 0U;
-    } else {
+    }
+    else
+    {
         Config.Enable = 1U;
     }
     /* Write configuration to register */
@@ -284,17 +316,19 @@ static void Clock_Ip_ClockUpdateSimLPO32KEnable(Clock_Ip_NameType ClockName, boo
 }
 #endif
 
+
 #ifdef CLOCK_IP_SIM_LPO1K_ENABLE
 static void Clock_Ip_ClockSetSimLPO1KEnable(Clock_Ip_GateConfigType const* Config)
 {
-    if (NULL_PTR != Config) {
-#ifdef CLOCK_IP_ENABLE_USER_MODE_SUPPORT
-#if (STD_ON == CLOCK_IP_ENABLE_USER_MODE_SUPPORT)
-        OsIf_Trusted_Call1param(Clock_Ip_ClockSetSimLPO1KEnable_TrustedCall, (Config));
-#else
+    if (NULL_PTR != Config)
+    {
+    #ifdef CLOCK_IP_ENABLE_USER_MODE_SUPPORT
+      #if (STD_ON == CLOCK_IP_ENABLE_USER_MODE_SUPPORT)
+        OsIf_Trusted_Call1param(Clock_Ip_ClockSetSimLPO1KEnable_TrustedCall,(Config));
+      #else
         Clock_Ip_ClockSetSimLPO1KEnable_TrustedCall(Config);
-#endif
-#endif /* CLOCK_IP_ENABLE_USER_MODE_SUPPORT */
+      #endif
+    #endif /* CLOCK_IP_ENABLE_USER_MODE_SUPPORT */
     }
 }
 
@@ -303,9 +337,12 @@ static void Clock_Ip_ClockUpdateSimLPO1KEnable(Clock_Ip_NameType ClockName, bool
     Clock_Ip_GateConfigType Config;
 
     Config.Name = ClockName;
-    if (TRUE == Gate) {
+    if (TRUE == Gate)
+    {
         Config.Enable = 0U;
-    } else {
+    }
+    else
+    {
         Config.Enable = 1U;
     }
     /* Write configuration to register */
@@ -313,19 +350,21 @@ static void Clock_Ip_ClockUpdateSimLPO1KEnable(Clock_Ip_NameType ClockName, bool
 }
 #endif
 
+
 #ifdef CLOCK_IP_SIM_PLATCGC_CGC
-#define SIM_PLATCGC_CGC_SHIFT(x) (x)
-#define SIM_PLATCGC_CGC_MASK(x) ((uint32)1U << (x))
+#define SIM_PLATCGC_CGC_SHIFT(x)   (x)
+#define SIM_PLATCGC_CGC_MASK(x)  ((uint32)1U << (x))
 static void Clock_Ip_ClockSetSimGate(Clock_Ip_GateConfigType const* Config)
 {
-    if (NULL_PTR != Config) {
-#ifdef CLOCK_IP_ENABLE_USER_MODE_SUPPORT
-#if (STD_ON == CLOCK_IP_ENABLE_USER_MODE_SUPPORT)
-        OsIf_Trusted_Call1param(Clock_Ip_ClockSetSimGate_TrustedCall, (Config));
-#else
+    if (NULL_PTR != Config)
+    {
+    #ifdef CLOCK_IP_ENABLE_USER_MODE_SUPPORT
+      #if (STD_ON == CLOCK_IP_ENABLE_USER_MODE_SUPPORT)
+        OsIf_Trusted_Call1param(Clock_Ip_ClockSetSimGate_TrustedCall,(Config));
+      #else
         Clock_Ip_ClockSetSimGate_TrustedCall(Config);
-#endif
-#endif /* CLOCK_IP_ENABLE_USER_MODE_SUPPORT */
+      #endif
+    #endif /* CLOCK_IP_ENABLE_USER_MODE_SUPPORT */
     }
 }
 static void Clock_Ip_ClockUpdateSimGate(Clock_Ip_NameType ClockName, boolean Gate)
@@ -333,9 +372,12 @@ static void Clock_Ip_ClockUpdateSimGate(Clock_Ip_NameType ClockName, boolean Gat
     Clock_Ip_GateConfigType Config;
 
     Config.Name = ClockName;
-    if (TRUE == Gate) {
+    if (TRUE == Gate)
+    {
         Config.Enable = 0U;
-    } else {
+    }
+    else
+    {
         Config.Enable = 1U;
     }
     /* Write configuration to register */
@@ -343,17 +385,19 @@ static void Clock_Ip_ClockUpdateSimGate(Clock_Ip_NameType ClockName, boolean Gat
 }
 #endif
 
+
 #ifdef CLOCK_IP_SIM_TRACE_ENABLE
 static void Clock_Ip_ClockSetSimTraceEnable(Clock_Ip_GateConfigType const* Config)
 {
-    if (NULL_PTR != Config) {
-#ifdef CLOCK_IP_ENABLE_USER_MODE_SUPPORT
-#if (STD_ON == CLOCK_IP_ENABLE_USER_MODE_SUPPORT)
-        OsIf_Trusted_Call1param(Clock_Ip_ClockSetSimTraceEnable_TrustedCall, (Config));
-#else
+    if (NULL_PTR != Config)
+    {
+    #ifdef CLOCK_IP_ENABLE_USER_MODE_SUPPORT
+      #if (STD_ON == CLOCK_IP_ENABLE_USER_MODE_SUPPORT)
+        OsIf_Trusted_Call1param(Clock_Ip_ClockSetSimTraceEnable_TrustedCall,(Config));
+      #else
         Clock_Ip_ClockSetSimTraceEnable_TrustedCall(Config);
-#endif
-#endif /* CLOCK_IP_ENABLE_USER_MODE_SUPPORT */
+      #endif
+    #endif /* CLOCK_IP_ENABLE_USER_MODE_SUPPORT */
     }
 }
 
@@ -362,15 +406,20 @@ static void Clock_Ip_ClockUpdateSimTraceEnable(Clock_Ip_NameType ClockName, bool
     Clock_Ip_GateConfigType Config;
 
     Config.Name = ClockName;
-    if (TRUE == Gate) {
+    if (TRUE == Gate)
+    {
         Config.Enable = 0U;
-    } else {
+    }
+    else
+    {
         Config.Enable = 1U;
     }
     /* Write configuration to register */
     Clock_Ip_ClockSetSimTraceEnable(&Config);
 }
 #endif
+
+
 
 /*==================================================================================================
 *                                        GLOBAL FUNCTIONS
@@ -385,8 +434,10 @@ void Clock_Ip_ClockSetPccCgcEnable_TrustedCall(Clock_Ip_GateConfigType const* Co
     RegValue &= ~PCC_PCCn_CGC_MASK;
     RegValue |= ((uint32)(Config->Enable) << PCC_PCCn_CGC_SHIFT);
     IP_PCC->PCCn[Clock_Ip_au8ClockFeatures[Config->Name][CLOCK_IP_GATE_INDEX]] = RegValue;
+
 }
 #endif
+
 
 #ifdef CLOCK_IP_SIM_CLKOUT_ENABLE
 /* Write configuration of clock gate to register */
@@ -401,6 +452,7 @@ void Clock_Ip_ClockSetSimClkoutEnable_TrustedCall(Clock_Ip_GateConfigType const*
 }
 #endif
 
+
 #ifdef CLOCK_IP_SIM_LPO32K_ENABLE
 /* Write configuration of clock gate to register */
 void Clock_Ip_ClockSetSimLPO32KEnable_TrustedCall(Clock_Ip_GateConfigType const* Config)
@@ -413,6 +465,7 @@ void Clock_Ip_ClockSetSimLPO32KEnable_TrustedCall(Clock_Ip_GateConfigType const*
     IP_SIM->LPOCLKS = RegValue;
 }
 #endif
+
 
 #ifdef CLOCK_IP_SIM_LPO1K_ENABLE
 /* Write configuration of clock gate to register */
@@ -427,6 +480,7 @@ void Clock_Ip_ClockSetSimLPO1KEnable_TrustedCall(Clock_Ip_GateConfigType const* 
 }
 #endif
 
+
 #ifdef CLOCK_IP_SIM_PLATCGC_CGC
 /* Write configuration of clock gate to register */
 void Clock_Ip_ClockSetSimGate_TrustedCall(Clock_Ip_GateConfigType const* Config)
@@ -434,12 +488,13 @@ void Clock_Ip_ClockSetSimGate_TrustedCall(Clock_Ip_GateConfigType const* Config)
     uint32 Enable = Config->Enable;
     uint32 GateIndex = Clock_Ip_au8ClockFeatures[Config->Name][CLOCK_IP_GATE_INDEX];
 
-    uint32 RegValue = (uint32)IP_SIM->PLATCGC;
-    RegValue &= (~((uint32)SIM_PLATCGC_CGC_MASK(GateIndex)));
+    uint32 RegValue = (uint32 )IP_SIM->PLATCGC;
+    RegValue &= (~((uint32 )SIM_PLATCGC_CGC_MASK(GateIndex)));
     RegValue |= Enable << SIM_PLATCGC_CGC_SHIFT(GateIndex);
-    IP_SIM->PLATCGC = (uint32)RegValue;
+    IP_SIM->PLATCGC = (uint32 )RegValue;
 }
 #endif
+
 
 #ifdef CLOCK_IP_SIM_TRACE_ENABLE
 /* Write configuration of clock gate to register */
@@ -448,14 +503,18 @@ void Clock_Ip_ClockSetSimTraceEnable_TrustedCall(Clock_Ip_GateConfigType const* 
     uint32 RegValue;
 
     RegValue = IP_SIM->CLKDIV4;
-    if (1U == Config->Enable) {
+    if (1U == Config->Enable)
+    {
         RegValue |= (SIM_CLKDIV4_TRACEDIVEN_MASK);
-    } else {
+    }
+    else
+    {
         RegValue &= ~(SIM_CLKDIV4_TRACEDIVEN_MASK);
     }
     IP_SIM->CLKDIV4 = RegValue;
 }
 #endif
+
 
 /* Clock stop section code */
 #define MCU_STOP_SEC_CODE
@@ -471,59 +530,68 @@ void Clock_Ip_ClockSetSimTraceEnable_TrustedCall(Clock_Ip_GateConfigType const* 
 
 #include "Mcu_MemMap.h"
 
-const Clock_Ip_GateCallbackType Clock_Ip_axGateCallbacks[CLOCK_IP_GATE_CALLBACKS_COUNT] = {
+const Clock_Ip_GateCallbackType Clock_Ip_axGateCallbacks[CLOCK_IP_GATE_CALLBACKS_COUNT] =
+{
     {
-        &Clock_Ip_ClockSetGateEmpty,    /* Set */
-        &Clock_Ip_ClockUpdateGateEmpty, /* Update */
+        &Clock_Ip_ClockSetGateEmpty,     /* Set */
+        &Clock_Ip_ClockUpdateGateEmpty,  /* Update */
     },
 #ifdef CLOCK_IP_PCC_CGC_ENABLE
     {
-        &Clock_Ip_ClockSetPccCgcEnable,    /* Set */
-        &Clock_Ip_ClockUpdatePccCgcEnable, /* Update */
+        &Clock_Ip_ClockSetPccCgcEnable,         /* Set */
+        &Clock_Ip_ClockUpdatePccCgcEnable,      /* Update */
     },
 #endif
+
 
 #ifdef CLOCK_IP_SIM_CLKOUT_ENABLE
     {
-        &Clock_Ip_ClockSetSimClkoutEnable,    /* Set */
-        &Clock_Ip_ClockUpdateSimClkoutEnable, /* Update */
+        &Clock_Ip_ClockSetSimClkoutEnable,      /* Set */
+        &Clock_Ip_ClockUpdateSimClkoutEnable,   /* Update */
     },
 #endif
+
 
 #ifdef CLOCK_IP_SIM_LPO32K_ENABLE
     {
-        &Clock_Ip_ClockSetSimLPO32KEnable,    /* Set */
-        &Clock_Ip_ClockUpdateSimLPO32KEnable, /* Update */
+        &Clock_Ip_ClockSetSimLPO32KEnable,      /* Set */
+        &Clock_Ip_ClockUpdateSimLPO32KEnable,   /* Update */
     },
 #endif
+
 
 #ifdef CLOCK_IP_SIM_LPO1K_ENABLE
     {
-        &Clock_Ip_ClockSetSimLPO1KEnable,    /* Set */
-        &Clock_Ip_ClockUpdateSimLPO1KEnable, /* Update */
+        &Clock_Ip_ClockSetSimLPO1KEnable,      /* Set */
+        &Clock_Ip_ClockUpdateSimLPO1KEnable,   /* Update */
     },
 #endif
+
 
 #ifdef CLOCK_IP_SIM_PLATCGC_CGC
     {
-        &Clock_Ip_ClockSetSimGate,    /* Set */
-        &Clock_Ip_ClockUpdateSimGate, /* Update */
+        &Clock_Ip_ClockSetSimGate,              /* Set */
+        &Clock_Ip_ClockUpdateSimGate,           /* Update */
     },
 #endif
+
 
 #ifdef CLOCK_IP_SIM_TRACE_ENABLE
     {
-        &Clock_Ip_ClockSetSimTraceEnable,    /* Set */
-        &Clock_Ip_ClockUpdateSimTraceEnable, /* Update */
+        &Clock_Ip_ClockSetSimTraceEnable,       /* Set */
+        &Clock_Ip_ClockUpdateSimTraceEnable,    /* Update */
     },
 #endif
 
+
 };
+
 
 /* Clock stop constant section data */
 #define MCU_STOP_SEC_CONST_UNSPECIFIED
 
 #include "Mcu_MemMap.h"
+
 
 #ifdef __cplusplus
 }

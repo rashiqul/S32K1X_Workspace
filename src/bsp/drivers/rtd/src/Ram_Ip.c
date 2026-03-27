@@ -1,7 +1,7 @@
 /*==================================================================================================
 *   Project              : RTD AUTOSAR 4.7
 *   Platform             : CORTEXM
-*   Peripheral           :
+*   Peripheral           : 
 *   Dependencies         : none
 *
 *   Autosar Version      : 4.7.0
@@ -12,28 +12,32 @@
 *
 *   Copyright 2020-2025 NXP
 *
-*   NXP Confidential and Proprietary. This software is owned or controlled by NXP and may only be
-*   used strictly in accordance with the applicable license terms.  By expressly
-*   accepting such terms or by downloading, installing, activating and/or otherwise
-*   using the software, you are agreeing that you have read, and that you agree to
-*   comply with and are bound by, such license terms.  If you do not agree to be
+*   NXP Confidential and Proprietary. This software is owned or controlled by NXP and may only be 
+*   used strictly in accordance with the applicable license terms.  By expressly 
+*   accepting such terms or by downloading, installing, activating and/or otherwise 
+*   using the software, you are agreeing that you have read, and that you agree to 
+*   comply with and are bound by, such license terms.  If you do not agree to be 
 *   bound by the applicable license terms, then you may not retain, install,
 *   activate or otherwise use the software.
 ==================================================================================================*/
 /**
- *   @file       Ram_Ip.c
- *   @version    3.0.0
- *
- *   @brief   RAM driver implementations.
- *   @details RAM driver implementations.
- *
- *   @addtogroup RAM_DRIVER Ram Ip Driver
- *   @{
- */
+*   @file       Ram_Ip.c
+*   @version    3.0.0
+*
+*   @brief   RAM driver implementations.
+*   @details RAM driver implementations.
+*
+*   @addtogroup RAM_DRIVER Ram Ip Driver
+*   @{
+*/
+
 
 #ifdef __cplusplus
-extern "C" {
+extern "C"{
 #endif
+
+
+
 
 /*==================================================================================================
 *                                        INCLUDE FILES
@@ -45,34 +49,36 @@ extern "C" {
 /*==================================================================================================
                                SOURCE FILE VERSION INFORMATION
 ==================================================================================================*/
-#define RAM_IP_VENDOR_ID_C 43
-#define RAM_IP_AR_RELEASE_MAJOR_VERSION_C 4
-#define RAM_IP_AR_RELEASE_MINOR_VERSION_C 7
-#define RAM_IP_AR_RELEASE_REVISION_VERSION_C 0
-#define RAM_IP_SW_MAJOR_VERSION_C 3
-#define RAM_IP_SW_MINOR_VERSION_C 0
-#define RAM_IP_SW_PATCH_VERSION_C 0
+#define RAM_IP_VENDOR_ID_C                      43
+#define RAM_IP_AR_RELEASE_MAJOR_VERSION_C       4
+#define RAM_IP_AR_RELEASE_MINOR_VERSION_C       7
+#define RAM_IP_AR_RELEASE_REVISION_VERSION_C    0
+#define RAM_IP_SW_MAJOR_VERSION_C               3
+#define RAM_IP_SW_MINOR_VERSION_C               0
+#define RAM_IP_SW_PATCH_VERSION_C               0
 
 /*==================================================================================================
 *                                     FILE VERSION CHECKS
 ==================================================================================================*/
 /* Check if Ram_Ip.c file and Ram_Ip.h file are of the same vendor */
 #if (RAM_IP_VENDOR_ID_C != RAM_IP_VENDOR_ID)
-#error "Ram_Ip.c and Ram_Ip.h have different vendor ids"
+    #error "Ram_Ip.c and Ram_Ip.h have different vendor ids"
 #endif
 
 /* Check if Ram_Ip.c file and Ram_Ip.h file are of the same Autosar version */
-#if ((RAM_IP_AR_RELEASE_MAJOR_VERSION_C != RAM_IP_AR_RELEASE_MAJOR_VERSION) ||                     \
-     (RAM_IP_AR_RELEASE_MINOR_VERSION_C != RAM_IP_AR_RELEASE_MINOR_VERSION) ||                     \
-     (RAM_IP_AR_RELEASE_REVISION_VERSION_C != RAM_IP_AR_RELEASE_REVISION_VERSION))
-#error "AutoSar Version Numbers of Ram_Ip.c and Ram_Ip.h are different"
+#if ((RAM_IP_AR_RELEASE_MAJOR_VERSION_C != RAM_IP_AR_RELEASE_MAJOR_VERSION) || \
+     (RAM_IP_AR_RELEASE_MINOR_VERSION_C != RAM_IP_AR_RELEASE_MINOR_VERSION) || \
+     (RAM_IP_AR_RELEASE_REVISION_VERSION_C != RAM_IP_AR_RELEASE_REVISION_VERSION) \
+    )
+    #error "AutoSar Version Numbers of Ram_Ip.c and Ram_Ip.h are different"
 #endif
 
 /* Check if Ram_Ip.c file and Ram_Ip.h file are of the same Software version */
-#if ((RAM_IP_SW_MAJOR_VERSION_C != RAM_IP_SW_MAJOR_VERSION) ||                                     \
-     (RAM_IP_SW_MINOR_VERSION_C != RAM_IP_SW_MINOR_VERSION) ||                                     \
-     (RAM_IP_SW_PATCH_VERSION_C != RAM_IP_SW_PATCH_VERSION))
-#error "Software Version Numbers of Ram_Ip.c and Ram_Ip.h are different"
+#if ((RAM_IP_SW_MAJOR_VERSION_C != RAM_IP_SW_MAJOR_VERSION) || \
+     (RAM_IP_SW_MINOR_VERSION_C != RAM_IP_SW_MINOR_VERSION) || \
+     (RAM_IP_SW_PATCH_VERSION_C != RAM_IP_SW_PATCH_VERSION) \
+    )
+    #error "Software Version Numbers of Ram_Ip.c and Ram_Ip.h are different"
 #endif
 /*==================================================================================================
                           LOCAL TYPEDEFS (STRUCTURES, UNIONS, ENUMS)
@@ -86,9 +92,11 @@ extern "C" {
                                         LOCAL MACROS
 ==================================================================================================*/
 
+
 /*==================================================================================================
                                        LOCAL CONSTANTS
 ==================================================================================================*/
+
 
 /*==================================================================================================
                                        LOCAL VARIABLES
@@ -97,13 +105,16 @@ extern "C" {
                                        GLOBAL CONSTANTS
 ==================================================================================================*/
 
+
 /*==================================================================================================
                                        GLOBAL VARIABLES
 ==================================================================================================*/
 
+
 /*==================================================================================================
                                        LOCAL FUNCTIONS
 ==================================================================================================*/
+
 
 #define MCU_START_SEC_CODE
 #include "Mcu_MemMap.h"
@@ -113,27 +124,27 @@ extern "C" {
 ==================================================================================================*/
 
 /**
- * @brief            This function initializes a given RAM section of the MCU on the common (main)
- * platform.
- * @details          Function initializes the RAM section specified by the pointer to the
- * "Mcu_RamConfigType" parameter. The section's base address, size, value to be written, and
- * write-at-once-size are provided by the configuration structure. The function will write the value
- * specified in the configuration structure. After the write it will read back the RAM to verify
- * that the requested value was written. Called by:
- *                       - Mcu_InitRamSection() from HLD.
- *
- * @param[in]        RamConfigPtr   Pointer to RAM section configuration structure
- *                   (member of 'Mcu_ConfigType' struct).
- *
- * @return           Status signaling if the given RAM section has or has not been successfully
- * initialized.
- * @retval           RAM_IP_STATUS_OK        The RAM section check was successful.
- * @retval           RAM_IP_STATUS_NOT_OK    The RAM section check was not successful.
- *
- * @implements Ram_Ip_InitRamSection_Activity
- *
- */
-Ram_Ip_StatusType Ram_Ip_InitRamSection(const Ram_Ip_RamConfigType* RamConfigPtr)
+* @brief            This function initializes a given RAM section of the MCU on the common (main) platform.
+* @details          Function initializes the RAM section specified by the pointer to the "Mcu_RamConfigType" parameter.
+*                   The section's base address, size, value to be written, and write-at-once-size are provided by
+*                   the configuration structure.
+*                   The function will write the value specified in the configuration structure.
+*                   After the write it will read back the RAM to verify that the requested value was
+*                   written.
+*                   Called by:
+*                       - Mcu_InitRamSection() from HLD.
+*
+* @param[in]        RamConfigPtr   Pointer to RAM section configuration structure
+*                   (member of 'Mcu_ConfigType' struct).
+*
+* @return           Status signaling if the given RAM section has or has not been successfully initialized.
+* @retval           RAM_IP_STATUS_OK        The RAM section check was successful.
+* @retval           RAM_IP_STATUS_NOT_OK    The RAM section check was not successful.
+*
+* @implements Ram_Ip_InitRamSection_Activity
+*
+*/
+Ram_Ip_StatusType Ram_Ip_InitRamSection(const Ram_Ip_RamConfigType * RamConfigPtr)
 {
     /* Result of the operation. */
     Ram_Ip_StatusType RamStatus = RAM_IP_STATUS_OK;
@@ -144,109 +155,97 @@ Ram_Ip_StatusType Ram_Ip_InitRamSection(const Ram_Ip_RamConfigType* RamConfigPtr
 
     RAM_IP_DEV_ASSERT(NULL_PTR != RamConfigPtr);
 
-    RamCounterLimit = (Ram_Ip_RamSizeType)(((Ram_Ip_RamSizeType)(RamConfigPtr->RamSize)) /
-                                           (RamConfigPtr->RamWriteSize));
+    RamCounterLimit = (Ram_Ip_RamSizeType)( ((Ram_Ip_RamSizeType)(RamConfigPtr->RamSize)) / (RamConfigPtr->RamWriteSize) );
     RamCounter = (Ram_Ip_RamIndexType)0UL;
-    while ((RamCounter < RamCounterLimit) && (RAM_IP_STATUS_OK == RamStatus)) {
-        switch (RamConfigPtr->RamWriteSize) {
-        case (Ram_Ip_RamWriteSizeType)1U:
+    while ((RamCounter < RamCounterLimit) && (RAM_IP_STATUS_OK == RamStatus))
+    {
+        switch (RamConfigPtr->RamWriteSize)
+        {
+            case (Ram_Ip_RamWriteSizeType)1U:
 
-            (*((uint8(*)[1U])((Ram_Ip_uintPtrType)RamConfigPtr->RamBaseAddrPtr)))[RamCounter] =
-                (uint8)(RamConfigPtr->RamDefaultValue);
-            break;
+                ( *((uint8 (*)[1U]) ((Ram_Ip_uintPtrType) RamConfigPtr->RamBaseAddrPtr)) )[RamCounter]  = (uint8) (RamConfigPtr->RamDefaultValue);
+                break;
 
-        case (Ram_Ip_RamWriteSizeType)2U:
+            case (Ram_Ip_RamWriteSizeType)2U:
 
-            (*((uint16(*)[1U])((Ram_Ip_uintPtrType)RamConfigPtr->RamBaseAddrPtr)))[RamCounter] =
-                (uint16)(((uint16)(RamConfigPtr->RamDefaultValue) << 0U) |
-                         ((uint16)(RamConfigPtr->RamDefaultValue) << 8U));
-            break;
+                ( *((uint16 (*)[1U]) ((Ram_Ip_uintPtrType) RamConfigPtr->RamBaseAddrPtr)) )[RamCounter] = (uint16) ( ((uint16)(RamConfigPtr->RamDefaultValue) << 0U) | ((uint16)(RamConfigPtr->RamDefaultValue) << 8U) );
+                break;
 
-        case (Ram_Ip_RamWriteSizeType)4U:
+            case (Ram_Ip_RamWriteSizeType)4U:
 
-            (*((uint32(*)[1U])((Ram_Ip_uintPtrType)RamConfigPtr->RamBaseAddrPtr)))[RamCounter] =
-                (uint32)(((uint32)(RamConfigPtr->RamDefaultValue) << 0U) |
-                         ((uint32)(RamConfigPtr->RamDefaultValue) << 8U) |
-                         ((uint32)(RamConfigPtr->RamDefaultValue) << 16U) |
-                         ((uint32)(RamConfigPtr->RamDefaultValue) << 24U));
-            break;
+                ( *((uint32 (*)[1U]) ((Ram_Ip_uintPtrType) RamConfigPtr->RamBaseAddrPtr)) )[RamCounter] = \
+                (uint32) ( ((uint32)(RamConfigPtr->RamDefaultValue) << 0U) | ((uint32)(RamConfigPtr->RamDefaultValue) << 8U)  |\
+                          ((uint32)(RamConfigPtr->RamDefaultValue) << 16U) | ((uint32)(RamConfigPtr->RamDefaultValue) << 24U) );
+                break;
 
-        case (Ram_Ip_RamWriteSizeType)8U:
+            case (Ram_Ip_RamWriteSizeType)8U:
 
-            (*((uint64(*)[1U])((Ram_Ip_uintPtrType)RamConfigPtr->RamBaseAddrPtr)))[RamCounter] =
-                (uint64)(((uint64)(RamConfigPtr->RamDefaultValue) << 0U) |
-                         ((uint64)(RamConfigPtr->RamDefaultValue) << 8U) |
-                         ((uint64)(RamConfigPtr->RamDefaultValue) << 16U) |
-                         ((uint64)(RamConfigPtr->RamDefaultValue) << 24U) |
-                         ((uint64)(RamConfigPtr->RamDefaultValue) << 32U) |
-                         ((uint64)(RamConfigPtr->RamDefaultValue) << 40U) |
-                         ((uint64)(RamConfigPtr->RamDefaultValue) << 48U) |
-                         ((uint64)(RamConfigPtr->RamDefaultValue) << 56U));
+                ( *((uint64 (*)[1U]) ((Ram_Ip_uintPtrType) RamConfigPtr->RamBaseAddrPtr)) )[RamCounter] = \
+                  (uint64) ( ((uint64)(RamConfigPtr->RamDefaultValue) << 0U) | ((uint64)(RamConfigPtr->RamDefaultValue) << 8U)  |\
+                            ((uint64)(RamConfigPtr->RamDefaultValue) << 16U) | ((uint64)(RamConfigPtr->RamDefaultValue) << 24U) |\
+                            ((uint64)(RamConfigPtr->RamDefaultValue) << 32U) | ((uint64)(RamConfigPtr->RamDefaultValue) << 40U) |\
+                            ((uint64)(RamConfigPtr->RamDefaultValue) << 48U) | ((uint64)(RamConfigPtr->RamDefaultValue) << 56U) );
 
-            break;
-        default:
-            RamStatus = RAM_IP_STATUS_NOT_OK;
-            break;
+                break;
+            default:
+                RamStatus = RAM_IP_STATUS_NOT_OK;
+                break;
         }
         RamCounter++;
     }
+
 
     RamCounter = (Ram_Ip_RamIndexType)0UL;
     /* Check if RAM was initialized correctly. */
-    while ((RamCounter < RamCounterLimit) && (RAM_IP_STATUS_OK == RamStatus)) {
-        switch (RamConfigPtr->RamWriteSize) {
-        case (Ram_Ip_RamWriteSizeType)1U:
+    while ((RamCounter < RamCounterLimit) && (RAM_IP_STATUS_OK == RamStatus))
+    {
+        switch (RamConfigPtr->RamWriteSize)
+        {
+            case (Ram_Ip_RamWriteSizeType)1U:
 
-            if ((uint8)(RamConfigPtr->RamDefaultValue) !=
-                (*((uint8(*)[1U])((Ram_Ip_uintPtrType)RamConfigPtr->RamBaseAddrPtr)))[RamCounter]) {
+                if ( (uint8) (RamConfigPtr->RamDefaultValue)  != ( *((uint8 (*)[1U]) ((Ram_Ip_uintPtrType)RamConfigPtr->RamBaseAddrPtr)) )[RamCounter] )
+                {
+                    RamStatus = RAM_IP_STATUS_NOT_OK;
+                }
+                break;
+
+            case (Ram_Ip_RamWriteSizeType)2U:
+
+                if ( (uint16) ( ((uint16)(RamConfigPtr->RamDefaultValue) << 0U) | ((uint16)(RamConfigPtr->RamDefaultValue) << 8U) ) != ( *((uint16 (*)[1U]) ((Ram_Ip_uintPtrType)RamConfigPtr->RamBaseAddrPtr)) )[RamCounter] )
+                {
+                    RamStatus = RAM_IP_STATUS_NOT_OK;
+                }
+                break;
+
+            case (Ram_Ip_RamWriteSizeType)4U:
+
+                if ( (uint32)  ( ((uint32)(RamConfigPtr->RamDefaultValue) << 0U) | ((uint32)(RamConfigPtr->RamDefaultValue) << 8U)  |\
+                                ((uint32)(RamConfigPtr->RamDefaultValue) << 16U) | ((uint32)(RamConfigPtr->RamDefaultValue) << 24U) ) != \
+                    ( *((uint32 (*)[1U]) ((Ram_Ip_uintPtrType)RamConfigPtr->RamBaseAddrPtr)) )[RamCounter] )
+                {
+                    RamStatus = RAM_IP_STATUS_NOT_OK;
+                }
+                break;
+
+            case (Ram_Ip_RamWriteSizeType)8U:
+
+                if ( (uint64) ( ((uint64)(RamConfigPtr->RamDefaultValue) << 0U) | ((uint64)(RamConfigPtr->RamDefaultValue) << 8U)  |\
+                               ((uint64)(RamConfigPtr->RamDefaultValue) << 16U) | ((uint64)(RamConfigPtr->RamDefaultValue) << 24U) |\
+                               ((uint64)(RamConfigPtr->RamDefaultValue) << 32U) | ((uint64)(RamConfigPtr->RamDefaultValue) << 40U) |\
+                               ((uint64)(RamConfigPtr->RamDefaultValue) << 48U) | ((uint64)(RamConfigPtr->RamDefaultValue) << 56U) ) != \
+                    ( *((uint64 (*)[1U]) ((Ram_Ip_uintPtrType)RamConfigPtr->RamBaseAddrPtr)) )[RamCounter] )
+                {
+                    RamStatus = RAM_IP_STATUS_NOT_OK;
+                }
+                break;
+
+            default:
                 RamStatus = RAM_IP_STATUS_NOT_OK;
-            }
-            break;
-
-        case (Ram_Ip_RamWriteSizeType)2U:
-
-            if ((uint16)(((uint16)(RamConfigPtr->RamDefaultValue) << 0U) |
-                         ((uint16)(RamConfigPtr->RamDefaultValue) << 8U)) !=
-                (*((uint16(*)[1U])(
-                    (Ram_Ip_uintPtrType)RamConfigPtr->RamBaseAddrPtr)))[RamCounter]) {
-                RamStatus = RAM_IP_STATUS_NOT_OK;
-            }
-            break;
-
-        case (Ram_Ip_RamWriteSizeType)4U:
-
-            if ((uint32)(((uint32)(RamConfigPtr->RamDefaultValue) << 0U) |
-                         ((uint32)(RamConfigPtr->RamDefaultValue) << 8U) |
-                         ((uint32)(RamConfigPtr->RamDefaultValue) << 16U) |
-                         ((uint32)(RamConfigPtr->RamDefaultValue) << 24U)) !=
-                (*((uint32(*)[1U])(
-                    (Ram_Ip_uintPtrType)RamConfigPtr->RamBaseAddrPtr)))[RamCounter]) {
-                RamStatus = RAM_IP_STATUS_NOT_OK;
-            }
-            break;
-
-        case (Ram_Ip_RamWriteSizeType)8U:
-
-            if ((uint64)(((uint64)(RamConfigPtr->RamDefaultValue) << 0U) |
-                         ((uint64)(RamConfigPtr->RamDefaultValue) << 8U) |
-                         ((uint64)(RamConfigPtr->RamDefaultValue) << 16U) |
-                         ((uint64)(RamConfigPtr->RamDefaultValue) << 24U) |
-                         ((uint64)(RamConfigPtr->RamDefaultValue) << 32U) |
-                         ((uint64)(RamConfigPtr->RamDefaultValue) << 40U) |
-                         ((uint64)(RamConfigPtr->RamDefaultValue) << 48U) |
-                         ((uint64)(RamConfigPtr->RamDefaultValue) << 56U)) !=
-                (*((uint64(*)[1U])(
-                    (Ram_Ip_uintPtrType)RamConfigPtr->RamBaseAddrPtr)))[RamCounter]) {
-                RamStatus = RAM_IP_STATUS_NOT_OK;
-            }
-            break;
-
-        default:
-            RamStatus = RAM_IP_STATUS_NOT_OK;
-            break;
+                break;
         }
         RamCounter++;
     }
+
 
     return RamStatus;
 }
@@ -258,3 +257,4 @@ Ram_Ip_StatusType Ram_Ip_InitRamSection(const Ram_Ip_RamConfigType* RamConfigPtr
 #endif
 
 /** @} */
+

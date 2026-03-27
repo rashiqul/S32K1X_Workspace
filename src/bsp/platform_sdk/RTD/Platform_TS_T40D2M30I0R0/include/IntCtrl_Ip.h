@@ -1,7 +1,7 @@
 /*==================================================================================================
 *   Project              : RTD AUTOSAR 4.7
 *   Platform             : CORTEXM
-*   Peripheral           :
+*   Peripheral           : 
 *   Dependencies         : none
 *
 *   Autosar Version      : 4.7.0
@@ -12,11 +12,11 @@
 *
 *   Copyright 2020-2025 NXP
 *
-*   NXP Confidential and Proprietary. This software is owned or controlled by NXP and may only be
-*   used strictly in accordance with the applicable license terms.  By expressly
-*   accepting such terms or by downloading, installing, activating and/or otherwise
-*   using the software, you are agreeing that you have read, and that you agree to
-*   comply with and are bound by, such license terms.  If you do not agree to be
+*   NXP Confidential and Proprietary. This software is owned or controlled by NXP and may only be 
+*   used strictly in accordance with the applicable license terms.  By expressly 
+*   accepting such terms or by downloading, installing, activating and/or otherwise 
+*   using the software, you are agreeing that you have read, and that you agree to 
+*   comply with and are bound by, such license terms.  If you do not agree to be 
 *   bound by the applicable license terms, then you may not retain, install,
 *   activate or otherwise use the software.
 ==================================================================================================*/
@@ -25,71 +25,72 @@
 #define INTCTRL_IP_H_
 
 /**
- *   @file
- *
- *   @defgroup   IntCtrl_Ip Interrupt Controller IP
- *   @ingroup    Platform
- *
- *   @addtogroup IntCtrl_Ip
- *   @{
- */
+*   @file
+*
+*   @defgroup   IntCtrl_Ip Interrupt Controller IP
+*   @ingroup    Platform
+*
+*   @addtogroup IntCtrl_Ip
+*   @{
+*/
 
 /*==================================================================================================
 *                                        INCLUDE FILES
 ==================================================================================================*/
-#include "Devassert.h"
 #include "IntCtrl_Ip_Cfg.h"
 #include "Mcal.h"
+#include "Devassert.h"
 /*==================================================================================================
 *                              SOURCE FILE VERSION INFORMATION
 ==================================================================================================*/
-#define CDD_PLATFORM_INTCTRL_IP_VENDOR_ID 43
-#define CDD_PLATFORM_INTCTRL_IP_SW_MAJOR_VERSION 3
-#define CDD_PLATFORM_INTCTRL_IP_SW_MINOR_VERSION 0
-#define CDD_PLATFORM_INTCTRL_IP_SW_PATCH_VERSION 0
-#define CDD_PLATFORM_INTCTRL_IP_AR_RELEASE_MAJOR_VERSION 4
-#define CDD_PLATFORM_INTCTRL_IP_AR_RELEASE_MINOR_VERSION 7
-#define CDD_PLATFORM_INTCTRL_IP_AR_RELEASE_REVISION_VERSION 0
+#define CDD_PLATFORM_INTCTRL_IP_VENDOR_ID                          43
+#define CDD_PLATFORM_INTCTRL_IP_SW_MAJOR_VERSION                   3
+#define CDD_PLATFORM_INTCTRL_IP_SW_MINOR_VERSION                   0
+#define CDD_PLATFORM_INTCTRL_IP_SW_PATCH_VERSION                   0
+#define CDD_PLATFORM_INTCTRL_IP_AR_RELEASE_MAJOR_VERSION           4
+#define CDD_PLATFORM_INTCTRL_IP_AR_RELEASE_MINOR_VERSION           7
+#define CDD_PLATFORM_INTCTRL_IP_AR_RELEASE_REVISION_VERSION        0
 /*==================================================================================================
                                       FILE VERSION CHECKS
 ==================================================================================================*/
 /* Check if current file and IntCtrl_Ip_Cfg header file are of the same vendor */
 #if (CDD_PLATFORM_INTCTRL_IP_VENDOR_ID != CDD_PLATFORM_INTCTRL_IP_CFG_VENDOR_ID)
-#error "IntCtrl_Ip.h and IntCtrl_Ip_Cfg.h have different vendor ids"
+    #error "IntCtrl_Ip.h and IntCtrl_Ip_Cfg.h have different vendor ids"
 #endif
 /* Check if current file and IntCtrl_Ip_Cfg header file are of the same Autosar version */
-#if ((CDD_PLATFORM_INTCTRL_IP_AR_RELEASE_MAJOR_VERSION !=                                          \
-      CDD_PLATFORM_INTCTRL_IP_CFG_AR_RELEASE_MAJOR_VERSION) ||                                     \
-     (CDD_PLATFORM_INTCTRL_IP_AR_RELEASE_MINOR_VERSION !=                                          \
-      CDD_PLATFORM_INTCTRL_IP_CFG_AR_RELEASE_MINOR_VERSION) ||                                     \
-     (CDD_PLATFORM_INTCTRL_IP_AR_RELEASE_REVISION_VERSION !=                                       \
-      CDD_PLATFORM_INTCTRL_IP_CFG_AR_RELEASE_REVISION_VERSION))
-#error "AutoSar Version Numbers of IntCtrl_Ip.h and IntCtrl_Ip_Cfg.h are different"
+#if ((CDD_PLATFORM_INTCTRL_IP_AR_RELEASE_MAJOR_VERSION    != CDD_PLATFORM_INTCTRL_IP_CFG_AR_RELEASE_MAJOR_VERSION) || \
+     (CDD_PLATFORM_INTCTRL_IP_AR_RELEASE_MINOR_VERSION    != CDD_PLATFORM_INTCTRL_IP_CFG_AR_RELEASE_MINOR_VERSION) || \
+     (CDD_PLATFORM_INTCTRL_IP_AR_RELEASE_REVISION_VERSION != CDD_PLATFORM_INTCTRL_IP_CFG_AR_RELEASE_REVISION_VERSION) \
+    )
+    #error "AutoSar Version Numbers of IntCtrl_Ip.h and IntCtrl_Ip_Cfg.h are different"
 #endif
 /* Check if current file and IntCtrl_Ip_Cfg header file are of the same Software version */
 #if ((CDD_PLATFORM_INTCTRL_IP_SW_MAJOR_VERSION != CDD_PLATFORM_INTCTRL_IP_CFG_SW_MAJOR_VERSION) || \
      (CDD_PLATFORM_INTCTRL_IP_SW_MINOR_VERSION != CDD_PLATFORM_INTCTRL_IP_CFG_SW_MINOR_VERSION) || \
-     (CDD_PLATFORM_INTCTRL_IP_SW_PATCH_VERSION != CDD_PLATFORM_INTCTRL_IP_CFG_SW_PATCH_VERSION))
-#error "Software Version Numbers of IntCtrl_Ip.h and IntCtrl_Ip_Cfg.h are different"
+     (CDD_PLATFORM_INTCTRL_IP_SW_PATCH_VERSION != CDD_PLATFORM_INTCTRL_IP_CFG_SW_PATCH_VERSION) \
+    )
+    #error "Software Version Numbers of IntCtrl_Ip.h and IntCtrl_Ip_Cfg.h are different"
 #endif
 
 #ifndef DISABLE_MCAL_INTERMODULE_ASR_CHECK
-/* Checks against Mcal.h */
-#if ((CDD_PLATFORM_INTCTRL_IP_AR_RELEASE_MAJOR_VERSION != MCAL_AR_RELEASE_MAJOR_VERSION) ||        \
-     (CDD_PLATFORM_INTCTRL_IP_AR_RELEASE_MINOR_VERSION != MCAL_AR_RELEASE_MINOR_VERSION))
-#error "AUTOSAR Version Numbers of IntCtrl_Ip.h and Mcal.h are different"
-#endif
+    /* Checks against Mcal.h */
+    #if ((CDD_PLATFORM_INTCTRL_IP_AR_RELEASE_MAJOR_VERSION != MCAL_AR_RELEASE_MAJOR_VERSION) || \
+         (CDD_PLATFORM_INTCTRL_IP_AR_RELEASE_MINOR_VERSION != MCAL_AR_RELEASE_MINOR_VERSION) \
+        )
+        #error "AUTOSAR Version Numbers of IntCtrl_Ip.h and Mcal.h are different"
+    #endif
 #endif
 
 /*==================================================================================================
 *                                      FUNCTION PROTOTYPES
 ==================================================================================================*/
 
+
 #if defined(__cplusplus)
 extern "C" {
 #endif /* __cplusplus*/
 
-#if (PLATFORM_IP_ENABLE_INT_CTRL == STD_ON)
+#if  (PLATFORM_IP_ENABLE_INT_CTRL == STD_ON)
 #define PLATFORM_START_SEC_CODE
 #include "Platform_MemMap.h"
 
@@ -104,7 +105,8 @@ extern "C" {
  * @api
  *
  * */
-IntCtrl_Ip_StatusType IntCtrl_Ip_Init(const IntCtrl_Ip_CtrlConfigType* pIntCtrlCtrlConfig);
+IntCtrl_Ip_StatusType IntCtrl_Ip_Init(const IntCtrl_Ip_CtrlConfigType *pIntCtrlCtrlConfig);
+
 
 /**
  * @brief         Installs a handler for an IRQ.
@@ -120,7 +122,8 @@ IntCtrl_Ip_StatusType IntCtrl_Ip_Init(const IntCtrl_Ip_CtrlConfigType* pIntCtrlC
  * @api
  *
  * */
-void IntCtrl_Ip_InstallHandler(IRQn_Type eIrqNumber, const IntCtrl_Ip_IrqHandlerType pfNewHandler,
+void IntCtrl_Ip_InstallHandler(IRQn_Type eIrqNumber,
+                               const IntCtrl_Ip_IrqHandlerType pfNewHandler,
                                IntCtrl_Ip_IrqHandlerType* const pfOldHandler);
 
 /**
@@ -194,6 +197,7 @@ uint8 IntCtrl_Ip_GetPriority(IRQn_Type eIrqNumber);
  * */
 void IntCtrl_Ip_ClearPending(IRQn_Type eIrqNumber);
 
+
 #if (INT_CTRL_IP_STANDALONE_APIS == STD_ON)
 /**
  * @brief         Sets the pending flag for an interrupt request.
@@ -243,6 +247,7 @@ boolean IntCtrl_Ip_GetActive(IRQn_Type eIrqNumber);
 #define PLATFORM_STOP_SEC_CODE
 #include "Platform_MemMap.h"
 #endif /* PLATFORM_IP_ENABLE_INT_CTRL == STD_ON */
+
 
 #if defined(__cplusplus)
 }

@@ -40,43 +40,43 @@
  */
 
 /**
- * @page misra_violations MISRA-C:2012 violations
- *
- * @section [global]
- * Violates MISRA 2012 Advisory Rule 2.3, local typedef not referenced
- * The SoC header defines typedef for all modules.
- *
- * @section [global]
- * Violates MISRA 2012 Advisory Rule 2.5, local macro not referenced
- * The SoC header defines macros for all modules and registers.
- *
- * @section [global]
- * Violates MISRA 2012 Advisory Directive 4.9, Function-like macro
- * These are generated macros used for accessing the bit-fields from registers.
- *
- * @section [global]
- * Violates MISRA 2012 Required Rule 5.1, identifier clash
- * The supported compilers use more than 31 significant characters for identifiers.
- *
- * @section [global]
- * Violates MISRA 2012 Required Rule 5.2, identifier clash
- * The supported compilers use more than 31 significant characters for identifiers.
- *
- * @section [global]
- * Violates MISRA 2012 Required Rule 5.4, identifier clash
- * The supported compilers use more than 31 significant characters for identifiers.
- *
- * @section [global]
- * Violates MISRA 2012 Required Rule 5.5, identifier clash
- * The supported compilers use more than 31 significant characters for identifiers.
- *
- * @section [global]
- * Violates MISRA 2012 Required Rule 21.1, defined macro '__I' is reserved to the compiler
- * This type qualifier is needed to ensure correct I/O access and addressing.
- */
+* @page misra_violations MISRA-C:2012 violations
+*
+* @section [global]
+* Violates MISRA 2012 Advisory Rule 2.3, local typedef not referenced
+* The SoC header defines typedef for all modules.
+*
+* @section [global]
+* Violates MISRA 2012 Advisory Rule 2.5, local macro not referenced
+* The SoC header defines macros for all modules and registers.
+*
+* @section [global]
+* Violates MISRA 2012 Advisory Directive 4.9, Function-like macro
+* These are generated macros used for accessing the bit-fields from registers.
+*
+* @section [global]
+* Violates MISRA 2012 Required Rule 5.1, identifier clash
+* The supported compilers use more than 31 significant characters for identifiers.
+*
+* @section [global]
+* Violates MISRA 2012 Required Rule 5.2, identifier clash
+* The supported compilers use more than 31 significant characters for identifiers.
+*
+* @section [global]
+* Violates MISRA 2012 Required Rule 5.4, identifier clash
+* The supported compilers use more than 31 significant characters for identifiers.
+*
+* @section [global]
+* Violates MISRA 2012 Required Rule 5.5, identifier clash
+* The supported compilers use more than 31 significant characters for identifiers.
+*
+* @section [global]
+* Violates MISRA 2012 Required Rule 21.1, defined macro '__I' is reserved to the compiler
+* This type qualifier is needed to ensure correct I/O access and addressing.
+*/
 
 /* Prevention from multiple including the same memory map */
-#if !defined(S32K148_PCC_H_) /* Check if memory map has not been already included */
+#if !defined(S32K148_PCC_H_)  /* Check if memory map has not been already included */
 #define S32K148_PCC_H_
 
 #include "S32K148_COMMON.h"
@@ -91,32 +91,25 @@
  */
 
 /** PCC - Size of Registers Arrays */
-#define PCC_PCCn_COUNT 122u
+#define PCC_PCCn_COUNT                            122u
 
 /** PCC - Register Layout Typedef */
 typedef struct {
-    __IO uint32_t PCCn[PCC_PCCn_COUNT]; /**< PCC FTFC Register..PCC ENET Register, array offset:
-                                           0x0, array step: 0x4 */
+  __IO uint32_t PCCn[PCC_PCCn_COUNT];              /**< PCC FTFC Register..PCC ENET Register, array offset: 0x0, array step: 0x4 */
 } PCC_Type, *PCC_MemMapPtr;
 
 /** Number of instances of the PCC module. */
-#define PCC_INSTANCE_COUNT (1u)
+#define PCC_INSTANCE_COUNT                       (1u)
 
 /* PCC - Peripheral instance base addresses */
 /** Peripheral PCC base address */
-#define IP_PCC_BASE (0x40065000u)
+#define IP_PCC_BASE                              (0x40065000u)
 /** Peripheral PCC base pointer */
-#define IP_PCC ((PCC_Type*)IP_PCC_BASE)
+#define IP_PCC                                   ((PCC_Type *)IP_PCC_BASE)
 /** Array initializer of PCC peripheral base addresses */
-#define IP_PCC_BASE_ADDRS                                                                          \
-    {                                                                                              \
-        IP_PCC_BASE                                                                                \
-    }
+#define IP_PCC_BASE_ADDRS                        { IP_PCC_BASE }
 /** Array initializer of PCC peripheral base pointers */
-#define IP_PCC_BASE_PTRS                                                                           \
-    {                                                                                              \
-        IP_PCC                                                                                     \
-    }
+#define IP_PCC_BASE_PTRS                         { IP_PCC }
 
 /* ----------------------------------------------------------------------------
    -- PCC Register Masks
@@ -130,30 +123,30 @@ typedef struct {
 /*! @name PCCn - PCC FTFC Register..PCC ENET Register */
 /*! @{ */
 
-#define PCC_PCCn_PCD_MASK (0x7U)
-#define PCC_PCCn_PCD_SHIFT (0U)
-#define PCC_PCCn_PCD_WIDTH (3U)
-#define PCC_PCCn_PCD(x) (((uint32_t)(((uint32_t)(x)) << PCC_PCCn_PCD_SHIFT)) & PCC_PCCn_PCD_MASK)
+#define PCC_PCCn_PCD_MASK                        (0x7U)
+#define PCC_PCCn_PCD_SHIFT                       (0U)
+#define PCC_PCCn_PCD_WIDTH                       (3U)
+#define PCC_PCCn_PCD(x)                          (((uint32_t)(((uint32_t)(x)) << PCC_PCCn_PCD_SHIFT)) & PCC_PCCn_PCD_MASK)
 
-#define PCC_PCCn_FRAC_MASK (0x8U)
-#define PCC_PCCn_FRAC_SHIFT (3U)
-#define PCC_PCCn_FRAC_WIDTH (1U)
-#define PCC_PCCn_FRAC(x) (((uint32_t)(((uint32_t)(x)) << PCC_PCCn_FRAC_SHIFT)) & PCC_PCCn_FRAC_MASK)
+#define PCC_PCCn_FRAC_MASK                       (0x8U)
+#define PCC_PCCn_FRAC_SHIFT                      (3U)
+#define PCC_PCCn_FRAC_WIDTH                      (1U)
+#define PCC_PCCn_FRAC(x)                         (((uint32_t)(((uint32_t)(x)) << PCC_PCCn_FRAC_SHIFT)) & PCC_PCCn_FRAC_MASK)
 
-#define PCC_PCCn_PCS_MASK (0x7000000U)
-#define PCC_PCCn_PCS_SHIFT (24U)
-#define PCC_PCCn_PCS_WIDTH (3U)
-#define PCC_PCCn_PCS(x) (((uint32_t)(((uint32_t)(x)) << PCC_PCCn_PCS_SHIFT)) & PCC_PCCn_PCS_MASK)
+#define PCC_PCCn_PCS_MASK                        (0x7000000U)
+#define PCC_PCCn_PCS_SHIFT                       (24U)
+#define PCC_PCCn_PCS_WIDTH                       (3U)
+#define PCC_PCCn_PCS(x)                          (((uint32_t)(((uint32_t)(x)) << PCC_PCCn_PCS_SHIFT)) & PCC_PCCn_PCS_MASK)
 
-#define PCC_PCCn_CGC_MASK (0x40000000U)
-#define PCC_PCCn_CGC_SHIFT (30U)
-#define PCC_PCCn_CGC_WIDTH (1U)
-#define PCC_PCCn_CGC(x) (((uint32_t)(((uint32_t)(x)) << PCC_PCCn_CGC_SHIFT)) & PCC_PCCn_CGC_MASK)
+#define PCC_PCCn_CGC_MASK                        (0x40000000U)
+#define PCC_PCCn_CGC_SHIFT                       (30U)
+#define PCC_PCCn_CGC_WIDTH                       (1U)
+#define PCC_PCCn_CGC(x)                          (((uint32_t)(((uint32_t)(x)) << PCC_PCCn_CGC_SHIFT)) & PCC_PCCn_CGC_MASK)
 
-#define PCC_PCCn_PR_MASK (0x80000000U)
-#define PCC_PCCn_PR_SHIFT (31U)
-#define PCC_PCCn_PR_WIDTH (1U)
-#define PCC_PCCn_PR(x) (((uint32_t)(((uint32_t)(x)) << PCC_PCCn_PR_SHIFT)) & PCC_PCCn_PR_MASK)
+#define PCC_PCCn_PR_MASK                         (0x80000000U)
+#define PCC_PCCn_PR_SHIFT                        (31U)
+#define PCC_PCCn_PR_WIDTH                        (1U)
+#define PCC_PCCn_PR(x)                           (((uint32_t)(((uint32_t)(x)) << PCC_PCCn_PR_SHIFT)) & PCC_PCCn_PR_MASK)
 /*! @} */
 
 /*!
@@ -201,8 +194,9 @@ typedef struct {
 #define PCC_QSPI_INDEX 118
 #define PCC_ENET_INDEX 121
 
+
 /*!
  * @}
  */ /* end of group PCC_Peripheral_Access_Layer */
 
-#endif /* #if !defined(S32K148_PCC_H_) */
+#endif  /* #if !defined(S32K148_PCC_H_) */

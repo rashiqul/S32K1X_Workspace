@@ -1,7 +1,7 @@
 /*==================================================================================================
 *   Project              : RTD AUTOSAR 4.7
 *   Platform             : CORTEXM
-*   Peripheral           :
+*   Peripheral           : 
 *   Dependencies         : none
 *
 *   Autosar Version      : 4.7.0
@@ -12,29 +12,31 @@
 *
 *   Copyright 2020-2025 NXP
 *
-*   NXP Confidential and Proprietary. This software is owned or controlled by NXP and may only be
-*   used strictly in accordance with the applicable license terms.  By expressly
-*   accepting such terms or by downloading, installing, activating and/or otherwise
-*   using the software, you are agreeing that you have read, and that you agree to
-*   comply with and are bound by, such license terms.  If you do not agree to be
+*   NXP Confidential and Proprietary. This software is owned or controlled by NXP and may only be 
+*   used strictly in accordance with the applicable license terms.  By expressly 
+*   accepting such terms or by downloading, installing, activating and/or otherwise 
+*   using the software, you are agreeing that you have read, and that you agree to 
+*   comply with and are bound by, such license terms.  If you do not agree to be 
 *   bound by the applicable license terms, then you may not retain, install,
 *   activate or otherwise use the software.
 ==================================================================================================*/
 
 /**
- *   @file       Clock_Ip_DividerTrigger.c
- *   @version    3.0.0
- *
- *   @brief   CLOCK driver implementations.
- *   @details CLOCK driver implementations.
- *
- *   @addtogroup CLOCK_DRIVER Clock Ip Driver
- *   @{
- */
+*   @file       Clock_Ip_DividerTrigger.c
+*   @version    3.0.0
+*
+*   @brief   CLOCK driver implementations.
+*   @details CLOCK driver implementations.
+*
+*   @addtogroup CLOCK_DRIVER Clock Ip Driver
+*   @{
+*/
+
 
 #ifdef __cplusplus
-extern "C" {
+extern "C"{
 #endif
+
 
 /*==================================================================================================
 *                                          INCLUDE FILES
@@ -48,39 +50,36 @@ extern "C" {
 /*==================================================================================================
                                SOURCE FILE VERSION INFORMATION
 ==================================================================================================*/
-#define CLOCK_IP_DIVIDERTRIGGER_VENDOR_ID_C 43
-#define CLOCK_IP_DIVIDERTRIGGER_AR_RELEASE_MAJOR_VERSION_C 4
-#define CLOCK_IP_DIVIDERTRIGGER_AR_RELEASE_MINOR_VERSION_C 7
-#define CLOCK_IP_DIVIDERTRIGGER_AR_RELEASE_REVISION_VERSION_C 0
-#define CLOCK_IP_DIVIDERTRIGGER_SW_MAJOR_VERSION_C 3
-#define CLOCK_IP_DIVIDERTRIGGER_SW_MINOR_VERSION_C 0
-#define CLOCK_IP_DIVIDERTRIGGER_SW_PATCH_VERSION_C 0
+#define CLOCK_IP_DIVIDERTRIGGER_VENDOR_ID_C                      43
+#define CLOCK_IP_DIVIDERTRIGGER_AR_RELEASE_MAJOR_VERSION_C       4
+#define CLOCK_IP_DIVIDERTRIGGER_AR_RELEASE_MINOR_VERSION_C       7
+#define CLOCK_IP_DIVIDERTRIGGER_AR_RELEASE_REVISION_VERSION_C    0
+#define CLOCK_IP_DIVIDERTRIGGER_SW_MAJOR_VERSION_C               3
+#define CLOCK_IP_DIVIDERTRIGGER_SW_MINOR_VERSION_C               0
+#define CLOCK_IP_DIVIDERTRIGGER_SW_PATCH_VERSION_C               0
 
 /*==================================================================================================
 *                                     FILE VERSION CHECKS
 ==================================================================================================*/
 /* Check if Clock_Ip_DividerTrigger.c file and Clock_Ip_Private.h file are of the same vendor */
 #if (CLOCK_IP_DIVIDERTRIGGER_VENDOR_ID_C != CLOCK_IP_PRIVATE_VENDOR_ID)
-#error "Clock_Ip_DividerTrigger.c and Clock_Ip_Private.h have different vendor ids"
+    #error "Clock_Ip_DividerTrigger.c and Clock_Ip_Private.h have different vendor ids"
 #endif
 
-/* Check if Clock_Ip_DividerTrigger.c file and Clock_Ip_Private.h file are of the same Autosar
- * version */
-#if ((CLOCK_IP_DIVIDERTRIGGER_AR_RELEASE_MAJOR_VERSION_C !=                                        \
-      CLOCK_IP_PRIVATE_AR_RELEASE_MAJOR_VERSION) ||                                                \
-     (CLOCK_IP_DIVIDERTRIGGER_AR_RELEASE_MINOR_VERSION_C !=                                        \
-      CLOCK_IP_PRIVATE_AR_RELEASE_MINOR_VERSION) ||                                                \
-     (CLOCK_IP_DIVIDERTRIGGER_AR_RELEASE_REVISION_VERSION_C !=                                     \
-      CLOCK_IP_PRIVATE_AR_RELEASE_REVISION_VERSION))
-#error "AutoSar Version Numbers of Clock_Ip_DividerTrigger.c and Clock_Ip_Private.h are different"
+/* Check if Clock_Ip_DividerTrigger.c file and Clock_Ip_Private.h file are of the same Autosar version */
+#if ((CLOCK_IP_DIVIDERTRIGGER_AR_RELEASE_MAJOR_VERSION_C != CLOCK_IP_PRIVATE_AR_RELEASE_MAJOR_VERSION) || \
+     (CLOCK_IP_DIVIDERTRIGGER_AR_RELEASE_MINOR_VERSION_C != CLOCK_IP_PRIVATE_AR_RELEASE_MINOR_VERSION) || \
+     (CLOCK_IP_DIVIDERTRIGGER_AR_RELEASE_REVISION_VERSION_C != CLOCK_IP_PRIVATE_AR_RELEASE_REVISION_VERSION) \
+    )
+    #error "AutoSar Version Numbers of Clock_Ip_DividerTrigger.c and Clock_Ip_Private.h are different"
 #endif
 
-/* Check if Clock_Ip_DividerTrigger.c file and Clock_Ip_Private.h file are of the same Software
- * version */
-#if ((CLOCK_IP_DIVIDERTRIGGER_SW_MAJOR_VERSION_C != CLOCK_IP_PRIVATE_SW_MAJOR_VERSION) ||          \
-     (CLOCK_IP_DIVIDERTRIGGER_SW_MINOR_VERSION_C != CLOCK_IP_PRIVATE_SW_MINOR_VERSION) ||          \
-     (CLOCK_IP_DIVIDERTRIGGER_SW_PATCH_VERSION_C != CLOCK_IP_PRIVATE_SW_PATCH_VERSION))
-#error "Software Version Numbers of Clock_Ip_DividerTrigger.c and Clock_Ip_Private.h are different"
+/* Check if Clock_Ip_DividerTrigger.c file and Clock_Ip_Private.h file are of the same Software version */
+#if ((CLOCK_IP_DIVIDERTRIGGER_SW_MAJOR_VERSION_C != CLOCK_IP_PRIVATE_SW_MAJOR_VERSION) || \
+     (CLOCK_IP_DIVIDERTRIGGER_SW_MINOR_VERSION_C != CLOCK_IP_PRIVATE_SW_MINOR_VERSION) || \
+     (CLOCK_IP_DIVIDERTRIGGER_SW_PATCH_VERSION_C != CLOCK_IP_PRIVATE_SW_PATCH_VERSION) \
+    )
+    #error "Software Version Numbers of Clock_Ip_DividerTrigger.c and Clock_Ip_Private.h are different"
 #endif
 
 /*==================================================================================================
@@ -106,6 +105,7 @@ extern "C" {
 /*==================================================================================================
 *                                        GLOBAL VARIABLES
 ==================================================================================================*/
+
 
 /*==================================================================================================
 *                                    GLOBAL FUNCTION PROTOTYPES
@@ -139,6 +139,7 @@ static void Clock_Ip_Callback_DividerTriggerEmpty(Clock_Ip_DividerTriggerConfigT
     /* No implementation */
 }
 
+
 /*==================================================================================================
 *                                        GLOBAL FUNCTIONS
 ==================================================================================================*/
@@ -155,18 +156,20 @@ static void Clock_Ip_Callback_DividerTriggerEmpty(Clock_Ip_DividerTriggerConfigT
 #define MCU_START_SEC_CONST_UNSPECIFIED
 #include "Mcu_MemMap.h"
 
-const Clock_Ip_DividerTriggerCallbackType
-    Clock_Ip_axDividerTriggerCallbacks[CLOCK_IP_DIVIDERTRIGGER_CALLBACKS_COUNT] = {
-        {
-            &Clock_Ip_Callback_DividerTriggerEmpty, /* Configure */
-            &Clock_Ip_Callback_DividerTriggerEmpty, /* Trigger Update */
-        },
+const Clock_Ip_DividerTriggerCallbackType Clock_Ip_axDividerTriggerCallbacks[CLOCK_IP_DIVIDERTRIGGER_CALLBACKS_COUNT] =
+{
+    {
+        &Clock_Ip_Callback_DividerTriggerEmpty,                  /* Configure */
+        &Clock_Ip_Callback_DividerTriggerEmpty,                  /* Trigger Update */
+    },
 };
 
 /* Clock stop constant section data */
 #define MCU_STOP_SEC_CONST_UNSPECIFIED
 
 #include "Mcu_MemMap.h"
+
+
 
 #ifdef __cplusplus
 }

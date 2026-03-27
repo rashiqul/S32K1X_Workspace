@@ -1,7 +1,7 @@
 /*==================================================================================================
 *   Project              : RTD AUTOSAR 4.7
 *   Platform             : CORTEXM
-*   Peripheral           :
+*   Peripheral           : 
 *   Dependencies         : none
 *
 *   Autosar Version      : 4.7.0
@@ -22,19 +22,21 @@
 ==================================================================================================*/
 
 /**
- *   @file       Clock_Ip_Cfg.c
- *   @version    3.0.0
- *
- *   @brief   AUTOSAR Mcu - Post-Build(PB) configuration file code template.
- *   @details Code template for Post-Build(PB) configuration file generation.
- *
- *   @addtogroup CLOCK_DRIVER_CONFIGURATION Clock Driver
- *   @{
- */
+*   @file       Clock_Ip_Cfg.c
+*   @version    3.0.0
+*
+*   @brief   AUTOSAR Mcu - Post-Build(PB) configuration file code template.
+*   @details Code template for Post-Build(PB) configuration file generation.
+*
+*   @addtogroup CLOCK_DRIVER_CONFIGURATION Clock Driver
+*   @{
+*/
+
 
 #ifdef __cplusplus
-extern "C" {
+extern "C"{
 #endif
+
 
 /*==================================================================================================
                                          INCLUDE FILES
@@ -42,47 +44,50 @@ extern "C" {
  2) needed interfaces from external units
  3) internal and external interfaces from this unit
 ==================================================================================================*/
-#include "Clock_Ip_Private.h"
 #include "Std_Types.h"
+#include "Clock_Ip_Private.h"
 
 /*==================================================================================================
 *                              SOURCE FILE VERSION INFORMATION
 ==================================================================================================*/
-#define CLOCK_IP_CFG_VENDOR_ID_C 43
-#define CLOCK_IP_CFG_AR_RELEASE_MAJOR_VERSION_C 4
-#define CLOCK_IP_CFG_AR_RELEASE_MINOR_VERSION_C 7
-#define CLOCK_IP_CFG_AR_RELEASE_REVISION_VERSION_C 0
-#define CLOCK_IP_CFG_SW_MAJOR_VERSION_C 3
-#define CLOCK_IP_CFG_SW_MINOR_VERSION_C 0
-#define CLOCK_IP_CFG_SW_PATCH_VERSION_C 0
+#define CLOCK_IP_CFG_VENDOR_ID_C                      43
+#define CLOCK_IP_CFG_AR_RELEASE_MAJOR_VERSION_C       4
+#define CLOCK_IP_CFG_AR_RELEASE_MINOR_VERSION_C       7
+#define CLOCK_IP_CFG_AR_RELEASE_REVISION_VERSION_C    0
+#define CLOCK_IP_CFG_SW_MAJOR_VERSION_C               3
+#define CLOCK_IP_CFG_SW_MINOR_VERSION_C               0
+#define CLOCK_IP_CFG_SW_PATCH_VERSION_C               0
 
 /*==================================================================================================
 *                                     FILE VERSION CHECKS
 ==================================================================================================*/
 #ifndef DISABLE_MCAL_INTERMODULE_ASR_CHECK
 /* Check if source file and Std_Types.h file are of the same Autosar version */
-#if ((CLOCK_IP_CFG_AR_RELEASE_MAJOR_VERSION_C != STD_AR_RELEASE_MAJOR_VERSION) ||                  \
-     (CLOCK_IP_CFG_AR_RELEASE_MINOR_VERSION_C != STD_AR_RELEASE_MINOR_VERSION))
-#error "AutoSar Version Numbers of Clock_Ip_Cfg.c and Std_Types.h are different"
+#if ((CLOCK_IP_CFG_AR_RELEASE_MAJOR_VERSION_C != STD_AR_RELEASE_MAJOR_VERSION) || \
+     (CLOCK_IP_CFG_AR_RELEASE_MINOR_VERSION_C != STD_AR_RELEASE_MINOR_VERSION) \
+    )
+    #error "AutoSar Version Numbers of Clock_Ip_Cfg.c and Std_Types.h are different"
 #endif
-#endif /* DISABLE_MCAL_INTERMODULE_ASR_CHECK */
+#endif    /* DISABLE_MCAL_INTERMODULE_ASR_CHECK */
 /* Check if source file and Clock_Ip_Private.h file are of the same vendor */
 #if (CLOCK_IP_CFG_VENDOR_ID_C != CLOCK_IP_PRIVATE_VENDOR_ID)
-#error "Clock_Ip_Cfg.c and Clock_Ip_Private.h have different vendor ids"
+    #error "Clock_Ip_Cfg.c and Clock_Ip_Private.h have different vendor ids"
 #endif
 
 /* Check if source file and Clock_Ip_Private.h file are of the same Autosar version */
-#if ((CLOCK_IP_CFG_AR_RELEASE_MAJOR_VERSION_C != CLOCK_IP_PRIVATE_AR_RELEASE_MAJOR_VERSION) ||     \
-     (CLOCK_IP_CFG_AR_RELEASE_MINOR_VERSION_C != CLOCK_IP_PRIVATE_AR_RELEASE_MINOR_VERSION) ||     \
-     (CLOCK_IP_CFG_AR_RELEASE_REVISION_VERSION_C != CLOCK_IP_PRIVATE_AR_RELEASE_REVISION_VERSION))
-#error "AutoSar Version Numbers of Clock_Ip_Cfg.c and Clock_Ip_Private.h are different"
+#if ((CLOCK_IP_CFG_AR_RELEASE_MAJOR_VERSION_C != CLOCK_IP_PRIVATE_AR_RELEASE_MAJOR_VERSION) || \
+     (CLOCK_IP_CFG_AR_RELEASE_MINOR_VERSION_C != CLOCK_IP_PRIVATE_AR_RELEASE_MINOR_VERSION) || \
+     (CLOCK_IP_CFG_AR_RELEASE_REVISION_VERSION_C != CLOCK_IP_PRIVATE_AR_RELEASE_REVISION_VERSION) \
+    )
+    #error "AutoSar Version Numbers of Clock_Ip_Cfg.c and Clock_Ip_Private.h are different"
 #endif
 
 /* Check if source file and Clock_Ip_Private.h file are of the same Software version */
-#if ((CLOCK_IP_CFG_SW_MAJOR_VERSION_C != CLOCK_IP_PRIVATE_SW_MAJOR_VERSION) ||                     \
-     (CLOCK_IP_CFG_SW_MINOR_VERSION_C != CLOCK_IP_PRIVATE_SW_MINOR_VERSION) ||                     \
-     (CLOCK_IP_CFG_SW_PATCH_VERSION_C != CLOCK_IP_PRIVATE_SW_PATCH_VERSION))
-#error "Software Version Numbers of Clock_Ip_Cfg.c and Clock_Ip_Private.h are different"
+#if ((CLOCK_IP_CFG_SW_MAJOR_VERSION_C != CLOCK_IP_PRIVATE_SW_MAJOR_VERSION) || \
+     (CLOCK_IP_CFG_SW_MINOR_VERSION_C != CLOCK_IP_PRIVATE_SW_MINOR_VERSION) || \
+     (CLOCK_IP_CFG_SW_PATCH_VERSION_C != CLOCK_IP_PRIVATE_SW_PATCH_VERSION) \
+    )
+    #error "Software Version Numbers of Clock_Ip_Cfg.c and Clock_Ip_Private.h are different"
 #endif
 
 /*==================================================================================================
@@ -109,6 +114,8 @@ extern "C" {
                                        GLOBAL VARIABLES
 ==================================================================================================*/
 
+
+
 /*==================================================================================================
                                    LOCAL FUNCTION PROTOTYPES
 ==================================================================================================*/
@@ -126,3 +133,5 @@ extern "C" {
 #endif
 
 /** @} */
+
+

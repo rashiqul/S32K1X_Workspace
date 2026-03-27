@@ -26,7 +26,7 @@
 **
 **     Revisions:
 **
-**     - rev. 1.0 Taru Shree 15-May-20  Initial release based on
+**     - rev. 1.0 Taru Shree 15-May-20  Initial release based on 
 **                                      RM Rev.12.1.
 **     - rev. 1.1 Taru Shree 26-Feb-21  1)Initial release based on
 **                                      RM Rev.13.
@@ -34,13 +34,13 @@
 **                                      renamed as FTFM_Read_Collision.
 **                                      3)In address definitions,
 **                                      instances are prefixed with "IP".
-**     - rev. 1.2 Taru Shree 10-Feb-22  1)Initial release based on
+**     - rev. 1.2 Taru Shree 10-Feb-22  1)Initial release based on 
 **                                      RM Rev.14.
 **                                      2)FLEXCAN-
-**                                      FLEXCAN_RAMn_COUNT’s value is
+**                                      FLEXCAN_RAMn_COUNT’s value is 
 **                                      changed from 256 to 128.
 **                                      3)SCG-
-**                                      FIRCCSR register: FIRCERR bitfield
+**                                      FIRCCSR register: FIRCERR bitfield 
 **                                      is removed.
 **
 ** ###################################################################
@@ -59,7 +59,7 @@
  */
 
 /* Prevention from multiple including the same memory map */
-#if !defined(S32K142W_H_) /* Check if memory map has not been already included */
+#if !defined(S32K142W_H_)  /* Check if memory map has not been already included */
 #define S32K142W_H_
 
 /* ----------------------------------------------------------------------------
@@ -105,4 +105,4 @@
 #include "S32K142W_TRGMUX.h"
 #include "S32K142W_WDOG.h"
 
-#endif /* #if !defined(S32K142W_H_) */
+#endif  /* #if !defined(S32K142W_H_) */

@@ -1,7 +1,7 @@
 /*==================================================================================================
 *   Project              : RTD AUTOSAR 4.7
 *   Platform             : CORTEXM
-*   Peripheral           :
+*   Peripheral           : 
 *   Dependencies         : none
 *
 *   Autosar Version      : 4.7.0
@@ -12,29 +12,31 @@
 *
 *   Copyright 2020-2025 NXP
 *
-*   NXP Confidential and Proprietary. This software is owned or controlled by NXP and may only be
-*   used strictly in accordance with the applicable license terms.  By expressly
-*   accepting such terms or by downloading, installing, activating and/or otherwise
-*   using the software, you are agreeing that you have read, and that you agree to
-*   comply with and are bound by, such license terms.  If you do not agree to be
+*   NXP Confidential and Proprietary. This software is owned or controlled by NXP and may only be 
+*   used strictly in accordance with the applicable license terms.  By expressly 
+*   accepting such terms or by downloading, installing, activating and/or otherwise 
+*   using the software, you are agreeing that you have read, and that you agree to 
+*   comply with and are bound by, such license terms.  If you do not agree to be 
 *   bound by the applicable license terms, then you may not retain, install,
 *   activate or otherwise use the software.
 ==================================================================================================*/
 /**
- *   @file       Power_Ip_AEC.c
- *   @version    3.0.0
- *
- *   @brief
- *   @brief   POWER driver implementations.
- *   @details POWER driver implementations.
- *
- *   @addtogroup POWER_DRIVER Power Ip Driver
- *   @{
- */
+*   @file       Power_Ip_AEC.c
+*   @version    3.0.0
+*
+*   @brief
+*   @brief   POWER driver implementations.
+*   @details POWER driver implementations.
+*
+*   @addtogroup POWER_DRIVER Power Ip Driver
+*   @{
+*/
+
 
 #ifdef __cplusplus
-extern "C" {
+extern "C"{
 #endif
+
 
 /*==================================================================================================
                                          INCLUDE FILES
@@ -52,13 +54,13 @@ extern "C" {
 /*==================================================================================================
                                SOURCE FILE VERSION INFORMATION
 ==================================================================================================*/
-#define POWER_IP_AEC_VENDOR_ID_C 43
-#define POWER_IP_AEC_AR_RELEASE_MAJOR_VERSION_C 4
-#define POWER_IP_AEC_AR_RELEASE_MINOR_VERSION_C 7
-#define POWER_IP_AEC_AR_RELEASE_REVISION_VERSION_C 0
-#define POWER_IP_AEC_SW_MAJOR_VERSION_C 3
-#define POWER_IP_AEC_SW_MINOR_VERSION_C 0
-#define POWER_IP_AEC_SW_PATCH_VERSION_C 0
+#define POWER_IP_AEC_VENDOR_ID_C                      43
+#define POWER_IP_AEC_AR_RELEASE_MAJOR_VERSION_C       4
+#define POWER_IP_AEC_AR_RELEASE_MINOR_VERSION_C       7
+#define POWER_IP_AEC_AR_RELEASE_REVISION_VERSION_C    0
+#define POWER_IP_AEC_SW_MAJOR_VERSION_C               3
+#define POWER_IP_AEC_SW_MINOR_VERSION_C               0
+#define POWER_IP_AEC_SW_PATCH_VERSION_C               0
 
 /*==================================================================================================
 *                                     FILE VERSION CHECKS
@@ -66,73 +68,83 @@ extern "C" {
 #if (defined(POWER_IP_AECRESETCONFIG_API) && (STD_ON == POWER_IP_AECRESETCONFIG_API))
 /* Check if Power_Ip_AEC.c file and Aec_Ip.h file are of the same vendor */
 #if (POWER_IP_AEC_VENDOR_ID_C != AEC_IP_VENDOR_ID)
-#error "Power_Ip_AEC.c and Aec_Ip.h have different vendor ids"
+    #error "Power_Ip_AEC.c and Aec_Ip.h have different vendor ids"
 #endif
 
 /* Check if Power_Ip_AEC.c file and Aec_Ip.h file are of the same Autosar version */
-#if ((POWER_IP_AEC_AR_RELEASE_MAJOR_VERSION_C != AEC_IP_AR_RELEASE_MAJOR_VERSION) ||               \
-     (POWER_IP_AEC_AR_RELEASE_MINOR_VERSION_C != AEC_IP_AR_RELEASE_MINOR_VERSION) ||               \
-     (POWER_IP_AEC_AR_RELEASE_REVISION_VERSION_C != AEC_IP_AR_RELEASE_REVISION_VERSION))
-#error "AutoSar Version Numbers of Power_Ip_AEC.c and Aec_Ip.h are different"
+#if ((POWER_IP_AEC_AR_RELEASE_MAJOR_VERSION_C != AEC_IP_AR_RELEASE_MAJOR_VERSION) || \
+     (POWER_IP_AEC_AR_RELEASE_MINOR_VERSION_C != AEC_IP_AR_RELEASE_MINOR_VERSION) || \
+     (POWER_IP_AEC_AR_RELEASE_REVISION_VERSION_C != AEC_IP_AR_RELEASE_REVISION_VERSION) \
+    )
+    #error "AutoSar Version Numbers of Power_Ip_AEC.c and Aec_Ip.h are different"
 #endif
 
 /* Check if Power_Ip_AEC.c file and Aec_Ip.h file are of the same Software version */
-#if ((POWER_IP_AEC_SW_MAJOR_VERSION_C != AEC_IP_SW_MAJOR_VERSION) ||                               \
-     (POWER_IP_AEC_SW_MINOR_VERSION_C != AEC_IP_SW_MINOR_VERSION) ||                               \
-     (POWER_IP_AEC_SW_PATCH_VERSION_C != AEC_IP_SW_PATCH_VERSION))
-#error "Software Version Numbers of Power_Ip_AEC.c and Aec_Ip.h are different"
+#if ((POWER_IP_AEC_SW_MAJOR_VERSION_C != AEC_IP_SW_MAJOR_VERSION) || \
+     (POWER_IP_AEC_SW_MINOR_VERSION_C != AEC_IP_SW_MINOR_VERSION) || \
+     (POWER_IP_AEC_SW_PATCH_VERSION_C != AEC_IP_SW_PATCH_VERSION) \
+    )
+    #error "Software Version Numbers of Power_Ip_AEC.c and Aec_Ip.h are different"
 #endif
 #endif
 
 /* Check if Power_Ip_AEC.c file and Power_Ip_AEC.h file are of the same vendor */
 #if (POWER_IP_AEC_VENDOR_ID_C != POWER_IP_AEC_VENDOR_ID)
-#error "Power_Ip_AEC.c and Power_Ip_AEC.h have different vendor ids"
+    #error "Power_Ip_AEC.c and Power_Ip_AEC.h have different vendor ids"
 #endif
 
 /* Check if Power_Ip_AEC.c file and Power_Ip_AEC.h file are of the same Autosar version */
-#if ((POWER_IP_AEC_AR_RELEASE_MAJOR_VERSION_C != POWER_IP_AEC_AR_RELEASE_MAJOR_VERSION) ||         \
-     (POWER_IP_AEC_AR_RELEASE_MINOR_VERSION_C != POWER_IP_AEC_AR_RELEASE_MINOR_VERSION) ||         \
-     (POWER_IP_AEC_AR_RELEASE_REVISION_VERSION_C != POWER_IP_AEC_AR_RELEASE_REVISION_VERSION))
-#error "AutoSar Version Numbers of Power_Ip_AEC.c and Power_Ip_AEC.h are different"
+#if ((POWER_IP_AEC_AR_RELEASE_MAJOR_VERSION_C != POWER_IP_AEC_AR_RELEASE_MAJOR_VERSION) || \
+     (POWER_IP_AEC_AR_RELEASE_MINOR_VERSION_C != POWER_IP_AEC_AR_RELEASE_MINOR_VERSION) || \
+     (POWER_IP_AEC_AR_RELEASE_REVISION_VERSION_C != POWER_IP_AEC_AR_RELEASE_REVISION_VERSION) \
+    )
+    #error "AutoSar Version Numbers of Power_Ip_AEC.c and Power_Ip_AEC.h are different"
 #endif
 
 /* Check if Power_Ip_AEC.c file and Power_Ip_AEC.h file are of the same Software version */
-#if ((POWER_IP_AEC_SW_MAJOR_VERSION_C != POWER_IP_AEC_SW_MAJOR_VERSION) ||                         \
-     (POWER_IP_AEC_SW_MINOR_VERSION_C != POWER_IP_AEC_SW_MINOR_VERSION) ||                         \
-     (POWER_IP_AEC_SW_PATCH_VERSION_C != POWER_IP_AEC_SW_PATCH_VERSION))
-#error "Software Version Numbers of Power_Ip_AEC.c and Power_Ip_AEC.h are different"
+#if ((POWER_IP_AEC_SW_MAJOR_VERSION_C != POWER_IP_AEC_SW_MAJOR_VERSION) || \
+     (POWER_IP_AEC_SW_MINOR_VERSION_C != POWER_IP_AEC_SW_MINOR_VERSION) || \
+     (POWER_IP_AEC_SW_PATCH_VERSION_C != POWER_IP_AEC_SW_PATCH_VERSION) \
+    )
+    #error "Software Version Numbers of Power_Ip_AEC.c and Power_Ip_AEC.h are different"
 #endif
 
 /* Check if Power_Ip_AEC.c file and Power_Ip_Private.h file are of the same vendor */
 #if (POWER_IP_AEC_VENDOR_ID_C != POWER_IP_PRIVATE_VENDOR_ID)
-#error "Power_Ip_AEC.c and Power_Ip_Private.h have different vendor ids"
+    #error "Power_Ip_AEC.c and Power_Ip_Private.h have different vendor ids"
 #endif
 
 /* Check if Power_Ip_AEC.c file and Power_Ip_Private.h file are of the same Autosar version */
-#if ((POWER_IP_AEC_AR_RELEASE_MAJOR_VERSION_C != POWER_IP_PRIVATE_AR_RELEASE_MAJOR_VERSION) ||     \
-     (POWER_IP_AEC_AR_RELEASE_MINOR_VERSION_C != POWER_IP_PRIVATE_AR_RELEASE_MINOR_VERSION) ||     \
-     (POWER_IP_AEC_AR_RELEASE_REVISION_VERSION_C != POWER_IP_PRIVATE_AR_RELEASE_REVISION_VERSION))
-#error "AutoSar Version Numbers of Power_Ip_AEC.c and Power_Ip_Private.h are different"
+#if ((POWER_IP_AEC_AR_RELEASE_MAJOR_VERSION_C != POWER_IP_PRIVATE_AR_RELEASE_MAJOR_VERSION) || \
+     (POWER_IP_AEC_AR_RELEASE_MINOR_VERSION_C != POWER_IP_PRIVATE_AR_RELEASE_MINOR_VERSION) || \
+     (POWER_IP_AEC_AR_RELEASE_REVISION_VERSION_C != POWER_IP_PRIVATE_AR_RELEASE_REVISION_VERSION) \
+    )
+    #error "AutoSar Version Numbers of Power_Ip_AEC.c and Power_Ip_Private.h are different"
 #endif
 
 /* Check if Power_Ip_AEC.c file and Power_Ip_Private.h file are of the same Software version */
-#if ((POWER_IP_AEC_SW_MAJOR_VERSION_C != POWER_IP_PRIVATE_SW_MAJOR_VERSION) ||                     \
-     (POWER_IP_AEC_SW_MINOR_VERSION_C != POWER_IP_PRIVATE_SW_MINOR_VERSION) ||                     \
-     (POWER_IP_AEC_SW_PATCH_VERSION_C != POWER_IP_PRIVATE_SW_PATCH_VERSION))
-#error "Software Version Numbers of Power_Ip_AEC.c and Power_Ip_Private.h are different"
+#if ((POWER_IP_AEC_SW_MAJOR_VERSION_C != POWER_IP_PRIVATE_SW_MAJOR_VERSION) || \
+     (POWER_IP_AEC_SW_MINOR_VERSION_C != POWER_IP_PRIVATE_SW_MINOR_VERSION) || \
+     (POWER_IP_AEC_SW_PATCH_VERSION_C != POWER_IP_PRIVATE_SW_PATCH_VERSION) \
+    )
+    #error "Software Version Numbers of Power_Ip_AEC.c and Power_Ip_Private.h are different"
 #endif
+
 
 /*==================================================================================================
                           LOCAL TYPEDEFS (STRUCTURES, UNIONS, ENUMS)
 ==================================================================================================*/
 
+
 /*==================================================================================================
                                        LOCAL MACROS
 ==================================================================================================*/
 
+
 /*==================================================================================================
                                        LOCAL CONSTANTS
 ==================================================================================================*/
+
 
 /*==================================================================================================
                                        LOCAL VARIABLES
@@ -142,6 +154,7 @@ extern "C" {
                                        GLOBAL CONSTANTS
 ==================================================================================================*/
 
+
 /*==================================================================================================
                                        GLOBAL VARIABLES
 ==================================================================================================*/
@@ -150,6 +163,7 @@ extern "C" {
                                    LOCAL FUNCTION PROTOTYPES
 ==================================================================================================*/
 
+
 /*==================================================================================================
                                        LOCAL FUNCTIONS
 ==================================================================================================*/
@@ -157,32 +171,34 @@ extern "C" {
 
 #include "Mcu_MemMap.h"
 
+
 /*==================================================================================================
                                        GLOBAL FUNCTIONS
 ==================================================================================================*/
 #if (defined(POWER_IP_AECRESETCONFIG_API) && (STD_ON == POWER_IP_AECRESETCONFIG_API))
 /**
- * @brief            This function configure reset generator (AEC_AE).
- * @details          This function configure reset generator (AEC_AE).
- *
- * @param[in]        ConfigPtr   Pointer to AEC configuration structure.
- *
- * @return           void
- *
- */
-void Power_Ip_AEC_Reset_Config(const Power_Ip_AEC_ConfigType* ConfigPtr)
+* @brief            This function configure reset generator (AEC_AE).
+* @details          This function configure reset generator (AEC_AE).
+*
+* @param[in]        ConfigPtr   Pointer to AEC configuration structure.
+*
+* @return           void
+*
+*/
+void Power_Ip_AEC_Reset_Config(const Power_Ip_AEC_ConfigType * ConfigPtr)
 {
     uint32 TmpAe;
 
-    Aec_Ip_SpiRead((uint32)(&(IP_AEC_AE->RSTGEN_CFG)), POWER_IP_DATAWIDTH_16, &TmpAe);
+    Aec_Ip_SpiRead((uint32)(&(IP_AEC_AE->RSTGEN_CFG)),POWER_IP_DATAWIDTH_16,&TmpAe);
     TmpAe = (uint16)(TmpAe & (uint16)(~AEC_AE_RSTGEN_CFG_RSTGEN_CFG_MASK));
     TmpAe = (uint16)(TmpAe | (uint16)(ConfigPtr->Rstgencfg));
-    Aec_Ip_SpiWrite((uint32)(&(IP_AEC_AE->RSTGEN_CFG)), POWER_IP_DATAWIDTH_16, TmpAe);
+    Aec_Ip_SpiWrite((uint32)(&(IP_AEC_AE->RSTGEN_CFG)),POWER_IP_DATAWIDTH_16,TmpAe);
 }
 #endif
 
 #define MCU_STOP_SEC_CODE
 #include "Mcu_MemMap.h"
+
 
 #ifdef __cplusplus
 }

@@ -1,7 +1,7 @@
 /*==================================================================================================
 *   Project              : RTD AUTOSAR 4.7
 *   Platform             : CORTEXM
-*   Peripheral           :
+*   Peripheral           : 
 *   Dependencies         : none
 *
 *   Autosar Version      : 4.7.0
@@ -12,11 +12,11 @@
 *
 *   Copyright 2020-2025 NXP
 *
-*   NXP Confidential and Proprietary. This software is owned or controlled by NXP and may only be
-*   used strictly in accordance with the applicable license terms.  By expressly
-*   accepting such terms or by downloading, installing, activating and/or otherwise
-*   using the software, you are agreeing that you have read, and that you agree to
-*   comply with and are bound by, such license terms.  If you do not agree to be
+*   NXP Confidential and Proprietary. This software is owned or controlled by NXP and may only be 
+*   used strictly in accordance with the applicable license terms.  By expressly 
+*   accepting such terms or by downloading, installing, activating and/or otherwise 
+*   using the software, you are agreeing that you have read, and that you agree to 
+*   comply with and are bound by, such license terms.  If you do not agree to be 
 *   bound by the applicable license terms, then you may not retain, install,
 *   activate or otherwise use the software.
 ==================================================================================================*/
@@ -36,8 +36,11 @@
 */
 
 #ifdef __cplusplus
-extern "C" {
+extern "C"{
 #endif
+
+
+
 
 /*==================================================================================================
 *                                          INCLUDE FILES
@@ -50,45 +53,47 @@ extern "C" {
 *                               SOURCE FILE VERSION INFORMATION
 ==================================================================================================*/
 
-#define MCU_ENVCFG_VENDOR_ID 43
-#define MCU_ENVCFG_AR_RELEASE_MAJOR_VERSION 4
-#define MCU_ENVCFG_AR_RELEASE_MINOR_VERSION 7
-#define MCU_ENVCFG_AR_RELEASE_REVISION_VERSION 0
-#define MCU_ENVCFG_SW_MAJOR_VERSION 3
-#define MCU_ENVCFG_SW_MINOR_VERSION 0
-#define MCU_ENVCFG_SW_PATCH_VERSION 0
+#define MCU_ENVCFG_VENDOR_ID                       43
+#define MCU_ENVCFG_AR_RELEASE_MAJOR_VERSION        4
+#define MCU_ENVCFG_AR_RELEASE_MINOR_VERSION        7
+#define MCU_ENVCFG_AR_RELEASE_REVISION_VERSION     0
+#define MCU_ENVCFG_SW_MAJOR_VERSION                3
+#define MCU_ENVCFG_SW_MINOR_VERSION                0
+#define MCU_ENVCFG_SW_PATCH_VERSION                0
 
 /*==================================================================================================
 *                               SOURCE FILE VERSION INFORMATION
 ==================================================================================================*/
 
+
 /*==================================================================================================
 *                                      FILE VERSION CHECKS
 ==================================================================================================*/
+
 
 /*==================================================================================================
 *                                           CONSTANTS
 ==================================================================================================*/
 
+
 /*==================================================================================================
 *                                       DEFINES AND MACROS
 ==================================================================================================*/
-#define MCU_PARAM_CHECK (MCU_DEV_ERROR_DETECT)
+#define MCU_PARAM_CHECK                 (MCU_DEV_ERROR_DETECT)
 
 #if (MCU_PARAM_CHECK != MCU_DEV_ERROR_DETECT)
-#error                                                                                             \
-    "Cannot disable parameter check (MCU_PARAM_CHECK) when development error detection is enabled (MCU_DEV_ERROR_DETECT) as per [SWS_BSW_00042]"
+    #error "Cannot disable parameter check (MCU_PARAM_CHECK) when development error detection is enabled (MCU_DEV_ERROR_DETECT) as per [SWS_BSW_00042]"
 #endif
 
 /* high level defines */
-#define MCU_VALIDATE_GLOBAL_CALL (MCU_DEV_ERROR_DETECT)
+#define MCU_VALIDATE_GLOBAL_CALL        (MCU_DEV_ERROR_DETECT)
 
 #if (MCU_VALIDATE_GLOBAL_CALL != MCU_DEV_ERROR_DETECT)
-#error                                                                                             \
-    "Cannot disable API validation (MCU_VALIDATE_GLOBAL_CALL) when development error detection is enabled (MCU_DEV_ERROR_DETECT) as per [SWS_BSW_00042]"
+    #error "Cannot disable API validation (MCU_VALIDATE_GLOBAL_CALL) when development error detection is enabled (MCU_DEV_ERROR_DETECT) as per [SWS_BSW_00042]"
 #endif
 
-#define MCU_PARAM_UNUSED(param) ((void)((param)))
+
+#define MCU_PARAM_UNUSED(param)         ((void)((param)))
 
 /*==================================================================================================
 *                                             ENUMS
@@ -102,9 +107,12 @@ extern "C" {
 *                                 GLOBAL VARIABLE DECLARATIONS
 ==================================================================================================*/
 
+
 /*==================================================================================================
 *                                     FUNCTION PROTOTYPES
 ==================================================================================================*/
+
+
 
 #ifdef __cplusplus
 }
@@ -112,3 +120,4 @@ extern "C" {
 
 /** @} */
 #endif /* MCU_ENVCFG_H */
+

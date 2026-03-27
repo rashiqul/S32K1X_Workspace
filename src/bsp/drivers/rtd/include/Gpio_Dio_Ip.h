@@ -12,11 +12,11 @@
 *
 *   Copyright 2020-2025 NXP
 *
-*   NXP Confidential and Proprietary. This software is owned or controlled by NXP and may only be
-*   used strictly in accordance with the applicable license terms.  By expressly
-*   accepting such terms or by downloading, installing, activating and/or otherwise
-*   using the software, you are agreeing that you have read, and that you agree to
-*   comply with and are bound by, such license terms.  If you do not agree to be
+*   NXP Confidential and Proprietary. This software is owned or controlled by NXP and may only be 
+*   used strictly in accordance with the applicable license terms.  By expressly 
+*   accepting such terms or by downloading, installing, activating and/or otherwise 
+*   using the software, you are agreeing that you have read, and that you agree to 
+*   comply with and are bound by, such license terms.  If you do not agree to be 
 *   bound by the applicable license terms, then you may not retain, install,
 *   activate or otherwise use the software.
 ==================================================================================================*/
@@ -25,11 +25,11 @@
 #define GPIO_DIO_IP_H
 
 /**
- *   @file @file Gpio_Dio_Ip.h
- *
- *   @defgroup DIO_IPL Dio IPL
- *   @{
- */
+*   @file @file Gpio_Dio_Ip.h
+*
+*   @defgroup DIO_IPL Dio IPL
+*   @{
+*/
 
 #if defined(__cplusplus)
 extern "C" {
@@ -41,71 +41,74 @@ extern "C" {
 * 2) needed interfaces from external units
 * 3) internal and external interfaces from this unit
 ==================================================================================================*/
-#include "Gpio_Dio_Ip_Cfg.h"
 #include "Std_Types.h"
+#include "Gpio_Dio_Ip_Cfg.h"
 
 /*=================================================================================================
 *                               SOURCE FILE VERSION INFORMATION
 =================================================================================================*/
 
-#define GPIO_DIO_IP_VENDOR_ID_H 43
-#define GPIO_DIO_IP_AR_RELEASE_MAJOR_VERSION_H 4
-#define GPIO_DIO_IP_AR_RELEASE_MINOR_VERSION_H 7
-#define GPIO_DIO_IP_AR_RELEASE_REVISION_VERSION_H 0
-#define GPIO_DIO_IP_SW_MAJOR_VERSION_H 3
-#define GPIO_DIO_IP_SW_MINOR_VERSION_H 0
-#define GPIO_DIO_IP_SW_PATCH_VERSION_H 0
+#define GPIO_DIO_IP_VENDOR_ID_H                     43
+#define GPIO_DIO_IP_AR_RELEASE_MAJOR_VERSION_H      4
+#define GPIO_DIO_IP_AR_RELEASE_MINOR_VERSION_H      7
+#define GPIO_DIO_IP_AR_RELEASE_REVISION_VERSION_H   0
+#define GPIO_DIO_IP_SW_MAJOR_VERSION_H              3
+#define GPIO_DIO_IP_SW_MINOR_VERSION_H              0
+#define GPIO_DIO_IP_SW_PATCH_VERSION_H              0
 
 /*=================================================================================================
                                       FILE VERSION CHECKS
 =================================================================================================*/
 #ifndef DISABLE_MCAL_INTERMODULE_ASR_CHECK
-/* Check if Gpio_Dio_Ip header file and Std_Types.h header file are of the same release version */
-#if ((GPIO_DIO_IP_AR_RELEASE_MAJOR_VERSION_H != STD_AR_RELEASE_MAJOR_VERSION) ||                   \
-     (GPIO_DIO_IP_AR_RELEASE_MINOR_VERSION_H != STD_AR_RELEASE_MINOR_VERSION))
-#error "AutoSar Version Numbers of Gpio_Dio_Ip.h and Std_Types.h are different"
-#endif
+    /* Check if Gpio_Dio_Ip header file and Std_Types.h header file are of the same release version */
+    #if ((GPIO_DIO_IP_AR_RELEASE_MAJOR_VERSION_H != STD_AR_RELEASE_MAJOR_VERSION) || \
+        (GPIO_DIO_IP_AR_RELEASE_MINOR_VERSION_H != STD_AR_RELEASE_MINOR_VERSION)     \
+        )
+        #error "AutoSar Version Numbers of Gpio_Dio_Ip.h and Std_Types.h are different"
+    #endif
 #endif
 
-/* Check if Gpio_Dio_Ip header file and Gpio_Dio_Ip_Cfg configuration header file are of the same
- * vendor */
+
+/* Check if Gpio_Dio_Ip header file and Gpio_Dio_Ip_Cfg configuration header file are of the same vendor */
 #if (GPIO_DIO_IP_VENDOR_ID_H != GPIO_DIO_IP_VENDOR_ID_CFG_H)
-#error "Gpio_Dio_Ip.h and Gpio_Dio_Ip_Cfg.h have different vendor ids"
+    #error "Gpio_Dio_Ip.h and Gpio_Dio_Ip_Cfg.h have different vendor ids"
 #endif
 
-/* Check if Gpio_Dio_Ip header file and Gpio_Dio_Ip_Cfg configuration header file are of the same
- * Autosar version */
-#if ((GPIO_DIO_IP_AR_RELEASE_MAJOR_VERSION_H != GPIO_DIO_IP_AR_RELEASE_MAJOR_VERSION_CFG_H) ||     \
-     (GPIO_DIO_IP_AR_RELEASE_MINOR_VERSION_H != GPIO_DIO_IP_AR_RELEASE_MINOR_VERSION_CFG_H) ||     \
-     (GPIO_DIO_IP_AR_RELEASE_REVISION_VERSION_H != GPIO_DIO_IP_AR_RELEASE_REVISION_VERSION_CFG_H))
-#error "AutoSar Version Numbers of Gpio_Dio_Ip.h and Gpio_Dio_Ip_Cfg.h are different"
+/* Check if Gpio_Dio_Ip header file and Gpio_Dio_Ip_Cfg configuration header file are of the same Autosar version */
+#if ((GPIO_DIO_IP_AR_RELEASE_MAJOR_VERSION_H    != GPIO_DIO_IP_AR_RELEASE_MAJOR_VERSION_CFG_H) || \
+     (GPIO_DIO_IP_AR_RELEASE_MINOR_VERSION_H    != GPIO_DIO_IP_AR_RELEASE_MINOR_VERSION_CFG_H) || \
+     (GPIO_DIO_IP_AR_RELEASE_REVISION_VERSION_H != GPIO_DIO_IP_AR_RELEASE_REVISION_VERSION_CFG_H) \
+    )
+    #error "AutoSar Version Numbers of Gpio_Dio_Ip.h and Gpio_Dio_Ip_Cfg.h are different"
 #endif
 
-/* Check if Gpio_Dio_Ip header file and Gpio_Dio_Ip_Cfg configuration header file are of the same
- * Software version */
-#if ((GPIO_DIO_IP_SW_MAJOR_VERSION_H != GPIO_DIO_IP_SW_MAJOR_VERSION_CFG_H) ||                     \
-     (GPIO_DIO_IP_SW_MINOR_VERSION_H != GPIO_DIO_IP_SW_MINOR_VERSION_CFG_H) ||                     \
-     (GPIO_DIO_IP_SW_PATCH_VERSION_H != GPIO_DIO_IP_SW_PATCH_VERSION_CFG_H))
-#error "Software Version Numbers of Gpio_Dio_Ip.h and Gpio_Dio_Ip_Cfg.h are different"
+/* Check if Gpio_Dio_Ip header file and Gpio_Dio_Ip_Cfg configuration header file are of the same Software version */
+#if ((GPIO_DIO_IP_SW_MAJOR_VERSION_H != GPIO_DIO_IP_SW_MAJOR_VERSION_CFG_H) || \
+     (GPIO_DIO_IP_SW_MINOR_VERSION_H != GPIO_DIO_IP_SW_MINOR_VERSION_CFG_H) || \
+     (GPIO_DIO_IP_SW_PATCH_VERSION_H != GPIO_DIO_IP_SW_PATCH_VERSION_CFG_H)    \
+    )
+    #error "Software Version Numbers of Gpio_Dio_Ip.h and Gpio_Dio_Ip_Cfg.h are different"
 #endif
 
 /*=================================================================================================
 *                                          CONSTANTS
 =================================================================================================*/
 
+
 /*=================================================================================================
 *                                      DEFINES AND MACROS
 =================================================================================================*/
-#define GPIO_DIO_IP_CHANNEL_MASK_U32 ((uint32)0x1FU)
-#define GPIO_DIO_IP_PORTID_SHIFT_U8 ((uint8)5U)
+#define GPIO_DIO_IP_CHANNEL_MASK_U32                                ((uint32)0x1FU)
+#define GPIO_DIO_IP_PORTID_SHIFT_U8                                 ((uint8)5U)
 
-#define GPIO_DIO_IP_PORT_U32(channel) ((uint32)((uint32)(channel) >> GPIO_DIO_IP_PORTID_SHIFT_U8))
+#define GPIO_DIO_IP_PORT_U32(channel)                               ((uint32)((uint32)(channel)>>GPIO_DIO_IP_PORTID_SHIFT_U8))
 
-#define GPIO_DIO_IP_CHANNEL_U32(channel) ((uint32)((uint32)(channel)&GPIO_DIO_IP_CHANNEL_MASK_U32))
+#define GPIO_DIO_IP_CHANNEL_U32(channel)                            ((uint32)((uint32)(channel)&GPIO_DIO_IP_CHANNEL_MASK_U32))
 
 /*=================================================================================================
 *                                             ENUMS
 =================================================================================================*/
+
 
 /*=================================================================================================
 *                                STRUCTURES AND OTHER TYPEDEFS
@@ -151,8 +154,12 @@ extern uint32 GpioBaseAdresses[GPIO_INSTANCE_COUNT];
  *        - 0: corresponding pin is set to LOW
  *        - 1: corresponding pin is set to HIGH
  */
-void Gpio_Dio_Ip_WritePin(GPIO_Type* const base, Gpio_Dio_Ip_PinsChannelType pin,
-                          Gpio_Dio_Ip_PinsLevelType value);
+void Gpio_Dio_Ip_WritePin
+(
+    GPIO_Type * const base,
+    Gpio_Dio_Ip_PinsChannelType pin,
+    Gpio_Dio_Ip_PinsLevelType value
+);
 
 /*!
  * @brief Write all pins of a port
@@ -165,7 +172,11 @@ void Gpio_Dio_Ip_WritePin(GPIO_Type* const base, Gpio_Dio_Ip_PinsChannelType pin
  *        - 0: corresponding pin is set to LOW
  *        - 1: corresponding pin is set to HIGH
  */
-void Gpio_Dio_Ip_WritePins(GPIO_Type* const base, Gpio_Dio_Ip_PinsChannelType pins);
+void Gpio_Dio_Ip_WritePins
+(
+    GPIO_Type * const base,
+    Gpio_Dio_Ip_PinsChannelType pins
+);
 
 /*!
  * @brief Get the current output from a port
@@ -179,7 +190,7 @@ void Gpio_Dio_Ip_WritePins(GPIO_Type* const base, Gpio_Dio_Ip_PinsChannelType pi
  *        - 0: corresponding pin is set to LOW
  *        - 1: corresponding pin is set to HIGH
  */
-Gpio_Dio_Ip_PinsChannelType Gpio_Dio_Ip_GetPinsOutput(const GPIO_Type* const base);
+Gpio_Dio_Ip_PinsChannelType Gpio_Dio_Ip_GetPinsOutput(const GPIO_Type * const base);
 
 /*!
  * @brief Write pins with 'Set' value
@@ -194,7 +205,11 @@ Gpio_Dio_Ip_PinsChannelType Gpio_Dio_Ip_GetPinsOutput(const GPIO_Type* const bas
  *        - 0: corresponding pin is unaffected
  *        - 1: corresponding pin is set to HIGH
  */
-void Gpio_Dio_Ip_SetPins(GPIO_Type* const base, Gpio_Dio_Ip_PinsChannelType pins);
+void Gpio_Dio_Ip_SetPins
+(
+    GPIO_Type * const base,
+    Gpio_Dio_Ip_PinsChannelType pins
+);
 
 /*!
  * @brief Write pins to 'Clear' value
@@ -209,7 +224,11 @@ void Gpio_Dio_Ip_SetPins(GPIO_Type* const base, Gpio_Dio_Ip_PinsChannelType pins
  *        - 0: corresponding pin is unaffected
  *        - 1: corresponding pin is cleared(set to LOW)
  */
-void Gpio_Dio_Ip_ClearPins(GPIO_Type* const base, Gpio_Dio_Ip_PinsChannelType pins);
+void Gpio_Dio_Ip_ClearPins
+(
+    GPIO_Type * const base,
+    Gpio_Dio_Ip_PinsChannelType pins
+);
 
 /*!
  * @brief Toggle pins value
@@ -223,7 +242,11 @@ void Gpio_Dio_Ip_ClearPins(GPIO_Type* const base, Gpio_Dio_Ip_PinsChannelType pi
  *        - 0: corresponding pin is unaffected
  *        - 1: corresponding pin is toggled
  */
-void Gpio_Dio_Ip_TogglePins(GPIO_Type* const base, Gpio_Dio_Ip_PinsChannelType pins);
+void Gpio_Dio_Ip_TogglePins
+(
+    GPIO_Type * const base,
+    Gpio_Dio_Ip_PinsChannelType pins
+);
 
 /*!
  * @brief Read input pins
@@ -237,7 +260,7 @@ void Gpio_Dio_Ip_TogglePins(GPIO_Type* const base, Gpio_Dio_Ip_PinsChannelType p
  *        - 0: corresponding pin is read as LOW
  *        - 1: corresponding pin is read as HIGH
  */
-Gpio_Dio_Ip_PinsChannelType Gpio_Dio_Ip_ReadPins(const GPIO_Type* const base);
+Gpio_Dio_Ip_PinsChannelType Gpio_Dio_Ip_ReadPins(const GPIO_Type * const base);
 
 /*!
  * @brief Read input pin
@@ -251,8 +274,8 @@ Gpio_Dio_Ip_PinsChannelType Gpio_Dio_Ip_ReadPins(const GPIO_Type* const base);
  *        - 0: corresponding pin is read as LOW
  *        - 1: corresponding pin is read as HIGH
  */
-Gpio_Dio_Ip_PinsLevelType Gpio_Dio_Ip_ReadPin(const GPIO_Type* const base,
-                                              Gpio_Dio_Ip_PinsChannelType pin);
+Gpio_Dio_Ip_PinsLevelType Gpio_Dio_Ip_ReadPin(const GPIO_Type * const base, Gpio_Dio_Ip_PinsChannelType pin);
+
 
 #define DIO_STOP_SEC_CODE
 #include "Dio_MemMap.h"

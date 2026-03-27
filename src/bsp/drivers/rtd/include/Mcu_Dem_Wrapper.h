@@ -1,7 +1,7 @@
 /*==================================================================================================
 *   Project              : RTD AUTOSAR 4.7
 *   Platform             : CORTEXM
-*   Peripheral           :
+*   Peripheral           : 
 *   Dependencies         : none
 *
 *   Autosar Version      : 4.7.0
@@ -12,11 +12,11 @@
 *
 *   Copyright 2020-2025 NXP
 *
-*   NXP Confidential and Proprietary. This software is owned or controlled by NXP and may only be
-*   used strictly in accordance with the applicable license terms.  By expressly
-*   accepting such terms or by downloading, installing, activating and/or otherwise
-*   using the software, you are agreeing that you have read, and that you agree to
-*   comply with and are bound by, such license terms.  If you do not agree to be
+*   NXP Confidential and Proprietary. This software is owned or controlled by NXP and may only be 
+*   used strictly in accordance with the applicable license terms.  By expressly 
+*   accepting such terms or by downloading, installing, activating and/or otherwise 
+*   using the software, you are agreeing that you have read, and that you agree to 
+*   comply with and are bound by, such license terms.  If you do not agree to be 
 *   bound by the applicable license terms, then you may not retain, install,
 *   activate or otherwise use the software.
 ==================================================================================================*/
@@ -36,8 +36,10 @@
 */
 
 #ifdef __cplusplus
-extern "C" {
+extern "C"{
 #endif
+
+
 
 /*==================================================================================================
 *                                          INCLUDE FILES
@@ -48,48 +50,50 @@ extern "C" {
 #include "Mcu_Cfg.h"
 
 #if (MCU_DISABLE_DEM_REPORT_ERROR_STATUS == STD_OFF)
-#include "Dem.h"
+  #include "Dem.h"
 #endif
 
 /*==================================================================================================
 *                               SOURCE FILE VERSION INFORMATION
 ==================================================================================================*/
-#define MCU_DEM_WRAPPER_VENDOR_ID 43
-#define MCU_DEM_WRAPPER_AR_RELEASE_MAJOR_VERSION 4
-#define MCU_DEM_WRAPPER_AR_RELEASE_MINOR_VERSION 7
-#define MCU_DEM_WRAPPER_AR_RELEASE_REVISION_VERSION 0
-#define MCU_DEM_WRAPPER_SW_MAJOR_VERSION 3
-#define MCU_DEM_WRAPPER_SW_MINOR_VERSION 0
-#define MCU_DEM_WRAPPER_SW_PATCH_VERSION 0
+#define MCU_DEM_WRAPPER_VENDOR_ID                       43
+#define MCU_DEM_WRAPPER_AR_RELEASE_MAJOR_VERSION        4
+#define MCU_DEM_WRAPPER_AR_RELEASE_MINOR_VERSION        7
+#define MCU_DEM_WRAPPER_AR_RELEASE_REVISION_VERSION     0
+#define MCU_DEM_WRAPPER_SW_MAJOR_VERSION                3
+#define MCU_DEM_WRAPPER_SW_MINOR_VERSION                0
+#define MCU_DEM_WRAPPER_SW_PATCH_VERSION                0
 
 /*==================================================================================================
 *                                     FILE VERSION CHECKS
 ==================================================================================================*/
 /* Check if header file and Mcu_Cfg.h file are of the same vendor */
 #if (MCU_DEM_WRAPPER_VENDOR_ID != MCU_CFG_VENDOR_ID)
-#error "Mcu_Dem_Wrapper.h and Mcu_Cfg.h have different vendor ids"
+    #error "Mcu_Dem_Wrapper.h and Mcu_Cfg.h have different vendor ids"
 #endif
 
 /* Check if header file and Mcu_Cfg.h file are of the same Autosar version */
-#if ((MCU_DEM_WRAPPER_AR_RELEASE_MAJOR_VERSION != MCU_CFG_AR_RELEASE_MAJOR_VERSION) ||             \
-     (MCU_DEM_WRAPPER_AR_RELEASE_MINOR_VERSION != MCU_CFG_AR_RELEASE_MINOR_VERSION) ||             \
-     (MCU_DEM_WRAPPER_AR_RELEASE_REVISION_VERSION != MCU_CFG_AR_RELEASE_REVISION_VERSION))
-#error "AutoSar Version Numbers of Mcu_Dem_Wrapper.h and Mcu_Cfg.h are different"
+#if ((MCU_DEM_WRAPPER_AR_RELEASE_MAJOR_VERSION != MCU_CFG_AR_RELEASE_MAJOR_VERSION) || \
+     (MCU_DEM_WRAPPER_AR_RELEASE_MINOR_VERSION != MCU_CFG_AR_RELEASE_MINOR_VERSION) || \
+     (MCU_DEM_WRAPPER_AR_RELEASE_REVISION_VERSION != MCU_CFG_AR_RELEASE_REVISION_VERSION) \
+    )
+    #error "AutoSar Version Numbers of Mcu_Dem_Wrapper.h and Mcu_Cfg.h are different"
 #endif
 
 /* Check if header file and Mcu_Cfg.h file are of the same Software version */
-#if ((MCU_DEM_WRAPPER_SW_MAJOR_VERSION != MCU_CFG_SW_MAJOR_VERSION) ||                             \
-     (MCU_DEM_WRAPPER_SW_MINOR_VERSION != MCU_CFG_SW_MINOR_VERSION) ||                             \
-     (MCU_DEM_WRAPPER_SW_PATCH_VERSION != MCU_CFG_SW_PATCH_VERSION))
-#error "Software Version Numbers of Mcu_Dem_Wrapper.h and Mcu_Cfg.h are different"
+#if ((MCU_DEM_WRAPPER_SW_MAJOR_VERSION != MCU_CFG_SW_MAJOR_VERSION) || \
+     (MCU_DEM_WRAPPER_SW_MINOR_VERSION != MCU_CFG_SW_MINOR_VERSION) || \
+     (MCU_DEM_WRAPPER_SW_PATCH_VERSION != MCU_CFG_SW_PATCH_VERSION) \
+    )
+    #error "Software Version Numbers of Mcu_Dem_Wrapper.h and Mcu_Cfg.h are different"
 #endif
 
 #ifndef DISABLE_MCAL_INTERMODULE_ASR_CHECK
 #if (MCU_DISABLE_DEM_REPORT_ERROR_STATUS == STD_OFF)
 /* Check if header file and Dem.h file are of the same Autosar version */
-#if ((MCU_DEM_WRAPPER_AR_RELEASE_MAJOR_VERSION != DEM_AR_RELEASE_MAJOR_VERSION) ||                 \
+#if ((MCU_DEM_WRAPPER_AR_RELEASE_MAJOR_VERSION != DEM_AR_RELEASE_MAJOR_VERSION) || \
      (MCU_DEM_WRAPPER_AR_RELEASE_MINOR_VERSION != DEM_AR_RELEASE_MINOR_VERSION))
-#error "AutoSar Version Numbers of Mcu_Dem_Wrapper.h and Dem.h are different"
+    #error "AutoSar Version Numbers of Mcu_Dem_Wrapper.h and Dem.h are different"
 #endif
 #endif
 #endif
@@ -101,8 +105,8 @@ extern "C" {
 *                                       DEFINES AND MACROS
 ==================================================================================================*/
 #if (MCU_DISABLE_DEM_REPORT_ERROR_STATUS == STD_OFF)
-#define Mcu_Macro_ReportDemTimeoutError() (Mcu_ReportDemTimeoutError())
-#define Mcu_Macro_ReportDemSwitchModeError() (Mcu_ReportDemSwitchModeError())
+    #define Mcu_Macro_ReportDemTimeoutError()  (Mcu_ReportDemTimeoutError())
+    #define Mcu_Macro_ReportDemSwitchModeError()     (Mcu_ReportDemSwitchModeError())
 #endif /* (MCU_DISABLE_DEM_REPORT_ERROR_STATUS == STD_OFF) */
 
 /*==================================================================================================
@@ -125,7 +129,7 @@ extern "C" {
 #include "Mcu_MemMap.h"
 
 #if (MCU_DISABLE_DEM_REPORT_ERROR_STATUS == STD_OFF)
-/*!
+ /*!
  * @brief    Reports timeout error to DEM.
  *
  * Checks if the timeout expired and reports the timeout error to DEM if that is the case.
@@ -136,7 +140,7 @@ extern "C" {
  */
 void Mcu_ReportDemTimeoutError(void);
 
-/*!
+ /*!
  * @brief    Reports failed switch mode to DEM.
  *
  * Directly reports the clock multiplexer switch error to DEM.
@@ -158,3 +162,4 @@ void Mcu_ReportDemSwitchModeError(void);
 
 /** @} */
 #endif /* MCU_DEM_WRAPPER_H */
+

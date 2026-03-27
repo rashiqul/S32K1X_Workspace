@@ -12,26 +12,26 @@
 *
 * Copyright 2020-2025 NXP
 *
-* NXP Confidential and Proprietary. This software is owned or controlled by NXP and may only be
-*   used strictly in accordance with the applicable license terms.  By expressly
-*   accepting such terms or by downloading, installing, activating and/or otherwise
-*   using the software, you are agreeing that you have read, and that you agree to
-*   comply with and are bound by, such license terms.  If you do not agree to be
+* NXP Confidential and Proprietary. This software is owned or controlled by NXP and may only be 
+*   used strictly in accordance with the applicable license terms.  By expressly 
+*   accepting such terms or by downloading, installing, activating and/or otherwise 
+*   using the software, you are agreeing that you have read, and that you agree to 
+*   comply with and are bound by, such license terms.  If you do not agree to be 
 *   bound by the applicable license terms, then you may not retain, install,
 *   activate or otherwise use the software.
 ==================================================================================================*/
 /**
- *   @file
- *
- *   @addtogroup OSIF_DRIVER
- *   @{
- */
+*   @file
+*
+*   @addtogroup OSIF_DRIVER
+*   @{
+*/
 
 #ifndef OSIF_ARCHCFG_H
 #define OSIF_ARCHCFG_H
 
 #ifdef __cplusplus
-extern "C" {
+extern "C"{
 #endif
 
 /*==================================================================================================
@@ -44,13 +44,13 @@ extern "C" {
 /*==================================================================================================
 *                              SOURCE FILE VERSION INFORMATION
 ==================================================================================================*/
-#define OSIF_ARCHCFG_VENDOR_ID 43
-#define OSIF_ARCHCFG_AR_RELEASE_MAJOR_VERSION 4
-#define OSIF_ARCHCFG_AR_RELEASE_MINOR_VERSION 7
-#define OSIF_ARCHCFG_AR_RELEASE_REVISION_VERSION 0
-#define OSIF_ARCHCFG_SW_MAJOR_VERSION 3
-#define OSIF_ARCHCFG_SW_MINOR_VERSION 0
-#define OSIF_ARCHCFG_SW_PATCH_VERSION 0
+#define OSIF_ARCHCFG_VENDOR_ID                    43
+#define OSIF_ARCHCFG_AR_RELEASE_MAJOR_VERSION     4
+#define OSIF_ARCHCFG_AR_RELEASE_MINOR_VERSION     7
+#define OSIF_ARCHCFG_AR_RELEASE_REVISION_VERSION  0
+#define OSIF_ARCHCFG_SW_MAJOR_VERSION             3
+#define OSIF_ARCHCFG_SW_MINOR_VERSION             0
+#define OSIF_ARCHCFG_SW_PATCH_VERSION             0
 
 /*==================================================================================================
 *                                     FILE VERSION CHECKS
@@ -59,18 +59,20 @@ extern "C" {
 /*==================================================================================================
 *                                            CONSTANTS
 ==================================================================================================*/
-#define MCAL_ARM_MARCH (16)   /* for ARM M4 Thumb2      */
-#define MCAL_ARM_AARCH32 (32) /* for ARM ARCH32         */
-#define MCAL_ARM_AARCH64 (64) /* for ARM ARCH64         */
-#define MCAL_ARM_RARCH (52)   /* for ARM R platform     */
+#define MCAL_ARM_MARCH      (16)  /* for ARM M4 Thumb2      */
+#define MCAL_ARM_AARCH32    (32)  /* for ARM ARCH32         */
+#define MCAL_ARM_AARCH64    (64)  /* for ARM ARCH64         */
+#define MCAL_ARM_RARCH      (52)  /* for ARM R platform     */
 
 /*==================================================================================================
 *                                      DEFINES AND MACROS
 ==================================================================================================*/
-/* ARM_MARCH - is used to specify the ARM architecture MCAL_MARCH, MCAL_RARCH, MCAL_AARCH32,
- * MCAL_AARCH64 */
-#define MCAL_PLATFORM_ARM MCAL_ARM_MARCH
+/* ARM_MARCH - is used to specify the ARM architecture MCAL_MARCH, MCAL_RARCH, MCAL_AARCH32, MCAL_AARCH64 */
+#define MCAL_PLATFORM_ARM  MCAL_ARM_MARCH
+        
+    
 
+ 
 /*==================================================================================================
 *                                             ENUMS
 ==================================================================================================*/
@@ -91,8 +93,10 @@ extern "C" {
 *                                    FUNCTION PROTOTYPES
 ==================================================================================================*/
 
+
 #ifdef __cplusplus
 }
 #endif /* __cplusplus */
 #endif /* OSIF_ARCHCFG_H */
 /** @} */
+

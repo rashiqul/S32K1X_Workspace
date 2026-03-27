@@ -12,11 +12,11 @@
 *
 * Copyright 2020-2025 NXP
 *
-* NXP Confidential and Proprietary. This software is owned or controlled by NXP and may only be
-*   used strictly in accordance with the applicable license terms.  By expressly
-*   accepting such terms or by downloading, installing, activating and/or otherwise
-*   using the software, you are agreeing that you have read, and that you agree to
-*   comply with and are bound by, such license terms.  If you do not agree to be
+* NXP Confidential and Proprietary. This software is owned or controlled by NXP and may only be 
+*   used strictly in accordance with the applicable license terms.  By expressly 
+*   accepting such terms or by downloading, installing, activating and/or otherwise 
+*   using the software, you are agreeing that you have read, and that you agree to 
+*   comply with and are bound by, such license terms.  If you do not agree to be 
 *   bound by the applicable license terms, then you may not retain, install,
 *   activate or otherwise use the software.
 ==================================================================================================*/
@@ -24,15 +24,16 @@
 #define OSIF_H
 
 /**
- *   @file
- *
- *   @addtogroup osif_drv
- *   @{
- */
+*   @file
+*
+*   @addtogroup osif_drv
+*   @{
+*/
 
 #ifdef __cplusplus
-extern "C" {
+extern "C"{
 #endif
+
 
 /*==================================================================================================
 *                                          INCLUDE FILES
@@ -40,55 +41,57 @@ extern "C" {
 * 2) needed interfaces from external units
 * 3) internal and external interfaces from this unit
 ==================================================================================================*/
-#include "OsIf_Cfg.h"
 #include "OsIf_Internal.h"
+#include "OsIf_Cfg.h"
 
 /*==================================================================================================
 *                                 SOURCE FILE VERSION INFORMATION
 ==================================================================================================*/
-#define OSIF_VENDOR_ID 43
-#define OSIF_AR_RELEASE_MAJOR_VERSION 4
-#define OSIF_AR_RELEASE_MINOR_VERSION 7
-#define OSIF_AR_RELEASE_REVISION_VERSION 0
-#define OSIF_SW_MAJOR_VERSION 3
-#define OSIF_SW_MINOR_VERSION 0
-#define OSIF_SW_PATCH_VERSION 0
+#define OSIF_VENDOR_ID                    43
+#define OSIF_AR_RELEASE_MAJOR_VERSION     4
+#define OSIF_AR_RELEASE_MINOR_VERSION     7
+#define OSIF_AR_RELEASE_REVISION_VERSION  0
+#define OSIF_SW_MAJOR_VERSION             3
+#define OSIF_SW_MINOR_VERSION             0
+#define OSIF_SW_PATCH_VERSION             0
 
 /*==================================================================================================
 *                                       FILE VERSION CHECKS
 ==================================================================================================*/
 /* Check if OsIf.h file and OsIf_Internal.h file are of the same vendor */
 #if (OSIF_VENDOR_ID != OSIF_INTERNAL_VENDOR_ID)
-#error "OsIf.h and OsIf_Internal.h have different vendor ids"
+    #error "OsIf.h and OsIf_Internal.h have different vendor ids"
 #endif
 /* Check if OsIf.h file and OsIf_Internal.h file are of the same Autosar version */
-#if ((OSIF_AR_RELEASE_MAJOR_VERSION != OSIF_INTERNAL_AR_RELEASE_MAJOR_VERSION) ||                  \
-     (OSIF_AR_RELEASE_MINOR_VERSION != OSIF_INTERNAL_AR_RELEASE_MINOR_VERSION) ||                  \
+#if ((OSIF_AR_RELEASE_MAJOR_VERSION    != OSIF_INTERNAL_AR_RELEASE_MAJOR_VERSION) || \
+     (OSIF_AR_RELEASE_MINOR_VERSION    != OSIF_INTERNAL_AR_RELEASE_MINOR_VERSION) || \
      (OSIF_AR_RELEASE_REVISION_VERSION != OSIF_INTERNAL_AR_RELEASE_REVISION_VERSION))
-#error "AUTOSAR Version Numbers of OsIf.h and OsIf_Internal.h are different"
+    #error "AUTOSAR Version Numbers of OsIf.h and OsIf_Internal.h are different"
 #endif
 /* Check if OsIf.h file and OsIf_Internal.h file are of the same Software version */
-#if ((OSIF_SW_MAJOR_VERSION != OSIF_INTERNAL_SW_MAJOR_VERSION) ||                                  \
-     (OSIF_SW_MINOR_VERSION != OSIF_INTERNAL_SW_MINOR_VERSION) ||                                  \
-     (OSIF_SW_PATCH_VERSION != OSIF_INTERNAL_SW_PATCH_VERSION))
-#error "Software Version Numbers of OsIf.h and OsIf_Internal.h are different"
+#if ((OSIF_SW_MAJOR_VERSION != OSIF_INTERNAL_SW_MAJOR_VERSION) || \
+     (OSIF_SW_MINOR_VERSION != OSIF_INTERNAL_SW_MINOR_VERSION) || \
+     (OSIF_SW_PATCH_VERSION != OSIF_INTERNAL_SW_PATCH_VERSION) \
+    )
+    #error "Software Version Numbers of OsIf.h and OsIf_Internal.h are different"
 #endif
 
 /* Check if OsIf.h file and OsIf_Cfg.h file are of the same vendor */
 #if (OSIF_VENDOR_ID != OSIF_CFG_VENDOR_ID)
-#error "OsIf.h and OsIf_Cfg.h have different vendor ids"
+    #error "OsIf.h and OsIf_Cfg.h have different vendor ids"
 #endif
 /* Check if OsIf.h file and OsIf_Cfg.h file are of the same Autosar version */
-#if ((OSIF_AR_RELEASE_MAJOR_VERSION != OSIF_CFG_AR_RELEASE_MAJOR_VERSION) ||                       \
-     (OSIF_AR_RELEASE_MINOR_VERSION != OSIF_CFG_AR_RELEASE_MINOR_VERSION) ||                       \
+#if ((OSIF_AR_RELEASE_MAJOR_VERSION    != OSIF_CFG_AR_RELEASE_MAJOR_VERSION) || \
+     (OSIF_AR_RELEASE_MINOR_VERSION    != OSIF_CFG_AR_RELEASE_MINOR_VERSION) || \
      (OSIF_AR_RELEASE_REVISION_VERSION != OSIF_CFG_AR_RELEASE_REVISION_VERSION))
-#error "AUTOSAR Version Numbers of OsIf.h and OsIf_Cfg.h are different"
+    #error "AUTOSAR Version Numbers of OsIf.h and OsIf_Cfg.h are different"
 #endif
 /* Check if OsIf.h file and OsIf_Cfg.h file are of the same Software version */
-#if ((OSIF_SW_MAJOR_VERSION != OSIF_CFG_SW_MAJOR_VERSION) ||                                       \
-     (OSIF_SW_MINOR_VERSION != OSIF_CFG_SW_MINOR_VERSION) ||                                       \
-     (OSIF_SW_PATCH_VERSION != OSIF_CFG_SW_PATCH_VERSION))
-#error "Software Version Numbers of OsIf.h and OsIf_Cfg.h are different"
+#if ((OSIF_SW_MAJOR_VERSION != OSIF_CFG_SW_MAJOR_VERSION) || \
+     (OSIF_SW_MINOR_VERSION != OSIF_CFG_SW_MINOR_VERSION) || \
+     (OSIF_SW_PATCH_VERSION != OSIF_CFG_SW_PATCH_VERSION) \
+    )
+    #error "Software Version Numbers of OsIf.h and OsIf_Cfg.h are different"
 #endif
 
 /*==================================================================================================
@@ -108,12 +111,9 @@ extern "C" {
  * Counter type.
  *
  * The dummy counter of Osif is meant as a loop-counter timeout mechanism that requirement no
- * additional resource (hardware and software). It was meant to replace the typical loop timeout of
- decrementing
- * a variable each time the loop was executed until the counter reaches zero. The dummy counter is
- implemented
- * in order to have a dummy implementation for the timeout mechanisms used in the drivers without
- changing the RTD code
+ * additional resource (hardware and software). It was meant to replace the typical loop timeout of decrementing
+ * a variable each time the loop was executed until the counter reaches zero. The dummy counter is implemented 
+ * in order to have a dummy implementation for the timeout mechanisms used in the drivers without changing the RTD code
  *
    @latexonly
     \begin{left}
@@ -121,12 +121,9 @@ extern "C" {
     \end{left}
    @endlatexonly
  *
- * The system counter of Osif is a loop-counter timeout mechanism that uses real system
- resources(hardware and software).
- * By using the system counter a typical loop timeout mechanism is used, decrementing a variable
- each time the loop is executed
- * until the counter reaches zero. The system counter is meant to be used in an OS-specific
- environment.
+ * The system counter of Osif is a loop-counter timeout mechanism that uses real system resources(hardware and software).
+ * By using the system counter a typical loop timeout mechanism is used, decrementing a variable each time the loop is executed
+ * until the counter reaches zero. The system counter is meant to be used in an OS-specific environment.
  *
    @latexonly
     \begin{left}
@@ -134,10 +131,8 @@ extern "C" {
     \end{left}
    @endlatexonly
  *
- * The custom counter of Osif is meant as a loop-counter timeout mechanism that gives the
- possibility for the user
- * to define it's own time counter system. The user will have to define his own APIs to cover the
- necessary functionalities.
+ * The custom counter of Osif is meant as a loop-counter timeout mechanism that gives the possibility for the user
+ * to define it's own time counter system. The user will have to define his own APIs to cover the necessary functionalities.
  * The necessary APIs to be implemented can be found in the header file OsIf_Timer_Custom.h
  *
    @latexonly
@@ -154,16 +149,17 @@ extern "C" {
     \end{left}
    @endlatexonly
  */
-typedef enum {
-    /*! @cond */
+typedef enum
+{
+/*! @cond */
     OSIF_COUNTER_DUMMY, /**< dummy counter */
-#if (OSIF_USE_SYSTEM_TIMER == STD_ON)
+#if (OSIF_USE_SYSTEM_TIMER == STD_ON) 
     OSIF_COUNTER_SYSTEM, /**< system counter */
-#endif                   /* (OSIF_USE_SYSTEM_TIMER == STD_ON) */
+#endif /* (OSIF_USE_SYSTEM_TIMER == STD_ON) */
 #if (OSIF_USE_CUSTOM_TIMER == STD_ON)
     OSIF_COUNTER_CUSTOM /**< custom counter */
-#endif                  /* (OSIF_USE_CUSTOM_TIMER == STD_ON) */
-    /*! @endcond */
+#endif /* (OSIF_USE_CUSTOM_TIMER == STD_ON) */
+/*! @endcond */
 } OsIf_CounterType;
 
 /*==================================================================================================
@@ -208,21 +204,24 @@ uint32 OsIf_GetCounter(OsIf_CounterType SelectedCounter);
  * @param[in] SelectedCounter the type of counter to use
  * @return the elapsed time
  */
-uint32 OsIf_GetElapsed(uint32* const CurrentRef, OsIf_CounterType SelectedCounter);
+uint32 OsIf_GetElapsed(uint32 * const CurrentRef,
+                       OsIf_CounterType SelectedCounter
+                      );
 
 /*!
  * @brief Set a new frequency used for time conversion (microseconds to ticks)
  *
  * This function stores a new timer frequency used for time conversion computations.
- * NOTE: When the user changes the frequency in real time using the SetTimerFrequency API, it is
- * important to call the getcounter API again to ensure accurate results. If getcounter API is not
- * called after a frequency change, the GetElapsed API will return values that may not be accurate.
- * To maintain precise measurements, always call getcounter after modifying the frequency.
+ * NOTE: When the user changes the frequency in real time using the SetTimerFrequency API, it is important to call the getcounter API
+ * again to ensure accurate results. If getcounter API is not called after a frequency change, the GetElapsed API will return values
+ * that may not be accurate. To maintain precise measurements, always call getcounter after modifying the frequency.
  *
  * @param[in] Freq the new frequency
  * @param[in] SelectedCounter the type of counter to use
  */
-void OsIf_SetTimerFrequency(uint32 Freq, OsIf_CounterType SelectedCounter);
+void OsIf_SetTimerFrequency(uint32 Freq,
+                            OsIf_CounterType SelectedCounter
+                           );
 
 /*!
  * @brief Convert microseconds to ticks
@@ -233,7 +232,9 @@ void OsIf_SetTimerFrequency(uint32 Freq, OsIf_CounterType SelectedCounter);
  * @param[in] SelectedCounter the type of counter to use
  * @return the equivalent value in ticks
  */
-uint32 OsIf_MicrosToTicks(uint32 Micros, OsIf_CounterType SelectedCounter);
+uint32 OsIf_MicrosToTicks(uint32 Micros,
+                          OsIf_CounterType SelectedCounter
+                         );
 
 /*!
  * @brief Get physical core id

@@ -25,24 +25,24 @@
 **     mail:                 support@nxp.com
 **
 **     Revisions:
-**     - rev. 1.0 Taru Shree 01-March-21  Initial release based on
+**     - rev. 1.0 Taru Shree 01-March-21  Initial release based on 
 **                                        S32K1xx RM Rev 13.
-**
-**     - rev. 1.1 Taru Shree 24-Jan-21  1)Initial release based on
+**    
+**     - rev. 1.1 Taru Shree 24-Jan-21  1)Initial release based on 
 **                                      S32K1xx RM Rev 14.
-**                                      2)DMA-
+**                                      2)DMA- 
 **                                      DMA_DCHMID_COUNT is removed.
-**                                      3)DMAMUX-
-**                                      DMAMUX_CHCFG_COUNT's value is changed
+**                                      3)DMAMUX- 
+**                                      DMAMUX_CHCFG_COUNT's value is changed 
 **                                      from 8 to 4.
 **                                      4)FLEXCAN-
-**                                      FLEXCAN_RAMn_COUNT's value is changed
+**                                      FLEXCAN_RAMn_COUNT's value is changed 
 **                                      from 256 to 128.
-**                                      5)RCM-
-**                                      PARAM register: ELOL bitfield is removed.
-**                                      6)SGC-
-**                                      FIRCCSR register: FIRCERR bitfield is
-**                                      removed.
+**                                      5)RCM- 
+**                                      PARAM register: ELOL bitfield is removed. 
+**                                      6)SGC- 
+**                                      FIRCCSR register: FIRCERR bitfield is 
+**                                      removed. 
 **
 ** ###################################################################
 */
@@ -60,7 +60,7 @@
  */
 
 /* Prevention from multiple including the same memory map */
-#if !defined(S32K118_H_) /* Check if memory map has not been already included */
+#if !defined(S32K118_H_)  /* Check if memory map has not been already included */
 #define S32K118_H_
 
 /* ----------------------------------------------------------------------------
@@ -107,4 +107,4 @@
 #include "S32K118_TRGMUX.h"
 #include "S32K118_WDOG.h"
 
-#endif /* #if !defined(S32K118_H_) */
+#endif  /* #if !defined(S32K118_H_) */

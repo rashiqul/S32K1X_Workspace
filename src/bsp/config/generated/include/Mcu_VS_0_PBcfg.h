@@ -1,7 +1,7 @@
 /*==================================================================================================
 *   Project              : RTD AUTOSAR 4.7
 *   Platform             : CORTEXM
-*   Peripheral           :
+*   Peripheral           : 
 *   Dependencies         : none
 *
 *   Autosar Version      : 4.7.0
@@ -12,11 +12,11 @@
 *
 *   Copyright 2020-2025 NXP
 *
-*   NXP Confidential and Proprietary. This software is owned or controlled by NXP and may only be
-*   used strictly in accordance with the applicable license terms.  By expressly
-*   accepting such terms or by downloading, installing, activating and/or otherwise
-*   using the software, you are agreeing that you have read, and that you agree to
-*   comply with and are bound by, such license terms.  If you do not agree to be
+*   NXP Confidential and Proprietary. This software is owned or controlled by NXP and may only be 
+*   used strictly in accordance with the applicable license terms.  By expressly 
+*   accepting such terms or by downloading, installing, activating and/or otherwise 
+*   using the software, you are agreeing that you have read, and that you agree to 
+*   comply with and are bound by, such license terms.  If you do not agree to be 
 *   bound by the applicable license terms, then you may not retain, install,
 *   activate or otherwise use the software.
 ==================================================================================================*/
@@ -25,20 +25,22 @@
 #define MCU_VS_0_PBCFG_H
 
 /**
- *   @file       Mcu_VS_0_PBcfg.h
- *   @implements Mcu_PBcfg.h_Artifact
- *   @version    3.0.0
- *
- *   @brief      AUTOSAR Mcu - Data structures for the Mcu driver.
- *   @details    Postbuild structure configurations for the driver initalization.
- *
- *   @addtogroup MCU
- *   @{
- */
+*   @file       Mcu_VS_0_PBcfg.h
+*   @implements Mcu_PBcfg.h_Artifact
+*   @version    3.0.0
+*
+*   @brief      AUTOSAR Mcu - Data structures for the Mcu driver.
+*   @details    Postbuild structure configurations for the driver initalization.
+*
+*   @addtogroup MCU
+*   @{
+*/
 
 #ifdef __cplusplus
-extern "C" {
+extern "C"
+{
 #endif
+
 
 /*==================================================================================================
 *                                          INCLUDE FILES
@@ -47,16 +49,17 @@ extern "C" {
 * 3) internal and external interfaces from this unit
 ==================================================================================================*/
 
+
 /*==================================================================================================
 *                                SOURCE FILE VERSION INFORMATION
 ==================================================================================================*/
-#define MCU_VS_0_PBCFG_VENDOR_ID 43
-#define MCU_VS_0_PBCFG_AR_RELEASE_MAJOR_VERSION 4
-#define MCU_VS_0_PBCFG_AR_RELEASE_MINOR_VERSION 7
-#define MCU_VS_0_PBCFG_AR_RELEASE_REVISION_VERSION 0
-#define MCU_VS_0_PBCFG_SW_MAJOR_VERSION 3
-#define MCU_VS_0_PBCFG_SW_MINOR_VERSION 0
-#define MCU_VS_0_PBCFG_SW_PATCH_VERSION 0
+#define MCU_VS_0_PBCFG_VENDOR_ID                     43
+#define MCU_VS_0_PBCFG_AR_RELEASE_MAJOR_VERSION      4
+#define MCU_VS_0_PBCFG_AR_RELEASE_MINOR_VERSION      7
+#define MCU_VS_0_PBCFG_AR_RELEASE_REVISION_VERSION   0
+#define MCU_VS_0_PBCFG_SW_MAJOR_VERSION              3
+#define MCU_VS_0_PBCFG_SW_MINOR_VERSION              0
+#define MCU_VS_0_PBCFG_SW_PATCH_VERSION              0
 
 /*==================================================================================================
 *                                      FILE VERSION CHECKS
@@ -70,7 +73,8 @@ extern "C" {
 *                                      DEFINES AND MACROS
 ==================================================================================================*/
 
-#define MCU_CONFIG_VS_0_PB extern const Mcu_ConfigType Mcu_Config_VS_0;
+#define MCU_CONFIG_VS_0_PB \
+extern const Mcu_ConfigType Mcu_Config_VS_0;
 
 /*==================================================================================================
 *                                              ENUMS
@@ -94,3 +98,6 @@ extern "C" {
 
 /** @} */
 #endif /* #ifndef MCU_VS_0_PBCFG_H */
+
+
+
