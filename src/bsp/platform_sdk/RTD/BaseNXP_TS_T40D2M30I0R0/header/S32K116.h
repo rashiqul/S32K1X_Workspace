@@ -25,30 +25,30 @@
 **     mail:                 support@nxp.com
 **
 **     Revisions:
-**     - rev. 1.0 Taru Shree 18-Feb-21  Initial release based on
+**     - rev. 1.0 Taru Shree 18-Feb-21  Initial release based on 
 **                                      S32K1xx RM Rev 13.
 **
-**     - rev. 1.1 Taru Shree 21-Jan-21  1)Initial release based on
+**     - rev. 1.1 Taru Shree 21-Jan-21  1)Initial release based on 
 **                                      S32K1xx RM Rev 14.
-**                                      2)MemoryManagement_IRQn,
+**                                      2)MemoryManagement_IRQn, 
 **                                      BusFault_IRQn, UsageFault_IRQn,
 **                                      and DebugMonitor_IRQn interrupts
 **                                      are removed.
 **                                      3)__CM0PLUS_REV and __VTOR_PRESENT
 **                                      defines are added.
 **                                      4)__FPU_PRESENT define is removed.
-**                                      5)DMA-
+**                                      5)DMA- 
 **                                      DMA_DCHMID_COUNT is removed.
-**                                      6)DMAMUX-
-**                                      DMAMUX_CHCFG_COUNT's value is changed
+**                                      6)DMAMUX- 
+**                                      DMAMUX_CHCFG_COUNT's value is changed 
 **                                      from 8 to 4.
-**                                      7)FLEXCAN_RAMn_COUNT's value is changed
+**                                      7)FLEXCAN_RAMn_COUNT's value is changed 
 **                                      from 256 to 128.
-**                                      8)RCM-
-**                                      PARAM register: ELOL bitfield is removed.
-**                                      9)SGC-
-**                                      FIRCCSR register: FIRCERR bitfield is
-**                                      removed.
+**                                      8)RCM- 
+**                                      PARAM register: ELOL bitfield is removed. 
+**                                      9)SGC- 
+**                                      FIRCCSR register: FIRCERR bitfield is 
+**                                      removed. 
 **
 ** ###################################################################
 */
@@ -66,7 +66,7 @@
  */
 
 /* Prevention from multiple including the same memory map */
-#if !defined(S32K116_H_) /* Check if memory map has not been already included */
+#if !defined(S32K116_H_)  /* Check if memory map has not been already included */
 #define S32K116_H_
 
 /* ----------------------------------------------------------------------------
@@ -113,4 +113,4 @@
 #include "S32K116_TRGMUX.h"
 #include "S32K116_WDOG.h"
 
-#endif /* #if !defined(S32K116_H_) */
+#endif  /* #if !defined(S32K116_H_) */

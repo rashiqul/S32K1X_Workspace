@@ -1,7 +1,7 @@
 /*==================================================================================================
 *   Project              : RTD AUTOSAR 4.7
 *   Platform             : CORTEXM
-*   Peripheral           :
+*   Peripheral           : 
 *   Dependencies         : none
 *
 *   Autosar Version      : 4.7.0
@@ -26,15 +26,17 @@
 #define DET_STUB_H
 
 /**
- *   @file Det_stub.h
- *
- *   @addtogroup DET_MODULE
- *   @{
- */
+*   @file Det_stub.h
+*
+*   @addtogroup DET_MODULE
+*   @{
+*/
 
 #ifdef __cplusplus
 extern "C" {
 #endif
+
+
 
 /*===============================================================================================
 *                                         INCLUDE FILES
@@ -47,34 +49,34 @@ extern "C" {
 /*===============================================================================================
 *                               SOURCE FILE VERSION INFORMATION
 ===============================================================================================*/
-#define DET_STUB_VENDOR_ID 43
-#define DET_STUB_AR_RELEASE_MAJOR_VERSION 4
-#define DET_STUB_AR_RELEASE_MINOR_VERSION 7
-#define DET_STUB_AR_RELEASE_REVISION_VERSION 0
-#define DET_STUB_SW_MAJOR_VERSION 3
-#define DET_STUB_SW_MINOR_VERSION 0
-#define DET_STUB_SW_PATCH_VERSION 0
+#define DET_STUB_VENDOR_ID                     43
+#define DET_STUB_AR_RELEASE_MAJOR_VERSION      4
+#define DET_STUB_AR_RELEASE_MINOR_VERSION      7
+#define DET_STUB_AR_RELEASE_REVISION_VERSION   0
+#define DET_STUB_SW_MAJOR_VERSION              3
+#define DET_STUB_SW_MINOR_VERSION              0
+#define DET_STUB_SW_PATCH_VERSION              0
 
 /*===============================================================================================
 *                                      FILE VERSION CHECKS
 ===============================================================================================*/
 /* Check if Det_stub.h and DET header file are of the same vendor */
 #if (DET_STUB_VENDOR_ID != DET_VENDOR_ID)
-#error "Det_stub.h and Det.h have different vendor ids"
+    #error "Det_stub.h and Det.h have different vendor ids"
 #endif
 
 /* Check if Det_stub.h and DET header file are of the same Autosar version */
-#if ((DET_STUB_AR_RELEASE_MAJOR_VERSION != DET_AR_RELEASE_MAJOR_VERSION) ||                        \
-     (DET_STUB_AR_RELEASE_MINOR_VERSION != DET_AR_RELEASE_MINOR_VERSION) ||                        \
+#if ((DET_STUB_AR_RELEASE_MAJOR_VERSION != DET_AR_RELEASE_MAJOR_VERSION) || \
+     (DET_STUB_AR_RELEASE_MINOR_VERSION != DET_AR_RELEASE_MINOR_VERSION) || \
      (DET_STUB_AR_RELEASE_REVISION_VERSION != DET_AR_RELEASE_REVISION_VERSION))
-#error "AutoSar Version Numbers of Det_stub.h and Det.h are different"
+  #error "AutoSar Version Numbers of Det_stub.h and Det.h are different"
 #endif
 
 /* Check if Det_stub.h and DET header file are of the same Software version */
-#if ((DET_STUB_SW_MAJOR_VERSION != DET_SW_MAJOR_VERSION) ||                                        \
-     (DET_STUB_SW_MINOR_VERSION != DET_SW_MINOR_VERSION) ||                                        \
+#if ((DET_STUB_SW_MAJOR_VERSION != DET_SW_MAJOR_VERSION) || \
+     (DET_STUB_SW_MINOR_VERSION != DET_SW_MINOR_VERSION) || \
      (DET_STUB_SW_PATCH_VERSION != DET_SW_PATCH_VERSION))
-#error "Software Version Numbers of Det_stub.h and Det.h are different"
+    #error "Software Version Numbers of Det_stub.h and Det.h are different"
 #endif
 /*===============================================================================================
 *                                           CONSTANTS
@@ -101,11 +103,17 @@ extern "C" {
 ===============================================================================================*/
 #define DET_START_SEC_CODE
 #include "Det_MemMap.h"
-extern boolean Det_TestLastReportError(uint16 ModuleId, uint8 InstanceId, uint8 ApiId,
+extern boolean Det_TestLastReportError(uint16 ModuleId,
+                                       uint8 InstanceId,
+                                       uint8 ApiId,
                                        uint8 ErrorId);
-extern boolean Det_TestLastReportRuntimeError(uint16 ModuleId, uint8 InstanceId, uint8 ApiId,
+extern boolean Det_TestLastReportRuntimeError(uint16 ModuleId,
+                                              uint8 InstanceId,
+                                              uint8 ApiId,
                                               uint8 ErrorId);
-extern boolean Det_TestLastReportTransientFault(uint16 ModuleId, uint8 InstanceId, uint8 ApiId,
+extern boolean Det_TestLastReportTransientFault(uint16 ModuleId,
+                                                uint8 InstanceId,
+                                                uint8 ApiId,
                                                 uint8 FaultId);
 extern boolean Det_TestNoError(void);
 extern boolean Det_TestNoRuntimeError(void);

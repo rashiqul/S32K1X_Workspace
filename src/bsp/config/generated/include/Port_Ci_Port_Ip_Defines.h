@@ -12,11 +12,11 @@
 *
 *   Copyright 2020-2025 NXP
 *
-*   NXP Confidential and Proprietary. This software is owned or controlled by NXP and may only be
-*   used strictly in accordance with the applicable license terms.  By expressly
-*   accepting such terms or by downloading, installing, activating and/or otherwise
-*   using the software, you are agreeing that you have read, and that you agree to
-*   comply with and are bound by, such license terms.  If you do not agree to be
+*   NXP Confidential and Proprietary. This software is owned or controlled by NXP and may only be 
+*   used strictly in accordance with the applicable license terms.  By expressly 
+*   accepting such terms or by downloading, installing, activating and/or otherwise 
+*   using the software, you are agreeing that you have read, and that you agree to 
+*   comply with and are bound by, such license terms.  If you do not agree to be 
 *   bound by the applicable license terms, then you may not retain, install,
 *   activate or otherwise use the software.
 ==================================================================================================*/
@@ -24,14 +24,14 @@
 #define PORT_CI_PORT_IP_DEFINES_H
 
 /**
- *   @file    Port_Ci_Port_Ip_Defines.h
- *
- *   @addtogroup Port_CFG
- *   @{
- */
+*   @file    Port_Ci_Port_Ip_Defines.h
+*
+*   @addtogroup Port_CFG
+*   @{
+*/
 
 #ifdef __cplusplus
-extern "C" {
+extern "C"{
 #endif
 
 /*==================================================================================================
@@ -48,18 +48,18 @@ extern "C" {
 *                              SOURCE FILE VERSION INFORMATION
 ==================================================================================================*/
 /**
- * @brief        Parameters that shall be published within the Port driver header file and also in
- * the module description file
- * @details      The integration of incompatible files shall be avoided.
- *
- */
-#define PORT_CI_PORT_IP_VENDOR_ID_DEFINES_H 43
-#define PORT_CI_PORT_IP_AR_RELEASE_MAJOR_VERSION_DEFINES_H 4
-#define PORT_CI_PORT_IP_AR_RELEASE_MINOR_VERSION_DEFINES_H 7
-#define PORT_CI_PORT_IP_AR_RELEASE_REVISION_VERSION_DEFINES_H 0
-#define PORT_CI_PORT_IP_SW_MAJOR_VERSION_DEFINES_H 3
-#define PORT_CI_PORT_IP_SW_MINOR_VERSION_DEFINES_H 0
-#define PORT_CI_PORT_IP_SW_PATCH_VERSION_DEFINES_H 0
+* @brief        Parameters that shall be published within the Port driver header file and also in the
+*               module description file
+* @details      The integration of incompatible files shall be avoided.
+*
+*/
+#define PORT_CI_PORT_IP_VENDOR_ID_DEFINES_H                       43
+#define PORT_CI_PORT_IP_AR_RELEASE_MAJOR_VERSION_DEFINES_H        4
+#define PORT_CI_PORT_IP_AR_RELEASE_MINOR_VERSION_DEFINES_H        7
+#define PORT_CI_PORT_IP_AR_RELEASE_REVISION_VERSION_DEFINES_H     0
+#define PORT_CI_PORT_IP_SW_MAJOR_VERSION_DEFINES_H                3
+#define PORT_CI_PORT_IP_SW_MINOR_VERSION_DEFINES_H                0
+#define PORT_CI_PORT_IP_SW_PATCH_VERSION_DEFINES_H                0
 
 /*==================================================================================================
 *                                      FILE VERSION CHECKS
@@ -84,23 +84,24 @@ extern "C" {
 /*! @brief PORT_CI module has interleave */
 #define FEATURE_PORT_CI_PORT_IP_HAS_ADC_INTERLEAVE
 
+
 /**
- * @brief Support for User mode.
- * If this parameter has been configured to STD_ON, the PORT driver code can be executed from both
- * supervisor and user mode.
- */
-#define PORT_ENABLE_USER_MODE_SUPPORT (STD_OFF)
+* @brief Support for User mode.
+* If this parameter has been configured to STD_ON, the PORT driver code can be executed from both supervisor and user mode.
+*/
+#define PORT_ENABLE_USER_MODE_SUPPORT                         (STD_OFF)
+
 
 #ifndef MCAL_ENABLE_USER_MODE_SUPPORT
-#ifdef PORT_ENABLE_USER_MODE_SUPPORT
-#if (STD_ON == PORT_ENABLE_USER_MODE_SUPPORT)
-#error MCAL_ENABLE_USER_MODE_SUPPORT is not enabled. For running Port in user mode the MCAL_ENABLE_USER_MODE_SUPPORT needs to be defined
-#endif /* (STD_ON == PORT_ENABLE_USER_MODE_SUPPORT) */
-#endif /* ifdef PORT_ENABLE_USER_MODE_SUPPORT*/
+    #ifdef PORT_ENABLE_USER_MODE_SUPPORT
+        #if (STD_ON == PORT_ENABLE_USER_MODE_SUPPORT)
+            #error MCAL_ENABLE_USER_MODE_SUPPORT is not enabled. For running Port in user mode the MCAL_ENABLE_USER_MODE_SUPPORT needs to be defined
+        #endif /* (STD_ON == PORT_ENABLE_USER_MODE_SUPPORT) */
+    #endif /* ifdef PORT_ENABLE_USER_MODE_SUPPORT*/
 #endif /* ifndef MCAL_ENABLE_USER_MODE_SUPPORT */
 
 /* Pre-processor switch to enable/disable development error detection for Port Ci Port Ip API */
-#define PORT_CI_PORT_IP_DEV_ERROR_DETECT (STD_OFF)
+#define PORT_CI_PORT_IP_DEV_ERROR_DETECT                         (STD_OFF)
 
 /*==================================================================================================
 *                                             ENUMS
@@ -110,6 +111,7 @@ extern "C" {
 *                                STRUCTURES AND OTHER TYPEDEFS
 ==================================================================================================*/
 
+
 /*==================================================================================================
 *                                GLOBAL VARIABLE DECLARATIONS
 ==================================================================================================*/
@@ -118,6 +120,7 @@ extern "C" {
 *                                    FUNCTION PROTOTYPES
 ==================================================================================================*/
 
+
 #ifdef __cplusplus
 }
 #endif
@@ -125,3 +128,4 @@ extern "C" {
 /** @} */
 
 #endif /* PORT_CI_PORT_IP_DEFINES_H */
+

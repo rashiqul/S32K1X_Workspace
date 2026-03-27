@@ -12,24 +12,24 @@
 *
 * Copyright 2020-2025 NXP.
 *
-* NXP Confidential and Proprietary. This software is owned or controlled by NXP and may only be
-*   used strictly in accordance with the applicable license terms.  By expressly
-*   accepting such terms or by downloading, installing, activating and/or otherwise
-*   using the software, you are agreeing that you have read, and that you agree to
-*   comply with and are bound by, such license terms.  If you do not agree to be
+* NXP Confidential and Proprietary. This software is owned or controlled by NXP and may only be 
+*   used strictly in accordance with the applicable license terms.  By expressly 
+*   accepting such terms or by downloading, installing, activating and/or otherwise 
+*   using the software, you are agreeing that you have read, and that you agree to 
+*   comply with and are bound by, such license terms.  If you do not agree to be 
 *   bound by the applicable license terms, then you may not retain, install,
 *   activate or otherwise use the software.
 ==================================================================================================*/
 
 /**
- *   @file
- *
- *   @addtogroup osif_drv
- *   @{
- */
+*   @file
+*
+*   @addtogroup osif_drv
+*   @{
+*/
 
 #ifdef __cplusplus
-extern "C" {
+extern "C"{
 #endif
 
 /*==================================================================================================
@@ -38,16 +38,16 @@ extern "C" {
 * 2) needed interfaces from external units
 * 3) internal and external interfaces from this unit
 ==================================================================================================*/
-#include "OsIf_Interrupts.h"
 #include "OsIf.h"
+#include "OsIf_Interrupts.h"
 
 #if defined(USING_OS_ZEPHYR)
 #include <zephyr/kernel.h>
 #endif
 
 #if defined(USING_OS_FREERTOS)
-#include "FreeRTOS.h"
 #include "OsIf_Cfg_TypesDef.h"
+#include "FreeRTOS.h"
 #include "task.h"
 #endif
 
@@ -55,50 +55,51 @@ extern "C" {
 /*==================================================================================================
 *                                 SOURCE FILE VERSION INFORMATION
 ==================================================================================================*/
-#define OSIF_INTERRUPTS_VENDOR_ID_C 43
-#define OSIF_INTERRUPTS_AR_RELEASE_MAJOR_VERSION_C 4
-#define OSIF_INTERRUPTS_AR_RELEASE_MINOR_VERSION_C 7
-#define OSIF_INTERRUPTS_AR_RELEASE_REVISION_VERSION_C 0
-#define OSIF_INTERRUPTS_SW_MAJOR_VERSION_C 3
-#define OSIF_INTERRUPTS_SW_MINOR_VERSION_C 0
-#define OSIF_INTERRUPTS_SW_PATCH_VERSION_C 0
+#define OSIF_INTERRUPTS_VENDOR_ID_C                    43
+#define OSIF_INTERRUPTS_AR_RELEASE_MAJOR_VERSION_C     4
+#define OSIF_INTERRUPTS_AR_RELEASE_MINOR_VERSION_C     7
+#define OSIF_INTERRUPTS_AR_RELEASE_REVISION_VERSION_C  0
+#define OSIF_INTERRUPTS_SW_MAJOR_VERSION_C             3
+#define OSIF_INTERRUPTS_SW_MINOR_VERSION_C             0
+#define OSIF_INTERRUPTS_SW_PATCH_VERSION_C             0
 
 /*==================================================================================================
 *                                       FILE VERSION CHECKS
 ==================================================================================================*/
 /* Check if OsIf_Interrupts.c file and OsIf.h file are of the same vendor */
 #if (OSIF_INTERRUPTS_VENDOR_ID_C != OSIF_VENDOR_ID)
-#error "OsIf_Interrupts.c and OsIf.h have different vendor ids"
+    #error "OsIf_Interrupts.c and OsIf.h have different vendor ids"
 #endif
 /* Check if OsIf_Interrupts.c file and OsIf.h file are of the same Autosar version */
-#if ((OSIF_INTERRUPTS_AR_RELEASE_MAJOR_VERSION_C != OSIF_AR_RELEASE_MAJOR_VERSION) ||              \
-     (OSIF_INTERRUPTS_AR_RELEASE_MINOR_VERSION_C != OSIF_AR_RELEASE_MINOR_VERSION) ||              \
+#if ((OSIF_INTERRUPTS_AR_RELEASE_MAJOR_VERSION_C    != OSIF_AR_RELEASE_MAJOR_VERSION) || \
+     (OSIF_INTERRUPTS_AR_RELEASE_MINOR_VERSION_C    != OSIF_AR_RELEASE_MINOR_VERSION) || \
      (OSIF_INTERRUPTS_AR_RELEASE_REVISION_VERSION_C != OSIF_AR_RELEASE_REVISION_VERSION))
-#error "AUTOSAR Version Numbers of OsIf_Interrupts.c and OsIf.h are different"
+    #error "AUTOSAR Version Numbers of OsIf_Interrupts.c and OsIf.h are different"
 #endif
 /* Check if OsIf_Interrupts.c file and OsIf.h file are of the same Software version */
-#if ((OSIF_INTERRUPTS_SW_MAJOR_VERSION_C != OSIF_SW_MAJOR_VERSION) ||                              \
-     (OSIF_INTERRUPTS_SW_MINOR_VERSION_C != OSIF_SW_MINOR_VERSION) ||                              \
-     (OSIF_INTERRUPTS_SW_PATCH_VERSION_C != OSIF_SW_PATCH_VERSION))
-#error "Software Version Numbers of OsIf_Interrupts.c and OsIf.h are different"
+#if ((OSIF_INTERRUPTS_SW_MAJOR_VERSION_C != OSIF_SW_MAJOR_VERSION) || \
+     (OSIF_INTERRUPTS_SW_MINOR_VERSION_C != OSIF_SW_MINOR_VERSION) || \
+     (OSIF_INTERRUPTS_SW_PATCH_VERSION_C != OSIF_SW_PATCH_VERSION) \
+    )
+    #error "Software Version Numbers of OsIf_Interrupts.c and OsIf.h are different"
 #endif
 
 /* Check if OsIf_Interrupts.c file and OsIf_Interrupts.h file are of the same vendor */
 #if (OSIF_INTERRUPTS_VENDOR_ID_C != OSIF_INTERRUPTS_VENDOR_ID)
-#error "OsIf_Interrupts.c and OsIf_Interrupts.h have different vendor ids"
+    #error "OsIf_Interrupts.c and OsIf_Interrupts.h have different vendor ids"
 #endif
 /* Check if OsIf_Interrupts.c file and OsIf_Interrupts.h file are of the same Autosar version */
-#if ((OSIF_INTERRUPTS_AR_RELEASE_MAJOR_VERSION_C != OSIF_INTERRUPTS_AR_RELEASE_MAJOR_VERSION) ||   \
-     (OSIF_INTERRUPTS_AR_RELEASE_MINOR_VERSION_C != OSIF_INTERRUPTS_AR_RELEASE_MINOR_VERSION) ||   \
-     (OSIF_INTERRUPTS_AR_RELEASE_REVISION_VERSION_C !=                                             \
-      OSIF_INTERRUPTS_AR_RELEASE_REVISION_VERSION))
-#error "AUTOSAR Version Numbers of OsIf_Interrupts.c and OsIf_Interrupts.h are different"
+#if ((OSIF_INTERRUPTS_AR_RELEASE_MAJOR_VERSION_C    != OSIF_INTERRUPTS_AR_RELEASE_MAJOR_VERSION) || \
+     (OSIF_INTERRUPTS_AR_RELEASE_MINOR_VERSION_C    != OSIF_INTERRUPTS_AR_RELEASE_MINOR_VERSION) || \
+     (OSIF_INTERRUPTS_AR_RELEASE_REVISION_VERSION_C != OSIF_INTERRUPTS_AR_RELEASE_REVISION_VERSION))
+    #error "AUTOSAR Version Numbers of OsIf_Interrupts.c and OsIf_Interrupts.h are different"
 #endif
 /* Check if OsIf_Interrupts.c file and OsIf_Interrupts.h file are of the same Software version */
-#if ((OSIF_INTERRUPTS_SW_MAJOR_VERSION_C != OSIF_INTERRUPTS_SW_MAJOR_VERSION) ||                   \
-     (OSIF_INTERRUPTS_SW_MINOR_VERSION_C != OSIF_INTERRUPTS_SW_MINOR_VERSION) ||                   \
-     (OSIF_INTERRUPTS_SW_PATCH_VERSION_C != OSIF_INTERRUPTS_SW_PATCH_VERSION))
-#error "Software Version Numbers of OsIf_Interrupts.c and OsIf_Interrupts.h are different"
+#if ((OSIF_INTERRUPTS_SW_MAJOR_VERSION_C != OSIF_INTERRUPTS_SW_MAJOR_VERSION) || \
+     (OSIF_INTERRUPTS_SW_MINOR_VERSION_C != OSIF_INTERRUPTS_SW_MINOR_VERSION) || \
+     (OSIF_INTERRUPTS_SW_PATCH_VERSION_C != OSIF_INTERRUPTS_SW_PATCH_VERSION) \
+    )
+    #error "Software Version Numbers of OsIf_Interrupts.c and OsIf_Interrupts.h are different"
 #endif
 
 /*==================================================================================================
@@ -110,9 +111,9 @@ extern "C" {
 ==================================================================================================*/
 #if defined(USING_OS_ZEPHYR)
 #if (STD_ON == OSIF_ENABLE_MULTICORE_SUPPORT)
-#define OsIfCoreID() (OsIf_GetCoreID())
+    #define OsIfCoreID()        (OsIf_GetCoreID())
 #else
-#define OsIfCoreID() (0U)
+    #define OsIfCoreID()        (0U)
 #endif /* STD_ON == OSIF_ENABLE_MULTICORE_SUPPORT */
 #endif /* defined(USING_OS_ZEPHYR)*/
 /*==================================================================================================
@@ -169,29 +170,33 @@ volatile UBaseType_t OsIf_SavedInterruptStatus;
  *
  * Function Name : OsIf_Interrupts_SuspendAllInterrupts.
  * Description   : Suspend all interrupts.
- *
+ * 
  *END**************************************************************************/
 #if defined(USING_OS_ZEPHYR)
 void OsIf_Interrupts_SuspendAllInterrupts(void)
 {
     uint32 u32CoreId = OsIfCoreID();
 
-    if (OsIf_au32SuspendLevel[u32CoreId]++ == 0U) {
+    if (OsIf_au32SuspendLevel[u32CoreId]++ == 0U)
+    {
         OsIf_au32OldIrqMask[u32CoreId] = arch_irq_lock();
     }
 }
 #elif defined(USING_OS_FREERTOS)
 void OsIf_Interrupts_SuspendAllInterrupts(void)
 {
-    if (xPortIsInsideInterrupt()) {
+    if (xPortIsInsideInterrupt())
+    {
         UBaseType_t CurrentInterruptStatus = taskENTER_CRITICAL_FROM_ISR();
 
-        if (0 == OsIf_InterruptNestingLevel) {
-            OsIf_SavedInterruptStatus = CurrentInterruptStatus; /* only value from nesting level 0
-                                                                   is needed for restoration */
+        if (0 == OsIf_InterruptNestingLevel)
+        {
+            OsIf_SavedInterruptStatus = CurrentInterruptStatus; /* only value from nesting level 0 is needed for restoration */
         }
         OsIf_InterruptNestingLevel++;
-    } else {
+    }
+    else
+    {
         taskENTER_CRITICAL(); /* supports nesting already */
     }
 }
@@ -201,34 +206,41 @@ void OsIf_Interrupts_SuspendAllInterrupts(void)
  *
  * Function Name : OsIf_Interrupts_ResumeAllInterrupts.
  * Description   : Resume all interrupts.
- *
+ * 
  *END**************************************************************************/
 #if defined(USING_OS_ZEPHYR)
 void OsIf_Interrupts_ResumeAllInterrupts(void)
 {
     uint32 u32CoreId = OsIfCoreID();
 
-    if (--OsIf_au32SuspendLevel[u32CoreId] == 0U) {
-        arch_irq_unlock(OsIf_au32OldIrqMask[u32CoreId]);
+    if (--OsIf_au32SuspendLevel[u32CoreId] == 0U)
+    {
+       arch_irq_unlock(OsIf_au32OldIrqMask[u32CoreId]);
     }
 }
 #elif defined(USING_OS_FREERTOS)
 void OsIf_Interrupts_ResumeAllInterrupts(void)
 {
-    if (xPortIsInsideInterrupt()) {
-        if (0 < OsIf_InterruptNestingLevel) {
+    if (xPortIsInsideInterrupt())
+    {
+        if (0 < OsIf_InterruptNestingLevel)
+        { 
             OsIf_InterruptNestingLevel--;
-            if (0 == OsIf_InterruptNestingLevel) {
+            if (0 == OsIf_InterruptNestingLevel)
+            {
                 taskEXIT_CRITICAL_FROM_ISR(OsIf_SavedInterruptStatus);
             }
-        } else {
-#if (STD_ON == OSIF_DEV_ERROR_DETECT)
-            (void)Det_ReportError(OSIF_MODULE_ID, OSIF_DRIVER_INSTANCE, OSIF_SID_RESUMEALLINT,
-                                  OSIF_E_INV_CALL);
-#endif
         }
-    } else {
-        taskEXIT_CRITICAL(); /* supports nesting already */
+        else
+        {
+            #if (STD_ON == OSIF_DEV_ERROR_DETECT)
+            (void)Det_ReportError(OSIF_MODULE_ID, OSIF_DRIVER_INSTANCE, OSIF_SID_RESUMEALLINT, OSIF_E_INV_CALL);
+            #endif
+        }
+    }
+    else
+    {
+        taskEXIT_CRITICAL();  /* supports nesting already */
     }
 }
 #endif /* defined(USING_OS_FREERTOS) */

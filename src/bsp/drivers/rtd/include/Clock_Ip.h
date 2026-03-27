@@ -1,7 +1,7 @@
 /*==================================================================================================
 *   Project              : RTD AUTOSAR 4.7
 *   Platform             : CORTEXM
-*   Peripheral           :
+*   Peripheral           : 
 *   Dependencies         : none
 *
 *   Autosar Version      : 4.7.0
@@ -12,11 +12,11 @@
 *
 *   Copyright 2020-2025 NXP
 *
-*   NXP Confidential and Proprietary. This software is owned or controlled by NXP and may only be
-*   used strictly in accordance with the applicable license terms.  By expressly
-*   accepting such terms or by downloading, installing, activating and/or otherwise
-*   using the software, you are agreeing that you have read, and that you agree to
-*   comply with and are bound by, such license terms.  If you do not agree to be
+*   NXP Confidential and Proprietary. This software is owned or controlled by NXP and may only be 
+*   used strictly in accordance with the applicable license terms.  By expressly 
+*   accepting such terms or by downloading, installing, activating and/or otherwise 
+*   using the software, you are agreeing that you have read, and that you agree to 
+*   comply with and are bound by, such license terms.  If you do not agree to be 
 *   bound by the applicable license terms, then you may not retain, install,
 *   activate or otherwise use the software.
 ==================================================================================================*/
@@ -25,18 +25,19 @@
 #define CLOCK_IP_H
 
 /**
- *   @file    Clock_Ip.h
- *   @version    3.0.0
- *
- *   @brief   CLOCK IP driver header file.
- *   @details CLOCK IP driver header file.
- *
- *   @addtogroup CLOCK_DRIVER Clock Ip Driver
- *   @{
- */
+*   @file    Clock_Ip.h
+*   @version    3.0.0
+*
+*   @brief   CLOCK IP driver header file.
+*   @details CLOCK IP driver header file.
+*
+*   @addtogroup CLOCK_DRIVER Clock Ip Driver
+*   @{
+*/
+
 
 #if defined(__cplusplus)
-extern "C" {
+extern "C"{
 #endif
 
 /*==================================================================================================
@@ -45,58 +46,58 @@ extern "C" {
 * 2) needed interfaces from external units
 * 3) internal and external interfaces from this unit
 ==================================================================================================*/
-#include "Clock_Ip_Cfg.h"
 #include "Clock_Ip_Types.h"
+#include "Clock_Ip_Cfg.h"
 /*==================================================================================================
 *                               SOURCE FILE VERSION INFORMATION
 ==================================================================================================*/
-#define CLOCK_IP_VENDOR_ID 43
-#define CLOCK_IP_AR_RELEASE_MAJOR_VERSION 4
-#define CLOCK_IP_AR_RELEASE_MINOR_VERSION 7
-#define CLOCK_IP_AR_RELEASE_REVISION_VERSION 0
-#define CLOCK_IP_SW_MAJOR_VERSION 3
-#define CLOCK_IP_SW_MINOR_VERSION 0
-#define CLOCK_IP_SW_PATCH_VERSION 0
+#define CLOCK_IP_VENDOR_ID                       43
+#define CLOCK_IP_AR_RELEASE_MAJOR_VERSION        4
+#define CLOCK_IP_AR_RELEASE_MINOR_VERSION        7
+#define CLOCK_IP_AR_RELEASE_REVISION_VERSION     0
+#define CLOCK_IP_SW_MAJOR_VERSION                3
+#define CLOCK_IP_SW_MINOR_VERSION                0
+#define CLOCK_IP_SW_PATCH_VERSION                0
 
 /*==================================================================================================
 *                                      FILE VERSION CHECKS
 ==================================================================================================*/
 /* Check if Clock_Ip.h file and Clock_Ip_Types.h file have same versions */
-#if (CLOCK_IP_VENDOR_ID != CLOCK_IP_TYPES_VENDOR_ID)
-#error "Clock_Ip.h and Clock_Ip_Types.h have different vendor IDs"
+#if (CLOCK_IP_VENDOR_ID  != CLOCK_IP_TYPES_VENDOR_ID)
+    #error "Clock_Ip.h and Clock_Ip_Types.h have different vendor IDs"
 #endif
 
 /* Check if Clock_Ip.h file and Clock_Ip_Types.h file are of the same Autosar version */
-#if ((CLOCK_IP_AR_RELEASE_MAJOR_VERSION != CLOCK_IP_TYPES_AR_RELEASE_MAJOR_VERSION) ||             \
-     (CLOCK_IP_AR_RELEASE_MINOR_VERSION != CLOCK_IP_TYPES_AR_RELEASE_MINOR_VERSION) ||             \
+#if ((CLOCK_IP_AR_RELEASE_MAJOR_VERSION    != CLOCK_IP_TYPES_AR_RELEASE_MAJOR_VERSION) || \
+     (CLOCK_IP_AR_RELEASE_MINOR_VERSION    != CLOCK_IP_TYPES_AR_RELEASE_MINOR_VERSION) || \
      (CLOCK_IP_AR_RELEASE_REVISION_VERSION != CLOCK_IP_TYPES_AR_RELEASE_REVISION_VERSION))
-#error "AutoSar Version Numbers of Clock_Ip.h and Clock_Ip_Types.h are different"
+    #error "AutoSar Version Numbers of Clock_Ip.h and Clock_Ip_Types.h are different"
 #endif
 
 /* Check if Clock_Ip.h file and Clock_Ip_Types.h file are of the same Software version */
-#if ((CLOCK_IP_SW_MAJOR_VERSION != CLOCK_IP_TYPES_SW_MAJOR_VERSION) ||                             \
-     (CLOCK_IP_SW_MINOR_VERSION != CLOCK_IP_TYPES_SW_MINOR_VERSION) ||                             \
+#if ((CLOCK_IP_SW_MAJOR_VERSION != CLOCK_IP_TYPES_SW_MAJOR_VERSION) || \
+     (CLOCK_IP_SW_MINOR_VERSION != CLOCK_IP_TYPES_SW_MINOR_VERSION) || \
      (CLOCK_IP_SW_PATCH_VERSION != CLOCK_IP_TYPES_SW_PATCH_VERSION))
-#error "Software Version Numbers of Clock_Ip.h and Clock_Ip_Types.h are different"
+    #error "Software Version Numbers of Clock_Ip.h and Clock_Ip_Types.h are different"
 #endif
 
 /* Check if Clock_Ip.h file and Clock_Ip_Cfg.h file have same versions */
-#if (CLOCK_IP_VENDOR_ID != CLOCK_IP_CFG_VENDOR_ID)
-#error "Clock_Ip.h and Clock_Ip_Cfg.h have different vendor IDs"
+#if (CLOCK_IP_VENDOR_ID  != CLOCK_IP_CFG_VENDOR_ID)
+    #error "Clock_Ip.h and Clock_Ip_Cfg.h have different vendor IDs"
 #endif
 
 /* Check if Clock_Ip.h file and Clock_Ip_Cfg.h file are of the same Autosar version */
-#if ((CLOCK_IP_AR_RELEASE_MAJOR_VERSION != CLOCK_IP_CFG_AR_RELEASE_MAJOR_VERSION) ||               \
-     (CLOCK_IP_AR_RELEASE_MINOR_VERSION != CLOCK_IP_CFG_AR_RELEASE_MINOR_VERSION) ||               \
+#if ((CLOCK_IP_AR_RELEASE_MAJOR_VERSION    != CLOCK_IP_CFG_AR_RELEASE_MAJOR_VERSION) || \
+     (CLOCK_IP_AR_RELEASE_MINOR_VERSION    != CLOCK_IP_CFG_AR_RELEASE_MINOR_VERSION) || \
      (CLOCK_IP_AR_RELEASE_REVISION_VERSION != CLOCK_IP_CFG_AR_RELEASE_REVISION_VERSION))
-#error "AutoSar Version Numbers of Clock_Ip.h and Clock_Ip_Cfg.h are different"
+    #error "AutoSar Version Numbers of Clock_Ip.h and Clock_Ip_Cfg.h are different"
 #endif
 
 /* Check if Clock_Ip.h file and Clock_Ip_Cfg.h file are of the same Software version */
-#if ((CLOCK_IP_SW_MAJOR_VERSION != CLOCK_IP_CFG_SW_MAJOR_VERSION) ||                               \
-     (CLOCK_IP_SW_MINOR_VERSION != CLOCK_IP_CFG_SW_MINOR_VERSION) ||                               \
+#if ((CLOCK_IP_SW_MAJOR_VERSION != CLOCK_IP_CFG_SW_MAJOR_VERSION) || \
+     (CLOCK_IP_SW_MINOR_VERSION != CLOCK_IP_CFG_SW_MINOR_VERSION) || \
      (CLOCK_IP_SW_PATCH_VERSION != CLOCK_IP_CFG_SW_PATCH_VERSION))
-#error "Software Version Numbers of Clock_Ip.h and Clock_Ip_Cfg.h are different"
+    #error "Software Version Numbers of Clock_Ip.h and Clock_Ip_Cfg.h are different"
 #endif
 /*==================================================================================================
 *                                            CONSTANTS
@@ -127,6 +128,7 @@ extern "C" {
 
 #include "Mcu_MemMap.h"
 
+
 /*!
  * @brief Set clock configuration according to pre-defined structure.
  *
@@ -140,7 +142,7 @@ extern "C" {
  * @note If external clock is used in the target mode, please make sure it is
  * enabled, for example, if the external oscillator is used, please setup correctly.
  */
-Clock_Ip_StatusType Clock_Ip_Init(Clock_Ip_ClockConfigType const* Config);
+Clock_Ip_StatusType Clock_Ip_Init(Clock_Ip_ClockConfigType const * Config);
 
 /*!
  * @brief Set the PLL and other MCU specific clock options.
@@ -155,7 +157,7 @@ Clock_Ip_StatusType Clock_Ip_Init(Clock_Ip_ClockConfigType const* Config);
  *
  * @return void
  */
-void Clock_Ip_InitClock(Clock_Ip_ClockConfigType const* Config);
+void Clock_Ip_InitClock(Clock_Ip_ClockConfigType const * Config);
 
 /*!
  * @brief Returns the lock status of the PLL.
@@ -187,6 +189,8 @@ Clock_Ip_PllStatusType Clock_Ip_GetPllStatus(void);
  * @return void
  */
 void Clock_Ip_DistributePll(void);
+
+
 
 /*!
  * @brief Install a clock notifications callback
@@ -234,8 +238,9 @@ void Clock_Ip_DisableModuleClock(Clock_Ip_NameType ClockName);
  */
 void Clock_Ip_EnableModuleClock(Clock_Ip_NameType ClockName);
 
+
 #if (defined(CLOCK_IP_POWER_NOTIFICATIONS))
-#if (STD_ON == CLOCK_IP_POWER_NOTIFICATIONS)
+  #if (STD_ON == CLOCK_IP_POWER_NOTIFICATIONS)
 
 /*!
  * @brief Sends notifications regarding power mode transition
@@ -249,15 +254,18 @@ void Clock_Ip_EnableModuleClock(Clock_Ip_NameType ClockName);
  *
  * @return void
  */
-void Clock_Ip_PowerNotifications(Clock_Ip_PowerModesType PowerMode,
-                                 Clock_Ip_PowerNotificationType Notification);
+void Clock_Ip_PowerNotifications(  Clock_Ip_PowerModesType PowerMode,
+                                            Clock_Ip_PowerNotificationType Notification
+                                          );
+  #endif
 #endif
-#endif
+
 
 #if (defined(CLOCK_IP_GET_FREQUENCY_API))
-#if (CLOCK_IP_GET_FREQUENCY_API == STD_ON)
+  #if (CLOCK_IP_GET_FREQUENCY_API == STD_ON)
 
-/*!
+
+ /*!
  * @brief Gets the clock frequency for a specific clock name.
  *
  * This function checks the current clock configurations and then calculates
@@ -271,8 +279,9 @@ void Clock_Ip_PowerNotifications(Clock_Ip_PowerModesType PowerMode,
  * @return frequency    Returned clock frequency value in Hertz
  */
 uint64 Clock_Ip_GetClockFrequency(Clock_Ip_NameType ClockName);
+  #endif
 #endif
-#endif
+
 
 /* Clock stop section code */
 #define MCU_STOP_SEC_CODE
@@ -286,3 +295,4 @@ uint64 Clock_Ip_GetClockFrequency(Clock_Ip_NameType ClockName);
 /*! @}*/
 
 #endif /* CLOCK_IP_H */
+

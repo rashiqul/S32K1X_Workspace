@@ -40,43 +40,43 @@
  */
 
 /**
- * @page misra_violations MISRA-C:2012 violations
- *
- * @section [global]
- * Violates MISRA 2012 Advisory Rule 2.3, local typedef not referenced
- * The SoC header defines typedef for all modules.
- *
- * @section [global]
- * Violates MISRA 2012 Advisory Rule 2.5, local macro not referenced
- * The SoC header defines macros for all modules and registers.
- *
- * @section [global]
- * Violates MISRA 2012 Advisory Directive 4.9, Function-like macro
- * These are generated macros used for accessing the bit-fields from registers.
- *
- * @section [global]
- * Violates MISRA 2012 Required Rule 5.1, identifier clash
- * The supported compilers use more than 31 significant characters for identifiers.
- *
- * @section [global]
- * Violates MISRA 2012 Required Rule 5.2, identifier clash
- * The supported compilers use more than 31 significant characters for identifiers.
- *
- * @section [global]
- * Violates MISRA 2012 Required Rule 5.4, identifier clash
- * The supported compilers use more than 31 significant characters for identifiers.
- *
- * @section [global]
- * Violates MISRA 2012 Required Rule 5.5, identifier clash
- * The supported compilers use more than 31 significant characters for identifiers.
- *
- * @section [global]
- * Violates MISRA 2012 Required Rule 21.1, defined macro '__I' is reserved to the compiler
- * This type qualifier is needed to ensure correct I/O access and addressing.
- */
+* @page misra_violations MISRA-C:2012 violations
+*
+* @section [global]
+* Violates MISRA 2012 Advisory Rule 2.3, local typedef not referenced
+* The SoC header defines typedef for all modules.
+*
+* @section [global]
+* Violates MISRA 2012 Advisory Rule 2.5, local macro not referenced
+* The SoC header defines macros for all modules and registers.
+*
+* @section [global]
+* Violates MISRA 2012 Advisory Directive 4.9, Function-like macro
+* These are generated macros used for accessing the bit-fields from registers.
+*
+* @section [global]
+* Violates MISRA 2012 Required Rule 5.1, identifier clash
+* The supported compilers use more than 31 significant characters for identifiers.
+*
+* @section [global]
+* Violates MISRA 2012 Required Rule 5.2, identifier clash
+* The supported compilers use more than 31 significant characters for identifiers.
+*
+* @section [global]
+* Violates MISRA 2012 Required Rule 5.4, identifier clash
+* The supported compilers use more than 31 significant characters for identifiers.
+*
+* @section [global]
+* Violates MISRA 2012 Required Rule 5.5, identifier clash
+* The supported compilers use more than 31 significant characters for identifiers.
+*
+* @section [global]
+* Violates MISRA 2012 Required Rule 21.1, defined macro '__I' is reserved to the compiler
+* This type qualifier is needed to ensure correct I/O access and addressing.
+*/
 
 /* Prevention from multiple including the same memory map */
-#if !defined(S32K146_TRGMUX_H_) /* Check if memory map has not been already included */
+#if !defined(S32K146_TRGMUX_H_)  /* Check if memory map has not been already included */
 #define S32K146_TRGMUX_H_
 
 #include "S32K146_COMMON.h"
@@ -91,32 +91,25 @@
  */
 
 /** TRGMUX - Size of Registers Arrays */
-#define TRGMUX_TRGMUXn_COUNT 30u
+#define TRGMUX_TRGMUXn_COUNT                      30u
 
 /** TRGMUX - Register Layout Typedef */
 typedef struct {
-    __IO uint32_t TRGMUXn[TRGMUX_TRGMUXn_COUNT]; /**< TRGMUX DMAMUX0 Register..TRGMUX FTM5 Register,
-                                                    array offset: 0x0, array step: 0x4 */
+  __IO uint32_t TRGMUXn[TRGMUX_TRGMUXn_COUNT];     /**< TRGMUX DMAMUX0 Register..TRGMUX FTM5 Register, array offset: 0x0, array step: 0x4 */
 } TRGMUX_Type, *TRGMUX_MemMapPtr;
 
 /** Number of instances of the TRGMUX module. */
-#define TRGMUX_INSTANCE_COUNT (1u)
+#define TRGMUX_INSTANCE_COUNT                    (1u)
 
 /* TRGMUX - Peripheral instance base addresses */
 /** Peripheral TRGMUX base address */
-#define IP_TRGMUX_BASE (0x40063000u)
+#define IP_TRGMUX_BASE                           (0x40063000u)
 /** Peripheral TRGMUX base pointer */
-#define IP_TRGMUX ((TRGMUX_Type*)IP_TRGMUX_BASE)
+#define IP_TRGMUX                                ((TRGMUX_Type *)IP_TRGMUX_BASE)
 /** Array initializer of TRGMUX peripheral base addresses */
-#define IP_TRGMUX_BASE_ADDRS                                                                       \
-    {                                                                                              \
-        IP_TRGMUX_BASE                                                                             \
-    }
+#define IP_TRGMUX_BASE_ADDRS                     { IP_TRGMUX_BASE }
 /** Array initializer of TRGMUX peripheral base pointers */
-#define IP_TRGMUX_BASE_PTRS                                                                        \
-    {                                                                                              \
-        IP_TRGMUX                                                                                  \
-    }
+#define IP_TRGMUX_BASE_PTRS                      { IP_TRGMUX }
 
 /* ----------------------------------------------------------------------------
    -- TRGMUX Register Masks
@@ -130,35 +123,30 @@ typedef struct {
 /*! @name TRGMUXn - TRGMUX DMAMUX0 Register..TRGMUX FTM5 Register */
 /*! @{ */
 
-#define TRGMUX_TRGMUXn_SEL0_MASK (0x7FU)
-#define TRGMUX_TRGMUXn_SEL0_SHIFT (0U)
-#define TRGMUX_TRGMUXn_SEL0_WIDTH (7U)
-#define TRGMUX_TRGMUXn_SEL0(x)                                                                     \
-    (((uint32_t)(((uint32_t)(x)) << TRGMUX_TRGMUXn_SEL0_SHIFT)) & TRGMUX_TRGMUXn_SEL0_MASK)
+#define TRGMUX_TRGMUXn_SEL0_MASK                 (0x7FU)
+#define TRGMUX_TRGMUXn_SEL0_SHIFT                (0U)
+#define TRGMUX_TRGMUXn_SEL0_WIDTH                (7U)
+#define TRGMUX_TRGMUXn_SEL0(x)                   (((uint32_t)(((uint32_t)(x)) << TRGMUX_TRGMUXn_SEL0_SHIFT)) & TRGMUX_TRGMUXn_SEL0_MASK)
 
-#define TRGMUX_TRGMUXn_SEL1_MASK (0x7F00U)
-#define TRGMUX_TRGMUXn_SEL1_SHIFT (8U)
-#define TRGMUX_TRGMUXn_SEL1_WIDTH (7U)
-#define TRGMUX_TRGMUXn_SEL1(x)                                                                     \
-    (((uint32_t)(((uint32_t)(x)) << TRGMUX_TRGMUXn_SEL1_SHIFT)) & TRGMUX_TRGMUXn_SEL1_MASK)
+#define TRGMUX_TRGMUXn_SEL1_MASK                 (0x7F00U)
+#define TRGMUX_TRGMUXn_SEL1_SHIFT                (8U)
+#define TRGMUX_TRGMUXn_SEL1_WIDTH                (7U)
+#define TRGMUX_TRGMUXn_SEL1(x)                   (((uint32_t)(((uint32_t)(x)) << TRGMUX_TRGMUXn_SEL1_SHIFT)) & TRGMUX_TRGMUXn_SEL1_MASK)
 
-#define TRGMUX_TRGMUXn_SEL2_MASK (0x7F0000U)
-#define TRGMUX_TRGMUXn_SEL2_SHIFT (16U)
-#define TRGMUX_TRGMUXn_SEL2_WIDTH (7U)
-#define TRGMUX_TRGMUXn_SEL2(x)                                                                     \
-    (((uint32_t)(((uint32_t)(x)) << TRGMUX_TRGMUXn_SEL2_SHIFT)) & TRGMUX_TRGMUXn_SEL2_MASK)
+#define TRGMUX_TRGMUXn_SEL2_MASK                 (0x7F0000U)
+#define TRGMUX_TRGMUXn_SEL2_SHIFT                (16U)
+#define TRGMUX_TRGMUXn_SEL2_WIDTH                (7U)
+#define TRGMUX_TRGMUXn_SEL2(x)                   (((uint32_t)(((uint32_t)(x)) << TRGMUX_TRGMUXn_SEL2_SHIFT)) & TRGMUX_TRGMUXn_SEL2_MASK)
 
-#define TRGMUX_TRGMUXn_SEL3_MASK (0x7F000000U)
-#define TRGMUX_TRGMUXn_SEL3_SHIFT (24U)
-#define TRGMUX_TRGMUXn_SEL3_WIDTH (7U)
-#define TRGMUX_TRGMUXn_SEL3(x)                                                                     \
-    (((uint32_t)(((uint32_t)(x)) << TRGMUX_TRGMUXn_SEL3_SHIFT)) & TRGMUX_TRGMUXn_SEL3_MASK)
+#define TRGMUX_TRGMUXn_SEL3_MASK                 (0x7F000000U)
+#define TRGMUX_TRGMUXn_SEL3_SHIFT                (24U)
+#define TRGMUX_TRGMUXn_SEL3_WIDTH                (7U)
+#define TRGMUX_TRGMUXn_SEL3(x)                   (((uint32_t)(((uint32_t)(x)) << TRGMUX_TRGMUXn_SEL3_SHIFT)) & TRGMUX_TRGMUXn_SEL3_MASK)
 
-#define TRGMUX_TRGMUXn_LK_MASK (0x80000000U)
-#define TRGMUX_TRGMUXn_LK_SHIFT (31U)
-#define TRGMUX_TRGMUXn_LK_WIDTH (1U)
-#define TRGMUX_TRGMUXn_LK(x)                                                                       \
-    (((uint32_t)(((uint32_t)(x)) << TRGMUX_TRGMUXn_LK_SHIFT)) & TRGMUX_TRGMUXn_LK_MASK)
+#define TRGMUX_TRGMUXn_LK_MASK                   (0x80000000U)
+#define TRGMUX_TRGMUXn_LK_SHIFT                  (31U)
+#define TRGMUX_TRGMUXn_LK_WIDTH                  (1U)
+#define TRGMUX_TRGMUXn_LK(x)                     (((uint32_t)(((uint32_t)(x)) << TRGMUX_TRGMUXn_LK_SHIFT)) & TRGMUX_TRGMUXn_LK_MASK)
 /*! @} */
 
 /*!
@@ -187,8 +175,9 @@ typedef struct {
 #define TRGMUX_FTM4_INDEX 28
 #define TRGMUX_FTM5_INDEX 29
 
+
 /*!
  * @}
  */ /* end of group TRGMUX_Peripheral_Access_Layer */
 
-#endif /* #if !defined(S32K146_TRGMUX_H_) */
+#endif  /* #if !defined(S32K146_TRGMUX_H_) */

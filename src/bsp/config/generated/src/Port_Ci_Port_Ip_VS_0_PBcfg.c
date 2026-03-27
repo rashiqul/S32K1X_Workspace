@@ -12,24 +12,24 @@
 *
 *   Copyright 2020-2025 NXP
 *
-*   NXP Confidential and Proprietary. This software is owned or controlled by NXP and may only be
-*   used strictly in accordance with the applicable license terms.  By expressly
-*   accepting such terms or by downloading, installing, activating and/or otherwise
-*   using the software, you are agreeing that you have read, and that you agree to
-*   comply with and are bound by, such license terms.  If you do not agree to be
+*   NXP Confidential and Proprietary. This software is owned or controlled by NXP and may only be 
+*   used strictly in accordance with the applicable license terms.  By expressly 
+*   accepting such terms or by downloading, installing, activating and/or otherwise 
+*   using the software, you are agreeing that you have read, and that you agree to 
+*   comply with and are bound by, such license terms.  If you do not agree to be 
 *   bound by the applicable license terms, then you may not retain, install,
 *   activate or otherwise use the software.
 ==================================================================================================*/
 
 /**
- *   @file    Port_Ci_Port_Ip_VS_0_PBcfg.c
- *
- *   @addtogroup Port_CFG
- *   @{
- */
+*   @file    Port_Ci_Port_Ip_VS_0_PBcfg.c
+*
+*   @addtogroup Port_CFG
+*   @{
+*/
 
 #ifdef __cplusplus
-extern "C" {
+extern "C"{
 #endif
 
 /*==================================================================================================
@@ -44,52 +44,50 @@ extern "C" {
 *                                 SOURCE FILE VERSION INFORMATION
 ==================================================================================================*/
 /**
- * @brief        Parameters that shall be published within the Port driver header file and also in
- * the module description file
- * @details      The integration of incompatible files shall be avoided.
- *
- */
-#define PORT_CI_PORT_IP_VENDOR_ID_VS_0_PBCFG_C 43
-#define PORT_CI_PORT_IP_AR_RELEASE_MAJOR_VERSION_VS_0_PBCFG_C 4
-#define PORT_CI_PORT_IP_AR_RELEASE_MINOR_VERSION_VS_0_PBCFG_C 7
-#define PORT_CI_PORT_IP_AR_RELEASE_REVISION_VERSION_VS_0_PBCFG_C 0
-#define PORT_CI_PORT_IP_SW_MAJOR_VERSION_VS_0_PBCFG_C 3
-#define PORT_CI_PORT_IP_SW_MINOR_VERSION_VS_0_PBCFG_C 0
-#define PORT_CI_PORT_IP_SW_PATCH_VERSION_VS_0_PBCFG_C 0
+* @brief        Parameters that shall be published within the Port driver header file and also in the
+*               module description file
+* @details      The integration of incompatible files shall be avoided.
+*
+*/
+#define PORT_CI_PORT_IP_VENDOR_ID_VS_0_PBCFG_C                       43
+#define PORT_CI_PORT_IP_AR_RELEASE_MAJOR_VERSION_VS_0_PBCFG_C        4
+#define PORT_CI_PORT_IP_AR_RELEASE_MINOR_VERSION_VS_0_PBCFG_C        7
+#define PORT_CI_PORT_IP_AR_RELEASE_REVISION_VERSION_VS_0_PBCFG_C     0
+#define PORT_CI_PORT_IP_SW_MAJOR_VERSION_VS_0_PBCFG_C                3
+#define PORT_CI_PORT_IP_SW_MINOR_VERSION_VS_0_PBCFG_C                0
+#define PORT_CI_PORT_IP_SW_PATCH_VERSION_VS_0_PBCFG_C                0
 
 /*==================================================================================================
 *                                      FILE VERSION CHECKS
 ==================================================================================================*/
 /* Check if the files Port_Ci_Port_Ip_VS_0_PBcfg.c and Port_Ci_Port_Ip.h are of the same vendor */
 #if (PORT_CI_PORT_IP_VENDOR_ID_VS_0_PBCFG_C != PORT_CI_PORT_IP_VENDOR_ID_H)
-#error "Port_Ci_Port_Ip_VS_0_PBcfg.c and Port_Ci_Port_Ip.h have different vendor ids"
+    #error "Port_Ci_Port_Ip_VS_0_PBcfg.c and Port_Ci_Port_Ip.h have different vendor ids"
 #endif
-/* Check if the files Port_Ci_Port_Ip_VS_0_PBcfg.c and Port_Ci_Port_Ip.h are of the same Autosar
- * version */
-#if ((PORT_CI_PORT_IP_AR_RELEASE_MAJOR_VERSION_VS_0_PBCFG_C !=                                     \
-      PORT_CI_PORT_IP_AR_RELEASE_MAJOR_VERSION_H) ||                                               \
-     (PORT_CI_PORT_IP_AR_RELEASE_MINOR_VERSION_VS_0_PBCFG_C !=                                     \
-      PORT_CI_PORT_IP_AR_RELEASE_MINOR_VERSION_H) ||                                               \
-     (PORT_CI_PORT_IP_AR_RELEASE_REVISION_VERSION_VS_0_PBCFG_C !=                                  \
-      PORT_CI_PORT_IP_AR_RELEASE_REVISION_VERSION_H))
-#error "AutoSar Version Numbers of Port_Ci_Port_Ip_VS_0_PBcfg.c and Port_Ci_Port_Ip.h are different"
+/* Check if the files Port_Ci_Port_Ip_VS_0_PBcfg.c and Port_Ci_Port_Ip.h are of the same Autosar version */
+#if ((PORT_CI_PORT_IP_AR_RELEASE_MAJOR_VERSION_VS_0_PBCFG_C    != PORT_CI_PORT_IP_AR_RELEASE_MAJOR_VERSION_H)  || \
+     (PORT_CI_PORT_IP_AR_RELEASE_MINOR_VERSION_VS_0_PBCFG_C    != PORT_CI_PORT_IP_AR_RELEASE_MINOR_VERSION_H)  || \
+     (PORT_CI_PORT_IP_AR_RELEASE_REVISION_VERSION_VS_0_PBCFG_C != PORT_CI_PORT_IP_AR_RELEASE_REVISION_VERSION_H)  \
+    )
+    #error "AutoSar Version Numbers of Port_Ci_Port_Ip_VS_0_PBcfg.c and Port_Ci_Port_Ip.h are different"
 #endif
-/* Check if the files Port_Ci_Port_Ip_VS_0_PBcfg.c and Port_Ci_Port_Ip.h are of the same software
- * version */
-#if ((PORT_CI_PORT_IP_SW_MAJOR_VERSION_VS_0_PBCFG_C != PORT_CI_PORT_IP_SW_MAJOR_VERSION_H) ||      \
-     (PORT_CI_PORT_IP_SW_MINOR_VERSION_VS_0_PBCFG_C != PORT_CI_PORT_IP_SW_MINOR_VERSION_H) ||      \
-     (PORT_CI_PORT_IP_SW_PATCH_VERSION_VS_0_PBCFG_C != PORT_CI_PORT_IP_SW_PATCH_VERSION_H))
-#error                                                                                             \
-    "Software Version Numbers of Port_Ci_Port_Ip_VS_0_PBcfg.c and Port_Ci_Port_Ip.h are different"
+/* Check if the files Port_Ci_Port_Ip_VS_0_PBcfg.c and Port_Ci_Port_Ip.h are of the same software version */
+#if ((PORT_CI_PORT_IP_SW_MAJOR_VERSION_VS_0_PBCFG_C != PORT_CI_PORT_IP_SW_MAJOR_VERSION_H) || \
+     (PORT_CI_PORT_IP_SW_MINOR_VERSION_VS_0_PBCFG_C != PORT_CI_PORT_IP_SW_MINOR_VERSION_H) || \
+     (PORT_CI_PORT_IP_SW_PATCH_VERSION_VS_0_PBCFG_C != PORT_CI_PORT_IP_SW_PATCH_VERSION_H)    \
+    )
+    #error "Software Version Numbers of Port_Ci_Port_Ip_VS_0_PBcfg.c and Port_Ci_Port_Ip.h are different"
 #endif
 
 /*==================================================================================================
 *                           LOCAL TYPEDEFS (STRUCTURES, UNIONS, ENUMS)
 ==================================================================================================*/
 
+
 /*==================================================================================================
 *                                          LOCAL MACROS
 ==================================================================================================*/
+
 
 /*==================================================================================================
 *                                         LOCAL CONSTANTS
@@ -110,18 +108,22 @@ extern "C" {
 #define PORT_START_SEC_CONFIG_DATA_UNSPECIFIED
 #include "Port_MemMap.h"
 
-const Port_Ci_Port_Ip_PinSettingsConfig g_pin_mux_InitConfigArr_VS_0[NUM_OF_CONFIGURED_PINS] = {
-    {.portBase = IP_PORTD,
-     .gpioBase = IP_PTD,
-     .pinPortIdx = 0,
-     .mux = PORT_MUX_AS_GPIO,
-     .direction = PORT_CI_PORT_PIN_OUT,
-     .pullConfig = PORT_INTERNAL_PULL_NOT_ENABLED,
-     .driveStrength = PORT_DRIVE_STRENGTH_LOW,
-     .passiveFilter = (boolean)FALSE,
-     .lockRegister = PORT_LOCK_REGISTER_DISABLED,
-     .digitalFilter = (boolean)FALSE,
-     .initValue = 0}};
+const Port_Ci_Port_Ip_PinSettingsConfig g_pin_mux_InitConfigArr_VS_0[NUM_OF_CONFIGURED_PINS] = 
+{
+    {
+        .portBase              = IP_PORTD,
+        .gpioBase              = IP_PTD,
+        .pinPortIdx            = 0,
+        .mux                   = PORT_MUX_AS_GPIO,
+        .direction             = PORT_CI_PORT_PIN_OUT,
+        .pullConfig            = PORT_INTERNAL_PULL_NOT_ENABLED,
+        .driveStrength         = PORT_DRIVE_STRENGTH_LOW,
+        .passiveFilter         = (boolean)FALSE,
+        .lockRegister          = PORT_LOCK_REGISTER_DISABLED,
+        .digitalFilter         = (boolean)FALSE,
+        .initValue             = 0
+    }
+};
 
 #define PORT_STOP_SEC_CONFIG_DATA_UNSPECIFIED
 #include "Port_MemMap.h"

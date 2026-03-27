@@ -1,7 +1,7 @@
 /*==================================================================================================
 *   Project              : RTD AUTOSAR 4.7
 *   Platform             : CORTEXM
-*   Peripheral           :
+*   Peripheral           : 
 *   Dependencies         : none
 *
 *   Autosar Version      : 4.7.0
@@ -12,11 +12,11 @@
 *
 *   Copyright 2020-2025 NXP
 *
-*   NXP Confidential and Proprietary. This software is owned or controlled by NXP and may only be
-*   used strictly in accordance with the applicable license terms.  By expressly
-*   accepting such terms or by downloading, installing, activating and/or otherwise
-*   using the software, you are agreeing that you have read, and that you agree to
-*   comply with and are bound by, such license terms.  If you do not agree to be
+*   NXP Confidential and Proprietary. This software is owned or controlled by NXP and may only be 
+*   used strictly in accordance with the applicable license terms.  By expressly 
+*   accepting such terms or by downloading, installing, activating and/or otherwise 
+*   using the software, you are agreeing that you have read, and that you agree to 
+*   comply with and are bound by, such license terms.  If you do not agree to be 
 *   bound by the applicable license terms, then you may not retain, install,
 *   activate or otherwise use the software.
 ==================================================================================================*/
@@ -36,7 +36,7 @@
 */
 
 #if defined(__cplusplus)
-extern "C" {
+extern "C"{
 #endif
 /*==================================================================================================
 *                                          INCLUDE FILES
@@ -44,105 +44,91 @@ extern "C" {
 * 2) needed interfaces from external units
 * 3) internal and external interfaces from this unit
 ==================================================================================================*/
+#include "Std_Types.h"
+#include "Clock_Ip_Types.h"
 #include "Clock_Ip_Cfg.h"
 #include "Clock_Ip_Specific.h"
-#include "Clock_Ip_Types.h"
-#include "Std_Types.h"
 /*==================================================================================================
                                SOURCE FILE VERSION INFORMATION
 ==================================================================================================*/
-#define CLOCK_IP_TRUSTEDFUNCTIONS_VENDOR_ID 43
-#define CLOCK_IP_TRUSTEDFUNCTIONS_AR_RELEASE_MAJOR_VERSION 4
-#define CLOCK_IP_TRUSTEDFUNCTIONS_AR_RELEASE_MINOR_VERSION 7
-#define CLOCK_IP_TRUSTEDFUNCTIONS_AR_RELEASE_REVISION_VERSION 0
-#define CLOCK_IP_TRUSTEDFUNCTIONS_SW_MAJOR_VERSION 3
-#define CLOCK_IP_TRUSTEDFUNCTIONS_SW_MINOR_VERSION 0
-#define CLOCK_IP_TRUSTEDFUNCTIONS_SW_PATCH_VERSION 0
+#define CLOCK_IP_TRUSTEDFUNCTIONS_VENDOR_ID                       43
+#define CLOCK_IP_TRUSTEDFUNCTIONS_AR_RELEASE_MAJOR_VERSION        4
+#define CLOCK_IP_TRUSTEDFUNCTIONS_AR_RELEASE_MINOR_VERSION        7
+#define CLOCK_IP_TRUSTEDFUNCTIONS_AR_RELEASE_REVISION_VERSION     0
+#define CLOCK_IP_TRUSTEDFUNCTIONS_SW_MAJOR_VERSION                3
+#define CLOCK_IP_TRUSTEDFUNCTIONS_SW_MINOR_VERSION                0
+#define CLOCK_IP_TRUSTEDFUNCTIONS_SW_PATCH_VERSION                0
 
 /*==================================================================================================
                                       FILE VERSION CHECKS
 ==================================================================================================*/
 #ifndef DISABLE_MCAL_INTERMODULE_ASR_CHECK
 /* Check if source file and Std_Types.h file are of the same Autosar version */
-#if ((CLOCK_IP_TRUSTEDFUNCTIONS_AR_RELEASE_MAJOR_VERSION != STD_AR_RELEASE_MAJOR_VERSION) ||       \
-     (CLOCK_IP_TRUSTEDFUNCTIONS_AR_RELEASE_MINOR_VERSION != STD_AR_RELEASE_MINOR_VERSION))
-#error "AutoSar Version Numbers of Clock_Ip_TrustedFunctions.h  and Std_Types.h are different"
+#if ((CLOCK_IP_TRUSTEDFUNCTIONS_AR_RELEASE_MAJOR_VERSION != STD_AR_RELEASE_MAJOR_VERSION) || \
+     (CLOCK_IP_TRUSTEDFUNCTIONS_AR_RELEASE_MINOR_VERSION != STD_AR_RELEASE_MINOR_VERSION) \
+    )
+    #error "AutoSar Version Numbers of Clock_Ip_TrustedFunctions.h  and Std_Types.h are different"
 #endif
-#endif /* DISABLE_MCAL_INTERMODULE_ASR_CHECK */
+#endif    /* DISABLE_MCAL_INTERMODULE_ASR_CHECK */
 
 /* Check if Clock_Ip_TrustedFunctions.h file and Clock_Ip_Types.h file have same versions */
-#if (CLOCK_IP_TRUSTEDFUNCTIONS_VENDOR_ID != CLOCK_IP_TYPES_VENDOR_ID)
-#error "Clock_Ip_TrustedFunctions.h and Clock_Ip_Types.h have different vendor IDs"
+#if (CLOCK_IP_TRUSTEDFUNCTIONS_VENDOR_ID  != CLOCK_IP_TYPES_VENDOR_ID)
+    #error "Clock_Ip_TrustedFunctions.h and Clock_Ip_Types.h have different vendor IDs"
 #endif
 
-/* Check if Clock_Ip_TrustedFunctions.h file and Clock_Ip_Types.h file are of the same Autosar
- * version */
-#if ((CLOCK_IP_TRUSTEDFUNCTIONS_AR_RELEASE_MAJOR_VERSION !=                                        \
-      CLOCK_IP_TYPES_AR_RELEASE_MAJOR_VERSION) ||                                                  \
-     (CLOCK_IP_TRUSTEDFUNCTIONS_AR_RELEASE_MINOR_VERSION !=                                        \
-      CLOCK_IP_TYPES_AR_RELEASE_MINOR_VERSION) ||                                                  \
-     (CLOCK_IP_TRUSTEDFUNCTIONS_AR_RELEASE_REVISION_VERSION !=                                     \
-      CLOCK_IP_TYPES_AR_RELEASE_REVISION_VERSION))
-#error "AutoSar Version Numbers of Clock_Ip_TrustedFunctions.h and Clock_Ip_Types.h are different"
+/* Check if Clock_Ip_TrustedFunctions.h file and Clock_Ip_Types.h file are of the same Autosar version */
+#if ((CLOCK_IP_TRUSTEDFUNCTIONS_AR_RELEASE_MAJOR_VERSION    != CLOCK_IP_TYPES_AR_RELEASE_MAJOR_VERSION) || \
+     (CLOCK_IP_TRUSTEDFUNCTIONS_AR_RELEASE_MINOR_VERSION    != CLOCK_IP_TYPES_AR_RELEASE_MINOR_VERSION) || \
+     (CLOCK_IP_TRUSTEDFUNCTIONS_AR_RELEASE_REVISION_VERSION != CLOCK_IP_TYPES_AR_RELEASE_REVISION_VERSION))
+    #error "AutoSar Version Numbers of Clock_Ip_TrustedFunctions.h and Clock_Ip_Types.h are different"
 #endif
 
-/* Check if Clock_Ip_TrustedFunctions.h file and Clock_Ip_Types.h file are of the same Software
- * version */
-#if ((CLOCK_IP_TRUSTEDFUNCTIONS_SW_MAJOR_VERSION != CLOCK_IP_TYPES_SW_MAJOR_VERSION) ||            \
-     (CLOCK_IP_TRUSTEDFUNCTIONS_SW_MINOR_VERSION != CLOCK_IP_TYPES_SW_MINOR_VERSION) ||            \
+/* Check if Clock_Ip_TrustedFunctions.h file and Clock_Ip_Types.h file are of the same Software version */
+#if ((CLOCK_IP_TRUSTEDFUNCTIONS_SW_MAJOR_VERSION != CLOCK_IP_TYPES_SW_MAJOR_VERSION) || \
+     (CLOCK_IP_TRUSTEDFUNCTIONS_SW_MINOR_VERSION != CLOCK_IP_TYPES_SW_MINOR_VERSION) || \
      (CLOCK_IP_TRUSTEDFUNCTIONS_SW_PATCH_VERSION != CLOCK_IP_TYPES_SW_PATCH_VERSION))
-#error "Software Version Numbers of Clock_Ip_TrustedFunctions.h and Clock_Ip_Types.h are different"
+    #error "Software Version Numbers of Clock_Ip_TrustedFunctions.h and Clock_Ip_Types.h are different"
 #endif
 
 /* Check if Clock_Ip_TrustedFunctions.h file and Clock_Ip_Cfg.h file have same versions */
-#if (CLOCK_IP_TRUSTEDFUNCTIONS_VENDOR_ID != CLOCK_IP_CFG_VENDOR_ID)
-#error "Clock_Ip_TrustedFunctions.h and Clock_Ip_Cfg.h have different vendor IDs"
+#if (CLOCK_IP_TRUSTEDFUNCTIONS_VENDOR_ID  != CLOCK_IP_CFG_VENDOR_ID)
+    #error "Clock_Ip_TrustedFunctions.h and Clock_Ip_Cfg.h have different vendor IDs"
 #endif
 
-/* Check if Clock_Ip_TrustedFunctions.h file and Clock_Ip_Cfg.h file are of the same Autosar version
- */
-#if ((CLOCK_IP_TRUSTEDFUNCTIONS_AR_RELEASE_MAJOR_VERSION !=                                        \
-      CLOCK_IP_CFG_AR_RELEASE_MAJOR_VERSION) ||                                                    \
-     (CLOCK_IP_TRUSTEDFUNCTIONS_AR_RELEASE_MINOR_VERSION !=                                        \
-      CLOCK_IP_CFG_AR_RELEASE_MINOR_VERSION) ||                                                    \
-     (CLOCK_IP_TRUSTEDFUNCTIONS_AR_RELEASE_REVISION_VERSION !=                                     \
-      CLOCK_IP_CFG_AR_RELEASE_REVISION_VERSION))
-#error "AutoSar Version Numbers of Clock_Ip_TrustedFunctions.h and Clock_Ip_Cfg.h are different"
+/* Check if Clock_Ip_TrustedFunctions.h file and Clock_Ip_Cfg.h file are of the same Autosar version */
+#if ((CLOCK_IP_TRUSTEDFUNCTIONS_AR_RELEASE_MAJOR_VERSION    != CLOCK_IP_CFG_AR_RELEASE_MAJOR_VERSION) || \
+     (CLOCK_IP_TRUSTEDFUNCTIONS_AR_RELEASE_MINOR_VERSION    != CLOCK_IP_CFG_AR_RELEASE_MINOR_VERSION) || \
+     (CLOCK_IP_TRUSTEDFUNCTIONS_AR_RELEASE_REVISION_VERSION != CLOCK_IP_CFG_AR_RELEASE_REVISION_VERSION))
+    #error "AutoSar Version Numbers of Clock_Ip_TrustedFunctions.h and Clock_Ip_Cfg.h are different"
 #endif
 
-/* Check if Clock_Ip_TrustedFunctions.h file and Clock_Ip_Cfg.h file are of the same Software
- * version */
-#if ((CLOCK_IP_TRUSTEDFUNCTIONS_SW_MAJOR_VERSION != CLOCK_IP_CFG_SW_MAJOR_VERSION) ||              \
-     (CLOCK_IP_TRUSTEDFUNCTIONS_SW_MINOR_VERSION != CLOCK_IP_CFG_SW_MINOR_VERSION) ||              \
+/* Check if Clock_Ip_TrustedFunctions.h file and Clock_Ip_Cfg.h file are of the same Software version */
+#if ((CLOCK_IP_TRUSTEDFUNCTIONS_SW_MAJOR_VERSION != CLOCK_IP_CFG_SW_MAJOR_VERSION) || \
+     (CLOCK_IP_TRUSTEDFUNCTIONS_SW_MINOR_VERSION != CLOCK_IP_CFG_SW_MINOR_VERSION) || \
      (CLOCK_IP_TRUSTEDFUNCTIONS_SW_PATCH_VERSION != CLOCK_IP_CFG_SW_PATCH_VERSION))
-#error "Software Version Numbers of Clock_Ip_TrustedFunctions.h and Clock_Ip_Cfg.h are different"
+    #error "Software Version Numbers of Clock_Ip_TrustedFunctions.h and Clock_Ip_Cfg.h are different"
 #endif
+
 
 /* Check if Clock_Ip_TrustedFunctions.h file and Clock_Ip_Specific.h file have same versions */
-#if (CLOCK_IP_TRUSTEDFUNCTIONS_VENDOR_ID != CLOCK_IP_SPECIFIC_VENDOR_ID)
-#error "Clock_Ip_TrustedFunctions.h and Clock_Ip_Specific.h have different vendor IDs"
+#if (CLOCK_IP_TRUSTEDFUNCTIONS_VENDOR_ID  != CLOCK_IP_SPECIFIC_VENDOR_ID)
+    #error "Clock_Ip_TrustedFunctions.h and Clock_Ip_Specific.h have different vendor IDs"
 #endif
 
-/* Check if Clock_Ip_TrustedFunctions.h file and Clock_Ip_Specific.h file are of the same Autosar
- * version */
-#if ((CLOCK_IP_TRUSTEDFUNCTIONS_AR_RELEASE_MAJOR_VERSION !=                                        \
-      CLOCK_IP_SPECIFIC_AR_RELEASE_MAJOR_VERSION) ||                                               \
-     (CLOCK_IP_TRUSTEDFUNCTIONS_AR_RELEASE_MINOR_VERSION !=                                        \
-      CLOCK_IP_SPECIFIC_AR_RELEASE_MINOR_VERSION) ||                                               \
-     (CLOCK_IP_TRUSTEDFUNCTIONS_AR_RELEASE_REVISION_VERSION !=                                     \
-      CLOCK_IP_SPECIFIC_AR_RELEASE_REVISION_VERSION))
-#error                                                                                             \
-    "AutoSar Version Numbers of Clock_Ip_TrustedFunctions.h and Clock_Ip_Specific.h are different"
+/* Check if Clock_Ip_TrustedFunctions.h file and Clock_Ip_Specific.h file are of the same Autosar version */
+#if ((CLOCK_IP_TRUSTEDFUNCTIONS_AR_RELEASE_MAJOR_VERSION    != CLOCK_IP_SPECIFIC_AR_RELEASE_MAJOR_VERSION) || \
+     (CLOCK_IP_TRUSTEDFUNCTIONS_AR_RELEASE_MINOR_VERSION    != CLOCK_IP_SPECIFIC_AR_RELEASE_MINOR_VERSION) || \
+     (CLOCK_IP_TRUSTEDFUNCTIONS_AR_RELEASE_REVISION_VERSION != CLOCK_IP_SPECIFIC_AR_RELEASE_REVISION_VERSION))
+    #error "AutoSar Version Numbers of Clock_Ip_TrustedFunctions.h and Clock_Ip_Specific.h are different"
 #endif
 
-/* Check if Clock_Ip_TrustedFunctions.h file and Clock_Ip_Specific.h file are of the same Software
- * version */
-#if ((CLOCK_IP_TRUSTEDFUNCTIONS_SW_MAJOR_VERSION != CLOCK_IP_SPECIFIC_SW_MAJOR_VERSION) ||         \
-     (CLOCK_IP_TRUSTEDFUNCTIONS_SW_MINOR_VERSION != CLOCK_IP_SPECIFIC_SW_MINOR_VERSION) ||         \
+/* Check if Clock_Ip_TrustedFunctions.h file and Clock_Ip_Specific.h file are of the same Software version */
+#if ((CLOCK_IP_TRUSTEDFUNCTIONS_SW_MAJOR_VERSION != CLOCK_IP_SPECIFIC_SW_MAJOR_VERSION) || \
+     (CLOCK_IP_TRUSTEDFUNCTIONS_SW_MINOR_VERSION != CLOCK_IP_SPECIFIC_SW_MINOR_VERSION) || \
      (CLOCK_IP_TRUSTEDFUNCTIONS_SW_PATCH_VERSION != CLOCK_IP_SPECIFIC_SW_PATCH_VERSION))
-#error                                                                                             \
-    "Software Version Numbers of Clock_Ip_TrustedFunctions.h and Clock_Ip_Specific.h are different"
+    #error "Software Version Numbers of Clock_Ip_TrustedFunctions.h and Clock_Ip_Specific.h are different"
 #endif
+
 
 /*==================================================================================================
 *                                            CONSTANTS
@@ -164,12 +150,14 @@ extern "C" {
 *                                  GLOBAL VARIABLE DECLARATIONS
 ==================================================================================================*/
 
+
 /*==================================================================================================
 *                                       FUNCTION PROTOTYPES
 ==================================================================================================*/
 
+
 #if (defined(CLOCK_IP_ENABLE_USER_MODE_SUPPORT))
-#if (STD_ON == CLOCK_IP_ENABLE_USER_MODE_SUPPORT)
+  #if (STD_ON == CLOCK_IP_ENABLE_USER_MODE_SUPPORT)
 
 /* Clock start section code */
 #define MCU_START_SEC_CODE
@@ -263,6 +251,7 @@ extern void Clock_Ip_SetScgVlprDivbus_TrustedCall(Clock_Ip_DividerConfigType con
 extern void Clock_Ip_SetScgVlprDivslow_TrustedCall(Clock_Ip_DividerConfigType const* Config);
 #endif
 
+
 #ifdef CLOCK_IP_SCG_DIVCORE_HSRUN
 /**
  * @brief        Write Config to SCG_HCCR register
@@ -304,7 +293,7 @@ extern void Clock_Ip_SetScgHsrunDivslow_TrustedCall(Clock_Ip_DividerConfigType c
  * @return       None
  *
  */
-extern void Clock_Ip_SetSimClkoutDiv_TrustedCall(Clock_Ip_DividerConfigType const* Config);
+extern void Clock_Ip_SetSimClkoutDiv_TrustedCall(Clock_Ip_DividerConfigType const *Config);
 #endif
 
 #ifdef CLOCK_IP_PCC_PCD_FRAC
@@ -348,6 +337,7 @@ extern void Clock_Ip_ResetSOSC_TrustedCall(Clock_Ip_XoscConfigType const* Config
  */
 extern void Clock_Ip_SetSOSC_TrustedCall(Clock_Ip_XoscConfigType const* Config);
 
+
 /**
  * @brief        Enable SOSC
  *
@@ -380,6 +370,7 @@ extern void Clock_Ip_ClockSetSimLPO1KEnable_TrustedCall(Clock_Ip_GateConfigType 
 extern void Clock_Ip_ClockSetSimLPO32KEnable_TrustedCall(Clock_Ip_GateConfigType const* Config);
 #endif
 
+
 #ifdef CLOCK_IP_SIM_CLKOUT_ENABLE
 /**
  * @brief        Set gate of CLKOUT_CLK
@@ -390,6 +381,7 @@ extern void Clock_Ip_ClockSetSimLPO32KEnable_TrustedCall(Clock_Ip_GateConfigType
  */
 extern void Clock_Ip_ClockSetSimClkoutEnable_TrustedCall(Clock_Ip_GateConfigType const* Config);
 #endif
+
 
 #ifdef CLOCK_IP_PCC_CGC_ENABLE
 /**
@@ -511,6 +503,7 @@ extern void Clock_Ip_EnableSircStop_TrustedCall(Clock_Ip_IrcoscConfigType const*
 extern void Clock_Ip_DisableSircStop_TrustedCall(Clock_Ip_NameType Name);
 #endif
 
+
 #ifdef CLOCK_IP_FIRC_ENABLE
 /**
  * @brief        Write Config for Firc to register
@@ -586,7 +579,7 @@ extern void Clock_Ip_EnableSpll_TrustedCall(Clock_Ip_PllConfigType const* Config
  * @return       None
  *
  */
-extern void Clock_Ip_ResetScgRunSel_TrustedCall(Clock_Ip_SelectorConfigType const* Config);
+extern void Clock_Ip_ResetScgRunSel_TrustedCall(Clock_Ip_SelectorConfigType const *Config);
 
 /**
  * @brief        Write Config to SCG_RCCR selector register
@@ -595,7 +588,7 @@ extern void Clock_Ip_ResetScgRunSel_TrustedCall(Clock_Ip_SelectorConfigType cons
  * @return       None
  *
  */
-extern void Clock_Ip_SetScgRunSel_TrustedCall(Clock_Ip_SelectorConfigType const* Config);
+extern void Clock_Ip_SetScgRunSel_TrustedCall(Clock_Ip_SelectorConfigType const *Config);
 #endif
 
 #ifdef CLOCK_IP_SCG_SCS_VLPR_SEL
@@ -606,7 +599,7 @@ extern void Clock_Ip_SetScgRunSel_TrustedCall(Clock_Ip_SelectorConfigType const*
  * @return       None
  *
  */
-extern void Clock_Ip_SetScgVlprSel_TrustedCall(Clock_Ip_SelectorConfigType const* Config);
+extern void Clock_Ip_SetScgVlprSel_TrustedCall(Clock_Ip_SelectorConfigType const *Config);
 #endif
 
 #ifdef CLOCK_IP_SCG_SCS_HSRUN_SEL
@@ -617,7 +610,7 @@ extern void Clock_Ip_SetScgVlprSel_TrustedCall(Clock_Ip_SelectorConfigType const
  * @return       None
  *
  */
-extern void Clock_Ip_ResetScgHsrunSel_TrustedCall(Clock_Ip_SelectorConfigType const* Config);
+extern void Clock_Ip_ResetScgHsrunSel_TrustedCall(Clock_Ip_SelectorConfigType const *Config);
 
 /**
  * @brief        Write Config to SCG_HCCR selector register
@@ -626,7 +619,7 @@ extern void Clock_Ip_ResetScgHsrunSel_TrustedCall(Clock_Ip_SelectorConfigType co
  * @return       None
  *
  */
-extern void Clock_Ip_SetScgHsrunSel_TrustedCall(Clock_Ip_SelectorConfigType const* Config);
+extern void Clock_Ip_SetScgHsrunSel_TrustedCall(Clock_Ip_SelectorConfigType const *Config);
 #endif
 
 #ifdef CLOCK_IP_SIM_RTC_SEL
@@ -637,7 +630,7 @@ extern void Clock_Ip_SetScgHsrunSel_TrustedCall(Clock_Ip_SelectorConfigType cons
  * @return       None
  *
  */
-extern void Clock_Ip_ResetSimRtcSel_TrustedCall(Clock_Ip_SelectorConfigType const* Config);
+extern void Clock_Ip_ResetSimRtcSel_TrustedCall(Clock_Ip_SelectorConfigType const *Config);
 
 /**
  * @brief        Write Config to RTC_CLK register
@@ -646,7 +639,7 @@ extern void Clock_Ip_ResetSimRtcSel_TrustedCall(Clock_Ip_SelectorConfigType cons
  * @return       None
  *
  */
-extern void Clock_Ip_SetSimRtcSel_TrustedCall(Clock_Ip_SelectorConfigType const* Config);
+extern void Clock_Ip_SetSimRtcSel_TrustedCall(Clock_Ip_SelectorConfigType const *Config);
 #endif
 
 #ifdef CLOCK_IP_SIM_LPO_SEL
@@ -657,7 +650,7 @@ extern void Clock_Ip_SetSimRtcSel_TrustedCall(Clock_Ip_SelectorConfigType const*
  * @return       None
  *
  */
-extern void Clock_Ip_ResetSimLpoSel_TrustedCall(Clock_Ip_SelectorConfigType const* Config);
+extern void Clock_Ip_ResetSimLpoSel_TrustedCall(Clock_Ip_SelectorConfigType const *Config);
 
 /**
  * @brief        Write Config to LPO_CLK selector
@@ -666,7 +659,7 @@ extern void Clock_Ip_ResetSimLpoSel_TrustedCall(Clock_Ip_SelectorConfigType cons
  * @return       None
  *
  */
-extern void Clock_Ip_SetSimLpoSel_TrustedCall(Clock_Ip_SelectorConfigType const* Config);
+extern void Clock_Ip_SetSimLpoSel_TrustedCall(Clock_Ip_SelectorConfigType const *Config);
 #endif
 
 #ifdef CLOCK_IP_SCG_CLKOUT_SEL
@@ -677,7 +670,7 @@ extern void Clock_Ip_SetSimLpoSel_TrustedCall(Clock_Ip_SelectorConfigType const*
  * @return       None
  *
  */
-extern void Clock_Ip_ResetScgClkoutSel_TrustedCall(Clock_Ip_SelectorConfigType const* Config);
+extern void Clock_Ip_ResetScgClkoutSel_TrustedCall(Clock_Ip_SelectorConfigType const *Config);
 
 /**
  * @brief        Write Config to LPO_CLK register
@@ -686,8 +679,9 @@ extern void Clock_Ip_ResetScgClkoutSel_TrustedCall(Clock_Ip_SelectorConfigType c
  * @return       None
  *
  */
-extern void Clock_Ip_SetScgClkoutSel_TrustedCall(Clock_Ip_SelectorConfigType const* Config);
+extern void Clock_Ip_SetScgClkoutSel_TrustedCall(Clock_Ip_SelectorConfigType const *Config);
 #endif
+
 
 #ifdef CLOCK_IP_SIM_FTMOPT_SEL
 /**
@@ -697,7 +691,7 @@ extern void Clock_Ip_SetScgClkoutSel_TrustedCall(Clock_Ip_SelectorConfigType con
  * @return       None
  *
  */
-extern void Clock_Ip_ResetSimFtmoptSel_TrustedCall(Clock_Ip_SelectorConfigType const* Config);
+extern void Clock_Ip_ResetSimFtmoptSel_TrustedCall(Clock_Ip_SelectorConfigType const *Config);
 
 /**
  * @brief        Write Config to SIM->FTMOPT0 register
@@ -706,7 +700,7 @@ extern void Clock_Ip_ResetSimFtmoptSel_TrustedCall(Clock_Ip_SelectorConfigType c
  * @return       None
  *
  */
-extern void Clock_Ip_SetSimFtmoptSel_TrustedCall(Clock_Ip_SelectorConfigType const* Config);
+extern void Clock_Ip_SetSimFtmoptSel_TrustedCall(Clock_Ip_SelectorConfigType const *Config);
 #endif
 
 #ifdef CLOCK_IP_SIM_CLKOUT_SEL
@@ -717,7 +711,7 @@ extern void Clock_Ip_SetSimFtmoptSel_TrustedCall(Clock_Ip_SelectorConfigType con
  * @return       None
  *
  */
-extern void Clock_Ip_ResetSimClkoutSel_TrustedCall(Clock_Ip_SelectorConfigType const* Config);
+extern void Clock_Ip_ResetSimClkoutSel_TrustedCall(Clock_Ip_SelectorConfigType const *Config);
 
 /**
  * @brief        Write Config to SIM_CHIPCTL_CLKOUTSEL register
@@ -726,7 +720,7 @@ extern void Clock_Ip_ResetSimClkoutSel_TrustedCall(Clock_Ip_SelectorConfigType c
  * @return       None
  *
  */
-extern void Clock_Ip_SetSimClkoutSel_TrustedCall(Clock_Ip_SelectorConfigType const* Config);
+extern void Clock_Ip_SetSimClkoutSel_TrustedCall(Clock_Ip_SelectorConfigType const *Config);
 #endif
 
 #ifdef CLOCK_IP_PCC_PCS_SELECT
@@ -737,7 +731,7 @@ extern void Clock_Ip_SetSimClkoutSel_TrustedCall(Clock_Ip_SelectorConfigType con
  * @return       None
  *
  */
-extern void Clock_Ip_ResetPccPcsSelect_TrustedCall(Clock_Ip_SelectorConfigType const* Config);
+extern void Clock_Ip_ResetPccPcsSelect_TrustedCall(Clock_Ip_SelectorConfigType const *Config);
 
 /**
  * @brief        Write Config to PCC register
@@ -746,8 +740,9 @@ extern void Clock_Ip_ResetPccPcsSelect_TrustedCall(Clock_Ip_SelectorConfigType c
  * @return       None
  *
  */
-extern void Clock_Ip_SetPccPcsSelect_TrustedCall(Clock_Ip_SelectorConfigType const* Config);
+extern void Clock_Ip_SetPccPcsSelect_TrustedCall(Clock_Ip_SelectorConfigType const *Config);
 #endif
+
 
 #ifdef CLOCK_IP_SIM_TRACE_SEL
 /**
@@ -757,7 +752,7 @@ extern void Clock_Ip_SetPccPcsSelect_TrustedCall(Clock_Ip_SelectorConfigType con
  * @return       None
  *
  */
-extern void Clock_Ip_ResetSimTraceSel_TrustedCall(Clock_Ip_SelectorConfigType const* Config);
+extern void Clock_Ip_ResetSimTraceSel_TrustedCall(Clock_Ip_SelectorConfigType const *Config);
 
 /**
  * @brief        Write Config to TRACE_CLK selector register
@@ -766,7 +761,7 @@ extern void Clock_Ip_ResetSimTraceSel_TrustedCall(Clock_Ip_SelectorConfigType co
  * @return       None
  *
  */
-extern void Clock_Ip_SetSimTraceSel_TrustedCall(Clock_Ip_SelectorConfigType const* Config);
+extern void Clock_Ip_SetSimTraceSel_TrustedCall(Clock_Ip_SelectorConfigType const *Config);
 #endif
 
 /**
@@ -785,7 +780,7 @@ extern void SetFircToResetValue_TrustedCall(void);
  * @return       None
  *
  */
-extern void SetSimLpoclksRegister_TrustedCall(Clock_Ip_ClockConfigType const* Config);
+extern void SetSimLpoclksRegister_TrustedCall(Clock_Ip_ClockConfigType const *Config);
 
 #if defined(CLOCK_IP_HAS_FIRC_MON1_CLK)
 /**
@@ -813,8 +808,13 @@ extern void Clock_Ip_EnableCmu1Gate_TrustedCall(void);
 #define MCU_STOP_SEC_CODE
 #include "Mcu_MemMap.h"
 
-#endif
+
+  #endif
 #endif /* CLOCK_IP_ENABLE_USER_MODE_SUPPORT */
+
+
+
+
 
 #if defined(__cplusplus)
 }
@@ -823,3 +823,5 @@ extern void Clock_Ip_EnableCmu1Gate_TrustedCall(void);
 /*! @}*/
 
 #endif /* CLOCK_IP_TRUSTEDFUNCTIONS_H */
+
+

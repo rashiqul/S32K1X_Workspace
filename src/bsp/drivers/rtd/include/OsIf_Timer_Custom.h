@@ -12,11 +12,11 @@
 *
 * Copyright 2020-2025 NXP
 *
-* NXP Confidential and Proprietary. This software is owned or controlled by NXP and may only be
-*   used strictly in accordance with the applicable license terms.  By expressly
-*   accepting such terms or by downloading, installing, activating and/or otherwise
-*   using the software, you are agreeing that you have read, and that you agree to
-*   comply with and are bound by, such license terms.  If you do not agree to be
+* NXP Confidential and Proprietary. This software is owned or controlled by NXP and may only be 
+*   used strictly in accordance with the applicable license terms.  By expressly 
+*   accepting such terms or by downloading, installing, activating and/or otherwise 
+*   using the software, you are agreeing that you have read, and that you agree to 
+*   comply with and are bound by, such license terms.  If you do not agree to be 
 *   bound by the applicable license terms, then you may not retain, install,
 *   activate or otherwise use the software.
 ==================================================================================================*/
@@ -24,14 +24,14 @@
 #define OSIF_TIMER_CUSTOM_H
 
 /**
- *   @file
- *
- *   @addtogroup osif_drv
- *   @{
- */
+*   @file
+*
+*   @addtogroup osif_drv
+*   @{
+*/
 
 #ifdef __cplusplus
-extern "C" {
+extern "C"{
 #endif
 
 /*==================================================================================================
@@ -45,23 +45,23 @@ extern "C" {
 /*==================================================================================================
 *                                 SOURCE FILE VERSION INFORMATION
 ==================================================================================================*/
-#define OSIF_TIMER_CUSTOM_VENDOR_ID 43
-#define OSIF_TIMER_CUSTOM_AR_RELEASE_MAJOR_VERSION 4
-#define OSIF_TIMER_CUSTOM_AR_RELEASE_MINOR_VERSION 7
-#define OSIF_TIMER_CUSTOM_AR_RELEASE_REVISION_VERSION 0
-#define OSIF_TIMER_CUSTOM_SW_MAJOR_VERSION 3
-#define OSIF_TIMER_CUSTOM_SW_MINOR_VERSION 0
-#define OSIF_TIMER_CUSTOM_SW_PATCH_VERSION 0
+#define OSIF_TIMER_CUSTOM_VENDOR_ID                    43
+#define OSIF_TIMER_CUSTOM_AR_RELEASE_MAJOR_VERSION     4
+#define OSIF_TIMER_CUSTOM_AR_RELEASE_MINOR_VERSION     7
+#define OSIF_TIMER_CUSTOM_AR_RELEASE_REVISION_VERSION  0
+#define OSIF_TIMER_CUSTOM_SW_MAJOR_VERSION             3
+#define OSIF_TIMER_CUSTOM_SW_MINOR_VERSION             0
+#define OSIF_TIMER_CUSTOM_SW_PATCH_VERSION             0
 
 /*==================================================================================================
 *                                       FILE VERSION CHECKS
 ==================================================================================================*/
 /* Checks against Std_Types.h */
 #ifndef DISABLE_MCAL_INTERMODULE_ASR_CHECK
-#if ((OSIF_TIMER_CUSTOM_AR_RELEASE_MAJOR_VERSION != STD_AR_RELEASE_MAJOR_VERSION) ||               \
-     (OSIF_TIMER_CUSTOM_AR_RELEASE_MINOR_VERSION != STD_AR_RELEASE_MINOR_VERSION))
-#error "AutoSar Version Numbers of OsIf_Timer_Custom.h and Std_Types.h are different"
-#endif
+    #if ((OSIF_TIMER_CUSTOM_AR_RELEASE_MAJOR_VERSION != STD_AR_RELEASE_MAJOR_VERSION) || \
+         (OSIF_TIMER_CUSTOM_AR_RELEASE_MINOR_VERSION != STD_AR_RELEASE_MINOR_VERSION))
+        #error "AutoSar Version Numbers of OsIf_Timer_Custom.h and Std_Types.h are different"
+    #endif
 #endif /* DISABLE_MCAL_INTERMODULE_ASR_CHECK */
 
 /*==================================================================================================
@@ -114,7 +114,7 @@ uint32 OsIf_Timer_Custom_GetCounter(void);
  * @param[in] CurrentRef The pointer to current reference point
  * @return Elapsed value
  */
-uint32 OsIf_Timer_Custom_GetElapsed(uint32* const CurrentRef);
+uint32 OsIf_Timer_Custom_GetElapsed(uint32 * const CurrentRef);
 
 /*!
  * @brief Set custom timer frequency.
