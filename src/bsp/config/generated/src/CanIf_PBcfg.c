@@ -63,6 +63,8 @@ extern "C"{
 /*==================================================================================================
 *                                   GLOBAL FUNCTION PROTOTYPES
 ==================================================================================================*/
+/* Application TX confirmation callback — implemented in main.c */
+extern void App_CanTxConfirmation(PduIdType CanIfTxPduId, Std_ReturnType result);
 
 /*==================================================================================================
 *                          LOCAL TYPEDEFS (STRUCTURES, UNIONS, ENUMS)
@@ -78,12 +80,12 @@ extern "C"{
 
 
 /* Here is the configuration related to Can_43_FLEXCAN Driver */
-static const CanIf_RxPduType * const CanIf_Can_43_FLEXCAN_HohToRxPduMapping[2U] = 
+static const CanIf_RxPduType * const CanIf_Can_43_FLEXCAN_HohToRxPduMapping[2U] =
 {
     NULL_PTR,
     NULL_PTR
 };
-static const CanIf_CanDrvConfigType CanIf_Can_43_FLEXCAN_DrvConfig = 
+static const CanIf_CanDrvConfigType CanIf_Can_43_FLEXCAN_DrvConfig =
 {
     /* .HohToRxPduMappingPtr */
     CanIf_Can_43_FLEXCAN_HohToRxPduMapping
@@ -94,17 +96,37 @@ static const CanIf_CanDrvConfigType * const CanIf_CanDrvConfig[1U] =
     &CanIf_Can_43_FLEXCAN_DrvConfig
 };
 
+/* TX PDU table — one entry for the CAN0 TX message buffer (CanHardwareObject_1).
+ * CanTxPduId=0 maps to this entry; swPduHandle in Can_PduType must equal 0. */
+static const CanIf_TxPduType CanIf_TxPduConfig[1U] =
+{
+    {
+        /* .PduId */
+        (PduIdType)0U,
+        /* .CanId — standard 11-bit frame 0x123 */
+        (Can_IdType)0x123U,
+        /* .CanFrameType */
+        CANIF_STANDARD_CAN,
+        /* .CanHth — TX hardware object handle (CanHardwareObject_1) */
+        (Can_HwHandleType)Can_43_FLEXCANConf_CanHardwareObject_CanHardwareObject_1,
+        /* .CanIfCtrlId */
+        (uint8)0U,
+        /* .UserTxConfirmation — toggles LED on every successful TX */
+        &App_CanTxConfirmation
+    }
+};
+
 const CanIf_ConfigType CanIf_Config =
 {
     /* .NumRxPdu */
     (uint8)0U,
     /* .NumTxPdu */
-    (uint8)0U,
+    (uint8)1U,
     CanIf_CanDrvConfig,
     /* .CanIf_RxPduConfigPtr */
     NULL_PTR,
     /* .CanIf_TxPduConfigPtr */
-    NULL_PTR
+    CanIf_TxPduConfig
 };
 
 #define CANIF_STOP_SEC_CONFIG_DATA_UNSPECIFIED

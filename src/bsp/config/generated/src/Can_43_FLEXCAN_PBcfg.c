@@ -265,8 +265,8 @@ static const Can_43_FLEXCAN_HwObjectConfigType Can_aHwObjectConfig[CAN_43_FLEXCA
         CAN_43_FLEXCAN_TRANSMIT,
         /* ID Message type */
         CAN_43_FLEXCAN_STANDARD,
-        /* Object uses polling */
-        (boolean)TRUE,
+        /* Object uses interrupt (not polling) — fires CanIf_TxConfirmation on TX complete */
+        (boolean)FALSE,
         /* Object enable trigger transmit */
         (boolean)FALSE,
         /* Number of Hw Object used in one Hoh */
