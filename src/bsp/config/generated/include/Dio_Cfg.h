@@ -108,7 +108,7 @@ extern "C" {
 /**
 * @brief          Function @p Dio_FlipChannel() enable switch.
 */
-#define DIO_FLIP_CHANNEL_API           (STD_OFF)
+#define DIO_FLIP_CHANNEL_API           (STD_ON)
 
 /**
 * @brief          Function @p Dio_MaskedWritePort() enable switch.
