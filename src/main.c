@@ -145,9 +145,12 @@ int main(void)
 
     /*--------------------------------------------------------------------------
      * CAN initialisation
+     * - CanIf_Init must run first: it sets CanIf_ConfigPtr, without which
+     *   CanIf_TxConfirmation silently drops every callback
      * - Initialise Can_43_FLEXCAN driver with post-build config
      * - Start FLEXCAN_0 controller (enters normal bus-on state)
      *------------------------------------------------------------------------*/
+    CanIf_Init(NULL_PTR);   /* precompile variant: parameter is ignored */
     Can_43_FLEXCAN_Init(&Can_43_FLEXCAN_Config);
     Can_43_FLEXCAN_SetControllerMode(Can_43_FLEXCANConf_CanController_CanController_0,
                                      CAN_CS_STARTED);
