@@ -20,6 +20,7 @@
  *******************************************************************************/
 
 /* RTD BSP drivers */
+#include "CanIf.h"
 #include "Can_43_FLEXCAN.h"
 #include "Dio.h"
 #include "Mcu.h"
@@ -32,6 +33,18 @@
 
 /* Generated configuration symbols (from bsp/config/generated/include/) */
 extern const Mcu_ConfigType Mcu_Config_VS_0;
+
+/*******************************************************************************
+ * CAN TX confirmation callback
+ * Called from the FlexCAN TX-complete interrupt via CanIf_TxConfirmation.
+ * Toggling the LED here gives a visible pulse on every successfully sent frame.
+ *******************************************************************************/
+void App_CanTxConfirmation(PduIdType CanIfTxPduId, Std_ReturnType result)
+{
+    (void)CanIfTxPduId;
+    (void)result;
+    Dio_FlipChannel(DioConf_DioChannel_DioChannel_0);
+}
 
 /*******************************************************************************
  * Task periods
