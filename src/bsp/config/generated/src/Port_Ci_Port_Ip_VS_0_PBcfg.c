@@ -108,14 +108,43 @@ extern "C"{
 #define PORT_START_SEC_CONFIG_DATA_UNSPECIFIED
 #include "Port_MemMap.h"
 
-const Port_Ci_Port_Ip_PinSettingsConfig g_pin_mux_InitConfigArr_VS_0[NUM_OF_CONFIGURED_PINS] = 
+const Port_Ci_Port_Ip_PinSettingsConfig g_pin_mux_InitConfigArr_VS_0[NUM_OF_CONFIGURED_PINS] =
 {
+    /* PTD0 — LED output (GPIO) */
     {
         .portBase              = IP_PORTD,
         .gpioBase              = IP_PTD,
         .pinPortIdx            = 0,
         .mux                   = PORT_MUX_AS_GPIO,
         .direction             = PORT_CI_PORT_PIN_OUT,
+        .pullConfig            = PORT_INTERNAL_PULL_NOT_ENABLED,
+        .driveStrength         = PORT_DRIVE_STRENGTH_LOW,
+        .passiveFilter         = (boolean)FALSE,
+        .lockRegister          = PORT_LOCK_REGISTER_DISABLED,
+        .digitalFilter         = (boolean)FALSE,
+        .initValue             = 0
+    },
+    /* PTE4 — CAN0_TX (ALT5), routed to on-board TJA1043 transceiver */
+    {
+        .portBase              = IP_PORTE,
+        .gpioBase              = IP_PTE,
+        .pinPortIdx            = 4,
+        .mux                   = PORT_MUX_ALT5,
+        .direction             = PORT_CI_PORT_PIN_OUT,
+        .pullConfig            = PORT_INTERNAL_PULL_NOT_ENABLED,
+        .driveStrength         = PORT_DRIVE_STRENGTH_LOW,
+        .passiveFilter         = (boolean)FALSE,
+        .lockRegister          = PORT_LOCK_REGISTER_DISABLED,
+        .digitalFilter         = (boolean)FALSE,
+        .initValue             = 0
+    },
+    /* PTE5 — CAN0_RX (ALT5), routed from on-board TJA1043 transceiver */
+    {
+        .portBase              = IP_PORTE,
+        .gpioBase              = IP_PTE,
+        .pinPortIdx            = 5,
+        .mux                   = PORT_MUX_ALT5,
+        .direction             = PORT_CI_PORT_PIN_IN,
         .pullConfig            = PORT_INTERNAL_PULL_NOT_ENABLED,
         .driveStrength         = PORT_DRIVE_STRENGTH_LOW,
         .passiveFilter         = (boolean)FALSE,
