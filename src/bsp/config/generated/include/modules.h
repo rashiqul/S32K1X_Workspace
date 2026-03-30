@@ -101,7 +101,7 @@ extern "C" {
 /** 
 * @brief This constant used for other modules to check if CAN_43_FLEXCAN is present in the project.   
 */
-#define USE_CAN_43_FLEXCAN_MODULE              (STD_OFF)
+#define USE_CAN_43_FLEXCAN_MODULE              (STD_ON)
 
 /** 
 * @brief This constant used for other modules to check if CAN_43_CANEXCEL is present in the project.   
