@@ -218,8 +218,11 @@ jobs:
           # Find all C/C++ source files.
           # Exclude src/bsp/ — NXP RTD drivers and platform SDK are vendor
           # code and must not be reformatted.
+          # Exclude src/rtos/ — FreeRTOS kernel is vendor code and must not
+          # be reformatted.
           files=$(find src test include -type f \( -name "*.c" -o -name "*.cpp" -o -name "*.h" -o -name "*.hpp" \) \
             ! -path "src/bsp/*" \
+            ! -path "src/rtos/*" \
             2>/dev/null || true)
           
           if [ -z "$files" ]; then
