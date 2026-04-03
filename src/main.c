@@ -49,8 +49,8 @@ void App_CanTxConfirmation(PduIdType CanIfTxPduId, Std_ReturnType result)
 /*******************************************************************************
  * Task periods
  *******************************************************************************/
-#define TASK_PERIOD_10MS   pdMS_TO_TICKS(10U)
-#define TASK_PERIOD_20MS   pdMS_TO_TICKS(20U)
+#define TASK_PERIOD_10MS pdMS_TO_TICKS(10U)
+#define TASK_PERIOD_20MS pdMS_TO_TICKS(20U)
 #define TASK_PERIOD_1000MS pdMS_TO_TICKS(1000U)
 
 /*******************************************************************************
@@ -64,7 +64,7 @@ volatile uint32_t task_1000ms_count;
 /*******************************************************************************
  * Task: Task_10ms — 10 ms periodic, priority 3 (highest)
  *******************************************************************************/
-static void Task_10ms(void *pvParameters)
+static void Task_10ms(void* pvParameters)
 {
     (void)pvParameters;
     TickType_t xLastWakeTime = xTaskGetTickCount();
@@ -79,7 +79,7 @@ static void Task_10ms(void *pvParameters)
 /*******************************************************************************
  * Task: Task_20ms — 20 ms periodic, priority 2
  *******************************************************************************/
-static void Task_20ms(void *pvParameters)
+static void Task_20ms(void* pvParameters)
 {
     (void)pvParameters;
     TickType_t xLastWakeTime = xTaskGetTickCount();
@@ -97,18 +97,17 @@ static void Task_20ms(void *pvParameters)
  * Transmits a CAN frame every 1000 ms. The LED is toggled by
  * App_CanTxConfirmation (TX-complete interrupt callback) — not here.
  *******************************************************************************/
-static void Task_1000ms(void *pvParameters)
+static void Task_1000ms(void* pvParameters)
 {
     (void)pvParameters;
     TickType_t xLastWakeTime = xTaskGetTickCount();
 
-    static const uint8 payload[8U] = {0x01U, 0x02U, 0x03U, 0x04U,
-                                       0x05U, 0x06U, 0x07U, 0x08U};
+    static const uint8 payload[8U] = {0x01U, 0x02U, 0x03U, 0x04U, 0x05U, 0x06U, 0x07U, 0x08U};
     Can_PduType pdu;
-    pdu.id          = 0x123U; /* standard 11-bit CAN ID */
-    pdu.swPduHandle = 0U;     /* maps to CanIf_TxPduConfig[0] */
-    pdu.length      = 8U;
-    pdu.sdu         = (uint8 *)payload;
+    pdu.id = 0x123U;      /* standard 11-bit CAN ID */
+    pdu.swPduHandle = 0U; /* maps to CanIf_TxPduConfig[0] */
+    pdu.length = 8U;
+    pdu.sdu = (uint8*)payload;
 
     for (;;) {
         vTaskDelayUntil(&xLastWakeTime, TASK_PERIOD_1000MS);
@@ -159,9 +158,12 @@ int main(void)
      * Create tasks — higher frequency → higher priority so a ready 10 ms task
      * always preempts a running 20 ms or 1000 ms task.
      *------------------------------------------------------------------------*/
-    xTaskCreate(Task_10ms,   "Task_10ms",   configMINIMAL_STACK_SIZE, NULL, tskIDLE_PRIORITY + 3U, NULL);
-    xTaskCreate(Task_20ms,   "Task_20ms",   configMINIMAL_STACK_SIZE, NULL, tskIDLE_PRIORITY + 2U, NULL);
-    xTaskCreate(Task_1000ms, "Task_1000ms", configMINIMAL_STACK_SIZE, NULL, tskIDLE_PRIORITY + 1U, NULL);
+    xTaskCreate(Task_10ms, "Task_10ms", configMINIMAL_STACK_SIZE, NULL, tskIDLE_PRIORITY + 3U,
+                NULL);
+    xTaskCreate(Task_20ms, "Task_20ms", configMINIMAL_STACK_SIZE, NULL, tskIDLE_PRIORITY + 2U,
+                NULL);
+    xTaskCreate(Task_1000ms, "Task_1000ms", configMINIMAL_STACK_SIZE, NULL, tskIDLE_PRIORITY + 1U,
+                NULL);
 
     /*--------------------------------------------------------------------------
      * Start scheduler — never returns.
