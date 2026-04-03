@@ -43,8 +43,8 @@ extern const Mcu_ConfigType Mcu_Config_VS_0;
 /*******************************************************************************
  * Task periods
  *******************************************************************************/
-#define TASK_PERIOD_10MS   pdMS_TO_TICKS(10U)
-#define TASK_PERIOD_20MS   pdMS_TO_TICKS(20U)
+#define TASK_PERIOD_10MS pdMS_TO_TICKS(10U)
+#define TASK_PERIOD_20MS pdMS_TO_TICKS(20U)
 #define TASK_PERIOD_1000MS pdMS_TO_TICKS(1000U)
 
 /*******************************************************************************
@@ -58,7 +58,7 @@ volatile uint32_t task_1000ms_count;
 /*******************************************************************************
  * Task: Task_10ms — 10 ms periodic, priority 3 (highest)
  *******************************************************************************/
-static void Task_10ms(void *pvParameters)
+static void Task_10ms(void* pvParameters)
 {
     (void)pvParameters;
     TickType_t xLastWakeTime = xTaskGetTickCount();
@@ -73,7 +73,7 @@ static void Task_10ms(void *pvParameters)
 /*******************************************************************************
  * Task: Task_20ms — 20 ms periodic, priority 2
  *******************************************************************************/
-static void Task_20ms(void *pvParameters)
+static void Task_20ms(void* pvParameters)
 {
     (void)pvParameters;
     TickType_t xLastWakeTime = xTaskGetTickCount();
@@ -91,11 +91,11 @@ static void Task_20ms(void *pvParameters)
  * Toggles PTD0 (on-board LED) each execution → 0.5 Hz blink (1 s ON / 1 s OFF).
  * During the 1000 ms block, Task_10ms fires ~100 times and Task_20ms ~50 times.
  *******************************************************************************/
-static void Task_1000ms(void *pvParameters)
+static void Task_1000ms(void* pvParameters)
 {
     (void)pvParameters;
     TickType_t xLastWakeTime = xTaskGetTickCount();
-    Dio_LevelType ledState   = STD_HIGH;
+    Dio_LevelType ledState = STD_HIGH;
 
     for (;;) {
         vTaskDelayUntil(&xLastWakeTime, TASK_PERIOD_1000MS);
@@ -133,9 +133,12 @@ int main(void)
      * Create tasks — higher frequency → higher priority so a ready 10 ms task
      * always preempts a running 20 ms or 1000 ms task.
      *------------------------------------------------------------------------*/
-    xTaskCreate(Task_10ms,   "Task_10ms",   configMINIMAL_STACK_SIZE, NULL, tskIDLE_PRIORITY + 3U, NULL);
-    xTaskCreate(Task_20ms,   "Task_20ms",   configMINIMAL_STACK_SIZE, NULL, tskIDLE_PRIORITY + 2U, NULL);
-    xTaskCreate(Task_1000ms, "Task_1000ms", configMINIMAL_STACK_SIZE, NULL, tskIDLE_PRIORITY + 1U, NULL);
+    xTaskCreate(Task_10ms, "Task_10ms", configMINIMAL_STACK_SIZE, NULL, tskIDLE_PRIORITY + 3U,
+                NULL);
+    xTaskCreate(Task_20ms, "Task_20ms", configMINIMAL_STACK_SIZE, NULL, tskIDLE_PRIORITY + 2U,
+                NULL);
+    xTaskCreate(Task_1000ms, "Task_1000ms", configMINIMAL_STACK_SIZE, NULL, tskIDLE_PRIORITY + 1U,
+                NULL);
 
     /*--------------------------------------------------------------------------
      * Start scheduler — never returns.
