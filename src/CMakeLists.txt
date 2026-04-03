@@ -17,6 +17,7 @@ if(CMAKE_CROSSCOMPILING)
     # s32k1_bsp, so we must NOT also pull in libs/autosar-platform-types here.
     # -------------------------------------------------------------------------
     add_subdirectory(bsp)
+    add_subdirectory(rtos)
 
     add_executable(s32k144_firmware
         ${CMAKE_CURRENT_SOURCE_DIR}/main.c
@@ -25,7 +26,7 @@ if(CMAKE_CROSSCOMPILING)
     # Give the ELF a proper .elf extension
     set_target_properties(s32k144_firmware PROPERTIES SUFFIX ".elf")
 
-    target_link_libraries(s32k144_firmware PRIVATE s32k1_bsp s32k1_linker_config)
+    target_link_libraries(s32k144_firmware PRIVATE s32k1_bsp s32k1_linker_config freertos)
 
     # Post-build: consolidate all artifacts into bin/
     add_custom_command(TARGET s32k144_firmware POST_BUILD
@@ -63,7 +64,8 @@ else()
     foreach(dir ${subdirs})
         if(IS_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/${dir} AND
            EXISTS ${CMAKE_CURRENT_SOURCE_DIR}/${dir}/CMakeLists.txt AND
-           NOT dir STREQUAL "bsp")
+           NOT dir STREQUAL "bsp" AND
+           NOT dir STREQUAL "rtos")
             add_subdirectory(${dir})
         endif()
     endforeach()
