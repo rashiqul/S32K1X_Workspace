@@ -1,16 +1,17 @@
 /*******************************************************************************
  *
  *  File Name: src/main.c
- *  Description: S32K144 firmware entry point — FreeRTOS LED blink demo.
+ *  Description: S32K144 firmware entry point — FreeRTOS periodic task demo.
  *
- *               Initialises MCU clocks and Port via RTD BSP drivers, then
- *               starts the FreeRTOS scheduler with a single LED task that
- *               blinks PTD0 (on-board LED) every 500 ms using vTaskDelay().
+ *               Three time-deterministic tasks using vTaskDelayUntil():
+ *                 Task_10ms  — 10 ms period,  priority 3 (highest)
+ *                 Task_20ms  — 20 ms period,  priority 2
+ *                 Task_1000ms— 1000 ms period, priority 1 (lowest user)
  *
- *               The demo mirrors the producer/consumer structure from the
- *               NXP FreeRTOS_Example_S32K144 S32DS project, simplified to a
- *               single LED task so CAN and other feature branches can add
- *               tasks alongside it without touching this file.
+ *               vTaskDelayUntil() blocks until an absolute wake time, so
+ *               execution jitter inside a task does not accumulate into
+ *               period drift. Each task records its last wake time and adds
+ *               a fixed increment each iteration.
  *
  *  Hardware  : S32K144EVB-Q100
  *  Compiler  : arm-none-eabi-gcc (GCC 10.2)
@@ -33,24 +34,55 @@
 extern const Mcu_ConfigType Mcu_Config_VS_0;
 
 /*******************************************************************************
- * Task: LedBlinkTask
- *
- * Toggles PTD0 (on-board LED) every 500 ms.
- * Stack depth: configMINIMAL_STACK_SIZE (90 words / 360 bytes).
- * Priority   : tskIDLE_PRIORITY + 1 (lowest user priority).
- *
- * To verify FreeRTOS is running: connect a logic analyser or oscilloscope to
- * PTD0 — you should see a precise 1 Hz square wave (500 ms ON / 500 ms OFF).
+ * Task periods
  *******************************************************************************/
-static void LedBlinkTask(void* pvParameters)
+#define TASK_PERIOD_10MS    pdMS_TO_TICKS(10U)
+#define TASK_PERIOD_20MS    pdMS_TO_TICKS(20U)
+#define TASK_PERIOD_1000MS  pdMS_TO_TICKS(1000U)
+
+/*******************************************************************************
+ * Task: Task_10ms  — 10 ms periodic, priority 3
+ *******************************************************************************/
+static void Task_10ms(void *pvParameters)
 {
     (void)pvParameters;
+    TickType_t xLastWakeTime = xTaskGetTickCount();
 
     for (;;) {
-        Dio_WriteChannel(DioConf_DioChannel_DioChannel_0, STD_HIGH); /* LED ON  */
-        vTaskDelay(pdMS_TO_TICKS(500U));
-        Dio_WriteChannel(DioConf_DioChannel_DioChannel_0, STD_LOW); /* LED OFF */
-        vTaskDelay(pdMS_TO_TICKS(500U));
+        vTaskDelayUntil(&xLastWakeTime, TASK_PERIOD_10MS);
+        /* Place 10 ms work here */
+    }
+}
+
+/*******************************************************************************
+ * Task: Task_20ms  — 20 ms periodic, priority 2
+ *******************************************************************************/
+static void Task_20ms(void *pvParameters)
+{
+    (void)pvParameters;
+    TickType_t xLastWakeTime = xTaskGetTickCount();
+
+    for (;;) {
+        vTaskDelayUntil(&xLastWakeTime, TASK_PERIOD_20MS);
+        /* Place 20 ms work here */
+    }
+}
+
+/*******************************************************************************
+ * Task: Task_1000ms — 1000 ms periodic, priority 1
+ *
+ * Toggles PTD0 (on-board LED) each execution → 0.5 Hz blink (1 s ON / 1 s OFF).
+ *******************************************************************************/
+static void Task_1000ms(void *pvParameters)
+{
+    (void)pvParameters;
+    TickType_t xLastWakeTime    = xTaskGetTickCount();
+    Dio_LevelType ledState      = STD_HIGH;
+
+    for (;;) {
+        vTaskDelayUntil(&xLastWakeTime, TASK_PERIOD_1000MS);
+        Dio_WriteChannel(DioConf_DioChannel_DioChannel_0, ledState);
+        ledState = (ledState == STD_HIGH) ? STD_LOW : STD_HIGH;
     }
 }
 
@@ -60,14 +92,8 @@ static void LedBlinkTask(void* pvParameters)
 int main(void)
 {
     /*--------------------------------------------------------------------------
-     * MCU initialisation
-     * - Initialise MCU driver with power/clock defaults
-     * - Configure clock tree (McuClockSettingConfig_0) → 48 MHz FIRC
-     *   (MCU_NO_PLL=STD_ON in this BSP config, so no PLL wait required)
-     * - Set run mode
-     *
-     * Note: configCPU_CLOCK_HZ in FreeRTOSConfig.h must match the clock
-     *       set here. Both are 48 MHz (CLOCK_IP_FIRC_FREQUENCY).
+     * MCU initialisation — 48 MHz FIRC (MCU_NO_PLL=STD_ON)
+     * configCPU_CLOCK_HZ in FreeRTOSConfig.h must match this clock.
      *------------------------------------------------------------------------*/
     Mcu_Init(&Mcu_Config_VS_0);
     Mcu_InitClock(McuClockSettingConfig_0);
@@ -80,26 +106,23 @@ int main(void)
     Mcu_SetMode(McuModeSettingConf_0);
 
     /*--------------------------------------------------------------------------
-     * Port initialisation
-     * - Configures PTD0 as GPIO output (connected to LED on S32K144EVB)
+     * Port initialisation — PTD0 as GPIO output (LED on S32K144EVB)
      *------------------------------------------------------------------------*/
     Port_Init(NULL_PTR);
 
     /*--------------------------------------------------------------------------
-     * Create FreeRTOS tasks
+     * Create tasks — higher frequency → higher priority so a ready 10 ms task
+     * always preempts a running 20 ms or 1000 ms task.
      *------------------------------------------------------------------------*/
-    xTaskCreate(LedBlinkTask, "LedBlink", configMINIMAL_STACK_SIZE, NULL, tskIDLE_PRIORITY + 1U,
-                NULL);
+    xTaskCreate(Task_10ms,   "Task_10ms",   configMINIMAL_STACK_SIZE, NULL, tskIDLE_PRIORITY + 3U, NULL);
+    xTaskCreate(Task_20ms,   "Task_20ms",   configMINIMAL_STACK_SIZE, NULL, tskIDLE_PRIORITY + 2U, NULL);
+    xTaskCreate(Task_1000ms, "Task_1000ms", configMINIMAL_STACK_SIZE, NULL, tskIDLE_PRIORITY + 1U, NULL);
 
     /*--------------------------------------------------------------------------
      * Start scheduler — never returns.
-     * FreeRTOS port (port.c) takes over SysTick at this point and drives the
-     * 1 ms tick. SVC_Handler / PendSV_Handler / SysTick_Handler BSP weak
-     * symbols are overridden by the FreeRTOS port at link time.
      *------------------------------------------------------------------------*/
     vTaskStartScheduler();
 
-    /* Should never reach here — scheduler only returns on heap exhaustion. */
     for (;;) {
         /* intentional infinite loop — trap runaway execution */
     }
