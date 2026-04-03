@@ -136,8 +136,9 @@ const Flexcan_Ip_ConfigType Flexcan_aCtrlConfigPB[1U]=
         /* The Enhanced Rx FIFO feature is enabled or not. */
         (boolean)FALSE,
         #endif
-        /* Loopback mode: self-ACK, no physical bus or termination required */
-        FLEXCAN_LOOPBACK_MODE,
+        /* Normal mode: physical CAN bus, requires transceiver (UJA1169 SBC via SPI1)
+         * and 120-ohm termination on both ends of the bus. */
+        FLEXCAN_NORMAL_MODE,
 #if (FLEXCAN_IP_FEATURE_HAS_MEM_ERR_DET == STD_ON)
 #if (FLEXCAN_IP_FEATURE_MEM_ERR_DET_ENABLED == STD_ON)
         /* Memory error response .flexcanModeErrResponse - not apply for HLD */
@@ -161,12 +162,15 @@ const Flexcan_Ip_ConfigType Flexcan_aCtrlConfigPB[1U]=
         /*  BRS for FD .bitRateSwitch */
         (boolean)FALSE,
         /* Values for normal baudrate .bitrate */
+        /* 500 kbps: 48 MHz / (Prescaler=8 x TQ=12) = 500,000 bps
+         * TQ breakdown: SyncSeg=1 + PropSeg=5 + PhaseSeg1=4 + PhaseSeg2=2 = 12
+         * Sample point: (1+5+4)/12 = 83.3%  RJW=2 */
         {
-            (uint8)6U, /* Prop Seg */
+            (uint8)5U, /* Prop Seg */
             (uint8)4U, /* Phase Seg 1 */
             (uint8)2U, /* Phase Seg 2 */
-            (uint16)5U, /* Prescaller */
-            (uint8)0U /* Resync Jump Width */
+            (uint16)8U, /* Prescaller */
+            (uint8)2U  /* Resync Jump Width */
         },
         /* Values for CBT baudrate .bitrate_cbt */
         {
