@@ -3,15 +3,22 @@
  *  File Name: src/main.c
  *  Description: S32K144 firmware entry point — FreeRTOS periodic task demo.
  *
- *               Three time-deterministic tasks using vTaskDelayUntil():
- *                 Task_10ms  — 10 ms period,  priority 3 (highest)
- *                 Task_20ms  — 20 ms period,  priority 2
- *                 Task_1000ms— 1000 ms period, priority 1 (lowest user)
+ *               Three time-deterministic tasks using vTaskDelayUntil()
+ *               (FreeRTOS V11 canonical API):
+ *                 Task_10ms   — 10 ms period,  priority 3 (highest)
+ *                 Task_20ms   — 20 ms period,  priority 2
+ *                 Task_1000ms — 1000 ms period, priority 1 (lowest user)
  *
  *               vTaskDelayUntil() blocks until an absolute wake time, so
  *               execution jitter inside a task does not accumulate into
- *               period drift. Each task records its last wake time and adds
- *               a fixed increment each iteration.
+ *               period drift. Higher-priority tasks always preempt lower-
+ *               priority tasks the instant they become ready.
+ *
+ *               Task execution counters (task_10ms_count, task_20ms_count,
+ *               task_1000ms_count) are volatile globals for easy inspection
+ *               via a debugger watch window to verify preemption is working.
+ *               After 1 second: task_10ms_count ≈ 100, task_20ms_count ≈ 50,
+ *               task_1000ms_count = 1.
  *
  *  Hardware  : S32K144EVB-Q100
  *  Compiler  : arm-none-eabi-gcc (GCC 10.2)
@@ -36,12 +43,20 @@ extern const Mcu_ConfigType Mcu_Config_VS_0;
 /*******************************************************************************
  * Task periods
  *******************************************************************************/
-#define TASK_PERIOD_10MS    pdMS_TO_TICKS(10U)
-#define TASK_PERIOD_20MS    pdMS_TO_TICKS(20U)
-#define TASK_PERIOD_1000MS  pdMS_TO_TICKS(1000U)
+#define TASK_PERIOD_10MS   pdMS_TO_TICKS(10U)
+#define TASK_PERIOD_20MS   pdMS_TO_TICKS(20U)
+#define TASK_PERIOD_1000MS pdMS_TO_TICKS(1000U)
 
 /*******************************************************************************
- * Task: Task_10ms  — 10 ms periodic, priority 3
+ * Execution counters — inspect in debugger to verify scheduling.
+ * After 1 s: task_10ms_count ≈ 100, task_20ms_count ≈ 50, task_1000ms_count = 1
+ *******************************************************************************/
+volatile uint32_t task_10ms_count;
+volatile uint32_t task_20ms_count;
+volatile uint32_t task_1000ms_count;
+
+/*******************************************************************************
+ * Task: Task_10ms — 10 ms periodic, priority 3 (highest)
  *******************************************************************************/
 static void Task_10ms(void *pvParameters)
 {
@@ -50,12 +65,13 @@ static void Task_10ms(void *pvParameters)
 
     for (;;) {
         vTaskDelayUntil(&xLastWakeTime, TASK_PERIOD_10MS);
+        task_10ms_count++;
         /* Place 10 ms work here */
     }
 }
 
 /*******************************************************************************
- * Task: Task_20ms  — 20 ms periodic, priority 2
+ * Task: Task_20ms — 20 ms periodic, priority 2
  *******************************************************************************/
 static void Task_20ms(void *pvParameters)
 {
@@ -64,23 +80,26 @@ static void Task_20ms(void *pvParameters)
 
     for (;;) {
         vTaskDelayUntil(&xLastWakeTime, TASK_PERIOD_20MS);
+        task_20ms_count++;
         /* Place 20 ms work here */
     }
 }
 
 /*******************************************************************************
- * Task: Task_1000ms — 1000 ms periodic, priority 1
+ * Task: Task_1000ms — 1000 ms periodic, priority 1 (lowest user)
  *
  * Toggles PTD0 (on-board LED) each execution → 0.5 Hz blink (1 s ON / 1 s OFF).
+ * During the 1000 ms block, Task_10ms fires ~100 times and Task_20ms ~50 times.
  *******************************************************************************/
 static void Task_1000ms(void *pvParameters)
 {
     (void)pvParameters;
-    TickType_t xLastWakeTime    = xTaskGetTickCount();
-    Dio_LevelType ledState      = STD_HIGH;
+    TickType_t xLastWakeTime = xTaskGetTickCount();
+    Dio_LevelType ledState   = STD_HIGH;
 
     for (;;) {
         vTaskDelayUntil(&xLastWakeTime, TASK_PERIOD_1000MS);
+        task_1000ms_count++;
         Dio_WriteChannel(DioConf_DioChannel_DioChannel_0, ledState);
         ledState = (ledState == STD_HIGH) ? STD_LOW : STD_HIGH;
     }
