@@ -17,14 +17,18 @@ if(CMAKE_CROSSCOMPILING)
 
     add_library(iohal STATIC
         iohal.c
-        iohal_can.c
-        iohal_os.c
-        iohal_app_tasks.c
+        iohal_can/iohal_can.c
+        iohal_os/iohal_os.c
+        iohal_app_tasks/iohal_app_tasks.c
     )
 
     target_include_directories(iohal PUBLIC
-        # Public interface headers (iohal.h, iohal_can.h, iohal_os.h, iohal_app_tasks.h)
+        # Umbrella header: iohal.h
         ${CMAKE_SOURCE_DIR}/include/cbd/iohal
+        # Per-module headers — each subfolder added so flat #include still works
+        ${CMAKE_SOURCE_DIR}/include/cbd/iohal/iohal_can
+        ${CMAKE_SOURCE_DIR}/include/cbd/iohal/iohal_os
+        ${CMAKE_SOURCE_DIR}/include/cbd/iohal/iohal_app_tasks
     )
 
     target_link_libraries(iohal PRIVATE
