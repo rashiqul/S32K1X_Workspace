@@ -27,6 +27,9 @@
 #include "Platform.h"
 #include "Port.h"
 
+/* SBC / transceiver */
+#include "Sbc_Uja1169.h"
+
 /* FreeRTOS */
 #include "FreeRTOS.h"
 #include "task.h"
@@ -37,13 +40,13 @@ extern const Mcu_ConfigType Mcu_Config_VS_0;
 /*******************************************************************************
  * CAN TX confirmation callback
  * Called from the FlexCAN TX-complete interrupt via CanIf_TxConfirmation.
- * Toggling the LED here gives a visible pulse on every successfully sent frame.
+ * NOTE: This only fires when the physical bus is active (UJA1169 SBC in Normal
+ * mode). Until SBC SPI init is implemented this callback will never execute.
  *******************************************************************************/
 void App_CanTxConfirmation(PduIdType CanIfTxPduId, Std_ReturnType result)
 {
     (void)CanIfTxPduId;
     (void)result;
-    Dio_FlipChannel(DioConf_DioChannel_DioChannel_0);
 }
 
 /*******************************************************************************
@@ -94,24 +97,37 @@ static void Task_20ms(void* pvParameters)
 /*******************************************************************************
  * Task: Task_1000ms — 1000 ms periodic, priority 1 (lowest user)
  *
- * Transmits a CAN frame every 1000 ms. The LED is toggled by
- * App_CanTxConfirmation (TX-complete interrupt callback) — not here.
+ * Toggles the Blue LED (PTD0) every 1000 ms and transmits a CAN frame
+ * encoding the current LED state in byte 0 of the payload:
+ *   Byte 0: 0x01 = LED ON, 0x00 = LED OFF
+ *   Bytes 1-7: static diagnostic pattern (0x02..0x08)
+ *
+ * LED is driven here (not from App_CanTxConfirmation) so it blinks
+ * regardless of whether CAN TX succeeds. This makes it easy to confirm
+ * the task is running independently of the SBC/transceiver state.
  *******************************************************************************/
 static void Task_1000ms(void* pvParameters)
 {
     (void)pvParameters;
     TickType_t xLastWakeTime = xTaskGetTickCount();
+    Dio_LevelType ledState   = STD_LOW;
 
-    static const uint8 payload[8U] = {0x01U, 0x02U, 0x03U, 0x04U, 0x05U, 0x06U, 0x07U, 0x08U};
+    uint8 payload[8U] = {0x00U, 0x02U, 0x03U, 0x04U, 0x05U, 0x06U, 0x07U, 0x08U};
     Can_PduType pdu;
-    pdu.id = 0x123U;      /* standard 11-bit CAN ID */
-    pdu.swPduHandle = 0U; /* maps to CanIf_TxPduConfig[0] */
-    pdu.length = 8U;
-    pdu.sdu = (uint8*)payload;
+    pdu.id          = 0x123U; /* standard 11-bit CAN ID */
+    pdu.swPduHandle = 0U;     /* maps to CanIf_TxPduConfig[0] */
+    pdu.length      = 8U;
+    pdu.sdu         = payload;
 
     for (;;) {
         vTaskDelayUntil(&xLastWakeTime, TASK_PERIOD_1000MS);
         task_1000ms_count++;
+
+        /* Toggle LED and encode state in byte 0 */
+        ledState   = (ledState == STD_HIGH) ? STD_LOW : STD_HIGH;
+        payload[0] = (ledState == STD_HIGH) ? 0x01U : 0x00U;
+        Dio_WriteChannel(DioConf_DioChannel_DioChannel_0, ledState);
+
         Can_43_FLEXCAN_Write(Can_43_FLEXCANConf_CanHardwareObject_CanHardwareObject_1, &pdu);
     }
 }
@@ -141,6 +157,13 @@ int main(void)
      * Port initialisation — PTD0 as GPIO output (LED on S32K144EVB)
      *------------------------------------------------------------------------*/
     Port_Init(NULL_PTR);
+
+    /*--------------------------------------------------------------------------
+     * SBC initialisation — must run before CAN init.
+     * Puts UJA1169 transceiver into Normal mode via bit-bang SPI on PTB14-17.
+     * Until this call the CAN physical layer is silent (transceiver in standby).
+     *------------------------------------------------------------------------*/
+    Sbc_Uja1169_Init();
 
     /*--------------------------------------------------------------------------
      * CAN initialisation

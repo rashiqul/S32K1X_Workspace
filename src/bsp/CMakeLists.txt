@@ -55,6 +55,11 @@ file(GLOB RTD_SOURCES          "${CMAKE_CURRENT_SOURCE_DIR}/drivers/rtd/src/*.c"
 file(GLOB GENERATED_SOURCES    "${CMAKE_CURRENT_SOURCE_DIR}/config/generated/src/*.c")
 file(GLOB BOARD_SOURCES        "${CMAKE_CURRENT_SOURCE_DIR}/config/board/*.c")
 
+# SBC driver (bit-bang SPI for UJA1169 transceiver — not covered by RTD glob)
+set(SBC_SOURCES
+    ${CMAKE_CURRENT_SOURCE_DIR}/sbc/Sbc_Uja1169.c
+)
+
 # ---------------------------------------------------------------------------
 # BSP library
 # ---------------------------------------------------------------------------
@@ -64,6 +69,7 @@ add_library(s32k1_bsp STATIC
     ${RTD_SOURCES}
     ${GENERATED_SOURCES}
     ${BOARD_SOURCES}
+    ${SBC_SOURCES}
 )
 
 # Required preprocessor symbols (from S32DS .cproject)
@@ -100,6 +106,7 @@ target_include_directories(s32k1_bsp PUBLIC
     ${CMAKE_CURRENT_SOURCE_DIR}/config/generated/include
     ${CMAKE_CURRENT_SOURCE_DIR}/config/board
     ${CMAKE_CURRENT_SOURCE_DIR}/startup
+    ${CMAKE_CURRENT_SOURCE_DIR}/sbc
     # Platform SDK headers (NXP S32DS installation)
     ${SDK_BASENXP_HEADER}
     ${SDK_BASENXP_INCLUDE}
