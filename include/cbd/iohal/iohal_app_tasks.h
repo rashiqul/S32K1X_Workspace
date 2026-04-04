@@ -1,7 +1,7 @@
 /*******************************************************************************
  *
- *  File Name   : app_tasks.h
- *  Module      : Application Tasks
+ *  File Name   : iohal_app_tasks.h
+ *  Module      : IoHal — Application Tasks sub-module
  *  Description : Public interface for the application task layer.
  *
  *                Owns all periodic task definitions, scheduling configuration,
@@ -12,8 +12,8 @@
  *
  *******************************************************************************/
 
-#ifndef APP_TASKS_H
-#define APP_TASKS_H
+#ifndef IOHAL_APP_TASKS_H
+#define IOHAL_APP_TASKS_H
 
 #ifdef __cplusplus
 extern "C" {
@@ -30,10 +30,10 @@ extern "C" {
  *
  * @return E_OK on success, E_NOT_OK if any task creation fails.
  */
-Std_ReturnType AppTasks_Init(void);
+Std_ReturnType IoHal_AppTasks_Init(void);
 
 #ifdef __cplusplus
 }
 #endif
 
-#endif /* APP_TASKS_H */
+#endif /* IOHAL_APP_TASKS_H */

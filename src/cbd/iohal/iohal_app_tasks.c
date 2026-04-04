@@ -1,7 +1,7 @@
 /*******************************************************************************
  *
- *  File Name   : app_tasks.c
- *  Module      : Application Tasks
+ *  File Name   : iohal_app_tasks.c
+ *  Module      : IoHal — Application Tasks sub-module
  *  Description : Periodic task implementations, scheduling configuration,
  *                and CAN TX callback for the S32K144 firmware.
  *
@@ -18,7 +18,7 @@
  *
  *******************************************************************************/
 
-#include "app_tasks.h"
+#include "iohal_app_tasks.h"
 #include "iohal.h"
 
 /*******************************************************************************
@@ -72,7 +72,7 @@ static const IoHal_Os_TaskConfigType task_1000ms_cfg = {
  * Public API implementation
  *******************************************************************************/
 
-Std_ReturnType AppTasks_Init(void)
+Std_ReturnType IoHal_AppTasks_Init(void)
 {
     Std_ReturnType status = E_OK;
 
