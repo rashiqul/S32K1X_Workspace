@@ -16,12 +16,12 @@
  *******************************************************************************/
 
 #include "iohal.h"
-#include "app_tasks.h"
+#include "iohal_app_tasks.h"
 
 int main(void)
 {
     IoHal_Init();
-    AppTasks_Init();
+    IoHal_AppTasks_Init();
     IoHal_Os_StartScheduler();
 
     for (;;) {
