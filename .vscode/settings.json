@@ -16,5 +16,8 @@
     // This gives IntelliSense and SonarQube the correct include paths, defines,
     // and compiler flags for the S32K144 ARM target.
     "C_Cpp.default.compileCommands": "${workspaceFolder}/build_s32k1/build_armv7/RelWithDebInfo/compile_commands.json",
-    "sonarlint.pathToCompileCommands": "${workspaceFolder}/build_x86_64/Debug/compile_commands.json"
+    // SonarLint uses the ARM build's compile_commands.json (same as cpptools).
+    // The x86 host build path was unreliable — it only exists after running the
+    // host build target, causing this warning on every fresh clone or reload.
+    "sonarlint.pathToCompileCommands": "${workspaceFolder}/build_s32k1/build_armv7/RelWithDebInfo/compile_commands.json"
 }
