@@ -19,10 +19,11 @@ if(CMAKE_CROSSCOMPILING)
         iohal.c
         iohal_can.c
         iohal_os.c
+        app_tasks.c
     )
 
     target_include_directories(iohal PUBLIC
-        # Public interface headers (iohal.h, iohal_can.h, iohal_os.h)
+        # Public interface headers (iohal.h, iohal_can.h, iohal_os.h, app_tasks.h)
         ${CMAKE_SOURCE_DIR}/include/cbd/iohal
     )
 
