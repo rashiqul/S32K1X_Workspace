@@ -72,13 +72,13 @@ extern "C" {
  *******************************************************************************/
 
 /** Convert milliseconds to OS ticks (wraps pdMS_TO_TICKS). */
-#define IOHAL_OS_MS_TO_TICKS(ms)    pdMS_TO_TICKS(ms)
+#define IOHAL_OS_MS_TO_TICKS(ms) pdMS_TO_TICKS(ms)
 
 /** Minimum task stack size in words (wraps configMINIMAL_STACK_SIZE). */
 #define IOHAL_OS_MINIMAL_STACK_SIZE configMINIMAL_STACK_SIZE
 
 /** Idle task priority (wraps tskIDLE_PRIORITY). */
-#define IOHAL_OS_IDLE_PRIORITY      tskIDLE_PRIORITY
+#define IOHAL_OS_IDLE_PRIORITY tskIDLE_PRIORITY
 
 /*******************************************************************************
  * Type definitions
@@ -96,12 +96,11 @@ typedef void (*IoHal_Os_TaskFunctionType)(void* pvParameters);
  *         Pass a pointer to a statically-allocated instance of this struct
  *         to IoHal_Os_CreateTask().
  */
-typedef struct
-{
-    IoHal_Os_TaskFunctionType function;  /**< Task entry-point function        */
-    const char*               name;      /**< Human-readable name (debug only) */
-    uint32                    stackSize; /**< Stack depth in words              */
-    uint32                    priority;  /**< FreeRTOS priority level           */
+typedef struct {
+    IoHal_Os_TaskFunctionType function; /**< Task entry-point function        */
+    const char* name;                   /**< Human-readable name (debug only) */
+    uint32 stackSize;                   /**< Stack depth in words              */
+    uint32 priority;                    /**< FreeRTOS priority level           */
 } IoHal_Os_TaskConfigType;
 
 /*******************************************************************************
@@ -132,8 +131,7 @@ void IoHal_Os_StartScheduler(void);
  * @param  pxPreviousWakeTime  Pointer to tick reference (updated each call).
  * @param  xTimeIncrement      Period in ticks — use IOHAL_OS_MS_TO_TICKS().
  */
-void IoHal_Os_DelayUntil(IoHal_Os_TickType* pxPreviousWakeTime,
-                         IoHal_Os_TickType  xTimeIncrement);
+void IoHal_Os_DelayUntil(IoHal_Os_TickType* pxPreviousWakeTime, IoHal_Os_TickType xTimeIncrement);
 
 /**
  * @brief  Return the current OS tick count.

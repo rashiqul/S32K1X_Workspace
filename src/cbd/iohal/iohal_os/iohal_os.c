@@ -31,8 +31,7 @@
 
 Std_ReturnType IoHal_Os_CreateTask(const IoHal_Os_TaskConfigType* cfg)
 {
-    if (NULL_PTR == cfg)
-    {
+    if (NULL_PTR == cfg) {
         return E_NOT_OK;
     }
 
@@ -49,35 +48,23 @@ Std_ReturnType IoHal_Os_CreateTask(const IoHal_Os_TaskConfigType* cfg)
      *       TaskHandle_t*   pvCreatedTask );
      *------------------------------------------------------------------------*/
 
-    /* TODO: BaseType_t ret = xTaskCreate(
-                  cfg->function,
-                  cfg->name,
-                  (configSTACK_DEPTH_TYPE)cfg->stackSize,
-                  NULL_PTR,
-                  (UBaseType_t)cfg->priority,
-                  NULL_PTR);
-             return (pdPASS == ret) ? E_OK : E_NOT_OK; */
+    BaseType_t ret = xTaskCreate(cfg->function, cfg->name, (configSTACK_DEPTH_TYPE)cfg->stackSize,
+                                 NULL_PTR, (UBaseType_t)cfg->priority, NULL_PTR);
 
-    return E_OK;
+    return (pdPASS == ret) ? E_OK : E_NOT_OK;
 }
 
 void IoHal_Os_StartScheduler(void)
 {
-    /* TODO: vTaskStartScheduler(); */
+    vTaskStartScheduler();
 }
 
-void IoHal_Os_DelayUntil(IoHal_Os_TickType* pxPreviousWakeTime,
-                         IoHal_Os_TickType  xTimeIncrement)
+void IoHal_Os_DelayUntil(IoHal_Os_TickType* pxPreviousWakeTime, IoHal_Os_TickType xTimeIncrement)
 {
-    /* TODO: vTaskDelayUntil(pxPreviousWakeTime, xTimeIncrement); */
-
-    (void)pxPreviousWakeTime;
-    (void)xTimeIncrement;
+    vTaskDelayUntil(pxPreviousWakeTime, xTimeIncrement);
 }
 
 IoHal_Os_TickType IoHal_Os_GetTickCount(void)
 {
-    /* TODO: return xTaskGetTickCount(); */
-
-    return (IoHal_Os_TickType)0U;
+    return xTaskGetTickCount();
 }

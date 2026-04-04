@@ -67,6 +67,7 @@ extern "C" {
 /*******************************************************************************
  * Includes
  *******************************************************************************/
+#include "CanIf.h"
 #include "Std_Types.h"
 
 /*******************************************************************************
@@ -79,11 +80,10 @@ extern "C" {
  *         The application fills this structure; iohal_can.c maps it to the
  *         physical Can_PduType / hardware object required by the BSW driver.
  */
-typedef struct
-{
-    uint32 id;        /**< CAN message identifier (11-bit standard or 29-bit extended) */
-    uint8  length;    /**< Data length in bytes [0..8]                                  */
-    uint8* sdu;       /**< Pointer to payload data (must remain valid until TX confirm) */
+typedef struct {
+    uint32 id;    /**< CAN message identifier (11-bit standard or 29-bit extended) */
+    uint8 length; /**< Data length in bytes [0..8]                                  */
+    uint8* sdu;   /**< Pointer to payload data (must remain valid until TX confirm) */
 } IoHal_Can_PduType;
 
 /**

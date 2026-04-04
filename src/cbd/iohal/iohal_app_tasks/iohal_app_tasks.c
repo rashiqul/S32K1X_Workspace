@@ -24,9 +24,20 @@
 /*******************************************************************************
  * Task periods
  *******************************************************************************/
-#define TASK_PERIOD_10MS    IOHAL_OS_MS_TO_TICKS(10U)
-#define TASK_PERIOD_20MS    IOHAL_OS_MS_TO_TICKS(20U)
-#define TASK_PERIOD_1000MS  IOHAL_OS_MS_TO_TICKS(1000U)
+#define TASK_PERIOD_10MS IOHAL_OS_MS_TO_TICKS(10U)
+#define TASK_PERIOD_20MS IOHAL_OS_MS_TO_TICKS(20U)
+#define TASK_PERIOD_1000MS IOHAL_OS_MS_TO_TICKS(1000U)
+
+#ifndef IOHAL_APP_TASK_LOOP_ITERATIONS
+#define IOHAL_APP_TASK_LOOP_ITERATIONS 0U
+#endif
+
+#if (IOHAL_APP_TASK_LOOP_ITERATIONS > 0U)
+#define IOHAL_TASK_LOOP()                                                                          \
+    for (uint32 loopIndex = 0U; loopIndex < IOHAL_APP_TASK_LOOP_ITERATIONS; ++loopIndex)
+#else
+#define IOHAL_TASK_LOOP() for (;;)
+#endif
 
 /*******************************************************************************
  * Execution counters — inspect in debugger to verify scheduling.
@@ -47,26 +58,20 @@ static void Task_1000ms(void* pvParameters);
 /*******************************************************************************
  * Task configuration descriptors
  *******************************************************************************/
-static const IoHal_Os_TaskConfigType task_10ms_cfg = {
-    .function  = Task_10ms,
-    .name      = "Task_10ms",
-    .stackSize = IOHAL_OS_MINIMAL_STACK_SIZE,
-    .priority  = IOHAL_OS_IDLE_PRIORITY + 3U
-};
+static const IoHal_Os_TaskConfigType task_10ms_cfg = {.function = Task_10ms,
+                                                      .name = "Task_10ms",
+                                                      .stackSize = IOHAL_OS_MINIMAL_STACK_SIZE,
+                                                      .priority = IOHAL_OS_IDLE_PRIORITY + 3U};
 
-static const IoHal_Os_TaskConfigType task_20ms_cfg = {
-    .function  = Task_20ms,
-    .name      = "Task_20ms",
-    .stackSize = IOHAL_OS_MINIMAL_STACK_SIZE,
-    .priority  = IOHAL_OS_IDLE_PRIORITY + 2U
-};
+static const IoHal_Os_TaskConfigType task_20ms_cfg = {.function = Task_20ms,
+                                                      .name = "Task_20ms",
+                                                      .stackSize = IOHAL_OS_MINIMAL_STACK_SIZE,
+                                                      .priority = IOHAL_OS_IDLE_PRIORITY + 2U};
 
-static const IoHal_Os_TaskConfigType task_1000ms_cfg = {
-    .function  = Task_1000ms,
-    .name      = "Task_1000ms",
-    .stackSize = IOHAL_OS_MINIMAL_STACK_SIZE,
-    .priority  = IOHAL_OS_IDLE_PRIORITY + 1U
-};
+static const IoHal_Os_TaskConfigType task_1000ms_cfg = {.function = Task_1000ms,
+                                                        .name = "Task_1000ms",
+                                                        .stackSize = IOHAL_OS_MINIMAL_STACK_SIZE,
+                                                        .priority = IOHAL_OS_IDLE_PRIORITY + 1U};
 
 /*******************************************************************************
  * Public API implementation
@@ -78,9 +83,13 @@ Std_ReturnType IoHal_AppTasks_Init(void)
 
     IoHal_Can_RegisterTxConfirmCallback(App_OnCanTxDone);
 
-    if (E_OK == status) { status = IoHal_Os_CreateTask(&task_10ms_cfg);   }
-    if (E_OK == status) { status = IoHal_Os_CreateTask(&task_20ms_cfg);   }
-    if (E_OK == status) { status = IoHal_Os_CreateTask(&task_1000ms_cfg); }
+    status = IoHal_Os_CreateTask(&task_10ms_cfg);
+    if (E_OK == status) {
+        status = IoHal_Os_CreateTask(&task_20ms_cfg);
+    }
+    if (E_OK == status) {
+        status = IoHal_Os_CreateTask(&task_1000ms_cfg);
+    }
 
     return status;
 }
@@ -107,7 +116,8 @@ static void Task_10ms(void* pvParameters)
     (void)pvParameters;
     IoHal_Os_TickType xLastWakeTime = IoHal_Os_GetTickCount();
 
-    for (;;) {
+    IOHAL_TASK_LOOP()
+    {
         IoHal_Os_DelayUntil(&xLastWakeTime, TASK_PERIOD_10MS);
         task_10ms_count++;
         /* Place 10 ms work here */
@@ -122,7 +132,8 @@ static void Task_20ms(void* pvParameters)
     (void)pvParameters;
     IoHal_Os_TickType xLastWakeTime = IoHal_Os_GetTickCount();
 
-    for (;;) {
+    IOHAL_TASK_LOOP()
+    {
         IoHal_Os_DelayUntil(&xLastWakeTime, TASK_PERIOD_20MS);
         task_20ms_count++;
         /* Place 20 ms work here */
@@ -138,14 +149,14 @@ static void Task_1000ms(void* pvParameters)
     (void)pvParameters;
     IoHal_Os_TickType xLastWakeTime = IoHal_Os_GetTickCount();
 
-    static const uint8 payload[8U] = {0x01U, 0x02U, 0x03U, 0x04U,
-                                       0x05U, 0x06U, 0x07U, 0x08U};
+    static const uint8 payload[8U] = {0x01U, 0x02U, 0x03U, 0x04U, 0x05U, 0x06U, 0x07U, 0x08U};
     IoHal_Can_PduType pdu;
-    pdu.id     = 0x123U;
+    pdu.id = 0x123U;
     pdu.length = 8U;
-    pdu.sdu    = (uint8*)payload;
+    pdu.sdu = (uint8*)payload;
 
-    for (;;) {
+    IOHAL_TASK_LOOP()
+    {
         IoHal_Os_DelayUntil(&xLastWakeTime, TASK_PERIOD_1000MS);
         task_1000ms_count++;
         IoHal_Can_Transmit(&pdu);
