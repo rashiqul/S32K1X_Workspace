@@ -11,13 +11,12 @@
 if(CMAKE_CROSSCOMPILING)
     # -------------------------------------------------------------------------
     # ARM target: S32K144 firmware executable
-    # Build BSP first — s32k144_firmware links against s32k1_bsp and
-    # s32k1_linker_config which are defined in src/bsp/CMakeLists.txt.
+    # Build BSW first — s32k144_firmware links against s32k1_bsp and
+    # s32k1_linker_config which are defined in bsw/CMakeLists.txt.
     # The NXP Platform SDK already provides Platform_Types.h / Std_Types.h via
     # s32k1_bsp, so we must NOT also pull in libs/autosar-platform-types here.
     # -------------------------------------------------------------------------
-    add_subdirectory(bsp)
-    add_subdirectory(rtos)
+    add_subdirectory(${CMAKE_SOURCE_DIR}/bsw ${CMAKE_BINARY_DIR}/bsw)
 
     add_executable(s32k144_firmware
         ${CMAKE_CURRENT_SOURCE_DIR}/main.c
@@ -57,15 +56,11 @@ else()
     )
     link_libraries(common_lib)
 
-    # Scan and add all subdirectories with CMakeLists.txt.
-    # Exclude bsp/ — it contains ARM bare-metal code and is only built
-    # via the CMAKE_CROSSCOMPILING branch above.
+    # Scan and add all subdirectories (cbd/, mbd/, ...) with CMakeLists.txt.
     file(GLOB subdirs RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} ${CMAKE_CURRENT_SOURCE_DIR}/*)
     foreach(dir ${subdirs})
         if(IS_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/${dir} AND
-           EXISTS ${CMAKE_CURRENT_SOURCE_DIR}/${dir}/CMakeLists.txt AND
-           NOT dir STREQUAL "bsp" AND
-           NOT dir STREQUAL "rtos")
+           EXISTS ${CMAKE_CURRENT_SOURCE_DIR}/${dir}/CMakeLists.txt)
             add_subdirectory(${dir})
         endif()
     endforeach()

@@ -216,13 +216,10 @@ jobs:
           echo "🔍 Running clang-format check..."
           
           # Find all C/C++ source files.
-          # Exclude src/bsp/ — NXP RTD drivers and platform SDK are vendor
-          # code and must not be reformatted.
-          # Exclude src/rtos/ — FreeRTOS kernel is vendor code and must not
-          # be reformatted.
+          # Exclude bsw/ — NXP RTD drivers, platform SDK, and FreeRTOS kernel
+          # are vendor code and must not be reformatted.
           files=$(find src test include -type f \( -name "*.c" -o -name "*.cpp" -o -name "*.h" -o -name "*.hpp" \) \
-            ! -path "src/bsp/*" \
-            ! -path "src/rtos/*" \
+            ! -path "bsw/*" \
             2>/dev/null || true)
           
           if [ -z "$files" ]; then
@@ -377,7 +374,7 @@ jobs:
           set -o pipefail
           echo "🔨 Building ARM firmware for S32K144 (Cortex-M4)..."
           echo ""
-          echo "SDK headers are bundled in bsp/platform_sdk/ — no S32DS install required."
+          echo "SDK headers are bundled in bsw/platform_sdk/ — no S32DS install required."
           echo ""
           make build_all_tgt ARM_BUILD_TYPE=Release 2>&1 | tee arm_build.log
           echo "✅ ARM build completed"

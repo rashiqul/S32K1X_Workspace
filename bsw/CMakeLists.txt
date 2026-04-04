@@ -1,7 +1,8 @@
 #******************************************************************************
 #
-#     File Name: bsp/CMakeLists.txt
-#     Description: CMake build for the S32K144 Board Support Package (BSP)
+#     File Name: bsw/CMakeLists.txt
+#     Description: CMake build for the S32K144 Basic Software (BSW) —
+#                  Board Support Package and FreeRTOS RTOS kernel.
 #                  Compiles startup code, RTD AUTOSAR 4.7 drivers, and
 #                  generated peripheral configuration.
 #
@@ -122,3 +123,8 @@ target_link_options(s32k1_linker_config INTERFACE
     -Wl,-Map,${CMAKE_BINARY_DIR}/s32k144_firmware.map
     -Wl,--cref
 )
+
+# ---------------------------------------------------------------------------
+# RTOS — FreeRTOS kernel (depends on s32k1_bsp above for device headers)
+# ---------------------------------------------------------------------------
+add_subdirectory(rtos)
