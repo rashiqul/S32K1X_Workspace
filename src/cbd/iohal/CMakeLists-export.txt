@@ -1,0 +1,19 @@
+# CMake uses this file, if importing the sources from the package src directory.
+
+file(GLOB_RECURSE iohal_SOURCES
+    *.c
+)
+
+add_library(iohal EXCLUDE_FROM_ALL ${iohal_SOURCES})
+
+target_include_directories(iohal PUBLIC
+    .
+    iohal_can
+    iohal_os
+    iohal_app_tasks
+)
+
+target_link_libraries(iohal PUBLIC c_cpp_template_workspace::c_cpp_template_workspace)
+
+add_library(iohal_stub INTERFACE)
+target_include_directories(iohal_stub INTERFACE stub)
