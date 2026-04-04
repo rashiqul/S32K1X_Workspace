@@ -246,8 +246,7 @@ coverage-cbd:
 clang-format:
 	@echo "Formatting C/C++ files with clang-format..."
 	@find src include test -type f \( -name "*.c" -o -name "*.cpp" -o -name "*.h" -o -name "*.hpp" \) \
-		! -path "src/bsp/*" \
-		! -path "src/rtos/*" \
+		! -path "src/bsw/*" \
 		2>/dev/null | while read file; do \
 		echo "  Formatting: $$file"; \
 		clang-format -i "$$file"; \

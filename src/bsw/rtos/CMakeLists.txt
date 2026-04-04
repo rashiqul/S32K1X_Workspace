@@ -48,7 +48,8 @@ target_include_directories(freertos PUBLIC
     ${FREERTOS_SRC}/portable/GCC/ARM_CM4F
 
     # Project-level FreeRTOS configuration (FreeRTOSConfig.h)
-    ${CMAKE_CURRENT_SOURCE_DIR}/config
+    # Moved to include/bsw/rtos/config/ as part of src/include separation.
+    ${PROJECT_SOURCE_DIR}/include/bsw/rtos/config
 )
 
 # Inherit BSP include paths so port.c can reach S32K144 device headers
