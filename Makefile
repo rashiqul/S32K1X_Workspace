@@ -30,6 +30,10 @@ NXP_GCC_PATH      ?= /home/rashiqul/NXP/gcc-10.2-arm32-eabi/bin
 ARM_BUILD_TYPE    ?= RelWithDebInfo
 ARM_BUILD_DIR     := build_s32k1/build_armv7/$(ARM_BUILD_TYPE)
 
+# IntelliSense compile database aliases (used by VS Code settings).
+HOST_COMPILE_COMMANDS := build_x86_64/$(BUILD_TYPE)/compile_commands.json
+ARM_COMPILE_COMMANDS  := $(ARM_BUILD_DIR)/compile_commands.json
+
 # Only pass S32DS_SDK_ROOT to cmake when the user explicitly sets it (command line
 # or environment). When using the default, let bsw/CMakeLists.txt prefer the
 # bundled headers in bsw/platform_sdk/ — required for CI (no S32DS installed).
@@ -155,11 +159,13 @@ configure: conanfile.py pre-configure conan-install
 build-debug:
 	BUILD_TYPE=Debug $(MAKE) configure
 	. build_$(TARGET_CPU)/Debug/generators/conanbuild.sh && poetry run cmake --build build_$(TARGET_CPU)/Debug -t all
+	BUILD_TYPE=Debug $(MAKE) set-compile-commands-host
 
 .PHONY: build-release
 build-release:
 	BUILD_TYPE=Release $(MAKE) configure
 	. build_$(TARGET_CPU)/Release/generators/conanbuild.sh && poetry run cmake --build build_$(TARGET_CPU)/Release -t all
+	BUILD_TYPE=Release $(MAKE) set-compile-commands-host
 
 .PHONY: build
 build: build-debug
@@ -167,6 +173,25 @@ build: build-debug
 .PHONY: test
 test: configure
 	. ${BUILD_DIR}/generators/conanbuild.sh && poetry run cmake --build ${BUILD_DIR} -t test
+	$(MAKE) set-compile-commands-host
+
+.PHONY: set-compile-commands-host
+set-compile-commands-host:
+	@if [ -f "$(HOST_COMPILE_COMMANDS)" ]; then \
+		cp -f "$(HOST_COMPILE_COMMANDS)" compile_commands.json; \
+		echo "IntelliSense compile commands -> $(HOST_COMPILE_COMMANDS)"; \
+	else \
+		echo "WARN: host compile_commands.json not found at $(HOST_COMPILE_COMMANDS)"; \
+	fi
+
+.PHONY: set-compile-commands-arm
+set-compile-commands-arm:
+	@if [ -f "$(ARM_COMPILE_COMMANDS)" ]; then \
+		cp -f "$(ARM_COMPILE_COMMANDS)" compile_commands.json; \
+		echo "IntelliSense compile commands -> $(ARM_COMPILE_COMMANDS)"; \
+	else \
+		echo "WARN: ARM compile_commands.json not found at $(ARM_COMPILE_COMMANDS)"; \
+	fi
 
 .PHONY: package
 package: build_all_tgt
@@ -235,6 +260,7 @@ coverage-cbd:
 	@echo "C/C++ Code Coverage ($(BUILD_TYPE))"
 	@echo "----------------------------------------"
 	@(poetry run gcovr -r. -s \
+	--filter 'src/.*' \
 	--exclude 'test/.*' \
 	--exclude '.conan2_local/.*' \
 	--html-details --html-title "C_Cpp Template Code Coverage Report ($(BUILD_TYPE))" \
@@ -277,6 +303,7 @@ build_all_tgt: pre-configure
 		$(CMAKE_SDK_FLAG) \
 		-DCMAKE_EXPORT_COMPILE_COMMANDS=ON && \
 	ninja -C $(ARM_BUILD_DIR) -j$$(nproc)
+	$(MAKE) set-compile-commands-arm
 	@echo "========================================================"
 	@echo "  ARM build complete — artifacts in $(ARM_BUILD_DIR)/bin/"
 	@echo "  ELF : $(ARM_BUILD_DIR)/bin/s32k144_firmware.elf"

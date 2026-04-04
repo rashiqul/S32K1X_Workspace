@@ -18,6 +18,7 @@
  * Includes
  *******************************************************************************/
 #include "iohal.h"
+#include "iohal_app_tasks.h"
 
 /* BSW driver headers */
 #include "Dio.h"
@@ -39,7 +40,7 @@ static Std_ReturnType IoHal_Mcu_Init(void);
 
 void IoHal_Led_Toggle(void)
 {
-    /* TODO: Dio_FlipChannel(DioConf_DioChannel_DioChannel_0); */
+    Dio_FlipChannel(DioConf_DioChannel_DioChannel_0);
 }
 
 /*******************************************************************************
@@ -56,15 +57,14 @@ Std_ReturnType IoHal_Init(void)
      * (e.g. FlexCAN TX/RX) to the NVIC.  Calling CAN init before this
      * causes silent TX confirmation drops.
      *------------------------------------------------------------------------*/
-    /* TODO: call Platform_Init(NULL_PTR); */
+    Platform_Init(NULL_PTR);
 
     /*--------------------------------------------------------------------------
      * Step 2: MCU init (clock configuration)
      * Configures FIRC @ 48 MHz.  PLL path guarded by MCU_NO_PLL compile flag.
      *------------------------------------------------------------------------*/
     status = IoHal_Mcu_Init();
-    if (E_OK != status)
-    {
+    if (E_OK != status) {
         return E_NOT_OK;
     }
 
@@ -73,16 +73,29 @@ Std_ReturnType IoHal_Init(void)
      * Configures all GPIO pin directions and initial states.
      * PTD0 → output (LED on S32K144EVB-Q100).
      *------------------------------------------------------------------------*/
-    /* TODO: call Port_Init(NULL_PTR); */
+    Port_Init(NULL_PTR);
 
     /*--------------------------------------------------------------------------
      * Step 4: CAN sub-module init
      *------------------------------------------------------------------------*/
     status = IoHal_Can_Init();
-    if (E_OK != status)
-    {
+    if (E_OK != status) {
         return E_NOT_OK;
     }
+
+    /*--------------------------------------------------------------------------
+     * Step 5: Create application tasks
+     *------------------------------------------------------------------------*/
+    status = IoHal_AppTasks_Init();
+    if (E_OK != status) {
+        return E_NOT_OK;
+    }
+
+    /*--------------------------------------------------------------------------
+     * Step 6: Start scheduler
+     * Under normal operation this call does not return.
+     *------------------------------------------------------------------------*/
+    IoHal_Os_StartScheduler();
 
     return E_OK;
 }
@@ -101,16 +114,20 @@ Std_ReturnType IoHal_Init(void)
  */
 static Std_ReturnType IoHal_Mcu_Init(void)
 {
-    /* TODO: Mcu_Init(&Mcu_Config_VS_0); */
+    Mcu_Init(&Mcu_Config_VS_0);
 
-    /* TODO: Mcu_InitClock(McuClockSettingConfig_0); */
+    if (E_OK != Mcu_InitClock(McuClockSettingConfig_0)) {
+        return E_NOT_OK;
+    }
 
 #if (MCU_NO_PLL == STD_OFF)
-    /* TODO: while (MCU_PLL_LOCKED != Mcu_GetPllStatus()) {} */
-    /* TODO: Mcu_DistributePllClock(); */
+    if (MCU_PLL_LOCKED != Mcu_GetPllStatus()) {
+        return E_NOT_OK;
+    }
+    Mcu_DistributePllClock();
 #endif
 
-    /* TODO: Mcu_SetMode(McuModeSettingConf_0); */
+    Mcu_SetMode(McuModeSettingConf_0);
 
     return E_OK;
 }

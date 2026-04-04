@@ -16,13 +16,10 @@
  *******************************************************************************/
 
 #include "iohal.h"
-#include "iohal_app_tasks.h"
 
 int main(void)
 {
     IoHal_Init();
-    IoHal_AppTasks_Init();
-    IoHal_Os_StartScheduler();
 
     for (;;) {
         /* intentional infinite loop — trap runaway execution */

@@ -33,6 +33,7 @@
 
 # Debug directory (skip build generated C/CPP files)
 build*
+compile_commands.json
 *-build-*
 work/**
 models/sw_components_arxmls/**

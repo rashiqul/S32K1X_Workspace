@@ -13,27 +13,31 @@
 #
 #******************************************************************************
 
+add_library(iohal STATIC
+    iohal.c
+    iohal_can/iohal_can.c
+    iohal_os/iohal_os.c
+    iohal_app_tasks/iohal_app_tasks.c
+)
+
+target_include_directories(iohal PUBLIC
+    # Umbrella header: iohal.h
+    ${CMAKE_SOURCE_DIR}/include/cbd/iohal
+    # Per-module headers — each subfolder added so flat #include still works
+    ${CMAKE_SOURCE_DIR}/include/cbd/iohal/iohal_can
+    ${CMAKE_SOURCE_DIR}/include/cbd/iohal/iohal_os
+    ${CMAKE_SOURCE_DIR}/include/cbd/iohal/iohal_app_tasks
+)
+
 if(CMAKE_CROSSCOMPILING)
-
-    add_library(iohal STATIC
-        iohal.c
-        iohal_can/iohal_can.c
-        iohal_os/iohal_os.c
-        iohal_app_tasks/iohal_app_tasks.c
-    )
-
-    target_include_directories(iohal PUBLIC
-        # Umbrella header: iohal.h
-        ${CMAKE_SOURCE_DIR}/include/cbd/iohal
-        # Per-module headers — each subfolder added so flat #include still works
-        ${CMAKE_SOURCE_DIR}/include/cbd/iohal/iohal_can
-        ${CMAKE_SOURCE_DIR}/include/cbd/iohal/iohal_os
-        ${CMAKE_SOURCE_DIR}/include/cbd/iohal/iohal_app_tasks
-    )
-
     target_link_libraries(iohal PRIVATE
         s32k1_bsp   # NXP RTD drivers: Mcu, Port, Dio, CanIf, Can_43_FLEXCAN
         freertos    # FreeRTOS kernel: task, queue, portable
     )
-
+else()
+    # Host build: use test-only mock headers for low-layer RTD/FreeRTOS includes.
+    target_include_directories(iohal PRIVATE
+        ${CMAKE_SOURCE_DIR}/test/cbd/mocks/bsw/include
+        ${CMAKE_SOURCE_DIR}/test/cbd/mocks/freertos/include
+    )
 endif()
