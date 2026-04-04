@@ -31,8 +31,8 @@ ARM_BUILD_TYPE    ?= RelWithDebInfo
 ARM_BUILD_DIR     := build_s32k1/build_armv7/$(ARM_BUILD_TYPE)
 
 # Only pass S32DS_SDK_ROOT to cmake when the user explicitly sets it (command line
-# or environment). When using the default, let bsp/CMakeLists.txt prefer the
-# bundled headers in bsp/platform_sdk/ — required for CI (no S32DS installed).
+# or environment). When using the default, let bsw/CMakeLists.txt prefer the
+# bundled headers in include/bsw/platform_sdk/ — required for CI (no S32DS installed).
 ifneq ($(filter command line environment,$(origin S32DS_SDK_ROOT)),)
 CMAKE_SDK_FLAG := -DS32DS_SDK_ROOT=$(S32DS_SDK_ROOT)
 else

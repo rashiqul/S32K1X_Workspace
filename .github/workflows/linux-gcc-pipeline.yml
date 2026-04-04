@@ -374,7 +374,7 @@ jobs:
           set -o pipefail
           echo "🔨 Building ARM firmware for S32K144 (Cortex-M4)..."
           echo ""
-          echo "SDK headers are bundled in bsp/platform_sdk/ — no S32DS install required."
+          echo "SDK headers are bundled in include/bsw/platform_sdk/ — no S32DS install required."
           echo ""
           make build_all_tgt ARM_BUILD_TYPE=Release 2>&1 | tee arm_build.log
           echo "✅ ARM build completed"
