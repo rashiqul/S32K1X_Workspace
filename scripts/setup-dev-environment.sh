@@ -1,6 +1,8 @@
 #!/bin/bash
 # Development environment setup script for c_cpp_template_workspace
 # This script checks for required tools and installs them if missing
+#
+# Author: Mohammad Rashiqul Alam
 
 set -e
 

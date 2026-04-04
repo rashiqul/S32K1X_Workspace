@@ -4,6 +4,8 @@
 # command fails or a verbose flag is set, grouping it with a title if running
 # in GitHub Actions.
 #
+# Author: Mohammad Rashiqul Alam
+#
 
 if [ $# -lt 3 ]; then
     echo "Usage: $0 <title> <logfile> <command>"

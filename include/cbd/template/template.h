@@ -2,6 +2,8 @@
  *
  *  \brief      Template component header with sample functions
  *
+ *  \author     Mohammad Rashiqul Alam
+ *
  *  \copyright
  *      Copyright (c) 2025. All rights reserved.
  */
