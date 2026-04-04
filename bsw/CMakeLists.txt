@@ -120,7 +120,7 @@ target_link_options(s32k1_linker_config INTERFACE
     -nostartfiles
     --entry=Reset_Handler
     -Wl,--gc-sections
-    -Wl,-Map,${CMAKE_BINARY_DIR}/s32k144_firmware.map
+    -Wl,-Map,${CMAKE_BINARY_DIR}/s32k144.map
     -Wl,--cref
 )
 

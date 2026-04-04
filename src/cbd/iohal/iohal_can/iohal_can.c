@@ -94,7 +94,7 @@ Std_ReturnType IoHal_Can_Transmit(const IoHal_Can_PduType* pdu)
     bswPdu.sdu = pdu->sdu;
     bswPdu.swPduHandle = IOHAL_CAN_TX_SW_PDU_HANDLE;
 
-    return (CAN_OK == Can_43_FLEXCAN_Write(IOHAL_CAN_TX_HW_OBJ, &bswPdu)) ? E_OK : E_NOT_OK;
+    return (E_OK == Can_43_FLEXCAN_Write(IOHAL_CAN_TX_HW_OBJ, &bswPdu)) ? E_OK : E_NOT_OK;
 }
 
 void IoHal_Can_RegisterTxConfirmCallback(IoHal_Can_TxConfirmCallbackType callback)

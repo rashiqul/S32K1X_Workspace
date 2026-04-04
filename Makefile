@@ -306,10 +306,10 @@ build_all_tgt: pre-configure
 	$(MAKE) set-compile-commands-arm
 	@echo "========================================================"
 	@echo "  ARM build complete — artifacts in $(ARM_BUILD_DIR)/bin/"
-	@echo "  ELF : $(ARM_BUILD_DIR)/bin/s32k144_firmware.elf"
-	@echo "  HEX : $(ARM_BUILD_DIR)/bin/s32k144_firmware.hex"
-	@echo "  BIN : $(ARM_BUILD_DIR)/bin/s32k144_firmware.bin"
-	@echo "  MAP : $(ARM_BUILD_DIR)/bin/s32k144_firmware.map"
+	@echo "  ELF : $(ARM_BUILD_DIR)/bin/s32k144.elf"
+	@echo "  HEX : $(ARM_BUILD_DIR)/bin/s32k144.hex"
+	@echo "  BIN : $(ARM_BUILD_DIR)/bin/s32k144.bin"
+	@echo "  MAP : $(ARM_BUILD_DIR)/bin/s32k144.map"
 	@echo "========================================================"
 
 # ============================================================================
@@ -348,7 +348,7 @@ gdb-server:
 # pegdbserver_console connects to the probe, programs the ELF, then exits.
 # Run `make build_all_tgt` first to ensure the ELF is up to date.
 # ============================================================================
-FIRMWARE_ELF ?= $(ARM_BUILD_DIR)/bin/s32k144_firmware.elf
+FIRMWARE_ELF ?= $(ARM_BUILD_DIR)/bin/s32k144.elf
 
 .PHONY: flash_tgt
 flash_tgt:
