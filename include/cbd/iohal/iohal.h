@@ -96,6 +96,14 @@ extern "C" {
  */
 Std_ReturnType IoHal_Init(void);
 
+/**
+ * @brief  Toggle the board LED (PTD0 on S32K144EVB-Q100).
+ *
+ *         Wraps Dio_FlipChannel so that application and callback code
+ *         have no direct dependency on the Dio BSW driver.
+ */
+void IoHal_Led_Toggle(void);
+
 #ifdef __cplusplus
 }
 #endif
