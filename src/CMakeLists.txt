@@ -11,7 +11,7 @@
 if(CMAKE_CROSSCOMPILING)
     # -------------------------------------------------------------------------
     # ARM target: S32K144 firmware executable
-    # Build BSW first — s32k144_firmware links against s32k1_bsp and
+    # Build BSW first — s32k144 links against s32k1_bsp and
     # s32k1_linker_config which are defined in bsw/CMakeLists.txt.
     # The NXP Platform SDK already provides Platform_Types.h / Std_Types.h via
     # s32k1_bsp, so we must NOT also pull in libs/autosar-platform-types here.
@@ -21,31 +21,31 @@ if(CMAKE_CROSSCOMPILING)
     # IoHal depends on s32k1_bsp and freertos — must come after bsw.
     add_subdirectory(cbd/iohal)
 
-    add_executable(s32k144_firmware
+    add_executable(s32k144
         ${CMAKE_CURRENT_SOURCE_DIR}/main.c
     )
 
     # Give the ELF a proper .elf extension
-    set_target_properties(s32k144_firmware PROPERTIES SUFFIX ".elf")
+    set_target_properties(s32k144 PROPERTIES SUFFIX ".elf")
 
-    target_link_libraries(s32k144_firmware PRIVATE iohal s32k1_bsp s32k1_linker_config freertos)
+    target_link_libraries(s32k144 PRIVATE iohal s32k1_bsp s32k1_linker_config freertos)
 
     # Post-build: consolidate all artifacts into bin/
-    add_custom_command(TARGET s32k144_firmware POST_BUILD
+        add_custom_command(TARGET s32k144 POST_BUILD
         COMMAND ${CMAKE_COMMAND} -E make_directory ${CMAKE_BINARY_DIR}/bin
         COMMAND ${CMAKE_COMMAND} -E copy
-                $<TARGET_FILE:s32k144_firmware>
-                ${CMAKE_BINARY_DIR}/bin/s32k144_firmware.elf
+            $<TARGET_FILE:s32k144>
+            ${CMAKE_BINARY_DIR}/bin/s32k144.elf
         COMMAND ${CMAKE_OBJCOPY} -O ihex
-                $<TARGET_FILE:s32k144_firmware>
-                ${CMAKE_BINARY_DIR}/bin/s32k144_firmware.hex
+            $<TARGET_FILE:s32k144>
+            ${CMAKE_BINARY_DIR}/bin/s32k144.hex
         COMMAND ${CMAKE_OBJCOPY} -O binary
-                $<TARGET_FILE:s32k144_firmware>
-                ${CMAKE_BINARY_DIR}/bin/s32k144_firmware.bin
+            $<TARGET_FILE:s32k144>
+            ${CMAKE_BINARY_DIR}/bin/s32k144.bin
         COMMAND ${CMAKE_COMMAND} -E copy
-                ${CMAKE_BINARY_DIR}/s32k144_firmware.map
-                ${CMAKE_BINARY_DIR}/bin/s32k144_firmware.map
-        COMMAND ${CMAKE_SIZE} $<TARGET_FILE:s32k144_firmware>
+            ${CMAKE_BINARY_DIR}/s32k144.map
+            ${CMAKE_BINARY_DIR}/bin/s32k144.map
+        COMMAND ${CMAKE_SIZE} $<TARGET_FILE:s32k144>
         COMMENT "Consolidating firmware artifacts into bin/"
     )
 else()
