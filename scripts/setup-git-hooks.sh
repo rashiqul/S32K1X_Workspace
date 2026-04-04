@@ -1,5 +1,7 @@
 #!/bin/bash
 # Setup git hooks for automated environment checks
+#
+# Author: Mohammad Rashiqul Alam
 
 set -e
 

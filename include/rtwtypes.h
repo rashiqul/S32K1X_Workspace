@@ -1,3 +1,14 @@
+/** \file       rtwtypes.h
+ *
+ *  \brief      MATLAB/Simulink Coder fundamental type definitions for MBD
+ *              code generation. Maps C99 stdint types to Simulink RTW names.
+ *
+ *  \author     Mohammad Rashiqul Alam
+ *
+ *  \copyright
+ *      Copyright (c) 2025. All rights reserved.
+ */
+
 #pragma once
 
 #include <Std_Types.h>

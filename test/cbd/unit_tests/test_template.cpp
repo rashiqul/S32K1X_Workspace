@@ -2,6 +2,8 @@
  *
  *  \brief      Unit tests for template component
  *
+ *  \author     Mohammad Rashiqul Alam
+ *
  *  \copyright
  *      Copyright (c) 2025. All rights reserved.
  */
