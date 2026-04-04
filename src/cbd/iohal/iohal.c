@@ -20,6 +20,7 @@
 #include "iohal.h"
 
 /* BSW driver headers */
+#include "Dio.h"
 #include "Mcu.h"
 #include "Platform.h"
 #include "Port.h"
@@ -31,6 +32,15 @@ extern const Mcu_ConfigType Mcu_Config_VS_0;
  * Private function prototypes
  *******************************************************************************/
 static Std_ReturnType IoHal_Mcu_Init(void);
+
+/*******************************************************************************
+ * Public API implementation
+ *******************************************************************************/
+
+void IoHal_Led_Toggle(void)
+{
+    /* TODO: Dio_FlipChannel(DioConf_DioChannel_DioChannel_0); */
+}
 
 /*******************************************************************************
  * Public API implementation

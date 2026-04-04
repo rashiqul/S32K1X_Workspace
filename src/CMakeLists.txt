@@ -18,6 +18,9 @@ if(CMAKE_CROSSCOMPILING)
     # -------------------------------------------------------------------------
     add_subdirectory(${CMAKE_SOURCE_DIR}/bsw ${CMAKE_BINARY_DIR}/bsw)
 
+    # IoHal depends on s32k1_bsp and freertos — must come after bsw.
+    add_subdirectory(cbd/iohal)
+
     add_executable(s32k144_firmware
         ${CMAKE_CURRENT_SOURCE_DIR}/main.c
     )
@@ -25,7 +28,7 @@ if(CMAKE_CROSSCOMPILING)
     # Give the ELF a proper .elf extension
     set_target_properties(s32k144_firmware PROPERTIES SUFFIX ".elf")
 
-    target_link_libraries(s32k144_firmware PRIVATE s32k1_bsp s32k1_linker_config freertos)
+    target_link_libraries(s32k144_firmware PRIVATE iohal s32k1_bsp s32k1_linker_config freertos)
 
     # Post-build: consolidate all artifacts into bin/
     add_custom_command(TARGET s32k144_firmware POST_BUILD
