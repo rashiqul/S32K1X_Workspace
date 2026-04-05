@@ -24,7 +24,7 @@
             "request": "launch",
             "servertype": "external",
             "gdbTarget": "localhost:7224",
-            "executable": "${workspaceFolder}/build_s32k1/build_armv7/RelWithDebInfo/bin/s32k144_firmware.elf",
+            "executable": "${workspaceFolder}/build_s32k1/build_armv7/RelWithDebInfo/bin/s32k144.elf",
             "gdbPath": "arm-none-eabi-gdb",
             "preLaunchTask": "gdb-server",
             "showDevDebugOutput": "none",
@@ -49,7 +49,7 @@
             "servertype": "external",
             "gdbTarget": "localhost:7224",
             "preLaunchTask": "gdb-server",
-            "executable": "${workspaceFolder}/build_s32k1/build_armv7/RelWithDebInfo/bin/s32k144_firmware.elf",
+            "executable": "${workspaceFolder}/build_s32k1/build_armv7/RelWithDebInfo/bin/s32k144.elf",
             "gdbPath": "arm-none-eabi-gdb",
             "showDevDebugOutput": "none",
             "overrideAttachCommands": [
