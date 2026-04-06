@@ -36,7 +36,9 @@ if(CMAKE_CROSSCOMPILING)
     )
 else()
     # Host build: use test-only mock headers for low-layer RTD/FreeRTOS includes.
-    target_include_directories(iohal PRIVATE
+    # PUBLIC is required because iohal_os.h (a PUBLIC header) transitively
+    # includes FreeRTOS.h and task.h — consumers of iohal need these paths too.
+    target_include_directories(iohal PUBLIC
         ${CMAKE_SOURCE_DIR}/test/cbd/mocks/bsw/include
         ${CMAKE_SOURCE_DIR}/test/cbd/mocks/freertos/include
     )

@@ -15,6 +15,7 @@ target_include_directories(mock_iohal
         ${CMAKE_SOURCE_DIR}/include/cbd/iohal/iohal_can
         ${CMAKE_SOURCE_DIR}/include/cbd/iohal/iohal_os
         ${CMAKE_SOURCE_DIR}/include/cbd/iohal/iohal_app_tasks
+        # BSW/FreeRTOS mock paths propagate via iohal PUBLIC includes (iohal_os.h leakage fix)
         ${CMAKE_SOURCE_DIR}/test/cbd/mocks/bsw/include
         ${CMAKE_SOURCE_DIR}/test/cbd/mocks/freertos/include
 )
@@ -33,6 +34,7 @@ target_include_directories(mock_low_level
         ${CMAKE_SOURCE_DIR}/include/cbd/iohal/iohal_can
         ${CMAKE_SOURCE_DIR}/include/cbd/iohal/iohal_os
         ${CMAKE_SOURCE_DIR}/include/cbd/iohal/iohal_app_tasks
+        # BSW/FreeRTOS mock paths propagate via iohal PUBLIC includes (iohal_os.h leakage fix)
         ${CMAKE_SOURCE_DIR}/test/cbd/mocks/bsw/include
         ${CMAKE_SOURCE_DIR}/test/cbd/mocks/freertos/include
 )
@@ -55,8 +57,6 @@ target_include_directories(test_iohal
         ${CMAKE_SOURCE_DIR}/include/cbd/iohal/iohal_can
         ${CMAKE_SOURCE_DIR}/include/cbd/iohal/iohal_os
         ${CMAKE_SOURCE_DIR}/include/cbd/iohal/iohal_app_tasks
-        ${CMAKE_SOURCE_DIR}/test/cbd/mocks/bsw/include
-        ${CMAKE_SOURCE_DIR}/test/cbd/mocks/freertos/include
 )
 
 target_link_libraries(test_iohal
@@ -80,8 +80,6 @@ target_include_directories(test_iohal_can
         ${CMAKE_SOURCE_DIR}/include/cbd/iohal/iohal_can
         ${CMAKE_SOURCE_DIR}/include/cbd/iohal/iohal_os
         ${CMAKE_SOURCE_DIR}/include/cbd/iohal/iohal_app_tasks
-        ${CMAKE_SOURCE_DIR}/test/cbd/mocks/bsw/include
-        ${CMAKE_SOURCE_DIR}/test/cbd/mocks/freertos/include
 )
 
 target_link_libraries(test_iohal_can
@@ -105,8 +103,6 @@ target_include_directories(test_iohal_os
         ${CMAKE_SOURCE_DIR}/include/cbd/iohal/iohal_can
         ${CMAKE_SOURCE_DIR}/include/cbd/iohal/iohal_os
         ${CMAKE_SOURCE_DIR}/include/cbd/iohal/iohal_app_tasks
-        ${CMAKE_SOURCE_DIR}/test/cbd/mocks/bsw/include
-        ${CMAKE_SOURCE_DIR}/test/cbd/mocks/freertos/include
 )
 
 target_link_libraries(test_iohal_os
@@ -135,8 +131,6 @@ target_include_directories(test_iohal_app_tasks
         ${CMAKE_SOURCE_DIR}/include/cbd/iohal/iohal_can
         ${CMAKE_SOURCE_DIR}/include/cbd/iohal/iohal_os
         ${CMAKE_SOURCE_DIR}/include/cbd/iohal/iohal_app_tasks
-        ${CMAKE_SOURCE_DIR}/test/cbd/mocks/bsw/include
-        ${CMAKE_SOURCE_DIR}/test/cbd/mocks/freertos/include
 )
 
 target_link_libraries(test_iohal_app_tasks
