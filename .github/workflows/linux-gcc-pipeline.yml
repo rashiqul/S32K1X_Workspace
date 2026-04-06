@@ -255,6 +255,8 @@ jobs:
     name: ARM Cross-Compilation Build (S32K144)
     runs-on: ubuntu-latest
     needs: lint-check
+    env:
+      ARM_BUILD_TYPE: Release
 
     steps:
       - name: Checkout code
@@ -377,7 +379,7 @@ jobs:
           echo ""
           echo "SDK headers are bundled in bsw/platform_sdk/ — no S32DS install required."
           echo ""
-          make build_all_tgt ARM_BUILD_TYPE=Release 2>&1 | tee arm_build.log
+          make build_all_tgt ARM_BUILD_TYPE=${ARM_BUILD_TYPE} 2>&1 | tee arm_build.log
           echo "✅ ARM build completed"
 
       - name: Verify build artifacts
@@ -385,7 +387,7 @@ jobs:
         run: |
           echo "📦 Checking ARM build artifacts..."
 
-          bin_dir="build_s32k1/build_armv7/Release/bin"  # ARM_BUILD_TYPE=Release set at build step
+          bin_dir="build_s32k1/build_armv7/${ARM_BUILD_TYPE}/bin"
 
           if [ ! -d "$bin_dir" ]; then
             echo "❌ ARM bin directory not found: $bin_dir"
@@ -399,7 +401,7 @@ jobs:
           ls -lh "$bin_dir/"
 
           for ext in elf hex bin; do
-            artifact="$bin_dir/s32k144_firmware.$ext"
+            artifact="$bin_dir/s32k144.$ext"
             if [ -f "$artifact" ]; then
               echo "✅ $artifact ($(du -h "$artifact" | cut -f1))"
             else
@@ -453,7 +455,7 @@ jobs:
         with:
           name: arm-build-artifacts
           path: |
-            build_s32k1/build_armv7/Release/bin/  # ARM_BUILD_TYPE=Release set at build step
+            build_s32k1/build_armv7/${{ env.ARM_BUILD_TYPE }}/bin/
             arm_build.log
           retention-days: 7
 
