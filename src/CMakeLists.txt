@@ -28,6 +28,10 @@ if(CMAKE_CROSSCOMPILING)
     # Give the ELF a proper .elf extension
     set_target_properties(s32k144 PROPERTIES SUFFIX ".elf")
 
+    # s32k1_bsp appears here even though iohal links it PRIVATE — it must be
+    # explicit so its PUBLIC include paths (Std_Types.h, Platform_Types.h) reach
+    # main.c which includes iohal.h → Std_Types.h.  freertos is kept for the
+    # same reason (iohal_os.h is a PUBLIC header that includes FreeRTOS.h).
     target_link_libraries(s32k144 PRIVATE iohal s32k1_bsp s32k1_linker_config freertos)
 
     # Post-build: consolidate all artifacts into bin/
