@@ -7,7 +7,7 @@ foreach(dir ${subdirs})
 
         set(component_name ${dir})
 
-        file(GLOB sources RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} ${CMAKE_CURRENT_SOURCE_DIR}/${component_name}/*.[ch])
+        file(GLOB_RECURSE sources RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} ${CMAKE_CURRENT_SOURCE_DIR}/${component_name}/*.[ch])
         install(FILES ${sources} DESTINATION src/${component_name})
         install(FILES ${dir}/CMakeLists-export.txt RENAME CMakeLists.txt DESTINATION src/${component_name})
         install(FILES ${PROJECT_SOURCE_DIR}/include/rtwtypes.h OPTIONAL DESTINATION src/${component_name}/stub)
