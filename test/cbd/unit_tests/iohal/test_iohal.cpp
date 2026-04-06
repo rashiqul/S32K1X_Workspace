@@ -37,8 +37,7 @@ testing::StrictMock<MockIoHalCan>* g_mockIoHalCan = nullptr;
 testing::StrictMock<MockIoHalStartup>* g_mockIoHalStartup = nullptr;
 
 /** RAII guard — sets and clears g_mockIoHalCan / g_mockIoHalStartup. */
-struct ScopedIoHalSubMocks
-{
+struct ScopedIoHalSubMocks {
     testing::StrictMock<MockIoHalCan> can;
     testing::StrictMock<MockIoHalStartup> startup;
 
