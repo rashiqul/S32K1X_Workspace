@@ -220,7 +220,7 @@ jobs:
           # Exclude bsw/ — NXP RTD drivers, platform SDK, and FreeRTOS kernel
           # are vendor code and must not be reformatted.
           files=$(find src test include -type f \( -name "*.c" -o -name "*.cpp" -o -name "*.h" -o -name "*.hpp" \) \
-            ! -path "bsw/*" \
+            ! -path "*/bsw/*" \
             2>/dev/null || true)
           
           if [ -z "$files" ]; then
