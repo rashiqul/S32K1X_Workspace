@@ -35,16 +35,29 @@ extern const Mcu_ConfigType Mcu_Config_VS_0;
 static Std_ReturnType IoHal_Mcu_Init(void);
 
 /*******************************************************************************
+ * Private state
+ *******************************************************************************/
+
+/** LED state maintained by this module. 0U = OFF, 1U = ON. */
+static uint8 s_ledState = 0U;
+
+/*******************************************************************************
  * Public API implementation
  *******************************************************************************/
 
 void IoHal_Led_Toggle(void)
 {
+    s_ledState ^= 1U;
     Dio_FlipChannel(DioConf_DioChannel_DioChannel_0);
 }
 
+uint8 IoHal_Led_GetState(void)
+{
+    return s_ledState;
+}
+
 /*******************************************************************************
- * Public API implementation
+ * Firmware init
  *******************************************************************************/
 
 Std_ReturnType IoHal_Init(void)

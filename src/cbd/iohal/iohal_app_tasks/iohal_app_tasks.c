@@ -142,23 +142,44 @@ static void Task_20ms(void* pvParameters)
 
 /**
  * @brief  Task_1000ms — 1000 ms periodic, priority 1 (lowest user task).
+ *
  *         Transmits a CAN frame every second via IoHal_Can_Transmit().
+ *         The payload encodes observable state for CAN driver verification:
+ *
+ *           Byte 0   : LED state (0x00 = OFF, 0x01 = ON)
+ *           Bytes 1-4: task_1000ms_count (little-endian, rolls over at 2^32)
+ *           Bytes 5-7: reserved (0x00)
+ *
+ *         The TX-confirm callback (App_OnCanTxDone) toggles the LED so the
+ *         next frame always carries the updated state — verifiable on a CAN
+ *         analyser or in the debugger watch window.
  */
 static void Task_1000ms(void* pvParameters)
 {
     (void)pvParameters;
     IoHal_Os_TickType xLastWakeTime = IoHal_Os_GetTickCount();
 
-    static const uint8 payload[8U] = {0x01U, 0x02U, 0x03U, 0x04U, 0x05U, 0x06U, 0x07U, 0x08U};
+    static uint8 payload[8U] = {0x00U, 0x00U, 0x00U, 0x00U, 0x00U, 0x00U, 0x00U, 0x00U};
     IoHal_Can_PduType pdu;
     pdu.id = 0x123U;
     pdu.length = 8U;
-    pdu.sdu = (uint8*)payload;
+    pdu.sdu = payload;
 
     IOHAL_TASK_LOOP()
     {
         IoHal_Os_DelayUntil(&xLastWakeTime, TASK_PERIOD_1000MS);
         task_1000ms_count++;
+
+        /* Encode current LED state and counter into the payload. */
+        payload[0U] = IoHal_Led_GetState();
+        payload[1U] = (uint8)(task_1000ms_count & 0xFFU);
+        payload[2U] = (uint8)((task_1000ms_count >> 8U) & 0xFFU);
+        payload[3U] = (uint8)((task_1000ms_count >> 16U) & 0xFFU);
+        payload[4U] = (uint8)((task_1000ms_count >> 24U) & 0xFFU);
+        payload[5U] = 0x00U;
+        payload[6U] = 0x00U;
+        payload[7U] = 0x00U;
+
         IoHal_Can_Transmit(&pdu);
     }
 }

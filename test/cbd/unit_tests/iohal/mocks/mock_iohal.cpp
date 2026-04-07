@@ -33,6 +33,14 @@ extern "C" void IoHal_Led_Toggle(void)
     g_strictMockIoHal->IoHal_Led_Toggle();
 }
 
+extern "C" uint8 IoHal_Led_GetState(void)
+{
+    if (g_strictMockIoHal == nullptr) {
+        return (uint8)0U;
+    }
+    return g_strictMockIoHal->IoHal_Led_GetState();
+}
+
 extern "C" Std_ReturnType IoHal_Can_Init(void)
 {
     if (g_strictMockIoHal == nullptr) {

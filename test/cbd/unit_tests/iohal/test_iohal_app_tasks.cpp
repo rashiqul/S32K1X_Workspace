@@ -111,6 +111,7 @@ TEST(IoHalAppTasksTest, TaskFunctionsRunSingleIterationInUnitTestMode)
         .Times(3)
         .WillRepeatedly(Return((IoHal_Os_TickType)100U));
     EXPECT_CALL(mock, IoHal_Os_DelayUntil(_, _)).Times(3);
+    EXPECT_CALL(mock, IoHal_Led_GetState()).WillOnce(Return((uint8)0U));
     EXPECT_CALL(mock, IoHal_Can_Transmit(_)).WillOnce(Return(E_OK));
 
     cfg10->function(nullptr);

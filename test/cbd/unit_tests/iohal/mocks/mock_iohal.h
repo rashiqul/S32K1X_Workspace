@@ -12,6 +12,7 @@ class MockIoHal
 public:
     MOCK_METHOD(Std_ReturnType, IoHal_Init, (), ());
     MOCK_METHOD(void, IoHal_Led_Toggle, (), ());
+    MOCK_METHOD(uint8, IoHal_Led_GetState, (), ());
 
     MOCK_METHOD(Std_ReturnType, IoHal_Can_Init, (), ());
     MOCK_METHOD(Std_ReturnType, IoHal_Can_Transmit, (const IoHal_Can_PduType* pdu), ());

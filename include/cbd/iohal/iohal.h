@@ -101,8 +101,19 @@ Std_ReturnType IoHal_Init(void);
  *
  *         Wraps Dio_FlipChannel so that application and callback code
  *         have no direct dependency on the Dio BSW driver.
+ *         The internal state variable is updated atomically with the toggle.
  */
 void IoHal_Led_Toggle(void);
+
+/**
+ * @brief  Return the current LED state.
+ *
+ *         State is maintained by the IoHal module — no hardware readback.
+ *         Valid after the first call to IoHal_Init().
+ *
+ * @return 1U if the LED is ON, 0U if the LED is OFF.
+ */
+uint8 IoHal_Led_GetState(void);
 
 #ifdef __cplusplus
 }
