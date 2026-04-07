@@ -151,6 +151,22 @@ const Port_Ci_Port_Ip_PinSettingsConfig g_pin_mux_InitConfigArr_VS_0[NUM_OF_CONF
         .lockRegister          = PORT_LOCK_REGISTER_DISABLED,
         .digitalFilter         = (boolean)FALSE,
         .initValue             = 0
+    },
+    /* PTE11 — TJA1043 STB (GPIO output, active-low).
+     * Drive LOW to bring the transceiver out of standby and onto the bus.
+     * Without this the TJA1043 floats in standby and no frames appear on wire. */
+    {
+        .portBase              = IP_PORTE,
+        .gpioBase              = IP_PTE,
+        .pinPortIdx            = 11,
+        .mux                   = PORT_MUX_AS_GPIO,
+        .direction             = PORT_CI_PORT_PIN_OUT,
+        .pullConfig            = PORT_INTERNAL_PULL_NOT_ENABLED,
+        .driveStrength         = PORT_DRIVE_STRENGTH_LOW,
+        .passiveFilter         = (boolean)FALSE,
+        .lockRegister          = PORT_LOCK_REGISTER_DISABLED,
+        .digitalFilter         = (boolean)FALSE,
+        .initValue             = 0  /* 0 = STB low = TJA1043 normal mode */
     }
 };
 

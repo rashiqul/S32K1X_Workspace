@@ -136,8 +136,8 @@ const Flexcan_Ip_ConfigType Flexcan_aCtrlConfigPB[1U]=
         /* The Enhanced Rx FIFO feature is enabled or not. */
         (boolean)FALSE,
         #endif
-        /* Loopback mode: self-ACK, no physical bus or termination required */
-        FLEXCAN_LOOPBACK_MODE,
+        /* Normal mode: frames transmitted on the physical bus via TJA1043 */
+        FLEXCAN_NORMAL_MODE,
 #if (FLEXCAN_IP_FEATURE_HAS_MEM_ERR_DET == STD_ON)
 #if (FLEXCAN_IP_FEATURE_MEM_ERR_DET_ENABLED == STD_ON)
         /* Memory error response .flexcanModeErrResponse - not apply for HLD */
